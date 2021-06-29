@@ -15,7 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos-Chuwi"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -50,15 +50,15 @@
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "david";
 
-  services.xserver.desktopManager.gnome3.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   # services.xserver.windowManager.i3.enable = true;
   # services.xserver.windowManager.xmonad.enable = true;
   
 
   # Configure keymap in X11
   services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-  # services.xserver.xkbVariant = "intl";
+  services.xserver.xkbOptions = "ctrl:nocaps";
+  services.xserver.xkbVariant = "intl";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -69,6 +69,8 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+  
+  nix.allowedUsers = [ "@wheel" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.david = {
@@ -79,22 +81,24 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
     firefox
     keepassxc
-    neofetch
-    htop
-    tmux
-    git
-    stow
-    ncdu
-    rsync
-    p7zip
+    nextcloud-client
+    libreoffice-fresh
 
-    # CLI tools used in my dotfiles
-    # ripgrep
-    # exa
-    # bat
+    neovim
+    git
+    tmux
+    p7zip
+    rsync
+    ncdu
+    htop
+    stow
+    ripgrep
+    exa
+    bat
+    neofetch
+
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -104,6 +108,8 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  nixpkgs.config.allowUnfree = true;
+  programs.steam.enable = true;
 
   # List services that you want to enable:
 
