@@ -10,6 +10,7 @@
     ./apps/tmux.nix
     ./apps/alacritty.nix
     ./apps/gnome.nix
+    ./apps/git.nix
     ];
 
   # Home Manager needs a bit of information about you and the
@@ -34,7 +35,6 @@
     keepassxc
     nextcloud-client
     libreoffice-fresh
-    git
     tmux
     p7zip
     rsync
@@ -48,58 +48,12 @@
     fzf
     gnome.gnome-system-monitor
     gnome.gnome-tweaks
+    overpass
+    iosevka
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
     ];
-  
-  home.file = {
-    ".config/git/config".text = ''
-    [user]
-  	email = 6568955+dbeley@users.noreply.github.com
-  	name = dbeley
-    [filesystem "N/A|13|/dev/mapper/SSD-root"]
-    	timestampResolution = 8000 nanoseconds
-    	minRacyThreshold = 6477 microseconds
-    [diff]
-    	algorithm = patience
-    	colorMoved = zebra
-    [color]
-    	ui = auto
-    	branch = auto
-    	diff = auto
-    	status = auto
-        showbranch = auto
-    
-    # define command which will be used when "nvim" is set as a merge tool
-    [mergetool "nvim"]
-        cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
-    # set "nvim" as tool for merging
-    [merge]
-        tool = nvim
-        renamelimit = 20000
-    # automatically launch merge tool without displaying a prompt
-    [mergetool]
-        prompt = false
-    [pull]
-    	rebase = true
-    [rebase]
-    	autoStash = true
-    [core]
-    	autocrlf = input
-    [credential]
-    	helper = cache
-    [filter "lfs"]
-    	process = git-lfs filter-process
-    	required = true
-    	clean = git-lfs clean -- %f
-    	smudge = git-lfs smudge -- %f
-    [init]
-    	defaultBranch = main
-    [rerere]
-    	enabled = true
-    [fetch]
-    	prune = true
-    [push]
-    	autoSetupRemote = false
 
-    '';
-  };
+  fonts.fontconfig.enable = true;
 }

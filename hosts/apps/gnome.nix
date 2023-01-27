@@ -1,4 +1,5 @@
 {
+  # mostly taken from https://hoverbear.org/blog/declarative-gnome-configuration-in-nixos/
   gtk = {
     enable = true;
     #iconTheme = {
@@ -28,7 +29,7 @@
       '';
     };
   };
-  home.sessionVariables.GTK_THEME = "palenight";
+  # home.sessionVariables.GTK_THEME = "palenight";
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
