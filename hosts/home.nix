@@ -7,6 +7,8 @@
     ./apps/nvim.nix
     #./apps/hyprland.nix
     #./apps/waybar.nix
+    ./apps/tmux.nix
+    ./apps/alacritty.nix
     ];
 
   # Home Manager needs a bit of information about you and the

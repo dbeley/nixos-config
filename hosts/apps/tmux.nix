@@ -1,0 +1,117 @@
+{
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+    #################################################################################
+    ##                                                                             ##
+    ## ████████╗███╗   ███╗██╗   ██╗██╗  ██╗    ██████╗ ██████╗ ███╗   ██╗███████╗ ##
+    ## ╚══██╔══╝████╗ ████║██║   ██║╚██╗██╔╝   ██╔════╝██╔═══██╗████╗  ██║██╔════╝ ##
+    ##    ██║   ██╔████╔██║██║   ██║ ╚███╔╝    ██║     ██║   ██║██╔██╗ ██║█████╗   ##
+    ##    ██║   ██║╚██╔╝██║██║   ██║ ██╔██╗    ██║     ██║   ██║██║╚██╗██║██╔══╝   ##
+    ##    ██║   ██║ ╚═╝ ██║╚██████╔╝██╔╝ ██╗██╗╚██████╗╚██████╔╝██║ ╚████║██║      ##
+    ##    ╚═╝   ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝      ##
+    ##                                                                             ##
+    #################################################################################
+    
+    set -g @plugin 'tmux-plugins/tpm'
+    set -g @plugin 'tmux-plugins/tmux-sensible'
+    set -g @plugin 'tmux-plugins/tmux-resurrect'
+    set -g @plugin 'tmux-plugins/tmux-yank'
+    set -g @plugin 'tmux-plugins/tmux-battery'
+    set -g @plugin 'wfxr/tmux-fzf-url'
+    
+    set -s escape-time 0
+    #set -g default-shell "/usr/bin/fish"
+     set-option -g history-limit 999999
+    
+    set -g default-terminal "tmux-256color"
+    set -as terminal-overrides "rxvt*:RGB"
+    
+    bind r source-file ~/.tmux.conf
+    
+    unbind C-b
+    set -g prefix C-Space
+    bind Space send-prefix
+    
+    set -g mouse on
+    setw -g mode-keys vi
+    set -g base-index 1
+    setw -g pane-base-index 1
+    
+    bind -n C-l send-key C-l
+    
+    # Split with \ and -
+    bind '\' split-window -h -c "#{pane_current_path}"
+    bind - split-window -v -c "#{pane_current_path}"
+    
+    bind h select-pane -L
+    bind j select-pane -D
+    bind k select-pane -U
+    bind l select-pane -R
+    
+    bind -r H resize-pane -L 2
+    bind -r J resize-pane -D 1
+    bind -r K resize-pane -U 1
+    bind -r L resize-pane -R 2
+    
+    # Use Alt-vim keys without prefix key to switch panes (one row below)
+    bind -n M-m select-pane -L
+    bind -n M-, select-pane -D
+    bind -n M-. select-pane -U
+    bind -n M-/ select-pane -R
+    
+    # Use Alt-vim keys without prefix key to switch windows (one row below)
+    bind -n M-M previous-window
+    bind -n M-< previous-window
+    bind -n M-> next-window
+    bind -n M-? next-window
+    
+    
+    # Use Alt-vim keys without prefix key to create panes and windows
+    bind -n M-| split-window -h -c "#{pane_current_path}"
+    bind -n M-_ split-window -v -c "#{pane_current_path}"
+    bind -n M-C new-window
+    
+    bind-key - split-window -v -c "#{pane_current_path}"
+    bind-key '\' split-window -h -c "#{pane_current_path}"
+    bind-key _ split-window -fv -c "#{pane_current_path}"
+    bind-key | split-window -fh -c "#{pane_current_path}"
+    
+    unbind p
+    bind p paste-buffer
+    
+    set -g status-justify left
+    set -g status-bg default
+    set -g status-fg white
+    set -g status-position bottom
+    set -g @batt_remain_short false
+    
+    set -g mode-style bg=brightblack
+    set -g mode-style fg=default
+    
+    set -g status-left-length 40
+    set -g status-left "#[fg=colour18,bg=colour12] #S #[fg=default,bg=default] "
+    set -g status-right-length 80
+    set -g status-right "#[fg=colour18,bg=colour7] BAT #[fg=colour18,bg=colour4] #{battery_percentage} #[fg=default,bg=default] #[fg=colour18,bg=colour7] %d %b #[fg=colour18,bg=colour4] %H:%M "
+    
+    set -g window-status-format "#[fg=colour18,bg=brightblack] #I #[fg=white,bg=black] #W "
+    set -g window-status-current-format "#[fg=colour18,bg=colour7] #I #[fg=colour18,bg=colour4] #W "
+    set -g window-status-separator " "
+    
+    set -g clock-mode-colour white
+    set -g clock-mode-style 24
+    
+    set -g message-style fg=black
+    set -g message-style bg=yellow
+    set -g message-command-style fg=blue
+    set -g message-command-style bg=black
+    set -g automatic-rename on
+    
+    #set -g @fzf-url-bind 'x'
+    
+    # run "$XDG_CONFIG_HOME/tmux/plugins/tpm/tpm"
+    
+    #source-file "$XDG_CONFIG_HOME/tmux/tmuxline.conf"
+    '';
+  };
+}
