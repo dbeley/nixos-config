@@ -44,6 +44,9 @@
     exa
     bat
     neofetch
+    fzf
+    gnome.gnome-system-monitor
+    gnome.gnome-tweaks
     ];
   
   home.file = {
