@@ -5,6 +5,8 @@
     ./apps/fish.nix
     ./apps/firefox.nix
     ./apps/nvim.nix
+    #./apps/hyprland.nix
+    #./apps/waybar.nix
     ];
 
   # Home Manager needs a bit of information about you and the

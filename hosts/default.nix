@@ -6,9 +6,6 @@
     specialArgs = { inherit user inputs; };
     modules = [
       ./configuration.nix
-      #./apps/fish.nix
-      #./apps/firefox.nix
-      #./apps/nvim.nix
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
@@ -18,8 +15,6 @@
 	  imports = [(import ./home.nix)];
         };
       }
-      #hyprland.homeManagerModules.default
-      #{wayland.windowManager.hyprland.enable = true;}
     ];
   };
 }

@@ -2,6 +2,7 @@
   programs.fish = {
     enable = true;
     shellAliases = {
+      vim = "nvim";
       ls = "exa";
       l = "exa";
       ll = "exa -lh";
