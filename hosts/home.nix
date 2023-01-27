@@ -1,6 +1,12 @@
 { config, pkgs, user, ... }:
 
 {
+  imports = [
+    ./apps/fish.nix
+    ./apps/firefox.nix
+    ./apps/nvim.nix
+    ];
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = user;
@@ -20,7 +26,6 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    firefox
     keepassxc
     nextcloud-client
     libreoffice-fresh

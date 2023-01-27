@@ -6,8 +6,9 @@
     specialArgs = { inherit user inputs; };
     modules = [
       ./configuration.nix
-      ./apps/fish.nix
-      ./apps/firefox.nix
+      #./apps/fish.nix
+      #./apps/firefox.nix
+      #./apps/nvim.nix
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
