@@ -163,7 +163,7 @@
       channel = "https://nixos.org/channels/nixos-unstable";
       };
     };
-  
+
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";

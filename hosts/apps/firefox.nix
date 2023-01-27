@@ -1,8 +1,15 @@
-{ user, ... }:
+{ user, inputs, ... }:
 
+let
+  addons = inputs.firefox-addons.packages."x86_64-linux";
+in
 {
   programs.firefox = {
     enable = true;
+    extensions = with addons; [
+      ublock-origin
+      vimium
+    ];
     profiles.${user} = {
       settings = {
         "browser.bookmarks.openInTabClosesMenu" = false;
