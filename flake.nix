@@ -3,11 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, hyprland, ... }: {
     nixosConfigurations = {
       hostname = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -22,6 +25,8 @@
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
+          hyprland.homeManagerModules.default
+          {wayland.windowManager.hyprland.enable = true;}
         ];
       };
     };
