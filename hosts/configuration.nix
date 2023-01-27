@@ -97,6 +97,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     ];
+    shell = pkgs.fish;
   };
 
   # Enable automatic login for the user.
