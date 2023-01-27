@@ -5,8 +5,9 @@
     inherit system;
     specialArgs = { inherit user inputs; };
     modules = [
-      #./t470s
       ./configuration.nix
+      ./apps/fish.nix
+      ./apps/firefox.nix
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;

@@ -86,7 +86,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
   services.xserver.libinput.touchpad.leftHanded = true;
   services.xserver.libinput.mouse.leftHanded = true;
 
