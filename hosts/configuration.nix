@@ -72,6 +72,7 @@
     hitori # sudoku game
     atomix # puzzle game
   ]);
+  programs.dconf.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -134,6 +135,7 @@
   environment.systemPackages = with pkgs; [
     nano
     killall
+    gnome.gnome-tweaks
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

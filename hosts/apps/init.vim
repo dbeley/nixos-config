@@ -105,9 +105,9 @@ set lazyredraw
 
 " Coloration syntaxique
 syntax on
-"colorscheme gruvbox
+colorscheme gruvbox
 set background=dark
-colorscheme wal
+"colorscheme wal
 
 " Aides visuelles
 set ruler
