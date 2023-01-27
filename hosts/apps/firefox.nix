@@ -1,7 +1,7 @@
-{ user, inputs, ... }:
+{ user, inputs, system, ... }:
 
 let
-  addons = inputs.firefox-addons.packages."x86_64-linux";
+  addons = inputs.firefox-addons.packages.${system};
 in
 {
   programs.firefox = {
