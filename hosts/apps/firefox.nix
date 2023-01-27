@@ -9,6 +9,10 @@ in
     extensions = with addons; [
       ublock-origin
       vimium
+      multi-account-containers
+      cookie-autodelete
+      web-scrobbler
+      keepassxc-browser
     ];
     profiles.${user} = {
       settings = {
