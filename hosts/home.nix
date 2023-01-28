@@ -8,6 +8,7 @@
     hyprland.homeManagerModules.default
     ./apps/hyprland/hyprland.nix
     ./apps/waybar/waybar.nix
+    ./apps/wofi/wofi.nix
     ./apps/tmux/tmux.nix
     ./apps/alacritty/alacritty.nix
     ./apps/gnome/gnome.nix
@@ -37,7 +38,6 @@
     keepassxc
     nextcloud-client
     libreoffice-fresh
-    tmux
     p7zip
     rsync
     ncdu
