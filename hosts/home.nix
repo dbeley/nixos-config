@@ -1,10 +1,11 @@
-{ config, pkgs, user, inputs, ... }:
+{ config, pkgs, user, inputs, hyprland, ... }:
 
 {
   imports = [
     ./apps/fish/fish.nix
     ./apps/firefox/firefox.nix
     ./apps/nvim/nvim.nix
+    hyprland.homeManagerModules.default
     ./apps/hyprland/hyprland.nix
     ./apps/waybar/waybar.nix
     ./apps/tmux/tmux.nix

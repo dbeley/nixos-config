@@ -6,12 +6,14 @@
     specialArgs = { inherit user inputs; };
     modules = [
       ./configuration.nix
+      hyprland.nixosModules.default
+      ./desktop/hyprland/hyprland.nix
 
       home-manager.nixosModules.home-manager {
         home-manager = {
           useGlobalPkgs = true;
 	      useUserPackages = true;
-	      extraSpecialArgs = { inherit user inputs system; };
+	      extraSpecialArgs = { inherit user inputs system hyprland; };
 	      users.${user} = {
 	        imports = [(import ./home.nix)];
           };
