@@ -29,7 +29,10 @@
       '';
     };
   };
+
+  services.gnome-keyring.enable = true;
   # home.sessionVariables.GTK_THEME = "palenight";
+
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";

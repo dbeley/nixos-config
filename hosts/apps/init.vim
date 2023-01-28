@@ -14,19 +14,6 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
-"Plug 'tpope/vim-unimpaired'
-"Plug 'tpope/vim-speeddating'
-"Plug 'tpope/vim-vinegar'
-
-"Plug 'vim-syntastic/syntastic'
-"Plug 'scrooloose/nerdtree'
-"Plug 'scrooloose/nerdcommenter'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
-
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 
