@@ -35,7 +35,6 @@
 
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
-      sources = "[('xkb', 'us+intl')]";
       xkb-options = ["ctrl:nocaps"];
     };
     "org/gnome/desktop/interface" = {
