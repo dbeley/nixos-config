@@ -2,15 +2,15 @@
 
 {
   imports = [
-    ./apps/fish.nix
-    ./apps/firefox.nix
-    ./apps/nvim.nix
-    #./apps/hyprland.nix
-    #./apps/waybar.nix
-    ./apps/tmux.nix
-    ./apps/alacritty.nix
-    ./apps/gnome.nix
-    ./apps/git.nix
+    ./apps/fish/fish.nix
+    ./apps/firefox/firefox.nix
+    ./apps/nvim/nvim.nix
+    #./apps/hyprland/hyprland.nix
+    #./apps/waybar/waybar.nix
+    ./apps/tmux/tmux.nix
+    ./apps/alacritty/alacritty.nix
+    ./apps/gnome/gnome.nix
+    ./apps/git/git.nix
     ];
 
   # Home Manager needs a bit of information about you and the
@@ -46,6 +46,7 @@
     bat
     neofetch
     fzf
+    nnn
     gnome.gnome-system-monitor
     gnome.gnome-tweaks
     overpass
