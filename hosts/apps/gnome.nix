@@ -34,11 +34,19 @@
   # home.sessionVariables.GTK_THEME = "palenight";
 
   dconf.settings = {
+    "org/gnome/desktop/input-sources" = {
+      sources = "[('xkb',  'us+intl')]";
+      xkb-options = ["ctrl:nocaps"];
+    };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       clock-show-weekday = true;
       clock-show-seconds = true;
       show-battery-percentage = true;
+      monospace-font-name = "Iosevka Nerd Font 10";
+      font-name = "Overpass 11";
+      document-font-name = "Overpass 11";
+      titlebar-font = "Overpass Bold 11";
     };
     "org/gnome/desktop/wm/preferences/button-layout" = {
       appmenu = "minimize,maximize,close";

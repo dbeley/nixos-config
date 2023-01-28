@@ -138,6 +138,14 @@
     gnome.gnome-tweaks
   ];
 
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "Iosevka" "Overpass" ];})
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+  ];
+  fonts.fontconfig.enable = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

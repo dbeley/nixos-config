@@ -49,11 +49,5 @@
     gnome.gnome-system-monitor
     gnome.gnome-tweaks
     overpass
-    iosevka
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
     ];
-
-  fonts.fontconfig.enable = true;
 }

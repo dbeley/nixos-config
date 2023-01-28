@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   programs.fish = {
     enable = true;
@@ -15,5 +17,25 @@
       meteo = "curl -H 'Accept-Language: fr' wttr.in";
       bal = "ledger -f ledger.ledger balance --depth 1";
       };
+    plugins = [{
+      name="z";
+      src = pkgs.fetchFromGitHub {
+        owner = "jethrokuan";
+        repo = "z";
+        rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
+        sha256 = "00xqlyl3lffc5l0viin1nyp819wf81fncqyz87jx8ljjdhilmgbs";
+       };
+     }
+     {
+      name="bobthefish";
+      src = pkgs.fetchFromGitHub {
+        owner = "oh-my-fish";
+        repo = "theme-bobthefish";
+        rev = "2dcfcab653ae69ae95ab57217fe64c97ae05d8de";
+        sha256 = "00xqlyl3lffc5l0viin1nyp819wf81fncqyz87jx8ljjdhilmgbs";
+       };
+     }
+   ];
+
   };
 }
