@@ -24,18 +24,20 @@
       };
 
     shellInit = ''
+      fish_default_key_bindigs
+      set -U fish_greeting ""
       set -g theme_display_vi no
       set -g theme_display_date no
       set -g theme_nerd_fonts yes
       set -g theme_powerline_fonts yes
       set -g theme_color_scheme dark
-      set -x VIRTUAL_ENV_DISABLE_PROMPT "1"
+      set -x VIRTUAL_ENV_DISABLE_PROMPT 1
       set -x PAGER "bat"
       set -x MANPAGER "bat"
-      set FZF_DEFAULT_COMMAND "fd --type file --ignore-case --hidden --follow --exclude .git"
-      set FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-      set FZF_ALT_C_COMMAND "fd --ignore-case --hidden -t d"
-      set FZF_TMUX 1
+      set -x FZF_DEFAULT_COMMAND "fd --type file --ignore-case --hidden --follow --exclude .git"
+      set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+      set -x FZF_ALT_C_COMMAND "fd --ignore-case --hidden -t d"
+      set -x FZF_TMUX 1
       '';
 
     plugins = [{
@@ -45,7 +47,7 @@
         repo = "z";
         rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
         sha256 = "+FUBM7CodtZrYKqU542fQD+ZDGrd2438trKM0tIESs0=";
-       };
+      };
      }
      {
       name="bobthefish";
@@ -54,8 +56,8 @@
         repo = "theme-bobthefish";
         rev = "2dcfcab653ae69ae95ab57217fe64c97ae05d8de";
         sha256 = "jBbm0wTNZ7jSoGFxRkTz96QHpc5ViAw9RGsRBkCQEIU=";
-       };
+      };
      }
-   ];
+    ];
   };
 }
