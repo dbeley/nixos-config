@@ -6,8 +6,6 @@
     specialArgs = { inherit user inputs; };
     modules = [
       ./configuration.nix
-      hyprland.nixosModules.default
-      ./desktop/hyprland/hyprland.nix
 
       home-manager.nixosModules.home-manager {
         home-manager = {
