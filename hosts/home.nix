@@ -5,12 +5,13 @@
     ./apps/fish/fish.nix
     ./apps/firefox/firefox.nix
     ./apps/nvim/nvim.nix
-    #./apps/hyprland/hyprland.nix
-    #./apps/waybar/waybar.nix
+    ./apps/hyprland/hyprland.nix
+    ./apps/waybar/waybar.nix
     ./apps/tmux/tmux.nix
     ./apps/alacritty/alacritty.nix
     ./apps/gnome/gnome.nix
     ./apps/git/git.nix
+    # ./apps/mpd/mpd.nix
     ];
 
   # Home Manager needs a bit of information about you and the
