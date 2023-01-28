@@ -23,9 +23,10 @@
       bal = "ledger -f ledger.ledger balance --depth 1";
       };
 
+    interactiveShellInit = ''
+      set fish_greeting
+    '';
     shellInit = ''
-      fish_default_key_bindigs
-      set -U fish_greeting ""
       set -g theme_display_vi no
       set -g theme_display_date no
       set -g theme_nerd_fonts yes
