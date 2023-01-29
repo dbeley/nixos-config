@@ -1,8 +1,10 @@
+{ user, ... }:
+
 {
-  programs.mpd = {
+  services.mpd = {
     enable = true;
-    musicDirectory = "~/nfs/WDC14/Musique" ;
-    playlistDirectory = "~/.config/mpd/playlists" ;
+    musicDirectory = /home/${user}/nfs/WDC14/Musique;
+    playlistDirectory = /home/${user}/.config/mpd/playlists;
     extraConfig = ''
       audio_output {
         type "pipewire"

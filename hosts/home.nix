@@ -19,7 +19,7 @@
     ./apps/firefox/firefox.nix
     ./apps/gammastep/gammastep.nix
     ./apps/ledger/ledger.nix
-    # ./apps/mpd/mpd.nix
+    ./apps/mpd/mpd.nix
     ];
 
   # Home Manager needs a bit of information about you and the
