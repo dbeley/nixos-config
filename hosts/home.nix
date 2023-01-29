@@ -10,9 +10,10 @@
 
     ./apps/git/git.nix
     ./apps/fish/fish.nix
-    ./apps/nvim/nvim.nix
     ./apps/tmux/tmux.nix
     ./apps/alacritty/alacritty.nix
+    ./apps/nvim/nvim.nix
+    ./apps/wpgtk/wpgtk.nix
 
     ./apps/firefox/firefox.nix
     # ./apps/mpd/mpd.nix
