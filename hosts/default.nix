@@ -1,4 +1,4 @@
-{ lib, nixpkgs, inputs, system, home-manager, user, hyprland, ... }:
+{ lib, nixpkgs, inputs, system, home-manager, user, hyprland, nix-doom-emacs, ... }:
 
 {
   t470s = lib.nixosSystem {
@@ -12,7 +12,7 @@
         home-manager = {
           useGlobalPkgs = true;
 	      useUserPackages = true;
-	      extraSpecialArgs = { inherit user inputs system hyprland; };
+	      extraSpecialArgs = { inherit user inputs system hyprland nix-doom-emacs; };
 	      users.${user} = {
 	        imports = [(import ./home.nix)];
           };

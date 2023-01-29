@@ -141,6 +141,7 @@
     windowrulev2=float,class:imv
     windowrulev2=float,title:Ouvrir*
     windowrulev2=float,title:Extension*
+    windowrulev2=float,title:Add *
 
 
     # See https://wiki.hyprland.org/Configuring/Keywords/ for more

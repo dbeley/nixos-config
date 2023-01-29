@@ -1,4 +1,4 @@
-{ config, pkgs, user, inputs, hyprland, ... }:
+{ config, pkgs, user, inputs, hyprland, nix-doom-emacs, ... }:
 
 {
   imports = [
@@ -13,6 +13,7 @@
     ./apps/tmux/tmux.nix
     ./apps/alacritty/alacritty.nix
     ./apps/nvim/nvim.nix
+    ./apps/emacs/emacs.nix
     ./apps/wal/wal.nix
     ./apps/wpgtk/wpgtk.nix
 

@@ -14,9 +14,10 @@
     };
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, hyprland, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, hyprland, nix-doom-emacs, ... }:
     let
       system = "x86_64-linux";
       user = "david";
@@ -29,7 +30,7 @@
       nixosConfigurations = (
         import ./hosts {
 	      inherit (nixpkgs) lib;
-	      inherit nixpkgs inputs user system home-manager hyprland;
+	      inherit nixpkgs inputs user system home-manager hyprland nix-doom-emacs;
 	    }
       );
     };
