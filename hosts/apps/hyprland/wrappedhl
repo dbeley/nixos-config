@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+cd ~
+
+export HYPRLAND_LOG_WLR=1
+
+export XCURSOR_SIZE=24
+
+export MOZ_ENABLE_WAYLAND=1
+export GTK_THEME=FlatColor
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+exec Hyprland
