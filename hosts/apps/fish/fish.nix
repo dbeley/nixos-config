@@ -9,7 +9,7 @@
       l = "exa";
       ll = "exa -lh";
       la = "exa -lah";
-      gd = "git dif";
+      gd = "git diff";
       gs = "git status";
       cpr = "rsync -azvhP --stats --inplace --zc=zstd --zl=3";
       mpv720 = "mpv --ytdl-format=\"(bestvideo[height<=720]+bestaudio)[ext=webm]/bestvideo[height<=720]+bestaudio/best[height<=720]/bestvideo+bestaudio/best\" ";
