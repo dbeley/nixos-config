@@ -3,13 +3,13 @@
     enable = true;
     settings = [{
       layer = "bottom";
-      modules-left = ["wlr/workspaces" "sway/workspaces" "sway/mode" "sway/window" "hyprland/window"];
+      modules-left = ["wlr/workspaces" "hyprland/window"];
       modules-center = ["clock"];
       modules-right = ["network" "cpu" "memory" "temperature" "pulseaudio" "battery" "tray"];
-      "sway/window" = {
-      	"max-length" = 50;
-      	"icon" = false;
-      };
+      # "sway/window" = {
+      # 	"max-length" = 50;
+      # 	"icon" = false;
+      # };
       "hyprland/window" = {
       	"format" = "{}";
       	"separate-outputs" = true;

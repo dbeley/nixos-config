@@ -2,17 +2,19 @@
 
 {
   imports = [
-    ./apps/fish/fish.nix
-    ./apps/firefox/firefox.nix
-    ./apps/nvim/nvim.nix
+    ./apps/gnome/gnome.nix
     hyprland.homeManagerModules.default
     ./apps/hyprland/hyprland.nix
     ./apps/waybar/waybar.nix
     ./apps/wofi/wofi.nix
+
+    ./apps/git/git.nix
+    ./apps/fish/fish.nix
+    ./apps/nvim/nvim.nix
     ./apps/tmux/tmux.nix
     ./apps/alacritty/alacritty.nix
-    ./apps/gnome/gnome.nix
-    ./apps/git/git.nix
+
+    ./apps/firefox/firefox.nix
     # ./apps/mpd/mpd.nix
     ];
 
@@ -50,7 +52,5 @@
     fzf
     nnn
     gnome.gnome-system-monitor
-    gnome.gnome-tweaks
-    overpass
     ];
 }
