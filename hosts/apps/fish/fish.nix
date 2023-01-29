@@ -1,11 +1,6 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
-  xdg.configFile."fish/conf.d/plugin-bobthefish.fish".text = lib.mkAfter ''
-    for f in $plugin_dir/*.fish
-      source $f
-    end
-  '';
   programs.fish = {
     enable = true;
     shellAliases = {
@@ -14,7 +9,7 @@
       l = "exa";
       ll = "exa -lh";
       la = "exa -lah";
-      gd = "git diff";
+      gd = "git dif";
       gs = "git status";
       cpr = "rsync -azvhP --stats --inplace --zc=zstd --zl=3";
       mpv720 = "mpv --ytdl-format=\"(bestvideo[height<=720]+bestaudio)[ext=webm]/bestvideo[height<=720]+bestaudio/best[height<=720]/bestvideo+bestaudio/best\" ";
@@ -23,9 +18,6 @@
       bal = "ledger -f ledger.ledger balance --depth 1";
       };
 
-    interactiveShellInit = ''
-      set fish_greeting
-    '';
     shellInit = ''
       set -g theme_display_vi no
       set -g theme_display_date no
@@ -40,6 +32,11 @@
       set -x FZF_ALT_C_COMMAND "fd --ignore-case --hidden -t d"
       set -x FZF_TMUX 1
       '';
+    loginShellInit = ''
+      if test (tty) = /dev/tty1
+        exec ~/.local/bin/wrappehl
+      end
+        '';
 
     plugins = [{
       name="z";

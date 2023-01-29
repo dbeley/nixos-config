@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./apps/gnome/gnome.nix
+    # ./apps/gnome/gnome.nix
     hyprland.homeManagerModules.default
     ./apps/hyprland/hyprland.nix
     ./apps/waybar/waybar.nix
@@ -40,6 +40,7 @@
   home.packages = with pkgs; [
     keepassxc
     nextcloud-client
+    gnome.gnome-keyring
     libreoffice-fresh
     p7zip
     rsync
@@ -47,6 +48,7 @@
     htop
     stow
     ripgrep
+    fd
     exa
     bat
     neofetch

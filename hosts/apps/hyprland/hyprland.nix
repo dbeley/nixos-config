@@ -3,9 +3,6 @@
 {
   home.packages = with pkgs; [ mako hyprpaper udiskie grim slurp ];
   home.file.".local/bin/wrappehl".source = ./wrappedhl;
-  home.file.".config/config.fish".text = ''
-     [ "$TTY1" = "/dev/tty1" ] && exec ~/.local/bin/wrappedhl
-    '';
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland = {
