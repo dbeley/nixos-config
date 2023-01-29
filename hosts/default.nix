@@ -5,6 +5,7 @@
     inherit system;
     specialArgs = { inherit user inputs; };
     modules = [
+      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t470s
       ./configuration.nix
 
       home-manager.nixosModules.home-manager {
