@@ -34,9 +34,6 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  services.gnome.gnome-keyring.enable = true;
-  # security.pam.services.lightdm.enableGnomeKeyring = true;
-  # ssh.startAgent = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -59,9 +56,6 @@
   # Configure console keymap
   console.keyMap = "us-acentos";
 
-  # Enable CUPS to print documents.
-  services.printing.enable = false;
-
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -78,11 +72,6 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
-  services.xserver.libinput.touchpad.leftHanded = true;
-  services.xserver.libinput.mouse.leftHanded = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
@@ -112,6 +101,13 @@
   ];
   fonts.fontconfig.enable = true;
 
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
+  # services.xserver.libinput.touchpad.leftHanded = true;
+  # services.xserver.libinput.mouse.leftHanded = true;
+  services.printing.enable = false;
+  services.gnome.gnome-keyring.enable = true;
+
   services.dbus.enable = true;
   xdg.portal = {
     enable = true;
@@ -126,16 +122,10 @@
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
-
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   system = {
     autoUpgrade = {
