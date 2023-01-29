@@ -17,9 +17,9 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
+  # boot.initrd.secrets = {
+  #   "/crypto_keyfile.bin" = null;
+  # };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -30,6 +30,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  services.blueman.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";

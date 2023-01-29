@@ -13,6 +13,20 @@
        vim-surround
        vim-fugitive
        vim-commentary
+       vim-startify
+       wal-vim
+       gruvbox
+       vim-airline
+       vim-airline-themes
+       tmuxline-vim
+       fzf-vim
+       goyo-vim
+       deoplete-nvim
+       deoplete-jedi
+       ale
+       vim-devicons
+       nnn-vim
+       vim-nix
      ];
      extraConfig = lib.fileContents ./init.vim;
    };

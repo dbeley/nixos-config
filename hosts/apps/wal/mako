@@ -1,0 +1,11 @@
+font=Iosevka Nerd Font 10
+default-timeout=2000
+width=300
+height=100
+margin=10
+padding=5
+border-size=3
+background-color={background}
+text-color={foreground}
+border-color={foreground}
+progress-color={color1}

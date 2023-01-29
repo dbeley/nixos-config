@@ -13,6 +13,7 @@
     ./apps/tmux/tmux.nix
     ./apps/alacritty/alacritty.nix
     ./apps/nvim/nvim.nix
+    ./apps/wal/wal.nix
     ./apps/wpgtk/wpgtk.nix
 
     ./apps/firefox/firefox.nix
@@ -54,6 +55,7 @@
     neofetch
     fzf
     nnn
+    imv
     gnome.gnome-system-monitor
     ];
 }

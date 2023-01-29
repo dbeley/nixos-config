@@ -38,7 +38,8 @@
       end
         '';
 
-    plugins = [{
+    plugins = [
+      {
       name="z";
       src = pkgs.fetchFromGitHub {
         owner = "jethrokuan";
@@ -53,6 +54,15 @@
         owner = "oh-my-fish";
         repo = "theme-bobthefish";
         rev = "2dcfcab653ae69ae95ab57217fe64c97ae05d8de";
+        sha256 = "jBbm0wTNZ7jSoGFxRkTz96QHpc5ViAw9RGsRBkCQEIU=";
+      };
+     }
+     {
+      name="fzf.fish";
+      src = pkgs.fetchFromGitHub {
+        owner = "PatrickF1";
+        repo = "fzf.fish";
+        rev = "63c8f8e65761295da51029c5b6c9e601571837a1";
         sha256 = "jBbm0wTNZ7jSoGFxRkTz96QHpc5ViAw9RGsRBkCQEIU=";
       };
      }
