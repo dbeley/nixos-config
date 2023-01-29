@@ -1,0 +1,5 @@
+{
+  programs.light = {
+    enable = true;
+  };
+}

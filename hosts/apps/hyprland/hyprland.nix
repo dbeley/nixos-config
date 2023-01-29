@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ mako hyprpaper udiskie grim slurp ];
+  home.packages = with pkgs; [ mako libnotify hyprpaper udiskie grim slurp pamixer ];
   home.file.".local/bin/wrappehl".source = ./wrappedhl;
   home.file = {
   "scripts".source = pkgs.fetchFromGitHub {

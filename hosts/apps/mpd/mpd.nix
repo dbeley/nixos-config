@@ -1,5 +1,3 @@
-{ pkgs, lib, ... }:
-
 {
   programs.mpd = {
     enable = true;
@@ -15,7 +13,7 @@
   programs.ncmpcpp = {
     enable = true;
     settings = {
-      prograssbar_look = "─╼ ";
+      progressbar_look = "─╼ ";
     };
   };
 }
