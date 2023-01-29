@@ -3,6 +3,14 @@
 {
   home.packages = with pkgs; [ mako hyprpaper udiskie grim slurp ];
   home.file.".local/bin/wrappehl".source = ./wrappedhl;
+  home.file = {
+  "scripts".source = pkgs.fetchFromGitHub {
+     owner = "dbeley";
+     repo = "scripts";
+     rev = "06aeefa767687ad967cd410d131d3c173c78b04f";
+     sha256 = "VD2QV5DrHowgjEAVTyjxNWLm2bCZwQoCoh9Do6Jxqng=";
+    };
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland = {
