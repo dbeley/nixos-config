@@ -31,6 +31,11 @@
       set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
       set -x FZF_ALT_C_COMMAND "fd --ignore-case --hidden -t d"
       set -x FZF_TMUX 1
+      set TERM "rxvt"
+
+      if test -e ~/.config/wpg/sequences
+        cat ~/.config/wpg/sequences
+      end
       '';
     loginShellInit = ''
       if test (tty) = /dev/tty1

@@ -15,7 +15,7 @@
        vim-commentary
        vim-startify
        wal-vim
-       gruvbox
+       # gruvbox
        vim-airline
        vim-airline-themes
        tmuxline-vim

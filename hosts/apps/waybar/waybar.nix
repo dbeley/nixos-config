@@ -6,10 +6,6 @@
       modules-left = ["wlr/workspaces" "hyprland/window"];
       modules-center = ["clock"];
       modules-right = ["network" "cpu" "memory" "temperature" "pulseaudio" "battery" "tray"];
-      # "sway/window" = {
-      # 	"max-length" = 50;
-      # 	"icon" = false;
-      # };
       "hyprland/window" = {
       	"format" = "{}";
       	"separate-outputs" = true;

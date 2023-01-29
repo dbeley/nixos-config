@@ -23,6 +23,7 @@ in
     ];
     profiles.${user} = {
       settings = {
+        "browser.aboutConfig.showWarning" = false;
         "browser.bookmarks.openInTabClosesMenu" = false;
         "browser.bookmarks.restore_default_bookmarks" = false;
         "browser.bookmarks.showMobileBookmarks" = false;
@@ -43,7 +44,7 @@ in
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.section.highlights.rows" = 4;
         "browser.newtabpage.activity-stream.topSitesRows" = 4;
-        "browser.newtabpage.pinned" = [];
+        "browser.newtabpage.pinned" = "[]";
         "browser.search.context.loadInBackground" = true;
         "browser.search.region" = "FR";
         "browser.sessionstore.interval" = 60000;

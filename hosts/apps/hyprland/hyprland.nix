@@ -162,9 +162,10 @@
     submap = poweroff
     bind = , p, exec, poweroff
     bind = , r, exec, reboot
+    bind = , m, exit,
     # bind = , l,
-    bind = , escape, submap, reset
     bind = , q, submap, reset
+    bind = , escape, submap, reset
     submap = reset # will reset the submap, meaning end the current one and return to the global one.
 
     # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
