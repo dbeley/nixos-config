@@ -17,6 +17,7 @@
     ./apps/wpgtk/wpgtk.nix
 
     ./apps/firefox/firefox.nix
+    ./apps/ledger/ledger.nix
     # ./apps/mpd/mpd.nix
     ];
 
