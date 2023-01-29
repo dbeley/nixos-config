@@ -33,6 +33,10 @@
 
   services.blueman.enable = true;
 
+  services.gnome.gnome-keyring.enable = true;
+  # security.pam.services.lightdm.enableGnomeKeyring = true;
+  # ssh.startAgent = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
