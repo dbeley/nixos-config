@@ -30,10 +30,10 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.firewall.enable = true;
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
-
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -89,8 +89,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    nano
     killall
+    nfs-utils
   ];
 
   fonts.fonts = with pkgs; [
@@ -120,8 +120,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  networking.firewall.enable = true;
 
   system = {
     autoUpgrade = {

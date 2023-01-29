@@ -32,6 +32,11 @@
         "smooth-scrolling-threshold" = 5;
         "tooltip-format" = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
       };
+      wireplumber = {
+          "tooltip" = false;
+          "format" = "VOL {volume}%";
+          "format-muted" = "VOL mute";
+      };
       pulseaudio = {
           "tooltip" = false;
           "scroll-step" = 5;
