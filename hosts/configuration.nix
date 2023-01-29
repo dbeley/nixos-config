@@ -101,14 +101,10 @@
   ];
   fonts.fontconfig.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-  # services.xserver.libinput.touchpad.leftHanded = true;
-  # services.xserver.libinput.mouse.leftHanded = true;
   services.printing.enable = false;
   services.gnome.gnome-keyring.enable = true;
 
-  services.dbus.enable = true;
+  # services.dbus.enable = true;
   xdg.portal = {
     enable = true;
     wlr.enable = true;

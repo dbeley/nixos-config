@@ -5,7 +5,7 @@
       layer = "bottom";
       modules-left = ["wlr/workspaces" "hyprland/window"];
       modules-center = ["clock"];
-      modules-right = ["network" "cpu" "memory" "temperature" "pulseaudio" "battery" "tray"];
+      modules-right = ["mpd" "network" "cpu" "memory" "temperature" "pulseaudio" "battery" "tray"];
       "hyprland/window" = {
       	"format" = "{}";
       	"separate-outputs" = true;
@@ -15,6 +15,22 @@
       	"all-outputs" = true;
       	"format" = "{icon}";
       	"on-click" = "activate";
+        "on-scroll-up" = "hyprctl dispatch workspace e+1";
+        "on-scroll-down" = "hyprctl dispatch workspace e-1";
+      };
+      mpd = {
+        "max-length" = 25;
+        "format" = "<span foreground='#bb9af7'></span> {title}";
+        "format-paused" = " {title}";
+        "format-stopped" = "<span foreground='#bb9af7'></span>";
+        "format-disconnected" = "";
+        "on-click" = "mpc --quiet toggle";
+        "on-click-right" = "mpc ls | mpc add";
+        "on-click-middle" = "alacritty --class='ncmpcpp' ncmpcpp ";
+        "on-scroll-up" = "mpc --quiet prev";
+        "on-scroll-down" = "mpc --quiet next";
+        "smooth-scrolling-threshold" = 5;
+        "tooltip-format" = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
       };
       pulseaudio = {
           "tooltip" = false;

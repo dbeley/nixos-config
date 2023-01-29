@@ -4,17 +4,20 @@
     settings = {
       window = {
         opacity = 0.95;
-	padding = {
-	  x = 15;
-	  y = 15;
-	};
+	    padding = {
+	      x = 15;
+	      y = 15;
+	    };
       };
       font = {
         normal = {
-	  family = "Iosevka Nerd Font";
-	  style = "Regular";
-	};
-	size = 12;
+	    family = "Iosevka Nerd Font";
+	    style = "Regular";
+	    };
+	  size = 12;
+      };
+      colors = {
+        transparent_background_colors = true;
       };
     };
   };
