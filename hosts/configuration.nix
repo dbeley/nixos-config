@@ -104,6 +104,7 @@
 
   services.printing.enable = false;
   services.gnome.gnome-keyring.enable = true;
+  services.tlp.enable = true;
 
   # services.dbus.enable = true;
   xdg.portal = {
