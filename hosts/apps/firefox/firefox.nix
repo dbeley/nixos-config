@@ -23,6 +23,7 @@ in
     ];
     profiles.${user} = {
       settings = {
+        "beacon.enabled" = false;
         "browser.aboutConfig.showWarning" = false;
         "browser.bookmarks.openInTabClosesMenu" = false;
         "browser.bookmarks.restore_default_bookmarks" = false;
@@ -40,14 +41,16 @@ in
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
         "browser.newtabpage.activity-stream.feeds.section.highlights" = true;
-        # "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "";
-        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" = "";
+        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.section.highlights.rows" = 4;
         "browser.newtabpage.activity-stream.topSitesRows" = 4;
         "browser.newtabpage.pinned" = "[]";
+        "browser.safebrowsing.enabled" = false;
+        "browser.safebrowsing.malware.enabled" = false;
         "browser.search.context.loadInBackground" = true;
         "browser.search.region" = "FR";
+        "browser.send_pings" = false;
         "browser.sessionstore.interval" = 60000;
         "browser.startup.page" = 3;
         "browser.tabs.insertAfterCurrent" = true;
@@ -57,6 +60,7 @@ in
         "browser.uidensity" = 1;
         "browser.urlbar.doubleClickSelectsAll" = false;
         "browser.urlbar.trimURLS" = false;
+        "dom.battery.enabled" = false;
         "dom.event.clipboardevents.enabled" = false;
         "dom.event.autocomplete.formautofill" = true;
         "extensions.pocket.enabled" = false;
