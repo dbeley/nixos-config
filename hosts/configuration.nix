@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./apps/steam/steam.nix
       ./apps/waybar/default.nix
+      ./apps/light/light.nix
     ];
 
   # Bootloader.
@@ -77,7 +78,7 @@
   users.users.${user} = {
     isNormalUser = true;
     description = "David";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [
     ];
     shell = pkgs.fish;
