@@ -15,7 +15,7 @@
 
 ## Hosts
 
-- t470s: my main computer, a Lenovo Thinkpad T470s (i5 6300U, 8Gb RAM)
+- **t470s**: my main computer, a Lenovo Thinkpad T470s (i5 6300U, 8Gb RAM)
 
 ## Usage
 

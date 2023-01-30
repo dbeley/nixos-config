@@ -17,6 +17,7 @@
     ../apps/wal/wal.nix
     ../apps/wpgtk/wpgtk.nix
     ../apps/udiskie/udiskie.nix
+    ../apps/mime/mime.nix
 
     ../apps/firefox/firefox.nix
     ../apps/gammastep/gammastep.nix
