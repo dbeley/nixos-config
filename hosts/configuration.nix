@@ -101,6 +101,14 @@
 
   services.printing.enable = false;
   services.gnome.gnome-keyring.enable = true;
+  services.fstrim.enable = true;
+  services.journald.extraConfig = ''
+    SystemMaxUse=50M
+    SystemMaxFileSize=10M
+    RuntimeMaxUse=50M
+    RuntimeMaxFileSize=10M
+    '';
+
 
   # services.dbus.enable = true;
   xdg.portal = {
