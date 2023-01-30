@@ -1,5 +1,19 @@
 # nixos-config
 
+|----------------|-----------------------------------|
+| **Shell:**     | fish                              |
+| **DM:**        | tty1                              |
+| **WM:**        | hyprland + waybar                 |
+| **Editor:**    | doom-emacs                        |
+| **Terminal:**  | alacritty                         |
+| **Launcher:**  | wofi                              |
+| **Browser:**   | firefox                           |
+| **GTK Theme:** | FlatColor managed by wpgtk+pywal  |
+
+## Hosts
+
+- t470s: my main computer, a Lenovo Thinkpad T470s (i5 6300U, 8Gb RAM)
+
 ## Usage
 
 Rebuild the system
