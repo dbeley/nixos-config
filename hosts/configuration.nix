@@ -9,7 +9,6 @@
     [ # Include the results of the hardware scan.
       ./apps/steam/steam.nix
       ./apps/waybar/default.nix
-      ./apps/light/light.nix
     ];
 
   # Bootloader.
@@ -32,9 +31,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
-
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -104,7 +100,6 @@
 
   services.printing.enable = false;
   services.gnome.gnome-keyring.enable = true;
-  services.tlp.enable = true;
 
   # services.dbus.enable = true;
   xdg.portal = {

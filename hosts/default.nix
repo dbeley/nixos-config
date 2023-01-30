@@ -8,6 +8,7 @@
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t470s
       ./t470s/hardware-configuration.nix
       ./configuration.nix
+      ./laptop.nix
 
       home-manager.nixosModules.home-manager {
         home-manager = {
