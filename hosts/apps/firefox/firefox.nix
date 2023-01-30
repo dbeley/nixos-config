@@ -41,10 +41,11 @@ in
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
         "browser.newtabpage.activity-stream.feeds.section.highlights" = true;
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "";
+        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" = "";
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.section.highlights.rows" = 4;
         "browser.newtabpage.activity-stream.topSitesRows" = 4;
-        "browser.newtabpage.pinned" = "[]";
+        "browser.newtabpage.pinned" = "";
         "browser.search.context.loadInBackground" = true;
         "browser.search.region" = "FR";
         "browser.sessionstore.interval" = 60000;

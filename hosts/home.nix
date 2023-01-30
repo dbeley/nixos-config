@@ -56,7 +56,6 @@
     exa
     bat
     neofetch
-    fzf
     nnn
     imv
     gnome.gnome-system-monitor

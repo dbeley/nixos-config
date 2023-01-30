@@ -1,6 +1,14 @@
 { pkgs, ... }:
 
 {
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = true;
+    defaultCommand = "fd --type file --ignore-case --hidden --follow --exclude .git";
+    fileWidgetCommand = "fd --type file --ignore-case --hidden --follow --exclude .git";
+    changeDirWidgetCommand = "fd --ignore-case --hidden -t d";
+    tmux.enableShellIntegration = true;
+  };
   programs.fish = {
     enable = true;
     shellAliases = {
@@ -27,10 +35,6 @@
       set -x VIRTUAL_ENV_DISABLE_PROMPT 1
       set -x PAGER "bat"
       set -x MANPAGER "bat"
-      set -x FZF_DEFAULT_COMMAND "fd --type file --ignore-case --hidden --follow --exclude .git"
-      set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-      set -x FZF_ALT_C_COMMAND "fd --ignore-case --hidden -t d"
-      set -x FZF_TMUX 1
       set -x IMG_VIEWER imv
       set TERM "rxvt"
 
@@ -63,15 +67,15 @@
         sha256 = "jBbm0wTNZ7jSoGFxRkTz96QHpc5ViAw9RGsRBkCQEIU=";
       };
      }
-     {
-      name="fzf.fish";
-      src = pkgs.fetchFromGitHub {
-        owner = "PatrickF1";
-        repo = "fzf.fish";
-        rev = "63c8f8e65761295da51029c5b6c9e601571837a1";
-        sha256 = "i9FcuQdmNlJnMWQp7myF3N0tMD/2I0CaMs/PlD8o1gw=";
-      };
-     }
+     # {
+     #  name="fzf.fish";
+     #  src = pkgs.fetchFromGitHub {
+     #    owner = "PatrickF1";
+     #    repo = "fzf.fish";
+     #    rev = "63c8f8e65761295da51029c5b6c9e601571837a1";
+     #    sha256 = "i9FcuQdmNlJnMWQp7myF3N0tMD/2I0CaMs/PlD8o1gw=";
+     #  };
+     # }
     ];
   };
 }

@@ -19,7 +19,7 @@
         "on-scroll-down" = "hyprctl dispatch workspace e-1";
       };
       mpd = {
-        "max-length" = 25;
+        "max-length" = 30;
         "format" = "<span foreground='#1da0c3'></span>  {artist} - {title}";
         "format-paused" = "  {artist} - {title}";
         "format-stopped" = "";
