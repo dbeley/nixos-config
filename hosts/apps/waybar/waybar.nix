@@ -20,9 +20,9 @@
       };
       mpd = {
         "max-length" = 25;
-        "format" = "<span foreground='#bb9af7'></span> {title}";
-        "format-paused" = " {title}";
-        "format-stopped" = "<span foreground='#bb9af7'></span>";
+        "format" = "<span foreground='#1da0c3'></span>  {artist} - {title}";
+        "format-paused" = "  {artist} - {title}";
+        "format-stopped" = "";
         "format-disconnected" = "";
         "on-click" = "mpc --quiet toggle";
         "on-click-right" = "mpc ls | mpc add";
@@ -30,7 +30,7 @@
         "on-scroll-up" = "mpc --quiet prev";
         "on-scroll-down" = "mpc --quiet next";
         "smooth-scrolling-threshold" = 5;
-        "tooltip-format" = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
+        "tooltip" = false;
       };
       wireplumber = {
           "tooltip" = false;

@@ -31,6 +31,7 @@
       set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
       set -x FZF_ALT_C_COMMAND "fd --ignore-case --hidden -t d"
       set -x FZF_TMUX 1
+      set -x IMG_VIEWER imv
       set TERM "rxvt"
 
       if test -e ~/.config/wpg/sequences

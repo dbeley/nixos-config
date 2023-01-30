@@ -1,11 +1,14 @@
-{ user, ... }:
+{ user, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [ mpc-cli ];
   services.mpd = {
     enable = true;
     musicDirectory = /home/${user}/nfs/WDC14/Musique;
     playlistDirectory = /home/${user}/.config/mpd/playlists;
     extraConfig = ''
+      max_output_buffer_size "32768"
+      max_playlist_length "50000"
       audio_output {
         type "pipewire"
         name "pipewire"
