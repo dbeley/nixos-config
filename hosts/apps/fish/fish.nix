@@ -77,5 +77,9 @@
      #  };
      # }
     ];
+
+    functions = {
+      fish_greeting = "";
+    };
   };
 }
