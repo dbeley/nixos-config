@@ -16,11 +16,13 @@
     ../apps/emacs/emacs.nix
     ../apps/wal/wal.nix
     ../apps/wpgtk/wpgtk.nix
+    ../apps/udiskie/udiskie.nix
 
     ../apps/firefox/firefox.nix
     ../apps/gammastep/gammastep.nix
     ../apps/ledger/ledger.nix
     ../apps/mpd/mpd.nix
+    ../apps/mpv/mpv.nix
     ];
 
   # Home Manager needs a bit of information about you and the

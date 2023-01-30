@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./apps/steam/steam.nix
       ./apps/waybar/default.nix
+      ./apps/udiskie/default.nix
     ];
 
   # Bootloader.
