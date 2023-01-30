@@ -6,6 +6,7 @@
     specialArgs = { inherit user inputs; };
     modules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t470s
+      ./t470s/hardware-configuration.nix
       ./configuration.nix
 
       home-manager.nixosModules.home-manager {
@@ -14,7 +15,7 @@
 	      useUserPackages = true;
 	      extraSpecialArgs = { inherit user inputs system hyprland nix-doom-emacs; };
 	      users.${user} = {
-	        imports = [(import ./home.nix)];
+	        imports = [(import ./t470s/home.nix)];
           };
         };
       }

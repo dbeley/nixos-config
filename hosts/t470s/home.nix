@@ -2,25 +2,25 @@
 
 {
   imports = [
-    # ./apps/gnome/gnome.nix
+    # ../apps/gnome/gnome.nix
     hyprland.homeManagerModules.default
-    ./apps/hyprland/hyprland.nix
-    ./apps/waybar/waybar.nix
-    ./apps/wofi/wofi.nix
+    ../apps/hyprland/hyprland.nix
+    ../apps/waybar/waybar.nix
+    ../apps/wofi/wofi.nix
 
-    ./apps/git/git.nix
-    ./apps/fish/fish.nix
-    ./apps/tmux/tmux.nix
-    ./apps/alacritty/alacritty.nix
-    ./apps/nvim/nvim.nix
-    ./apps/emacs/emacs.nix
-    ./apps/wal/wal.nix
-    ./apps/wpgtk/wpgtk.nix
+    ../apps/git/git.nix
+    ../apps/fish/fish.nix
+    ../apps/tmux/tmux.nix
+    ../apps/alacritty/alacritty.nix
+    ../apps/nvim/nvim.nix
+    ../apps/emacs/emacs.nix
+    ../apps/wal/wal.nix
+    ../apps/wpgtk/wpgtk.nix
 
-    ./apps/firefox/firefox.nix
-    ./apps/gammastep/gammastep.nix
-    ./apps/ledger/ledger.nix
-    ./apps/mpd/mpd.nix
+    ../apps/firefox/firefox.nix
+    ../apps/gammastep/gammastep.nix
+    ../apps/ledger/ledger.nix
+    ../apps/mpd/mpd.nix
     ];
 
   # Home Manager needs a bit of information about you and the
