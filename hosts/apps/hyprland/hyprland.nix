@@ -36,7 +36,6 @@
     exec-once = waybar
     exec-once = hyprpaper -c ~/.cache/wal/hyprpaper
     exec-once = mako -c ~/.cache/wal/mako
-    exec-once = udiskie -a
     exec-once = nextcloud --background
     exec-once = keepassxc
 
