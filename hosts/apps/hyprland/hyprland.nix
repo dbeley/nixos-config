@@ -198,6 +198,10 @@
     bind = $mainMod, l, movefocus, r
     bind = $mainMod, k, movefocus, u
     bind = $mainMod, j, movefocus, d
+    bind = $mainMod SHIFT, left, movewindow, l
+    bind = $mainMod SHIFT, right, movewindow, r
+    bind = $mainMod SHIFT, up, movewindow, u
+    bind = $mainMod SHIFT, down, movewindow, d
     bind = $mainMod SHIFT, h, movewindow, l
     bind = $mainMod SHIFT, l, movewindow, r
     bind = $mainMod SHIFT, k, movewindow, u

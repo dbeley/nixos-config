@@ -64,4 +64,6 @@
     imv
     gnome.gnome-system-monitor
     ];
+
+  services.mpris-proxy.enable = true;
 }
