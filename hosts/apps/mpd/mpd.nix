@@ -2,6 +2,13 @@
 
 {
   home.packages = with pkgs; [ mpc-cli ];
+  # home.file = {
+  #   "scripts/mpdnotify.conf".text = ''
+  #     MUSIC_DIR="~/nfs/WDC14/Musique"
+  #     TEMP_COVER="/tmp/mpdnotify.png"
+  #     COVER_SIZE="125x125"
+  #     '';
+  #   };
   services.mpd = {
     enable = true;
     musicDirectory = /home/${user}/nfs/WDC14/Musique;

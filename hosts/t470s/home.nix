@@ -24,6 +24,7 @@
     ../apps/ledger/ledger.nix
     ../apps/mpd/mpd.nix
     ../apps/mpv/mpv.nix
+    # ../apps/autoscreen/autoscreen.nix
     ];
 
   # Home Manager needs a bit of information about you and the
