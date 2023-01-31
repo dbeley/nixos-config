@@ -74,6 +74,7 @@ in
         "general.smoothScroll" = false;
         "gfx.webrender.all" = true;
         "javascript.use_us_english_locale" = true;
+        "layout.spellcheckDefault" = 0;
         "media.ffmpeg.vaapi.enabled" = true;
         "media.ffvpx.enabled" = false;
         "media.hardwaremediakeys.enabled" = true;
