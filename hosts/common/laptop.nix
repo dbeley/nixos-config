@@ -1,7 +1,7 @@
 {
   imports =
     [
-      ./apps/light/light.nix
+      ../apps/light/light.nix
     ];
 
   hardware.bluetooth.enable = true;

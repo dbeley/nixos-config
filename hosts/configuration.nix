@@ -6,28 +6,10 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./apps/steam/steam.nix
-      ./apps/waybar/default.nix
       ./apps/udiskie/default.nix
     ];
-
-  # Bootloader.
-  boot.loader = {
-    #systemd-boot.enable = true;
-    #efi = {
-    #  canTouchEfiVariables = true;
-    #  efiSysMountPoint = "/boot/efi";
-    #};
-    #initrd = {
-    #  secrets = "/crypto_keyfile.bin" = null;
-    #};
-    grub = {
-      enable = true;
-      device = "/dev/sda";
-      useOSProber = true;
-    };
-  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

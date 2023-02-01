@@ -8,7 +8,9 @@
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t470s
       ./t470s/hardware-configuration.nix
       ./configuration.nix
-      ./laptop.nix
+      ./common/uefi.nix
+      ./common/laptop.nix
+      ./apps/waybar/default.nix
 
       home-manager.nixosModules.home-manager {
         home-manager = {
@@ -29,7 +31,8 @@
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x200s
       ./x61s/hardware-configuration.nix
       ./configuration.nix
-      ./laptop.nix
+      ./common/bios.nix
+      ./common/laptop.nix
 
       home-manager.nixosModules.home-manager {
         home-manager = {
