@@ -7,8 +7,8 @@
   "scripts".source = pkgs.fetchFromGitHub {
      owner = "dbeley";
      repo = "scripts";
-     rev = "06aeefa767687ad967cd410d131d3c173c78b04f";
-     sha256 = "VD2QV5DrHowgjEAVTyjxNWLm2bCZwQoCoh9Do6Jxqng=";
+     rev = "6a79814bc67bb115f012604b42a3e4aa42512014";
+     sha256 = "/OhkStImlc7BuqvHvI/NX0djTvmYFi5GI5xtqIZ+ckk=";
     };
   };
   wayland.windowManager.hyprland = {
@@ -158,17 +158,6 @@
     bind = , q, submap, reset # use reset to go back to the global submap
     submap = reset # will reset the submap, meaning end the current one and return to the global one.
 
-    # Poweroff menu
-    bind = $mainMod SHIFT, p, submap, poweroff
-    submap = poweroff
-    bind = , p, exec, poweroff
-    bind = , r, exec, reboot
-    bind = , m, exit,
-    # bind = , l,
-    bind = , q, submap, reset
-    bind = , escape, submap, reset
-    submap = reset # will reset the submap, meaning end the current one and return to the global one.
-
     # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
     bind = $mainMod, return, exec, alacritty
     bind = $mainMod, x, exec, alacritty
@@ -244,6 +233,7 @@
     bindm = $mainMod, mouse:273, resizewindow
 
     # User-defined shortcuts
+    bind = $mainMod SHIFT, p, exec, ~/scripts/powermenu_wofi.sh
     bind = , xf86audiomute, exec, ~/scripts/volume_pamixer.sh mute
     bind = , xf86audiolowervolume, exec, ~/scripts/volume_pamixer.sh down
     bind = , xf86audioraisevolume, exec, ~/scripts/volume_pamixer.sh up
