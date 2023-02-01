@@ -44,10 +44,10 @@
       '';
     loginShellInit = ''
       if test (tty) = /dev/tty1
-        if test -e ~/.local/bin/wrappedhl
-          exec ~/.local/bin/wrappehl
-        else
+        if type -q sway
           exec sway
+        else
+          exec ~/.local/bin/wrappehl
         end
       end
         '';
