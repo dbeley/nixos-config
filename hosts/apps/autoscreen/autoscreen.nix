@@ -1,14 +1,10 @@
-{ pkgs, user, ... }:
+{ pkgs, ... }:
 
+let
+  autoscreen = pkgs.writeShellScriptBin "autoscreen" (builtins.readFile ./autoscreen.sh);
+in
 {
-  home.file = {
-  "Documents/autoscreen".source = pkgs.fetchFromGitHub {
-     owner = "dbeley";
-     repo = "autoscreen";
-     rev = "d6aaef67f535b9c1ab3be15b29cbd00bd62e49d8";
-     sha256 = "WfA0Lc0Z6ogxRWHSSX24yMup6OFKJ5cBIBMXjTvyL/8=";
-    };
-  };
+  home.packages = with pkgs; [ autoscreen ];
 
   systemd.user.timers."autoscreen" = {
     Unit = {
@@ -30,8 +26,7 @@
     };
     Service = {
       Type = "oneshot";
-      WorkingDirectory = "%h/Documents/autoscreen";
-      ExecStart = "autoscreen_wayland.sh";
+      ExecStart = "${autoscreen}/bin/autoscreen";
     };
     Install = {
       WantedBy = [ "multi-user.target" ];
