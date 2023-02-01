@@ -13,13 +13,20 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
+  boot.loader = {
+    #systemd-boot.enable = true;
+    #efi = {
+    #  canTouchEfiVariables = true;
+    #  efiSysMountPoint = "/boot/efi";
+    #};
+    #initrd = {
+    #  secrets = "/crypto_keyfile.bin" = null;
+    #};
+    grub = {
+      enable = true;
+      device = "/dev/sda";
+      useOSProber = true;
+    };
   };
 
   networking.hostName = "nixos"; # Define your hostname.
