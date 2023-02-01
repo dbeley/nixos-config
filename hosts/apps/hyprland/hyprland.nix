@@ -138,6 +138,7 @@
     windowrulev2=workspace special,class:KeePassXC
     windowrulev2=float,class:mpv
     windowrulev2=float,class:imv
+    windowrulev2=float,class:swayimg*
     windowrulev2=float,title:Ouvrir*
     windowrulev2=float,title:Extension*
     windowrulev2=float,title:Add *

@@ -18,6 +18,7 @@
     ../apps/wpgtk/wpgtk.nix
     ../apps/udiskie/udiskie.nix
     ../apps/mime/mime.nix
+    ../apps/swayimg/swayimg.nix
 
     ../apps/firefox/firefox.nix
     ../apps/gammastep/gammastep.nix
@@ -62,7 +63,6 @@
     bat
     neofetch
     nnn
-    imv
     gnome.gnome-system-monitor
     ];
 

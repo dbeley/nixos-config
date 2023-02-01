@@ -67,8 +67,8 @@ in
         "findbar.highlightAll" = true;
         "fission.autostart"  = true;
         "font.name.monospace.x-western" = "IosevkaTerm Nerd Font Mono";
-        "font.name.sans-serif.x-western" = "Overpass Nerd Font";
-        "font.name.serif.x-western" = "Overpass Nerd Font";
+        "font.name.sans-serif.x-western" = "Overpass";
+        "font.name.serif.x-western" = "EB Garamond";
         "full-screen-api.warning.timeout" = 0;
         "general.autoScroll" = true;
         "general.smoothScroll" = false;

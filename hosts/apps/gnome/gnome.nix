@@ -46,9 +46,9 @@
       clock-show-seconds = true;
       show-battery-percentage = true;
       monospace-font-name = "Iosevka Nerd Font 10";
-      font-name = "Overpass Nerd Font 11";
-      document-font-name = "Overpass Nerd Font 11";
-      titlebar-font = "Overpass Nerd Font Bold 11";
+      font-name = "Overpass 11";
+      document-font-name = "Overpass 11";
+      titlebar-font = "Overpass Bold 11";
     };
     "org/gnome/desktop/wm/preferences/button-layout" = {
       appmenu = "minimize,maximize,close";

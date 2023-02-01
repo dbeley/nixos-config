@@ -35,7 +35,7 @@
       set -x VIRTUAL_ENV_DISABLE_PROMPT 1
       set -x PAGER "bat"
       set -x MANPAGER "bat"
-      set -x IMG_VIEWER imv
+      set -x IMG_VIEWER swayimg
       set TERM "rxvt"
 
       if test -e ~/.config/wpg/sequences
