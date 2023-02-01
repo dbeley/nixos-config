@@ -3,10 +3,11 @@
 {
   imports = [
     # ../apps/gnome/gnome.nix
-    hyprland.homeManagerModules.default
-    ../apps/hyprland/hyprland.nix
+    # hyprland.homeManagerModules.default
+    # ../apps/hyprland/hyprland.nix
+    ../apps/sway/sway.nix
     ../apps/waybar/waybar.nix
-    ../apps/wofi/wofi.nix
+    # ../apps/wofi/wofi.nix
 
     ../apps/git/git.nix
     ../apps/fish/fish.nix
