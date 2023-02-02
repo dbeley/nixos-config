@@ -2,6 +2,14 @@
 
 {
   home.packages = with pkgs; [ mako libnotify grim slurp pamixer swaylock ];
+  home.file = {
+    "scripts".source = pkgs.fetchFromGitHub {
+       owner = "dbeley";
+       repo = "scripts";
+       rev = "68d791b152cb553f680b533a8ce06de228a0e819";
+       sha256 = "C4nR1pdZ9Qo3yClSkxvSK1f9SF6fVIWHpCbO53PtyKg=";
+      };
+  };
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -30,6 +38,7 @@
           tap = "enabled";
         };
       };
+      output = { "*" = { bg = "/home/${user}/.config/wpg/.current fill"; }; };
       seat = { "*" = { hide_cursor = "3000"; }; };
 
       modes = {
@@ -56,6 +65,7 @@
       keybindings = let
           modifiers = config.wayland.windowManager.sway.config.modifier;
         in lib.mkOptionDefault {
+          "${modifier}+d" = "exec wofi";
           "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
           "${modifier}+q" = "kill";
           "${modifier}+z" = "exec ${pkgs.firefox}/bin/firefox";
@@ -64,7 +74,6 @@
           "${modifier}+Shift+x" = "exec ${pkgs.steam}/bin/steam";
           "${modifier}+t" = "exec ${pkgs.libreoffice}/bin/libreoffice";
           "${modifier}+Shift+t" = "exec ${pkgs.gnome.gnome-system-monitor}/bin/gnome-system-monitor";
-
           "${modifier}+Shift+minus" = "move scratchpad";
           "${modifier}+minus" = "scratchpad show";
           "${modifier}+F9" = "scratchpad show";
@@ -72,8 +81,6 @@
           "${modifier}+F11" = "[app_id=\"com.nextcloud.desktopclient.nextcloud\"] scratchpad show";
           "${modifier}+g" = "[app_id=\"scratchpad\"] scratchpad show";
           "${modifier}+c" = "[app_id=\"org.keepassxc.KeePassXC\"] scratchpad show";
-
-          "${modifier}+d" = "exec wofi";
 
           "XF86AudioRaiseVolume" = "exec ~/scripts/volume_pamixer.sh up";
           "Shift+XF86AudioRaiseVolume" = "exec ~/scripts/volume_pamixer.sh bigup";
@@ -86,6 +93,9 @@
           "XF86Suspend" = "exec swaylock -f -c 000000";
           "XF86Back" = "workspace prev";
           "XF86Forward" = "workspace next";
+          "XF86Display" = "exec ~/scripts/toggle_gammastep.sh";
+          "Pause" = "exec killall -SIGUSR1 waybar";
+          "Shift+Pause" = "exec wpg -m";
 
           "${modifier}+r" = "mode \"  resize  \"";
           "${modifier}+Shift+p" = "mode \"  (r)eboot, (p)oweroff, (l)ock, (s)uspend  \"";
@@ -131,13 +141,17 @@
         { command = "udiskie -a"; }
         { command = "nextcloud --background"; }
         { command = "keepassxc"; }
-        { command = "${pkgs.alacritty}/bin/alacritty --app-id=scratchpad nnn"; }
+        { command = "${pkgs.alacritty}/bin/alacritty --class scratchpad -e nnn"; }
       ];
     };
 
     extraConfigEarly = ''
       include "/home/${user}/.cache/wal/colors-sway"
       set $tx #ffffff
+
+      bindsym --release Print exec "grim ~/Nextcloud/07_Images/07_Captures-d-écran_Wayland/$(date +%s).png"
+      bindsym --release Shift+Print exec 'grim -g "$(slurp -d)" ~/Nextcloud/07_Images/07_Captures-d-écran_Wayland/$(date +%s)_cropped.png'
+      bindsym --release XF86SelectiveScreenshot exec 'grim -g "$(slurp -d)" ~/Nextcloud/07_Images/07_Captures-d-écran_Wayland/$(date +%s)_cropped.png'
       '';
   };
 }
