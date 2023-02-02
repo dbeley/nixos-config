@@ -1,7 +1,7 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, user, ... }:
 
 {
-  home.packages = with pkgs; [ pamixer swaylock ];
+  home.packages = with pkgs; [ mako libnotify grim slurp pamixer swaylock ];
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -9,6 +9,11 @@
     config = rec {
       terminal = "alacritty";
       modifier = "Mod4";
+      fonts = {
+        names = [ "Iosevka Nerd Font" ];
+        style = "Regular";
+        size = 10.0;
+      };
       input = {
         "type:keyboard" = {
           xkb_layout = "us";
@@ -28,7 +33,7 @@
       seat = { "*" = { hide_cursor = "3000"; }; };
 
       modes = {
-        "resize" = {
+        "  resize  " = {
           Down = "resize grow height 10 px";
           Escape = "mode default";
           Left = "resize shrink width 10 px";
@@ -40,7 +45,7 @@
           k = "resize shrink height 10 px";
           l = "resize grow width 10 px";
         };
-        "(r)eboot, (p)oweroff, (l)ock, (s)uspend" = {
+        "  (r)eboot, (p)oweroff, (l)ock, (s)uspend  " = {
           r = "exec reboot, mode default";
           p = "exec poweroff, mode default";
           l = "exec swaylock -f -c 000000, mode default";
@@ -60,6 +65,16 @@
           "${modifier}+t" = "exec ${pkgs.libreoffice}/bin/libreoffice";
           "${modifier}+Shift+t" = "exec ${pkgs.gnome.gnome-system-monitor}/bin/gnome-system-monitor";
 
+          "${modifier}+Shift+minus" = "move scratchpad";
+          "${modifier}+minus" = "scratchpad show";
+          "${modifier}+F9" = "scratchpad show";
+          "${modifier}+F10" = "[app_id=\"org.keepassxc.KeePassXC\"] scratchpad show";
+          "${modifier}+F11" = "[app_id=\"com.nextcloud.desktopclient.nextcloud\"] scratchpad show";
+          "${modifier}+g" = "[app_id=\"scratchpad\"] scratchpad show";
+          "${modifier}+c" = "[app_id=\"org.keepassxc.KeePassXC\"] scratchpad show";
+
+          "${modifier}+d" = "exec wofi";
+
           "XF86AudioRaiseVolume" = "exec ~/scripts/volume_pamixer.sh up";
           "Shift+XF86AudioRaiseVolume" = "exec ~/scripts/volume_pamixer.sh bigup";
           "XF86AudioLowerVolume" = "exec ~/scripts/volume_pamixer.sh down";
@@ -72,16 +87,57 @@
           "XF86Back" = "workspace prev";
           "XF86Forward" = "workspace next";
 
-          "${modifier}+r" = "mode \"resize\"";
-          "${modifier}+Shift+p" = "mode \"(r)eboot, (p)oweroff, (l)ock, (s)uspend\"";
+          "${modifier}+r" = "mode \"  resize  \"";
+          "${modifier}+Shift+p" = "mode \"  (r)eboot, (p)oweroff, (l)ock, (s)uspend  \"";
         };
+        bars = [
+          { command = "waybar"; }
+        ];
+        gaps = { inner = 6; outer = 6; smartBorders = "on"; };
+
+      window = {
+        border = 3;
+        commands = [
+          { command = "sticky enable"; criteria = { app_id = "mpv"; }; }
+          { command = "move to scratchpad"; criteria = { app_id = "org.keepassxc.KeePassXC"; }; }
+          { command = "move to scratchpad, scratchpad show"; criteria = { app_id = "com.nextcloud.desktopclient.nextcloud"; }; }
+          { command = "move to scratchpad, resize set 800 600"; criteria = { app_id = "scratchpad"; }; }
+        ];
+      };
+      floating = {
+        criteria = [
+          { title = "Ouvrir*"; }
+          { title = "Extension : *"; }
+          { app_id = "imv"; }
+          { app_id = "swayimg"; }
+          { app_id = "mpv"; }
+          { app_id = "org.keepassxc.KeePassXC"; }
+          { app_id = "com.nextcloud.desktopclient.nextcloud"; }
+        ];
+        titlebar = false;
+      };
+
+      colors = {
+        focused = { border = "$background"; background = "$background"; text = "$tx"; indicator = "$color3"; childBorder = "$color3"; };
+        unfocused = { border = "$color4"; background = "$color4"; text = "$tx"; indicator = "$color1"; childBorder = "$color1"; };
+        focusedInactive = { border = "$color4"; background = "$color4"; text = "$tx"; indicator = "$color1"; childBorder = "$color1"; };
+        urgent = { border = "$tx"; background = "$tx"; text = "$tx"; indicator = "$tx"; childBorder = "$tx"; };
+        placeholder = { border = "$tx"; background = "$tx"; text = "$tx"; indicator = "$tx"; childBorder = "$tx"; };
+      };
 
       startup = [
-        { command = "mako"; }
+        { command = "systemctl --user import-environment; systemctl --user start sway-session.target"; }
+        { command = "mako -c /home/${user}/.cache/wal/mako"; }
         { command = "udiskie -a"; }
         { command = "nextcloud --background"; }
-        # { command = "keepassxc"; }
+        { command = "keepassxc"; }
+        { command = "${pkgs.alacritty}/bin/alacritty --app-id=scratchpad nnn"; }
       ];
     };
+
+    extraConfigEarly = ''
+      include "/home/${user}/.cache/wal/colors-sway"
+      set $tx #ffffff
+      '';
   };
 }

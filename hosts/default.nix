@@ -10,6 +10,7 @@
       ./configuration.nix
       ./common/uefi.nix
       ./common/laptop.nix
+      # compatibility with hyprland
       ./apps/waybar/default.nix
 
       home-manager.nixosModules.home-manager {
@@ -33,6 +34,7 @@
       ./configuration.nix
       ./common/bios.nix
       ./common/laptop.nix
+      ./apps/swaylock/default.nix
 
       home-manager.nixosModules.home-manager {
         home-manager = {
