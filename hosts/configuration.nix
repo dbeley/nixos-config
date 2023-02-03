@@ -119,12 +119,12 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  system = {
-    autoUpgrade = {
-      enable = true;
-      channel = "https://nixos.org/channels/nixos-unstable";
-      };
-    };
+  # system = {
+  #   autoUpgrade = {
+  #     enable = true;
+  #     channel = "https://nixos.org/channels/nixos-unstable";
+  #     };
+  #   };
 
   nix = {
     package = pkgs.nixFlakes;
