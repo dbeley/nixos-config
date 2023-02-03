@@ -99,6 +99,7 @@
 
           "${modifier}+r" = "mode \"  resize  \"";
           "${modifier}+Shift+p" = "mode \"  (r)eboot, (p)oweroff, (l)ock, (s)uspend  \"";
+          "${modifier}+Shift+s" = "sticky toggle";
         };
         bars = [
           { command = "waybar"; }
