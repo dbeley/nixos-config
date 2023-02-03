@@ -42,8 +42,8 @@ in
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
         "browser.newtabpage.activity-stream.feeds.section.highlights" = true;
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" = false;
-        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.section.highlights.rows" = 4;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.topSitesRows" = 4;
         "browser.newtabpage.pinned" = "[]";
         "browser.safebrowsing.enabled" = false;
@@ -62,10 +62,13 @@ in
         "browser.urlbar.trimURLS" = false;
         "dom.battery.enabled" = false;
         "dom.event.clipboardevents.enabled" = false;
-        "dom.event.autocomplete.formautofill" = true;
+        "extensions.formautofill.addresses.enabled" = false;
+        "extensions.formautofill.available" = "off";
+        "extensions.formautofill.creditCards.enabled" = false;
         "extensions.pocket.enabled" = false;
         "findbar.highlightAll" = true;
         "fission.autostart"  = true;
+        "font.default.x-western" = "serif";
         "font.name.monospace.x-western" = "IosevkaTerm Nerd Font Mono";
         "font.name.sans-serif.x-western" = "Overpass";
         "font.name.serif.x-western" = "EB Garamond";
