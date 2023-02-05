@@ -152,11 +152,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1675396962,
-        "narHash": "sha256-HAroz4mT8dveUNXwnsqJSOSGBJI1cgOBk6QbYEUEnoM=",
+        "lastModified": 1675595599,
+        "narHash": "sha256-lzYWzYLjY4Udn89Vqauaj8JcAig74oiyp7liPxNZpGE=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "cb848eb101f77b2f1643f43f1bd06e7c6831ecf8",
+        "rev": "19ce4f23303a8fdccf9513e577fbeb20a01c9455",
         "type": "gitlab"
       },
       "original": {
@@ -237,11 +237,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1675371293,
-        "narHash": "sha256-LrCjtrAXj/WJphhGEMnHgZs7oTsfOlvPfOjFTIvg39k=",
+        "lastModified": 1675595366,
+        "narHash": "sha256-WoQkwaaoZqrhWpIrMxA+2j8CgxgyvjHzCyEZAQu06rQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d1c7730bb707bf8124d997952f7babd2a281ae68",
+        "rev": "9621e9ab80a038cd11c7cfcae4df46a59d62b16a",
         "type": "github"
       },
       "original": {
@@ -260,11 +260,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1675444702,
-        "narHash": "sha256-j+U1KwSOfUgJawy4/9xEX2zKWOegNkvuSaQGZo06fnw=",
+        "lastModified": 1675606643,
+        "narHash": "sha256-kzM9G1rkP5rZCuEm4JqXmDOndBvilCA4yQJvZFqSq0w=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "a0bc0e4998f464656e74cbc683986204189ebefb",
+        "rev": "53945cff3184cfdff3ed978e072b4ed65e3b2ec5",
         "type": "github"
       },
       "original": {
