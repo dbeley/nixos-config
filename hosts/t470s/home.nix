@@ -21,10 +21,12 @@
     ../apps/swayimg/swayimg.nix
 
     ../apps/firefox/firefox.nix
+    ../apps/qutebrowser/qutebrowser.nix
     ../apps/gammastep/gammastep.nix
     ../apps/ledger/ledger.nix
     ../apps/mpd/mpd.nix
     ../apps/mpv/mpv.nix
+    ../apps/obs/obs.nix
     # ../apps/autoscreen/autoscreen.nix
     # ../apps/mpdscrobble/mpdscrobble.nix
     ];
