@@ -9,7 +9,7 @@
 | **WM:**        | hyprland + waybar                 |
 | **Editor:**    | doom-emacs                        |
 | **Terminal:**  | alacritty                         |
-| **Launcher:**  | wofi                              |
+| **Launcher:**  | tofi                              |
 | **Browser:**   | firefox                           |
 | **GTK Theme:** | FlatColor managed by wpgtk+pywal  |
 
@@ -23,7 +23,7 @@
 Rebuild the system
 
 ```
-sudo nixos-rebuild switch --flake .#{name}
+sudo nixos-rebuild switch --flake .#{host}
 ```
 
 Delete unused packages
