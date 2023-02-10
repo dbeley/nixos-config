@@ -107,7 +107,7 @@
           "${modifier}+Shift+s" = "sticky toggle";
         };
       bars = [
-        {command = "waybar -s ~/.cache/wal/colors-waybar.css";}
+        {command = "waybar";}
       ];
       gaps = {
         inner = 6;
