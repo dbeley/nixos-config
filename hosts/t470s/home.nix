@@ -7,6 +7,7 @@
     ../apps/hyprland/hyprland.nix
     ../apps/waybar/waybar.nix
     ../apps/wofi/wofi.nix
+    ../apps/tofi/tofi.nix
 
     ../apps/git/git.nix
     ../apps/fish/fish.nix

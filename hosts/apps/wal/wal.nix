@@ -1,6 +1,7 @@
 {
-  home.file.".config/wal/templates/mako".source = ./mako;
-  home.file.".config/wal/templates/hyprpaper".source = ./hyprpaper;
+  xdg.configFile."wal/templates/mako".source = ./mako;
+  xdg.configFile."wal/templates/hyprpaper".source = ./hyprpaper;
+  xdg.configFile."wal/templates/tofi".source = ./tofi;
   programs.pywal = {
     enable = true;
   };
