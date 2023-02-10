@@ -4,9 +4,9 @@
     settings = [
       {
         layer = "bottom";
-        modules-left = ["wlr/workspaces" "sway/workspaces" "sway/mode" "sway/window"];
+        modules-left = ["wlr/workspaces" "hyprland/window"];
         modules-center = ["clock"];
-        modules-right = ["memory" "temperature" "pulseaudio" "battery" "tray"];
+        modules-right = ["mpd" "network" "cpu" "memory" "temperature" "pulseaudio" "battery" "tray"];
         "hyprland/window" = {
           "format" = "{}";
           "separate-outputs" = true;

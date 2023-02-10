@@ -6,8 +6,8 @@
 	font-family: "Iosevka Nerd Font";
     font-style: normal;
     font-weight: bold;
-	font-size: 12px;
-	min-height: 18px;
+	font-size: 14px;
+	min-height: 28px;
 }
 
 window#waybar {
