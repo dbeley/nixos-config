@@ -1,14 +1,18 @@
-{ pkgs, config, lib, user, ... }:
-
 {
-  home.packages = with pkgs; [ mako libnotify grim slurp pamixer swaylock ];
+  pkgs,
+  config,
+  lib,
+  user,
+  ...
+}: {
+  home.packages = with pkgs; [mako libnotify grim slurp pamixer swaylock];
   home.file = {
     "scripts".source = pkgs.fetchFromGitHub {
-       owner = "dbeley";
-       repo = "scripts";
-       rev = "68d791b152cb553f680b533a8ce06de228a0e819";
-       sha256 = "C4nR1pdZ9Qo3yClSkxvSK1f9SF6fVIWHpCbO53PtyKg=";
-      };
+      owner = "dbeley";
+      repo = "scripts";
+      rev = "68d791b152cb553f680b533a8ce06de228a0e819";
+      sha256 = "C4nR1pdZ9Qo3yClSkxvSK1f9SF6fVIWHpCbO53PtyKg=";
+    };
   };
   wayland.windowManager.sway = {
     enable = true;
@@ -18,7 +22,7 @@
       terminal = "alacritty";
       modifier = "Mod4";
       fonts = {
-        names = [ "Iosevka Nerd Font" ];
+        names = ["Iosevka Nerd Font"];
         style = "Regular";
         size = 10.0;
       };
@@ -38,8 +42,8 @@
           tap = "enabled";
         };
       };
-      output = { "*" = { bg = "/home/${user}/.config/wpg/.current fill"; }; };
-      seat = { "*" = { hide_cursor = "3000"; }; };
+      output = {"*" = {bg = "/home/${user}/.config/wpg/.current fill";};};
+      seat = {"*" = {hide_cursor = "3000";};};
 
       modes = {
         "  resize  " = {
@@ -63,8 +67,9 @@
       };
 
       keybindings = let
-          modifiers = config.wayland.windowManager.sway.config.modifier;
-        in lib.mkOptionDefault {
+        modifiers = config.wayland.windowManager.sway.config.modifier;
+      in
+        lib.mkOptionDefault {
           "${modifier}+d" = "exec ${pkgs.tofi}/bin/tofi-run -c ~/.cache/wal/tofi";
           "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
           "${modifier}+q" = "kill";
@@ -101,48 +106,94 @@
           "${modifier}+Shift+p" = "mode \"  (r)eboot, (p)oweroff, (l)ock, (s)uspend  \"";
           "${modifier}+Shift+s" = "sticky toggle";
         };
-        bars = [
-          { command = "waybar"; }
-        ];
-        gaps = { inner = 6; outer = 6; smartBorders = "on"; };
+      bars = [
+        {command = "waybar";}
+      ];
+      gaps = {
+        inner = 6;
+        outer = 6;
+        smartBorders = "on";
+      };
 
       window = {
         border = 3;
         commands = [
-          { command = "sticky enable"; criteria = { app_id = "mpv"; }; }
-          { command = "move to scratchpad"; criteria = { app_id = "org.keepassxc.KeePassXC"; }; }
-          { command = "move to scratchpad, scratchpad show"; criteria = { app_id = "com.nextcloud.desktopclient.nextcloud"; }; }
-          { command = "move to scratchpad, resize set 800 600"; criteria = { app_id = "scratchpad"; }; }
+          {
+            command = "sticky enable";
+            criteria = {app_id = "mpv";};
+          }
+          {
+            command = "move to scratchpad";
+            criteria = {app_id = "org.keepassxc.KeePassXC";};
+          }
+          {
+            command = "move to scratchpad, scratchpad show";
+            criteria = {app_id = "com.nextcloud.desktopclient.nextcloud";};
+          }
+          {
+            command = "move to scratchpad, resize set 800 600";
+            criteria = {app_id = "scratchpad";};
+          }
         ];
       };
       floating = {
         criteria = [
-          { title = "Ouvrir*"; }
-          { title = "Extension : *"; }
-          { app_id = "imv"; }
-          { app_id = "swayimg"; }
-          { app_id = "mpv"; }
-          { app_id = "org.keepassxc.KeePassXC"; }
-          { app_id = "com.nextcloud.desktopclient.nextcloud"; }
+          {title = "Ouvrir*";}
+          {title = "Extension : *";}
+          {app_id = "imv";}
+          {app_id = "swayimg";}
+          {app_id = "mpv";}
+          {app_id = "org.keepassxc.KeePassXC";}
+          {app_id = "com.nextcloud.desktopclient.nextcloud";}
         ];
         titlebar = false;
       };
 
       colors = {
-        focused = { border = "$background"; background = "$background"; text = "$tx"; indicator = "$color3"; childBorder = "$color3"; };
-        unfocused = { border = "$color4"; background = "$color4"; text = "$tx"; indicator = "$color1"; childBorder = "$color1"; };
-        focusedInactive = { border = "$color4"; background = "$color4"; text = "$tx"; indicator = "$color1"; childBorder = "$color1"; };
-        urgent = { border = "$tx"; background = "$tx"; text = "$tx"; indicator = "$tx"; childBorder = "$tx"; };
-        placeholder = { border = "$tx"; background = "$tx"; text = "$tx"; indicator = "$tx"; childBorder = "$tx"; };
+        focused = {
+          border = "$background";
+          background = "$background";
+          text = "$tx";
+          indicator = "$color3";
+          childBorder = "$color3";
+        };
+        unfocused = {
+          border = "$color4";
+          background = "$color4";
+          text = "$tx";
+          indicator = "$color1";
+          childBorder = "$color1";
+        };
+        focusedInactive = {
+          border = "$color4";
+          background = "$color4";
+          text = "$tx";
+          indicator = "$color1";
+          childBorder = "$color1";
+        };
+        urgent = {
+          border = "$tx";
+          background = "$tx";
+          text = "$tx";
+          indicator = "$tx";
+          childBorder = "$tx";
+        };
+        placeholder = {
+          border = "$tx";
+          background = "$tx";
+          text = "$tx";
+          indicator = "$tx";
+          childBorder = "$tx";
+        };
       };
 
       startup = [
-        { command = "systemctl --user import-environment; systemctl --user start sway-session.target"; }
-        { command = "mako -c /home/${user}/.cache/wal/mako"; }
-        { command = "udiskie -a"; }
-        { command = "nextcloud --background"; }
-        { command = "keepassxc"; }
-        { command = "${pkgs.alacritty}/bin/alacritty --class scratchpad -e nnn"; }
+        {command = "systemctl --user import-environment; systemctl --user start sway-session.target";}
+        {command = "mako -c /home/${user}/.cache/wal/mako";}
+        {command = "udiskie -a";}
+        {command = "nextcloud --background";}
+        {command = "keepassxc";}
+        {command = "${pkgs.alacritty}/bin/alacritty --class scratchpad -e nnn";}
       ];
     };
 
@@ -153,6 +204,6 @@
       bindsym --release Print exec "grim ~/Nextcloud/07_Images/07_Captures-d-écran_Wayland/$(date +%s).png"
       bindsym --release Shift+Print exec 'grim -g "$(slurp -d)" ~/Nextcloud/07_Images/07_Captures-d-écran_Wayland/$(date +%s)_cropped.png'
       bindsym --release XF86SelectiveScreenshot exec 'grim -g "$(slurp -d)" ~/Nextcloud/07_Images/07_Captures-d-écran_Wayland/$(date +%s)_cropped.png'
-      '';
+    '';
   };
 }

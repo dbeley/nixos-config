@@ -1,7 +1,9 @@
-{ user, pkgs, ... }:
-
 {
-  home.packages = with pkgs; [ mpc-cli ];
+  user,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [mpc-cli];
   # home.file = {
   #   "scripts/mpdnotify.conf".text = ''
   #     MUSIC_DIR="~/nfs/WDC14/Musique"
@@ -49,16 +51,46 @@
       external_editor = "nvim";
     };
     bindings = [
-      { key = "j"; command =  "scroll_down"; }
-      { key = "k"; command =  "scroll_up"; }
-      { key = "ctrl-u"; command =  "page_up"; }
-      { key = "ctrl-d"; command =  "page_down"; }
-      { key = "h"; command =  "previous_column"; }
-      { key = "l"; command =  "next_column"; }
-      { key = "n"; command =  "next_found_item"; }
-      { key = "N"; command =  "previous_found_item"; }
-      { key = "g"; command =  "move_home"; }
-      { key = "G"; command =  "move_end"; }
+      {
+        key = "j";
+        command = "scroll_down";
+      }
+      {
+        key = "k";
+        command = "scroll_up";
+      }
+      {
+        key = "ctrl-u";
+        command = "page_up";
+      }
+      {
+        key = "ctrl-d";
+        command = "page_down";
+      }
+      {
+        key = "h";
+        command = "previous_column";
+      }
+      {
+        key = "l";
+        command = "next_column";
+      }
+      {
+        key = "n";
+        command = "next_found_item";
+      }
+      {
+        key = "N";
+        command = "previous_found_item";
+      }
+      {
+        key = "g";
+        command = "move_home";
+      }
+      {
+        key = "G";
+        command = "move_end";
+      }
     ];
   };
 }

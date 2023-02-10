@@ -3,18 +3,18 @@
     enable = true;
     extraConfig = {
       user = {
-  	    email = "6568955+dbeley@users.noreply.github.com";
-  	    name = "dbeley";
-  	  };
+        email = "6568955+dbeley@users.noreply.github.com";
+        name = "dbeley";
+      };
       diff = {
-    	algorithm = "patience";
-    	colorMoved = "zebra";
+        algorithm = "patience";
+        colorMoved = "zebra";
       };
       color = {
-    	ui = "auto";
-    	branch = "auto";
-    	diff = "auto";
-    	status = "auto";
+        ui = "auto";
+        branch = "auto";
+        diff = "auto";
+        status = "auto";
         showbranch = "auto";
       };
       merge = {
@@ -25,28 +25,28 @@
         prompt = false;
       };
       pull = {
-    	rebase = true;
+        rebase = true;
       };
       rebase = {
-    	autoStash = true;
+        autoStash = true;
       };
       core = {
-    	autocrlf = "input";
+        autocrlf = "input";
       };
       credential = {
-    	helper = "cache";
+        helper = "cache";
       };
       init = {
-    	defaultBranch = "main";
+        defaultBranch = "main";
       };
       rerere = {
-    	enabled = true;
+        enabled = true;
       };
       fetch = {
-    	prune = true;
+        prune = true;
       };
       push = {
-    	autoSetupRemote = false;
+        autoSetupRemote = false;
       };
     };
   };

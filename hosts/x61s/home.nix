@@ -1,6 +1,12 @@
-{ config, pkgs, user, inputs, hyprland, nix-doom-emacs, ... }:
-
 {
+  config,
+  pkgs,
+  user,
+  inputs,
+  hyprland,
+  nix-doom-emacs,
+  ...
+}: {
   imports = [
     # ../apps/gnome/gnome.nix
     # hyprland.homeManagerModules.default
@@ -31,7 +37,7 @@
     ../apps/mpv/mpv.nix
     # ../apps/autoscreen/autoscreen.nix
     # ../apps/mpdscrobble/mpdscrobble.nix
-    ];
+  ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -67,7 +73,8 @@
     neofetch
     nnn
     gnome.gnome-system-monitor
-    ];
+    gh
+  ];
 
   services.mpris-proxy.enable = true;
 }

@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-
-{
-  home.packages = with pkgs; [ wofi ];
+{pkgs, ...}: {
+  home.packages = with pkgs; [wofi];
   xdg.configFile."wofi/style.css".source = ./style.css;
   xdg.configFile."wofi/config".text = ''
     width=500

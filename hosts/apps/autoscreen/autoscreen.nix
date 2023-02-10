@@ -1,10 +1,7 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   autoscreen = pkgs.writeShellScriptBin "autoscreen" (builtins.readFile ./autoscreen.sh);
-in
-{
-  home.packages = with pkgs; [ autoscreen ];
+in {
+  home.packages = with pkgs; [autoscreen];
 
   systemd.user.timers."autoscreen" = {
     Unit = {
@@ -16,7 +13,7 @@ in
       AccuracySec = "1us";
     };
     Install = {
-      WantedBy = [ "timers.target" ];
+      WantedBy = ["timers.target"];
     };
   };
 
@@ -29,7 +26,7 @@ in
       ExecStart = "${autoscreen}/bin/autoscreen";
     };
     Install = {
-      WantedBy = [ "multi-user.target" ];
+      WantedBy = ["multi-user.target"];
     };
   };
 }

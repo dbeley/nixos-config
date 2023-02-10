@@ -1,9 +1,11 @@
-{ user, inputs, system, ... }:
-
-let
-  addons = inputs.firefox-addons.packages.${system};
-in
 {
+  user,
+  inputs,
+  system,
+  ...
+}: let
+  addons = inputs.firefox-addons.packages.${system};
+in {
   programs.firefox = {
     enable = true;
     extensions = with addons; [
@@ -67,7 +69,7 @@ in
         "extensions.formautofill.creditCards.enabled" = false;
         "extensions.pocket.enabled" = false;
         "findbar.highlightAll" = true;
-        "fission.autostart"  = true;
+        "fission.autostart" = true;
         "font.default.x-western" = "serif";
         "font.name.monospace.x-western" = "IosevkaTerm Nerd Font Mono";
         "font.name.sans-serif.x-western" = "Overpass";

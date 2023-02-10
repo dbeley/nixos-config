@@ -1,10 +1,11 @@
-{ config, pkgs, ... }:
-
-let
-  mpdscrobble = pkgs.python3.pkgs.callPackage ./package.nix { };
-in
 {
-  home.packages = with pkgs; [ mpdscrobble ];
+  config,
+  pkgs,
+  ...
+}: let
+  mpdscrobble = pkgs.python3.pkgs.callPackage ./package.nix {};
+in {
+  home.packages = with pkgs; [mpdscrobble];
   systemd.user.services."mpdscrobble" = {
     Unit = {
       Description = "Take a screenshot with grim";
@@ -15,7 +16,7 @@ in
       ExecStart = "${mpdscrobble}/bin/mpdscrobble";
     };
     Install = {
-      WantedBy = [ "default.target" ];
+      WantedBy = ["default.target"];
     };
   };
 }

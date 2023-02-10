@@ -1,8 +1,7 @@
 {
-  imports =
-    [
-      ../apps/light/light.nix
-    ];
+  imports = [
+    ../apps/light/light.nix
+  ];
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;

@@ -17,21 +17,27 @@
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, hyprland, nix-doom-emacs, ... }:
-    let
-      system = "x86_64-linux";
-      user = "david";
-      pkgs = import nixpkgs {
-        inherit system;
-	    config.allowUnfree = true;
-      };
-      lib = nixpkgs.lib;
-    in {
-      nixosConfigurations = (
-        import ./hosts {
-	      inherit (nixpkgs) lib;
-	      inherit nixpkgs inputs user system home-manager hyprland nix-doom-emacs;
-	    }
-      );
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    home-manager,
+    hyprland,
+    nix-doom-emacs,
+    ...
+  }: let
+    system = "x86_64-linux";
+    user = "david";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
     };
+    lib = nixpkgs.lib;
+  in {
+    nixosConfigurations = (
+      import ./hosts {
+        inherit (nixpkgs) lib;
+        inherit nixpkgs inputs user system home-manager hyprland nix-doom-emacs;
+      }
+    );
+  };
 }

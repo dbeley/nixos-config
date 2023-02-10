@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   gtk = {
     enable = true;
     theme = {
@@ -29,5 +27,5 @@
     #   '';
     # };
   };
-  home.packages = with pkgs; [ wpgtk dconf ];
+  home.packages = with pkgs; [wpgtk dconf];
 }
