@@ -1,11 +1,13 @@
+@import "/home/david/.cache/wal/colors-waybar.css";
+
 * {
 	border: none;
 	border-radius: 0;
 	font-family: "Iosevka Nerd Font";
     font-style: normal;
     font-weight: bold;
-	font-size: 14px;
-	min-height: 28px;
+	font-size: 12px;
+	min-height: 18px;
 }
 
 window#waybar {
@@ -22,8 +24,8 @@ window#waybar.empty #window {
     padding-right: 16px;
     border-radius: 6px;
     transition: none;
-    color: #f8f8f2;
-    background: #282a36;
+    color: @foreground;
+    background: @background;
 }
 
 window#waybar.alacritty #window,
@@ -34,8 +36,8 @@ window#waybar.libreoffice #window,
 window#waybar.mpv #window,
 window#waybar.Navigator #window,
 window#waybar.qutebrowser #window {
-    color: #f8f8f2;
-    background: #282a36;
+    color: @foreground;
+    background: @background;
 }
 
 #mode {
@@ -43,8 +45,8 @@ window#waybar.qutebrowser #window {
     margin-right: 8px;
     margin-bottom: 0;
     border-radius: 6px;
-    color: #f8f8f2;
-    background: #282a36;
+    color: @foreground;
+    background: @background;
     transition: none;
 }
 
@@ -56,8 +58,8 @@ window#waybar.qutebrowser #window {
     padding-left: 8px;
     padding-right: 8px;
     border-radius: 6px;
-    color: #f8f8f2;
-    background: #282a36;
+    color: @foreground;
+    background: @background;
     transition: none;
 }
 
@@ -71,11 +73,11 @@ window#waybar.qutebrowser #window {
 }
 
 #workspaces button.focused {
-    color: #ffffff;
+    color: @foreground;
 }
 
 #workspaces button.active {
-    color: #ffffff;
+    color: @foreground;
 }
 
 #workspaces button:hover {
@@ -92,15 +94,15 @@ window#waybar.qutebrowser #window {
     padding-right: 16px;
     margin-bottom: 0;
     border-radius: 6px;
-    color: #f8f8f2;
-    background: #282a36;
+    color: @foreground;
+    background: @background;
     transition: none;
 }
 
 #mpd.disconnected,
 #mpd.stopped {
-    color: #f8f8f2;
-    background: #282a36;
+    color: @foreground;
+    background: @background;
 }
 
 #network {
@@ -111,8 +113,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: #f8f8f2;
-    background: #282a36;
+    color: @foreground;
+    background: @background;
 }
 
 #pulseaudio {
@@ -123,8 +125,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: #f8f8f2;
-    background: #282a36;
+    color: @foreground;
+    background: @background;
 }
 
 #temperature {
@@ -135,8 +137,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: #f8f8f2;
-    background: #282a36;
+    color: @foreground;
+    background: @background;
 }
 
 #cpu {
@@ -147,8 +149,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: #f8f8f2;
-    background: #282a36;
+    color: @foreground;
+    background: @background;
 }
 
 #memory {
@@ -159,8 +161,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: #f8f8f2;
-    background: #282a36;
+    color: @foreground;
+    background: @background;
 }
 
 #clock {
@@ -171,8 +173,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: #f8f8f2;
-    background: #282a36;
+    color: @foreground;
+    background: @background;
 }
 
 #tray {
@@ -184,8 +186,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: #f8f8f2;
-    background: #282a36;
+    color: @foreground;
+    background: @background;
 }
 
 #battery {
@@ -196,8 +198,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: #f8f8f2;
-    background: #282a36;
+    color: @foreground;
+    background: @background;
 }
 
 #battery.warning { color: orange; }
