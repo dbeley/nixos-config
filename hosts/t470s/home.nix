@@ -6,7 +6,7 @@
     hyprland.homeManagerModules.default
     ../apps/hyprland/hyprland.nix
     ../apps/waybar/waybar.nix
-    ../apps/wofi/wofi.nix
+    # ../apps/wofi/wofi.nix
     ../apps/tofi/tofi.nix
 
     ../apps/git/git.nix
@@ -20,6 +20,7 @@
     ../apps/udiskie/udiskie.nix
     ../apps/mime/mime.nix
     ../apps/swayimg/swayimg.nix
+    ../apps/bat/bat.nix
 
     ../apps/firefox/firefox.nix
     ../apps/qutebrowser/qutebrowser.nix
@@ -63,7 +64,6 @@
     ripgrep
     fd
     exa
-    bat
     neofetch
     nnn
     gnome.gnome-system-monitor

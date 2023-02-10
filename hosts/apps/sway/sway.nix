@@ -65,7 +65,7 @@
       keybindings = let
           modifiers = config.wayland.windowManager.sway.config.modifier;
         in lib.mkOptionDefault {
-          "${modifier}+d" = "exec wofi";
+          "${modifier}+d" = "exec ${pkgs.tofi}/bin/tofi-run -c ~/.cache/wal/tofi";
           "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
           "${modifier}+q" = "kill";
           "${modifier}+z" = "exec ${pkgs.firefox}/bin/firefox";
