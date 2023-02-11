@@ -108,6 +108,7 @@
     RuntimeMaxFileSize=10M
   '';
 
+  services.gvfs.enable = true;
   # services.dbus.enable = true;
   xdg.portal = {
     enable = true;

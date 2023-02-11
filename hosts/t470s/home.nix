@@ -35,6 +35,7 @@
     ../apps/mpd/mpd.nix
     ../apps/mpv/mpv.nix
     ../apps/obs/obs.nix
+    ../apps/zathura/zathura.nix
     # ../apps/autoscreen/autoscreen.nix
     # ../apps/mpdscrobble/mpdscrobble.nix
   ];
@@ -74,6 +75,7 @@
     nnn
     gnome.gnome-system-monitor
     gh
+    xfce.thunar
   ];
 
   services.mpris-proxy.enable = true;

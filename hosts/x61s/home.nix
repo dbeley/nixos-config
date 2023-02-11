@@ -35,6 +35,7 @@
     ../apps/ledger/ledger.nix
     ../apps/mpd/mpd.nix
     ../apps/mpv/mpv.nix
+    ../apps/zathura/zathura.nix
     # ../apps/autoscreen/autoscreen.nix
     # ../apps/mpdscrobble/mpdscrobble.nix
   ];
