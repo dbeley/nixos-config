@@ -71,7 +71,7 @@
     ripgrep
     fd
     exa
-    neofetch
+    nitch
     nnn
     gnome.gnome-system-monitor
     gh
