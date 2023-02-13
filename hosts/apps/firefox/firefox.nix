@@ -8,21 +8,6 @@
 in {
   programs.firefox = {
     enable = true;
-    extensions = with addons; [
-      augmented-steam
-      cookie-autodelete
-      h264ify
-      multi-account-containers
-      firefox-translations
-      keepassxc-browser
-      reddit-enhancement-suite
-      reddit-comment-collapser
-      return-youtube-dislikes
-      steam-database
-      ublock-origin
-      vimium
-      web-scrobbler
-    ];
     profiles.${user} = {
       settings = {
         "beacon.enabled" = false;
@@ -108,6 +93,21 @@ in {
         "signon.rememberSignons" = false;
         "ui.systemUsesDarkTheme" = 1;
       };
+      extensions = with addons; [
+        augmented-steam
+        cookie-autodelete
+        h264ify
+        multi-account-containers
+        firefox-translations
+        keepassxc-browser
+        reddit-enhancement-suite
+        reddit-comment-collapser
+        return-youtube-dislikes
+        steam-database
+        ublock-origin
+        vimium
+        web-scrobbler
+      ];
     };
   };
 }
