@@ -9,8 +9,8 @@
     "scripts".source = pkgs.fetchFromGitHub {
       owner = "dbeley";
       repo = "scripts";
-      rev = "2cacaa24ca91cb74f8d3a371adaf426765ed76bc";
-      sha256 = "VGu7Oz2B+XDSZHe7LcP+3tK1Qlet4pNXc4F1ZpC50aY=";
+      rev = "705634a4832ac15df0df0319ce6048621afd6cc2";
+      sha256 = "KWouJA2I0gVDjNwASI7sz3XrfyGQPwe6oqZ7mjjIw78=";
     };
   };
   wayland.windowManager.hyprland = {
