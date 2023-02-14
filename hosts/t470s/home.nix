@@ -8,11 +8,9 @@
   ...
 }: {
   imports = [
-    # ../apps/gnome/gnome.nix
     hyprland.homeManagerModules.default
     ../apps/hyprland/hyprland.nix
     ../apps/waybar/waybar.nix
-    # ../apps/wofi/wofi.nix
     ../apps/tofi/tofi.nix
 
     ../apps/git/git.nix
@@ -76,6 +74,8 @@
     gnome.gnome-system-monitor
     gh
     xfce.thunar
+    borgbackup
+    borgmatic
   ];
 
   services.mpris-proxy.enable = true;

@@ -8,12 +8,8 @@
   ...
 }: {
   imports = [
-    # ../apps/gnome/gnome.nix
-    # hyprland.homeManagerModules.default
-    # ../apps/hyprland/hyprland.nix
     ../apps/sway/sway.nix
     ../apps/waybar/waybar.nix
-    # ../apps/wofi/wofi.nix
     ../apps/tofi/tofi.nix
 
     ../apps/git/git.nix
@@ -75,6 +71,7 @@
     nnn
     gnome.gnome-system-monitor
     gh
+    xfce.thunar
   ];
 
   services.mpris-proxy.enable = true;
