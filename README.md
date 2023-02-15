@@ -2,6 +2,8 @@
 
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
 
+![t470s](imgs/t470s.png)
+
 | Type           | Program                           |
 |----------------|-----------------------------------|
 | **Shell:**     | fish                              |
