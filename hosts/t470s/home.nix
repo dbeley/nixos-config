@@ -19,6 +19,7 @@
     ../apps/alacritty/alacritty.nix
     ../apps/nvim/nvim.nix
     ../apps/emacs/emacs.nix
+    ../apps/kakoune/kakoune.nix
     ../apps/wal/wal.nix
     ../apps/wpgtk/wpgtk.nix
     ../apps/udiskie/udiskie.nix
