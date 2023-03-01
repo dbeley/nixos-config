@@ -28,7 +28,7 @@
     ../apps/bat/bat.nix
 
     ../apps/firefox/firefox.nix
-    ../apps/qutebrowser/qutebrowser.nix
+    # ../apps/qutebrowser/qutebrowser.nix
     ../apps/gammastep/gammastep.nix
     ../apps/ledger/ledger.nix
     ../apps/mpd/mpd.nix
