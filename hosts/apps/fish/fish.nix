@@ -11,10 +11,10 @@
     enable = true;
     shellAliases = {
       vim = "nvim";
-      ls = "exa";
-      l = "exa";
-      ll = "exa -lh";
-      la = "exa -lah";
+      ls = "exa --icons --group-directories-first -s Name";
+      l = "exa --icons --group-directories-first -s Name";
+      ll = "exa -1lh --icons --group-directories-first -s Name --time-style long-iso";
+      la = "exa -1lah --icons --group-directories-first -s Name --time-style long-iso";
       gd = "git diff";
       gs = "git status";
       cpr = "rsync -azvhP --stats --inplace --zc=zstd --zl=3";
