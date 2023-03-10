@@ -75,6 +75,8 @@
     gnome.gnome-system-monitor
     gh
     xfce.thunar
+    xfce.tumbler
+    ffmpegthumbnailer
     borgbackup
     borgmatic
   ];
