@@ -1,8 +1,4 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    waybar
-  ];
-
   nixpkgs.overlays = [
     (self: super: {
       waybar = super.waybar.overrideAttrs (oldAttrs: {
