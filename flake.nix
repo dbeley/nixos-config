@@ -11,9 +11,15 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    nix-doom-emacs = {
+      url = "github:nix-community/nix-doom-emacs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -34,7 +40,8 @@
   in {
     nixosConfigurations = (
       import ./hosts {
-        inherit nixpkgs lib inputs user system home-manager hyprland nix-doom-emacs;
+        inherit (nixpkgs) lib;
+        inherit inputs nixpkgs user system home-manager hyprland nix-doom-emacs;
       }
     );
   };
