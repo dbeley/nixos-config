@@ -34,8 +34,7 @@
   in {
     nixosConfigurations = (
       import ./hosts {
-        inherit (nixpkgs) lib;
-        inherit nixpkgs inputs user system home-manager hyprland nix-doom-emacs;
+        inherit nixpkgs lib inputs user system home-manager hyprland nix-doom-emacs;
       }
     );
   };
