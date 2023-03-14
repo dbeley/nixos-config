@@ -129,8 +129,6 @@ nnoremap <leader>n :NnnPicker %:p:h<CR>
 " Source fichiers de conf à la modification
 augroup configurationFiles
   autocmd! BufWritePost init.vim      source %
-  autocmd! BufWritePost Xresources    !xrdb -load ~/.Xresources
-  autocmd! BufWritePost .Xresources   !xrdb -load ~/.Xresources
 augroup END
 
 " Airline

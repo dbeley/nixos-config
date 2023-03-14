@@ -52,4 +52,5 @@
 (package! ox-hugo)
 (package! ox-reveal)
 (package! ox-twbs)
+(package! org-present)
 (package! keychain-environment)
