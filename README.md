@@ -8,7 +8,7 @@
 |----------------|-----------------------------------|
 | **Shell:**     | fish                              |
 | **DM:**        | tty1                              |
-| **WM:**        | hyprland + waybar                 |
+| **WM:**        | hyprland or sway + waybar         |
 | **Editor:**    | doom-emacs                        |
 | **Terminal:**  | alacritty                         |
 | **Launcher:**  | tofi                              |
@@ -17,8 +17,8 @@
 
 ## Hosts
 
-- **t470s**: my main computer, a Lenovo Thinkpad T470s (i5 6300U, 8Gb RAM)
-- **x61s**: my retro laptop, a Lenovo Thinkpad X61s (core 2 duo L7500, 3Gb RAM)
+- **t470s**: my main laptop, a Lenovo Thinkpad T470s (i5 6300U, 8Gb RAM, hyprland)
+- **x61s**: my retro laptop, a Lenovo Thinkpad X61s (Core 2 duo L7500, 3Gb RAM, sway)
 
 ## Usage
 
@@ -44,4 +44,4 @@ wpg -m
 
 ## Install
 
-On a new install, you should first copy `/etc/nixos/hardware-configuration.nix` over `hosts/hardware-configuration.nix`.
+On a new install, you should first copy `/etc/nixos/hardware-configuration.nix` over `hosts/{host}/hardware-configuration.nix`.
