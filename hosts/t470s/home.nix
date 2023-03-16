@@ -62,6 +62,7 @@
     nextcloud-client
     gnome.gnome-keyring
     libreoffice-fresh
+    ungoogled-chromium
     p7zip
     rsync
     ncdu
