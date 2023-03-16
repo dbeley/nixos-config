@@ -77,7 +77,7 @@
           "${modifier}+Shift+z" = "exec ${pkgs.emacs}/bin/emacs";
           "${modifier}+x" = "exec ${pkgs.alacritty}/bin/alacritty";
           "${modifier}+Shift+x" = "exec ${pkgs.steam}/bin/steam";
-          "${modifier}+t" = "exec ${pkgs.libreoffice}/bin/libreoffice";
+          "${modifier}+t" = "exec ${pkgs.libreoffice}/bin/soffice";
           "${modifier}+Shift+t" = "exec ${pkgs.gnome.gnome-system-monitor}/bin/gnome-system-monitor";
           "${modifier}+Shift+minus" = "move scratchpad";
           "${modifier}+minus" = "scratchpad show";
