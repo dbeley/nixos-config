@@ -23,7 +23,7 @@
     ../apps/wal/wal.nix
     ../apps/wpgtk/wpgtk.nix
     ../apps/udiskie/udiskie.nix
-    ../apps/mime/mime.nix
+    # ../apps/mime/mime.nix
     ../apps/swayimg/swayimg.nix
     ../apps/bat/bat.nix
 
@@ -37,6 +37,7 @@
     ../apps/zathura/zathura.nix
     # ../apps/autoscreen/autoscreen.nix
     # ../apps/mpdscrobble/mpdscrobble.nix
+    ../apps/steam/steam.nix
   ];
 
   # Home Manager needs a bit of information about you and the

@@ -10,7 +10,7 @@
   ...
 }: {
   imports = [
-    ./apps/steam/steam.nix
+    ./apps/steam/default.nix
     ./apps/udiskie/default.nix
   ];
 
