@@ -23,7 +23,7 @@
     ../apps/wal/wal.nix
     ../apps/wpgtk/wpgtk.nix
     ../apps/udiskie/udiskie.nix
-    # ../apps/mime/mime.nix
+    ../apps/mime/mime.nix
     ../apps/swayimg/swayimg.nix
     ../apps/bat/bat.nix
 
@@ -81,6 +81,7 @@
     ffmpegthumbnailer
     borgbackup
     borgmatic
+    yt-dlp
   ];
 
   services.mpris-proxy.enable = true;
