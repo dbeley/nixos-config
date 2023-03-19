@@ -12,20 +12,20 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "sd_mod"];
+  boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/fea3d992-ef2b-495b-b1be-3793695a4e11";
+    device = "/dev/disk/by-uuid/c61e5771-e59b-4ae7-aee7-9275a5ee4a1a";
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."luks-6a4dac48-468f-4257-b35f-6c16b829dc39".device = "/dev/disk/by-uuid/6a4dac48-468f-4257-b35f-6c16b829dc39";
+  boot.initrd.luks.devices."luks-60526d68-4044-45d8-82a7-0e1a26656183".device = "/dev/disk/by-uuid/60526d68-4044-45d8-82a7-0e1a26656183";
 
   fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-uuid/9941-4F8A";
+    device = "/dev/disk/by-uuid/7A68-2FAE";
     fsType = "vfat";
   };
 
@@ -37,7 +37,6 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp57s0u1u3.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp58s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
