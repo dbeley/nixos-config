@@ -82,6 +82,8 @@
     borgbackup
     borgmatic
     yt-dlp
+    hugo
+    gthumb
   ];
 
   services.mpris-proxy.enable = true;
