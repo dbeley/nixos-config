@@ -27,7 +27,7 @@ in {
         "browser.fullscreen.autohide" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
-        "browser.newtabpage.activity-stream.feeds.section.highlights" = true;
+        "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" = false;
         "browser.newtabpage.activity-stream.section.highlights.rows" = 4;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
