@@ -11,15 +11,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Install Nix
-        uses: cachix/install-nix-action@v16
-        with:
-          extra_nix_config: |
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+        uses: DeterminateSystems/nix-installer-action@v1
       - name: Update flake.lock
-        uses: DeterminateSystems/update-flake-lock@v16
+        uses: DeterminateSystems/update-flake-lock@v17
         with:
           inputs: nixpkgs
           pr-title: "Update flake.lock - nixpkgs" # Title of PR to be created
           pr-labels: |                  # Labels to be set on the PR
             dependencies
             automated
+          token: ${{ secrets.GITHUB_TOKEN }}
