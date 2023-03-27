@@ -75,7 +75,7 @@
     extraGroups = ["networkmanager" "wheel" "video"];
     packages = with pkgs; [
     ];
-    shell = pkgs.fish;
+    shell = "${pkgs.fish}/bin/fish";
   };
 
   # Allow unfree packages
