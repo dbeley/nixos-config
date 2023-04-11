@@ -17,6 +17,7 @@
     ../apps/fish/fish.nix
     ../apps/tmux/tmux.nix
     ../apps/alacritty/alacritty.nix
+    ../apps/direnv/direnv.nix
     ../apps/nvim/nvim.nix
     ../apps/emacs/emacs.nix
     ../apps/kakoune/kakoune.nix
