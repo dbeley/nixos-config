@@ -147,7 +147,11 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
+    registry.nixpkgs.flake = inputs.nixpkgs;
+    nixPath = ["nixpkgs=/etc/channels/nixpkgs"];
   };
+
+  environment.etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
 
   zramSwap = {
     enable = true;

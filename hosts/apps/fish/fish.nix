@@ -44,6 +44,8 @@
       if test -n "$DESKTOP_SESSION" | test -n "$WAYLAND_DISPLAY"
         set (gnome-keyring-daemon --start | string split "=")
       end
+
+      direnv hook fish | source
     '';
     loginShellInit = ''
       if test (tty) = /dev/tty1
