@@ -19,6 +19,7 @@
 
 - **t470s**: my main laptop, a Lenovo Thinkpad T470s (i5 6300U, 8Gb RAM, hyprland)
 - **x61s**: my retro laptop, a Lenovo Thinkpad X61s (Core 2 duo L7500, 3Gb RAM, sway)
+- **chuwi**: a Chuwi Herobox mini-PC (Celeron N4100, 8Gb RAM, hyprland)
 
 ## Usage
 

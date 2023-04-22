@@ -58,4 +58,27 @@
       }
     ];
   };
+  chuwi = lib.nixosSystem {
+    inherit system;
+    specialArgs = {inherit user inputs;};
+    modules = [
+      ./chuwi/hardware-configuration.nix
+      ./configuration.nix
+      ./common/uefi-no-encryption.nix
+      # compatibility with hyprland
+      ./apps/waybar/default.nix
+
+      home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {inherit user inputs system hyprland nix-doom-emacs;};
+          users.${user} = {
+            imports = [(import ./chuwi/home.nix)];
+          };
+        };
+      }
+    ];
+  };
 }

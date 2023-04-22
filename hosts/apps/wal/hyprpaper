@@ -1,3 +1,4 @@
 preload={wallpaper}
 wallpaper=eDP-1,{wallpaper}
 wallpaper=DP-5,{wallpaper}
+wallpaper=HDMI-A-1,{wallpaper}
