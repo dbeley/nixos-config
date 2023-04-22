@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" "rtsx_usb_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "usbhid" "sd_mod" "sdhci_pci" "rtsx_usb_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
@@ -23,6 +23,11 @@
       fsType = "vfat";
     };
 
+  fileSystems."/home/david/Disque2To" =
+    { device = "/dev/disk/by-uuid/e6913fa7-2069-4d38-9a32-89c4891afd0b";
+      fsType = "ext4";
+    };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -32,7 +37,7 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s21f0u4u3.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlo2.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
