@@ -63,10 +63,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(after! counsel
-  (setq counsel-rg-base-command
-        "rg -M 240 --hidden --with-filename --no-heading --line-number --color never %s"))
-
 (use-package! ox-hugo
   :ensure t
   :after ox)
@@ -85,18 +81,8 @@
 
 (setq org-html-indent 'nil)
 
-(after! org (setq org-capture-templates
-                  '(
-                    ;; idées : sport, calendrier, achats, journal
-                    ;;
-                    ("t" "TODO          (t) Todo" entry (file+olp "Journal.org" "Tâches")
-                     "* [ ] [%t] %?")
-                    ("n" "NOTES         (n) Notes" entry (file+olp+datetree "Journal.org" "Notes")
-                     "* [%t] %?")
-                    ("s" "SPORT         (s) Sport" entry (file+olp+datetree "Journal.org" "Sport")
-                     "* [%t] %?")
-                    ("b" "BEETS         (b) Beets (music to download)" entry (file+olp "Musique.org" "Beets")
-                     "* [ ] [%t] %?")
-                    )
-                  )
-  )
+(map! :after org-present
+      :map org-present-mode-keymap
+      :prefix "C-c"
+      "n" #'org-present-next
+      "p" #'org-present-prev)
