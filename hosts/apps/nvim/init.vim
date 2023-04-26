@@ -13,7 +13,7 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'psf/black'
+"Plug 'psf/black', { 'branch': 'stable' }
 call plug#end()
 
 " Change Leader and LocalLeader keys:
@@ -166,8 +166,8 @@ if !exists('g:airline_symbols')
     let g:airline_symbols.linenr = ''
 
 "Python
-autocmd BufWritePre *.py execute ':Black'
-let g:ale_linters = {'python': ['bandit', 'flake8', 'mypy']}
+"autocmd BufWritePre *.py execute ':Black'
+let g:ale_linters = {'python': ['ruff']}
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
