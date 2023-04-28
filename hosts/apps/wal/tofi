@@ -1,5 +1,5 @@
 font = "Iosevka Nerd Font"
-font-size = 18
+font-size = 25
 font-features = ""
 font-variations = ""
 hint-font = true
@@ -26,7 +26,7 @@ prompt-text = "run: "
 prompt-padding = 0
 placeholder-text = ""
 num-results = 10
-result-spacing = 25;
+result-spacing = 25
 horizontal = false
 min-input-width = 0
 width = 100%
