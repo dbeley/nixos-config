@@ -77,6 +77,7 @@
     nnn
     gnome.gnome-system-monitor
     gh
+    jq
     xfce.thunar
     xfce.tumbler
     ffmpegthumbnailer
