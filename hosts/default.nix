@@ -20,6 +20,7 @@
       ./common/laptop.nix
       # compatibility with hyprland
       ./apps/waybar/default.nix
+      ./apps/docker/default.nix
 
       home-manager.nixosModules.home-manager
       {
