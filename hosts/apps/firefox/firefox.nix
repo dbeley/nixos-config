@@ -107,6 +107,7 @@ in {
         ublock-origin
         vimium
         web-scrobbler
+        violentmonkey
       ];
     };
   };

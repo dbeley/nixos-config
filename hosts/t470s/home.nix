@@ -39,6 +39,7 @@
     # ../apps/autoscreen/autoscreen.nix
     # ../apps/mpdscrobble/mpdscrobble.nix
     ../apps/steam/steam.nix
+    ../apps/pycharm/pycharm.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -86,7 +87,7 @@
     yt-dlp
     hugo
     gthumb
-    jetbrains.pycharm-community
+    bottom
   ];
 
   services.mpris-proxy.enable = true;
