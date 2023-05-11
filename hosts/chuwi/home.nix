@@ -29,7 +29,7 @@
     ../apps/bat/bat.nix
 
     ../apps/firefox/firefox.nix
-    # ../apps/qutebrowser/qutebrowser.nix
+    ../apps/qutebrowser/qutebrowser.nix
     ../apps/gammastep/gammastep.nix
     ../apps/ledger/ledger.nix
     ../apps/mpd/mpd.nix
@@ -39,6 +39,7 @@
     # ../apps/autoscreen/autoscreen.nix
     # ../apps/mpdscrobble/mpdscrobble.nix
     ../apps/steam/steam.nix
+    ../apps/pycharm/pycharm.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -77,6 +78,7 @@
     nnn
     gnome.gnome-system-monitor
     gh
+    jq
     xfce.thunar
     xfce.tumbler
     ffmpegthumbnailer
@@ -85,6 +87,7 @@
     yt-dlp
     hugo
     gthumb
+    bottom
   ];
 
   services.mpris-proxy.enable = true;
