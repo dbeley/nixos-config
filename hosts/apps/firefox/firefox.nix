@@ -96,18 +96,19 @@ in {
       extensions = with addons; [
         augmented-steam
         cookie-autodelete
-        h264ify
-        multi-account-containers
+        darkreader
         firefox-translations
+        h264ify
         keepassxc-browser
-        reddit-enhancement-suite
+        multi-account-containers
         reddit-comment-collapser
+        reddit-enhancement-suite
         return-youtube-dislikes
         steam-database
         ublock-origin
         vimium
-        web-scrobbler
         violentmonkey
+        web-scrobbler
       ];
     };
   };
