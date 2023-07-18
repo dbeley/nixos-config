@@ -18,9 +18,11 @@
       ./configuration.nix
       ./common/uefi.nix
       ./common/laptop.nix
-      # compatibility with hyprland
-      ./apps/waybar/default.nix
+      ./apps/waybar/default.nix # compatibility with hyprland
       ./apps/docker/default.nix
+      ./apps/steam/default.nix
+      ./apps/udiskie/default.nix
+      ./apps/android/default.nix
 
       home-manager.nixosModules.home-manager
       {
@@ -45,6 +47,9 @@
       ./common/bios.nix
       ./common/laptop.nix
       ./apps/swaylock/default.nix
+      ./apps/steam/default.nix
+      ./apps/udiskie/default.nix
+      ./apps/android/default.nix
 
       home-manager.nixosModules.home-manager
       {
@@ -66,8 +71,10 @@
       ./chuwi/hardware-configuration.nix
       ./configuration.nix
       ./common/uefi-no-encryption.nix
-      # compatibility with hyprland
-      ./apps/waybar/default.nix
+      ./apps/waybar/default.nix # compatibility with hyprland
+      ./apps/steam/default.nix
+      ./apps/udiskie/default.nix
+      ./apps/android/default.nix
 
       home-manager.nixosModules.home-manager
       {

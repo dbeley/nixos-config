@@ -1,20 +1,5 @@
 {
   description = "NixOS configuration";
-  nixConfig = {
-    experimental-features = [ "nix-command" "flakes" ];
-    substituters = [
-      "https://cache.nixos.org/"
-    ];
-
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-  };
-
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
@@ -50,7 +35,7 @@
       inherit system;
       config.allowUnfree = true;
     };
-    lib = nixpkgs.lib;
+    inherit (nixpkgs.lib) lib;
   in {
     nixosConfigurations = (
       import ./hosts {

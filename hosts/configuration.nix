@@ -9,11 +9,6 @@
   user,
   ...
 }: {
-  imports = [
-    ./apps/steam/default.nix
-    ./apps/udiskie/default.nix
-  ];
-
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -149,6 +144,18 @@
     };
     registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = ["nixpkgs=/etc/channels/nixpkgs"];
+    settings = {
+      builders-use-substitutes = true;
+      substituters = [
+        "https://cache.nixos.org/"
+      ];
+      extra-substituters = [
+        "https://nix-community.cachix.org"
+      ];
+      extra-trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+    };
   };
 
   environment.etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;

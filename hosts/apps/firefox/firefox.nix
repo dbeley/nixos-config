@@ -23,6 +23,9 @@ in {
         "browser.download.open_pdf_attachments_inline" = true;
         "browser.download.panel.shown" = true;
         "browser.download.useDownloadDir" = false;
+        "browser.download.viewableInternally.typeWasRegistered.svg" = true;
+        "browser.download.viewableInternally.typeWasRegistered.webp" = true;
+        "browser.download.viewableInternally.typeWasRegistered.xml" = true;
         "browser.formfill.enable" = false;
         "browser.fullscreen.autohide" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;

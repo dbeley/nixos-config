@@ -56,6 +56,28 @@
         end
       end
     '';
+    functions = {
+      wav2flac = ''
+        set ORIGINAL_SIZE (du -hs | cut -f1)
+
+        fd -e wav -x ffmpeg -i "{}" -loglevel quiet -stats "{.}.flac"
+        fd -e wav -X rm -I
+
+        set NEW_SIZE (du -hs | cut -f1)
+
+        echo "Done. Reduced file size from $ORIGINAL_SIZE to $NEW_SIZE"
+      '';
+      opus = ''
+        set ORIGINAL_SIZE (du -hs | cut -f1)
+
+        fd -e wav -e flac -x ffmpeg -i "{}" -c:a libopus -b:a 128K -loglevel quiet -stats "{.}.opus"
+        fd -e wav -e flac -X rm -I
+
+        set NEW_SIZE (du -hs | cut -f1)
+
+        echo "Done. Reduced file size from $ORIGINAL_SIZE to $NEW_SIZE"
+      '';
+    };
 
     plugins = [
       {
