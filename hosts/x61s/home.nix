@@ -71,7 +71,18 @@
     nnn
     gnome.gnome-system-monitor
     gh
+    jq
     xfce.thunar
+    xfce.tumbler
+    ffmpegthumbnailer
+    wl-clipboard
+    borgbackup
+    borgmatic
+    yt-dlp
+    hugo
+    gthumb
+    bottom
+    wl-clipboard
   ];
 
   services.mpris-proxy.enable = true;

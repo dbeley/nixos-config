@@ -88,6 +88,7 @@
     hugo
     gthumb
     bottom
+    wl-clipboard
   ];
 
   services.mpris-proxy.enable = true;
