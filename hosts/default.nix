@@ -7,12 +7,14 @@
   user,
   hyprland,
   nix-doom-emacs,
+  stylix,
   ...
 }: {
   t470s = lib.nixosSystem {
     inherit system;
     specialArgs = {inherit user inputs;};
     modules = [
+      # stylix.nixosModules.stylix
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t470s
       ./t470s/hardware-configuration.nix
       ./configuration.nix
@@ -23,6 +25,7 @@
       ./apps/steam/default.nix
       ./apps/udiskie/default.nix
       ./apps/android/default.nix
+      # ./apps/stylix/default.nix
 
       home-manager.nixosModules.home-manager
       {

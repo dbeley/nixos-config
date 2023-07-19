@@ -19,6 +19,7 @@
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = inputs @ {
@@ -27,6 +28,7 @@
     home-manager,
     hyprland,
     nix-doom-emacs,
+    stylix,
     ...
   }: let
     system = "x86_64-linux";
@@ -40,7 +42,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs user system home-manager hyprland nix-doom-emacs;
+        inherit inputs nixpkgs user system home-manager hyprland nix-doom-emacs stylix;
       }
     );
   };
