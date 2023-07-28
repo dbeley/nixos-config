@@ -34,7 +34,6 @@
       set -x PAGER "bat"
       set -x MANPAGER "bat"
       set -x IMG_VIEWER swayimg
-      set TERM "rxvt"
 
       if test -e ~/.config/wpg/sequences
         cat ~/.config/wpg/sequences
