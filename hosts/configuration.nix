@@ -84,7 +84,7 @@
     wireguard-tools
   ];
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override {fonts = ["Iosevka"];})
     eb-garamond
     liberation_ttf
@@ -144,18 +144,6 @@
     };
     registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = ["nixpkgs=/etc/channels/nixpkgs"];
-    settings = {
-      builders-use-substitutes = true;
-      substituters = [
-        "https://cache.nixos.org/"
-      ];
-      extra-substituters = [
-        "https://nix-community.cachix.org"
-      ];
-      extra-trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-    };
   };
 
   environment.etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
