@@ -77,6 +77,7 @@
     nitch
     nnn
     gnome.gnome-system-monitor
+    gnome.gnome-disk-utility
     gh
     jq
     xfce.thunar
@@ -88,7 +89,7 @@
     hugo
     gthumb
     bottom
-    wl-clipboard
+    fio
   ];
 
   services.mpris-proxy.enable = true;

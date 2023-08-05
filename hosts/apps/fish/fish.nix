@@ -22,6 +22,10 @@
       mpv1080 = "mpv --ytdl-format=\"(bestvideo[height<=1080]+bestaudio)[ext=webm]/bestvideo[height<=1080]+bestaudio/best[height<=1080]/bestvideo+bestaudio/best\" ";
       meteo = "curl -H 'Accept-Language: fr' wttr.in";
       bal = "ledger -f ledger.ledger balance --depth 1";
+      fiowrite = "fio --rw=write --bs=4k --size=5G --name=seqwrite --ioengine=posixaio --runtime=60 --end_fsync=1";
+      fioread = "fio --rw=read --bs=4k --size=5G --name=seqread --ioengine=posixaio --runtime=60 --end_fsync=1";
+      fiorandwrite = "fio --rw=randwrite --bs=4k --size=5G --name=randwrite --ioengine=posixaio --runtime=60 --end_fsync=1";
+      fiorandread = "fio --rw=randread --bs=4k --size=5G --name=randread --ioengine=posixaio --runtime=60 --end_fsync=1";
     };
 
     shellInit = ''
@@ -66,7 +70,7 @@
 
         echo "Done. Reduced file size from $ORIGINAL_SIZE to $NEW_SIZE"
       '';
-      opus = ''
+      convert2opus = ''
         set ORIGINAL_SIZE (du -hs | cut -f1)
 
         fd -e wav -e flac -x ffmpeg -i "{}" -c:a libopus -b:a 128K -loglevel quiet -stats "{.}.opus"
