@@ -6,7 +6,6 @@
   home-manager,
   user,
   hyprland,
-  nix-doom-emacs,
   ...
 }: {
   t470s = lib.nixosSystem {
@@ -29,7 +28,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = {inherit user inputs system hyprland nix-doom-emacs;};
+          extraSpecialArgs = {inherit user inputs system hyprland;};
           users.${user} = {
             imports = [(import ./t470s/home.nix)];
           };
@@ -56,7 +55,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = {inherit user inputs system hyprland nix-doom-emacs;};
+          extraSpecialArgs = {inherit user inputs system hyprland;};
           users.${user} = {
             imports = [(import ./x61s/home.nix)];
           };
@@ -81,7 +80,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = {inherit user inputs system hyprland nix-doom-emacs;};
+          extraSpecialArgs = {inherit user inputs system hyprland;};
           users.${user} = {
             imports = [(import ./chuwi/home.nix)];
           };

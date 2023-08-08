@@ -1,7 +1,7 @@
 {
   description = "NixOS configuration";
   nixConfig = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
     substituters = [
       "https://cache.nixos.org/"
     ];
@@ -13,7 +13,6 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
-
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -30,10 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nix-doom-emacs = {
-      url = "github:nix-community/nix-doom-emacs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs @ {
@@ -41,7 +36,6 @@
     nixpkgs,
     home-manager,
     hyprland,
-    nix-doom-emacs,
     ...
   }: let
     system = "x86_64-linux";
@@ -55,7 +49,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs user system home-manager hyprland nix-doom-emacs;
+        inherit inputs nixpkgs user system home-manager hyprland;
       }
     );
   };

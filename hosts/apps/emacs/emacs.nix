@@ -1,12 +1,5 @@
-{
-  nix-doom-emacs,
-  pkgs,
-  ...
-}: {
-  imports = [nix-doom-emacs.hmModule];
-  programs.doom-emacs = {
-    enable = true;
-    doomPrivateDir = ./doom.d;
-  };
-  home.packages = with pkgs; [pandoc];
+{...}: {
+  home.file.".config/emacs/config.el".source = ./config.el;
+  home.file.".config/emacs/init.el".source = ./init.el;
+  home.file.".config/emacs/packages.el".source = ./packages.el;
 }

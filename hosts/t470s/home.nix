@@ -4,7 +4,6 @@
   user,
   inputs,
   hyprland,
-  nix-doom-emacs,
   ...
 }: {
   imports = [

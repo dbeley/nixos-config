@@ -82,6 +82,14 @@
     killall
     nfs-utils
     wireguard-tools
+
+    git
+    emacs # Emacs 27.2
+    ripgrep
+    # optional dependencies
+    coreutils # basic GNU utilities
+    fd
+    clang
   ];
 
   fonts.packages = with pkgs; [

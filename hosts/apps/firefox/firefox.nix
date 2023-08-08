@@ -18,8 +18,10 @@ in {
         "browser.compactmode.show" = true;
         "browser.contentblocking.category" = "strict";
         "browser.display.background_color" = "#666666";
+        "browser.download.always_ask_before_handling_new_types" = true;
         "browser.download.alwaysOpenPanel" = false;
         "browser.download.autoHideButton" = false;
+        "browser.download.manager.addToRecentDocs" = false;
         "browser.download.open_pdf_attachments_inline" = true;
         "browser.download.panel.shown" = true;
         "browser.download.useDownloadDir" = false;
@@ -76,6 +78,13 @@ in {
         "media.videocontrols.picture-in-picture.audio-toggle.enabled" = true;
         "media.videocontrols.picture-in-picture.keyboard-controls.enabled" = true;
         "network.IDN_show_punycode" = true;
+        "privacy.clearOnShutdown.cache" = true;
+        "privacy.clearOnShutdown.downloads" = true;
+        "privacy.clearOnShutdown.formdata" = true;
+        "privacy.clearOnShutdown.history" = false;
+        "privacy.clearOnShutdown.session" = true;
+        "privacy.clearOnShutdown.cookies" = false;
+        "privacy.clearOnShutdown.offlineApps" = true;
         "network.cookie.cookieBehavior" = 5;
         "privacy.donottrackheader.enabled" = true;
         "privacy.firstparty.isolate" = true;
@@ -84,17 +93,23 @@ in {
         "privacy.query_stripping.enabled.pbmode" = true;
         "privacy.resistFingerprinting" = true;
         "privacy.resistFingerprinting.autoDeclineNoUserInputCanvasPrompts" = false;
+        "privacy.sanitize.sanitizeOnShutdown" = true;
         "privacy.spoof_english" = 2;
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
         "privacy.userContext.enabled" = true;
         "privacy.userContext.extension" = "@testpilot-containers";
         "privacy.userContext.ui.enabled" = true;
+        "privacy.window.maxInnerWidth" = 1600;
+        "privacy.window.maxInnerHeigth" = 900;
+        "security.ssl.require_safe_negociation" = true;
+        "security.OCSP.require" = true;
         "signon.autofillForms" = false;
         "signon.generation.enabled" = false;
         "signon.management.page.breach-alerts.enabled" = false;
         "signon.rememberSignons" = false;
         "ui.systemUsesDarkTheme" = 1;
+        "webgl.disabled" = true;
       };
       extensions = with addons; [
         augmented-steam

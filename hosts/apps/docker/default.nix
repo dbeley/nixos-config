@@ -1,4 +1,4 @@
-{ user, ...}: {
+{user, ...}: {
   virtualisation.docker = {
     enable = true;
     rootless = {
@@ -7,5 +7,4 @@
     };
   };
   # users.users.${user}.extraGroups = [ "docker" ];
-
 }
