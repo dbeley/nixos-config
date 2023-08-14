@@ -82,9 +82,9 @@ in {
         "privacy.clearOnShutdown.downloads" = true;
         "privacy.clearOnShutdown.formdata" = true;
         "privacy.clearOnShutdown.history" = false;
-        "privacy.clearOnShutdown.session" = true;
+        "privacy.clearOnShutdown.sessions" = true;
         "privacy.clearOnShutdown.cookies" = false;
-        "privacy.clearOnShutdown.offlineApps" = true;
+        "privacy.clearOnShutdown.offlineApps" = false;
         "network.cookie.cookieBehavior" = 5;
         "privacy.donottrackheader.enabled" = true;
         "privacy.firstparty.isolate" = true;
