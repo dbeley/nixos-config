@@ -60,35 +60,37 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    keepassxc
-    nextcloud-client
-    gnome.gnome-keyring
-    libreoffice-fresh
-    ungoogled-chromium
-    p7zip
-    rsync
-    ncdu
-    htop
-    stow
-    ripgrep
-    fd
-    exa
-    nitch
-    nnn
-    gnome.gnome-system-monitor
-    gnome.gnome-disk-utility
-    gh
-    jq
-    xfce.thunar
-    xfce.tumbler
-    ffmpegthumbnailer
+    beets
     borgbackup
     borgmatic
-    yt-dlp
-    hugo
-    gthumb
     bottom
+    exa
+    fd
+    ffmpeg
+    ffmpegthumbnailer
     fio
+    gh
+    gnome.gnome-disk-utility
+    gnome.gnome-keyring
+    gnome.gnome-system-monitor
+    gthumb
+    htop
+    hugo
+    jq
+    keepassxc
+    libreoffice-fresh
+    ncdu
+    nextcloud-client
+    nitch
+    nnn
+    p7zip
+    ripgrep
+    rsync
+    stow
+    ungoogled-chromium
+    xfce.thunar
+    xfce.tumbler
+    yt-dlp
   ];
 
   services.mpris-proxy.enable = true;
