@@ -27,7 +27,6 @@ in {
     enable = true;
     xwayland = {
       enable = true;
-      hidpi = true;
     };
     extraConfig = lib.fileContents ./hyprland.conf;
   };
