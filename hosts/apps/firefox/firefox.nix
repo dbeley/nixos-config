@@ -113,15 +113,18 @@ in {
       };
       extensions = with addons; [
         augmented-steam
+        clearurls
         cookie-autodelete
         darkreader
         firefox-translations
         h264ify
+        hover-zoom-plus
         keepassxc-browser
         multi-account-containers
         reddit-comment-collapser
         reddit-enhancement-suite
         return-youtube-dislikes
+        sponsorblock
         steam-database
         ublock-origin
         vimium
