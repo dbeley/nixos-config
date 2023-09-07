@@ -65,7 +65,7 @@
     stow
     ripgrep
     fd
-    exa
+    eza
     nitch
     nnn
     gnome.gnome-system-monitor

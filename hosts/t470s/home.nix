@@ -64,7 +64,7 @@
     borgbackup
     borgmatic
     bottom
-    exa
+    eza
     fd
     ffmpeg
     ffmpegthumbnailer
