@@ -83,7 +83,7 @@
     nextcloud-client
     nitch
     nnn
-    p7zip
+    unzip
     ripgrep
     rsync
     stow
@@ -91,6 +91,8 @@
     xfce.thunar
     xfce.tumbler
     yt-dlp
+
+    discord
   ];
 
   services.mpris-proxy.enable = true;
