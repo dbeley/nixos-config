@@ -201,9 +201,9 @@
       include "/home/${user}/.cache/wal/colors-sway"
       set $tx #ffffff
 
-      bindsym --release Print exec "grim ~/Nextcloud/07_Images/07_Captures-d-écran_Wayland/$(date +%s).png"
-      bindsym --release Shift+Print exec 'grim -g "$(slurp -d)" ~/Nextcloud/07_Images/07_Captures-d-écran_Wayland/$(date +%s)_cropped.png'
-      bindsym --release XF86SelectiveScreenshot exec 'grim -g "$(slurp -d)" ~/Nextcloud/07_Images/07_Captures-d-écran_Wayland/$(date +%s)_cropped.png'
+      bindsym --release Print exec "grim ~/Nextcloud/10-19_Images/11_Images/11.07_Captures-d-écran_Sway/$(date +%s).png"
+      bindsym --release Shift+Print exec 'grim -g "$(slurp -d)" ~/Nextcloud/10-19_Images/11_Images/11.07_Captures-d-écran_Sway/$(date +%s)_cropped.png'
+      bindsym --release XF86SelectiveScreenshot exec 'grim -g "$(slurp -d)" ~/Nextcloud/10-19_Images/11_Images/11.07_Captures-d-écran_Sway/$(date +%s)_cropped.png'
     '';
   };
 }
