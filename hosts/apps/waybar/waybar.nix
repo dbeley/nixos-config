@@ -4,7 +4,7 @@
     settings = [
       {
         layer = "bottom";
-        modules-left = ["wlr/workspaces" "hyprland/window" "mpd"];
+        modules-left = ["hyprland/workspaces" "hyprland/window" "mpd"];
         modules-center = ["clock"];
         modules-right = ["network" "cpu" "memory" "temperature" "pulseaudio" "battery" "tray"];
         "hyprland/window" = {
