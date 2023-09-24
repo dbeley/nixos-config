@@ -11,10 +11,10 @@
           "format" = "{}";
           "separate-outputs" = true;
         };
-        "wlr/workspaces" = {
+        "hyprland/workspaces" = {
           "active-only" = false;
           "all-outputs" = true;
-          "format" = "{icon}";
+          "show-special" = false;
           "on-click" = "activate";
           "on-scroll-up" = "hyprctl dispatch workspace e+1";
           "on-scroll-down" = "hyprctl dispatch workspace e-1";
