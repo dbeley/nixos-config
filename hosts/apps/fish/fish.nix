@@ -81,7 +81,7 @@
         echo "Done. Reduced file size from $ORIGINAL_SIZE to $NEW_SIZE"
       '';
       cdj = ''
-        pushd ~/Nextcloud/*/*/$argv[1]*
+        pushd ~/Nextcloud/*/*/$argv[1].$argv[2]*
       '';
     };
 

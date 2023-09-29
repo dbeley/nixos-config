@@ -116,7 +116,6 @@ in {
         clearurls
         cookie-autodelete
         darkreader
-        firefox-translations
         h264ify
         hover-zoom-plus
         keepassxc-browser
