@@ -9,30 +9,66 @@
       };
     };
 
+    keymaps = [
+      {
+        key = "<C-s>";
+	action = ":w<CR>";
+      }
+      {
+        key = "<esc>";
+	action = ":noh<CR>";
+	options = {
+	  silent = true;
+	};
+      }
+      {
+        key = "<leader>f";
+	action = "<cmd>Telescope find_files<cr>";
+      }
+      {
+        key = "<leader>g";
+	action = "<cmd>Telescope live_grep<cr>";
+      }
+      {
+        key = "<leader>b";
+	action = "<cmd>Telescope buffers<cr>";
+      }
+      {
+        key = "<leader>t";
+	action = "<cmd>Telescope help_tags<cr>";
+      }
+    ];
+
     plugins = {
       airline = {
         enable = true;
 	powerline = true;
 	theme = "minimalist";
       };
-      telescope.enable = true;
       alpha.enable = true;
       bufferline.enable = true;
-
-      nvim-cmp.enable = true;
-      cmp-nvim-lsp.enable = true;
-      cmp-path.enable = true;
-      cmp-rg.enable = true;
-
       comment-nvim.enable = true;
       diffview.enable = true;
       fugitive.enable = true;
-      gitsigns.enable = true;
-      hardtime = {
+      gitsigns = {
         enable = true;
-	enabled = true;
+	currentLineBlame = true;
       };
       leap.enable = true;
+      lsp-format.enable = true;
+      markdown-preview.enable = true;
+      mini.enable = true;
+      navbuddy.enable = true;
+      neo-tree.enable = true;
+      notify.enable = true;
+      sniprun.enable = true;
+      surround.enable = true;
+      telescope.enable = true;
+      treesitter.enable = true;
+      treesitter-context.enable = true;
+      trouble.enable = true;
+      which-key.enable = true;
+
       lsp = {
         enable = true;
 	servers = {
@@ -42,17 +78,11 @@
 	  pylsp.enable = true;
 	};
       };
-      lsp-format.enable = true;
-      markdown-preview.enable = true;
-      mini.enable = true;
-      navbuddy.enable = true;
-      neo-tree.enable = true;
-      notify.enable = true;
-      sniprun.enable = true;
-      surround.enable = true;
 
-      trouble.enable = true;
-      which-key.enable = true;
+      nvim-cmp.enable = true;
+      cmp-nvim-lsp.enable = true;
+      cmp-path.enable = true;
+      cmp-rg.enable = true;
     };
 
     globals.mapleader = ";"; # Sets the leader key to comma
