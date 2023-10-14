@@ -37,6 +37,26 @@
         key = "<leader>t";
 	action = "<cmd>Telescope help_tags<cr>";
       }
+      {
+        key = "<leader>sr";
+	action = "<cmd>SnipRun<cr>";
+      }
+      {
+        key = "<leader>ss";
+	action = "<cmd>'<,'>SnipRun<cr>";
+      }
+      {
+        key = "<leader>sd";
+	action = "<cmd>SnipReset<cr>";
+      }
+      {
+        key = "<leader>sc";
+	action = "<cmd>SnipClose<cr>";
+      }
+      {
+        key = "<leader>n";
+	action = "<cmd>NeoTree<cr>";
+      }
     ];
 
     plugins = {
