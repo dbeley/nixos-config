@@ -4,10 +4,12 @@
   user,
   inputs,
   hyprland,
+  nixvim,
   ...
 }: {
   imports = [
     hyprland.homeManagerModules.default
+    nixvim.homeManagerModules.nixvim
     ../apps/hyprland/hyprland.nix
     ../apps/waybar/waybar.nix
     ../apps/tofi/tofi.nix
@@ -17,7 +19,8 @@
     ../apps/tmux/tmux.nix
     ../apps/alacritty/alacritty.nix
     ../apps/direnv/direnv.nix
-    ../apps/nvim/nvim.nix
+    # ../apps/nvim/nvim.nix
+    ../apps/nixvim/nixvim.nix
     ../apps/emacs/emacs.nix
     ../apps/kakoune/kakoune.nix
     ../apps/wal/wal.nix

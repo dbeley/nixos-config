@@ -15,7 +15,8 @@
     ../apps/fish/fish.nix
     ../apps/tmux/tmux.nix
     ../apps/alacritty/alacritty.nix
-    ../apps/nvim/nvim.nix
+    # ../apps/nvim/nvim.nix
+    ../apps/nixvim/nixvim.nix
     ../apps/emacs/emacs.nix
     ../apps/wal/wal.nix
     ../apps/wpgtk/wpgtk.nix

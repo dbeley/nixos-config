@@ -17,7 +17,8 @@
     ../apps/tmux/tmux.nix
     ../apps/alacritty/alacritty.nix
     ../apps/direnv/direnv.nix
-    ../apps/nvim/nvim.nix
+    # ../apps/nvim/nvim.nix
+    ../apps/nixvim/nixvim.nix
     ../apps/emacs/emacs.nix
     ../apps/kakoune/kakoune.nix
     ../apps/wal/wal.nix

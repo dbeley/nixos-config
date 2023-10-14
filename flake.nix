@@ -29,6 +29,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -36,6 +40,7 @@
     nixpkgs,
     home-manager,
     hyprland,
+    nixvim,
     ...
   }: let
     system = "x86_64-linux";
@@ -49,7 +54,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs user system home-manager hyprland;
+        inherit inputs nixpkgs user system home-manager hyprland nixvim;
       }
     );
   };
