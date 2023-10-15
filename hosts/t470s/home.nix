@@ -37,7 +37,7 @@
     ../apps/obs/obs.nix
     ../apps/zathura/zathura.nix
     ../apps/autoscreen/autoscreen.nix
-    # ../apps/mpdscrobble/mpdscrobble.nix
+    ../apps/mpdscrobble/mpdscrobble.nix
     ../apps/steam/steam.nix
     ../apps/pycharm/pycharm.nix
   ];

@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }: let
@@ -8,7 +7,7 @@ in {
   home.packages = with pkgs; [mpdscrobble];
   systemd.user.services."mpdscrobble" = {
     Unit = {
-      Description = "Take a screenshot with grim";
+      Description = "A simple last.fm scrobbler for MPD";
       After = "mpd.service";
     };
     Service = {
