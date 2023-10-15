@@ -5,28 +5,29 @@
     colorschemes = {
       nord = {
         enable = true;
-	disable_background = true;
+        disable_background = true;
       };
     };
 
     globals.mapleader = ";"; # Sets the leader key to comma
 
     options = {
-      number = true;         # Show line numbers
+      number = true; # Show line numbers
       relativenumber = false; # Show relative line numbers
       incsearch = true;
-      shiftwidth = 2;        # Tab width should be 2
+      expandtab = true;
+      shiftwidth = 2; # Tab width should be 2
       tabstop = 2;
       termguicolors = true;
-			ignorecase = true;
-			smartcase = true;
+      ignorecase = true;
+      smartcase = true;
     };
 
     plugins = {
       airline = {
         enable = true;
-	powerline = true;
-	theme = "minimalist";
+        powerline = true;
+        theme = "minimalist";
       };
       alpha.enable = true;
       bufferline.enable = true;
@@ -35,7 +36,7 @@
       fugitive.enable = true;
       gitsigns = {
         enable = true;
-	currentLineBlame = true;
+        currentLineBlame = true;
       };
       leap.enable = true;
       lsp-format.enable = true;
@@ -54,12 +55,12 @@
 
       lsp = {
         enable = true;
-	servers = {
-	  bashls.enable = true;
+        servers = {
+          bashls.enable = true;
           html.enable = true;
-	  nil_ls.enable = true;
-	  pylsp.enable = true;
-	};
+          nil_ls.enable = true;
+          pylsp.enable = true;
+        };
       };
 
       nvim-cmp.enable = true;
@@ -71,66 +72,66 @@
     keymaps = [
       {
         key = "<C-s>";
-	action = ":w<CR>";
+        action = ":w<CR>";
       }
       {
         key = "<esc>";
-	action = ":noh<CR>";
-	options = {
-	  silent = true;
-	};
+        action = ":noh<CR>";
+        options = {
+          silent = true;
+        };
       }
       {
         key = "<leader>k";
-	action = "<cmd>bdelete<cr>";
+        action = "<cmd>bdelete<cr>";
       }
       {
         key = "<leader>f";
-	action = "<cmd>Telescope find_files<cr>";
+        action = "<cmd>Telescope find_files<cr>";
       }
       {
         key = "<leader>g";
-	action = "<cmd>Telescope live_grep<cr>";
+        action = "<cmd>Telescope live_grep<cr>";
       }
       {
         key = "<leader>b";
-	action = "<cmd>Telescope buffers<cr>";
+        action = "<cmd>Telescope buffers<cr>";
       }
       {
         key = "<leader>t";
-	action = "<cmd>Telescope help_tags<cr>";
+        action = "<cmd>Telescope help_tags<cr>";
       }
       {
         key = "<leader>nn";
-	action = "<cmd>Neotree<cr>";
+        action = "<cmd>Neotree<cr>";
       }
       {
         key = "<leader>nb";
-	action = "<cmd>Neotree buffers<cr>";
+        action = "<cmd>Neotree buffers<cr>";
       }
       {
         key = "<leader>ng";
-	action = "<cmd>Neotree float git_status<cr>";
+        action = "<cmd>Neotree float git_status<cr>";
       }
       {
         key = "<leader>nc";
-	action = "<cmd>Neotree close<cr>";
+        action = "<cmd>Neotree close<cr>";
       }
       {
         key = "<leader>sr";
-	action = "<cmd>SnipRun<cr>";
+        action = "<cmd>SnipRun<cr>";
       }
       {
         key = "<leader>ss";
-	action = "<cmd>'<,'>SnipRun<cr>";
+        action = "<cmd>'<,'>SnipRun<cr>";
       }
       {
         key = "<leader>sd";
-	action = "<cmd>SnipReset<cr>";
+        action = "<cmd>SnipReset<cr>";
       }
       {
         key = "<leader>sc";
-	action = "<cmd>SnipClose<cr>";
+        action = "<cmd>SnipClose<cr>";
       }
     ];
   };
