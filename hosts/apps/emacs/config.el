@@ -23,8 +23,9 @@
 ;;
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
-(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 14 :weight 'normal :height 110)
-      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 14))
+(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 17 :weight 'normal :height 110)
+      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 17)
+      doom-big-font (font-spec :family "Iosevka Nerd Font" :size 26))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -105,3 +106,9 @@
       :prefix "C-c"
       "n" #'org-present-next
       "p" #'org-present-prev)
+
+(after! doom-modeline
+  (setq display-time-24hr-format t)
+  (display-time-mode t)
+  (display-battery-mode t)
+  )

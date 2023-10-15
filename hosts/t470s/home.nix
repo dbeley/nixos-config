@@ -97,7 +97,6 @@
 
     # dev dependencies
     clang
-    gcc
     gnumake
     cmake
     libtool
