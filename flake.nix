@@ -49,12 +49,11 @@
       inherit system;
       config.allowUnfree = true;
     };
-    inherit (nixpkgs.lib) lib;
+    inherit (nixpkgs) lib;
   in {
     nixosConfigurations = (
       import ./hosts {
-        inherit (nixpkgs) lib;
-        inherit inputs nixpkgs user system home-manager hyprland nixvim;
+        inherit lib inputs pkgs user system home-manager hyprland nixvim;
       }
     );
   };

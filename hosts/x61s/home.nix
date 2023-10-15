@@ -1,9 +1,6 @@
 {
-  config,
   pkgs,
   user,
-  inputs,
-  hyprland,
   ...
 }: {
   imports = [

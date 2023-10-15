@@ -1,8 +1,6 @@
 {
-  config,
   pkgs,
   user,
-  inputs,
   hyprland,
   ...
 }: {

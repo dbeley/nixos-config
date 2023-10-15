@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   nixpkgs.overlays = [
     (self: super: {
       waybar = super.waybar.overrideAttrs (oldAttrs: {

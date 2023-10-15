@@ -18,6 +18,8 @@
       shiftwidth = 2;        # Tab width should be 2
       tabstop = 2;
       termguicolors = true;
+			ignorecase = true;
+			smartcase = true;
     };
 
     plugins = {
