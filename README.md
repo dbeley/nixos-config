@@ -4,16 +4,16 @@
 
 ![t470s](imgs/t470s.png)
 
-| Type           | Program                           |
-|----------------|-----------------------------------|
-| **Shell:**     | fish                              |
-| **DM:**        | tty1                              |
-| **WM:**        | hyprland or sway + waybar         |
-| **Editor:**    | doom-emacs                        |
-| **Terminal:**  | alacritty                         |
-| **Launcher:**  | tofi                              |
-| **Browser:**   | firefox                           |
-| **GTK Theme:** | FlatColor managed by wpgtk+pywal  |
+| Type           | Program                                  |
+|----------------|------------------------------------------|
+| **Shell:**     | fish                                     |
+| **DM:**        | tty1                                     |
+| **WM:**        | hyprland or sway + waybar                |
+| **Editor:**    | doom-emacs or neovim (managed by nixvim) |
+| **Terminal:**  | alacritty                                |
+| **Launcher:**  | tofi                                     |
+| **Browser:**   | firefox                                  |
+| **GTK Theme:** | FlatColor (managed by wpgtk + pywal)     |
 
 ## Hosts
 
@@ -32,8 +32,13 @@ sudo nixos-rebuild switch --flake .#{host}
 Delete unused packages
 
 ```
-sudo nix-collect-garbage -d
+sudo nix-collect-garbage -d # for system packages
+nix-collect-garbage -d # for home-manager packages
 ```
+
+## Install
+
+On a new install, you should first copy `/etc/nixos/hardware-configuration.nix` over `hosts/{host}/hardware-configuration.nix`.
 
 ## Post-install
 
@@ -43,6 +48,7 @@ wpg-install.sh -g # install gtk theme
 wpg -m
 ```
 
-## Install
-
-On a new install, you should first copy `/etc/nixos/hardware-configuration.nix` over `hosts/{host}/hardware-configuration.nix`.
+```
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
+```
