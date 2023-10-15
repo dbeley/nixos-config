@@ -94,6 +94,18 @@
     yt-dlp
 
     discord
+
+    # dev dependencies
+    clang
+    gcc
+    gnumake
+    cmake
+    libtool
+
+    nil
+
+    python3
+    nodePackages.pyright
   ];
 
   services.mpris-proxy.enable = true;

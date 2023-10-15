@@ -56,10 +56,22 @@
       lsp = {
         enable = true;
         servers = {
-          bashls.enable = true;
-          html.enable = true;
-          nil_ls.enable = true;
-          pylsp.enable = true;
+          bashls = {
+            enable = true;
+            autostart = true;
+          };
+          html = {
+            enable = true;
+            autostart = true;
+          };
+          nil_ls = {
+            enable = true;
+            autostart = true;
+          };
+          pyright = {
+            enable = true;
+            autostart = true;
+          };
         };
       };
 
