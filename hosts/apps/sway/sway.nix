@@ -140,7 +140,6 @@
         criteria = [
           {title = "Ouvrir*";}
           {title = "Extension : *";}
-          {app_id = "imv";}
           {app_id = "swayimg";}
           {app_id = "mpv";}
           {app_id = "org.keepassxc.KeePassXC";}

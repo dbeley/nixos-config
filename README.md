@@ -13,7 +13,7 @@
 | **Terminal:**  | alacritty                                |
 | **Launcher:**  | tofi                                     |
 | **Browser:**   | firefox                                  |
-| **GTK Theme:** | FlatColor (managed by wpgtk + pywal)     |
+| **GTK Theme:** | wpgtk + pywal                            |
 
 ## Hosts
 
