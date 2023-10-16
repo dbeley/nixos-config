@@ -30,7 +30,7 @@
       "lfmd" = "https://www.last.fm/fr/music/{}";
       "rym" = "https://rateyourmusic.com/search?searchtype=a&searchterm={}";
       "rymd" = "https://rateyourmusic.com/artist/{}";
-      "scr" = "https://www.senscritique.com/search?q={}";
+      "scr" = "https://www.senscritique.com/search?query={}";
       "map" = "https://www.google.fr/maps/?q={}";
       "eba" = "https://www.ebay.fr/sch/i.html?_nkw={}";
       "twi" = "https://twitter.com/search?q={}";
