@@ -36,6 +36,12 @@ sudo nix-collect-garbage -d # for system packages
 nix-collect-garbage -d # for home-manager packages
 ```
 
+Optimise store
+
+```
+nix-store --optimise -v
+```
+
 ## Install
 
 On a new install, you should first copy `/etc/nixos/hardware-configuration.nix` over `hosts/{host}/hardware-configuration.nix`.
