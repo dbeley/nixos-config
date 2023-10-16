@@ -75,6 +75,8 @@
       "gitlab" = "https://gitlab.com/search?search={}";
       "imdb" = "https://www.imdb.com/find?ref_=nv_sr_fn&q={}&s=all";
       "nixosp" = "https://search.nixos.org/packages?from=0&size=50&sort=relevance&type=packages&query={}";
+      "backmarket" = "https://www.backmarket.fr/fr-fr/search?q={}";
+      "translate" = "https://translate.google.com/?sl=auto&tl=en&text={}&op=translate";
     };
   };
 }
