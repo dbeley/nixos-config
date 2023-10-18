@@ -15,6 +15,8 @@
     # ../apps/nvim/nvim.nix
     ../apps/nixvim/nixvim.nix
     ../apps/emacs/emacs.nix
+    ../apps/kakoune/kakoune.nix
+    ../apps/helix/helix.nix
     ../apps/wal/wal.nix
     ../apps/wpgtk/wpgtk.nix
     ../apps/udiskie/udiskie.nix
@@ -79,7 +81,7 @@
     ripgrep
     rsync
     stow
-    ungoogled-chromium
+    # ungoogled-chromium
     xfce.thunar
     xfce.tumbler
     yt-dlp

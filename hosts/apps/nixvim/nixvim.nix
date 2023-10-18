@@ -43,6 +43,7 @@
       markdown-preview.enable = true;
       # mini.enable = true;
       navbuddy.enable = true;
+      neorg.enable = true;
       neo-tree.enable = true;
       notify.enable = true;
       sniprun.enable = true;
