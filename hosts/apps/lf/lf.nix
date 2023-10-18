@@ -7,7 +7,7 @@
     settings = {
         preview = true;
         hidden = true;
-        drawbox = true
+        drawbox = true;
         icons = true;
         ignorecase = true;
     };
