@@ -35,8 +35,7 @@
       set -g theme_powerline_fonts yes
       set -g theme_color_scheme dark
       set -x VIRTUAL_ENV_DISABLE_PROMPT 1
-      set -x PAGER "bat"
-      set -x MANPAGER "bat"
+      set -x EDITOR "kak"
       set -x IMG_VIEWER swayimg
 
       if test -e ~/.config/wpg/sequences
