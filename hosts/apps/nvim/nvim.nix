@@ -27,7 +27,6 @@
       deoplete-jedi
       ale
       vim-devicons
-      nnn-vim
       vim-nix
     ];
     extraConfig = lib.fileContents ./init.vim;

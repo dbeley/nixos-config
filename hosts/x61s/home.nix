@@ -17,6 +17,7 @@
     ../apps/emacs/emacs.nix
     ../apps/kakoune/kakoune.nix
     ../apps/helix/helix.nix
+    ../apps/lf/lf.nix
     ../apps/wal/wal.nix
     ../apps/wpgtk/wpgtk.nix
     ../apps/udiskie/udiskie.nix
@@ -76,7 +77,6 @@
     ncdu
     nextcloud-client
     nitch
-    nnn
     unzip
     ripgrep
     rsync

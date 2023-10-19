@@ -239,7 +239,7 @@
         "image/x-wmf" = ["swayimg.desktop"];
         "image/x-xbitmap" = ["swayimg.desktop"];
         "image/xpm" = ["swayimg.desktop"];
-        "inode/directory" = ["nnn.desktop"];
+        "inode/directory" = ["lf.desktop"];
         "text/comma-separated-values" = ["libreoffice-calc.desktop"];
         "text/csv" = ["libreoffice-calc.desktop"];
         "text/english" = ["editor.desktop"];

@@ -85,7 +85,6 @@
     ncdu
     nextcloud-client
     nitch
-    nnn
     unzip
     ripgrep
     rsync

@@ -123,8 +123,6 @@ nmap <F8> :TagbarToggle<CR>
 "nnoremap <Space> <PageDown>
 "nnoremap <leader>n :lnext<CR>
 "nnoremap <leader>p :lprev<CR>
-let g:nnn#set_default_mappings = 0
-nnoremap <leader>n :NnnPicker %:p:h<CR>
 
 " Source fichiers de conf à la modification
 augroup configurationFiles

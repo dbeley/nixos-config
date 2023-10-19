@@ -192,7 +192,7 @@
         {command = "udiskie -a";}
         {command = "nextcloud --background";}
         {command = "keepassxc";}
-        {command = "${pkgs.alacritty}/bin/alacritty --class scratchpad -e nnn";}
+        {command = "${pkgs.alacritty}/bin/alacritty --class scratchpad -e ${pkgs.lf}";}
       ];
     };
 
