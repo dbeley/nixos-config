@@ -116,6 +116,7 @@ in {
         clearurls
         cookie-autodelete
         darkreader
+        francais-language-pack
         h264ify
         hover-zoom-plus
         keepassxc-browser
@@ -123,6 +124,7 @@ in {
         reddit-comment-collapser
         reddit-enhancement-suite
         return-youtube-dislikes
+        simple-tab-groups
         sponsorblock
         steam-database
         ublock-origin
