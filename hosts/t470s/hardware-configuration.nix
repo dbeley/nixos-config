@@ -15,6 +15,7 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/c61e5771-e59b-4ae7-aee7-9275a5ee4a1a";
@@ -22,6 +23,9 @@
   };
 
   boot.initrd.luks.devices."luks-60526d68-4044-45d8-82a7-0e1a26656183".device = "/dev/disk/by-uuid/60526d68-4044-45d8-82a7-0e1a26656183";
+  boot.initrd.secrets = {
+    "/crypto_keyfile.bin" = null;
+  };
 
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-uuid/7A68-2FAE";
