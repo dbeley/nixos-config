@@ -67,6 +67,7 @@
     borgbackup
     borgmatic
     bottom
+    element-desktop
     eza
     fd
     ffmpeg
