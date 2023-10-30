@@ -74,7 +74,6 @@
     ffmpegthumbnailer
     fio
     gh
-    gnome.gnome-disk-utility
     gnome.gnome-keyring
     gnome.gnome-system-monitor
     gthumb
@@ -86,6 +85,7 @@
     ncdu
     nextcloud-client
     nitch
+    pavucontrol
     unzip
     ripgrep
     rsync

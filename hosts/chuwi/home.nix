@@ -71,7 +71,6 @@
     ffmpegthumbnailer
     fio
     gh
-    gnome.gnome-disk-utility
     gnome.gnome-keyring
     gnome.gnome-system-monitor
     gthumb
