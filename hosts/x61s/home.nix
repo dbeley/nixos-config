@@ -76,14 +76,30 @@
     ncdu
     nextcloud-client
     nitch
-    unzip
+    pavucontrol
     ripgrep
     rsync
     stow
     # ungoogled-chromium
+    unzip
     xfce.thunar
     xfce.tumbler
     yt-dlp
+
+    discord
+    element-desktop
+
+    # dev dependencies
+    clang
+    gnumake
+    cmake
+    libtool
+
+    nil
+    nvd
+
+    python3
+    nodePackages.pyright
   ];
 
   services.mpris-proxy.enable = true;
