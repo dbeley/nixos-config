@@ -18,8 +18,8 @@ in {
         "browser.compactmode.show" = true;
         "browser.contentblocking.category" = "strict";
         "browser.display.background_color" = "#666666";
-        "browser.download.always_ask_before_handling_new_types" = true;
         "browser.download.alwaysOpenPanel" = false;
+        "browser.download.always_ask_before_handling_new_types" = true;
         "browser.download.autoHideButton" = false;
         "browser.download.manager.addToRecentDocs" = false;
         "browser.download.open_pdf_attachments_inline" = true;
@@ -30,11 +30,16 @@ in {
         "browser.download.viewableInternally.typeWasRegistered.xml" = true;
         "browser.formfill.enable" = false;
         "browser.fullscreen.autohide" = false;
+        "browser.menu.showViewImageInfo" = true;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
+        "browser.newtabpage.activity-stream.default.sites" = "";
         "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
+        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+        "browser.newtabpage.activity-stream.feeds.topsites" = true;
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" = false;
         "browser.newtabpage.activity-stream.section.highlights.rows" = 4;
+        "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.topSitesRows" = 4;
         "browser.newtabpage.pinned" = "[]";
@@ -45,13 +50,18 @@ in {
         "browser.send_pings" = false;
         "browser.sessionstore.interval" = 60000;
         "browser.startup.page" = 3;
+        "browser.tabs.firefox-view" = true;
+        "browser.tabs.firefox-view-next" = true;
         "browser.tabs.insertAfterCurrent" = true;
         "browser.tabs.loadBookmarksInBackground" = true;
         "browser.toolbars.bookmarks.visibility" = "never";
         "browser.translation.neverForLanguages" = "fr";
         "browser.uidensity" = 1;
         "browser.urlbar.doubleClickSelectsAll" = false;
+        "browser.urlbar.suggest.calculator" = true;
+        "browser.urlbar.suggest.topsites" = false;
         "browser.urlbar.trimURLS" = false;
+        "browser.urlbar.unitConversion.enabled" = true;
         "dom.battery.enabled" = false;
         "dom.event.clipboardevents.enabled" = false;
         "extensions.formautofill.addresses.enabled" = false;
@@ -64,10 +74,14 @@ in {
         "font.name.monospace.x-western" = "IosevkaTerm Nerd Font Mono";
         "font.name.sans-serif.x-western" = "Overpass";
         "font.name.serif.x-western" = "EB Garamond";
+        "full-screen-api.transition-duration.enter" = "0 0";
+        "full-screen-api.transition-duration.leave" = "0 0";
+        "full-screen-api.warning.delay" = -1;
         "full-screen-api.warning.timeout" = 0;
         "general.autoScroll" = true;
         "general.smoothScroll" = false;
         "gfx.webrender.all" = true;
+        "identity.fxaccounts.enabled" = true;
         "javascript.use_us_english_locale" = true;
         "layout.spellcheckDefault" = 0;
         "media.ffmpeg.vaapi.enabled" = true;
@@ -78,14 +92,16 @@ in {
         "media.videocontrols.picture-in-picture.audio-toggle.enabled" = true;
         "media.videocontrols.picture-in-picture.keyboard-controls.enabled" = true;
         "network.IDN_show_punycode" = true;
+        "network.cookie.cookieBehavior" = 5;
+        "nglayout.initialpaint.delay" = 0;
+        "nglayout.initialpaint.delay_in_oopif" = 0;
         "privacy.clearOnShutdown.cache" = true;
+        "privacy.clearOnShutdown.cookies" = false;
         "privacy.clearOnShutdown.downloads" = true;
         "privacy.clearOnShutdown.formdata" = true;
         "privacy.clearOnShutdown.history" = false;
-        "privacy.clearOnShutdown.sessions" = true;
-        "privacy.clearOnShutdown.cookies" = false;
         "privacy.clearOnShutdown.offlineApps" = false;
-        "network.cookie.cookieBehavior" = 5;
+        "privacy.clearOnShutdown.sessions" = true;
         "privacy.donottrackheader.enabled" = true;
         "privacy.firstparty.isolate" = true;
         "privacy.firstparty.isolate.restrict_opener_access" = true;
@@ -100,10 +116,10 @@ in {
         "privacy.userContext.enabled" = true;
         "privacy.userContext.extension" = "@testpilot-containers";
         "privacy.userContext.ui.enabled" = true;
-        "privacy.window.maxInnerWidth" = 1600;
         "privacy.window.maxInnerHeigth" = 900;
-        "security.ssl.require_safe_negociation" = true;
+        "privacy.window.maxInnerWidth" = 1600;
         "security.OCSP.require" = true;
+        "security.ssl.require_safe_negociation" = true;
         "signon.autofillForms" = false;
         "signon.generation.enabled" = false;
         "signon.management.page.breach-alerts.enabled" = false;
@@ -123,6 +139,7 @@ in {
         reddit-comment-collapser
         reddit-enhancement-suite
         return-youtube-dislikes
+        sidebery
         sponsorblock
         steam-database
         ublock-origin
