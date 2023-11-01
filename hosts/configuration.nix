@@ -139,10 +139,22 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 30d";
+      options = "--delete-older-than 7d";
     };
     registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = ["nixpkgs=/etc/channels/nixpkgs"];
+  };
+
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "-L" # print build logs
+    ];
+    dates = "02:00";
+    randomizedDelaySec = "45min";
   };
 
   environment.etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
