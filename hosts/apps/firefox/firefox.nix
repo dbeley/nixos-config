@@ -10,6 +10,7 @@ in {
     enable = true;
     profiles.${user} = {
       settings = {
+        "apz.overscroll.enabled" = true;
         "beacon.enabled" = false;
         "browser.aboutConfig.showWarning" = false;
         "browser.bookmarks.openInTabClosesMenu" = false;
@@ -43,12 +44,14 @@ in {
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.topSitesRows" = 4;
         "browser.newtabpage.pinned" = "[]";
+        "browser.preferences.moreFromMozilla" = false;
         "browser.safebrowsing.enabled" = false;
         "browser.safebrowsing.malware.enabled" = false;
         "browser.search.context.loadInBackground" = true;
         "browser.search.region" = "FR";
         "browser.send_pings" = false;
         "browser.sessionstore.interval" = 60000;
+        "browser.shell.checkDefaultBrowser" = false;
         "browser.startup.page" = 3;
         "browser.tabs.firefox-view" = true;
         "browser.tabs.firefox-view-next" = true;
@@ -67,6 +70,8 @@ in {
         "extensions.formautofill.addresses.enabled" = false;
         "extensions.formautofill.available" = "off";
         "extensions.formautofill.creditCards.enabled" = false;
+        "extensions.getAddons.showPane" = false;
+        "extensions.htmlaboutaddons.recommendations.enabled" = false;
         "extensions.pocket.enabled" = false;
         "findbar.highlightAll" = true;
         "fission.autostart" = true;
@@ -79,7 +84,7 @@ in {
         "full-screen-api.warning.delay" = -1;
         "full-screen-api.warning.timeout" = 0;
         "general.autoScroll" = true;
-        "general.smoothScroll" = false;
+        "general.smoothScroll" = true;
         "gfx.webrender.all" = true;
         "identity.fxaccounts.enabled" = true;
         "javascript.use_us_english_locale" = true;
@@ -91,6 +96,7 @@ in {
         "media.rdd-vpx.enabled" = false;
         "media.videocontrols.picture-in-picture.audio-toggle.enabled" = true;
         "media.videocontrols.picture-in-picture.keyboard-controls.enabled" = true;
+        "mousewheel.default.delta_multiplier_y" = 275;
         "network.IDN_show_punycode" = true;
         "network.cookie.cookieBehavior" = 5;
         "nglayout.initialpaint.delay" = 0;
