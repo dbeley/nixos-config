@@ -84,7 +84,7 @@ in {
         "full-screen-api.warning.delay" = -1;
         "full-screen-api.warning.timeout" = 0;
         "general.autoScroll" = true;
-        "general.smoothScroll" = true;
+        "general.smoothScroll" = false;
         "gfx.webrender.all" = true;
         "identity.fxaccounts.enabled" = true;
         "javascript.use_us_english_locale" = true;
