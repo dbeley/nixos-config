@@ -85,6 +85,9 @@
       nixdiff = ''
         nvd diff /nix/var/nix/profiles/system-$argv[1]-link /nix/var/nix/profiles/system-$argv[2]-link
       '';
+      zipextract = ''
+        fd -e zip -x sh -c 'unzip -o -d "''${0%.*}" "$0"' '{}' ';'
+      '';
     };
 
     plugins = [
