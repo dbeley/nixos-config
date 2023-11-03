@@ -82,6 +82,9 @@
       cdj = ''
         pushd ~/Nextcloud/*/*/$argv[1].$argv[2]*
       '';
+      nixdiff = ''
+        nvd diff /nix/var/nix/profiles/system-$argv[1]-link /nix/var/nix/profiles/system-$argv[2]-link
+      '';
     };
 
     plugins = [
