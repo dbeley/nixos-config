@@ -61,13 +61,20 @@
     #media-session.enable = true;
   };
 
+  security.doas.enable = true;
+  security.sudo.enable = false;
+  # Configure doas
+  security.doas.extraRules = [{
+  users = [ "$user" ];
+  keepEnv = true;
+  persist = true;  
+  }];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
     description = "David";
     extraGroups = ["networkmanager" "wheel" "video"];
-    packages = with pkgs; [
-    ];
     shell = "${pkgs.fish}/bin/fish";
   };
 
