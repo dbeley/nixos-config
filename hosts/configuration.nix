@@ -61,8 +61,8 @@
     #media-session.enable = true;
   };
 
-  security.doas.enable = true;
-  security.sudo.enable = false;
+  security.doas.enable = false;
+  security.sudo.enable = true;
   # Configure doas
   security.doas.extraRules = [{
   users = [ "$user" ];
@@ -88,6 +88,7 @@
     killall
     nfs-utils
     wireguard-tools
+    git
   ];
 
   fonts.packages = with pkgs; [
