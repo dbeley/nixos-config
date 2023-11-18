@@ -9,6 +9,7 @@
       e = "~/nfs/Expansion/Downloads";
       t = "~/Téléchargements";
       d = "~/Documents";
+      m = "~/nfs/WDC14/Musique";
     };
     plugins = {
       mappings = {

@@ -91,6 +91,14 @@
         key = "G";
         command = "move_end";
       }
+      {
+        key = "m";
+        command = "move_selected_items_down";
+      }
+      {
+        key = "M";
+        command = "move_selected_items_up";
+      }
     ];
   };
 }
