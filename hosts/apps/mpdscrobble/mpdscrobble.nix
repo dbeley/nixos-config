@@ -4,7 +4,7 @@
 }: let
   mpdscrobble = pkgs.python3.pkgs.callPackage ./package.nix {};
 in {
-  home.packages = with pkgs; [mpdscrobble];
+  home.packages = [mpdscrobble];
   systemd.user.services."mpdscrobble" = {
     Unit = {
       Description = "A simple last.fm scrobbler for MPD";

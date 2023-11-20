@@ -5,11 +5,11 @@
 with python3.pkgs;
   buildPythonApplication rec {
     pname = "mpdscrobble";
-    version = "0.3.2";
+    version = "0.3.3";
 
     src = fetchPypi {
       inherit pname version;
-      sha256 = "JwgiPX7j5F+Ny1MayO4+ZcX2hdiy6/RVMyGSRtPgb+Y=";
+      sha256 = "jOmJJzUWfiLOlpVVPKCsMCQ7rEqjBAUgrP2jdRyWmjc=";
     };
 
     propagatedBuildInputs = [mpd2 pylast httpx];
