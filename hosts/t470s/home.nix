@@ -67,7 +67,7 @@
     beets
     borgbackup
     borgmatic
-    bottom
+    btop
     eza
     fd
     ffmpeg
