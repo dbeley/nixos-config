@@ -87,6 +87,7 @@
     nitch
     pavucontrol
     ripgrep
+    ripgrep-all
     rsync
     stow
     unzip

@@ -79,6 +79,7 @@
     nitch
     pavucontrol
     ripgrep
+    ripgrep-all
     rsync
     stow
     # ungoogled-chromium
