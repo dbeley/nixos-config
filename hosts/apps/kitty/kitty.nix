@@ -9,16 +9,8 @@
       cursor_shape = "block";
       shell_integration = "no-cursor";
       };
-    # font = {
-    #   normal = {
-    #     family = "Iosevka Nerd Font";
-    #     style = "Regular";
-    #   };
-    #   size = 12;
-    # };
-    #   colors = {
-    #     transparent_background_colors = true;
-    #   };
-    # };
+    shellIntegration = {
+      enableFishIntegration = true;
+    };
   };
 }
