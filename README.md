@@ -10,7 +10,7 @@
 | **DM:**        | tty1                                     |
 | **WM:**        | hyprland or sway + waybar                |
 | **Editor:**    | doom-emacs or neovim (managed by nixvim) |
-| **Terminal:**  | alacritty                                |
+| **Terminal:**  | kitty                                    |
 | **Launcher:**  | tofi                                     |
 | **Browser:**   | firefox                                  |
 | **GTK Theme:** | wpgtk + pywal                            |

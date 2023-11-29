@@ -19,7 +19,7 @@
     wrapperFeatures.gtk = true;
     xwayland = true;
     config = rec {
-      terminal = "alacritty";
+      terminal = "kitty";
       modifier = "Mod4";
       fonts = {
         names = ["Iosevka Nerd Font"];
@@ -71,11 +71,11 @@
       in
         lib.mkOptionDefault {
           "${modifier}+d" = "exec ${pkgs.tofi}/bin/tofi-run -c ~/.cache/wal/tofi | xargs swaymsg exec --";
-          "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
+          "${modifier}+Return" = "exec ${pkgs.kitty}/bin/kitty";
           "${modifier}+q" = "kill";
           "${modifier}+z" = "exec ${pkgs.firefox}/bin/firefox";
           "${modifier}+Shift+z" = "exec ${pkgs.emacs}/bin/emacs";
-          "${modifier}+x" = "exec ${pkgs.alacritty}/bin/alacritty";
+          "${modifier}+x" = "exec ${pkgs.kitty}/bin/kitty";
           "${modifier}+Shift+x" = "exec ${pkgs.steam}/bin/steam";
           "${modifier}+t" = "exec ${pkgs.libreoffice}/bin/soffice";
           "${modifier}+Shift+t" = "exec ${pkgs.gnome.gnome-system-monitor}/bin/gnome-system-monitor";
@@ -192,7 +192,7 @@
         {command = "udiskie -a";}
         {command = "nextcloud --background";}
         {command = "keepassxc";}
-        {command = "${pkgs.alacritty}/bin/alacritty --class scratchpad -e ${pkgs.lf}";}
+        {command = "${pkgs.kitty}/bin/kitty --class scratchpad -e ${pkgs.lf}";}
       ];
     };
 

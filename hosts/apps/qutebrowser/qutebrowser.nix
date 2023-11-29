@@ -6,7 +6,7 @@
       content = {
         headers.do_not_track = true;
       };
-      editor = {command = ["alacritty" "-e" "nvim" "{}"];};
+      editor = {command = ["kitty" "-e" "nvim" "{}"];};
       downloads = {
         position = "bottom";
         location.directory = "~/Téléchargements";

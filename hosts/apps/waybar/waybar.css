@@ -29,6 +29,7 @@ window#waybar.empty #window {
 }
 
 window#waybar.alacritty #window,
+window#waybar.kitty #window,
 window#waybar.Firefox #window,
 window#waybar.Nextcloud #window,
 window#waybar.keepassxc #window,

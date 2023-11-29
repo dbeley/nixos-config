@@ -15,7 +15,8 @@
     ../apps/git/git.nix
     ../apps/fish/fish.nix
     ../apps/tmux/tmux.nix
-    ../apps/alacritty/alacritty.nix
+    # ../apps/alacritty/alacritty.nix
+    ../apps/kitty/kitty.nix
     ../apps/direnv/direnv.nix
     # ../apps/nvim/nvim.nix
     ../apps/nixvim/nixvim.nix
