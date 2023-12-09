@@ -9,11 +9,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1701835357,
-        "narHash": "sha256-LvhDtnVt0yek7HXJplbIsybLJz4+WdSos2A9Hs4Kb3g=",
+        "lastModified": 1702094573,
+        "narHash": "sha256-WxQ+DxZDm/3oBc+ICv7++EEACCxQu1TMW8J33lz4NDE=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "9f5aa0319a15ce5e16e785460eff93cc9ee38897",
+        "rev": "c737e61a461d9eb5914dbf898aae8080ae895e1c",
         "type": "gitlab"
       },
       "original": {
@@ -143,11 +143,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1701893860,
-        "narHash": "sha256-1x/ofcWuVik/Po5T/+Z89Cx4/9PAmMGW9BAA0JayjhM=",
+        "lastModified": 1702094848,
+        "narHash": "sha256-BCzvctSduaCC6hNxfAipMqZSUcWlpOjF39j0fYTS5Bo=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "5489f9f07a73c6b5b97702731a5092463a01fb5b",
+        "rev": "dd0714c22a7f588c1c80f83b45f66f034f83a884",
         "type": "github"
       },
       "original": {
@@ -238,11 +238,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1701879058,
-        "narHash": "sha256-cOHIndHbXJ69DeYpa3srPBmAa+MuJhq1RgF1J1I3c3s=",
+        "lastModified": 1702048362,
+        "narHash": "sha256-KtzdL7PGMBnYgHoqpgeSAYdb3eYpHn1sbSf+XYtXcoQ=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "032f697da6ae830460095f881644da650f17a967",
+        "rev": "d6d47afa42e6f4393e63ed60929155bba523aca7",
         "type": "github"
       },
       "original": {
