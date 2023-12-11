@@ -14,13 +14,13 @@
     modules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t470s
       ./t470s/hardware-configuration.nix
-      ./configuration.nix
-      ./common/uefi.nix
-      ./common/laptop.nix
-      ./apps/docker/default.nix
-      ./apps/steam/default.nix
-      ./apps/udiskie/default.nix
-      ./apps/android/default.nix
+      ../modules/configuration.nix
+      ../modules/common/uefi.nix
+      ../modules/common/laptop.nix
+      ../apps/docker/default.nix
+      ../apps/steam/default.nix
+      ../apps/udiskie/default.nix
+      ../apps/android/default.nix
 
       home-manager.nixosModules.home-manager
       {
@@ -43,13 +43,13 @@
       inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       ./x13/hardware-configuration.nix
-      ./configuration.nix
-      ./common/uefi.nix
-      ./common/laptop.nix
-      ./apps/docker/default.nix
-      ./apps/steam/default.nix
-      ./apps/udiskie/default.nix
-      ./apps/android/default.nix
+      ../modules/configuration.nix
+      ../modules/common/uefi.nix
+      ../modules/common/laptop.nix
+      ../apps/docker/default.nix
+      ../apps/steam/default.nix
+      ../apps/udiskie/default.nix
+      ../apps/android/default.nix
 
       home-manager.nixosModules.home-manager
       {
@@ -70,13 +70,13 @@
     modules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x200s
       ./x61s/hardware-configuration.nix
-      ./configuration.nix
-      ./common/bios.nix
-      ./common/laptop.nix
-      ./apps/swaylock/default.nix
-      ./apps/steam/default.nix
-      ./apps/udiskie/default.nix
-      ./apps/android/default.nix
+      ../modules/configuration.nix
+      ../modules/common/bios.nix
+      ../modules/common/laptop.nix
+      ../apps/swaylock/default.nix
+      ../apps/steam/default.nix
+      ../apps/udiskie/default.nix
+      ../apps/android/default.nix
 
       home-manager.nixosModules.home-manager
       {

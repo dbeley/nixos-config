@@ -8,42 +8,42 @@
   imports = [
     hyprland.homeManagerModules.default
     nixvim.homeManagerModules.nixvim
-    ../apps/hyprland/hyprland.nix
-    ../apps/waybar/waybar.nix
-    ../apps/tofi/tofi.nix
+    ../../apps/hyprland/hyprland.nix
+    ../../apps/waybar/waybar.nix
+    ../../apps/tofi/tofi.nix
 
-    ../apps/git/git.nix
-    ../apps/fish/fish.nix
-    ../apps/tmux/tmux.nix
-    # ../apps/alacritty/alacritty.nix
-    ../apps/kitty/kitty.nix
-    ../apps/direnv/direnv.nix
-    # ../apps/nvim/nvim.nix
-    ../apps/nixvim/nixvim.nix
-    ../apps/emacs/emacs.nix
-    ../apps/kakoune/kakoune.nix
-    ../apps/helix/helix.nix
-    # ../apps/lf/lf.nix
-    ../apps/nnn/nnn.nix
-    ../apps/wal/wal.nix
-    ../apps/wpgtk/wpgtk.nix
-    ../apps/udiskie/udiskie.nix
-    ../apps/mime/mime.nix
-    ../apps/swayimg/swayimg.nix
-    ../apps/bat/bat.nix
+    ../../apps/git/git.nix
+    ../../apps/fish/fish.nix
+    ../../apps/tmux/tmux.nix
+    # ../../apps/alacritty/alacritty.nix
+    ../../apps/kitty/kitty.nix
+    ../../apps/direnv/direnv.nix
+    # ../../apps/nvim/nvim.nix
+    ../../apps/nixvim/nixvim.nix
+    ../../apps/emacs/emacs.nix
+    ../../apps/kakoune/kakoune.nix
+    ../../apps/helix/helix.nix
+    # ../../apps/lf/lf.nix
+    ../../apps/nnn/nnn.nix
+    ../../apps/wal/wal.nix
+    ../../apps/wpgtk/wpgtk.nix
+    ../../apps/udiskie/udiskie.nix
+    ../../apps/mime/mime.nix
+    ../../apps/swayimg/swayimg.nix
+    ../../apps/bat/bat.nix
 
-    ../apps/firefox/firefox.nix
-    ../apps/qutebrowser/qutebrowser.nix
-    ../apps/gammastep/gammastep.nix
-    ../apps/ledger/ledger.nix
-    ../apps/mpd/mpd.nix
-    ../apps/mpv/mpv.nix
-    ../apps/obs/obs.nix
-    ../apps/zathura/zathura.nix
-    ../apps/autoscreen/autoscreen.nix
-    ../apps/mpdscrobble/mpdscrobble.nix
-    ../apps/steam/steam.nix
-    ../apps/pycharm/pycharm.nix
+    ../../apps/firefox/firefox.nix
+    ../../apps/qutebrowser/qutebrowser.nix
+    ../../apps/gammastep/gammastep.nix
+    ../../apps/ledger/ledger.nix
+    ../../apps/mpd/mpd.nix
+    ../../apps/mpv/mpv.nix
+    ../../apps/obs/obs.nix
+    ../../apps/zathura/zathura.nix
+    ../../apps/autoscreen/autoscreen.nix
+    ../../apps/mpdscrobble/mpdscrobble.nix
+    ../../apps/steam/steam.nix
+    ../../apps/pycharm/pycharm.nix
   ];
 
   # Home Manager needs a bit of information about you and the

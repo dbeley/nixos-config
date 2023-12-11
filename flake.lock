@@ -9,11 +9,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1702094573,
-        "narHash": "sha256-WxQ+DxZDm/3oBc+ICv7++EEACCxQu1TMW8J33lz4NDE=",
+        "lastModified": 1702195824,
+        "narHash": "sha256-jvAv0Ah0bDl8us8mEglQOIcN4e/gBm6DYGa6NPYHY7o=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "c737e61a461d9eb5914dbf898aae8080ae895e1c",
+        "rev": "f1b7b6c130755d6e37a477c9772f4625ab1d1ece",
         "type": "gitlab"
       },
       "original": {
@@ -119,11 +119,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1701728041,
-        "narHash": "sha256-x0pyrI1vC8evVDxCxyO6olOyr4wlFg9+VS3C3p4xFYQ=",
+        "lastModified": 1702203126,
+        "narHash": "sha256-4BhN2Vji19MzRC7SUfPZGmtZ2WZydQeUk/ogfRBIZMs=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "ac7216918cd65f3824ba7817dea8f22e61221eaf",
+        "rev": "defbb9c5857e157703e8fc7cf3c2ceb01cb95883",
         "type": "github"
       },
       "original": {
@@ -143,11 +143,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1702094848,
-        "narHash": "sha256-BCzvctSduaCC6hNxfAipMqZSUcWlpOjF39j0fYTS5Bo=",
+        "lastModified": 1702227188,
+        "narHash": "sha256-FA8Aw0tGuhDCflpc1QXc5vf9OxfP0Kl5D3pMXir0hPU=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "dd0714c22a7f588c1c80f83b45f66f034f83a884",
+        "rev": "efdf07e295d00cf5391a8c0089967a69a76d9b08",
         "type": "github"
       },
       "original": {
@@ -199,11 +199,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1701693815,
-        "narHash": "sha256-7BkrXykVWfkn6+c1EhFA3ko4MLi3gVG0p9G96PNnKTM=",
+        "lastModified": 1702206697,
+        "narHash": "sha256-vE9oEx3Y8TO5MnWwFlmopjHd1JoEBno+EhsfUCq5iR8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "09ec6a0881e1a36c29d67497693a67a16f4da573",
+        "rev": "29d6c96900b9b576c2fb89491452f283aa979819",
         "type": "github"
       },
       "original": {
@@ -238,11 +238,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1702048362,
-        "narHash": "sha256-KtzdL7PGMBnYgHoqpgeSAYdb3eYpHn1sbSf+XYtXcoQ=",
+        "lastModified": 1702157149,
+        "narHash": "sha256-R/DJp9s4EPjNYsquuBkFmLm9NGlFQrZ+T+Gkyr9pYBE=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "d6d47afa42e6f4393e63ed60929155bba523aca7",
+        "rev": "430c8f672bcaf811aaae8b7856fcca481b7064e5",
         "type": "github"
       },
       "original": {
