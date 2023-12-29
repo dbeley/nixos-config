@@ -7,7 +7,7 @@
       defaultSession = "gnome";
       autoLogin = {
         enable = true;
-        user = "xxx";
+        user = "david";
       };
     };
   };
