@@ -18,6 +18,7 @@
 ## Hosts
 
 - **x13**: my main laptop, a Lenovo Thinkpad X13 (Ryzen 5 4650U, 16Gb RAM, hyprland)
+- **sg13**: my main desktop computer, in a Silverstone SG13 Mini-ITX case (Ryzen 5 2600, RX 580 8Gb, 16Gb RAM, gnome)
 - **t470s**: my previous main laptop, a Lenovo Thinkpad T470s (i5 6300U, 8Gb RAM, hyprland)
 - **x61s**: my retro laptop, a Lenovo Thinkpad X61s (Core 2 duo L7500, 3Gb RAM, sway)
 
