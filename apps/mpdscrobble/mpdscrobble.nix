@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   mpdscrobble = pkgs.python3.pkgs.callPackage ./package.nix {};
 in {
   home.packages = [mpdscrobble];

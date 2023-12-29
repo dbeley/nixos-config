@@ -8,7 +8,7 @@
       window_padding_width = "10 10";
       cursor_shape = "block";
       shell_integration = "no-cursor";
-      };
+    };
     shellIntegration = {
       enableFishIntegration = true;
     };

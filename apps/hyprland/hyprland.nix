@@ -2,8 +2,7 @@
   pkgs,
   lib,
   ...
-}: 
-{
+}: {
   home.packages = with pkgs; [mako libnotify hyprpaper grim slurp pamixer];
   home.file.".local/bin/wrappehl".source = ./wrappedhl;
   home.file = {

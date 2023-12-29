@@ -64,11 +64,13 @@
   security.doas.enable = false;
   security.sudo.enable = true;
   # Configure doas
-  security.doas.extraRules = [{
-  users = [ "$user" ];
-  keepEnv = true;
-  persist = true;  
-  }];
+  security.doas.extraRules = [
+    {
+      users = ["$user"];
+      keepEnv = true;
+      persist = true;
+    }
+  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {

@@ -12,7 +12,7 @@ in {
   systemd.user.timers."autoscreen" = {
     Unit = {
       Description = "Run autoscreen every hour at random";
-      After = [ "multi-user.target" ];
+      After = ["multi-user.target"];
     };
     Timer = {
       OnCalendar = "hourly";
