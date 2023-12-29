@@ -64,6 +64,32 @@
       }
     ];
   };
+  sg13 = lib.nixosSystem {
+    inherit system;
+    specialArgs = {inherit user inputs;};
+    modules = [
+      inputs.nixos-hardware.nixosModules.common-cpu-amd
+      inputs.nixos-hardware.nixosModules.common-gpu-amd
+      ./sg13/hardware-configuration.nix
+      ../modules/configuration.nix
+      ../modules/common/uefi.nix
+      ../apps/gnome/default.nix
+      ../apps/steam/default.nix
+      ../apps/udiskie/default.nix
+
+      home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {inherit user inputs system nixvim;};
+          users.${user} = {
+            imports = [(import ./sg13/home.nix)];
+          };
+        };
+      }
+    ];
+  };
   x61s = lib.nixosSystem {
     inherit system;
     specialArgs = {inherit user inputs;};
