@@ -1,11 +1,11 @@
 {
   pkgs,
   user,
-  nixvim,
+  inputs,
   ...
 }: {
   imports = [
-    nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeManagerModules.nixvim
 
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix

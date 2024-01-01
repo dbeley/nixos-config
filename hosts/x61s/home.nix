@@ -1,9 +1,11 @@
 {
   pkgs,
   user,
+  inputs,
   ...
 }: {
   imports = [
+    inputs.nixvim.homeManagerModules.nixvim
     ../../apps/sway/sway.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix

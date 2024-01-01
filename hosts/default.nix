@@ -4,8 +4,6 @@
   system,
   home-manager,
   user,
-  hyprland,
-  nixvim,
   ...
 }: {
   t470s = lib.nixosSystem {
@@ -27,7 +25,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = {inherit user inputs system hyprland nixvim;};
+          extraSpecialArgs = {inherit user inputs system;};
           users.${user} = {
             imports = [(import ./t470s/home.nix)];
           };
@@ -56,7 +54,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = {inherit user inputs system hyprland nixvim;};
+          extraSpecialArgs = {inherit user inputs system;};
           users.${user} = {
             imports = [(import ./x13/home.nix)];
           };
@@ -82,7 +80,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = {inherit user inputs system nixvim;};
+          extraSpecialArgs = {inherit user inputs system;};
           users.${user} = {
             imports = [(import ./sg13/home.nix)];
           };
@@ -109,7 +107,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = {inherit user inputs system hyprland nixvim;};
+          extraSpecialArgs = {inherit user inputs system;};
           users.${user} = {
             imports = [(import ./x61s/home.nix)];
           };

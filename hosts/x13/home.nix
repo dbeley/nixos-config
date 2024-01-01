@@ -1,13 +1,12 @@
 {
   pkgs,
   user,
-  hyprland,
-  nixvim,
+  inputs,
   ...
 }: {
   imports = [
-    hyprland.homeManagerModules.default
-    nixvim.homeManagerModules.nixvim
+    inputs.hyprland.homeManagerModules.default
+    inputs.nixvim.homeManagerModules.nixvim
     ../../apps/hyprland/hyprland.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix

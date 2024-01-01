@@ -39,8 +39,6 @@
     self,
     nixpkgs,
     home-manager,
-    hyprland,
-    nixvim,
     ...
   }: let
     system = "x86_64-linux";
@@ -53,7 +51,7 @@
   in {
     nixosConfigurations = (
       import ./hosts {
-        inherit lib inputs pkgs user system home-manager hyprland nixvim;
+        inherit lib inputs pkgs user system home-manager;
       }
     );
   };
