@@ -81,8 +81,10 @@
   };
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.chromium.enableWideVine = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    chromium.enableWideVine = true;
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
