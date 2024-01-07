@@ -3,6 +3,7 @@
   inputs,
   system,
   home-manager,
+  disko,
   user,
   ...
 }: {
@@ -12,6 +13,7 @@
     modules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t470s
       ./t470s/hardware-configuration.nix
+      ./t470s/configuration.nix
       ../modules/configuration.nix
       ../modules/common/uefi.nix
       ../modules/common/laptop.nix
@@ -41,6 +43,7 @@
       inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       ./x13/hardware-configuration.nix
+      ./x13/configuration.nix
       ../modules/configuration.nix
       ../modules/common/uefi.nix
       ../modules/common/laptop.nix
@@ -69,6 +72,7 @@
       inputs.nixos-hardware.nixosModules.common-cpu-amd
       inputs.nixos-hardware.nixosModules.common-gpu-amd
       ./sg13/hardware-configuration.nix
+      ./sg13/configuration.nix
       ../modules/configuration.nix
       ../modules/common/uefi.nix
       ../apps/gnome/default.nix
@@ -94,6 +98,7 @@
     modules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x200s
       ./x61s/hardware-configuration.nix
+      ./x61s/configuration.nix
       ../modules/configuration.nix
       ../modules/common/bios.nix
       ../modules/common/laptop.nix
@@ -113,6 +118,29 @@
           };
         };
       }
+    ];
+  };
+  era1 = lib.nixosSystem {
+    inherit system;
+    specialArgs = {inherit user inputs;};
+    modules = [
+      disko.nixosModules.disko
+      ../modules/server-configuration.nix
+      ./era1/disk-config.nix
+      ./era1/hardware-configuration.nix
+      ./era1/configuration.nix
+
+      # home-manager.nixosModules.home-manager
+      # {
+      #   home-manager = {
+      #     useGlobalPkgs = true;
+      #     useUserPackages = true;
+      #     extraSpecialArgs = {inherit user inputs system;};
+      #     users.${user} = {
+      #       imports = [(import ./sg13/home.nix)];
+      #     };
+      #   };
+      # }
     ];
   };
 }

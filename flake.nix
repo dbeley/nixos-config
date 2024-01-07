@@ -33,12 +33,17 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
     home-manager,
+    disko,
     ...
   }: let
     system = "x86_64-linux";
@@ -51,7 +56,7 @@
   in {
     nixosConfigurations = (
       import ./hosts {
-        inherit lib inputs pkgs user system home-manager;
+        inherit lib inputs pkgs user system home-manager disko;
       }
     );
   };

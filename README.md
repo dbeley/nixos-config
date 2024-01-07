@@ -17,10 +17,11 @@
 
 ## Hosts
 
-- **x13**: my main laptop, a Lenovo Thinkpad X13 (Ryzen 5 4650U, 16Gb RAM, hyprland)
-- **sg13**: my main desktop computer, in a Silverstone SG13 Mini-ITX case (Ryzen 5 2600, RX 580 8Gb, 16Gb RAM, gnome)
-- **t470s**: my previous main laptop, a Lenovo Thinkpad T470s (i5 6300U, 8Gb RAM, hyprland)
-- **x61s**: my retro laptop, a Lenovo Thinkpad X61s (Core 2 duo L7500, 3Gb RAM, sway)
+- **x13**: my main laptop (Lenovo ThinkPad X13 Gen 1: Ryzen 5 4650U, 16GB RAM, hyprland)
+- **sg13**: my main desktop computer (Silverstone SG13: Ryzen 5 2600, RX 580 8GB, 16GB RAM, gnome)
+- **t470s**: my previous main laptop (Lenovo Thinkpad T470s: Intel Core i5-6300U, 8GB RAM, hyprland)
+- **x61s**: my retro laptop (Lenovo Thinkpad X61s: Intel Core 2 Duo L7500, 3GB RAM, sway)
+- **era1**: my first server image installed in a Proxmox VM (Fractal Design Era: Intel N100, 32GB RAM)
 
 ## Usage
 
@@ -28,6 +29,7 @@ Rebuild the system
 
 ```
 sudo nixos-rebuild switch --flake .#{host}
+sudo nixos-rebuild switch --flake .#{host} --target-host root@<ip address> # for a remote host
 ```
 
 Delete unused packages
