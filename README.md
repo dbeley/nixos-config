@@ -17,8 +17,8 @@
 
 ## Hosts
 
-- **x13**: my main laptop (Lenovo ThinkPad X13 Gen 1: Ryzen 5 4650U, 16GB RAM, hyprland)
-- **sg13**: my main desktop computer (Silverstone SG13: Ryzen 5 2600, RX 580 8GB, 16GB RAM, gnome)
+- **x13**: my main laptop (Lenovo ThinkPad X13 Gen 1: AMD Ryzen 5 4650U, 16GB RAM, hyprland)
+- **sg13**: my main desktop computer (Silverstone SG13: AMD Ryzen 5 2600, RX 580 8GB, 16GB RAM, gnome)
 - **t470s**: my previous main laptop (Lenovo Thinkpad T470s: Intel Core i5-6300U, 8GB RAM, hyprland)
 - **x61s**: my retro laptop (Lenovo Thinkpad X61s: Intel Core 2 Duo L7500, 3GB RAM, sway)
 - **era1**: my first server image installed in a Proxmox VM (Fractal Design Era: Intel N100, 32GB RAM)
