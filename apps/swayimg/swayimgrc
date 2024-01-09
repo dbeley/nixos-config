@@ -18,7 +18,7 @@
 scale = fit
 
 # Start in full screen mode (yes/no)
-fullscreen = no
+fullscreen = yes
 
 # Anti-aliasing (yes/no)
 antialiasing = no
@@ -90,8 +90,10 @@ F1 = help
 Home = first_file
 End = last_file
 Prior = prev_file
+p = prev_file
 Next = next_file
 space = next_file
+n = next_file
 D = prev_dir
 d = next_dir
 O = prev_frame
@@ -100,9 +102,13 @@ S = slideshow
 s = animation
 f = fullscreen
 Left = step_left 10
+h = step_left 10
 Right = step_right 10
+l = step_right 10
 Up = step_up 10
+k = step_up 10
 Down = step_down 10
+j = step_down 10
 equal = zoom +10
 plus = zoom +10
 minus = zoom -10
