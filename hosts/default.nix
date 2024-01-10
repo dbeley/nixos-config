@@ -125,8 +125,7 @@
     specialArgs = {inherit user inputs;};
     modules = [
       disko.nixosModules.disko
-      ../modules/server-configuration.nix
-      ./era1/disk-config.nix
+      { disko.devices.disk.disk1.device = "/dev/vda"; }
       ./era1/hardware-configuration.nix
       ./era1/configuration.nix
 
