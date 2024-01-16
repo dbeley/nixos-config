@@ -5,7 +5,10 @@
     colorschemes = {
       nord = {
         enable = true;
-        disable_background = true;
+        disableBackground = true;
+        italic = false;
+        contrast = true;
+        borders = true;
       };
     };
 
@@ -29,7 +32,10 @@
         powerline = true;
         theme = "minimalist";
       };
-      alpha.enable = true;
+      alpha = {
+        enable = true;
+        theme = "dashboard";
+      };
       bufferline.enable = true;
       comment-nvim.enable = true;
       diffview.enable = true;
