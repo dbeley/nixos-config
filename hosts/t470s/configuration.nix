@@ -1,3 +1,3 @@
 {
-  networking.hostName = "t470s-nixos";
+  networking.hostName = "t470s";
 }

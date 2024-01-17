@@ -1,3 +1,3 @@
 {
-  networking.hostName = "x13-nixos";
+  networking.hostName = "x13";
 }
