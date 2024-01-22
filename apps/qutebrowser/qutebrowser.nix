@@ -15,6 +15,9 @@
         show = "multiple";
         position = "bottom";
       };
+      qt = {
+        highdpi = true;
+      };
     };
     searchEngines = {
       "DEFAULT" = "https://start.duckduckgo.com/?q={}";

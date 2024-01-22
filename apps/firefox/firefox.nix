@@ -124,7 +124,10 @@ in {
         "privacy.userContext.ui.enabled" = true;
         "privacy.window.maxInnerHeigth" = 900;
         "privacy.window.maxInnerWidth" = 1600;
+        "security.OCSP.enabled" = 1;
         "security.OCSP.require" = true;
+        "security.ssl.enable_ocsp_must_staple" = true;
+        "security.ssl.enable_ocsp_stapling" = true;
         "security.ssl.require_safe_negociation" = true;
         "signon.autofillForms" = false;
         "signon.generation.enabled" = false;
