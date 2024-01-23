@@ -29,8 +29,8 @@
     plugins = {
       airline = {
         enable = true;
-        powerline = true;
-        theme = "minimalist";
+        powerlineFonts = true;
+        theme = "dark";
       };
       alpha = {
         enable = true;
