@@ -138,10 +138,7 @@ in {
       };
       extensions = with addons; [
         augmented-steam
-        clearurls
-        cookie-autodelete
         darkreader
-        h264ify
         hover-zoom-plus
         keepassxc-browser
         multi-account-containers
