@@ -5,6 +5,7 @@
       name = "FlatColor";
     };
 
+
     # iconTheme = {
     #   name = "Papirus-Dark";
     #   package = pkgs.papirus-icon-theme;
@@ -27,5 +28,12 @@
     #   '';
     # };
   };
+
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+    style.name = "gtk2";
+  };
+
   home.packages = with pkgs; [wpgtk dconf];
 }
