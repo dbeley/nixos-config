@@ -82,6 +82,7 @@
     htop
     hugo
     jq
+    just
     keepassxc
     libreoffice-fresh
     ncdu
