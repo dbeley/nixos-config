@@ -92,15 +92,6 @@
 
     plugins = [
       {
-        name = "z";
-        src = pkgs.fetchFromGitHub {
-          owner = "jethrokuan";
-          repo = "z";
-          rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
-          sha256 = "+FUBM7CodtZrYKqU542fQD+ZDGrd2438trKM0tIESs0=";
-        };
-      }
-      {
         name = "bobthefish";
         src = pkgs.fetchFromGitHub {
           owner = "oh-my-fish";
@@ -109,15 +100,6 @@
           sha256 = "jiXzkW4H9YORR4iRNAfjlPT2jSyXQKmNx3WA+TjleE8=";
         };
       }
-      # {
-      #  name="fzf.fish";
-      #  src = pkgs.fetchFromGitHub {
-      #    owner = "PatrickF1";
-      #    repo = "fzf.fish";
-      #    rev = "63c8f8e65761295da51029c5b6c9e601571837a1";
-      #    sha256 = "i9FcuQdmNlJnMWQp7myF3N0tMD/2I0CaMs/PlD8o1gw=";
-      #  };
-      # }
     ];
 
     functions = {

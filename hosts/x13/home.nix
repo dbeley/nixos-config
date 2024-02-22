@@ -30,6 +30,7 @@
     ../../apps/mime/mime.nix
     ../../apps/swayimg/swayimg.nix
     ../../apps/bat/bat.nix
+    ../../apps/zoxide/zoxide.nix
 
     ../../apps/firefox/firefox.nix
     # ../../apps/qutebrowser/qutebrowser.nix
