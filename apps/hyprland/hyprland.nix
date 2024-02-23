@@ -21,9 +21,6 @@
     plugins = [
       inputs.hycov.packages.${system}.hycov
     ];
-    settings = {
-      animation = import ./config/animation.nix;
-    };
     extraConfig = lib.fileContents ./hyprland.conf;
   };
 }

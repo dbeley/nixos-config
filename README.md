@@ -61,3 +61,12 @@ wpg -m
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
 ```
+
+### just
+
+A `justfile` is also provided, see https://github.com/casey/just for more information.
+
+```
+just switch
+just clean
+```
