@@ -11,4 +11,7 @@ clean:
   sudo nix-collect-garbage -d
   nix-collect-garbage -d
 
-all: switch clean
+optimize:
+  nix-store --optimize -v
+
+all: switch clean optimize
