@@ -5,10 +5,12 @@
     colorschemes = {
       nord = {
         enable = true;
-        disableBackground = true;
-        italic = false;
-        contrast = true;
-        borders = true;
+        settings = {
+          disable_background = true;
+          italic = false;
+          contrast = true;
+          borders = true;
+        };
       };
     };
 
