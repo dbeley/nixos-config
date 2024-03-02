@@ -70,3 +70,9 @@ A `justfile` is also provided, see https://github.com/casey/just for more inform
 just switch
 just clean
 ```
+
+Create a `.env` and fill it with the needed environment variables:
+
+```
+HOST=x13
+````
