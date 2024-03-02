@@ -55,8 +55,6 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    home-manager,
-    disko,
     ...
   }: let
     system = "x86_64-linux";
@@ -69,7 +67,7 @@
   in {
     nixosConfigurations = (
       import ./hosts {
-        inherit lib inputs pkgs user system home-manager disko;
+        inherit lib inputs pkgs user system;
       }
     );
   };

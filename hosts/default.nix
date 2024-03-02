@@ -2,8 +2,6 @@
   lib,
   inputs,
   system,
-  home-manager,
-  disko,
   user,
   ...
 }: {
@@ -22,7 +20,7 @@
       ../apps/udiskie/default.nix
       ../apps/android/default.nix
 
-      home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
           useGlobalPkgs = true;
@@ -52,7 +50,7 @@
       ../apps/udiskie/default.nix
       ../apps/android/default.nix
 
-      home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
           useGlobalPkgs = true;
@@ -79,7 +77,7 @@
       ../apps/steam/default.nix
       ../apps/udiskie/default.nix
 
-      home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
           useGlobalPkgs = true;
@@ -107,7 +105,7 @@
       ../apps/udiskie/default.nix
       ../apps/android/default.nix
 
-      home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
           useGlobalPkgs = true;
@@ -124,12 +122,12 @@
     inherit system;
     specialArgs = {inherit user inputs;};
     modules = [
-      disko.nixosModules.disko
+      inputs.disko.nixosModules.disko
       {disko.devices.disk.disk1.device = "/dev/vda";}
       ./era1/hardware-configuration.nix
       ./era1/configuration.nix
 
-      # home-manager.nixosModules.home-manager
+      # inputs.home-manager.nixosModules.home-manager
       # {
       #   home-manager = {
       #     useGlobalPkgs = true;
