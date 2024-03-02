@@ -1,6 +1,7 @@
 {
   programs.nixvim = {
     enable = true;
+    colorscheme = "nord";
 
     colorschemes = {
       nord = {
