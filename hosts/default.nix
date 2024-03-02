@@ -71,23 +71,25 @@
       inputs.nixos-hardware.nixosModules.common-gpu-amd
       ./sg13/hardware-configuration.nix
       ./sg13/configuration.nix
+      ./sg13/autologin.nix
+      ./sg13/gamescope.nix
       ../modules/configuration.nix
       ../modules/common/uefi.nix
-      ../apps/gnome/default.nix
-      ../apps/steam/default.nix
-      ../apps/udiskie/default.nix
+      # ../apps/gnome/default.nix
+      # ../apps/steam/default.nix
+      # ../apps/udiskie/default.nix
 
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = {inherit user inputs system;};
-          users.${user} = {
-            imports = [(import ./sg13/home.nix)];
-          };
-        };
-      }
+      # inputs.home-manager.nixosModules.home-manager
+      # {
+        # home-manager = {
+          # useGlobalPkgs = true;
+          # useUserPackages = true;
+          # extraSpecialArgs = {inherit user inputs system;};
+          # users.${user} = {
+            # imports = [(import ./sg13/home.nix)];
+          # };
+        # };
+      # }
     ];
   };
   x61s = lib.nixosSystem {
