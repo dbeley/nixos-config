@@ -17,6 +17,7 @@
     ../../apps/emacs/emacs.nix
     ../../apps/kakoune/kakoune.nix
     ../../apps/helix/helix.nix
+    ../../apps/lazygit/lazygit.nix
     # ../../apps/lf/lf.nix
     ../../apps/nnn/nnn.nix
     ../../apps/wal/wal.nix
