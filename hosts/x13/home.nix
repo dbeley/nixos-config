@@ -87,7 +87,6 @@
     ripgrep
     ripgrep-all
     rsync
-    stow
     supersonic
     ungoogled-chromium
     unzip

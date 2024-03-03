@@ -84,7 +84,6 @@
     ripgrep
     ripgrep-all
     rsync
-    stow
     unzip
     xfce.thunar
     xfce.tumbler

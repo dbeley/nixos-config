@@ -79,7 +79,6 @@
     ripgrep
     ripgrep-all
     rsync
-    stow
     # ungoogled-chromium
     unzip
     xfce.thunar
