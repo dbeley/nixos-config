@@ -84,6 +84,6 @@
         formatting = treefmtEval.${pkgs.system}.config.build.check self;
       });
       nixosConfigurations =
-        (import ./hosts { inherit lib inputs pkgs user system; });
+        import ./hosts { inherit lib inputs pkgs user system; };
     };
 }
