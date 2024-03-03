@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ pkgs, inputs, user, hostName, stateVersion, ... }: {
+{ pkgs, inputs, lib, user, hostName, stateVersion, ... }: {
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "${hostName}";
@@ -141,6 +141,7 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       ];
+      nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
     };
     gc = {
       automatic = true;
@@ -149,8 +150,9 @@
     };
     registry.nixpkgs.flake = inputs.nixpkgs;
     channel.enable = false;
-    nixPath = [ "nixpkgs=/etc/channels/nixpkgs" ];
   };
+
+  environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
 
   system.autoUpgrade = {
     enable = true;
@@ -163,8 +165,6 @@
     dates = "02:00";
     randomizedDelaySec = "45min";
   };
-
-  environment.etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
 
   zramSwap = {
     enable = true;
