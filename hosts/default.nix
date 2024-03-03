@@ -90,14 +90,14 @@
 
       # inputs.home-manager.nixosModules.home-manager
       # {
-        # home-manager = {
-          # useGlobalPkgs = true;
-          # useUserPackages = true;
-          # extraSpecialArgs = {inherit user inputs system;};
-          # users.${user} = {
-            # imports = [(import ./sg13/home.nix)];
-          # };
-        # };
+      # home-manager = {
+      # useGlobalPkgs = true;
+      # useUserPackages = true;
+      # extraSpecialArgs = {inherit user inputs system;};
+      # users.${user} = {
+      # imports = [(import ./sg13/home.nix)];
+      # };
+      # };
       # }
     ];
   };
