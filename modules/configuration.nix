@@ -1,14 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  pkgs,
-  inputs,
-  user,
-  hostName,
-  stateVersion,
-  ...
-}: {
+{ pkgs, inputs, user, hostName, stateVersion, ... }: {
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "${hostName}";
@@ -61,19 +54,17 @@
   security.doas.enable = false;
   security.sudo.enable = true;
   # Configure doas
-  security.doas.extraRules = [
-    {
-      users = ["$user"];
-      keepEnv = true;
-      persist = true;
-    }
-  ];
+  security.doas.extraRules = [{
+    users = [ "$user" ];
+    keepEnv = true;
+    persist = true;
+  }];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
     description = "David";
-    extraGroups = ["networkmanager" "wheel" "video"];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
     shell = "${pkgs.fish}/bin/fish";
   };
 
@@ -93,7 +84,7 @@
   ];
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["Iosevka"];})
+    (nerdfonts.override { fonts = [ "Iosevka" ]; })
     eb-garamond
     liberation_ttf
     overpass
@@ -145,7 +136,7 @@
       options = "--delete-older-than 7d";
     };
     registry.nixpkgs.flake = inputs.nixpkgs;
-    nixPath = ["nixpkgs=/etc/channels/nixpkgs"];
+    nixPath = [ "nixpkgs=/etc/channels/nixpkgs" ];
   };
 
   system.autoUpgrade = {

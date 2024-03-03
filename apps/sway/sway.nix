@@ -1,11 +1,5 @@
-{
-  pkgs,
-  config,
-  lib,
-  user,
-  ...
-}: {
-  home.packages = with pkgs; [mako libnotify grim slurp pamixer swaylock];
+{ pkgs, config, lib, user, ... }: {
+  home.packages = with pkgs; [ mako libnotify grim slurp pamixer swaylock ];
   home.file = {
     "scripts".source = pkgs.fetchFromGitHub {
       owner = "dbeley";
@@ -22,7 +16,7 @@
       terminal = "kitty";
       modifier = "Mod4";
       fonts = {
-        names = ["Iosevka Nerd Font"];
+        names = [ "Iosevka Nerd Font" ];
         style = "Regular";
         size = 10.0;
       };
@@ -34,16 +28,14 @@
           repeat_delay = "200";
           repeat_rate = "60";
         };
-        "type:pointer" = {
-          left_handed = "enabled";
-        };
+        "type:pointer" = { left_handed = "enabled"; };
         "type:touchpad" = {
           natural_scroll = "enabled";
           tap = "enabled";
         };
       };
-      output = {"*" = {bg = "/home/${user}/.config/wpg/.current fill";};};
-      seat = {"*" = {hide_cursor = "3000";};};
+      output = { "*" = { bg = "/home/${user}/.config/wpg/.current fill"; }; };
+      seat = { "*" = { hide_cursor = "3000"; }; };
 
       modes = {
         "  resize  " = {
@@ -66,11 +58,11 @@
         };
       };
 
-      keybindings = let
-        modifiers = config.wayland.windowManager.sway.config.modifier;
-      in
-        lib.mkOptionDefault {
-          "${modifier}+d" = "exec ${pkgs.tofi}/bin/tofi-run -c ~/.cache/wal/tofi | xargs swaymsg exec --";
+      keybindings =
+        let modifiers = config.wayland.windowManager.sway.config.modifier;
+        in lib.mkOptionDefault {
+          "${modifier}+d" =
+            "exec ${pkgs.tofi}/bin/tofi-run -c ~/.cache/wal/tofi | xargs swaymsg exec --";
           "${modifier}+Return" = "exec ${pkgs.kitty}/bin/kitty";
           "${modifier}+q" = "kill";
           "${modifier}+z" = "exec ${pkgs.firefox}/bin/firefox";
@@ -78,19 +70,25 @@
           "${modifier}+x" = "exec ${pkgs.kitty}/bin/kitty";
           "${modifier}+Shift+x" = "exec ${pkgs.steam}/bin/steam";
           "${modifier}+t" = "exec ${pkgs.libreoffice}/bin/soffice";
-          "${modifier}+Shift+t" = "exec ${pkgs.gnome.gnome-system-monitor}/bin/gnome-system-monitor";
+          "${modifier}+Shift+t" =
+            "exec ${pkgs.gnome.gnome-system-monitor}/bin/gnome-system-monitor";
           "${modifier}+Shift+minus" = "move scratchpad";
           "${modifier}+minus" = "scratchpad show";
           "${modifier}+F9" = "scratchpad show";
-          "${modifier}+F10" = "[app_id=\"org.keepassxc.KeePassXC\"] scratchpad show";
-          "${modifier}+F11" = "[app_id=\"com.nextcloud.desktopclient.nextcloud\"] scratchpad show";
-          "${modifier}+g" = "[app_id=\"scratchpad\"] scratchpad show";
-          "${modifier}+c" = "[app_id=\"org.keepassxc.KeePassXC\"] scratchpad show";
+          "${modifier}+F10" =
+            ''[app_id="org.keepassxc.KeePassXC"] scratchpad show'';
+          "${modifier}+F11" = ''
+            [app_id="com.nextcloud.desktopclient.nextcloud"] scratchpad show'';
+          "${modifier}+g" = ''[app_id="scratchpad"] scratchpad show'';
+          "${modifier}+c" =
+            ''[app_id="org.keepassxc.KeePassXC"] scratchpad show'';
 
           "XF86AudioRaiseVolume" = "exec ~/scripts/volume_pamixer.sh up";
-          "Shift+XF86AudioRaiseVolume" = "exec ~/scripts/volume_pamixer.sh bigup";
+          "Shift+XF86AudioRaiseVolume" =
+            "exec ~/scripts/volume_pamixer.sh bigup";
           "XF86AudioLowerVolume" = "exec ~/scripts/volume_pamixer.sh down";
-          "Shift+XF86AudioLowerVolume" = "exec ~/scripts/volume_pamixer.sh bigdown";
+          "Shift+XF86AudioLowerVolume" =
+            "exec ~/scripts/volume_pamixer.sh bigdown";
           "XF86AudioMute" = "exec ~/scripts/volume_pamixer.sh mute";
           "XF86MonBrightnessUp" = "exec light -A 5%";
           "XF86MonBrightnessDown" = "exec light -U 5%";
@@ -102,13 +100,12 @@
           "Pause" = "exec killall -SIGUSR1 waybar";
           "Shift+Pause" = "exec wpg -m";
 
-          "${modifier}+r" = "mode \"  resize  \"";
-          "${modifier}+Shift+p" = "mode \"  (r)eboot, (p)oweroff, (l)ock, (s)uspend  \"";
+          "${modifier}+r" = ''mode "  resize  "'';
+          "${modifier}+Shift+p" =
+            ''mode "  (r)eboot, (p)oweroff, (l)ock, (s)uspend  "'';
           "${modifier}+Shift+s" = "sticky toggle";
         };
-      bars = [
-        {command = "waybar";}
-      ];
+      bars = [{ command = "waybar"; }];
       gaps = {
         inner = 6;
         outer = 6;
@@ -120,30 +117,30 @@
         commands = [
           {
             command = "sticky enable";
-            criteria = {app_id = "mpv";};
+            criteria = { app_id = "mpv"; };
           }
           {
             command = "move to scratchpad";
-            criteria = {app_id = "org.keepassxc.KeePassXC";};
+            criteria = { app_id = "org.keepassxc.KeePassXC"; };
           }
           {
             command = "move to scratchpad, scratchpad show";
-            criteria = {app_id = "com.nextcloud.desktopclient.nextcloud";};
+            criteria = { app_id = "com.nextcloud.desktopclient.nextcloud"; };
           }
           {
             command = "move to scratchpad, resize set 800 600";
-            criteria = {app_id = "scratchpad";};
+            criteria = { app_id = "scratchpad"; };
           }
         ];
       };
       floating = {
         criteria = [
-          {title = "Ouvrir*";}
-          {title = "Extension : *";}
-          {app_id = "swayimg";}
-          {app_id = "mpv";}
-          {app_id = "org.keepassxc.KeePassXC";}
-          {app_id = "com.nextcloud.desktopclient.nextcloud";}
+          { title = "Ouvrir*"; }
+          { title = "Extension : *"; }
+          { app_id = "swayimg"; }
+          { app_id = "mpv"; }
+          { app_id = "org.keepassxc.KeePassXC"; }
+          { app_id = "com.nextcloud.desktopclient.nextcloud"; }
         ];
         titlebar = false;
       };
@@ -187,12 +184,17 @@
       };
 
       startup = [
-        {command = "systemctl --user import-environment; systemctl --user start sway-session.target";}
-        {command = "mako -c /home/${user}/.cache/wal/mako";}
-        {command = "udiskie -a";}
-        {command = "nextcloud --background";}
-        {command = "keepassxc";}
-        {command = "${pkgs.kitty}/bin/kitty --class scratchpad -e ${pkgs.lf}";}
+        {
+          command =
+            "systemctl --user import-environment; systemctl --user start sway-session.target";
+        }
+        { command = "mako -c /home/${user}/.cache/wal/mako"; }
+        { command = "udiskie -a"; }
+        { command = "nextcloud --background"; }
+        { command = "keepassxc"; }
+        {
+          command = "${pkgs.kitty}/bin/kitty --class scratchpad -e ${pkgs.lf}";
+        }
       ];
     };
 

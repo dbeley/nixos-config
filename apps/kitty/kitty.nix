@@ -9,8 +9,6 @@
       cursor_shape = "block";
       shell_integration = "no-cursor";
     };
-    shellIntegration = {
-      enableFishIntegration = true;
-    };
+    shellIntegration = { enableFishIntegration = true; };
   };
 }

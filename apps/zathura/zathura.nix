@@ -1,3 +1,1 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [zathura];
-}
+{ pkgs, ... }: { home.packages = with pkgs; [ zathura ]; }

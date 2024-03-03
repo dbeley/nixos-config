@@ -1,10 +1,4 @@
-{
-  lib,
-  inputs,
-  system,
-  user,
-  ...
-}: {
+{ lib, inputs, system, user, ... }: {
   t470s = lib.nixosSystem {
     inherit system;
     specialArgs = {
@@ -28,10 +22,8 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = {inherit user inputs system;};
-          users.${user} = {
-            imports = [(import ./t470s/home.nix)];
-          };
+          extraSpecialArgs = { inherit user inputs system; };
+          users.${user} = { imports = [ (import ./t470s/home.nix) ]; };
         };
       }
     ];
@@ -61,10 +53,8 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = {inherit user inputs system;};
-          users.${user} = {
-            imports = [(import ./x13/home.nix)];
-          };
+          extraSpecialArgs = { inherit user inputs system; };
+          users.${user} = { imports = [ (import ./x13/home.nix) ]; };
         };
       }
     ];
@@ -124,10 +114,8 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = {inherit user inputs system;};
-          users.${user} = {
-            imports = [(import ./x61s/home.nix)];
-          };
+          extraSpecialArgs = { inherit user inputs system; };
+          users.${user} = { imports = [ (import ./x61s/home.nix) ]; };
         };
       }
     ];
@@ -141,7 +129,7 @@
     };
     modules = [
       inputs.disko.nixosModules.disko
-      {disko.devices.disk.disk1.device = "/dev/vda";}
+      { disko.devices.disk.disk1.device = "/dev/vda"; }
       ./era1/hardware-configuration.nix
       ./era1/configuration.nix
     ];

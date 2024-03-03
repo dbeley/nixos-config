@@ -1,7 +1,7 @@
-{pkgs, ...}: let
-  mpdscrobble = pkgs.python3.pkgs.callPackage ./package.nix {};
+{ pkgs, ... }:
+let mpdscrobble = pkgs.python3.pkgs.callPackage ./package.nix { };
 in {
-  home.packages = [mpdscrobble];
+  home.packages = [ mpdscrobble ];
   systemd.user.services."mpdscrobble" = {
     Unit = {
       Description = "A simple last.fm scrobbler for MPD";
@@ -11,8 +11,6 @@ in {
       Type = "simple";
       ExecStart = "${mpdscrobble}/bin/mpdscrobble";
     };
-    Install = {
-      WantedBy = ["default.target"];
-    };
+    Install = { WantedBy = [ "default.target" ]; };
   };
 }

@@ -16,9 +16,7 @@
         };
         size = 12;
       };
-      colors = {
-        transparent_background_colors = true;
-      };
+      colors = { transparent_background_colors = true; };
     };
   };
 }

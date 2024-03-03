@@ -58,36 +58,32 @@
     };
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    systems,
-    treefmt-nix,
-    ...
-  }: let
-    system = "x86_64-linux";
-    user = "david";
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
-    inherit (nixpkgs) lib;
+  outputs = inputs@{ self, nixpkgs, systems, treefmt-nix, ... }:
+    let
+      system = "x86_64-linux";
+      user = "david";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      inherit (nixpkgs) lib;
 
-    # Small tool to iterate over each systems
-    eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
-    # Eval the treefmt modules from ./treefmt.nix
-    treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
-  in {
-    # for `nix fmt`
-    formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
-    # for `nix flake check`
-    checks = eachSystem (pkgs: {
-      formatting = treefmtEval.${pkgs.system}.config.build.check self;
-    });
-    nixosConfigurations = (
-      import ./hosts {
-        inherit lib inputs pkgs user system;
-      }
-    );
-  };
+      # Small tool to iterate over each systems
+      eachSystem = f:
+        nixpkgs.lib.genAttrs (import systems)
+        (system: f nixpkgs.legacyPackages.${system});
+      # Eval the treefmt modules from ./treefmt.nix
+      treefmtEval =
+        eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+    in {
+      # for `nix fmt`
+      formatter =
+        eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+      # for `nix flake check`
+      checks = eachSystem (pkgs: {
+        formatting = treefmtEval.${pkgs.system}.config.build.check self;
+      });
+      nixosConfigurations =
+        (import ./hosts { inherit lib inputs pkgs user system; });
+    };
 }

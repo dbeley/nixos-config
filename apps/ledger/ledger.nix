@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [hledger hledger-ui hledger-web];
+{ pkgs, ... }: {
+  home.packages = with pkgs; [ hledger hledger-ui hledger-web ];
   programs.ledger = {
     enable = true;
     extraConfig = ''

@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   autoscreen = pkgs.writeShellScriptBin "autoscreen" ''
     TODAY="$(${pkgs.coreutils-full}/bin/date +%Y-%m-%d)"
     DESTINATION_DIR="$HOME/Nextcloud/10-19_Images/11_Captures-d-écran/11.01_autoscreen/$TODAY"
@@ -7,33 +8,27 @@
     ${pkgs.grim}/bin/grim "$DESTINATION_DIR/nixos_autoscreen_$(${pkgs.coreutils-full}/bin/date +%Y-%m-%d_%H:%M:%S_%s).png"
   '';
 in {
-  home.packages = [autoscreen];
+  home.packages = [ autoscreen ];
 
   systemd.user.timers."autoscreen" = {
     Unit = {
       Description = "Run autoscreen every hour at random";
-      After = ["multi-user.target"];
+      After = [ "multi-user.target" ];
     };
     Timer = {
       OnCalendar = "hourly";
       RandomizedDelaySec = 3600;
       AccuracySec = "1us";
     };
-    Install = {
-      WantedBy = ["timers.target"];
-    };
+    Install = { WantedBy = [ "timers.target" ]; };
   };
 
   systemd.user.services."autoscreen" = {
-    Unit = {
-      Description = "Take a screenshot with grim";
-    };
+    Unit = { Description = "Take a screenshot with grim"; };
     Service = {
       Type = "oneshot";
       ExecStart = "${autoscreen}/bin/autoscreen";
     };
-    Install = {
-      WantedBy = ["multi-user.target"];
-    };
+    Install = { WantedBy = [ "multi-user.target" ]; };
   };
 }

@@ -1,5 +1,1 @@
-{
-  programs.light = {
-    enable = true;
-  };
-}
+{ programs.light = { enable = true; }; }
