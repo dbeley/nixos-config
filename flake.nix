@@ -45,10 +45,16 @@
       inputs.home-manager.follows = "home-manager";
       inputs.flake-compat.follows = "flake-compat";
       inputs.pre-commit-hooks.follows = "pre-commit-hooks";
+      inputs.devshell.follows = "devshell";
     };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
   };
 
