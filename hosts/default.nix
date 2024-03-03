@@ -22,7 +22,10 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = { inherit user inputs system; };
+          extraSpecialArgs = {
+            inherit user inputs system;
+            stateVersion = "22.11";
+          };
           users.${user} = { imports = [ (import ./t470s/home.nix) ]; };
         };
       }
@@ -53,7 +56,10 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = { inherit user inputs system; };
+          extraSpecialArgs = {
+            inherit user inputs system;
+            stateVersion = "22.11";
+          };
           users.${user} = { imports = [ (import ./x13/home.nix) ]; };
         };
       }
@@ -83,7 +89,10 @@
       # home-manager = {
       # useGlobalPkgs = true;
       # useUserPackages = true;
-      # extraSpecialArgs = {inherit user inputs system;};
+      # extraSpecialArgs = {
+      #   inherit user inputs system;
+      #   stateVersion = "22.11";
+      # };
       # users.${user} = {
       # imports = [(import ./sg13/home.nix)];
       # };
@@ -114,7 +123,10 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = { inherit user inputs system; };
+          extraSpecialArgs = {
+            inherit user inputs system;
+            stateVersion = "22.11";
+          };
           users.${user} = { imports = [ (import ./x61s/home.nix) ]; };
         };
       }
