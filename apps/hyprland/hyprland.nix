@@ -18,9 +18,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    plugins = [
-      inputs.hycov.packages.${system}.hycov
-    ];
     extraConfig = lib.fileContents ./hyprland.conf;
   };
 }
