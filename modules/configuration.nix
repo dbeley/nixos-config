@@ -83,16 +83,18 @@
     git
   ];
 
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Iosevka" ]; })
-    eb-garamond
-    liberation_ttf
-    overpass
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-  ];
-  fonts.fontconfig.enable = true;
+  fonts = {
+    packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "Iosevka" ]; })
+      eb-garamond
+      liberation_ttf
+      overpass
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+    ];
+    fontconfig = { enable = true; };
+  };
 
   services.printing.enable = false;
   services.gnome.gnome-keyring.enable = true;
