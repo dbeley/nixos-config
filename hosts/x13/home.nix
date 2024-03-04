@@ -41,6 +41,7 @@
     ../../apps/steam/steam.nix
     ../../apps/pycharm/pycharm.nix
     ../../apps/nextcloud-client/nextcloud-client.nix
+    ../../apps/tealdeer/tealdeer.nix
   ];
 
   # Home Manager needs a bit of information about you and the
