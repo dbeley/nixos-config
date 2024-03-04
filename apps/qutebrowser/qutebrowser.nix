@@ -3,7 +3,10 @@
     enable = true;
     settings = {
       url.default_page = "https://start.duckduckgo.com";
-      content = { headers.do_not_track = true; };
+      content = {
+        headers.do_not_track = true;
+        default_encoding = "utf-8";
+      };
       editor = { command = [ "kitty" "-e" "nvim" "{}" ]; };
       downloads = {
         position = "bottom";
@@ -13,7 +16,6 @@
         show = "multiple";
         position = "bottom";
       };
-      qt = { highdpi = true; };
     };
     searchEngines = {
       "DEFAULT" = "https://start.duckduckgo.com/?q={}";
