@@ -7,13 +7,41 @@
         headers.do_not_track = true;
         default_encoding = "utf-8";
       };
+      colors = {
+        webpage.preferred_color_scheme = "dark";
+        webpage.darkmode.enabled = true;
+        tooltip = {
+          bg="#000000";
+          fg="#aaaaaa";
+        };
+        completion = {
+          category = {
+            bg="#36454f";
+            fg="#f2f3f4";
+          };
+          item.selected = {
+            bg="#d3d3d3";
+            fg="#36454f";
+          };
+          match = {
+            fg="#f5f5f5";
+          };
+          even = {
+            bg="#343434";
+          };
+          odd = {
+            bg="#343434";
+          };
+        };
+      };
       editor = { command = [ "kitty" "-e" "nvim" "{}" ]; };
       downloads = {
         position = "bottom";
         location.directory = "~/Téléchargements";
       };
+      statusbar = { show = "never"; };
       tabs = {
-        show = "multiple";
+        show = "switching";
         position = "bottom";
       };
     };
