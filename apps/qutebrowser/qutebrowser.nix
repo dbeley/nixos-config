@@ -9,14 +9,18 @@
       };
       colors = {
         webpage.preferred_color_scheme = "dark";
-        webpage.darkmode.enabled = true;
+        webpage.darkmode.enabled = false;
         tooltip = {
           bg="#000000";
           fg="#aaaaaa";
         };
+        hints = {
+          bg="#1b1b1b";
+          fg="#f2f3f4";
+        };
         completion = {
           category = {
-            bg="#36454f";
+            bg="#3b444b";
             fg="#f2f3f4";
           };
           item.selected = {
@@ -27,11 +31,15 @@
             fg="#f5f5f5";
           };
           even = {
-            bg="#343434";
+            bg="#000000";
           };
           odd = {
-            bg="#343434";
+            bg="#000000";
           };
+        };
+        tabs = {
+          even.bg = "#36454f";
+          odd.bg = "#36454f";
         };
       };
       editor = { command = [ "kitty" "-e" "nvim" "{}" ]; };
@@ -39,10 +47,35 @@
         position = "bottom";
         location.directory = "~/Téléchargements";
       };
-      statusbar = { show = "never"; };
-      tabs = {
-        show = "switching";
+      scrolling.smooth = false;
+      statusbar = {
+        show = "in-mode";
         position = "bottom";
+        widgets = [
+          "keypress"
+          "search_match"
+          "url"
+          "scroll"
+          "history"
+          "tabs"
+          "progress"
+          "clock:%H:%M"
+        ];
+      };
+      tabs = {
+        show = "multiple";
+        position = "top";
+      };
+    };
+    keyBindings = {
+      normal = {
+        ",M" = "spawn ~/scripts/umpv.py {url}";
+        ",m" = "hint links spawn ~/scripts/umpv.py {hint-url}";
+        ";m" = "hint --rapid links spawn ~/scripts/umpv.py {hint-url}";
+        "d" = "scroll-page 0 0.5";
+        "u" = "scroll-page 0 -0.5";
+        "x" = "tab-close";
+        "<Shift-X>" = "undo";
       };
     };
     searchEngines = {
