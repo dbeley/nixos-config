@@ -11,31 +11,25 @@
         webpage.preferred_color_scheme = "dark";
         webpage.darkmode.enabled = false;
         tooltip = {
-          bg="#000000";
-          fg="#aaaaaa";
+          bg = "#000000";
+          fg = "#aaaaaa";
         };
         hints = {
-          bg="#1b1b1b";
-          fg="#f2f3f4";
+          bg = "#1b1b1b";
+          fg = "#f2f3f4";
         };
         completion = {
           category = {
-            bg="#3b444b";
-            fg="#f2f3f4";
+            bg = "#3b444b";
+            fg = "#f2f3f4";
           };
           item.selected = {
-            bg="#d3d3d3";
-            fg="#36454f";
+            bg = "#d3d3d3";
+            fg = "#36454f";
           };
-          match = {
-            fg="#f5f5f5";
-          };
-          even = {
-            bg="#000000";
-          };
-          odd = {
-            bg="#000000";
-          };
+          match = { fg = "#f5f5f5"; };
+          even = { bg = "#000000"; };
+          odd = { bg = "#000000"; };
         };
         tabs = {
           even.bg = "#36454f";
