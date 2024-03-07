@@ -32,8 +32,12 @@
           odd = { bg = "#000000"; };
         };
         tabs = {
-          even.bg = "#36454f";
-          odd.bg = "#36454f";
+          selected.even.bg = "#a9a9a9";
+          selected.even.fg = "#000000";
+          selected.odd.bg = "#a9a9a9";
+          selected.odd.fg = "#000000";
+          even.bg = "#000000";
+          odd.bg = "#000000";
         };
       };
       editor = { command = [ "kitty" "-e" "nvim" "{}" ]; };

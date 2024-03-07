@@ -85,7 +85,7 @@
         };
       };
 
-      nvim-cmp.enable = true;
+      cmp.enable = true;
       cmp-nvim-lsp.enable = true;
       cmp-path.enable = true;
       cmp-rg.enable = true;
