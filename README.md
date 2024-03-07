@@ -9,10 +9,10 @@
 | **Shell:**     | fish                                     |
 | **DM:**        | tty1                                     |
 | **WM:**        | hyprland or sway + waybar                |
-| **Editor:**    | doom-emacs or neovim (managed by nixvim) |
+| **Editor:**    | doom-emacs / neovim / helix / kakoune    |
 | **Terminal:**  | kitty                                    |
 | **Launcher:**  | tofi                                     |
-| **Browser:**   | firefox                                  |
+| **Browser:**   | firefox / qutebrowser                    |
 | **GTK Theme:** | wpgtk + pywal                            |
 
 ## Hosts
