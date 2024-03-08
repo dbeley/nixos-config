@@ -6,6 +6,15 @@
       content = {
         headers.do_not_track = true;
         default_encoding = "utf-8";
+        blocking.adblock.lists = [
+          "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2024.txt"
+          "https://easylist.to/easylist/easylist.txt"
+          "https://secure.fanboy.co.nz/fanboy-annoyance.txt"
+          "https://easylist.to/easylist/easyprivacy.txt"
+          "https://easylist-downloads.adblockplus.org/liste_fr.txt"
+          "https://easylist-downloads.adblockplus.org/ruadlist.txt"
+          "https://easylist-downloads.adblockplus.org/antiadblockfilters.txt"
+        ];
       };
       colors = {
         webpage.preferred_color_scheme = "dark";
