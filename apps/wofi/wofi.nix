@@ -3,16 +3,16 @@
   xdg.configFile = {
     "wofi/style.css".source = ./style.css;
     "wofi/config".text = ''
-    width=500
-    mode=run
-    stylesheet=style.css
-    colors=~/.cache/wal/colors
-    prompt=
-    filter_rate=200
-    insensitve=true
-    gtk_dark=true
-    term=foot
-    layer=overlay
-  '';
+      width=500
+      mode=run
+      stylesheet=style.css
+      colors=~/.cache/wal/colors
+      prompt=
+      filter_rate=200
+      insensitve=true
+      gtk_dark=true
+      term=foot
+      layer=overlay
+    '';
   };
 }
