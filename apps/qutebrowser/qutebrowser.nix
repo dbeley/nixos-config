@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   programs.qutebrowser = {
     enable = true;
@@ -19,6 +20,7 @@
       colors = {
         webpage.preferred_color_scheme = "dark";
         webpage.darkmode.enabled = false;
+        webpage.bg = "#000000";
         tooltip = {
           bg = "#000000";
           fg = "#aaaaaa";
@@ -151,5 +153,11 @@
       "translate" =
         "https://translate.google.com/?sl=auto&tl=en&text={}&op=translate";
     };
+    greasemonkey = [
+      (pkgs.writeText "override-webpage-bg" ''
+        var sheet = window.document.styleSheets[0];
+        sheet.insertRule('body { background-color: white; }', sheet.cssRules.length);
+      '')
+    ];
   };
 }
