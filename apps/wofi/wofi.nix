@@ -1,7 +1,8 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [ wofi ];
-  xdg.configFile."wofi/style.css".source = ./style.css;
-  xdg.configFile."wofi/config".text = ''
+  xdg.configFile = {
+    "wofi/style.css".source = ./style.css;
+    "wofi/config".text = ''
     width=500
     mode=run
     stylesheet=style.css
@@ -13,4 +14,5 @@
     term=foot
     layer=overlay
   '';
+  };
 }

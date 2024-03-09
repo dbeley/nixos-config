@@ -1,6 +1,8 @@
 {
-  xdg.configFile."wal/templates/mako".source = ./mako;
-  xdg.configFile."wal/templates/hyprpaper".source = ./hyprpaper;
-  xdg.configFile."wal/templates/tofi".source = ./tofi;
+  xdg.configFile = {
+    "wal/templates/mako".source = ./mako;
+    "wal/templates/hyprpaper".source = ./hyprpaper;
+    "wal/templates/tofi".source = ./tofi;
+  };
   programs.pywal = { enable = true; };
 }
