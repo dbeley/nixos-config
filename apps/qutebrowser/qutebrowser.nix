@@ -73,6 +73,8 @@
       tabs = {
         show = "multiple";
         position = "top";
+        new_position.related = "next";
+        new_position.unrelated = "next";
       };
     };
     keyBindings = {
