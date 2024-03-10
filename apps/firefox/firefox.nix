@@ -51,10 +51,11 @@ in {
         "browser.sessionstore.interval" = 60000;
         "browser.shell.checkDefaultBrowser" = false;
         "browser.startup.page" = 3;
-        "browser.tabs.firefox-view" = true;
-        "browser.tabs.firefox-view-next" = true;
+        "browser.tabs.firefox-view" = false;
+        "browser.tabs.firefox-view-next" = false;
         "browser.tabs.insertAfterCurrent" = true;
         "browser.tabs.loadBookmarksInBackground" = true;
+        "browser.tabs.tabmanager.enabled" = false;
         "browser.toolbars.bookmarks.visibility" = "never";
         "browser.translation.neverForLanguages" = "fr";
         "browser.uidensity" = 1;
