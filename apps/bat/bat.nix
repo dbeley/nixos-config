@@ -1,4 +1,8 @@
-{ pkgs, ... }: {
-  home.packages = with pkgs; [ bat ];
-  xdg.configFile."bat/config".source = ./config;
+{
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "Nord";
+    };
+  };
 }
