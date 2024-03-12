@@ -1,10 +1,10 @@
 { pkgs, user, inputs, stateVersion, ... }: {
   imports = [
     inputs.hyprland.homeManagerModules.default
-    inputs.nixvim.homeManagerModules.nixvim
     ../../apps/hyprland/hyprland.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
+    # ../../apps/gnome/gnome.nix
 
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
@@ -13,6 +13,7 @@
     ../../apps/kitty/kitty.nix
     ../../apps/direnv/direnv.nix
     # ../../apps/nvim/nvim.nix
+    inputs.nixvim.homeManagerModules.nixvim
     ../../apps/nixvim/nixvim.nix
     ../../apps/emacs/emacs.nix
     ../../apps/kakoune/kakoune.nix

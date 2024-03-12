@@ -64,8 +64,10 @@
       if test (tty) = /dev/tty1
         if type -q sway
           exec sway
+        else if type -q Hyprland
+          exec ~/.local/bin/wrappedhl
         else
-          exec ~/.local/bin/wrappehl
+          XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
         end
       end
     '';
