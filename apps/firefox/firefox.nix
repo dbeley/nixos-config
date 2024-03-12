@@ -65,7 +65,9 @@ in {
         "browser.urlbar.trimURLS" = false;
         "browser.urlbar.unitConversion.enabled" = true;
         "dom.battery.enabled" = false;
+        "dom.enable_web_task_scheduling" = true;
         "dom.event.clipboardevents.enabled" = false;
+        "dom.security.sanitizer.enabled" = true;
         "extensions.formautofill.addresses.enabled" = false;
         "extensions.formautofill.available" = "off";
         "extensions.formautofill.creditCards.enabled" = false;
@@ -87,6 +89,8 @@ in {
         "gfx.webrender.all" = true;
         "identity.fxaccounts.enabled" = true;
         "javascript.use_us_english_locale" = true;
+        "layout.css.grid-template-masonry-value.enabled" = true;
+        "layout.css.has-selector.enabled" = true;
         "layout.spellcheckDefault" = 0;
         "media.ffmpeg.vaapi.enabled" = true;
         "media.ffvpx.enabled" = false;
@@ -99,6 +103,10 @@ in {
         "mousewheel.default.delta_multiplier_y" = 275;
         "network.IDN_show_punycode" = true;
         "network.cookie.cookieBehavior" = 5;
+        "network.dns.max_high_priority_threads" = 8;
+        "network.dnsCacheExpiration" = 3600;
+        "network.http.pacing.requests.enabled" = false;
+        "network.ssl_tokens_cache_capacity" = 10240;
         "nglayout.initialpaint.delay" = 0;
         "nglayout.initialpaint.delay_in_oopif" = 0;
         "privacy.clearOnShutdown.cache" = true;
