@@ -32,8 +32,10 @@
     plugins = {
       airline = {
         enable = true;
-        powerlineFonts = true;
-        theme = "dark";
+        settings = {
+          powerline_fonts = true;
+          theme = "dark";
+        };
       };
       alpha = {
         enable = true;
