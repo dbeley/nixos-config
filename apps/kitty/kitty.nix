@@ -2,6 +2,9 @@
   programs.kitty = {
     enable = true;
     settings = {
+      scrollback_lines = 10000;
+      enable_audio_bell = false;
+      update_check_interval = 0;
       font_family = "Iosevka Nerd Font";
       font_size = "12";
       background_opacity = "0.8";
