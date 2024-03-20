@@ -10,10 +10,6 @@
         };
       };
       font = {
-        normal = {
-          family = "Iosevka Nerd Font";
-          style = "Regular";
-        };
         size = 12;
       };
       colors = {

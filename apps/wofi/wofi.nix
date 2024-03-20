@@ -7,7 +7,6 @@
       width=500
       mode=run
       stylesheet=style.css
-      colors=~/.cache/wal/colors
       prompt=
       filter_rate=200
       insensitve=true

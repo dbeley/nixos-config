@@ -51,6 +51,7 @@
       inputs.nixos-hardware.nixosModules.common-cpu-amd
       inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      inputs.stylix.nixosModules.stylix
       ./x13/hardware-configuration.nix
       ../modules/configuration.nix
       ../modules/common/uefi.nix
@@ -61,6 +62,7 @@
       ../apps/steam/default.nix
       ../apps/udiskie/default.nix
       ../apps/android/default.nix
+      ../apps/stylix/stylix.nix
 
       inputs.home-manager.nixosModules.home-manager
       {

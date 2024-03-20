@@ -27,8 +27,6 @@
     ../../apps/lazygit/lazygit.nix
     # ../../apps/lf/lf.nix
     ../../apps/nnn/nnn.nix
-    ../../apps/wal/wal.nix
-    ../../apps/wpgtk/wpgtk.nix
     ../../apps/udiskie/udiskie.nix
     ../../apps/mime/mime.nix
     ../../apps/swayimg/swayimg.nix

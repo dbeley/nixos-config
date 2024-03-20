@@ -1,19 +1,6 @@
 {
   programs.nixvim = {
     enable = true;
-    colorscheme = "nord";
-
-    colorschemes = {
-      nord = {
-        enable = true;
-        settings = {
-          disable_background = true;
-          italic = false;
-          contrast = true;
-          borders = true;
-        };
-      };
-    };
 
     globals.mapleader = ";"; # Sets the leader key to comma
 
@@ -34,7 +21,6 @@
         enable = true;
         settings = {
           powerline_fonts = true;
-          theme = "dark";
         };
       };
       alpha = {
