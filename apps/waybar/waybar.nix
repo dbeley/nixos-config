@@ -85,7 +85,7 @@
         "interval" = 5;
         "format" = "DOWN {bandwidthDownOctets} | UP {bandwidthUpOctets}";
         "on-click" = "";
-        "tooltip-format" = "{ifname} via {gwaddr} ";
+        "tooltip-format" = "{ifname} via {gwaddr}";
       };
       tray = {
         "icon-size" = 21;
