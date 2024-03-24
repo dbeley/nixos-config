@@ -199,8 +199,8 @@
         "application/x-x509-user-cert" = [ "gcr-viewer.desktop" ];
         "application/x-xpinstall" = [ "firefox.desktop" ];
         "application/x-zoom" = [ "Zoom.desktop" ];
-        "application/xhtml+xml" = [ "editor.desktop" ];
-        "application/xhtml_xml" = [ "editor.desktop" ];
+        "application/xhtml+xml" = [ "firefox.desktop" ];
+        "application/xhtml_xml" = [ "firefox.desktop" ];
         "application/xml" = [ "editor.desktop" ];
         "audio/3gpp2" = [ "mpv.desktop" ];
         "audio/3gpp" = [ "mpv.desktop" ];
@@ -291,7 +291,7 @@
         "text/comma-separated-values" = [ "libreoffice-calc.desktop" ];
         "text/csv" = [ "libreoffice-calc.desktop" ];
         "text/english" = [ "editor.desktop" ];
-        "text/html" = [ "editor.desktop" ];
+        "text/html" = [ "firefox.desktop" ];
         "text/mathml" = [ "libreoffice-math.desktop" ];
         "text/plain" = [ "editor.desktop" ];
         "text/rtf" = [ "editor.desktop" ];
@@ -354,8 +354,8 @@
         "video/x-theora" = [ "mpv.desktop" ];
         "x-scheme-handler/callto" = [ "Zoom.desktop" ];
         "x-scheme-handler/ftp" = [ "editor.desktop" ];
-        "x-scheme-handler/http" = [ "editor.desktop" ];
-        "x-scheme-handler/https" = [ "editor.desktop" ];
+        "x-scheme-handler/http" = [ "firefox.desktop" ];
+        "x-scheme-handler/https" = [ "firefox.desktop" ];
         "x-scheme-handler/molotov" = [ "appimagekit-molotov.desktop" ];
         "x-scheme-handler/qute" = [ "org.qutebrowser.qutebrowser.desktop" ];
         "x-scheme-handler/steam" = [ "steam.desktop" ];
