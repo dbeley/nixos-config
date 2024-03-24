@@ -21,8 +21,6 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 (setq doom-font (font-spec :family "Iosevka Nerd Font" :size 17 :weight 'normal :height 110)
       doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 17)
       doom-big-font (font-spec :family "Iosevka Nerd Font" :size 26))
@@ -77,11 +75,6 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
 
 (use-package! ox-hugo
   :ensure t
