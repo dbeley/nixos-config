@@ -1,3 +1,4 @@
+{ user, ... }:
 {
   services.xserver = {
     enable = true;
@@ -7,7 +8,7 @@
       defaultSession = "gnome";
       autoLogin = {
         enable = true;
-        user = "david";
+        user = "${user}";
       };
     };
   };

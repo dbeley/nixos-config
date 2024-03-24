@@ -63,7 +63,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
-    description = "David";
+    description = "$user";
     extraGroups = [ "networkmanager" "wheel" "video" ];
     shell = "${pkgs.fish}/bin/fish";
   };
