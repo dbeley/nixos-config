@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, user, ... }: {
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
@@ -65,7 +65,7 @@
         if type -q sway
           exec sway
         else if type -q Hyprland
-          exec ~/.local/bin/wrappedhl
+          exec /home/${user}/.local/bin/wrappedhl
         else
           XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
         end
