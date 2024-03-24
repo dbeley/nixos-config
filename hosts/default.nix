@@ -147,4 +147,35 @@
       ./era1/configuration.nix
     ];
   };
-}
+  nixos-example = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit user inputs;
+      hostName = "nixos-example";
+      stateVersion = "24.05";
+    };
+    modules = [
+      ./nixos-example/hardware-configuration.nix
+      ../modules/configuration.nix
+      ../modules/common/uefi.nix
+      ../apps/gnome/default.nix
+      ../apps/docker/default.nix
+      ../apps/steam/default.nix
+      ../apps/udiskie/default.nix
+      # ../apps/android/default.nix
+
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {
+            inherit user inputs system;
+            stateVersion = "24.05";
+          };
+          users.${user} = { imports = [ (import ./nixos-example/home.nix) ]; };
+        };
+      }
+    ];
+  };
+ }
