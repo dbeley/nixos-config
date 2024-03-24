@@ -1,3 +1,4 @@
+{ user, ... }:
 {
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.displayManager.defaultSession = "gamescope";
@@ -11,7 +12,7 @@
   programs.gamescope.enable = true;
 
   services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "david";
+  services.xserver.displayManager.autoLogin.user = "${user}";
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 }
