@@ -78,7 +78,7 @@
     gnome.gnome-system-monitor
     gthumb
     htop
-    hugo
+    # hugo
     jq
     just
     keepassxc
