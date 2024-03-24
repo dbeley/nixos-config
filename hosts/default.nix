@@ -155,14 +155,25 @@
       stateVersion = "24.05";
     };
     modules = [
+      # Uncomment based on the CPU of you machine
+      # inputs.nixos-hardware.nixosModules.common-cpu-amd
+      # inputs.nixos-hardware.nixosModules.common-cpu-intel
+
+      # Uncomment if you have a laptop
+      # inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
+      # inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      # ../modules/common/laptop.nix
+
+      # Uncomment the system apps you want
+      # ../apps/docker/default.nix
+      # ../apps/steam/default.nix
+      # ../apps/udiskie/default.nix
+      # ../apps/android/default.nix
+
       ./nixos-example/hardware-configuration.nix
       ../modules/configuration.nix
       ../modules/common/uefi.nix
       ../apps/gnome/default.nix
-      ../apps/docker/default.nix
-      ../apps/steam/default.nix
-      ../apps/udiskie/default.nix
-      # ../apps/android/default.nix
 
       inputs.home-manager.nixosModules.home-manager
       {
