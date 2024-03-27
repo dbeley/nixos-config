@@ -42,12 +42,12 @@
         theme = "dashboard";
       };
       bufferline.enable = true;
-      comment-nvim.enable = true;
+      comment.enable = true;
       diffview.enable = true;
       fugitive.enable = true;
       gitsigns = {
         enable = true;
-        currentLineBlame = true;
+        settings.current_line_blame = true;
       };
       leap.enable = true;
       lsp-format.enable = true;
