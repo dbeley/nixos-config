@@ -17,6 +17,7 @@
     ../../apps/emacs/emacs.nix
     ../../apps/kakoune/kakoune.nix
     ../../apps/helix/helix.nix
+    ../../apps/lazygit/lazygit.nix
     # ../../apps/lf/lf.nix
     ../../apps/nnn/nnn.nix
     ../../apps/wal/wal.nix
@@ -38,6 +39,8 @@
     ../../apps/mpdscrobble/mpdscrobble.nix
     ../../apps/steam/steam.nix
     ../../apps/pycharm/pycharm.nix
+    ../../apps/nextcloud-client/nextcloud-client.nix
+    ../../apps/tealdeer/tealdeer.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -75,15 +78,17 @@
     htop
     hugo
     jq
+    just
     keepassxc
     libreoffice-fresh
     ncdu
-    nextcloud-client
     nitch
     pavucontrol
     ripgrep
     ripgrep-all
     rsync
+    supersonic
+    ungoogled-chromium
     unzip
     xfce.thunar
     xfce.tumbler
