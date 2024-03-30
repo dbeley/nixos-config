@@ -17,7 +17,7 @@
 
     globals.mapleader = ";"; # Sets the leader key to comma
 
-    options = {
+    opts = {
       number = true; # Show line numbers
       relativenumber = false; # Show relative line numbers
       incsearch = true;
