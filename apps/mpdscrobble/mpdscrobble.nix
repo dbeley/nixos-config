@@ -1,6 +1,8 @@
 { pkgs, ... }:
-let mpdscrobble = pkgs.python3.pkgs.callPackage ./package.nix { };
-in {
+let
+  mpdscrobble = pkgs.python3.pkgs.callPackage ./package.nix { };
+in
+{
   home.packages = [ mpdscrobble ];
   systemd.user.services."mpdscrobble" = {
     Unit = {
@@ -11,6 +13,8 @@ in {
       Type = "simple";
       ExecStart = "${mpdscrobble}/bin/mpdscrobble";
     };
-    Install = { WantedBy = [ "default.target" ]; };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
   };
 }

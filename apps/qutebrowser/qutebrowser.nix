@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.qutebrowser = {
     enable = true;
     settings = {
@@ -37,9 +38,15 @@
             bg = "#d3d3d3";
             fg = "#36454f";
           };
-          match = { fg = "#f5f5f5"; };
-          even = { bg = "#000000"; };
-          odd = { bg = "#000000"; };
+          match = {
+            fg = "#f5f5f5";
+          };
+          even = {
+            bg = "#000000";
+          };
+          odd = {
+            bg = "#000000";
+          };
         };
         tabs = {
           selected.even.bg = "#a9a9a9";
@@ -50,7 +57,14 @@
           odd.bg = "#000000";
         };
       };
-      editor = { command = [ "kitty" "-e" "nvim" "{}" ]; };
+      editor = {
+        command = [
+          "kitty"
+          "-e"
+          "nvim"
+          "{}"
+        ];
+      };
       downloads = {
         position = "bottom";
         location.directory = "~/Téléchargements";
@@ -124,8 +138,7 @@
       "archwikifr" = "https://wiki.archlinux.fr/index.php?search={}";
       "archwiki" = "https://wiki.archlinux.org/index.php?search={}";
       "discogs" = "https://www.discogs.com/search/?q={}&type=all";
-      "musicbrainz" =
-        "https://musicbrainz.org/search?query={}&type=artist&method=indexed";
+      "musicbrainz" = "https://musicbrainz.org/search?query={}&type=artist&method=indexed";
       "leboncoin" = "https://www.leboncoin.fr/recherche/?text={}";
       "userbenchmark" = "https://www.userbenchmark.com/Search?searchTerm={}";
       "idealo" = "https://www.idealo.fr/prechcat.html?q={}";
@@ -134,8 +147,7 @@
       "reddit" = "https://www.reddit.com/search?q={}&sort=relevance&t=all";
       "subreddit" = "https://www.reddit.com/r/{}";
       "fdroid" = "https://search.f-droid.org/?q={}";
-      "ug" =
-        "https://www.ultimate-guitar.com/search.php?search_type=title&value={}";
+      "ug" = "https://www.ultimate-guitar.com/search.php?search_type=title&value={}";
       "trend" = "https://trends.google.fr/trends/explore?q={}";
       "stack" = "https://stackoverflow.com/search?q={}";
       "osm" = "https://www.openstreetmap.org/search?query={}";
@@ -148,11 +160,9 @@
       "unsplash" = "https://unsplash.com/search/photos/{}";
       "gitlab" = "https://gitlab.com/search?search={}";
       "imdb" = "https://www.imdb.com/find?ref_=nv_sr_fn&q={}&s=all";
-      "nixosp" =
-        "https://search.nixos.org/packages?from=0&size=50&sort=relevance&type=packages&query={}";
+      "nixosp" = "https://search.nixos.org/packages?from=0&size=50&sort=relevance&type=packages&query={}";
       "backmarket" = "https://www.backmarket.fr/fr-fr/search?q={}";
-      "translate" =
-        "https://translate.google.com/?sl=auto&tl=en&text={}&op=translate";
+      "translate" = "https://translate.google.com/?sl=auto&tl=en&text={}&op=translate";
     };
     greasemonkey = [
       (pkgs.writeText "override-webpage-bg" ''

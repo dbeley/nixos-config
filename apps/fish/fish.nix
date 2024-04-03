@@ -1,11 +1,10 @@
-{ pkgs, user, ... }: {
+{ pkgs, user, ... }:
+{
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
-    defaultCommand =
-      "fd --type file --ignore-case --hidden --follow --exclude .git";
-    fileWidgetCommand =
-      "fd --type file --ignore-case --hidden --follow --exclude .git";
+    defaultCommand = "fd --type file --ignore-case --hidden --follow --exclude .git";
+    fileWidgetCommand = "fd --type file --ignore-case --hidden --follow --exclude .git";
     changeDirWidgetCommand = "fd --ignore-case --hidden -t d";
     tmux.enableShellIntegration = true;
   };
@@ -15,27 +14,19 @@
       vim = "nvim";
       ls = "eza --icons --group-directories-first -s Name";
       l = "eza --icons --group-directories-first -s Name";
-      ll =
-        "eza -1lh --icons --group-directories-first -s Name --time-style long-iso";
-      la =
-        "eza -1lah --icons --group-directories-first -s Name --time-style long-iso";
+      ll = "eza -1lh --icons --group-directories-first -s Name --time-style long-iso";
+      la = "eza -1lah --icons --group-directories-first -s Name --time-style long-iso";
       gd = "git diff";
       gs = "git status";
       cpr = "rsync -azvhP --stats --inplace --zc=zstd --zl=3";
-      mpv720 = ''
-        mpv --ytdl-format="(bestvideo[height<=720]+bestaudio)[ext=webm]/bestvideo[height<=720]+bestaudio/best[height<=720]/bestvideo+bestaudio/best" '';
-      mpv1080 = ''
-        mpv --ytdl-format="(bestvideo[height<=1080]+bestaudio)[ext=webm]/bestvideo[height<=1080]+bestaudio/best[height<=1080]/bestvideo+bestaudio/best" '';
+      mpv720 = ''mpv --ytdl-format="(bestvideo[height<=720]+bestaudio)[ext=webm]/bestvideo[height<=720]+bestaudio/best[height<=720]/bestvideo+bestaudio/best" '';
+      mpv1080 = ''mpv --ytdl-format="(bestvideo[height<=1080]+bestaudio)[ext=webm]/bestvideo[height<=1080]+bestaudio/best[height<=1080]/bestvideo+bestaudio/best" '';
       meteo = "curl -H 'Accept-Language: fr' wttr.in";
       bal = "ledger -f ledger.ledger balance --depth 1";
-      fiowrite =
-        "fio --rw=write --bs=4k --size=5G --name=seqwrite --ioengine=posixaio --runtime=60 --end_fsync=1";
-      fioread =
-        "fio --rw=read --bs=4k --size=5G --name=seqread --ioengine=posixaio --runtime=60 --end_fsync=1";
-      fiorandwrite =
-        "fio --rw=randwrite --bs=4k --size=5G --name=randwrite --ioengine=posixaio --runtime=60 --end_fsync=1";
-      fiorandread =
-        "fio --rw=randread --bs=4k --size=5G --name=randread --ioengine=posixaio --runtime=60 --end_fsync=1";
+      fiowrite = "fio --rw=write --bs=4k --size=5G --name=seqwrite --ioengine=posixaio --runtime=60 --end_fsync=1";
+      fioread = "fio --rw=read --bs=4k --size=5G --name=seqread --ioengine=posixaio --runtime=60 --end_fsync=1";
+      fiorandwrite = "fio --rw=randwrite --bs=4k --size=5G --name=randwrite --ioengine=posixaio --runtime=60 --end_fsync=1";
+      fiorandread = "fio --rw=randread --bs=4k --size=5G --name=randread --ioengine=posixaio --runtime=60 --end_fsync=1";
       lzg = "lazygit";
     };
 
@@ -103,16 +94,20 @@
       '';
     };
 
-    plugins = [{
-      name = "bobthefish";
-      src = pkgs.fetchFromGitHub {
-        owner = "oh-my-fish";
-        repo = "theme-bobthefish";
-        rev = "05c0765c4ec4c8fee7e2d485587e033b9e4e4543";
-        sha256 = "jiXzkW4H9YORR4iRNAfjlPT2jSyXQKmNx3WA+TjleE8=";
-      };
-    }];
+    plugins = [
+      {
+        name = "bobthefish";
+        src = pkgs.fetchFromGitHub {
+          owner = "oh-my-fish";
+          repo = "theme-bobthefish";
+          rev = "05c0765c4ec4c8fee7e2d485587e033b9e4e4543";
+          sha256 = "jiXzkW4H9YORR4iRNAfjlPT2jSyXQKmNx3WA+TjleE8=";
+        };
+      }
+    ];
 
-    functions = { fish_greeting = ""; };
+    functions = {
+      fish_greeting = "";
+    };
   };
 }

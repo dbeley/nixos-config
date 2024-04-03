@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   home.packages = with pkgs; [ xdg-utils ];
   xdg = {
     enable = true;
@@ -42,108 +43,79 @@
         "application/vnd.lotus-1-2-3" = [ "libreoffice-calc.desktop" ];
         "application/vnd.lotus-wordpro" = [ "libreoffice-writer.desktop" ];
         "application/vnd.ms-asf" = [ "mpv.desktop" ];
-        "application/vnd.ms-excel.sheet.binary.macroEnabled.12" =
-          [ "libreoffice-calc.desktop" ];
-        "application/vnd.ms-excel.sheet.macroEnabled.12" =
-          [ "libreoffice-calc.desktop" ];
-        "application/vnd.ms-excel.template.macroEnabled.12" =
-          [ "libreoffice-calc.desktop" ];
+        "application/vnd.ms-excel.sheet.binary.macroEnabled.12" = [ "libreoffice-calc.desktop" ];
+        "application/vnd.ms-excel.sheet.macroEnabled.12" = [ "libreoffice-calc.desktop" ];
+        "application/vnd.ms-excel.template.macroEnabled.12" = [ "libreoffice-calc.desktop" ];
         "application/vnd.ms-excel" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.ms-powerpoint.presentation.macroEnabled.12" =
-          [ "libreoffice-impress.desktop" ];
-        "application/vnd.ms-powerpoint.slideshow.macroEnabled.12" =
-          [ "libreoffice-impress.desktop" ];
-        "application/vnd.ms-powerpoint.template.macroEnabled.12" =
-          [ "libreoffice-impress.desktop" ];
+        "application/vnd.ms-powerpoint.presentation.macroEnabled.12" = [ "libreoffice-impress.desktop" ];
+        "application/vnd.ms-powerpoint.slideshow.macroEnabled.12" = [ "libreoffice-impress.desktop" ];
+        "application/vnd.ms-powerpoint.template.macroEnabled.12" = [ "libreoffice-impress.desktop" ];
         "application/vnd.ms-powerpoint" = [ "libreoffice-impress.desktop" ];
         "application/vnd.ms-publisher" = [ "libreoffice-draw.desktop" ];
-        "application/vnd.ms-word.document.macroEnabled.12" =
-          [ "libreoffice-writer.desktop" ];
-        "application/vnd.ms-word.template.macroEnabled.12" =
-          [ "libreoffice-writer.desktop" ];
+        "application/vnd.ms-word.document.macroEnabled.12" = [ "libreoffice-writer.desktop" ];
+        "application/vnd.ms-word.template.macroEnabled.12" = [ "libreoffice-writer.desktop" ];
         "application/vnd.ms-word" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.ms-works" =
-          [ "libreoffice-calc.desktoplibreoffice-writer.desktop;" ];
-        "application/vnd.nextcloud" =
-          [ "com.nextcloud.desktopclient.nextcloud.desktop" ];
-        "application/vnd.oasis.opendocument.chart-template" =
-          [ "libreoffice-calc.desktop" ];
-        "application/vnd.oasis.opendocument.chart" =
-          [ "libreoffice-calc.desktop" ];
-        "application/vnd.oasis.opendocument.database" =
-          [ "libreoffice-base.desktop" ];
-        "application/vnd.oasis.opendocument.formula-template" =
-          [ "libreoffice-math.desktop" ];
-        "application/vnd.oasis.opendocument.formula" =
-          [ "libreoffice-math.desktop" ];
-        "application/vnd.oasis.opendocument.graphics-flat-xml" =
-          [ "libreoffice-draw.desktop" ];
-        "application/vnd.oasis.opendocument.graphics-template" =
-          [ "libreoffice-draw.desktop" ];
-        "application/vnd.oasis.opendocument.graphics" =
-          [ "libreoffice-draw.desktop" ];
-        "application/vnd.oasis.opendocument.presentation-flat-xml" =
-          [ "libreoffice-impress.desktop" ];
-        "application/vnd.oasis.opendocument.presentation-template" =
-          [ "libreoffice-impress.desktop" ];
-        "application/vnd.oasis.opendocument.presentation" =
-          [ "libreoffice-impress.desktop" ];
-        "application/vnd.oasis.opendocument.spreadsheet-flat-xml" =
-          [ "libreoffice-calc.desktop" ];
-        "application/vnd.oasis.opendocument.spreadsheet-template" =
-          [ "libreoffice-calc.desktop" ];
-        "application/vnd.oasis.opendocument.spreadsheet" =
-          [ "libreoffice-calc.desktop" ];
-        "application/vnd.oasis.opendocument.text-flat-xml" =
-          [ "libreoffice-writer.desktop" ];
-        "application/vnd.oasis.opendocument.text-master-template" =
-          [ "libreoffice-writer.desktop" ];
-        "application/vnd.oasis.opendocument.text-master" =
-          [ "libreoffice-writer.desktop" ];
-        "application/vnd.oasis.opendocument.text-template" =
-          [ "libreoffice-writer.desktop" ];
-        "application/vnd.oasis.opendocument.text-web" =
-          [ "libreoffice-writer.desktop" ];
-        "application/vnd.oasis.opendocument.text" =
-          [ "libreoffice-writer.desktop" ];
-        "application/vnd.openofficeorg.extension" =
-          [ "libreoffice-startcenter.desktop" ];
-        "application/vnd.openxmlformats-officedocument.presentationml.presentation" =
-          [ "libreoffice-impress.desktop" ];
-        "application/vnd.openxmlformats-officedocument.presentationml.slide" =
-          [ "libreoffice-impress.desktop" ];
-        "application/vnd.openxmlformats-officedocument.presentationml.slideshow" =
-          [ "libreoffice-impress.desktop" ];
-        "application/vnd.openxmlformats-officedocument.presentationml.template" =
-          [ "libreoffice-impress.desktop" ];
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" =
-          [ "libreoffice-calc.desktop" ];
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.template" =
-          [ "libreoffice-calc.desktop" ];
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" =
-          [ "libreoffice-writer.desktop" ];
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.template" =
-          [ "libreoffice-writer.desktop" ];
+        "application/vnd.ms-works" = [ "libreoffice-calc.desktoplibreoffice-writer.desktop;" ];
+        "application/vnd.nextcloud" = [ "com.nextcloud.desktopclient.nextcloud.desktop" ];
+        "application/vnd.oasis.opendocument.chart-template" = [ "libreoffice-calc.desktop" ];
+        "application/vnd.oasis.opendocument.chart" = [ "libreoffice-calc.desktop" ];
+        "application/vnd.oasis.opendocument.database" = [ "libreoffice-base.desktop" ];
+        "application/vnd.oasis.opendocument.formula-template" = [ "libreoffice-math.desktop" ];
+        "application/vnd.oasis.opendocument.formula" = [ "libreoffice-math.desktop" ];
+        "application/vnd.oasis.opendocument.graphics-flat-xml" = [ "libreoffice-draw.desktop" ];
+        "application/vnd.oasis.opendocument.graphics-template" = [ "libreoffice-draw.desktop" ];
+        "application/vnd.oasis.opendocument.graphics" = [ "libreoffice-draw.desktop" ];
+        "application/vnd.oasis.opendocument.presentation-flat-xml" = [ "libreoffice-impress.desktop" ];
+        "application/vnd.oasis.opendocument.presentation-template" = [ "libreoffice-impress.desktop" ];
+        "application/vnd.oasis.opendocument.presentation" = [ "libreoffice-impress.desktop" ];
+        "application/vnd.oasis.opendocument.spreadsheet-flat-xml" = [ "libreoffice-calc.desktop" ];
+        "application/vnd.oasis.opendocument.spreadsheet-template" = [ "libreoffice-calc.desktop" ];
+        "application/vnd.oasis.opendocument.spreadsheet" = [ "libreoffice-calc.desktop" ];
+        "application/vnd.oasis.opendocument.text-flat-xml" = [ "libreoffice-writer.desktop" ];
+        "application/vnd.oasis.opendocument.text-master-template" = [ "libreoffice-writer.desktop" ];
+        "application/vnd.oasis.opendocument.text-master" = [ "libreoffice-writer.desktop" ];
+        "application/vnd.oasis.opendocument.text-template" = [ "libreoffice-writer.desktop" ];
+        "application/vnd.oasis.opendocument.text-web" = [ "libreoffice-writer.desktop" ];
+        "application/vnd.oasis.opendocument.text" = [ "libreoffice-writer.desktop" ];
+        "application/vnd.openofficeorg.extension" = [ "libreoffice-startcenter.desktop" ];
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation" = [
+          "libreoffice-impress.desktop"
+        ];
+        "application/vnd.openxmlformats-officedocument.presentationml.slide" = [
+          "libreoffice-impress.desktop"
+        ];
+        "application/vnd.openxmlformats-officedocument.presentationml.slideshow" = [
+          "libreoffice-impress.desktop"
+        ];
+        "application/vnd.openxmlformats-officedocument.presentationml.template" = [
+          "libreoffice-impress.desktop"
+        ];
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = [
+          "libreoffice-calc.desktop"
+        ];
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.template" = [
+          "libreoffice-calc.desktop"
+        ];
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [
+          "libreoffice-writer.desktop"
+        ];
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.template" = [
+          "libreoffice-writer.desktop"
+        ];
         "application/vnd.palm" = [ "libreoffice-writer.desktop" ];
         "application/vnd.rn-realmedia-vbr" = [ "mpv.desktop" ];
         "application/vnd.rn-realmedia" = [ "mpv.desktop" ];
-        "application/vnd.stardivision.writer-global" =
-          [ "libreoffice-writer.desktop" ];
+        "application/vnd.stardivision.writer-global" = [ "libreoffice-writer.desktop" ];
         "application/vnd.sun.xml.base" = [ "libreoffice-base.desktop" ];
-        "application/vnd.sun.xml.calc.template" =
-          [ "libreoffice-calc.desktop" ];
+        "application/vnd.sun.xml.calc.template" = [ "libreoffice-calc.desktop" ];
         "application/vnd.sun.xml.calc" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.sun.xml.draw.template" =
-          [ "libreoffice-draw.desktop" ];
+        "application/vnd.sun.xml.draw.template" = [ "libreoffice-draw.desktop" ];
         "application/vnd.sun.xml.draw" = [ "libreoffice-draw.desktop" ];
-        "application/vnd.sun.xml.impress.template" =
-          [ "libreoffice-impress.desktop" ];
+        "application/vnd.sun.xml.impress.template" = [ "libreoffice-impress.desktop" ];
         "application/vnd.sun.xml.impress" = [ "libreoffice-impress.desktop" ];
         "application/vnd.sun.xml.math" = [ "libreoffice-math.desktop" ];
-        "application/vnd.sun.xml.writer.global" =
-          [ "libreoffice-writer.desktop" ];
-        "application/vnd.sun.xml.writer.template" =
-          [ "libreoffice-writer.desktop" ];
+        "application/vnd.sun.xml.writer.global" = [ "libreoffice-writer.desktop" ];
+        "application/vnd.sun.xml.writer.template" = [ "libreoffice-writer.desktop" ];
         "application/vnd.sun.xml.writer" = [ "libreoffice-writer.desktop" ];
         "application/vnd.visio" = [ "libreoffice-draw.desktop" ];
         "application/vnd.wordperfect" = [ "libreoffice-writer.desktop" ];
@@ -162,10 +134,8 @@
         "application/x-extension-txt" = [ "libreoffice-writer.desktop" ];
         "application/x-fictionbook+xml" = [ "libreoffice-writer.desktop" ];
         "application/x-hwp" = [ "libreoffice-writer.desktop" ];
-        "application/x-iwork-keynote-sffkey" =
-          [ "libreoffice-impress.desktop" ];
-        "application/x-iwork-numbers-sffnumbers" =
-          [ "libreoffice-calc.desktop" ];
+        "application/x-iwork-keynote-sffkey" = [ "libreoffice-impress.desktop" ];
+        "application/x-iwork-numbers-sffnumbers" = [ "libreoffice-calc.desktop" ];
         "application/x-iwork-pages-sffpages" = [ "libreoffice-writer.desktop" ];
         "application/x-keepass2" = [ "org.keepassxc.KeePassXC.desktop" ];
         "application/x-matroska" = [ "mpv.desktop" ];
@@ -192,8 +162,7 @@
         "application/x-starwriter" = [ "libreoffice-writer.desktop" ];
         "application/x-streamingmedia" = [ "mpv.desktop" ];
         "application/x-t602" = [ "libreoffice-writer.desktop" ];
-        "application/x-visual-studio-code-workspace" =
-          [ "visual-studio-code.desktop" ];
+        "application/x-visual-studio-code-workspace" = [ "visual-studio-code.desktop" ];
         "application/x-wpg" = [ "libreoffice-draw.desktop" ];
         "application/x-x509-ca-cert" = [ "gcr-viewer.desktop" ];
         "application/x-x509-user-cert" = [ "gcr-viewer.desktop" ];
@@ -361,10 +330,8 @@
         "x-scheme-handler/steam" = [ "steam.desktop" ];
         "x-scheme-handler/steamlink" = [ "steam.desktop" ];
         "x-scheme-handler/tel" = [ "Zoom.desktop" ];
-        "x-scheme-handler/vnd.libreoffice.cmis" =
-          [ "libreoffice-startcenter.desktop" ];
-        "x-scheme-handler/vscode" =
-          [ "visual-studio-code-url-handler.desktop" ];
+        "x-scheme-handler/vnd.libreoffice.cmis" = [ "libreoffice-startcenter.desktop" ];
+        "x-scheme-handler/vscode" = [ "visual-studio-code-url-handler.desktop" ];
         "x-scheme-handler/zoommtg" = [ "Zoom.desktop" ];
         "x-scheme-handler/zoomphonecall" = [ "Zoom.desktop" ];
         "x-scheme-handler/zoomus" = [ "Zoom.desktop" ];

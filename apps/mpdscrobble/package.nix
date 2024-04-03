@@ -1,4 +1,4 @@
-{ lib, python3, }:
+{ lib, python3 }:
 with python3.pkgs;
 buildPythonApplication rec {
   pname = "mpdscrobble";
@@ -9,7 +9,11 @@ buildPythonApplication rec {
     sha256 = "jOmJJzUWfiLOlpVVPKCsMCQ7rEqjBAUgrP2jdRyWmjc=";
   };
 
-  propagatedBuildInputs = [ mpd2 pylast httpx ];
+  propagatedBuildInputs = [
+    mpd2
+    pylast
+    httpx
+  ];
 
   # No tests included
   doCheck = false;

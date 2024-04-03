@@ -1,4 +1,5 @@
-{ user, pkgs, ... }: {
+{ user, pkgs, ... }:
+{
   home.packages = with pkgs; [ mpc-cli ];
   # home.file = {
   #   "scripts/mpdnotify.conf".text = ''

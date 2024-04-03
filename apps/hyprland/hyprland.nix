@@ -1,5 +1,13 @@
-{ pkgs, lib, ... }: {
-  home.packages = with pkgs; [ mako libnotify hyprpaper grim slurp pamixer ];
+{ pkgs, lib, ... }:
+{
+  home.packages = with pkgs; [
+    mako
+    libnotify
+    hyprpaper
+    grim
+    slurp
+    pamixer
+  ];
   home.file.".local/bin/wrappedhl".source = ./wrappedhl;
   home.file = {
     "scripts".source = pkgs.fetchFromGitHub {

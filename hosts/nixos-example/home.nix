@@ -1,4 +1,11 @@
-{ pkgs, user, inputs, stateVersion, ... }: {
+{
+  pkgs,
+  user,
+  inputs,
+  stateVersion,
+  ...
+}:
+{
   imports = [
     # Hyprland
     # inputs.hyprland.homeManagerModules.default

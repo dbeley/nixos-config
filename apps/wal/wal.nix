@@ -4,5 +4,7 @@
     "wal/templates/hyprpaper".source = ./hyprpaper;
     "wal/templates/tofi".source = ./tofi;
   };
-  programs.pywal = { enable = true; };
+  programs.pywal = {
+    enable = true;
+  };
 }

@@ -1,6 +1,13 @@
-{ user, inputs, system, ... }:
-let addons = inputs.firefox-addons.packages.${system};
-in {
+{
+  user,
+  inputs,
+  system,
+  ...
+}:
+let
+  addons = inputs.firefox-addons.packages.${system};
+in
+{
   programs.firefox = {
     enable = true;
     profiles.${user} = {
@@ -27,16 +34,13 @@ in {
         "browser.formfill.enable" = false;
         "browser.fullscreen.autohide" = false;
         "browser.menu.showViewImageInfo" = true;
-        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" =
-          false;
-        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" =
-          false;
+        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
         "browser.newtabpage.activity-stream.default.sites" = "";
         "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
         "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
         "browser.newtabpage.activity-stream.feeds.topsites" = true;
-        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" =
-          false;
+        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" = false;
         "browser.newtabpage.activity-stream.section.highlights.rows" = 4;
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
@@ -98,8 +102,7 @@ in {
         "media.navigator.mediadatadecoder_vpx_enabled" = true;
         "media.rdd-vpx.enabled" = false;
         "media.videocontrols.picture-in-picture.audio-toggle.enabled" = true;
-        "media.videocontrols.picture-in-picture.keyboard-controls.enabled" =
-          true;
+        "media.videocontrols.picture-in-picture.keyboard-controls.enabled" = true;
         "mousewheel.default.delta_multiplier_y" = 275;
         "network.IDN_show_punycode" = true;
         "network.cookie.cookieBehavior" = 5;
@@ -122,8 +125,7 @@ in {
         "privacy.query_stripping.enabled" = true;
         "privacy.query_stripping.enabled.pbmode" = true;
         "privacy.resistFingerprinting" = true;
-        "privacy.resistFingerprinting.autoDeclineNoUserInputCanvasPrompts" =
-          false;
+        "privacy.resistFingerprinting.autoDeclineNoUserInputCanvasPrompts" = false;
         "privacy.sanitize.sanitizeOnShutdown" = true;
         "privacy.spoof_english" = 2;
         "privacy.trackingprotection.enabled" = true;

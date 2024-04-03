@@ -1,4 +1,11 @@
-{ pkgs, user, inputs, stateVersion, ... }: {
+{
+  pkgs,
+  user,
+  inputs,
+  stateVersion,
+  ...
+}:
+{
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ../../apps/sway/sway.nix

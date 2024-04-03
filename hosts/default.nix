@@ -1,4 +1,11 @@
-{ lib, inputs, system, user, ... }: {
+{
+  lib,
+  inputs,
+  system,
+  user,
+  ...
+}:
+{
   t470s = lib.nixosSystem {
     inherit system;
     specialArgs = {
@@ -26,7 +33,9 @@
             inherit user inputs system;
             stateVersion = "22.11";
           };
-          users.${user} = { imports = [ (import ./t470s/home.nix) ]; };
+          users.${user} = {
+            imports = [ (import ./t470s/home.nix) ];
+          };
         };
       }
     ];
@@ -61,7 +70,9 @@
             inherit user inputs system;
             stateVersion = "22.11";
           };
-          users.${user} = { imports = [ (import ./x13/home.nix) ]; };
+          users.${user} = {
+            imports = [ (import ./x13/home.nix) ];
+          };
         };
       }
     ];
@@ -128,7 +139,9 @@
             inherit user inputs system;
             stateVersion = "22.11";
           };
-          users.${user} = { imports = [ (import ./x61s/home.nix) ]; };
+          users.${user} = {
+            imports = [ (import ./x61s/home.nix) ];
+          };
         };
       }
     ];
@@ -184,9 +197,11 @@
             inherit user inputs system;
             stateVersion = "24.05";
           };
-          users.${user} = { imports = [ (import ./nixos-example/home.nix) ]; };
+          users.${user} = {
+            imports = [ (import ./nixos-example/home.nix) ];
+          };
         };
       }
     ];
   };
- }
+}

@@ -1,7 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   gtk = {
     enable = true;
-    theme = { name = "FlatColor"; };
+    theme = {
+      name = "FlatColor";
+    };
 
     # iconTheme = {
     #   name = "Papirus-Dark";
@@ -32,5 +35,8 @@
     style.name = "gtk2";
   };
 
-  home.packages = with pkgs; [ wpgtk dconf ];
+  home.packages = with pkgs; [
+    wpgtk
+    dconf
+  ];
 }

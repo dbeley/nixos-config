@@ -7,7 +7,8 @@ let
     ${pkgs.coreutils-full}/bin/mkdir -p "$DESTINATION_DIR"
     ${pkgs.grim}/bin/grim "$DESTINATION_DIR/nixos_autoscreen_$(${pkgs.coreutils-full}/bin/date +%Y-%m-%d_%H:%M:%S_%s).png"
   '';
-in {
+in
+{
   home.packages = [ autoscreen ];
 
   systemd.user.timers."autoscreen" = {
@@ -20,15 +21,21 @@ in {
       RandomizedDelaySec = 3600;
       AccuracySec = "1us";
     };
-    Install = { WantedBy = [ "timers.target" ]; };
+    Install = {
+      WantedBy = [ "timers.target" ];
+    };
   };
 
   systemd.user.services."autoscreen" = {
-    Unit = { Description = "Take a screenshot with grim"; };
+    Unit = {
+      Description = "Take a screenshot with grim";
+    };
     Service = {
       Type = "oneshot";
       ExecStart = "${autoscreen}/bin/autoscreen";
     };
-    Install = { WantedBy = [ "multi-user.target" ]; };
+    Install = {
+      WantedBy = [ "multi-user.target" ];
+    };
   };
 }

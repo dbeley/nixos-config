@@ -101,7 +101,9 @@
       {
         key = "<esc>";
         action = ":noh<CR>";
-        options = { silent = true; };
+        options = {
+          silent = true;
+        };
       }
       {
         key = "<leader>k";

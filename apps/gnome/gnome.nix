@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [ gnome.gnome-tweaks ];
   # mostly taken from https://hoverbear.org/blog/declarative-gnome-configuration-in-nixos/
   gtk = {
@@ -35,7 +36,9 @@
   # home.sessionVariables.GTK_THEME = "palenight";
 
   dconf.settings = {
-    "org/gnome/desktop/input-sources" = { xkb-options = [ "ctrl:nocaps" ]; };
+    "org/gnome/desktop/input-sources" = {
+      xkb-options = [ "ctrl:nocaps" ];
+    };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       clock-show-weekday = true;
@@ -49,9 +52,15 @@
     "org/gnome/desktop/wm/preferences/button-layout" = {
       appmenu = "minimize,maximize,close";
     };
-    "org/gnome/desktop/session" = { idle-delay = 0; };
-    "org/gnome/desktop/peripherals/mouse" = { left-handed = true; };
-    "org/gnome/desktop/peripherals/touchpad" = { tap-to-click = true; };
+    "org/gnome/desktop/session" = {
+      idle-delay = 0;
+    };
+    "org/gnome/desktop/peripherals/mouse" = {
+      left-handed = true;
+    };
+    "org/gnome/desktop/peripherals/touchpad" = {
+      tap-to-click = true;
+    };
     "org/gnome/settings-daemon/plugins/power" = {
       sleep-inactive-ac-type = "nothing";
       sleep-inactive-battery-timeout = 1800;

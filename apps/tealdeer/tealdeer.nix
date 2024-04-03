@@ -6,7 +6,9 @@
         compact = false;
         use_pager = true;
       };
-      updates = { auto_update = true; };
+      updates = {
+        auto_update = true;
+      };
     };
   };
 }

@@ -1,4 +1,11 @@
-{ pkgs, user, inputs, stateVersion, ... }: {
+{
+  pkgs,
+  user,
+  inputs,
+  stateVersion,
+  ...
+}:
+{
   imports = [
     inputs.hyprland.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim
