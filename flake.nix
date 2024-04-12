@@ -42,6 +42,10 @@
       inputs.hyprcursor.follows = "hyprcursor";
       inputs.hyprlang.follows = "hyprlang";
     };
+    hyprspace = {
+      url = "github:kzdkm/hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";

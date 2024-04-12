@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ inputs, pkgs, lib, ... }:
 {
   home.packages = with pkgs; [
     mako
@@ -21,5 +21,8 @@
     enable = true;
     xwayland.enable = true;
     extraConfig = lib.fileContents ./hyprland.conf;
+    plugins = [
+      inputs.hyprspace.packages.${pkgs.system}.Hyprspace
+    ];
   };
 }
