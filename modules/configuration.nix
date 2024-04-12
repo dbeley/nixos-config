@@ -145,7 +145,7 @@
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
-      experimental-features = nix-command flakes
+      experimental-features = nix-command flakes ca-derivations
       keep-outputs = true
       keep-derivations = true
     '';
