@@ -31,6 +31,8 @@
         "application/mxf" = [ "mpv.desktop" ];
         "application/ogg" = [ "mpv.desktop" ];
         "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+        "application/vnd.comicbook+zip" = [ "org.pwmt.zathura.desktop" ];
+        "application/vnd.comicbook-rar" = [ "org.pwmt.zathura.desktop" ];
         "application/rdf+xml" = [ "editor.desktop" ];
         "application/rss+xml" = [ "editor.desktop" ];
         "application/rtf" = [ "libreoffice-writer.desktop" ];
