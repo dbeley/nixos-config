@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ gnome.gnome-tweaks ];
+  home.packages = with pkgs; [
+    gnome.gnome-tweaks
+    gnomeExtensions.no-overview
+  ];
   # mostly taken from https://hoverbear.org/blog/declarative-gnome-configuration-in-nixos/
   gtk = {
     enable = true;
