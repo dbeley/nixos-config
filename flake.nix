@@ -24,23 +24,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprlang = {
-      url = "github:hyprwm/hyprlang";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-    };
-    hyprcursor = {
-      url = "github:hyprwm/hyprcursor";
-      inputs.hyprlang.follows = "hyprlang";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-    };
     hyprland = {
-      url = "github:hyprwm/hyprland";
+      url = "git+https://github.com/hyprwm/hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
-      inputs.hyprcursor.follows = "hyprcursor";
-      inputs.hyprlang.follows = "hyprlang";
     };
     hyprspace = {
       url = "github:kzdkm/hyprspace";
@@ -52,6 +39,10 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -59,6 +50,7 @@
       inputs.flake-compat.follows = "flake-compat";
       inputs.pre-commit-hooks.follows = "pre-commit-hooks";
       inputs.devshell.follows = "devshell";
+      inputs.treefmt-nix.follows = "treefmt-nix";
     };
     disko = {
       url = "github:nix-community/disko";
@@ -68,10 +60,6 @@
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
-    };
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
