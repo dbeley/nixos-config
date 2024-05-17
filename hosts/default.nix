@@ -55,7 +55,7 @@
       ../modules/configuration.nix
       ../modules/common/uefi.nix
       ../modules/common/laptop.nix
-      ../modules/common/virtualbox.nix
+      # ../modules/common/virtualbox.nix
       # ../apps/gnome/default.nix
       ../apps/docker/default.nix
       ../apps/steam/default.nix
