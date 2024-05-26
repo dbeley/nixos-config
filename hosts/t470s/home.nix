@@ -7,7 +7,7 @@
 }:
 {
   imports = [
-    inputs.hyprland.homeManagerModules.default
+    # inputs.hyprland.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim
     ../../apps/hyprland/hyprland.nix
     ../../apps/waybar/waybar.nix
