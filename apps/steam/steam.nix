@@ -1,7 +1,7 @@
 {
   programs.mangohud = {
     enable = true;
-    enableSessionWide = true;
+    enableSessionWide = false;
     settings = {
       horizontal = true;
       battery = true;
