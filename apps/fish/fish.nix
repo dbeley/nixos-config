@@ -100,8 +100,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "oh-my-fish";
           repo = "theme-bobthefish";
-          rev = "05c0765c4ec4c8fee7e2d485587e033b9e4e4543";
-          sha256 = "jiXzkW4H9YORR4iRNAfjlPT2jSyXQKmNx3WA+TjleE8=";
+          rev = "736356d73f297cab3a8fac877db73d79aff30eeb";
+          sha256 = "yjSZrlN2f5B5hReBsdksI3bJ9mGoaOpv9wWaWO0ccWE=";
         };
       }
     ];
