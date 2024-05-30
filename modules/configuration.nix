@@ -11,8 +11,7 @@
   ...
 }:
 {
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages_6_8;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "${hostName}";
 
