@@ -1,6 +1,6 @@
 { user, ... }:
 {
-  services.displayManaer = {
+  services.displayManager = {
     defaultSession = "gnome";
     autoLogin = {
       enable = true;
