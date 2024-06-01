@@ -24,12 +24,12 @@
     };
     ".config/hypr/hyprpaper.conf" = {
       text = ''
-      preload=${config.stylix.image}
-      wallpaper=eDP-1,${config.stylix.image}
-      wallpaper=DP-3,${config.stylix.image}
-      wallpaper=DP-5,${config.stylix.image}
-      wallpaper=HDMI-A-1,${config.stylix.image}
-      splash=false
+        preload=${config.stylix.image}
+        wallpaper=eDP-1,${config.stylix.image}
+        wallpaper=DP-3,${config.stylix.image}
+        wallpaper=DP-5,${config.stylix.image}
+        wallpaper=HDMI-A-1,${config.stylix.image}
+        splash=false
       '';
     };
   };
