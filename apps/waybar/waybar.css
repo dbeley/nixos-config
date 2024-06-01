@@ -22,8 +22,8 @@ window#waybar.empty #window {
     padding-right: 16px;
     border-radius: 6px;
     transition: none;
-    color: @foreground;
-    background: @background;
+    color: #d6e9e7;
+    background: #0c1e22;
 }
 
 window#waybar.alacritty #window,
@@ -35,8 +35,8 @@ window#waybar.libreoffice #window,
 window#waybar.mpv #window,
 window#waybar.Navigator #window,
 window#waybar.qutebrowser #window {
-    color: @foreground;
-    background: @background;
+    color: #d6e9e7;
+    background: #0c1e22;
 }
 
 #mode {
@@ -44,8 +44,8 @@ window#waybar.qutebrowser #window {
     margin-right: 8px;
     margin-bottom: 0;
     border-radius: 6px;
-    color: @foreground;
-    background: @background;
+    color: #d6e9e7;
+    background: #0c1e22;
     transition: none;
 }
 
@@ -57,8 +57,8 @@ window#waybar.qutebrowser #window {
     padding-left: 8px;
     padding-right: 8px;
     border-radius: 6px;
-    color: @foreground;
-    background: @background;
+    color: #d6e9e7;
+    background: #0c1e22;
     transition: none;
 }
 
@@ -72,11 +72,11 @@ window#waybar.qutebrowser #window {
 }
 
 #workspaces button.focused {
-    color: @foreground;
+    color: #d6e9e7;
 }
 
 #workspaces button.active {
-    color: @foreground;
+    color: #d6e9e7;
 }
 
 #workspaces button:hover {
@@ -93,15 +93,15 @@ window#waybar.qutebrowser #window {
     padding-right: 16px;
     margin-bottom: 0;
     border-radius: 6px;
-    color: @foreground;
-    background: @background;
+    color: #d6e9e7;
+    background: #0c1e22;
     transition: none;
 }
 
 #mpd.disconnected,
 #mpd.stopped {
-    color: @foreground;
-    background: @background;
+    color: #d6e9e7;
+    background: #0c1e22;
 }
 
 #network {
@@ -112,8 +112,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: @foreground;
-    background: @background;
+    color: #d6e9e7;
+    background: #0c1e22;
 }
 
 #pulseaudio {
@@ -124,8 +124,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: @foreground;
-    background: @background;
+    color: #d6e9e7;
+    background: #0c1e22;
 }
 
 #temperature {
@@ -136,8 +136,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: @foreground;
-    background: @background;
+    color: #d6e9e7;
+    background: #0c1e22;
 }
 
 #cpu {
@@ -148,8 +148,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: @foreground;
-    background: @background;
+    color: #d6e9e7;
+    background: #0c1e22;
 }
 
 #memory {
@@ -160,8 +160,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: @foreground;
-    background: @background;
+    color: #d6e9e7;
+    background: #0c1e22;
 }
 
 #clock {
@@ -172,8 +172,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: @foreground;
-    background: @background;
+    color: #d6e9e7;
+    background: #0c1e22;
 }
 
 #tray {
@@ -185,8 +185,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: @foreground;
-    background: @background;
+    color: #d6e9e7;
+    background: #0c1e22;
 }
 
 #battery {
@@ -197,8 +197,8 @@ window#waybar.qutebrowser #window {
     margin-bottom: 0;
     border-radius: 6px;
     transition: none;
-    color: @foreground;
-    background: @background;
+    color: #d6e9e7;
+    background: #0c1e22;
 }
 
 #battery.warning { color: orange; }
