@@ -24,5 +24,5 @@
         name = "Noti Color Emoji";
       };
     };
-  };  
+  };
 }
