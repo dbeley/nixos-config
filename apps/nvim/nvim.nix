@@ -13,7 +13,6 @@
       vim-fugitive
       vim-commentary
       vim-startify
-      wal-vim
       # gruvbox
       vim-airline
       vim-airline-themes

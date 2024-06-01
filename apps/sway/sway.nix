@@ -29,11 +29,6 @@
     config = rec {
       terminal = "kitty";
       modifier = "Mod4";
-      fonts = {
-        names = [ "Iosevka Nerd Font" ];
-        style = "Regular";
-        size = 10.0;
-      };
       input = {
         "type:keyboard" = {
           xkb_layout = "us";
@@ -48,11 +43,6 @@
         "type:touchpad" = {
           natural_scroll = "enabled";
           tap = "enabled";
-        };
-      };
-      output = {
-        "*" = {
-          bg = "/home/${user}/.config/wpg/.current fill";
         };
       };
       seat = {
@@ -87,7 +77,7 @@
           modifiers = config.wayland.windowManager.sway.config.modifier;
         in
         lib.mkOptionDefault {
-          "${modifier}+d" = "exec ${pkgs.tofi}/bin/tofi-run -c ~/.cache/wal/tofi | xargs swaymsg exec --";
+          "${modifier}+d" = "exec ${pkgs.tofi}/bin/tofi-run | xargs swaymsg exec --";
           "${modifier}+Return" = "exec ${pkgs.kitty}/bin/kitty";
           "${modifier}+q" = "kill";
           "${modifier}+z" = "exec ${pkgs.firefox}/bin/firefox";
@@ -117,7 +107,6 @@
           "XF86Forward" = "workspace next";
           "XF86Display" = "exec ~/scripts/toggle_gammastep.sh";
           "Pause" = "exec killall -SIGUSR1 waybar";
-          "Shift+Pause" = "exec wpg -m";
 
           "${modifier}+r" = ''mode "  resize  "'';
           "${modifier}+Shift+p" = ''mode "  (r)eboot, (p)oweroff, (l)ock, (s)uspend  "'';
@@ -211,7 +200,7 @@
 
       startup = [
         { command = "systemctl --user import-environment; systemctl --user start sway-session.target"; }
-        { command = "mako -c /home/${user}/.cache/wal/mako"; }
+        { command = "mako"; }
         { command = "udiskie -a"; }
         { command = "nextcloud --background"; }
         { command = "keepassxc"; }
@@ -220,7 +209,6 @@
     };
 
     extraConfigEarly = ''
-      include "/home/${user}/.cache/wal/colors-sway"
       set $tx #ffffff
 
       bindsym --release Print exec "grim ~/Nextcloud/10-19_Images/11_Images/11.07_Captures-d-écran_Sway/$(date +%s).png"

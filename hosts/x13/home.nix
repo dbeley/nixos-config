@@ -11,6 +11,8 @@
     ../../apps/hyprland/hyprland.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
+    ../../apps/mako/mako.nix
+    ../../apps/stylix/home-manager.nix
     # ../../apps/gnome/gnome.nix
 
     ../../apps/git/git.nix
@@ -28,8 +30,6 @@
     ../../apps/lazygit/lazygit.nix
     # ../../apps/lf/lf.nix
     ../../apps/nnn/nnn.nix
-    ../../apps/wal/wal.nix
-    ../../apps/wpgtk/wpgtk.nix
     ../../apps/udiskie/udiskie.nix
     ../../apps/mime/mime.nix
     ../../apps/swayimg/swayimg.nix

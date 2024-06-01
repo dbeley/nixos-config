@@ -17,46 +17,6 @@
           "https://easylist-downloads.adblockplus.org/antiadblockfilters.txt"
         ];
       };
-      colors = {
-        webpage.preferred_color_scheme = "dark";
-        webpage.darkmode.enabled = false;
-        webpage.bg = "#000000";
-        tooltip = {
-          bg = "#000000";
-          fg = "#aaaaaa";
-        };
-        hints = {
-          bg = "#1b1b1b";
-          fg = "#f2f3f4";
-        };
-        completion = {
-          category = {
-            bg = "#3b444b";
-            fg = "#f2f3f4";
-          };
-          item.selected = {
-            bg = "#d3d3d3";
-            fg = "#36454f";
-          };
-          match = {
-            fg = "#f5f5f5";
-          };
-          even = {
-            bg = "#000000";
-          };
-          odd = {
-            bg = "#000000";
-          };
-        };
-        tabs = {
-          selected.even.bg = "#a9a9a9";
-          selected.even.fg = "#000000";
-          selected.odd.bg = "#a9a9a9";
-          selected.odd.fg = "#000000";
-          even.bg = "#000000";
-          odd.bg = "#000000";
-        };
-      };
       editor = {
         command = [
           "kitty"

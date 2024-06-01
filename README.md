@@ -13,7 +13,7 @@
 | **Terminal:**  | kitty                                    |
 | **Launcher:**  | tofi                                     |
 | **Browser:**   | firefox / qutebrowser                    |
-| **GTK Theme:** | wpgtk + pywal                            |
+| **Theme:**     | stylix                                   |
 
 ## Hosts
 
@@ -50,12 +50,6 @@ nix-store --optimise -v
 On a new install, you should first copy `/etc/nixos/hardware-configuration.nix` over `hosts/{host}/hardware-configuration.nix`.
 
 ## Post-install
-
-```
-wpg -a wall.jpg # add wallpaper to wpgtk
-wpg-install.sh -g # install gtk theme
-wpg -m
-```
 
 ```
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs

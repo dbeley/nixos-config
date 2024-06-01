@@ -35,7 +35,6 @@ set lazyredraw
 syntax on
 " colorscheme gruvbox
 set background=dark
-colorscheme wal
 
 " Aides visuelles
 set ruler
