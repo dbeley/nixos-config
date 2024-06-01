@@ -62,7 +62,7 @@
       ../apps/steam/default.nix
       ../apps/udiskie/default.nix
       ../apps/android/default.nix
-      ../apps/stylix/stylix.nix
+      ../apps/stylix/default.nix
 
       inputs.home-manager.nixosModules.home-manager
       {

@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   lib,
+  config,
   ...
 }:
 {
@@ -20,6 +21,16 @@
       repo = "scripts";
       rev = "a8607fbfb8c50543629e14ec483473459229091d";
       sha256 = "XBumWlu4+z/jTKLK71Lr0hMeLhc43XD3oEzY+YUMzN4=";
+    };
+    ".config/hypr/hyprpaper.conf" = {
+      text = ''
+      preload=${config.stylix.image}
+      wallpaper=eDP-1,${config.stylix.image}
+      wallpaper=DP-3,${config.stylix.image}
+      wallpaper=DP-5,${config.stylix.image}
+      wallpaper=HDMI-A-1,${config.stylix.image}
+      splash=false
+      '';
     };
   };
   wayland.windowManager.hyprland = {

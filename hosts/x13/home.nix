@@ -12,7 +12,7 @@
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
     ../../apps/mako/mako.nix
-    ../../apps/stylix/home-manager.nix
+    ../../apps/stylix/stylix.nix
     # ../../apps/gnome/gnome.nix
 
     ../../apps/git/git.nix
