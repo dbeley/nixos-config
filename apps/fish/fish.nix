@@ -39,13 +39,6 @@
       set -x VIRTUAL_ENV_DISABLE_PROMPT 1
       set -x EDITOR "helix"
       set -x IMG_VIEWER swayimg
-
-      export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
-      if test -n "$DESKTOP_SESSION" | test -n "$WAYLAND_DISPLAY"
-        set (gnome-keyring-daemon --start | string split "=")
-      end
-
-      direnv hook fish | source
     '';
     loginShellInit = ''
       if test (tty) = /dev/tty1

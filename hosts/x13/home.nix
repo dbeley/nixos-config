@@ -81,7 +81,6 @@
     ffmpegthumbnailer
     fio
     gh
-    gnome.gnome-keyring
     gnome.gnome-system-monitor
     gthumb
     htop

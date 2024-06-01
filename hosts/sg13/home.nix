@@ -43,7 +43,6 @@
     btop
     eza
     fd
-    gnome.gnome-keyring
     gnome.gnome-system-monitor
     keepassxc
     libreoffice-fresh
