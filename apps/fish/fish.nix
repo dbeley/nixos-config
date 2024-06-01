@@ -40,10 +40,6 @@
       set -x EDITOR "kak"
       set -x IMG_VIEWER swayimg
 
-      if test -e ~/.config/wpg/sequences
-        cat ~/.config/wpg/sequences
-      end
-
       export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
       if test -n "$DESKTOP_SESSION" | test -n "$WAYLAND_DISPLAY"
         set (gnome-keyring-daemon --start | string split "=")

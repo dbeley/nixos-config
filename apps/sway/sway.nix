@@ -45,11 +45,6 @@
           tap = "enabled";
         };
       };
-      output = {
-        "*" = {
-          bg = "/home/${user}/.config/wpg/.current fill";
-        };
-      };
       seat = {
         "*" = {
           hide_cursor = "3000";
@@ -112,7 +107,6 @@
           "XF86Forward" = "workspace next";
           "XF86Display" = "exec ~/scripts/toggle_gammastep.sh";
           "Pause" = "exec killall -SIGUSR1 waybar";
-          "Shift+Pause" = "exec wpg -m";
 
           "${modifier}+r" = ''mode "  resize  "'';
           "${modifier}+Shift+p" = ''mode "  (r)eboot, (p)oweroff, (l)ock, (s)uspend  "'';
