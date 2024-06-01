@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [ tofi ];
-  xdg.configFile = {
-    "tofi.config".source = ./config;
-  };
+  home.file.".config/tofi/config".source = ./config;
 }
