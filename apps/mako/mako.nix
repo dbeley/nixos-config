@@ -8,5 +8,6 @@
     padding = "8";
     borderSize = 3;
     borderRadius = 5;
+    defaultTimeout = 2000;
   };
 }
