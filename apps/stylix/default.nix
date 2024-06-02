@@ -14,7 +14,6 @@
     #   sha256 = "+l73wncx2U79NQmBzjP0yVzUENqopIFjNzfOKTBxe2Q=";
     # };
 
-
     polarity = "dark";
     fonts = {
       serif = {
