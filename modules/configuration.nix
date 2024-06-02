@@ -100,15 +100,15 @@
 
   fonts = {
     # Now handled by stylix
-    # packages = with pkgs; [
+    packages = with pkgs; [
     #   (nerdfonts.override { fonts = [ "Iosevka" ]; })
     #   eb-garamond
     #   liberation_ttf
     #   overpass
-    #   noto-fonts
-    #   noto-fonts-cjk
+      noto-fonts
+      noto-fonts-cjk
     #   noto-fonts-emoji
-    # ];
+    ];
     fontconfig = {
       enable = true;
     };
