@@ -98,6 +98,7 @@
       ../apps/gnome/default.nix
       ../apps/steam/default.nix
       ../apps/udiskie/default.nix
+      ../apps/stylix/default.nix
 
       inputs.home-manager.nixosModules.home-manager
       {

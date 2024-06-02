@@ -15,6 +15,7 @@
     ../../apps/nixvim/nixvim.nix
     ../../apps/udiskie/udiskie.nix
     ../../apps/bat/bat.nix
+    ../../apps/stylix/stylix.nix
 
     ../../apps/firefox/firefox.nix
     ../../apps/steam/steam.nix
