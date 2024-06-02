@@ -31,7 +31,7 @@
       };
       emoji = {
         package = pkgs.noto-fonts-emoji;
-        name = "Noti Color Emoji";
+        name = "Noto Color Emoji";
       };
     };
   };
