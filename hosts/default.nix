@@ -90,6 +90,7 @@
     modules = [
       inputs.nixos-hardware.nixosModules.common-cpu-amd
       inputs.nixos-hardware.nixosModules.common-gpu-amd
+      inputs.stylix.nixosModules.stylix
       ./sg13/hardware-configuration.nix
       # ./sg13/autologin.nix
       # ./sg13/gamescope.nix
