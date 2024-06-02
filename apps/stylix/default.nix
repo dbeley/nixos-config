@@ -36,6 +36,7 @@
     cursor = {
       name = "Adwaita";
       package = pkgs.gnome.adwaita-icon-theme;
+      size = 22;
     };
   };
 }
