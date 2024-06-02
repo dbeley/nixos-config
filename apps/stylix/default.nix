@@ -33,5 +33,9 @@
         name = "Noto Color Emoji";
       };
     };
+    cursor = {
+      name = "Adwaita";
+      package = pkgs.gnome.adwaita-icon-theme;
+    };
   };
 }
