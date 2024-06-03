@@ -7,7 +7,7 @@
 }:
 {
   imports = [
-    inputs.hyprland.homeManagerModules.default
+    # inputs.hyprland.homeManagerModules.default
     ../../apps/hyprland/hyprland.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
