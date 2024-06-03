@@ -10,6 +10,10 @@ switch:
   @echo "Rebuilding config for host $HOST"
   sudo nixos-rebuild switch --flake .#$HOST
 
+boot:
+  @echo "Rebuilding config for host $HOST (available at next boot)"
+  sudo nixos-rebuild boot --flake .#$HOST
+
 clean:
   sudo nix-collect-garbage -d
   nix-collect-garbage -d
