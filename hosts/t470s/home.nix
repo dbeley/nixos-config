@@ -7,11 +7,12 @@
 }:
 {
   imports = [
-    # inputs.hyprland.homeManagerModules.default
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.hyprland.homeManagerModules.default
     ../../apps/hyprland/hyprland.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
+    ../../apps/mako/mako.nix
+    ../../apps/stylix/stylix.nix
 
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
@@ -20,6 +21,7 @@
     ../../apps/kitty/kitty.nix
     ../../apps/direnv/direnv.nix
     # ../../apps/nvim/nvim.nix
+    inputs.nixvim.homeManagerModules.nixvim
     ../../apps/nixvim/nixvim.nix
     ../../apps/emacs/emacs.nix
     ../../apps/kakoune/kakoune.nix
@@ -31,6 +33,7 @@
     ../../apps/mime/mime.nix
     ../../apps/swayimg/swayimg.nix
     ../../apps/bat/bat.nix
+    ../../apps/zoxide/zoxide.nix
 
     ../../apps/firefox/firefox.nix
     ../../apps/qutebrowser/qutebrowser.nix

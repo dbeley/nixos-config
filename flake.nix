@@ -24,11 +24,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # hyprland = {
-    #   url = "git+https://github.com/hyprwm/hyprland?submodules=1";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.systems.follows = "systems";
-    # };
+    hyprland = {
+      url = "git+https://github.com/hyprwm/hyprland?submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+    };
     # hyprspace = {
     #   url = "github:kzdkm/hyprspace";
     #   inputs.hyprland.follows = "hyprland";
