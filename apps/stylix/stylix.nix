@@ -4,5 +4,6 @@
     tmux.enable = false;
     fish.enable = false;
     firefox.enable = false;
+    mangohud.enable = false;
   };
 }

@@ -30,9 +30,7 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = [
-        config.stylix.image
-      ];
+      preload = [ config.stylix.image ];
       wallpaper = [
         "eDP-1,${config.stylix.image}"
         "DP-3,${config.stylix.image}"
