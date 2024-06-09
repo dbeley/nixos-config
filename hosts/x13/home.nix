@@ -115,7 +115,7 @@
     nvd
 
     python3
-    nodePackages.pyright
+    pyright
   ];
 
   services.mpris-proxy.enable = true;
