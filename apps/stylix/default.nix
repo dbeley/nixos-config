@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   stylix = {
+    enable = true;
     # image = pkgs.fetchurl {
     #   url = "https://images.unsplash.com/photo-1672491441167-1daa7c3c95a8";
     #   sha256 = "WoYwXx6WT+mzAmnsY+eY+eCMzf+PwMApUQuOTNaIjGE=";
