@@ -5,5 +5,6 @@
     fish.enable = false;
     firefox.enable = false;
     mangohud.enable = false;
+    gnome.enable = false;
   };
 }
