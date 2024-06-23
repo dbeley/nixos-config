@@ -7,12 +7,12 @@
 }:
 {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
-
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
     ../../apps/tmux/tmux.nix
+    inputs.nixvim.homeManagerModules.nixvim
     ../../apps/nixvim/nixvim.nix
+    ../../apps/helix/helix.nix
     ../../apps/udiskie/udiskie.nix
     ../../apps/bat/bat.nix
     ../../apps/stylix/stylix.nix
@@ -45,6 +45,7 @@
     eza
     fd
     gnome.gnome-system-monitor
+    just
     keepassxc
     libreoffice-fresh
     ncdu
