@@ -153,6 +153,7 @@ in
         hover-zoom-plus
         keepassxc-browser
         multi-account-containers
+        protondb-for-steam
         reddit-comment-collapser
         reddit-enhancement-suite
         return-youtube-dislikes
