@@ -85,7 +85,7 @@
           "${modifier}+x" = "exec ${pkgs.kitty}/bin/kitty";
           "${modifier}+Shift+x" = "exec ${pkgs.steam}/bin/steam";
           "${modifier}+t" = "exec ${pkgs.libreoffice}/bin/soffice";
-          "${modifier}+Shift+t" = "exec ${pkgs.gnome.gnome-system-monitor}/bin/gnome-system-monitor";
+          "${modifier}+Shift+t" = "exec ${pkgs.gnome-system-monitor}/bin/gnome-system-monitor";
           "${modifier}+Shift+minus" = "move scratchpad";
           "${modifier}+minus" = "scratchpad show";
           "${modifier}+F9" = "scratchpad show";

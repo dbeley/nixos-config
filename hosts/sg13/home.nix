@@ -44,7 +44,7 @@
     btop
     eza
     fd
-    gnome.gnome-system-monitor
+    gnome-system-monitor
     just
     keepassxc
     libreoffice-fresh

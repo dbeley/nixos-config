@@ -80,7 +80,7 @@
     ffmpegthumbnailer
     fio
     gh
-    gnome.gnome-system-monitor
+    gnome-system-monitor
     gthumb
     htop
     hugo
