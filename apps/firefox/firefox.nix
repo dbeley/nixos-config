@@ -137,6 +137,8 @@ in
         "privacy.window.maxInnerWidth" = 1600;
         "security.OCSP.enabled" = 1;
         "security.OCSP.require" = true;
+        "security.pki.crlite_mode" = 2;
+        "security.remote_settings.crlite_filters.enabled" = true;
         "security.ssl.enable_ocsp_must_staple" = true;
         "security.ssl.enable_ocsp_stapling" = true;
         "security.ssl.require_safe_negociation" = true;
