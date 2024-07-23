@@ -2,11 +2,11 @@
 with python3.pkgs;
 buildPythonApplication rec {
   pname = "mpdscrobble";
-  version = "0.3.3";
+  version = "0.3.4";
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "jOmJJzUWfiLOlpVVPKCsMCQ7rEqjBAUgrP2jdRyWmjc=";
+    sha256 = "TXmDOaD1ncIN9yU6SYnmOfov2+nQMGoaAgoN+FBGyjo=";
   };
 
   propagatedBuildInputs = [
