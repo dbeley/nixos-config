@@ -43,6 +43,11 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    search = {
+      url = "github:nuschtos/search";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,6 +56,7 @@
       inputs.devshell.follows = "devshell";
       inputs.treefmt-nix.follows = "treefmt-nix";
       inputs.git-hooks.follows = "git-hooks";
+      inputs.nuschtosSearch.follows = "search";
     };
     disko = {
       url = "github:nix-community/disko";
