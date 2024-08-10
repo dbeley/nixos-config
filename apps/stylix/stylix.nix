@@ -6,5 +6,6 @@
     firefox.enable = false;
     mangohud.enable = false;
     gnome.enable = false;
+    nixvim.enable = false;
   };
 }
