@@ -23,6 +23,9 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [ "amd_pstate=guided" ];
+  powerManagement.enable = true;
+  powerManagement.cpuFreqGovernor = "schedutil";
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/50e45ddd-ed7a-4dea-9733-8e457fb9381e";
