@@ -72,6 +72,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    audacity
     beets
     borgbackup
     borgmatic
