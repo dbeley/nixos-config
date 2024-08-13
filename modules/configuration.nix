@@ -60,9 +60,9 @@
     wireplumber.extraConfig.wireplumber-disable-camera = {
       "wireplumber.profiles" = {
         "monitor.libcamera" = "disabled";
+      };
     };
   };
-};
 
   security.doas.enable = false;
   security.sudo.enable = true;
