@@ -8,7 +8,7 @@ update:
 
 switch:
   @echo "Rebuilding config for host $HOST"
-  sudo nixos-rebuild switch --flake .#$HOST
+  sudo nixos-rebuild switch --flake .#$HOST --max-jobs auto
 
 boot:
   @echo "Rebuilding config for host $HOST (available at next boot)"
