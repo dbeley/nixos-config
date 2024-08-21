@@ -49,10 +49,11 @@
     keepassxc
     libreoffice-fresh
     ncdu
-    nextcloud-client
+    # nextcloud-client
     ripgrep
     ripgrep-all
     rsync
+    supersonic
     ungoogled-chromium
     yt-dlp
   ];
