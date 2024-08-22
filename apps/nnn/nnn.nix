@@ -18,6 +18,13 @@
         c = "fzcd";
         f = "finder";
         v = "imgview";
+        p = "preview-tui";
+        # Open in helix
+        h = "-!hx \\$nnn*";
+        # Open in editor with admin rights
+        s = "-!sudo -e \\$nnn*";
+        # Open folder images in a random order 
+        r = "-!fd -e png -e jpg | shuf | \\$IMG_VIEWER";
       };
       src =
         (pkgs.fetchFromGitHub {
