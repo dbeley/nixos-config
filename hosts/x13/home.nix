@@ -22,8 +22,8 @@
     ../../apps/kitty/kitty.nix
     ../../apps/direnv/direnv.nix
     # ../../apps/nvim/nvim.nix
-    inputs.nixvim.homeManagerModules.nixvim
-    ../../apps/nixvim/nixvim.nix
+    # inputs.nixvim.homeManagerModules.nixvim
+    # ../../apps/nixvim/nixvim.nix
     ../../apps/emacs/emacs.nix
     ../../apps/kakoune/kakoune.nix
     ../../apps/helix/helix.nix
@@ -33,7 +33,8 @@
     ../../apps/nnn/nnn.nix
     ../../apps/udiskie/udiskie.nix
     ../../apps/mime/mime.nix
-    ../../apps/swayimg/swayimg.nix
+    # ../../apps/swayimg/swayimg.nix
+    ../../apps/imv/imv.nix
     ../../apps/bat/bat.nix
     ../../apps/zoxide/zoxide.nix
 
@@ -105,7 +106,7 @@
     yt-dlp
 
     discord
-    element-desktop
+    # element-desktop
 
     # dev dependencies
     clang

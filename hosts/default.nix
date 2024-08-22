@@ -63,6 +63,7 @@
       ../apps/udiskie/default.nix
       ../apps/android/default.nix
       ../apps/stylix/default.nix
+      # ../apps/swayimg/default.nix
 
       inputs.home-manager.nixosModules.home-manager
       {
