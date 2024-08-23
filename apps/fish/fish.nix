@@ -38,7 +38,7 @@
       set -g theme_color_scheme dark
       set -x VIRTUAL_ENV_DISABLE_PROMPT 1
       set -x EDITOR hx
-      set -x IMG_VIEWER imv
+      set -x IMG_VIEWER imv-dir
 
       export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
       if test -n "$DESKTOP_SESSION" | test -n "$WAYLAND_DISPLAY"
