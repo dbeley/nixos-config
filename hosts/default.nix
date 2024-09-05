@@ -6,6 +6,45 @@
   ...
 }:
 {
+  p14s = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit user inputs;
+      hostName = "p14s";
+      stateVersion = "24.05";
+    };
+    modules = [
+      inputs.nixos-hardware.nixosModules.common-cpu-amd
+      inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
+      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      inputs.stylix.nixosModules.stylix
+      ./p14s/hardware-configuration.nix
+      ../modules/configuration.nix
+      ../modules/common/uefi.nix
+      ../modules/common/laptop.nix
+      # ../apps/gnome/default.nix
+      ../apps/docker/default.nix
+      ../apps/steam/default.nix
+      ../apps/udiskie/default.nix
+      ../apps/android/default.nix
+      ../apps/stylix/default.nix
+
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {
+            inherit user inputs system;
+            stateVersion = "24.05";
+          };
+          users.${user} = {
+            imports = [ (import ./p14s/home.nix) ];
+          };
+        };
+      }
+    ];
+  };
   t470s = lib.nixosSystem {
     inherit system;
     specialArgs = {
