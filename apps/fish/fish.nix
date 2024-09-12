@@ -39,6 +39,7 @@
       set -x VIRTUAL_ENV_DISABLE_PROMPT 1
       set -x EDITOR hx
       set -x IMG_VIEWER imv-dir
+      set -x NNN_FIFO /tmp/nnn.fifo
 
       export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
       if test -n "$DESKTOP_SESSION" | test -n "$WAYLAND_DISPLAY"

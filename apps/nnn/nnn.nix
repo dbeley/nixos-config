@@ -25,13 +25,14 @@
         s = "-!sudo -e \\$nnn*";
         # Open folder images in a random order 
         r = "-!fd -e png -e jpg | shuf | \\$IMG_VIEWER";
+        x = "togglex";
       };
       src =
         (pkgs.fetchFromGitHub {
           owner = "jarun";
           repo = "nnn";
-          rev = "v4.9";
-          sha256 = "sha256-g19uI36HyzTF2YUQKFP4DE2ZBsArGryVHhX79Y0XzhU=";
+          rev = "v5.0";
+          sha256 = "sha256-HShHSjqD0zeE1/St1Y2dUeHfac6HQnPFfjmFvSuEXUA=";
         })
         + "/plugins";
     };
