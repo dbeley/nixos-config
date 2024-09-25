@@ -24,7 +24,7 @@
         # Open in editor with admin rights
         s = "-!sudo -e \\$nnn*";
         # Open folder images in a random order 
-        r = "-!fd -e png -e jpg | shuf | \\$IMG_VIEWER";
+        r = "-!fd -e png -e jpg | shuf | imv";
         x = "togglex";
       };
       src =
