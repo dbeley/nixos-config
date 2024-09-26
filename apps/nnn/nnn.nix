@@ -23,7 +23,9 @@
         h = "-!hx \\$nnn*";
         # Open in editor with admin rights
         s = "-!sudo -e \\$nnn*";
-        # Open folder images in a random order 
+        # Open folder images recursively in a sequential order
+        g = "-!fd -e png -e jpg -X eza --sort newest | imv";
+        # Open folder images recursively in a random order
         r = "-!fd -e png -e jpg | shuf | imv";
         x = "togglex";
       };
