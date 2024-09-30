@@ -1,13 +1,9 @@
 { pkgs, ... }:
 let
   autoscreen_gaming = pkgs.writeShellScriptBin "autoscreen_gaming" ''
-    # Run hyprctl activewindow and get the output
     active_window_info="$(hyprctl activewindow)"
-
-    # Extract the 'class' element using grep and awk
     window_class="$(echo "$active_window_info" | grep -oP '(?<=class: ).*')"
 
-    # Check if the class is 'gamescope' or starts with 'steam_app_'
     if [[ "$window_class" == "gamescope" || "$window_class" == steam_app_* ]]; then
         TODAY="$(${pkgs.coreutils-full}/bin/date +%Y-%m-%d)"
         DESTINATION_DIR="$HOME/Nextcloud/10-19_Images/11_Captures-d-écran/11.01_autoscreen/$TODAY"
