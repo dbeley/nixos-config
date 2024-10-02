@@ -46,81 +46,6 @@
       }
     ];
   };
-  t470s = lib.nixosSystem {
-    inherit system;
-    specialArgs = {
-      inherit user inputs;
-      hostName = "t470s";
-      stateVersion = "22.11";
-    };
-    modules = [
-      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t470s
-      ./t470s/hardware-configuration.nix
-      ../modules/configuration.nix
-      ../modules/common/uefi.nix
-      ../modules/common/laptop.nix
-      ../apps/docker/default.nix
-      ../apps/steam/default.nix
-      ../apps/udiskie/default.nix
-      ../apps/android/default.nix
-
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = {
-            inherit user inputs system;
-            stateVersion = "22.11";
-          };
-          users.${user} = {
-            imports = [ (import ./t470s/home.nix) ];
-          };
-        };
-      }
-    ];
-  };
-  x13 = lib.nixosSystem {
-    inherit system;
-    specialArgs = {
-      inherit user inputs;
-      hostName = "x13";
-      stateVersion = "22.11";
-    };
-    modules = [
-      inputs.nixos-hardware.nixosModules.common-cpu-amd
-      inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
-      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-      inputs.stylix.nixosModules.stylix
-      ./x13/hardware-configuration.nix
-      ../modules/configuration.nix
-      ../modules/common/uefi.nix
-      ../modules/common/laptop.nix
-      # ../modules/common/virtualbox.nix
-      # ../apps/gnome/default.nix
-      ../apps/docker/default.nix
-      ../apps/steam/default.nix
-      ../apps/udiskie/default.nix
-      ../apps/android/default.nix
-      ../apps/stylix/default.nix
-      # ../apps/swayimg/default.nix
-
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = {
-            inherit user inputs system;
-            stateVersion = "22.11";
-          };
-          users.${user} = {
-            imports = [ (import ./x13/home.nix) ];
-          };
-        };
-      }
-    ];
-  };
   sg13 = lib.nixosSystem {
     inherit system;
     specialArgs = {
@@ -137,6 +62,7 @@
       # ./sg13/gamescope.nix
       ../modules/configuration.nix
       ../modules/common/uefi.nix
+      ../modules/common/xbox.nix
       ../apps/gnome/default.nix
       ../apps/steam/default.nix
       ../apps/udiskie/default.nix
@@ -190,20 +116,6 @@
           };
         };
       }
-    ];
-  };
-  era1 = lib.nixosSystem {
-    inherit system;
-    specialArgs = {
-      inherit user inputs;
-      hostName = "era1";
-      stateVersion = "24.05";
-    };
-    modules = [
-      inputs.disko.nixosModules.disko
-      { disko.devices.disk.disk1.device = "/dev/vda"; }
-      ./era1/hardware-configuration.nix
-      ./era1/configuration.nix
     ];
   };
   nixos-example = lib.nixosSystem {
