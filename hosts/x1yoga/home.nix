@@ -12,7 +12,7 @@
     # ../../apps/tofi/tofi.nix
     # ../../apps/mako/mako.nix
     ../../apps/stylix/stylix.nix
-    # ../../apps/gnome/gnome.nix
+    ../../apps/gnome/gnome.nix
 
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
