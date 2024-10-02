@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    gnome.gnome-tweaks
+    gnome-tweaks
     gnomeExtensions.no-overview
   ];
   # mostly taken from https://hoverbear.org/blog/declarative-gnome-configuration-in-nixos/
@@ -67,6 +67,9 @@
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = true;
       night-light-schedule-automatic = true;
+    };
+    "org/gnome/mutter" = {
+      "experimental-features" = "['scale-monitor-framebuffer']";
     };
   };
 }
