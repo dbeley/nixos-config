@@ -17,13 +17,13 @@
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
     ../../apps/tmux/tmux.nix
-    ../../apps/kitty/kitty.nix
+    # ../../apps/kitty/kitty.nix
     ../../apps/direnv/direnv.nix
     # inputs.nixvim.homeManagerModules.nixvim
     # ../../apps/nixvim/nixvim.nix
     # ../../apps/emacs/emacs.nix
     # ../../apps/kakoune/kakoune.nix
-    # ../../apps/helix/helix.nix
+    ../../apps/helix/helix.nix
     # ../../apps/vscode/vscode.nix
     # ../../apps/lazygit/lazygit.nix
     ../../apps/nnn/nnn.nix
@@ -35,17 +35,17 @@
 
     ../../apps/firefox/firefox.nix
     ../../apps/qutebrowser/qutebrowser.nix
-    ../../apps/gammastep/gammastep.nix
+    # ../../apps/gammastep/gammastep.nix
     ../../apps/ledger/ledger.nix
-    ../../apps/mpd/mpd.nix
+    # ../../apps/mpd/mpd.nix
     ../../apps/mpv/mpv.nix
-    ../../apps/obs/obs.nix
+    # ../../apps/obs/obs.nix
     ../../apps/zathura/zathura.nix
     ../../apps/autoscreen/autoscreen.nix
-    ../../apps/autoscreen-gaming/autoscreen_gaming.nix
-    ../../apps/mpdscrobble/mpdscrobble.nix
+    # ../../apps/autoscreen-gaming/autoscreen_gaming.nix
+    # ../../apps/mpdscrobble/mpdscrobble.nix
     ../../apps/steam/steam.nix
-    ../../apps/pycharm/pycharm.nix
+    # ../../apps/pycharm/pycharm.nix
     ../../apps/nextcloud-client/nextcloud-client.nix
     ../../apps/tealdeer/tealdeer.nix
   ];
