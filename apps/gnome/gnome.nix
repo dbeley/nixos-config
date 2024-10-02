@@ -41,7 +41,12 @@
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
       xkb-options = [ "ctrl:nocaps" ];
-      sources = [('xkb', 'us+intl')];
+      sources = [
+        (mkTuple [
+          "xkb"
+          "us+intl"
+        ])
+      ];
     };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
