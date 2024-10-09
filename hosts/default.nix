@@ -23,6 +23,7 @@
       ../modules/common/uefi.nix
       ../modules/common/laptop.nix
       ../modules/common/xbox.nix
+      ../modules/common/fingerprint-scanner.nix
       # ../apps/gnome/default.nix
       ../apps/docker/default.nix
       ../apps/steam/default.nix

@@ -78,10 +78,10 @@
     fd
     ffmpeg
     ffmpegthumbnailer
-    fio
-    gh
+    # fio
+    # gh
     gnome-system-monitor
-    gthumb
+    # gthumb
     htop
     # hugo
     jq
@@ -101,14 +101,14 @@
     xfce.tumbler
     yt-dlp
 
-    discord
+    # discord
     # element-desktop
 
     # dev dependencies
-    clang
-    gnumake
-    cmake
-    libtool
+    # clang
+    # gnumake
+    # cmake
+    # libtool
 
     nil
     nvd
