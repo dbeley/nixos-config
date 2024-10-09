@@ -3,9 +3,9 @@
     waybar.enable = false;
     tmux.enable = false;
     fish.enable = false;
-    firefox.enable = false;
+    firefox.enable = true;
     mangohud.enable = false;
-    gnome.enable = false;
+    gnome.enable = true;
     nixvim.enable = false;
   };
 }
