@@ -22,7 +22,7 @@
         ];
         "application/csv" = [ "libreoffice-calc.desktop" ];
         "application/excel" = [ "libreoffice-calc.desktop" ];
-        "application/json" = [ "editor.desktop" ];
+        "application/json" = [ "org.pwmt.zathura.desktop" ];
         "application/macwriteii" = [ "libreoffice-writer.desktop" ];
         "application/mathml+xml" = [ "libreoffice-math.desktop" ];
         "application/msexcel" = [ "libreoffice-calc.desktop" ];
