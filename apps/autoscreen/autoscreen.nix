@@ -5,7 +5,7 @@ let
     DESTINATION_DIR="$HOME/Nextcloud/10-19_Images/11_Captures-d-écran/11.01_autoscreen/$TODAY"
 
     ${pkgs.coreutils-full}/bin/mkdir -p "$DESTINATION_DIR"
-    ${pkgs.grim}/bin/grim "$DESTINATION_DIR/$(hostname)_nixos_autoscreen_$(${pkgs.coreutils-full}/bin/date +%Y-%m-%d_%H:%M:%S_%s).png"
+    ${pkgs.grim}/bin/grim "$DESTINATION_DIR/$(${pkgs.coreutils-full}/bin/date +%Y-%m-%d_%H:%M:%S_%s)_$(hostname)_nixos_autoscreen.png"
   '';
 in
 {
