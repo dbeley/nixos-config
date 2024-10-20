@@ -21,6 +21,7 @@
     wifi.backend = "iwd";
   };
   networking.firewall.enable = true;
+  services.resolved.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
