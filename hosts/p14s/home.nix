@@ -11,8 +11,11 @@
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
     ../../apps/mako/mako.nix
-    ../../apps/stylix/stylix.nix
+    ../../apps/gammastep/gammastep.nix
+    ../../apps/autoscreen/autoscreen.nix
+    ../../apps/autoscreen-gaming/autoscreen-gaming.nix
     # ../../apps/gnome/gnome.nix
+    ../../apps/stylix/stylix.nix
 
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
@@ -35,15 +38,12 @@
 
     ../../apps/firefox/firefox.nix
     ../../apps/qutebrowser/qutebrowser.nix
-    ../../apps/gammastep/gammastep.nix
     ../../apps/ledger/ledger.nix
     ../../apps/mpd/mpd.nix
+    ../../apps/mpdscrobble/mpdscrobble.nix
     ../../apps/mpv/mpv.nix
     ../../apps/obs/obs.nix
     ../../apps/zathura/zathura.nix
-    ../../apps/autoscreen/autoscreen.nix
-    ../../apps/autoscreen-gaming/autoscreen-gaming.nix
-    ../../apps/mpdscrobble/mpdscrobble.nix
     ../../apps/steam/steam.nix
     ../../apps/pycharm/pycharm.nix
     ../../apps/nextcloud-client/nextcloud-client.nix

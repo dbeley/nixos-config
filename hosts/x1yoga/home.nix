@@ -7,17 +7,27 @@
 }:
 {
   imports = [
+    ../../apps/hyprland/hyprland.nix
+    ../../apps/waybar/waybar.nix
+    ../../apps/tofi/tofi.nix
+    ../../apps/mako/mako.nix
+    ../../apps/gammastep/gammastep.nix
+    ../../apps/autoscreen/autoscreen.nix
+    ../../apps/autoscreen-gaming/autoscreen-gaming.nix
+    # ../../apps/gnome/gnome.nix
+    # ../../apps/autoscreen-gnome/autoscreen-gnome.nix
     ../../apps/stylix/stylix.nix
-    ../../apps/gnome/gnome.nix
 
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
     ../../apps/tmux/tmux.nix
+    ../../apps/kitty/kitty.nix
     ../../apps/direnv/direnv.nix
     ../../apps/helix/helix.nix
     ../../apps/nnn/nnn.nix
     ../../apps/udiskie/udiskie.nix
     ../../apps/mime/mime.nix
+    ../../apps/imv/imv.nix
     ../../apps/bat/bat.nix
     ../../apps/zoxide/zoxide.nix
 
@@ -30,7 +40,6 @@
     ../../apps/steam/steam.nix
     ../../apps/nextcloud-client/nextcloud-client.nix
     ../../apps/tealdeer/tealdeer.nix
-    ../../apps/autoscreen-gnome/autoscreen-gnome.nix
   ];
 
   # Home Manager needs a bit of information about you and the

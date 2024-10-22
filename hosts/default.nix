@@ -66,7 +66,7 @@
       ../modules/common/xbox.nix
       ../modules/common/fingerprint-scanner.nix
       ../modules/common/screen-rotation.nix
-      ../apps/gnome/default.nix
+      # ../apps/gnome/default.nix
       ../apps/docker/default.nix
       ../apps/steam/default.nix
       ../apps/udiskie/default.nix
