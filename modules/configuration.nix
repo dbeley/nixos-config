@@ -111,7 +111,7 @@
       #   liberation_ttf
       #   overpass
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       #   noto-fonts-emoji
     ];
     fontconfig = {
