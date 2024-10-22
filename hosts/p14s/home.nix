@@ -35,6 +35,7 @@
     ../../apps/imv/imv.nix
     ../../apps/bat/bat.nix
     ../../apps/zoxide/zoxide.nix
+    ../../apps/zathura/zathura.nix
 
     ../../apps/firefox/firefox.nix
     ../../apps/qutebrowser/qutebrowser.nix
@@ -43,7 +44,6 @@
     ../../apps/mpdscrobble/mpdscrobble.nix
     ../../apps/mpv/mpv.nix
     ../../apps/obs/obs.nix
-    ../../apps/zathura/zathura.nix
     ../../apps/steam/steam.nix
     ../../apps/pycharm/pycharm.nix
     ../../apps/nextcloud-client/nextcloud-client.nix

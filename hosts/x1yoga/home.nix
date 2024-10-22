@@ -30,6 +30,7 @@
     ../../apps/imv/imv.nix
     ../../apps/bat/bat.nix
     ../../apps/zoxide/zoxide.nix
+    ../../apps/zathura/zathura.nix
 
     ../../apps/firefox/firefox.nix
     ../../apps/qutebrowser/qutebrowser.nix
