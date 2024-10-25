@@ -71,8 +71,8 @@
       convert2opus = ''
         set ORIGINAL_SIZE (du -hs | cut -f1)
 
-        fd -e wav -e flac -x ffmpeg -i "{}" -c:a libopus -b:a 128K -loglevel quiet -stats "{.}.opus"
-        fd -e wav -e flac -X rm -I
+        fd -e wav -e flac -e ape -x ffmpeg -i "{}" -c:a libopus -b:a 128K -loglevel quiet -stats "{.}.opus"
+        fd -e wav -e flac -e ape -X rm -I
 
         set NEW_SIZE (du -hs | cut -f1)
 
