@@ -147,7 +147,7 @@ in
         "signon.management.page.breach-alerts.enabled" = false;
         "signon.rememberSignons" = false;
         "ui.systemUsesDarkTheme" = 1;
-        "webgl.disabled" = true;
+        "webgl.disabled" = false;
       };
       extensions = with addons; [
         augmented-steam
