@@ -235,29 +235,98 @@
         "audio/x-vorbis" = [ "mpv.desktop" ];
         "audio/x-wav" = [ "mpv.desktop" ];
         "audio/x-wavpack" = [ "mpv.desktop" ];
-        "image/bmp" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/gif" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/jpeg" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/jpg" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/pjpeg" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/png" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/svg+xml" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/tiff" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/webp" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/x-bmp" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/x-emf" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/x-freehand" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/x-ico" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/x-pcx" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/x-png" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/x-portable-anymap" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/x-portable-bitmap" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/x-portable-graymap" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/x-portable-pixmap" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/x-tga" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/x-wmf" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/x-xbitmap" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
-        "image/xpm" = [ "imv-dir.desktop" "org.gnome.Loupe.desktop" ];
+        "image/bmp" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/gif" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/jpeg" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/jpg" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/pjpeg" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/png" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/svg+xml" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/tiff" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/webp" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/x-bmp" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/x-emf" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/x-freehand" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/x-ico" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/x-pcx" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/x-png" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/x-portable-anymap" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/x-portable-bitmap" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/x-portable-graymap" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/x-portable-pixmap" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/x-tga" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/x-wmf" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/x-xbitmap" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/xpm" = [
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
         "inode/directory" = [ "lf.desktop" ];
         "text/comma-separated-values" = [ "libreoffice-calc.desktop" ];
         "text/csv" = [ "libreoffice-calc.desktop" ];
