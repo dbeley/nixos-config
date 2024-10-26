@@ -103,6 +103,8 @@
     git
   ];
 
+  programs.command-not-found.enable = false;
+
   fonts = {
     # Now handled by stylix
     packages = with pkgs; [
