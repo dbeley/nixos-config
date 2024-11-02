@@ -66,12 +66,12 @@
     audacity
     beets
     btop
-    evince
     eza
     fd
     ffmpeg
     ffmpegthumbnailer
     gnome-system-monitor
+    nautilus
     htop
     jq
     just
@@ -79,11 +79,13 @@
     libreoffice-fresh
     ncdu
     nitch
+    papers
     ripgrep
     ripgrep-all
     supersonic
     ungoogled-chromium
     unzip
+    wvkbd
     yt-dlp
 
     nvd

@@ -32,7 +32,7 @@
         "application/ogg" = [ "mpv.desktop" ];
         "application/pdf" = [
           "org.pwmt.zathura.desktop"
-          "org.gnome.Evince.desktop"
+          "org.gnome.Papers.desktop"
         ];
         "application/vnd.comicbook+zip" = [ "org.pwmt.zathura.desktop" ];
         "application/vnd.comicbook-rar" = [ "org.pwmt.zathura.desktop" ];
