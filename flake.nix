@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    systems.url = "github:nix-systems/default-linux";
+    systems.url = "github:nix-systems/default";
     flake-compat.url = "github:edolstra/flake-compat";
     flake-utils = {
       url = "github:numtide/flake-utils";
@@ -29,14 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
       inputs.pre-commit-hooks.follows = "git-hooks";
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hyprspace = {
-      url = "github:kzdkm/hyprspace";
-      inputs.hyprland.follows = "hyprland";
     };
     hyprgrass = {
       url = "github:horriblename/hyprgrass";

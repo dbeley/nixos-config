@@ -27,8 +27,6 @@
     xwayland.enable = true;
     extraConfig = lib.fileContents ./hyprland.conf;
     plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
-      inputs.hyprspace.packages.${pkgs.system}.Hyprspace
       inputs.hyprgrass.packages.${pkgs.system}.default
     ];
   };
