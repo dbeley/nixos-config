@@ -22,10 +22,15 @@
     };
   };
   wayland.windowManager.hyprland = {
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     enable = true;
     xwayland.enable = true;
     extraConfig = lib.fileContents ./hyprland.conf;
-    # plugins = [ inputs.hyprspace.packages.${pkgs.system}.Hyprspace ];
+    plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+      inputs.hyprspace.packages.${pkgs.system}.Hyprspace
+      inputs.hyprgrass.packages.${pkgs.system}.default
+    ];
   };
   services.hyprpaper = {
     enable = true;

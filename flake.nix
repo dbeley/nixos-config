@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    systems.url = "github:nix-systems/default";
+    systems.url = "github:nix-systems/default-linux";
     flake-compat.url = "github:edolstra/flake-compat";
     flake-utils = {
       url = "github:numtide/flake-utils";
@@ -24,15 +24,24 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # hyprland = {
-    #   url = "git+https://github.com/hyprwm/hyprland?submodules=1";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.systems.follows = "systems";
-    # };
-    # hyprspace = {
-    #   url = "github:kzdkm/hyprspace";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
+    hyprland = {
+      url = "git+https://github.com/hyprwm/hyprland?submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+      inputs.pre-commit-hooks.follows = "git-hooks";
+    };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+    hyprspace = {
+      url = "github:kzdkm/hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
+    hyprgrass = {
+      url = "github:horriblename/hyprgrass";
+      inputs.hyprland.follows = "hyprland";
+    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
