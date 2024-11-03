@@ -25,10 +25,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
-      url = "git+https://github.com/hyprwm/hyprland?submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-      inputs.pre-commit-hooks.follows = "git-hooks";
+      url = "github:hyprwm/hyprland";
+      # Do not override Hyprland’s nixpkgs input unless you know what you are doing.
+      # Doing so will make the cache useless, since you’re building from a different Nixpkgs commit.
+      # inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.systems.follows = "systems";
+      # inputs.pre-commit-hooks.follows = "git-hooks";
+    };
+    iio-hyprland = {
+      url = "github:JeanSchoeller/iio-hyprland";
     };
     hyprgrass = {
       url = "github:horriblename/hyprgrass";
