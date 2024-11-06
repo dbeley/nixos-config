@@ -135,7 +135,7 @@
           "$MOD SHIFT, c, exec, gnome-system-monitor"
           "$MOD, t, exec, soffice"
           "$MOD SHIFT, t, exec, gnome-system-monitor"
-          "$MOD, d, exec, supersonid"
+          "$MOD, d, exec, supersonic"
           "$MOD, e, exec, $MENU"
           "$MOD, q, killactive"
           "$MOD, v, togglefloating"
