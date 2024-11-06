@@ -40,6 +40,19 @@
         "XCURSOR_SIZE,24"
         "QT_SCALE_FACTOR_ROUNDING_POLICY,RoundPreferFloor"
       ];
+      monitor = [
+        ",preferred,auto,auto"
+        "eDP-1,preferred,auto,1.6"
+        "desc:AU Optronics 0xFA9B,preferred,auto,1.2"
+        "desc:Dell Inc. DELL S2721DGF 6C1TR83,preferred,0x0,1"
+      ];
+      exec-once = [
+        "waybar"
+        "nextcloud --background"
+        "keepassxc"
+        "command -v wvkbd-mobintl && wvkbd-mobintl -L 250 --hidden"
+        "command -v iio-hyrpland && iio-hyprland"
+      ];
       input = {
         kb_layout = "us";
         kb_variant = "intl";
@@ -200,19 +213,6 @@
       bindm = [
         "$MOD, mouse:272, movewindow"
         "$MOD, mouve:273, resizewindow"
-      ];
-      monitor = [
-        ",preferred,auto,auto"
-        "eDP-1,preferred,auto,1.6"
-        "desc:AU Optronics 0xFA9B,preferred,auto,1.2"
-        "desc:Dell Inc. DELL S2721DGF 6C1TR83,preferred,0x0,1"
-      ];
-      exec-once = [
-        "waybar"
-        "nextcloud --background"
-        "keepassxc"
-        "command -v wvkbd-mobintl && wvkbd-mobintl -L 250 --hidden"
-        "command -v iio-hyrpland && iio-hyprland"
       ];
       windowrulev2 = [
         "suppressevent maximize, class:.*" # You'll probably like this.
