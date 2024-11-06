@@ -7,5 +7,6 @@
     mangohud.enable = false;
     gnome.enable = true;
     nixvim.enable = false;
+    hyprland.enable = false;
   };
 }
