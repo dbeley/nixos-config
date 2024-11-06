@@ -29,6 +29,10 @@
       inputs.hyprgrass.packages.${pkgs.system}.default
     ];
     settings = {
+      "$MOD" = "SUPER";
+      "$TERMINAL" = "kitty";
+      "$BROWSER" = "firefox";
+      "$MENU" = "tofi-run | xargs hyprctl dispatch exec";
       xwayland = {
         force_zero_scaling = "true";
       };
@@ -107,73 +111,60 @@
         disable_hyprland_logo = "true";
         disable_splash_rendering = "true";
       };
-      "$mod" = "SUPER";
       bind =
         [
-          "$mod, return, exec, kitty"
-          "$mod, z, exec, firefox"
-          "$mod SHIFT, z, exec, emacs"
-          "$mod, x, exec, kitty"
-          "$mod SHIFT, x, exec, steam"
-          "$mod, c, exec, soffice"
-          "$mod SHIFT, c, exec, gnome-system-monitor"
-          "$mod, t, exec, soffice"
-          "$mod SHIFT, t, exec, gnome-system-monitor"
-          "$mod, d, exec, supersonid"
-          "$mod, e, exec, tofi-run | xargs hyprctl dispatch exec"
-          "$mod, q, killactive"
-          "$mod, v, togglefloating"
-          "$mod, p, pseudo"
-          "$mod, s, togglesplit"
-          "$mod SHIFT, s, pin"
-          "$mod, m, fullscreen"
-          "$mod, w, togglegroup"
-          "$mod, page_down, changegroupactive, b"
-          "$mod, page_up, changegroupactive, f"
-          "$mod, left, movefocus, l"
-          "$mod, right, movefocus, r"
-          "$mod, up, movefocus, u"
-          "$mod, down, movefocus, d"
-          "$mod, h, movefocus, l"
-          "$mod, l, movefocus, r"
-          "$mod, k, movefocus, u"
-          "$mod, j, movefocus, d"
-          "$mod SHIFT, left, movewindow, l"
-          "$mod SHIFT, right, movewindow, r"
-          "$mod SHIFT, up, movewindow, u"
-          "$mod SHIFT, down, movewindow, d"
-          "$mod SHIFT, h, movewindow, d"
-          "$mod SHIFT, l, movewindow, r"
-          "$mod SHIFT, k, movewindow, u"
-          "$mod SHIFT, j, movewindow, d"
-          "$mod, n, togglespecialworkspace, scratchpad"
-          "$mod SHIFT, g, movetoworkspace, special:scratchpad"
-          "$mod, g, togglespecialworkspace, scratchpad2"
-          "$mod SHIFT, g, movetoworkspace, special:scratchpad2"
-          "$mod, d, togglespecialworkspace, scratchpad3"
-          "$mod SHIFT, d, movetoworkspace, special:scratchpad3"
-          "$mod, mouse_down, workspace, e+1"
-          "$mod, mouse_up, workspace, e-1"
-          ", xf86audiomute, exec, ~/scripts/volume_pamixer.sh mute"
-          ", xf86audiolowervolume, exec, ~/scripts/volume_pamixer.sh down"
-          "SHIFT, xf86audiolowervolume, exec, ~/scripts/volume_pamixer.sh bigdown"
-          ", xf86audioraisevolume, exec, ~/scripts/volume_pamixer.sh up"
-          "SHIFT, xf86audioraisevolume, exec, ~/scripts/volume_pamixer.sh bigup"
+          "$MOD, return, exec, $TERMINAL"
+          "$MOD, z, exec, $BROWSER"
+          "$MOD SHIFT, z, exec, emacs"
+          "$MOD, x, exec, $TERMINAL"
+          "$MOD SHIFT, x, exec, steam"
+          "$MOD, c, exec, soffice"
+          "$MOD SHIFT, c, exec, gnome-system-monitor"
+          "$MOD, t, exec, soffice"
+          "$MOD SHIFT, t, exec, gnome-system-monitor"
+          "$MOD, d, exec, supersonid"
+          "$MOD, e, exec, $MENU"
+          "$MOD, q, killactive"
+          "$MOD, v, togglefloating"
+          "$MOD, p, pseudo"
+          "$MOD, s, togglesplit"
+          "$MOD SHIFT, s, pin"
+          "$MOD, m, fullscreen"
+          "$MOD, w, togglegroup"
+          "$MOD, page_down, changegroupactive, b"
+          "$MOD, page_up, changegroupactive, f"
+          "$MOD, left, movefocus, l"
+          "$MOD, right, movefocus, r"
+          "$MOD, up, movefocus, u"
+          "$MOD, down, movefocus, d"
+          "$MOD, h, movefocus, l"
+          "$MOD, l, movefocus, r"
+          "$MOD, k, movefocus, u"
+          "$MOD, j, movefocus, d"
+          "$MOD SHIFT, left, movewindow, l"
+          "$MOD SHIFT, right, movewindow, r"
+          "$MOD SHIFT, up, movewindow, u"
+          "$MOD SHIFT, down, movewindow, d"
+          "$MOD SHIFT, h, movewindow, d"
+          "$MOD SHIFT, l, movewindow, r"
+          "$MOD SHIFT, k, movewindow, u"
+          "$MOD SHIFT, j, movewindow, d"
+          "$MOD, n, togglespecialworkspace, scratchpad"
+          "$MOD SHIFT, g, movetoworkspace, special:scratchpad"
+          "$MOD, g, togglespecialworkspace, scratchpad2"
+          "$MOD SHIFT, g, movetoworkspace, special:scratchpad2"
+          "$MOD, d, togglespecialworkspace, scratchpad3"
+          "$MOD SHIFT, d, movetoworkspace, special:scratchpad3"
+          "$MOD, mouse_down, workspace, e+1"
+          "$MOD, mouse_up, workspace, e-1"
           ", xf86display, exec, ~/scripts/toggle_gammastep.sh"
           ", xf86display, exec, ~/scripts/hyprland_switch_monitor.sh eDP-1"
-          ", xf86monbrightnessdown, exec, light -U 5%"
-          ", xf86monbrightnessup, exec, light -A 5%"
-          # , xf86wlan, exec,
-          # , xf86tools, exec,
-          # , xf86bluetooth, exec,
-          # , xf86keyboard, exec,
-          # , xf86favorites, exec,
           ", print, exec, grim ~/Nextcloud/10-19_Images/11_Captures-d-écran/11.08_Captures-d-écran_Hyprland/\"$(date +%s)\".png"
           "SHIFT, print, exec, grim -g \"$(slurp -d)\" ~/Nextcloud/10-19_Images/11_Captures-d-écran/11.08_Captures-d-écran_Hyprland/\"$(date +%s)\"_cropped.png"
         ]
         ++ (
           # workspaces
-          # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+          # binds $MOD + [shift +] {1..9} to [move to] workspace {1..9}
           builtins.concatLists (
             builtins.genList (
               i:
@@ -181,15 +172,34 @@
                 ws = i;
               in
               [
-                "$mod, ${toString i}, workspace, ${toString ws}"
-                "$mod SHIFT, ${toString i}, movetoworkspace, ${toString ws}"
+                "$MOD, ${toString i}, workspace, ${toString ws}"
+                "$MOD SHIFT, ${toString i}, movetoworkspace, ${toString ws}"
               ]
             ) 9
           )
         );
+      binde = [
+        # xf86bluetooth
+        # xf86keyboard
+        # xf86tools
+        # xf86audiomicmute
+        # xf86display
+        # xf86wlan
+        # xf86messenger
+        # xf86go
+        # cancel
+        # xf86favorites
+        ", xf86audiomute, exec, ~/scripts/volume_pamixer.sh mute"
+        ", xf86audiolowervolume, exec, ~/scripts/volume_pamixer.sh down"
+        "SHIFT, xf86audiolowervolume, exec, ~/scripts/volume_pamixer.sh bigdown"
+        ", xf86audioraisevolume, exec, ~/scripts/volume_pamixer.sh up"
+        "SHIFT, xf86audioraisevolume, exec, ~/scripts/volume_pamixer.sh bigup"
+        ", xf86monbrightnessdown, exec, light -U 5%"
+        ", xf86monbrightnessup, exec, light -A 5%"
+      ];
       bindm = [
-        "$mod, mouse:272, movewindow"
-        "$mod, mouve:273, resizewindow"
+        "$MOD, mouse:272, movewindow"
+        "$MOD, mouve:273, resizewindow"
       ];
       monitor = [
         ",preferred,auto,auto"
@@ -200,7 +210,7 @@
       exec-once = [
         "waybar"
         "nextcloud --background"
-        "keepasscx"
+        "keepassxc"
         "command -v wvkbd-mobintl && wvkbd-mobintl -L 250 --hidden"
         "command -v iio-hyrpland && iio-hyprland"
       ];
@@ -245,8 +255,8 @@
             ", swipe:3:l, movefocus, l"
             ", swipe:3:r, movefocus, r"
             ", swipe:3:ld, exec, nautilus"
-            ", swipe:3:rd, exec, firefox"
-            ", swipe:3:lu, exec, kitty"
+            ", swipe:3:rd, exec, $BROWSER"
+            ", swipe:3:lu, exec, $TERMINAL"
             ", swipe:3:ru, exec, soffice"
           ];
           hyprgrass-bindm = [
@@ -258,7 +268,7 @@
     };
     extraConfig = ''
       # Submap resize
-      bind = $mod, r, submap, resize # will switch to a submap called resize
+      bind = $MOD, r, submap, resize # will switch to a submap called resize
       submap = resize # will start a submap called "resize"
       bind = , h, resizeactive, -50 0
       bind = , j, resizeactive, 0 50
@@ -269,7 +279,7 @@
       submap = reset # will reset the submap, meaning end the current one and return to the global one.
 
       # Poweroff menu
-      bind = $mod SHIFT, q, submap, poweroff
+      bind = $MOD SHIFT, q, submap, poweroff
       submap = poweroff
       bind = , p, exec, poweroff
       bind = , r, exec, reboot
