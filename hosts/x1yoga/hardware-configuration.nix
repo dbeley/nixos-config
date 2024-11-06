@@ -25,11 +25,23 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/367c842a-c004-46fe-9874-a93bc3999b61";
-    fsType = "ext4";
+    device = "none";
+    fsType = "tmpfs";
+    options = [ "defaults" "size=25%" "mode=755" ];
   };
 
-  boot.initrd.luks.devices."luks-994a5a45-61f0-4ae1-9a97-d2327015448e".device = "/dev/disk/by-uuid/994a5a45-61f0-4ae1-9a97-d2327015448e";
+  fileSystems."/persistent" = {
+    device = "/dev/disk/by-uuid/367c842a-c004-46fe-9874-a93bc3999b61";
+    neededForBoot = true;
+    fsType = "ext4";
+    # options = [ "subvol=persistent" ];
+  };
+
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/367c842a-c004-46fe-9874-a93bc3999b61";
+    fsType = "ext4";
+    # options = [ "subvol=nix" ];
+  };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/AD98-2AF0";
@@ -39,6 +51,21 @@
       "dmask=0077"
     ];
   };
+
+  boot.initrd.luks.devices."luks-994a5a45-61f0-4ae1-9a97-d2327015448e".device = "/dev/disk/by-uuid/994a5a45-61f0-4ae1-9a97-d2327015448e";
+
+  # fileSystems."/" = {
+  #   device = "/dev/disk/by-uuid/367c842a-c004-46fe-9874-a93bc3999b61";
+  #   fsType = "ext4";
+  # };
+  # fileSystems."/boot" = {
+  #   device = "/dev/disk/by-uuid/AD98-2AF0";
+  #   fsType = "vfat";
+  #   options = [
+  #     "fmask=0077"
+  #     "dmask=0077"
+  #   ];
+  # };
 
   swapDevices = [ ];
 

@@ -559,6 +559,21 @@
         "type": "github"
       }
     },
+    "impermanence": {
+      "locked": {
+        "lastModified": 1730403150,
+        "narHash": "sha256-W1FH5aJ/GpRCOA7DXT/sJHFpa5r8sq2qAUncWwRZ3Gg=",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "0d09341beeaa2367bac5d718df1404bf2ce45e6f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "type": "github"
+      }
+    },
     "ixx": {
       "inputs": {
         "flake-utils": [
@@ -763,6 +778,7 @@
         "hyprgrass": "hyprgrass",
         "hyprland": "hyprland",
         "iio-hyprland": "iio-hyprland",
+        "impermanence": "impermanence",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "nixvim": "nixvim",

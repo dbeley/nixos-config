@@ -80,6 +80,9 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.systems.follows = "systems";
     };
+    impermanence = {
+      url = "github:nix-community/impermanence";
+    };
   };
 
   outputs =

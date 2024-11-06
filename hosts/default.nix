@@ -59,8 +59,10 @@
       inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       inputs.stylix.nixosModules.stylix
+      inputs.impermanence.nixosModules.impermanence
       ./x1yoga/hardware-configuration.nix
       ../modules/configuration.nix
+      ../modules/impermanence.nix
       ../modules/common/uefi.nix
       ../modules/common/laptop.nix
       ../modules/common/xbox.nix
