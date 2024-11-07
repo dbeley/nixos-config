@@ -51,7 +51,7 @@
         "nextcloud --background"
         "keepassxc"
         "command -v wvkbd-mobintl && wvkbd-mobintl -L 250 --hidden"
-        "command -v iio-hyrpland && iio-hyprland"
+        "command -v iio-hyprland && iio-hyprland"
       ];
       input = {
         kb_layout = "us";
