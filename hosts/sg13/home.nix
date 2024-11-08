@@ -7,19 +7,23 @@
 }:
 {
   imports = [
+    ../../apps/gnome/gnome.nix
+    # ../../apps/autoscreen-gnome/autoscreen-gnome.nix
+    ../../apps/stylix/stylix.nix
+
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
     ../../apps/tmux/tmux.nix
-    inputs.nixvim.homeManagerModules.nixvim
-    ../../apps/nixvim/nixvim.nix
+    ../../apps/direnv/direnv.nix
+    # inputs.nixvim.homeManagerModules.nixvim
+    # ../../apps/nixvim/nixvim.nix
     ../../apps/helix/helix.nix
     ../../apps/udiskie/udiskie.nix
     ../../apps/bat/bat.nix
-    ../../apps/stylix/stylix.nix
 
     ../../apps/firefox/firefox.nix
     ../../apps/steam/steam.nix
-    ../../apps/direnv/direnv.nix
+    ../../apps/nextcloud-client/nextcloud-client.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -49,7 +53,6 @@
     keepassxc
     libreoffice-fresh
     ncdu
-    # nextcloud-client
     ripgrep
     ripgrep-all
     rsync
