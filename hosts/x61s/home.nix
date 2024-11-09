@@ -98,7 +98,6 @@
     # cmake
     # libtool
 
-    # nil
     nvd
 
     # python3
