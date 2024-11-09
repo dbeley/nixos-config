@@ -65,6 +65,8 @@
   home.packages = with pkgs; [
     audacity
     beets
+    borgbackup
+    borgmatic
     btop
     eza
     fd

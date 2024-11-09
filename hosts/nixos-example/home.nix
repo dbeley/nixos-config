@@ -84,7 +84,6 @@
     pavucontrol
     ripgrep
     ripgrep-all
-    rsync
     ungoogled-chromium
     unzip
     xfce.thunar

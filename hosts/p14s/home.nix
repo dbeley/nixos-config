@@ -94,7 +94,6 @@
     pavucontrol
     ripgrep
     ripgrep-all
-    rsync
     supersonic
     ungoogled-chromium
     unzip

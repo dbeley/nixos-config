@@ -55,7 +55,6 @@
     ncdu
     ripgrep
     ripgrep-all
-    rsync
     supersonic
     ungoogled-chromium
     yt-dlp
