@@ -7,37 +7,37 @@
 }:
 {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
     ../../apps/sway/sway.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
+    ../../apps/mako/mako.nix
+    ../../apps/gammastep/gammastep.nix
+    ../../apps/autoscreen/autoscreen.nix
+    ../../apps/autoscreen-gaming/autoscreen-gaming.nix
+    ../../apps/stylix/stylix.nix
 
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
     ../../apps/tmux/tmux.nix
-    # ../../apps/alacritty/alacritty.nix
     ../../apps/kitty/kitty.nix
-    # ../../apps/nvim/nvim.nix
-    ../../apps/nixvim/nixvim.nix
-    ../../apps/emacs/emacs.nix
-    ../../apps/kakoune/kakoune.nix
+    ../../apps/direnv/direnv.nix
     ../../apps/helix/helix.nix
-    # ../../apps/lf/lf.nix
     ../../apps/nnn/nnn.nix
     ../../apps/udiskie/udiskie.nix
     ../../apps/mime/mime.nix
-    ../../apps/swayimg/swayimg.nix
+    ../../apps/imv/imv.nix
     ../../apps/bat/bat.nix
+    ../../apps/zoxide/zoxide.nix
+    ../../apps/zathura/zathura.nix
 
     ../../apps/firefox/firefox.nix
-    ../../apps/qutebrowser/qutebrowser.nix
-    ../../apps/gammastep/gammastep.nix
     ../../apps/ledger/ledger.nix
     ../../apps/mpd/mpd.nix
+    ../../apps/mpdscrobble/mpdscrobble.nix
     ../../apps/mpv/mpv.nix
-    ../../apps/zathura/zathura.nix
-    ../../apps/autoscreen/autoscreen.nix
-    # ../../apps/mpdscrobble/mpdscrobble.nix
+    ../../apps/steam/steam.nix
+    ../../apps/nextcloud-client/nextcloud-client.nix
+    ../../apps/tealdeer/tealdeer.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -67,42 +67,42 @@
     fd
     ffmpeg
     ffmpegthumbnailer
-    fio
-    gh
+    # fio
+    # gh
     gnome-system-monitor
-    gthumb
+    # gthumb
     htop
-    hugo
+    # hugo
     jq
+    just
     keepassxc
     libreoffice-fresh
     ncdu
-    nextcloud-client
     nitch
     pavucontrol
     ripgrep
     ripgrep-all
-    rsync
+    supersonic
     # ungoogled-chromium
     unzip
     xfce.thunar
     xfce.tumbler
     yt-dlp
 
-    discord
-    element-desktop
+    # discord
+    # element-desktop
 
     # dev dependencies
-    clang
-    gnumake
-    cmake
-    libtool
+    # clang
+    # gnumake
+    # cmake
+    # libtool
 
-    nil
+    # nil
     nvd
 
-    python3
-    pyright
+    # python3
+    # pyright
   ];
 
   services.mpris-proxy.enable = true;

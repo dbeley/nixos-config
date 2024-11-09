@@ -7,7 +7,6 @@
 }:
 {
   home.packages = with pkgs; [
-    mako
     libnotify
     grim
     slurp
@@ -18,8 +17,8 @@
     "scripts".source = pkgs.fetchFromGitHub {
       owner = "dbeley";
       repo = "scripts";
-      rev = "705634a4832ac15df0df0319ce6048621afd6cc2";
-      sha256 = "KWouJA2I0gVDjNwASI7sz3XrfyGQPwe6oqZ7mjjIw78=";
+      rev = "a8607fbfb8c50543629e14ec483473459229091d";
+      sha256 = "XBumWlu4+z/jTKLK71Lr0hMeLhc43XD3oEzY+YUMzN4=";
     };
   };
   wayland.windowManager.sway = {
@@ -33,7 +32,7 @@
         "type:keyboard" = {
           xkb_layout = "us";
           xkb_variant = "intl";
-          xkb_options = "ctrl:nocaps,shit:both_capslock";
+          xkb_options = "ctrl:nocaps,shift:both_capslock";
           repeat_delay = "200";
           repeat_rate = "60";
         };
@@ -74,25 +73,26 @@
 
       keybindings =
         let
-          modifiers = config.wayland.windowManager.sway.config.modifier;
+          mod = config.wayland.windowManager.sway.config.modifier;
         in
         lib.mkOptionDefault {
-          "${modifier}+d" = "exec ${pkgs.tofi}/bin/tofi-run | xargs swaymsg exec --";
-          "${modifier}+Return" = "exec ${pkgs.kitty}/bin/kitty";
-          "${modifier}+q" = "kill";
-          "${modifier}+z" = "exec ${pkgs.firefox}/bin/firefox";
-          "${modifier}+Shift+z" = "exec ${pkgs.emacs}/bin/emacs";
-          "${modifier}+x" = "exec ${pkgs.kitty}/bin/kitty";
-          "${modifier}+Shift+x" = "exec ${pkgs.steam}/bin/steam";
-          "${modifier}+t" = "exec ${pkgs.libreoffice}/bin/soffice";
-          "${modifier}+Shift+t" = "exec ${pkgs.gnome-system-monitor}/bin/gnome-system-monitor";
-          "${modifier}+Shift+minus" = "move scratchpad";
-          "${modifier}+minus" = "scratchpad show";
-          "${modifier}+F9" = "scratchpad show";
-          "${modifier}+F10" = ''[app_id="org.keepassxc.KeePassXC"] scratchpad show'';
-          "${modifier}+F11" = ''[app_id="com.nextcloud.desktopclient.nextcloud"] scratchpad show'';
-          "${modifier}+g" = ''[app_id="scratchpad"] scratchpad show'';
-          "${modifier}+c" = ''[app_id="org.keepassxc.KeePassXC"] scratchpad show'';
+          "${mod}+e" = "exec ${pkgs.tofi}/bin/tofi-run | xargs swaymsg exec --";
+          "${mod}+Return" = "exec ${pkgs.kitty}/bin/kitty";
+          "${mod}+q" = "kill";
+          "${mod}+z" = "exec ${pkgs.firefox}/bin/firefox";
+          "${mod}+Shift+z" = "exec ${pkgs.emacs}/bin/emacs";
+          "${mod}+x" = "exec ${pkgs.kitty}/bin/kitty";
+          "${mod}+Shift+x" = "exec ${pkgs.steam}/bin/steam";
+          "${mod}+t" = "exec ${pkgs.libreoffice}/bin/soffice";
+          "${mod}+Shift+t" = "exec ${pkgs.gnome-system-monitor}/bin/gnome-system-monitor";
+          "${mod}+Shift+minus" = "move scratchpad";
+          "${mod}+minus" = "scratchpad show";
+          "${mod}+F9" = "scratchpad show";
+          "${mod}+F10" = ''[app_id="org.keepassxc.KeePassXC"] scratchpad show'';
+          "${mod}+F11" = ''[app_id="com.nextcloud.desktopclient.nextcloud"] scratchpad show'';
+          "${mod}+g" = ''[app_id="scratchpad"] scratchpad show'';
+          "${mod}+c" = ''[app_id="org.keepassxc.KeePassXC"] scratchpad show'';
+          "${mod}+d" = ''[app_id="Supersonic"] scratchpad show'';
 
           "XF86AudioRaiseVolume" = "exec ~/scripts/volume_pamixer.sh up";
           "Shift+XF86AudioRaiseVolume" = "exec ~/scripts/volume_pamixer.sh bigup";
@@ -108,9 +108,9 @@
           "XF86Display" = "exec ~/scripts/toggle_gammastep.sh";
           "Pause" = "exec killall -SIGUSR1 waybar";
 
-          "${modifier}+r" = ''mode "  resize  "'';
-          "${modifier}+Shift+p" = ''mode "  (r)eboot, (p)oweroff, (l)ock, (s)uspend  "'';
-          "${modifier}+Shift+s" = "sticky toggle";
+          "${mod}+r" = ''mode "  resize  "'';
+          "${mod}+Shift+p" = ''mode "  (r)eboot, (p)oweroff, (l)ock, (s)uspend  "'';
+          "${mod}+Shift+s" = "sticky toggle";
         };
       bars = [ { command = "waybar"; } ];
       gaps = {
@@ -130,9 +130,14 @@
           }
           {
             command = "move to scratchpad";
-            criteria = {
-              app_id = "org.keepassxc.KeePassXC";
-            };
+            criteria = [
+              {
+                app_id = "org.keepassxc.KeePassXC";
+              }
+              {
+                app_id = "Supersonic";
+              }
+            ];
           }
           {
             command = "move to scratchpad, scratchpad show";
@@ -155,6 +160,7 @@
           { app_id = "swayimg"; }
           { app_id = "mpv"; }
           { app_id = "org.keepassxc.KeePassXC"; }
+          { app_id = "Supersonic"; }
           { app_id = "com.nextcloud.desktopclient.nextcloud"; }
         ];
         titlebar = false;
@@ -211,9 +217,9 @@
     extraConfigEarly = ''
       set $tx #ffffff
 
-      bindsym --release Print exec "grim ~/Nextcloud/10-19_Images/11_Images/11.07_Captures-d-écran_Sway/$(date +%s).png"
-      bindsym --release Shift+Print exec 'grim -g "$(slurp -d)" ~/Nextcloud/10-19_Images/11_Images/11.07_Captures-d-écran_Sway/$(date +%s)_cropped.png'
-      bindsym --release XF86SelectiveScreenshot exec 'grim -g "$(slurp -d)" ~/Nextcloud/10-19_Images/11_Images/11.07_Captures-d-écran_Sway/$(date +%s)_cropped.png'
+      bindsym --release Print exec "grim ~/Nextcloud/10-19_Images/11_Captures-d-écran/11.07_Captures-d-écran_Sway/$(date +%s).png"
+      bindsym --release Shift+Print exec 'grim -g "$(slurp -d)" ~/Nextcloud/10-19_Images/11_Captures-d-écran/11.07_Captures-d-écran_Sway/$(date +%s)_cropped.png'
+      bindsym --release XF86SelectiveScreenshot exec 'grim -g "$(slurp -d)" ~/Nextcloud/10-19_Images/11_Captures-d-écran/11.07_Captures-d-écran_Sway/$(date +%s)_cropped.png'
     '';
   };
 }
