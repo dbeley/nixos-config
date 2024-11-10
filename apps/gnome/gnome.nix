@@ -59,7 +59,7 @@ with lib.hm.gvariant;
       appmenu = "minimize,maximize,close";
     };
     "org/gnome/desktop/session" = {
-      idle-delay = 0;
+      idle-delay = mkUint32 0;
     };
     "org/gnome/desktop/peripherals/mouse" = {
       left-handed = true;
