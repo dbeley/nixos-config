@@ -79,6 +79,7 @@
     just
     keepassxc
     libreoffice-fresh
+    musescore
     ncdu
     nitch
     papers
