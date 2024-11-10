@@ -50,6 +50,8 @@ in
         "browser.safebrowsing.enabled" = false;
         "browser.safebrowsing.malware.enabled" = false;
         "browser.search.context.loadInBackground" = true;
+        "browser.search.defaultenginename" = "DuckDuckGo";
+        "browser.search.order.1" = "DuckDuckGo";
         "browser.search.region" = "FR";
         "browser.send_pings" = false;
         "browser.sessionstore.interval" = 60000;
@@ -148,6 +150,7 @@ in
         "signon.rememberSignons" = false;
         "ui.systemUsesDarkTheme" = 1;
         "webgl.disabled" = false;
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
       };
       extensions = with addons; [
         augmented-steam
@@ -167,6 +170,11 @@ in
         violentmonkey
         web-scrobbler
       ];
+      search = {
+        force = true;
+        default = "DuckDuckGo";
+        order = [ "DuckDuckGo" ];
+      };
     };
   };
 }
