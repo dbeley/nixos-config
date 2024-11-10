@@ -98,8 +98,6 @@
     # cmake
     # libtool
 
-    nvd
-
     # python3
     # pyright
   ];

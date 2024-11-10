@@ -90,8 +90,6 @@
     unzip
     wvkbd
     yt-dlp
-
-    nvd
   ];
 
   services.mpris-proxy.enable = true;

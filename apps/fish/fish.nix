@@ -1,5 +1,6 @@
 { pkgs, user, ... }:
 {
+  home.packages = with pkgs; [ nvd ];
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
