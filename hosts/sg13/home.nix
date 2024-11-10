@@ -8,7 +8,7 @@
 {
   imports = [
     ../../apps/gnome/gnome.nix
-    # ../../apps/autoscreen-gnome/autoscreen-gnome.nix
+    ../../apps/autoscreen-gnome/autoscreen-gnome.nix
     ../../apps/stylix/stylix.nix
 
     ../../apps/git/git.nix
