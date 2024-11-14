@@ -33,6 +33,7 @@
       "$TERMINAL" = "kitty";
       "$BROWSER" = "firefox";
       "$MENU" = "tofi-run | xargs hyprctl dispatch exec";
+      "$SCREENSHOT_FOLDER" = "~/Nextcloud/10-19_Images/11_Captures-d-écran/11.08_Captures-d-écran_Hyprland";
       xwayland = {
         force_zero_scaling = "true";
       };
@@ -172,8 +173,8 @@
           "$MOD, mouse_up, workspace, e-1"
           ", xf86display, exec, ~/scripts/toggle_gammastep.sh"
           ", xf86display, exec, ~/scripts/hyprland_switch_monitor.sh eDP-1"
-          ", print, exec, grim ~/Nextcloud/10-19_Images/11_Captures-d-écran/11.08_Captures-d-écran_Hyprland/\"$(date +%s)\".png"
-          "SHIFT, print, exec, grim -g \"$(slurp -d)\" ~/Nextcloud/10-19_Images/11_Captures-d-écran/11.08_Captures-d-écran_Hyprland/\"$(date +%s)\"_cropped.png"
+          ", print, exec, grim $SCREENSHOT_FOLDER/\"$(date +%s)\".png"
+          "SHIFT, print, exec, grim -g \"$(slurp -d)\" $SCREENSHOT_FOLDER/\"$(date +%s)\"_cropped.png"
         ]
         ++ (
           # workspaces

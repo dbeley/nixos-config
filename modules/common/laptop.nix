@@ -15,5 +15,8 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
   # services.tlp.enable = true;
-  services.logind.lidSwitch = "ignore";
+  services.logind = {
+    lidSwitch = "ignore";
+    powerKey = "ignore";
+  };
 }
