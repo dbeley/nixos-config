@@ -172,7 +172,7 @@
           "$MOD, mouse_down, workspace, e+1"
           "$MOD, mouse_up, workspace, e-1"
           ", xf86display, exec, ~/scripts/toggle_gammastep.sh"
-          ", xf86display, exec, ~/scripts/hyprland_switch_monitor.sh eDP-1"
+          "SHIFT, xf86display, exec, ~/scripts/hyprland_switch_monitor.sh eDP-1"
           ", print, exec, grim $SCREENSHOT_FOLDER/\"$(date +%s)\".png"
           "SHIFT, print, exec, grim -g \"$(slurp -d)\" $SCREENSHOT_FOLDER/\"$(date +%s)\"_cropped.png"
         ]
