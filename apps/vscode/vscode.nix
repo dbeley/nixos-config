@@ -12,5 +12,10 @@
       ms-azuretools.vscode-docker
       ms-python.debugpy
     ];
+    userSettings = {
+      "files.autoSave" = "off";
+      "editor.fontSize" = 16;
+      "editor.wordWrap" = "on";
+    };
   };
 }
