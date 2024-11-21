@@ -49,7 +49,6 @@
       ];
       exec-once = [
         "waybar"
-        "nextcloud --background"
         "keepassxc"
         "command -v wvkbd-mobintl && wvkbd-mobintl -L 250 --hidden"
         "command -v iio-hyprland && iio-hyprland"
