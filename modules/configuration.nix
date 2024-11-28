@@ -108,7 +108,7 @@
   fonts = {
     # Now handled by stylix
     packages = with pkgs; [
-      #   (nerdfonts.override { fonts = [ "Iosevka" ]; })
+      #   nerd-fonts.iosevka
       #   eb-garamond
       #   liberation_ttf
       #   overpass

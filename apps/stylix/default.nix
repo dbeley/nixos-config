@@ -54,7 +54,7 @@
         name = "Overpass";
       };
       monospace = {
-        package = pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; };
+        package = pkgs.nerd-fonts.iosevka;
         name = "Iosevka Nerd Font Mono";
       };
       emoji = {
