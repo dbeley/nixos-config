@@ -93,6 +93,7 @@
     allowUnfree = true;
     chromium.enableWideVine = true;
   };
+  nixpkgs.overlays = [ inputs.nur.overlay ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
