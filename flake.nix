@@ -39,10 +39,8 @@
       url = "github:horriblename/hyprgrass";
       inputs.hyprland.follows = "hyprland";
     };
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
+    nur = {
+      url = "github:nix-community/nur";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     treefmt-nix = {
@@ -99,7 +97,6 @@
       user = "david";
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfree = true;
       };
       inherit (nixpkgs) lib;
 

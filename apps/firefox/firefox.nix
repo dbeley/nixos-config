@@ -1,12 +1,8 @@
 {
+  pkgs,
   user,
-  inputs,
-  system,
   ...
 }:
-let
-  addons = inputs.firefox-addons.packages.${system};
-in
 {
   programs.firefox = {
     enable = true;
@@ -152,7 +148,7 @@ in
         "webgl.disabled" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 0;
       };
-      extensions = with addons; [
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         augmented-steam
         darkreader
         hover-zoom-plus

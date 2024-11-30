@@ -1,0 +1,9 @@
+set visualbell
+set showcmd
+set ignorecase
+set smartcase
+set incsearch
+set number
+set clipboard+=unnamedplus
+set clipboard+=ideaput
+set scrolloff=5
