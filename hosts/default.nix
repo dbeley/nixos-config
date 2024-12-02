@@ -15,7 +15,6 @@
     };
     modules = [
       inputs.nixos-hardware.nixosModules.common-cpu-amd
-      inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       inputs.stylix.nixosModules.stylix
       ./p14s/hardware-configuration.nix
@@ -56,7 +55,6 @@
     };
     modules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
-      inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       inputs.stylix.nixosModules.stylix
       ./x1yoga/hardware-configuration.nix
@@ -172,7 +170,6 @@
       # inputs.nixos-hardware.nixosModules.common-cpu-intel
 
       # Uncomment if you have a laptop
-      # inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
       # inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       # ../modules/common/laptop.nix
 
