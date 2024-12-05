@@ -30,10 +30,12 @@
       # Doing so will make the cache useless, since you’re building from a different Nixpkgs commit.
       # inputs.nixpkgs.follows = "nixpkgs";
       # inputs.systems.follows = "systems";
-      # inputs.pre-commit-hooks.follows = "git-hooks";
+      inputs.pre-commit-hooks.follows = "git-hooks";
     };
     iio-hyprland = {
       url = "github:JeanSchoeller/iio-hyprland";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+      inputs.systems.follows = "hyprland/systems";
     };
     hyprgrass = {
       url = "github:horriblename/hyprgrass";
