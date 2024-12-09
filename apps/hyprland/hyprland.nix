@@ -33,7 +33,8 @@
       "$TERMINAL" = "kitty";
       "$BROWSER" = "firefox";
       "$MENU" = "tofi-run | xargs hyprctl dispatch exec";
-      "$SCREENSHOT_FOLDER" = "~/Nextcloud/10-19_Images/11_Captures-d-écran/11.08_Captures-d-écran_Hyprland";
+      "$SCREENSHOT_FOLDER" =
+        "~/Nextcloud/10-19_Images/11_Captures-d-écran/11.08_Captures-d-écran_Hyprland";
       xwayland = {
         force_zero_scaling = "true";
       };
