@@ -12,7 +12,21 @@
   #     });
   #   })
   # ];
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      General = {
+        # ControllerMode = "dual";
+        JustWorksRepairing = "always";
+        # FastConnectable = "true";
+        # Class = "0x000100";
+      };
+      # Policy = {
+      #   ReconnectIntervals = "1,1,2,3,5,8,13,21,34,55";
+      #   AutoEnable = "true";
+      # };
+    };
+  };
   services.blueman.enable = true;
   # services.tlp.enable = true;
   services.logind = {
