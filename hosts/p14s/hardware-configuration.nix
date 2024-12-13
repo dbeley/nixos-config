@@ -3,6 +3,7 @@
 # to /etc/nixos/configuration.nix instead.
 {
   config,
+  inputs,
   lib,
   pkgs,
   modulesPath,
@@ -12,7 +13,13 @@
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+    inputs.ucodenix.nixosModules.default
+    ];
+
+  services.ucodenix = {
+    enable = true;
+    cpuModelId = "00A70F41";
+  };
 
   boot.initrd.availableKernelModules = [
     "nvme"

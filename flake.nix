@@ -89,6 +89,9 @@
       inputs.systems.follows = "systems";
       inputs.base16.follows = "base16";
     };
+    ucodenix = {
+      url = "github:e-tho/ucodenix";
+    };
   };
 
   outputs =
