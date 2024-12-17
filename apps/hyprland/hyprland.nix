@@ -217,8 +217,8 @@
       ];
       windowrulev2 = [
         "suppressevent maximize, class:.*" # You'll probably like this.
-        "float,class:KeePassXC"
-        "workspace special:scratchpad silent,class:KeePassXC"
+        "float,class:org.keepassxc.KeePassXC"
+        "workspace special:scratchpad silent,class:org.keepassxc.KeePassXC"
         "workspace special:scratchpad3 silent,class:Supersonic"
         "float,class:mpv"
         "opaque,class:mpv"
