@@ -83,6 +83,7 @@
     # gh
     gnome-system-monitor
     # gthumb
+    heroic
     htop
     # hugo
     jq
