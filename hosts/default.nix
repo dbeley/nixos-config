@@ -105,6 +105,7 @@
       ../modules/common/laptop.nix
       ../modules/common/fingerprint-scanner.nix
       ../modules/common/printing.nix
+      ../modules/common/zoom-overlay.nix
       ../apps/gnome/default.nix
       ../apps/docker/default.nix
       ../apps/udiskie/default.nix
