@@ -104,6 +104,7 @@
       ../modules/common/uefi.nix
       ../modules/common/laptop.nix
       ../modules/common/fingerprint-scanner.nix
+      ../modules/common/printing.nix
       ../apps/gnome/default.nix
       ../apps/docker/default.nix
       ../apps/udiskie/default.nix

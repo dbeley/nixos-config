@@ -122,7 +122,7 @@
     };
   };
 
-  services.printing.enable = false;
+  services.printing.enable = lib.mkDefault false;
   services.gnome.gnome-keyring.enable = true;
   services.fstrim.enable = true;
   services.journald.extraConfig = ''
