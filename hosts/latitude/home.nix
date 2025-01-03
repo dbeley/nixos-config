@@ -69,6 +69,7 @@
     gh
     gnome-system-monitor
     htop
+    insomnia
     jq
     just
     # libreoffice-fresh
@@ -78,6 +79,7 @@
     pavucontrol
     ripgrep
     ripgrep-all
+    supersonic
     ungoogled-chromium
     unzip
 
