@@ -19,7 +19,6 @@
       inputs.flake-compat.follows = "flake-compat";
       inputs.gitignore.follows = "gitignore";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
