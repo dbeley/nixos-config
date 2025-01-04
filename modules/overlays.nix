@@ -11,16 +11,16 @@
           sha256 = "sha256-k8T/lmfgAFxW1nwEyh61lagrlHP5geT2tA7e5j61+qw=";
         };
       });
-      # to fix beets build, cf. https://github.com/NixOS/nixpkgs/pull/370234
-      beets = super.beets.overrideAttrs (oldAttrs: {
-        patches = oldAttrs.patches ++ [
-          # Remove after next release.
-          (super.fetchpatch {
-            url = "https://github.com/beetbox/beets/commit/bcc79a5b09225050ce7c88f63dfa56f49f8782a8.patch?full_index=1";
-            hash = "sha256-Y2Q5Co3UlDGKuzfxUvdUY3rSMNpsBoDW03ZWZOfzp3Y=";
-          })
-        ];
-      });
+      # # to fix beets build, cf. https://github.com/NixOS/nixpkgs/pull/370234
+      # beets = super.beets.overrideAttrs (oldAttrs: {
+      #   patches = oldAttrs.patches ++ [
+      #     # Remove after next release.
+      #     (super.fetchpatch {
+      #       url = "https://github.com/beetbox/beets/commit/bcc79a5b09225050ce7c88f63dfa56f49f8782a8.patch?full_index=1";
+      #       hash = "sha256-Y2Q5Co3UlDGKuzfxUvdUY3rSMNpsBoDW03ZWZOfzp3Y=";
+      #     })
+      #   ];
+      # });
       # to fix audacity memory leaks on wayland cf. https://github.com/audacity/audacity/issues/4247
       audacity = super.audacity.overrideAttrs (oldAttrs: {
         postInstall = (oldAttrs.postInstall or "") + ''
