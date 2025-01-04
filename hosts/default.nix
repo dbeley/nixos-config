@@ -61,6 +61,7 @@
       ../modules/configuration.nix
       ../modules/common/uefi.nix
       ../modules/common/laptop.nix
+      ../modules/common/laptop-thermald.nix
       ../modules/common/xbox.nix
       ../modules/common/fingerprint-scanner.nix
       ../modules/common/screen-rotation.nix
@@ -103,6 +104,7 @@
       ../modules/configuration.nix
       ../modules/common/uefi.nix
       ../modules/common/laptop.nix
+      ../modules/common/laptop-thermald.nix
       ../modules/common/fingerprint-scanner.nix
       ../modules/common/printing.nix
       ../modules/common/zoom-overlay.nix
