@@ -19,6 +19,7 @@
       inputs.stylix.nixosModules.stylix
       ./p14s/hardware-configuration.nix
       ../modules/configuration.nix
+      ../modules/overlays.nix
       ../modules/common/uefi.nix
       ../modules/common/laptop.nix
       ../modules/common/xbox.nix
@@ -59,6 +60,7 @@
       inputs.stylix.nixosModules.stylix
       ./x1yoga/hardware-configuration.nix
       ../modules/configuration.nix
+      ../modules/overlays.nix
       ../modules/common/uefi.nix
       ../modules/common/laptop.nix
       ../modules/common/laptop-thermald.nix
@@ -102,12 +104,12 @@
       inputs.stylix.nixosModules.stylix
       ./latitude/hardware-configuration.nix
       ../modules/configuration.nix
+      ../modules/overlays.nix
       ../modules/common/uefi.nix
       ../modules/common/laptop.nix
       ../modules/common/laptop-thermald.nix
       ../modules/common/fingerprint-scanner.nix
       ../modules/common/printing.nix
-      ../modules/common/zoom-overlay.nix
       ../apps/gnome/default.nix
       ../apps/docker/default.nix
       ../apps/udiskie/default.nix
@@ -142,6 +144,7 @@
       inputs.stylix.nixosModules.stylix
       ./sg13/hardware-configuration.nix
       ../modules/configuration.nix
+      ../modules/overlays.nix
       ../modules/common/uefi.nix
       ../modules/common/xbox.nix
       ../apps/gnome/default.nix
@@ -176,6 +179,7 @@
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x200s
       ./x61s/hardware-configuration.nix
       ../modules/configuration.nix
+      ../modules/overlays.nix
       ../modules/common/bios.nix
       ../modules/common/laptop.nix
       ../apps/swaylock/default.nix
@@ -223,6 +227,7 @@
 
       ./nixos-example/hardware-configuration.nix
       ../modules/configuration.nix
+      ../modules/overlays.nix
       ../modules/common/uefi.nix
       ../apps/gnome/default.nix
 
