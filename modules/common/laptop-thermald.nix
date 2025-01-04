@@ -1,3 +1,6 @@
 {
-  services.thermald.enable = true;
+  services.thermald = {
+    enable = true;
+    ignoreCpuidCheck = true;
+  };
 }
