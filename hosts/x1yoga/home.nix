@@ -85,6 +85,7 @@
     papers
     ripgrep
     ripgrep-all
+    shotcut
     supersonic
     ungoogled-chromium
     unzip
