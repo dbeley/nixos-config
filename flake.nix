@@ -83,6 +83,8 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
+      inputs.git-hooks.follows = "git-hooks";
+      inputs.gitignore.follows = "gitignore";
       inputs.flake-compat.follows = "flake-compat";
       inputs.flake-utils.follows = "flake-utils";
       inputs.systems.follows = "systems";
