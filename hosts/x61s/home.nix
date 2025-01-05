@@ -19,7 +19,7 @@
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
     ../../apps/tmux/tmux.nix
-    ../../apps/kitty/kitty.nix
+    ../../apps/ghostty/ghostty.nix
     ../../apps/direnv/direnv.nix
     ../../apps/helix/helix.nix
     ../../apps/nnn/nnn.nix
