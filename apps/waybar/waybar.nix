@@ -39,7 +39,6 @@
           "format-disconnected" = "";
           "on-click" = "mpc --quiet toggle";
           "on-click-right" = "mpc ls | mpc add";
-          "on-click-middle" = "kitty --class='ncmpcpp' ncmpcpp ";
           "on-scroll-up" = "mpc --quiet prev";
           "on-scroll-down" = "mpc --quiet next";
           "smooth-scrolling-threshold" = 5;

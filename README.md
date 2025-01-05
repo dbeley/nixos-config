@@ -10,7 +10,7 @@
 | **DM:**        | tty1                                     |
 | **WM:**        | hyprland or sway + waybar                |
 | **Editor:**    | doom-emacs / neovim / helix / kakoune    |
-| **Terminal:**  | kitty                                    |
+| **Terminal:**  | ghostty / kitty                          |
 | **Launcher:**  | tofi                                     |
 | **Browser:**   | firefox / qutebrowser                    |
 | **Theme:**     | stylix                                   |
