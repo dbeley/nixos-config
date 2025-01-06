@@ -69,10 +69,9 @@
     gh
     gnome-system-monitor
     htop
-    insomnia
     jq
     just
-    # libreoffice-fresh
+    libreoffice-fresh
     nautilus
     ncdu
     nitch
@@ -100,6 +99,8 @@
     pango
     mecab
     libffi
+    insomnia
+    nodejs
   ];
 
   services.mpris-proxy.enable = true;
