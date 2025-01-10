@@ -40,7 +40,7 @@
       };
       env = [
         "XCURSOR_SIZE,24"
-        "QT_SCALE_FACTOR_ROUNDING_POLICY,RoundPreferFloor"
+        # "QT_SCALE_FACTOR_ROUNDING_POLICY,RoundPreferFloor"
       ];
       monitor = [
         ",preferred,auto,auto"
