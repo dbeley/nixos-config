@@ -79,5 +79,10 @@ with lib.hm.gvariant;
     "org/gnome/mutter" = {
       "experimental-features" = "['scale-monitor-framebuffer']";
     };
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+      enabled-extensions = [
+      ];
+    };
   };
 }
