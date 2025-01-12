@@ -1,4 +1,4 @@
-{ user, ... }:
+{ user, pkgs, ... }:
 {
   services.displayManager = {
     defaultSession = "gnome";
@@ -20,4 +20,11 @@
 
   # To fix login by fingerprint
   security.pam.services.login.fprintAuth = false;
+
+  services.gnome = {
+    games.enable = false;
+    core-utilities.enable = false;
+  };
+  programs.gnome-terminal.enable = false;
+  environment.gnome.excludePackages = (with pkgs; [ gnome-tour ]);
 }

@@ -69,6 +69,7 @@ with lib.hm.gvariant;
     };
     "org/gnome/settings-daemon/plugins/power" = {
       sleep-inactive-ac-type = "nothing";
+      sleep-inactive-ac-timeout = 0;
       sleep-inactive-battery-timeout = 1800;
     };
     "org/gnome/settings-daemon/plugins/color" = {
