@@ -23,9 +23,11 @@
       # });
       # to fix audacity memory leaks on wayland cf. https://github.com/audacity/audacity/issues/4247
       audacity = super.audacity.overrideAttrs (oldAttrs: {
-        postInstall = (oldAttrs.postInstall or "") + ''
-          wrapProgram $out/bin/audacity --set GDK_BACKEND x11
-        '';
+        postInstall =
+          (oldAttrs.postInstall or "")
+          + ''
+            wrapProgram $out/bin/audacity --set GDK_BACKEND x11
+          '';
       });
       jack1 = super.jack1.overrideAttrs (oldAttrs: {
         version = "0.126.0";
