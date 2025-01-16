@@ -54,9 +54,10 @@ with lib.hm.gvariant;
       clock-show-weekday = true;
       clock-show-seconds = true;
       show-battery-percentage = true;
+      gtk-enable-primary-paste = false;
     };
-    "org/gnome/desktop/wm/preferences/button-layout" = {
-      appmenu = "minimize,maximize,close";
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout = "appmenu:minimize,maximize,close";
     };
     "org/gnome/desktop/session" = {
       idle-delay = mkUint32 0;
@@ -82,6 +83,7 @@ with lib.hm.gvariant;
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = [
+        "no-overview@fthx"
       ];
     };
   };
