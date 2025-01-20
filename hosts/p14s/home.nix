@@ -23,6 +23,7 @@
     ../../apps/tmux/tmux.nix
     ../../apps/ghostty/ghostty.nix
     ../../apps/direnv/direnv.nix
+    ../../apps/python/python.nix
     # inputs.nixvim.homeManagerModules.nixvim
     # ../../apps/nixvim/nixvim.nix
     ../../apps/emacs/emacs.nix
@@ -111,9 +112,6 @@
     # gnumake
     # cmake
     # libtool
-
-    python3
-    pyright
   ];
 
   services.mpris-proxy.enable = true;

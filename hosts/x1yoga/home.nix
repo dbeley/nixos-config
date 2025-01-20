@@ -24,7 +24,9 @@
     ../../apps/tmux/tmux.nix
     ../../apps/ghostty/ghostty.nix
     ../../apps/direnv/direnv.nix
+    ../../apps/python/python.nix
     ../../apps/helix/helix.nix
+    ../../apps/vscode/vscode.nix
     ../../apps/nnn/nnn.nix
     ../../apps/udiskie/udiskie.nix
     ../../apps/mime/mime.nix
