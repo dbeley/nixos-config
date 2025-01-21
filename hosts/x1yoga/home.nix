@@ -77,6 +77,7 @@
     gnome-system-monitor
     nautilus
     htop
+    jamulus
     jq
     just
     keepassxc
@@ -85,6 +86,7 @@
     ncdu
     nitch
     papers
+    pavucontrol
     ripgrep
     ripgrep-all
     shotcut
