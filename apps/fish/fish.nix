@@ -88,6 +88,30 @@
       extractzip = ''
         fd -e zip -x sh -c 'unzip -o -d "''${0%.*}" "$0"' '{}' ';'
       '';
+      reduce_speed = ''
+        # Check if we have both arguments
+        if test (count $argv) -ne 2
+          echo "Error: Need two arguments - filename and speed factor"
+          echo "Usage: speed <video_file> <speed_factor>"
+          return 1
+        end
+
+        set -l input_file $argv[1]
+        set -l speed_factor $argv[2]
+
+        set -l extension (string match -r '\.[^\.]*$' $input_file)
+        set -l filename (string replace -r '\.[^\.]*$' "" $input_file)
+        set -l output_file "$filename""_$speed_factor$extension"
+
+        # Create filter_complex string with proper variable substitution
+        set -l filter_complex "[0:v]setpts=(1/$speed_factor)*PTS[v];[0:a]atempo=$speed_factor""[a]"
+
+        # Run ffmpeg command with the pre-formatted filter string
+        ffmpeg -i $input_file \
+               -filter_complex "$filter_complex" \
+               -map "[v]" -map "[a]" \
+               $output_file
+      '';
     };
 
     plugins = [
