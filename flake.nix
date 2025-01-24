@@ -24,6 +24,30 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprutils = {
+      url = "github:hyprwm/hyprutils";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+    };
+    hyprlang = {
+      url = "github:hyprwm/hyprlang";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+      inputs.hyprutils.follows = "hyprutils";
+    };
+    hyprland-qt-support = {
+      url = "github:hyprwm/hyprland-qt-support";
+      inputs.hyprlang.follows = "hyprlang";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+    };
+    hyprland-qtutils = {
+      url = "github:hyprwm/hyprland-qtutils";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+      inputs.hyprutils.follows = "hyprutils";
+      inputs.hyprland-qt-support.follows = "hyprland-qt-support";
+    };
     hyprland = {
       url = "github:hyprwm/hyprland";
       # Do not override Hyprland’s nixpkgs input unless you know what you are doing.
@@ -31,6 +55,8 @@
       # inputs.nixpkgs.follows = "nixpkgs";
       # inputs.systems.follows = "systems";
       inputs.pre-commit-hooks.follows = "git-hooks";
+      inputs.hyprland-qtutils.follows = "hyprland-qtutils";
+      inputs.hyprutils.follows = "hyprutils";
     };
     iio-hyprland = {
       url = "github:JeanSchoeller/iio-hyprland";
