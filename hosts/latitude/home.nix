@@ -102,6 +102,7 @@
     libffi
     insomnia
     nodejs
+    postgresql
   ];
 
   services.mpris-proxy.enable = true;
