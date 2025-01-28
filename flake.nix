@@ -64,7 +64,7 @@
       inputs.systems.follows = "hyprland/systems";
     };
     hyprgrass = {
-      url = "github:horriblename/hyprgrass?ref=refs/pull/203/head";
+      url = "github:horriblename/hyprgrass?ref=refs/pull/207/head";
       inputs.hyprland.follows = "hyprland";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
