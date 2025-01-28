@@ -38,6 +38,7 @@
       xwayland = {
         force_zero_scaling = "true";
       };
+      ecosystem.no_update_news = "true";
       env = [
         "XCURSOR_SIZE,24"
         # "QT_SCALE_FACTOR_ROUNDING_POLICY,RoundPreferFloor"
@@ -46,6 +47,7 @@
         ",preferred,auto,auto"
         "eDP-1,preferred,auto,1.6"
         "desc:AU Optronics 0xFA9B,preferred,auto,1.2"
+        "desc:Lenovo Group Limited 0x403D,preferred,auto,1.2"
         "desc:Dell Inc. DELL S2721DGF 6C1TR83,preferred,0x0,1"
       ];
       exec-once = [
