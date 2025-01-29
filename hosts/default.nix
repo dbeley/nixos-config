@@ -14,8 +14,7 @@
       stateVersion = "24.05";
     };
     modules = [
-      inputs.nixos-hardware.nixosModules.common-cpu-amd
-      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
       inputs.stylix.nixosModules.stylix
       ./p14s/hardware-configuration.nix
       ../modules/configuration.nix
