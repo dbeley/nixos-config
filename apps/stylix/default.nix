@@ -42,6 +42,7 @@
     #   url = "https://raw.githubusercontent.com/dbeley/photo-stream/refs/heads/master/photos/original/ET012548.jpg";
     #   sha256 = "54yf34yXHRJj6pHlttoaXTXjP0AfvE8dMVyOO0ktH+g=";
     # };
+    imageScalingMode = "fit";
 
     polarity = "dark";
     fonts = {
