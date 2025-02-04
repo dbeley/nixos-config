@@ -64,7 +64,8 @@
       inputs.systems.follows = "hyprland/systems";
     };
     hyprgrass = {
-      url = "github:horriblename/hyprgrass?ref=refs/pull/207/head";
+      # url = "github:horriblename/hyprgrass?ref=refs/pull/207/head";
+      url = "github:horriblename/hyprgrass";
       inputs.hyprland.follows = "hyprland";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -103,7 +104,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     base16 = {
-      url = "github:SenchoPens/base16.nix?ref=refs/pull/19/head";
+      # url = "github:SenchoPens/base16.nix?ref=refs/pull/19/head";
+      url = "github:SenchoPens/base16.nix";
     };
     stylix = {
       url = "github:danth/stylix";
