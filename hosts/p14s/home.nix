@@ -104,7 +104,7 @@
     xfce.tumbler
     yt-dlp
 
-    # discord
+    discord
     # element-desktop
 
     # dev dependencies
