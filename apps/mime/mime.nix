@@ -5,11 +5,13 @@
     enable = true;
     userDirs = {
       enable = true;
-      desktop = "${config.home.homeDirectory}/Bureau";
+      desktop = "${config.home.homeDirectory}";
       documents = "${config.home.homeDirectory}/Documents";
       download = "${config.home.homeDirectory}/Téléchargements";
       music = "${config.home.homeDirectory}/Musique";
       pictures = "${config.home.homeDirectory}/Images";
+      publicShare = "${config.home.homeDirectory}";
+      templates = "${config.home.homeDirectory}";
       videos = "${config.home.homeDirectory}/Vidéos";
     };
     mimeApps = {
