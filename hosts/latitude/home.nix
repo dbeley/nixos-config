@@ -20,7 +20,7 @@
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
     ../../apps/tmux/tmux.nix
-    ../../apps/ghostty/ghostty.nix
+    ../../apps/kitty/kitty.nix
     ../../apps/direnv/direnv.nix
     ../../apps/python/python.nix
     # inputs.nixvim.homeManagerModules.nixvim
