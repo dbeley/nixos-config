@@ -22,26 +22,26 @@
       #   ];
       # });
       # to fix audacity memory leaks on wayland cf. https://github.com/audacity/audacity/issues/4247
-      audacity = super.audacity.overrideAttrs (oldAttrs: {
-        postInstall =
-          (oldAttrs.postInstall or "")
-          + ''
-            wrapProgram $out/bin/audacity --set GDK_BACKEND x11
-          '';
-      });
-      jack1 = super.jack1.overrideAttrs (oldAttrs: {
-        version = "0.126.0";
-        src = super.fetchurl {
-          url = "https://github.com/jackaudio/jack1/releases/download/0.126.0/jack1-0.126.0.tar.gz";
-          hash = "sha256-eykOnce5JirDKNQe74DBBTyXAT76y++jBHfLmypUReo=";
-        };
-        buildInputs = with pkgs; [
-          alsa-lib
-          db
-          libffado
-          celt_0_7
-        ];
-      });
+      # audacity = super.audacity.overrideAttrs (oldAttrs: {
+      #   postInstall =
+      #     (oldAttrs.postInstall or "")
+      #     + ''
+      #       wrapProgram $out/bin/audacity --set GDK_BACKEND x11
+      #     '';
+      # });
+      # jack1 = super.jack1.overrideAttrs (oldAttrs: {
+      #   version = "0.126.0";
+      #   src = super.fetchurl {
+      #     url = "https://github.com/jackaudio/jack1/releases/download/0.126.0/jack1-0.126.0.tar.gz";
+      #     hash = "sha256-eykOnce5JirDKNQe74DBBTyXAT76y++jBHfLmypUReo=";
+      #   };
+      #   buildInputs = with pkgs; [
+      #     alsa-lib
+      #     db
+      #     libffado
+      #     celt_0_7
+      #   ];
+      # });
     })
   ];
 }
