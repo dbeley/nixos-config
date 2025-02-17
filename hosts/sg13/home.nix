@@ -1,7 +1,7 @@
 {
   pkgs,
   user,
-  inputs,
+  lib,
   stateVersion,
   ...
 }:
@@ -61,4 +61,11 @@
   ];
 
   services.mpris-proxy.enable = true;
+
+  # disable night light in Gnome
+  dconf.settings = {
+    "org/gnome/settings-daemon/plugins/color" = {
+      night-light-enabled = lib.mkForce false;
+    };
+  };
 }
