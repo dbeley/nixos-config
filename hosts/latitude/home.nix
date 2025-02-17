@@ -107,7 +107,7 @@
 
   services.mpris-proxy.enable = true;
 
-  programs.firefox.profiles.${user}.extensions = lib.mkMerge [
+  programs.firefox.profiles.${user}.extensions.packages = lib.mkMerge [
     (with pkgs.nur.repos.rycee.firefox-addons; [
       okta-browser-plugin
       onepassword-password-manager

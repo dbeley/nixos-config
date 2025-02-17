@@ -148,7 +148,7 @@
         "webgl.disabled" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 0;
       };
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         augmented-steam
         darkreader
         hover-zoom-plus
