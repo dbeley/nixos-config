@@ -47,6 +47,7 @@
       inputs.systems.follows = "systems";
       inputs.hyprutils.follows = "hyprutils";
       inputs.hyprland-qt-support.follows = "hyprland-qt-support";
+      inputs.hyprlang.follows = "hyprlang";
     };
     hyprland = {
       url = "github:hyprwm/hyprland";
@@ -54,6 +55,7 @@
       # Doing so will make the cache useless, since you’re building from a different Nixpkgs commit.
       # inputs.nixpkgs.follows = "nixpkgs";
       # inputs.systems.follows = "systems";
+      inputs.hyprlang.follows = "hyprlang";
       inputs.pre-commit-hooks.follows = "git-hooks";
       inputs.hyprland-qtutils.follows = "hyprland-qtutils";
       inputs.hyprutils.follows = "hyprutils";
@@ -116,6 +118,7 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.systems.follows = "systems";
       inputs.base16.follows = "base16";
+      inputs.nur.follows = "nur";
     };
     ucodenix = {
       url = "github:e-tho/ucodenix";
