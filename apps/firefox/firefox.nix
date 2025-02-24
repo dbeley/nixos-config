@@ -79,7 +79,7 @@
         "findbar.highlightAll" = true;
         "fission.autostart" = true;
         "font.default.x-western" = "serif";
-        "font.name.monospace.x-western" = "IosevkaTerm Nerd Font Mono";
+        # "font.name.monospace.x-western" = "IosevkaTerm Nerd Font Mono";
         "font.name.sans-serif.x-western" = "Overpass";
         "font.name.serif.x-western" = "EB Garamond";
         "full-screen-api.transition-duration.enter" = "0 0";

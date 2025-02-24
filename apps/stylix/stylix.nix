@@ -1,3 +1,4 @@
+{ user, ... }:
 {
   stylix.targets = {
     waybar.enable = false;
@@ -8,5 +9,6 @@
     gnome.enable = true;
     nixvim.enable = false;
     hyprland.enable = true;
+    firefox.profileNames = [ "${user}" ];
   };
 }
