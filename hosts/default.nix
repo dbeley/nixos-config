@@ -247,4 +247,37 @@
       }
     ];
   };
+  vm-01 = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit user inputs;
+      hostName = "vm-01";
+      stateVersion = "24.11";
+    };
+    modules = [
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
+      inputs.stylix.nixosModules.stylix
+      ./vm-01/hardware-configuration.nix
+      ../modules/configuration.nix
+      ../modules/overlays.nix
+      ../modules/common/uefi.nix
+      ../apps/docker/default.nix
+      ../apps/stylix/default.nix
+
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {
+            inherit user inputs system;
+            stateVersion = "24.11";
+          };
+          users.${user} = {
+            imports = [ (import ./vm-01/home.nix) ];
+          };
+        };
+      }
+    ];
+  };
 }
