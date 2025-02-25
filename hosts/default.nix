@@ -263,6 +263,7 @@
       ../modules/common/uefi.nix
       ../apps/docker/default.nix
       ../apps/stylix/default.nix
+      ../apps/openssh/default.nix
 
       inputs.home-manager.nixosModules.home-manager
       {
