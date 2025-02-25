@@ -55,10 +55,10 @@
       # Doing so will make the cache useless, since you’re building from a different Nixpkgs commit.
       # inputs.nixpkgs.follows = "nixpkgs";
       # inputs.systems.follows = "systems";
-      inputs.hyprlang.follows = "hyprlang";
-      inputs.pre-commit-hooks.follows = "git-hooks";
-      inputs.hyprland-qtutils.follows = "hyprland-qtutils";
-      inputs.hyprutils.follows = "hyprutils";
+      # inputs.hyprlang.follows = "hyprlang";
+      # inputs.pre-commit-hooks.follows = "git-hooks";
+      # inputs.hyprland-qtutils.follows = "hyprland-qtutils";
+      # inputs.hyprutils.follows = "hyprutils";
     };
     iio-hyprland = {
       url = "github:JeanSchoeller/iio-hyprland";
@@ -89,11 +89,6 @@
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.devshell.follows = "devshell";
-      inputs.treefmt-nix.follows = "treefmt-nix";
-      inputs.git-hooks.follows = "git-hooks";
       inputs.nuschtosSearch.follows = "search";
       inputs.flake-parts.follows = "flake-parts";
     };
