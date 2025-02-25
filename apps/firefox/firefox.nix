@@ -8,6 +8,7 @@
     enable = true;
     profiles.${user} = {
       settings = {
+        "accessibility.force_disabled" = 1;
         "apz.overscroll.enabled" = true;
         "beacon.enabled" = false;
         "browser.aboutConfig.showWarning" = false;
@@ -150,17 +151,17 @@
       };
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         augmented-steam
-        darkreader
+        # darkreader
         hover-zoom-plus
         keepassxc-browser
         multi-account-containers
-        protondb-for-steam
-        reddit-comment-collapser
+        # protondb-for-steam
+        # reddit-comment-collapser
         reddit-enhancement-suite
         return-youtube-dislikes
-        sidebery
+        # sidebery
         sponsorblock
-        steam-database
+        # steam-database
         ublock-origin
         vimium
         violentmonkey
