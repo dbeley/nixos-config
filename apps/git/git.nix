@@ -28,7 +28,9 @@
         rebase = true;
       };
       rebase = {
+        autoSquash = true;
         autoStash = true;
+        updateRefs = true;
       };
       core = {
         autocrlf = "input";
@@ -41,12 +43,16 @@
       };
       rerere = {
         enabled = true;
+        autoupdate = true;
       };
       fetch = {
         prune = true;
       };
       push = {
-        autoSetupRemote = false;
+        autoSetupRemote = true;
+      };
+      column = {
+        ui = "auto";
       };
     };
   };
