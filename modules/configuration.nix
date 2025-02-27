@@ -86,9 +86,12 @@
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.mutableUsers = false;
   users.users.${user} = {
     isNormalUser = true;
     description = "$user";
+    initialPassword = "toto";
+    hashedPasswordFile = "/persistent/passwd_${user}";
     extraGroups = [
       "networkmanager"
       "wheel"

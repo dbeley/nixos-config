@@ -118,6 +118,9 @@
     ucodenix = {
       url = "github:e-tho/ucodenix";
     };
+    impermanence = {
+      url = "github:nix-community/impermanence";
+    };
   };
 
   outputs =
