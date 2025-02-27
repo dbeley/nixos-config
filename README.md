@@ -72,3 +72,54 @@ Create a `.env` and fill it with the needed environment variables:
 ```
 HOST=x13
 ````
+
+## Impermanence
+
+I'm currently testing impermanence and disko. The installation instructions are a bit different.
+
+Installation can be done from any computer running nix, live ISO running from a USB key will most likely run out of space.
+The target disk can be any mounted disk (except the one the system is currently running on!) and will have to be installed on the host compuster after the installation is complete.
+:
+
+```
+sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake .#x1yoga --disk main /dev/sda --show-trace
+
+# post-installation 
+lsblk # identify luks encrypted partition
+sudo cryptsetup open /dev/sda2 luks-1
+sudo mount -o subvol=root /dev/mapper/luks-1 /mnt/root
+sudo mount -o subvol=persistent /dev/mapper/luks-1 /mnt/root/persistent  
+sudo mount -o subvol=nix /dev/mapper/luks-1 /mnt/root/nix
+sudo mount /dev/sda1 /mnt/root/boot
+
+# create password file
+mkpasswd > temp_passwd_file
+sudo mv temp_passwd_file /mnt/root/persistent/passwd_$USER
+sudo chown root:root /mnt/root/persistent/passwd_$USER
+
+# to fix bug where home-manager can't create user home directory
+sudo mkdir -p /mnt/root/persistent/home/$USER
+sudo chown $USER:users /mnt/root/persistent/home/$USER
+
+# chroot into the new system
+sudo nixos-enter --root /mnt
+```
+
+## Notable Features
+
+- Support for multiple desktop environments (hyprland, gnome, sway)
+- Extensive Hyprland configuration
+- Hyprland configuration to properly support touchscreen with gestures, rotation and on-screen keyboard
+- Automatic styling with `stylix`
+- Extensive Firefox configuration with `about:config` settings and automatic add-ons installaiton
+- Declarative partitioning with `disko`
+- Epheremeal file system with `impermanence` on btrfs subvolumes
+- Configuration for common hardware with `nixos-hardware`
+- Automatic microcode updates for AMD CPUs with `ucodenix`
+- Automatic development shells with `direnv` and `shell.nix`
+- My own custom packages including `autoscreen` (tool to take screenshots randomly each hour) and `mpdscrobble` (utility to send MPD listening history to Last.fm)
+- mpv configuration with plugins
+- nnn configuration with plugins and bookmarks
+- Extensive qutebrowser configuration with search engines
+- Support for fingerprint scanner, printers, bluetooth, xbox gamepad
+- Some common overlays that fix currently broken packages

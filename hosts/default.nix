@@ -52,13 +52,17 @@
     specialArgs = {
       inherit user inputs;
       hostName = "x1yoga";
-      stateVersion = "24.05";
+      stateVersion = "24.11";
     };
     modules = [
+      inputs.disko.nixosModules.disko
+      ../modules/disko/encrypted-btrfs-impermanence.nix
+      ./x1yoga/hardware-configuration.nix
+      inputs.impermanence.nixosModules.impermanence
+      ../modules/impermanence/default.nix
       inputs.nixos-hardware.nixosModules.common-cpu-intel
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       inputs.stylix.nixosModules.stylix
-      ./x1yoga/hardware-configuration.nix
       ../modules/configuration.nix
       ../modules/overlays.nix
       ../modules/common/uefi.nix
@@ -81,7 +85,7 @@
           useUserPackages = true;
           extraSpecialArgs = {
             inherit user inputs system;
-            stateVersion = "24.05";
+            stateVersion = "24.11";
           };
           users.${user} = {
             imports = [ (import ./x1yoga/home.nix) ];
