@@ -22,11 +22,13 @@
       ".mozilla/firefox/david"
       # ".cache/mozilla/firefox/david"
       ".local/share/mpd"
+      ".local/share/fish/generated_completions"
     ];
     files = [
       ".config/Nextcloud/cookies0.db"
-      ".config/keepassxc/keepassxc.ini"
+      ".cache/keepassxc/keepassxc.ini"
       ".local/share/zoxide/db.zo"
+      ".local/share/fish/fish_history"
     ];
     allowOther = true;
   };

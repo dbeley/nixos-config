@@ -90,7 +90,6 @@
   users.users.${user} = {
     isNormalUser = true;
     description = "$user";
-    initialPassword = "toto";
     hashedPasswordFile = "/persistent/passwd_${user}";
     extraGroups = [
       "networkmanager"
