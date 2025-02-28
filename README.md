@@ -75,13 +75,14 @@ HOST=x13
 
 ## Impermanence
 
-I'm currently testing impermanence and disko. The installation instructions are a bit different.
-
-Installation can be done from any computer running nix, live ISO running from a USB key will most likely run out of space.
-The target disk can be any mounted disk (except the one the system is currently running on!) and will have to be installed on the host compuster after the installation is complete.
+Installation can be done from any computer running nix, using a live ISO running from a USB key is not recommended as it will most likely run out of space during the install.
+The target disk can be any mounted disk (except the one the system is currently running on!) and will then have to be installed on the host compuster after the installation is complete.
 :
 
 ```
+# On a new host don't forget to generate the hardware-configuration.nix file
+nixos-generate-config --no-filesystems
+# Existing host called "x1yoga"
 sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake .#x1yoga --disk main /dev/sda --show-trace
 
 # post-installation 
@@ -123,3 +124,11 @@ sudo nixos-enter --root /mnt
 - Extensive qutebrowser configuration with search engines
 - Support for fingerprint scanner, printers, bluetooth, xbox gamepad
 - Some common overlays that fix currently broken packages
+
+## TODO
+
+Some tools and utilities to test
+
+- sops-nix
+- nixos-generators
+- git-hooks
