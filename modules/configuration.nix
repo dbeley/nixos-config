@@ -20,7 +20,7 @@
     enable = true;
     wifi.backend = "iwd";
   };
-  networking.firewall.enable = true;
+  networking.firewall.enable = lib.mkDefault false;
   services.resolved.enable = true;
 
   # Set your time zone.
@@ -60,23 +60,11 @@
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    # media-session.enable = true;
     wireplumber.extraConfig.wireplumber-disable-camera = {
       "wireplumber.profiles" = {
         "monitor.libcamera" = "disabled";
       };
     };
-
-    # extraConfig.pipewire."92-low-latency" = {
-    #   "context.properties" = {
-    #     "default.clock.rate" = 48000;
-    #     "default.clock.quantum" = 32;
-    #     "default.clock.min-quantum" = 32;
-    #     "default.clock.max-quantum" = 32;
-    #   };
-    # };
   };
 
   security.doas.enable = false;
@@ -90,7 +78,6 @@
     }
   ];
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.mutableUsers = false;
   users.users.${user} = {
     isNormalUser = true;
@@ -111,8 +98,6 @@
   };
   nixpkgs.overlays = [ inputs.nur.overlays.default ];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     killall
     nfs-utils
@@ -123,7 +108,7 @@
   programs.command-not-found.enable = false;
 
   fonts = {
-    # Now handled by stylix
+    # Now handled by stylix except noto-fonts for emojis and special characters
     packages = with pkgs; [
       #   nerd-fonts.iosevka
       #   eb-garamond
@@ -196,18 +181,6 @@
   };
 
   environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
-
-  # system.autoUpgrade = {
-  #   enable = true;
-  #   flake = inputs.self.outPath;
-  #   flags = [
-  #     "--update-input"
-  #     "nixpkgs"
-  #     "-L" # print build logs
-  #   ];
-  #   dates = "02:00";
-  #   randomizedDelaySec = "45min";
-  # };
 
   zramSwap = {
     enable = true;
