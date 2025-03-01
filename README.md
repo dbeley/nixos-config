@@ -124,6 +124,7 @@ sudo nixos-enter --root /mnt
 - Extensive qutebrowser configuration with search engines
 - Support for fingerprint scanner, printers, bluetooth, xbox gamepad
 - Some common overlays that fix currently broken packages
+- flatpak with automatic Steam installation
 
 ## TODO
 
@@ -132,3 +133,4 @@ Some tools and utilities to test
 - sops-nix
 - nixos-generators
 - git-hooks
+- niri windows manager
