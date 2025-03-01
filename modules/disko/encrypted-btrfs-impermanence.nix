@@ -1,3 +1,4 @@
+{ hostName, ... }:
 {
   boot.supportedFilesystems = [ "btrfs" ];
   disko.devices = {
@@ -22,7 +23,7 @@
               size = "100%";
               content = {
                 type = "luks";
-                name = "root_vg";
+                name = "root_vg_${hostName}";
                 settings = {
                   allowDiscards = true;
                 };

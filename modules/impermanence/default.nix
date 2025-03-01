@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, hostName, ... }:
 {
   programs.fuse.userAllowOther = true;
   environment.persistence."/persistent" = {
@@ -32,7 +32,7 @@
   # Impermanence
   boot.initrd.postResumeCommands = lib.mkAfter ''
     mkdir /btrfs_tmp
-    mount /dev/mapper/root_vg /btrfs_tmp
+    mount /dev/mapper/root_vg_${hostName} /btrfs_tmp
     if [[ -e /btrfs_tmp/root ]]; then
         mkdir -p /btrfs_tmp/old_roots
         timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
