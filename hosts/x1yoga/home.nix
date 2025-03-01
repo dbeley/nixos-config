@@ -72,6 +72,7 @@
     borgbackup
     borgmatic
     btop
+    discord
     eza
     fd
     ffmpeg
