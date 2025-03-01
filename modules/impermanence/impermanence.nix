@@ -33,6 +33,8 @@
       ".cache/tealdeer/tldr-pages"
       ".config/gtk-3.0"
       ".config/libreoffice/4/user/pack"
+      ".local/share/flatpak"
+      ".var/app"
     ];
     files = [
       # Doesn't work
