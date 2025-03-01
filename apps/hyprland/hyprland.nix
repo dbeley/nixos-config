@@ -48,6 +48,7 @@
         "desc:AU Optronics 0xFA9B,preferred,auto,1.2"
         "desc:Lenovo Group Limited 0x403D,preferred,auto,1.2"
         "desc:Dell Inc. DELL S2721DGF 6C1TR83,preferred,0x0,1"
+        "desc:Lenovo Group Limited 0x4094,preferred,auto,1.2"
       ];
       exec-once = [
         "waybar"
