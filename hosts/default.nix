@@ -94,6 +94,49 @@
       }
     ];
   };
+  x13 = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit user inputs;
+      hostName = "x13";
+      stateVersion = "24.11";
+    };
+    modules = [
+      inputs.disko.nixosModules.disko
+      ../modules/disko/encrypted-btrfs-impermanence.nix
+      ./x13/hardware-configuration.nix
+      inputs.impermanence.nixosModules.impermanence
+      ../modules/impermanence/default.nix
+      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x13-amd
+      inputs.stylix.nixosModules.stylix
+      ../modules/configuration.nix
+      ../modules/overlays.nix
+      ../modules/common/uefi.nix
+      ../modules/common/laptop.nix
+      ../modules/common/laptop-thermald.nix
+      ../modules/common/xbox.nix
+      ../apps/docker/default.nix
+      ../apps/steam/default.nix
+      ../apps/udiskie/default.nix
+      ../apps/android/default.nix
+      ../apps/stylix/default.nix
+
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {
+            inherit user inputs system;
+            stateVersion = "24.11";
+          };
+          users.${user} = {
+            imports = [ (import ./x13/home.nix) ];
+          };
+        };
+      }
+    ];
+  };
   latitude = lib.nixosSystem {
     inherit system;
     specialArgs = {
