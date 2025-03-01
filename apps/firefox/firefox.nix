@@ -6,6 +6,103 @@
 {
   programs.firefox = {
     enable = true;
+    policies = {
+      # DisableAccounts = true;
+      DisableFirefoxAccounts = true;
+      DisableFirefoxStudies = true;
+      DisablePocket = true;
+      AutofillAddressEnabled = false;
+      AutofillCreditCardEnabled = false;
+      DisableAppUpdate = true;
+      DontCheckDefaultBrowser = true;
+      NoDefaultBookmarks = true;
+      OfferToSaveLogins = false;
+      ShowHomeButton = true;
+      Containers = {
+        "Default" = [
+          {
+            "name" = "Personnel";
+            "icon" = "fingerprint";
+            "color" = "green";
+          }
+          {
+            "name" = "Local";
+            "icon" = "vacation";
+            "color" = "blue";
+          }
+          {
+            "name" = "Presse";
+            "icon" = "briefcase";
+            "color" = "pink";
+          }
+          {
+            "name" = "Microsoft";
+            "icon" = "fence";
+            "color" = "blue";
+          }
+          {
+            "name" = "Google";
+            "icon" = "chill";
+            "color" = "red";
+          }
+          {
+            "name" = "Gmail";
+            "icon" = "fruit";
+            "color" = "red";
+          }
+          {
+            "name" = "YouTube";
+            "icon" = "fruit";
+            "color" = "red";
+          }
+          {
+            "name" = "YouTube - Informatique";
+            "icon" = "tree";
+            "color" = "blue";
+          }
+          {
+            "name" = "YouTube - Musique";
+            "icon" = "tree";
+            "color" = "turquoise";
+          }
+          {
+            "name" = "YouTube - Humour";
+            "icon" = "tree";
+            "color" = "green";
+          }
+          {
+            "name" = "YouTube - Poubelle";
+            "icon" = "tree";
+            "color" = "yellow";
+          }
+          {
+            "name" = "YouTube - Sport";
+            "icon" = "tree";
+            "color" = "orange";
+          }
+          {
+            "name" = "Shopping";
+            "icon" = "food";
+            "color" = "purple";
+          }
+          {
+            "name" = "Bancaire";
+            "icon" = "dollar";
+            "color" = "orange";
+          }
+          {
+            "name" = "Jeux vidéo";
+            "icon" = "vacation";
+            "color" = "toolbar";
+          }
+          {
+            "name" = "LinkedIn";
+            "icon" = "briefcase";
+            "color" = "blue";
+          }
+        ];
+      };
+    };
     profiles.${user} = {
       settings = {
         "accessibility.force_disabled" = 1;
@@ -71,12 +168,12 @@
         "dom.enable_web_task_scheduling" = true;
         "dom.event.clipboardevents.enabled" = false;
         "dom.security.sanitizer.enabled" = true;
-        "extensions.formautofill.addresses.enabled" = false;
-        "extensions.formautofill.available" = "off";
-        "extensions.formautofill.creditCards.enabled" = false;
+        # "extensions.formautofill.addresses.enabled" = false;
+        # "extensions.formautofill.available" = "off";
+        # "extensions.formautofill.creditCards.enabled" = false;
         "extensions.getAddons.showPane" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
-        "extensions.pocket.enabled" = false;
+        # "extensions.pocket.enabled" = false;
         "findbar.highlightAll" = true;
         "fission.autostart" = true;
         "font.default.x-western" = "serif";
