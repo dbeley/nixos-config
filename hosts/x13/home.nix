@@ -9,8 +9,8 @@
   imports = [
     inputs.impermanence.homeManagerModules.impermanence
     ../../modules/impermanence/impermanence.nix
-    # inputs.nix-flatpak.homeManagerModules.nix-flatpak
-    # ../../apps/flatpak/flatpak.nix
+    inputs.nix-flatpak.homeManagerModules.nix-flatpak
+    ../../apps/flatpak/flatpak.nix
     inputs.hyprland.homeManagerModules.default
     ../../apps/hyprland/hyprland.nix
     ../../apps/waybar/waybar.nix
