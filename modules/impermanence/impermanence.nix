@@ -6,22 +6,20 @@
       "Musique"
       "Nextcloud"
       "Téléchargements"
-      {
-        directory = "nfs";
-        method = "symlink";
-      }
-      {
-        directory = ".local/share/Steam";
-        # On a first install, disable symlink below then re-enable it after running Steam for the first time
-        # cf. https://github.com/nix-community/impermanence/issues/165
-        method = "symlink";
-      }
+      "nfs"
+      # {
+      #   directory = ".local/share/Steam";
+      #   # On a first install, disable symlink below then re-enable it after running Steam for the first time
+      #   # cf. https://github.com/nix-community/impermanence/issues/165
+      #   method = "symlink";
+      # }
       ".gnupg"
       ".ssh"
       ".local/share/keyrings"
       ".local/share/direnv"
-      ".steam"
+      # ".steam"
       ".mozilla/firefox/david"
+      ".mozilla/native-messaging-hosts"
       # ".cache/mozilla/firefox/david"
       ".config/chromium"
       ".local/share/mpd"
@@ -32,6 +30,9 @@
       ".local/share/zoxide"
       ".config/mpdscrobble"
       ".config/supersonic"
+      ".cache/tealdeer/tldr-pages"
+      ".config/gtk-3.0"
+      ".config/libreoffice/4/user/pack"
     ];
     files = [
       # Doesn't work
@@ -39,7 +40,8 @@
       # ".cache/keepassxc/keepassxc.ini"
       # ".local/share/zoxide/db.zo"
       # ".local/share/fish/fish_history"
-      # ".cache/tofi-compgen"
+      ".cache/tofi-compgen"
+      ".local/state/tofi-history"
     ];
     allowOther = true;
   };
