@@ -9,6 +9,8 @@
   imports = [
     inputs.impermanence.homeManagerModules.impermanence
     ../../modules/impermanence/impermanence.nix
+    # inputs.nix-flatpak.homeManagerModules.nix-flatpak
+    # ../../apps/flatpak/flatpak.nix
     inputs.hyprland.homeManagerModules.default
     ../../apps/hyprland/hyprland.nix
     ../../apps/waybar/waybar.nix
@@ -26,7 +28,7 @@
     ../../apps/direnv/direnv.nix
     ../../apps/python/python.nix
     ../../apps/helix/helix.nix
-    ../../apps/vscode/vscode.nix
+    # ../../apps/vscode/vscode.nix
     ../../apps/nnn/nnn.nix
     ../../apps/udiskie/udiskie.nix
     ../../apps/mime/mime.nix
@@ -36,14 +38,14 @@
     ../../apps/zathura/zathura.nix
 
     ../../apps/firefox/firefox.nix
-    ../../apps/qutebrowser/qutebrowser.nix
+    # ../../apps/qutebrowser/qutebrowser.nix
     ../../apps/ledger/ledger.nix
     ../../apps/mpd/mpd.nix
     ../../apps/mpdscrobble/mpdscrobble.nix
     ../../apps/mpv/mpv.nix
-    ../../apps/steam/steam.nix
+    # ../../apps/steam/steam.nix
     ../../apps/nextcloud-client/nextcloud-client.nix
-    ../../apps/tealdeer/tealdeer.nix
+    # ../../apps/tealdeer/tealdeer.nix
   ];
 
   # Home Manager needs a bit of information about you and the

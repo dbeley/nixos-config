@@ -115,10 +115,11 @@
       ../modules/common/laptop.nix
       ../modules/common/laptop-thermald.nix
       ../modules/common/xbox.nix
-      ../apps/docker/default.nix
-      ../apps/steam/default.nix
+      # ../apps/docker/default.nix
+      # ../apps/flatpak/default.nix
+      # ../apps/steam/default.nix
       ../apps/udiskie/default.nix
-      ../apps/android/default.nix
+      # ../apps/android/default.nix
       ../apps/stylix/default.nix
 
       inputs.home-manager.nixosModules.home-manager
