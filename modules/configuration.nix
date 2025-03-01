@@ -44,6 +44,11 @@
   # Configure console keymap
   console.keyMap = "us-acentos";
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
