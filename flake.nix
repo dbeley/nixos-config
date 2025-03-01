@@ -121,6 +121,9 @@
     impermanence = {
       url = "github:nix-community/impermanence";
     };
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=latest";
+    };
   };
 
   outputs =
