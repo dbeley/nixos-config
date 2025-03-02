@@ -15,5 +15,6 @@
   # Add here the flatpaks you want to install
   services.flatpak.packages = [
     "com.valvesoftware.Steam"
+    "com.heroicgameslauncher.hgl"
   ];
 }
