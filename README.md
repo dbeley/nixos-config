@@ -126,12 +126,6 @@ sudo nixos-enter --root /mnt
 - Some common overlays that fix currently broken packages
 - flatpak with automatic packages installation
 
-### Gaming
-
-I game mainly on Steam and Heroic, with both native and flatpak versions (be wary of not activating both at the same time).
-
-On an impermanence setup only native Heroic works properly.
-
 ## TODO
 
 Some tools and utilities to test
@@ -140,3 +134,4 @@ Some tools and utilities to test
 - nixos-generators
 - git-hooks
 - niri windows manager
+- nh

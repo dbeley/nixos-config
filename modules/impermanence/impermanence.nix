@@ -28,6 +28,10 @@
       ".config/heroic/GamesConfig"
       ".config/heroic/store"
       ".config/heroic/tools"
+      ".config/heroic/gog_store"
+      ".config/heroic/legendaryConfig"
+      ".config/heroic/nile_config"
+      ".local/share/Steam"
     ];
     files = [
       ".cache/keepassxc/keepassxc.ini"
