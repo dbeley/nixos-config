@@ -161,7 +161,7 @@
           "$MOD SHIFT, right, movewindow, r"
           "$MOD SHIFT, up, movewindow, u"
           "$MOD SHIFT, down, movewindow, d"
-          "$MOD SHIFT, h, movewindow, d"
+          "$MOD SHIFT, h, movewindow, l"
           "$MOD SHIFT, l, movewindow, r"
           "$MOD SHIFT, k, movewindow, u"
           "$MOD SHIFT, j, movewindow, d"
