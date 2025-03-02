@@ -9,8 +9,8 @@
   imports = [
     inputs.impermanence.homeManagerModules.impermanence
     ../../modules/impermanence/impermanence.nix
-    inputs.nix-flatpak.homeManagerModules.nix-flatpak
-    ../../apps/flatpak/flatpak.nix
+    # inputs.nix-flatpak.homeManagerModules.nix-flatpak
+    # ../../apps/flatpak/flatpak.nix
     inputs.hyprland.homeManagerModules.default
     ../../apps/hyprland/hyprland.nix
     ../../apps/waybar/waybar.nix
@@ -78,6 +78,7 @@
     ffmpeg
     ffmpegthumbnailer
     gnome-system-monitor
+    heroic
     htop
     jq
     just
@@ -97,4 +98,8 @@
   ];
 
   services.mpris-proxy.enable = true;
+  # services.flatpak.packages = [
+  #   "com.valvesoftware.Steam"
+  #   "com.heroicgameslauncher.hgl"
+  # ];
 }

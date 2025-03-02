@@ -43,7 +43,7 @@
     ../../apps/mpd/mpd.nix
     ../../apps/mpdscrobble/mpdscrobble.nix
     ../../apps/mpv/mpv.nix
-    ../../apps/steam/steam.nix
+    # ../../apps/steam/steam.nix
     ../../apps/nextcloud-client/nextcloud-client.nix
     ../../apps/tealdeer/tealdeer.nix
   ];
@@ -78,6 +78,7 @@
     ffmpeg
     ffmpegthumbnailer
     gnome-system-monitor
+    heroic
     nautilus
     htop
     jamulus
@@ -101,4 +102,8 @@
   ];
 
   services.mpris-proxy.enable = true;
+  # services.flatpak.packages = [
+  #   "com.valvesoftware.Steam"
+  #   "com.heroicgameslauncher.hgl"
+  # ];
 }

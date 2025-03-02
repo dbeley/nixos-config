@@ -124,7 +124,13 @@ sudo nixos-enter --root /mnt
 - Extensive qutebrowser configuration with search engines
 - Support for fingerprint scanner, printers, bluetooth, xbox gamepad
 - Some common overlays that fix currently broken packages
-- flatpak with automatic Steam installation
+- flatpak with automatic packages installation
+
+### Gaming
+
+I game mainly on Steam and Heroic, with both native and flatpak versions (be wary of not activating both at the same time).
+
+On an impermanence setup only native Heroic works properly.
 
 ## TODO
 

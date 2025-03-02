@@ -118,7 +118,7 @@
       ../modules/common/xbox.nix
       ../apps/hyprland/default.nix
       # ../apps/docker/default.nix
-      ../apps/flatpak/default.nix
+      # ../apps/flatpak/default.nix
       # ../apps/steam/default.nix
       ../apps/udiskie/default.nix
       # ../apps/android/default.nix

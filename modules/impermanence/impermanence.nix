@@ -25,6 +25,9 @@
       ".mozilla/native-messaging-hosts"
       ".cache/tealdeer/tldr-pages"
       ".var/app"
+      ".config/heroic/GamesConfig"
+      ".config/heroic/store"
+      ".config/heroic/tools"
     ];
     files = [
       ".cache/keepassxc/keepassxc.ini"
