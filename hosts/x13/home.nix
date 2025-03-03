@@ -9,8 +9,8 @@
   imports = [
     inputs.impermanence.homeManagerModules.impermanence
     ../../modules/impermanence/impermanence.nix
-    # inputs.nix-flatpak.homeManagerModules.nix-flatpak
-    # ../../apps/flatpak/flatpak.nix
+    inputs.nix-flatpak.homeManagerModules.nix-flatpak
+    ../../apps/flatpak/flatpak.nix
     inputs.hyprland.homeManagerModules.default
     ../../apps/hyprland/hyprland.nix
     ../../apps/waybar/waybar.nix
@@ -43,7 +43,7 @@
     ../../apps/mpd/mpd.nix
     ../../apps/mpdscrobble/mpdscrobble.nix
     ../../apps/mpv/mpv.nix
-    ../../apps/steam/steam.nix
+    # ../../apps/steam/steam.nix
     ../../apps/nextcloud-client/nextcloud-client.nix
     # ../../apps/tealdeer/tealdeer.nix
   ];
@@ -98,8 +98,8 @@
   ];
 
   services.mpris-proxy.enable = true;
-  # services.flatpak.packages = [
-  #   "com.valvesoftware.Steam"
+  services.flatpak.packages = [
+    "com.valvesoftware.Steam"
   #   "com.heroicgameslauncher.hgl"
-  # ];
+  ];
 }
