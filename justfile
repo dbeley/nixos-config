@@ -22,4 +22,8 @@ clean:
 optimize:
   nix-store --optimize -v
 
+first-install-disko host target:
+  @echo "Installing host {{host}} on target disk {{target}}"
+  sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake .#{{host}} --disk main {{target}} --show-trace
+
 all: update switch clean optimize
