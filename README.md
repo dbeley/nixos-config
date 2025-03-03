@@ -84,8 +84,10 @@ The target disk can be any mounted disk (except the one the system is currently 
 nixos-generate-config --no-filesystems
 # Existing host called "x1yoga"
 sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake .#x1yoga --disk main /dev/sda --show-trace
+# With just
+just first-install-disko x1yoga /dev/sda
 
-# post-installation 
+# Post-installation 
 lsblk # identify luks encrypted partition
 sudo cryptsetup open /dev/sda2 luks-1
 sudo mount -o subvol=root /dev/mapper/luks-1 /mnt/root
@@ -93,16 +95,16 @@ sudo mount -o subvol=persistent /dev/mapper/luks-1 /mnt/root/persistent
 sudo mount -o subvol=nix /dev/mapper/luks-1 /mnt/root/nix
 sudo mount /dev/sda1 /mnt/root/boot
 
-# create password file
+# Create password file
 mkpasswd > temp_passwd_file
 sudo mv temp_passwd_file /mnt/root/persistent/passwd_$USER
 sudo chown root:root /mnt/root/persistent/passwd_$USER
 
-# to fix bug where home-manager can't create user home directory
+# To fix bug where home-manager can't create user home directory
 sudo mkdir -p /mnt/root/persistent/home/$USER
 sudo chown $USER:users /mnt/root/persistent/home/$USER
 
-# chroot into the new system
+# Optional: chroot into the new system to apply other changes
 sudo nixos-enter --root /mnt
 ```
 

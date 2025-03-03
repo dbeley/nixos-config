@@ -1,4 +1,4 @@
-{ lib, hostName, ... }:
+{ lib, hostName, user, ... }:
 {
   programs.fuse.userAllowOther = true;
   environment.persistence."/persistent" = {
@@ -24,6 +24,48 @@
       "/etc/machine-id"
     ];
   };
+  # More stable than home-manager home.persistence."/persistent/home/${user}"
+  environment.persistence."/persistent".users.${user} = {
+    directories = [
+      "Documents"
+      "Musique"
+      "Nextcloud"
+      "Téléchargements"
+      "Games"
+      "nfs"
+      ".gnupg"
+      ".ssh"
+      ".config/chromium"
+      ".config/gtk-3.0"
+      ".config/keepassxc"
+      ".config/libreoffice/4/user/pack"
+      ".config/mpdscrobble"
+      ".config/supersonic"
+      ".config/Nextcloud"
+      ".local/share/direnv"
+      ".local/share/flatpak"
+      ".local/share/keyrings"
+      ".local/share/mpd"
+      ".mozilla/firefox/david"
+      ".mozilla/native-messaging-hosts"
+      ".cache/tealdeer/tldr-pages"
+      ".var/app"
+      ".config/heroic/GamesConfig"
+      ".config/heroic/store"
+      ".config/heroic/tools"
+      ".config/heroic/gog_store"
+      ".config/heroic/legendaryConfig"
+      ".config/heroic/nile_config"
+      ".local/share/Steam"
+    ];
+    files = [
+      ".cache/keepassxc/keepassxc.ini"
+      ".local/share/zoxide/db.zo"
+      ".local/share/fish/fish_history"
+      ".cache/tofi-compgen"
+      ".local/state/tofi-history"
+    ];
+  };
 
   fileSystems."/persistent".neededForBoot = true;
   fileSystems."/nix".neededForBoot = true;
@@ -34,9 +76,9 @@
     mkdir /btrfs_tmp
     mount /dev/mapper/root_vg_${hostName} /btrfs_tmp
     if [[ -e /btrfs_tmp/root ]]; then
-        mkdir -p /btrfs_tmp/old_roots
+        mkdir -p /btrfs_tmp/persistent/old_roots
         timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
-        mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp/"
+        mv /btrfs_tmp/root "/btrfs_tmp/persistent/old_roots/$timestamp/"
     fi
 
     delete_subvolume_recursively() {
@@ -47,7 +89,7 @@
         btrfs subvolume delete "$1"
     }
 
-    for i in $(find /btrfs_tmp/old_roots/ -mindepth 1 -maxdepth 1 -mtime +1); do
+    for i in $(find /btrfs_tmp/persistent/old_roots/ -mindepth 1 -maxdepth 1 -mtime +1); do
         delete_subvolume_recursively "$i"
     done
 

@@ -7,8 +7,6 @@
 }:
 {
   imports = [
-    inputs.impermanence.homeManagerModules.impermanence
-    ../../modules/impermanence/impermanence.nix
     inputs.hyprland.homeManagerModules.default
     ../../apps/hyprland/hyprland.nix
     ../../apps/waybar/waybar.nix
