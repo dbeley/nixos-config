@@ -57,6 +57,10 @@
       ".config/heroic/legendaryConfig"
       ".config/heroic/nile_config"
       ".local/share/Steam"
+      ".local/share/Baba_Is_You"
+      ".local/share/Celeste"
+      ".local/share/HotlineMiami"
+      ".local/Tendershoot"
     ];
     files = [
       ".cache/keepassxc/keepassxc.ini"
