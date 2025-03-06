@@ -26,8 +26,8 @@
         "Default" = [
           {
             "name" = "Personnel";
-            "icon" = "fingerprint";
-            "color" = "green";
+            "icon" = "circle";
+            "color" = "toolbar";
           }
           {
             "name" = "Local";
@@ -81,38 +81,38 @@
           }
           {
             "name" = "YouTube - Informatique";
-            "icon" = "vacation";
+            "icon" = "fingerprint";
             "color" = "blue";
           }
           {
             "name" = "YouTube - Musique";
-            "icon" = "vacation";
+            "icon" = "cart";
             "color" = "turquoise";
           }
           {
             "name" = "YouTube - Humour";
-            "icon" = "vacation";
+            "icon" = "gift";
             "color" = "green";
           }
           {
             "name" = "YouTube - Jeux Vidéo";
-            "icon" = "vacation";
+            "icon" = "fruit";
             "color" = "red";
           }
           {
             "name" = "YouTube - Politique";
-            "icon" = "vacation";
+            "icon" = "pet";
             "color" = "pink";
           }
           {
-            "name" = "YouTube - Poubelle";
-            "icon" = "vacation";
-            "color" = "yellow";
+            "name" = "YouTube - Sport";
+            "icon" = "tree";
+            "color" = "orange";
           }
           {
-            "name" = "YouTube - Sport";
-            "icon" = "vacation";
-            "color" = "orange";
+            "name" = "YouTube - Poubelle";
+            "icon" = "fence";
+            "color" = "yellow";
           }
         ];
       };
