@@ -38,7 +38,7 @@
       ".config/chromium"
       ".config/gtk-3.0"
       ".config/keepassxc"
-      ".config/libreoffice/4/user/pack"
+      ".config/libreoffice/4/user"
       ".config/mpdscrobble"
       ".config/supersonic"
       ".config/Nextcloud"
@@ -61,14 +61,15 @@
       ".local/share/Celeste"
       ".local/share/HotlineMiami"
       ".local/Tendershoot"
+      ".cache/keepassxc"
+      ".local/share/zoxide"
+      ".local/share/fish"
     ];
-    files = [
-      ".cache/keepassxc/keepassxc.ini"
-      ".local/share/zoxide/db.zo"
-      ".local/share/fish/fish_history"
-      ".cache/tofi-compgen"
-      ".local/state/tofi-history"
-    ];
+    # files = [
+    #   # Doesn't work
+    #   ".cache/tofi-compgen"
+    #   ".local/state/tofi-history"
+    # ];
   };
 
   fileSystems."/persistent".neededForBoot = true;
