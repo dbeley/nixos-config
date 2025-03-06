@@ -66,7 +66,7 @@
 
   home.packages = with pkgs; [
     audacity
-    # beets
+    beets
     borgbackup
     borgmatic
     btop
@@ -77,7 +77,6 @@
     ffmpegthumbnailer
     gnome-system-monitor
     heroic
-    nautilus
     htop
     jamulus
     jq
@@ -85,6 +84,7 @@
     keepassxc
     libreoffice-fresh
     musescore
+    nautilus
     ncdu
     nitch
     papers

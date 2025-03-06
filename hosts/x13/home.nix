@@ -65,8 +65,8 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    # audacity
-    # beets
+    audacity
+    beets
     # borgbackup
     # borgmatic
     btop
@@ -90,6 +90,7 @@
     ripgrep-all
     shotcut
     supersonic
+    xfce.thunar
     ungoogled-chromium
     unzip
     yt-dlp
