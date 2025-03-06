@@ -19,6 +19,10 @@
       OfferToSaveLogins = false;
       ShowHomeButton = true;
       Containers = {
+      # icon can be fingerprint, briefcase, dollar, cart, vacation, gift, food,
+      # fruit, pet, tree, chill, circle, fence
+      # color can be blue, turquoise, green, yellow, orange, red, pink,
+      # purple, toolbar
         "Default" = [
           {
             "name" = "Personnel";
@@ -27,58 +31,13 @@
           }
           {
             "name" = "Local";
-            "icon" = "vacation";
+            "icon" = "circle";
             "color" = "blue";
           }
           {
             "name" = "Presse";
-            "icon" = "briefcase";
-            "color" = "pink";
-          }
-          {
-            "name" = "Microsoft";
-            "icon" = "fence";
-            "color" = "blue";
-          }
-          {
-            "name" = "Google";
-            "icon" = "chill";
-            "color" = "red";
-          }
-          {
-            "name" = "Gmail";
-            "icon" = "fruit";
-            "color" = "red";
-          }
-          {
-            "name" = "YouTube";
-            "icon" = "fruit";
-            "color" = "red";
-          }
-          {
-            "name" = "YouTube - Informatique";
-            "icon" = "tree";
-            "color" = "blue";
-          }
-          {
-            "name" = "YouTube - Musique";
             "icon" = "tree";
             "color" = "turquoise";
-          }
-          {
-            "name" = "YouTube - Humour";
-            "icon" = "tree";
-            "color" = "green";
-          }
-          {
-            "name" = "YouTube - Poubelle";
-            "icon" = "tree";
-            "color" = "yellow";
-          }
-          {
-            "name" = "YouTube - Sport";
-            "icon" = "tree";
-            "color" = "orange";
           }
           {
             "name" = "Shopping";
@@ -93,12 +52,67 @@
           {
             "name" = "Jeux vidéo";
             "icon" = "vacation";
-            "color" = "toolbar";
+            "color" = "blue";
+          }
+          {
+            "name" = "Microsoft";
+            "icon" = "fence";
+            "color" = "blue";
           }
           {
             "name" = "LinkedIn";
             "icon" = "briefcase";
+            "color" = "turquoise";
+          }
+          {
+            "name" = "Google";
+            "icon" = "chill";
+            "color" = "red";
+          }
+          {
+            "name" = "Gmail";
+            "icon" = "fruit";
+            "color" = "red";
+          }
+          {
+            "name" = "YouTube";
+            "icon" = "vacation";
+            "color" = "red";
+          }
+          {
+            "name" = "YouTube - Informatique";
+            "icon" = "vacation";
             "color" = "blue";
+          }
+          {
+            "name" = "YouTube - Musique";
+            "icon" = "vacation";
+            "color" = "turquoise";
+          }
+          {
+            "name" = "YouTube - Humour";
+            "icon" = "vacation";
+            "color" = "green";
+          }
+          {
+            "name" = "YouTube - Jeux Vidéo";
+            "icon" = "vacation";
+            "color" = "red";
+          }
+          {
+            "name" = "YouTube - Politique";
+            "icon" = "vacation";
+            "color" = "pink";
+          }
+          {
+            "name" = "YouTube - Poubelle";
+            "icon" = "vacation";
+            "color" = "yellow";
+          }
+          {
+            "name" = "YouTube - Sport";
+            "icon" = "vacation";
+            "color" = "orange";
           }
         ];
       };
