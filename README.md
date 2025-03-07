@@ -25,7 +25,28 @@
 - (deprecated) **t470s**: my previous main laptop (Lenovo Thinkpad T470s: Intel Core i5-6300U, 8GB RAM, hyprland)
 - (deprecated) **era1**: my first server image installed in a Proxmox VM (Fractal Design Era: Intel N100, 32GB RAM)
 
-## Usage
+## Notable Features
+
+- Support for multiple desktop environments ([`hyprland`](./apps/hyprland/), [`gnome`](./apps/gnome/), [`sway`](./apps/sway/))
+- [Extensive `hyprland` configuration](./apps/hyprland/)
+  - scratchpads, window rules, monitor rules, etc.
+  - touchscreen support with gestures, rotation and on-screen keyboard
+- [Automatic styling with `stylix`](./apps/stylix/)
+- [Extensive `firefox` configuration with `about:config` settings, automatic add-ons installation and declarative containers](./apps/firefox/firefox.nix)
+- [Declarative partitioning with `disko`](./modules/disko/encrypted-btrfs-impermanence.nix)
+- [Epheremeal file system with `impermanence` on btrfs subvolumes](./modules/impermanence/)
+- Configuration for common hardware with `nixos-hardware`
+- Automatic microcode updates for AMD CPUs with `ucodenix`
+- Automatic development shells with `direnv` and `shell.nix`
+- My own custom packages including [`autoscreen`](./apps/autoscreen/) (tool to take screenshots randomly each hour) and [`mpdscrobble`](./apps/mpdscrobble/) (utility to send MPD listening history to Last.fm)
+- [`mpv` configuration with plugins](./apps/mpv/mpv.nix)
+- [`nnn` configuration with plugins and bookmarks](./apps/nnn/nnn.nix)
+- [Extensive `qutebrowser` configuration with search engines](./apps/qutebrowser/qutebrowser.nix)
+- Support for [fingerprint scanner](./modules/common/fingerprint-scanner.nix), printers, bluetooth, [xbox gamepad](./modules/common/xbox.nix)
+- Some [common overlays that fix currently broken packages](./modules/overlays.nix) 
+- `flatpak` with automatic packages installation
+
+## Common Usage
 
 Rebuild the system
 
@@ -47,47 +68,41 @@ Optimise store
 nix-store --optimise -v
 ```
 
-## Install
-
-On a new install, you should first copy `/etc/nixos/hardware-configuration.nix` over `hosts/{host}/hardware-configuration.nix`.
-
-## Post-install
-
-```
-git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
-~/.config/emacs/bin/doom install
-```
-
 ### just
 
-A `justfile` is also provided, see https://github.com/casey/just for more information.
+A `justfile` is provided, see https://github.com/casey/just for more information.
 
 ```
 just switch
 just clean
 ```
 
-Create a `.env` and fill it with the needed environment variables:
+For the recipes to work properly, create a `.env` and fill it with the needed environment variables:
 
 ```
 HOST=x13
 ````
 
-## Impermanence
+## Install
+
+On a new install, you should first copy `/etc/nixos/hardware-configuration.nix` over `hosts/{host}/hardware-configuration.nix`.
+
+### Impermanence
 
 Installation can be done from any computer running nix, using a live ISO running from a USB key is not recommended as it will most likely run out of space during the install.
 The target disk can be any mounted disk (except the one the system is currently running on!) and will then have to be installed on the host compuster after the installation is complete.
 :
 
 ```
-# On a new host don't forget to generate the hardware-configuration.nix file
+# On a new host don't forget to generate the hardware-configuration.nix file and copy it on hosts/{host}/hardware-configuration.nix
 nixos-generate-config --no-filesystems
-# Existing host called "x1yoga"
+
+# disko + impermanence install on an existing host called "x1yoga"
 sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake .#x1yoga --disk main /dev/sda --show-trace
-# With just
+# Using just
 just first-install-disko x1yoga /dev/sda
 
-# Post-installation 
+# Post-installation - mount the newly installed system on /mnt/root
 lsblk # identify luks encrypted partition
 sudo cryptsetup open /dev/sda2 luks-1
 sudo mount -o subvol=root /dev/mapper/luks-1 /mnt/root
@@ -108,25 +123,14 @@ sudo chown $USER:users /mnt/root/persistent/home/$USER
 sudo nixos-enter --root /mnt
 ```
 
-## Notable Features
+## Post-install
 
-- Support for multiple desktop environments (hyprland, gnome, sway)
-- Extensive Hyprland configuration
-- Hyprland configuration to properly support touchscreen with gestures, rotation and on-screen keyboard
-- Automatic styling with `stylix`
-- Extensive Firefox configuration with `about:config` settings and automatic add-ons installaiton
-- Declarative partitioning with `disko`
-- Epheremeal file system with `impermanence` on btrfs subvolumes
-- Configuration for common hardware with `nixos-hardware`
-- Automatic microcode updates for AMD CPUs with `ucodenix`
-- Automatic development shells with `direnv` and `shell.nix`
-- My own custom packages including `autoscreen` (tool to take screenshots randomly each hour) and `mpdscrobble` (utility to send MPD listening history to Last.fm)
-- mpv configuration with plugins
-- nnn configuration with plugins and bookmarks
-- Extensive qutebrowser configuration with search engines
-- Support for fingerprint scanner, printers, bluetooth, xbox gamepad
-- Some common overlays that fix currently broken packages
-- flatpak with automatic packages installation
+For doom-emacs:
+
+```
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
+```
 
 ## TODO
 
