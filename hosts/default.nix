@@ -152,6 +152,7 @@
       inputs.nixos-hardware.nixosModules.common-gpu-intel
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       inputs.stylix.nixosModules.stylix
+      inputs.sops-nix.nixosModules.sops
       ./latitude/hardware-configuration.nix
       ../modules/configuration.nix
       ../modules/overlays.nix

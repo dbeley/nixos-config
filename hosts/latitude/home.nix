@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   user,
   lib,
   stateVersion,
@@ -7,6 +8,7 @@
 }:
 {
   imports = [
+    inputs.sops-nix.homeManagerModules.sops
     # inputs.hyprland.homeManagerModules.default
     # ../../apps/hyprland/hyprland.nix
     # ../../apps/waybar/waybar.nix
