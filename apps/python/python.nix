@@ -5,5 +5,6 @@
     pyright
     ruff
     poetry
+    uv
   ];
 }
