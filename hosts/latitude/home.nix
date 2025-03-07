@@ -2,7 +2,6 @@
   pkgs,
   user,
   lib,
-  inputs,
   stateVersion,
   ...
 }:
@@ -25,7 +24,7 @@
     ../../apps/python/python.nix
     # inputs.nixvim.homeManagerModules.nixvim
     # ../../apps/nixvim/nixvim.nix
-    ../../apps/emacs/emacs.nix
+    # ../../apps/emacs/emacs.nix
     ../../apps/kakoune/kakoune.nix
     ../../apps/helix/helix.nix
     ../../apps/vscode/vscode.nix
