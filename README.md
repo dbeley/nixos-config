@@ -115,10 +115,6 @@ mkpasswd > temp_passwd_file
 sudo mv temp_passwd_file /mnt/root/persistent/passwd_$USER
 sudo chown root:root /mnt/root/persistent/passwd_$USER
 
-# To fix bug where home-manager can't create user home directory
-sudo mkdir -p /mnt/root/persistent/home/$USER
-sudo chown $USER:users /mnt/root/persistent/home/$USER
-
 # Optional: chroot into the new system to apply other changes
 sudo nixos-enter --root /mnt
 ```
