@@ -1,4 +1,9 @@
-{ lib, hostName, user, ... }:
+{
+  lib,
+  hostName,
+  user,
+  ...
+}:
 {
   programs.fuse.userAllowOther = true;
   environment.persistence."/persistent" = {
