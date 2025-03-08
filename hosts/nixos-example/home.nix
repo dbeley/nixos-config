@@ -7,6 +7,7 @@
 }:
 {
   imports = [
+    ../common-user-packages.nix
     # Hyprland
     # inputs.hyprland.homeManagerModules.default
     # ../../apps/hyprland/hyprland.nix
@@ -35,6 +36,7 @@
     # ../../apps/bat/bat.nix
     # ../../apps/zoxide/zoxide.nix
     # ../../apps/firefox/firefox.nix
+    # ../../apps/ungoogled-chromium/ungoogled-chromium.nix
     # ../../apps/qutebrowser/qutebrowser.nix
     # ../../apps/gammastep/gammastep.nix
     # ../../apps/mpd/mpd.nix
@@ -42,6 +44,7 @@
     # ../../apps/obs/obs.nix
     # ../../apps/zathura/zathura.nix
     # ../../apps/steam/steam.nix
+    # ../../apps/python/python.nix
     # ../../apps/pycharm/pycharm.nix
     # ../../apps/tealdeer/tealdeer.nix
   ];
@@ -65,39 +68,17 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    btop
-    eza
-    fd
-    ffmpeg
-    ffmpegthumbnailer
     fio
     gh
-    gnome-system-monitor
     gthumb
-    htop
-    jq
-    just
-    keepassxc
-    libreoffice-fresh
-    ncdu
-    nitch
-    pavucontrol
-    ripgrep
-    ripgrep-all
-    ungoogled-chromium
-    unzip
     xfce.thunar
     xfce.tumbler
-    yt-dlp
 
     # dev dependencies
     clang
     gnumake
     cmake
     libtool
-
-    python3
-    pyright
   ];
 
   services.mpris-proxy.enable = true;

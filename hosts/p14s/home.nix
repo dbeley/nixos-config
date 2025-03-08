@@ -7,6 +7,7 @@
 }:
 {
   imports = [
+    ../common-user-packages.nix
     inputs.hyprland.homeManagerModules.default
     ../../apps/hyprland/hyprland.nix
     ../../apps/waybar/waybar.nix
@@ -40,6 +41,7 @@
     ../../apps/zathura/zathura.nix
 
     ../../apps/firefox/firefox.nix
+    ../../apps/ungoogled-chromium/ungoogled-chromium.nix
     ../../apps/qutebrowser/qutebrowser.nix
     ../../apps/ledger/ledger.nix
     ../../apps/mpd/mpd.nix
@@ -75,34 +77,15 @@
     beets
     borgbackup
     borgmatic
-    btop
-    eza
-    fd
-    ffmpeg
-    ffmpegthumbnailer
     # fio
     # gh
-    gnome-system-monitor
     # gthumb
     heroic
-    htop
     # hugo
-    jq
-    just
-    keepassxc
-    libreoffice-fresh
-    ncdu
-    nitch
-    pavucontrol
-    ripgrep
-    ripgrep-all
     shotcut
     supersonic
-    ungoogled-chromium
-    unzip
     xfce.thunar
     xfce.tumbler
-    yt-dlp
 
     discord
     # element-desktop

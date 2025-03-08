@@ -7,6 +7,7 @@
 }:
 {
   imports = [
+    ../common-user-packages.nix
     ../../apps/sway/sway.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
@@ -15,6 +16,7 @@
     ../../apps/autoscreen/autoscreen.nix
     ../../apps/autoscreen-gaming/autoscreen-gaming.nix
     ../../apps/stylix/stylix.nix
+    ../../apps/python/python.nix
 
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
@@ -31,6 +33,7 @@
     ../../apps/zathura/zathura.nix
 
     ../../apps/firefox/firefox.nix
+    ../../apps/ungoogled-chromium/ungoogled-chromium.nix
     ../../apps/ledger/ledger.nix
     ../../apps/mpd/mpd.nix
     ../../apps/mpdscrobble/mpdscrobble.nix
@@ -62,32 +65,14 @@
     beets
     borgbackup
     borgmatic
-    btop
-    eza
-    fd
-    ffmpeg
-    ffmpegthumbnailer
     # fio
     # gh
-    gnome-system-monitor
     # gthumb
-    htop
     # hugo
-    jq
-    just
-    keepassxc
-    libreoffice-fresh
-    ncdu
-    nitch
-    pavucontrol
-    ripgrep
-    ripgrep-all
     supersonic
     # ungoogled-chromium
-    unzip
     xfce.thunar
     xfce.tumbler
-    yt-dlp
 
     # discord
     # element-desktop
@@ -97,9 +82,6 @@
     # gnumake
     # cmake
     # libtool
-
-    # python3
-    # pyright
   ];
 
   services.mpris-proxy.enable = true;

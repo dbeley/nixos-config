@@ -7,6 +7,7 @@
 }:
 {
   imports = [
+    ../common-user-packages.nix
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     ../../apps/flatpak/flatpak.nix
     inputs.hyprland.homeManagerModules.default
@@ -36,6 +37,7 @@
     ../../apps/zathura/zathura.nix
 
     ../../apps/firefox/firefox.nix
+    ../../apps/ungoogled-chromium/ungoogled-chromium.nix
     # ../../apps/qutebrowser/qutebrowser.nix
     ../../apps/ledger/ledger.nix
     ../../apps/mpd/mpd.nix
@@ -69,31 +71,14 @@
     beets
     # borgbackup
     # borgmatic
-    btop
+    claude-code
     discord
-    eza
-    fd
-    ffmpeg
-    ffmpegthumbnailer
-    gnome-system-monitor
     heroic
-    htop
-    jq
-    just
-    keepassxc
-    libreoffice-fresh
     # musescore
-    ncdu
-    nitch
-    pavucontrol
-    ripgrep
-    ripgrep-all
     shotcut
     supersonic
     xfce.thunar
-    ungoogled-chromium
-    unzip
-    yt-dlp
+    xfce.tumbler
   ];
 
   services.mpris-proxy.enable = true;

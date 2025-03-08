@@ -7,6 +7,7 @@
 }:
 {
   imports = [
+    ../common-user-packages.nix
     inputs.hyprland.homeManagerModules.default
     ../../apps/hyprland/hyprland.nix
     ../../apps/waybar/waybar.nix
@@ -36,6 +37,7 @@
     # ../../apps/zathura/zathura.nix
 
     ../../apps/firefox/firefox.nix
+    ../../apps/ungoogled-chromium/ungoogled-chromium.nix
     ../../apps/qutebrowser/qutebrowser.nix
     ../../apps/ledger/ledger.nix
     ../../apps/mpd/mpd.nix
@@ -69,34 +71,15 @@
     beets
     borgbackup
     borgmatic
-    btop
     discord
-    eza
-    fd
-    ffmpeg
-    ffmpegthumbnailer
-    gnome-system-monitor
     heroic
-    htop
     jamulus
-    jq
-    just
-    keepassxc
-    libreoffice-fresh
     musescore
     nautilus
-    ncdu
-    nitch
     papers
-    pavucontrol
-    ripgrep
-    ripgrep-all
     shotcut
     supersonic
-    ungoogled-chromium
-    unzip
     wvkbd
-    yt-dlp
   ];
 
   services.mpris-proxy.enable = true;

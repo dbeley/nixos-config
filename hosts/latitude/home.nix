@@ -7,6 +7,7 @@
 }:
 {
   imports = [
+    ../common-user-packages.nix
     # inputs.hyprland.homeManagerModules.default
     # ../../apps/hyprland/hyprland.nix
     # ../../apps/waybar/waybar.nix
@@ -38,6 +39,7 @@
     ../../apps/zathura/zathura.nix
 
     ../../apps/firefox/firefox.nix
+    ../../apps/ungoogled-chromium/ungoogled-chromium.nix
     ../../apps/pycharm-professional/pycharm.nix
     ../../apps/tealdeer/tealdeer.nix
   ];
@@ -61,29 +63,9 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    btop
-    eza
-    fd
-    ffmpeg
-    ffmpegthumbnailer
     gh
-    gnome-system-monitor
-    htop
-    jq
-    just
-    libreoffice-fresh
     nautilus
-    ncdu
-    nitch
-    pavucontrol
-    ripgrep
-    ripgrep-all
     supersonic
-    ungoogled-chromium
-    unzip
-
-    python3
-    pyright
 
     slack
     awscli2

@@ -7,6 +7,7 @@
 }:
 {
   imports = [
+    ../common-user-packages.nix
     ../../apps/gnome/gnome.nix
     ../../apps/autoscreen-gnome/autoscreen-gnome.nix
     ../../apps/stylix/stylix.nix
@@ -22,6 +23,7 @@
     ../../apps/bat/bat.nix
 
     ../../apps/firefox/firefox.nix
+    ../../apps/ungoogled-chromium/ungoogled-chromium.nix
     ../../apps/steam/steam.nix
     ../../apps/nextcloud-client/nextcloud-client.nix
   ];
@@ -45,19 +47,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    btop
-    eza
-    fd
-    gnome-system-monitor
-    just
-    keepassxc
-    libreoffice-fresh
-    ncdu
-    ripgrep
-    ripgrep-all
     supersonic
-    ungoogled-chromium
-    yt-dlp
   ];
 
   services.mpris-proxy.enable = true;
