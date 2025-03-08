@@ -52,7 +52,7 @@
     specialArgs = {
       inherit user inputs;
       hostName = "x1yoga";
-      stateVersion = "24.11";
+      stateVersion = "25.05";
     };
     modules = [
       inputs.disko.nixosModules.disko
@@ -86,7 +86,7 @@
           useUserPackages = true;
           extraSpecialArgs = {
             inherit user inputs system;
-            stateVersion = "24.11";
+            stateVersion = "25.05";
           };
           users.${user} = {
             imports = [ (import ./x1yoga/home.nix) ];
