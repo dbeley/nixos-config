@@ -19,10 +19,10 @@
       OfferToSaveLogins = false;
       ShowHomeButton = true;
       Containers = {
-      # icon can be fingerprint, briefcase, dollar, cart, vacation, gift, food,
-      # fruit, pet, tree, chill, circle, fence
-      # color can be blue, turquoise, green, yellow, orange, red, pink,
-      # purple, toolbar
+        # icon can be fingerprint, briefcase, dollar, cart, vacation, gift, food,
+        # fruit, pet, tree, chill, circle, fence
+        # color can be blue, turquoise, green, yellow, orange, red, pink,
+        # purple, toolbar
         "Default" = [
           {
             "name" = "Personnel";
