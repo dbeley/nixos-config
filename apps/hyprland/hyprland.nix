@@ -333,10 +333,10 @@
       # Submap resize
       bind = $MOD, r, submap, resize # will switch to a submap called resize
       submap = resize # will start a submap called "resize"
-      bind = , h, resizeactive, -50 0
-      bind = , j, resizeactive, 0 50
-      bind = , k, resizeactive, 0 -50
-      bind = , l, resizeactive, 50 0
+      binde = , h, resizeactive, -50 0
+      binde = , j, resizeactive, 0 50
+      binde = , k, resizeactive, 0 -50
+      binde = , l, resizeactive, 50 0
       bind = , escape, submap, reset # use reset to go back to the global submap
       bind = , q, submap, reset # use reset to go back to the global submap
       submap = reset # will reset the submap, meaning end the current one and return to the global one.
