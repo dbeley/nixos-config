@@ -26,6 +26,8 @@
     xwayland.enable = true;
     plugins = [
       inputs.hyprgrass.packages.${pkgs.system}.default
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+      inputs.hyprspace.packages.${pkgs.system}.Hyprspace
     ];
     settings = {
       "$MOD" = "SUPER";
@@ -43,13 +45,13 @@
         # "QT_SCALE_FACTOR_ROUNDING_POLICY,RoundPreferFloor"
       ];
       monitor = [
-        "desc:LG Display 0x067C,preferred,auto,2"
         ",preferred,auto,auto"
         "eDP-1,preferred,auto,1.6"
         "desc:AU Optronics 0xFA9B,preferred,auto,1.2"
         "desc:Lenovo Group Limited 0x403D,preferred,auto,1.2"
         "desc:Dell Inc. DELL S2721DGF 6C1TR83,preferred,0x0,1"
         "desc:Lenovo Group Limited 0x4094,preferred,auto,1.2"
+        "desc:LG Display 0x067C,preferred,auto,2"
       ];
       exec-once = [
         "waybar"
@@ -77,7 +79,7 @@
         gaps_out = "20";
         border_size = "2";
         resize_on_border = "true";
-        layout = "dwindle";
+        layout = "master";
         allow_tearing = "false";
       };
       cursor = {
@@ -118,7 +120,10 @@
         preserve_split = "true";
       };
       master = {
-        new_status = "master";
+        new_status = "slave";
+        orientation = "center";
+        slave_count_for_center_master = 2;
+        mfact = 0.6;
       };
       gestures = {
         workspace_swipe = "true";
@@ -178,6 +183,12 @@
           "SHIFT, xf86display, exec, ~/scripts/hyprland_switch_monitor.sh eDP-1"
           ", print, exec, grim $SCREENSHOT_FOLDER/\"$(date +%s)\".png"
           "SHIFT, print, exec, grim -g \"$(slurp -d)\" $SCREENSHOT_FOLDER/\"$(date +%s)\"_cropped.png"
+          "$MOD, Tab, overview:toggle"
+          "$MOD SHIFT, Tab, hyprexpo:expo, toggle"
+          "$MOD, a, layoutmsg, cyclenext"
+          "$MOD SHIFT, m, layoutmsg, swapwithmaster"
+          "$MOD, y, exec, hyprctl keyword general:layout \"dwindle\""
+          "$MOD SHIFT, y, exec, hyprctl keyword general:layout \"master\""
         ]
         ++ (
           # workspaces
@@ -280,6 +291,16 @@
             ", longpress:2, movewindow"
             ", longpress:3, resizewindow"
           ];
+        };
+        hyprexpo = {
+        #   columns = 3;
+        #   gap_size = 5;
+        #   # bg_col = "rgb(111111)";
+        #   workspace_method = "center current";
+          enable_gesture = false;
+        #   gesture_fingers = 3;
+        #   gesture_distance = 300;
+        #   gesture_positive = true;
         };
       };
     };

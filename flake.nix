@@ -60,6 +60,14 @@
       # inputs.hyprland-qtutils.follows = "hyprland-qtutils";
       # inputs.hyprutils.follows = "hyprutils";
     };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+    hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
     iio-hyprland = {
       url = "github:JeanSchoeller/iio-hyprland";
       inputs.nixpkgs.follows = "hyprland/nixpkgs";
