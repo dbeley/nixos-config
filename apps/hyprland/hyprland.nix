@@ -269,6 +269,7 @@
         "float,title:^(Picture-in-Picture)$"
         "pin,title:^(Picture-in-Picture)$"
         "noshadow,title:^(Picture-in-Picture)$"
+        "opaque,title:^(Picture-in-Picture)$"
         "size 25% 25%,title:^(Picture-in-Picture)$"
         "move 100%-w-20,title:^(Picture-in-Picture)$"
         "noinitialfocus,title:^(Picture-in-Picture)$"
