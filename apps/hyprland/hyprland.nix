@@ -20,6 +20,26 @@
       sha256 = "XBumWlu4+z/jTKLK71Lr0hMeLhc43XD3oEzY+YUMzN4=";
     };
   };
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      auth = {
+        pam = {
+          enabled = true;
+        };
+        fingerprint = {
+          enabled = true;
+        };
+      };
+      label = {
+        text = "$TIME";
+        font_size = 35;
+        position = "0, 100";
+        halign = "center";
+        valign = "center";
+      };
+    };
+  };
   wayland.windowManager.hyprland = {
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     enable = true;
@@ -141,7 +161,7 @@
           "$MOD, x, exec, $TERMINAL"
           "$MOD SHIFT, x, exec, steam"
           "$MOD, c, exec, soffice"
-          "$MOD SHIFT, c, exec, gnome-system-monitor"
+          "$MOD SHIFT, c, exec, hyprlock"
           "$MOD, t, exec, soffice"
           "$MOD SHIFT, t, exec, gnome-system-monitor"
           "$MOD, d, exec, supersonic"
@@ -323,7 +343,7 @@
       bind = , r, exec, reboot
       bind = , s, exec, systemctl suspend
       bind = , m, exit,
-      # bind = , l,
+      bind = , l, exec, hyprlock
       bind = , q, submap, reset
       bind = , escape, submap, reset
       submap = reset # will reset the submap, meaning end the current one and return to the global one.
