@@ -15,10 +15,10 @@
     inputs.ucodenix.nixosModules.default
   ];
 
-  services.ucodenix = {
-    enable = true;
-    cpuModelId = "00860F01";
-  };
+  # services.ucodenix = {
+  #   enable = true;
+  #   cpuModelId = "00860F01";
+  # };
 
   boot.initrd.availableKernelModules = [
     "nvme"

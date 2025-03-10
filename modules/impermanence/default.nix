@@ -69,12 +69,12 @@
       ".cache/keepassxc"
       ".local/share/zoxide"
       ".local/share/fish"
+      ".cache/fish/generated_completions"
     ];
-    # files = [
-    #   # Doesn't work
-    #   ".cache/tofi-compgen"
-    #   ".local/state/tofi-history"
-    # ];
+    files = [
+      ".cache/tofi-compgen"
+      ".local/state/tofi-history"
+    ];
   };
 
   fileSystems."/persistent".neededForBoot = true;
