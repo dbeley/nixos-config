@@ -33,7 +33,7 @@
       };
       label = {
         text = "$TIME";
-        font_size = 35;
+        font_size = 50;
         position = "0, 100";
         halign = "center";
         valign = "center";
@@ -57,9 +57,9 @@
       "$SCREENSHOT_FOLDER" =
         "~/Nextcloud/10-19_Images/11_Captures-d-écran/11.08_Captures-d-écran_Hyprland";
       xwayland = {
-        force_zero_scaling = "true";
+        force_zero_scaling = true;
       };
-      ecosystem.no_update_news = "true";
+      ecosystem.no_update_news = true;
       env = [
         "XCURSOR_SIZE,24"
         # "QT_SCALE_FACTOR_ROUNDING_POLICY,RoundPreferFloor"
@@ -85,46 +85,46 @@
         kb_model = "";
         kb_options = "ctrl:nocaps,shift:both_capslock";
         kb_rules = "";
-        follow_mouse = "1";
-        left_handed = "true";
+        follow_mouse = 1;
+        left_handed = true;
         touchpad = {
-          natural_scroll = "true";
+          natural_scroll = true;
         };
-        sensitivity = "0";
-        repeat_rate = "60";
-        repeat_delay = "200";
+        sensitivity = 0;
+        repeat_rate = 60;
+        repeat_delay = 200;
       };
       general = {
-        gaps_in = "5";
-        gaps_out = "20";
-        border_size = "2";
-        resize_on_border = "true";
+        gaps_in = 5;
+        gaps_out = 20;
+        border_size = 2;
+        resize_on_border = true;
         layout = "master";
-        allow_tearing = "false";
+        allow_tearing = false;
       };
       cursor = {
-        inactive_timeout = "3";
+        inactive_timeout = 3;
       };
       decoration = {
-        rounding = "10";
-        inactive_opacity = "0.8";
+        rounding = 10;
+        inactive_opacity = 0.8;
         blur = {
-          enabled = "true";
-          size = "5";
-          passes = "2";
-          new_optimizations = "true";
-          xray = "true";
-          ignore_opacity = "true";
+          enabled = true;
+          size = 5;
+          passes = 2;
+          new_optimizations = true;
+          xray = true;
+          ignore_opacity = true;
         };
         # shadow = {
-        #   enabled = "true";
-        #   range = "4";
-        #   render_power = "3";
+        #   enabled = true;
+        #   range = 4;
+        #   render_power = 3;
         #   color = "rgba(1a1a1aee)";
         # };
       };
       animations = {
-        enabled = "true";
+        enabled = true;
         # bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
         # animation = [
         #   "windows, 1, 7, myBezier"
@@ -136,22 +136,23 @@
         # ];
       };
       dwindle = {
-        pseudotile = "true";
-        preserve_split = "true";
+        pseudotile = true;
+        preserve_split = true;
       };
       master = {
         new_status = "slave";
         orientation = "center";
         slave_count_for_center_master = 2;
+        center_master_slaves_on_right = false;
         mfact = 0.6;
       };
       gestures = {
-        workspace_swipe = "true";
+        workspace_swipe = true;
       };
       misc = {
-        force_default_wallpaper = "0";
-        disable_hyprland_logo = "true";
-        disable_splash_rendering = "true";
+        force_default_wallpaper = 0;
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
       };
       bind =
         [
@@ -276,14 +277,14 @@
       ];
       plugin = {
         touch_gestures = {
-          sensitivity = "4.0";
-          workspace_swipe_fingers = "4";
+          sensitivity = 4.0;
+          workspace_swipe_fingers = 4;
           workspace_swipe_edge = "d";
-          long_press_delay = "400";
-          resize_on_border_long_press = "true";
-          edge_margin = "10";
+          long_press_delay = 400;
+          resize_on_border_long_press = true;
+          edge_margin = 10;
           experimental = {
-            send_cancel = "0";
+            send_cancel = 0;
           };
           hyprgrass-bind = [
             ", edge:r:l, workspace, +1"
