@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   user,
   lib,
   stateVersion,
@@ -8,13 +9,13 @@
 {
   imports = [
     ../common-user-packages.nix
-    # inputs.hyprland.homeManagerModules.default
-    # ../../apps/hyprland/hyprland.nix
-    # ../../apps/waybar/waybar.nix
-    # ../../apps/tofi/tofi.nix
-    # ../../apps/mako/mako.nix
-    # ../../apps/gammastep/gammastep.nix
-    ../../apps/gnome/gnome.nix
+    inputs.hyprland.homeManagerModules.default
+    ../../apps/hyprland/hyprland.nix
+    ../../apps/waybar/waybar.nix
+    ../../apps/tofi/tofi.nix
+    ../../apps/mako/mako.nix
+    ../../apps/gammastep/gammastep.nix
+    # ../../apps/gnome/gnome.nix
     ../../apps/stylix/stylix.nix
 
     ../../apps/git/git.nix
@@ -28,7 +29,7 @@
     # ../../apps/emacs/emacs.nix
     ../../apps/kakoune/kakoune.nix
     ../../apps/helix/helix.nix
-    ../../apps/vscode/vscode.nix
+    # ../../apps/vscode/vscode.nix
     ../../apps/lazygit/lazygit.nix
     ../../apps/nnn/nnn.nix
     ../../apps/udiskie/udiskie.nix

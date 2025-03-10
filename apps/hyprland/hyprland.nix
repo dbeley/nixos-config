@@ -43,6 +43,7 @@
         # "QT_SCALE_FACTOR_ROUNDING_POLICY,RoundPreferFloor"
       ];
       monitor = [
+        "desc:LG Display 0x067C,preferred,auto,2"
         ",preferred,auto,auto"
         "eDP-1,preferred,auto,1.6"
         "desc:AU Optronics 0xFA9B,preferred,auto,1.2"
@@ -220,6 +221,7 @@
       windowrulev2 = [
         "suppressevent maximize, class:.*" # You'll probably like this.
         "float,class:org.keepassxc.KeePassXC"
+        "float,class:zoom"
         "workspace special:scratchpad silent,class:org.keepassxc.KeePassXC"
         "workspace special:scratchpad3 silent,class:Supersonic"
         "float,class:mpv"
