@@ -46,6 +46,7 @@
       ".config/libreoffice/4/user"
       ".config/mpdscrobble"
       ".config/supersonic"
+      ".config/beets"
       ".config/Nextcloud"
       ".local/share/direnv"
       ".local/share/flatpak"
