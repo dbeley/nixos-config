@@ -2,10 +2,21 @@
 {
   home.packages = with pkgs; [
     xwayland-satellite
-    swaylock
+    swaybg
+    libnotify
+    pamixer
   ];
+  home.file = {
+    "scripts".source = pkgs.fetchFromGitHub {
+      owner = "dbeley";
+      repo = "scripts";
+      rev = "a8607fbfb8c50543629e14ec483473459229091d";
+      sha256 = "XBumWlu4+z/jTKLK71Lr0hMeLhc43XD3oEzY+YUMzN4=";
+    };
+  };
   programs.niri = {
     enable = true;
+    package = pkgs.niri-unstable;
     settings = {
       environment = {
         "NIXOS_OZONE_WL" = "1";
@@ -31,9 +42,9 @@
           natural-scroll = true;
           click-method = "clickfinger";
         };
-        # trackpoint = {
-        #   left-handed = true;
-        # };
+        trackpoint = {
+          left-handed = true;
+        };
         trackball = {
           left-handed = true;
         };
@@ -42,8 +53,11 @@
         # niri msg outputs
         eDP-1 = {
           scale = 1.25;
-          # variable-refresh-rate = true;
+          variable-refresh-rate = true;
         };
+      };
+      cursor = {
+        hide-after-inactive-ms = 5000;
       };
       layout = {
         gaps = 16;
@@ -64,6 +78,15 @@
         {
           command = [ "xwayland-satellite" ];
         }
+        {
+          command = [
+            "swaybg"
+            "-m"
+            "fill"
+            "-i"
+            "${config.stylix.image}"
+          ];
+        }
       ];
       window-rules = [
         {
@@ -71,6 +94,15 @@
             {
               app-id = "firefox";
               title = "Picture-in-Picture";
+            }
+            { app-id = "mpv"; }
+            {
+              app-id = "steam";
+              title = "Friends List";
+            }
+            {
+              app-id = "steam";
+              title = "Steam Settings";
             }
           ];
           open-floating = true;
@@ -80,7 +112,6 @@
             { app-id = "org.keepassxc.KeePassXC"; }
           ];
           block-out-from = "screen-capture";
-          # open-on-workspace = "keepassxc";
         }
         {
           matches = [ ];
@@ -93,8 +124,8 @@
           clip-to-geometry = true;
         }
       ];
-      workspaces = {
-        # keepassxc = { };
+      hotkey-overlay = {
+        skip-at-startup = true;
       };
       binds = with config.lib.niri.actions; {
         "Mod+Shift+Slash".action = show-hotkey-overlay;
@@ -119,10 +150,14 @@
           "bigdown"
         ];
         "XF86MonBrightnessDown".action.spawn = [
-          "light -U 5%"
+          "light"
+          "-U"
+          "5%"
         ];
         "XF86MonBrightnessUp".action.spawn = [
-          "light -A 5%"
+          "light"
+          "-A"
+          "5%"
         ];
         "XF86Display".action.spawn = [
           "~/scripts/toggle_gammastep.sh"
@@ -150,25 +185,29 @@
         "Mod+Shift+F".action = fullscreen-window;
         "Mod+Q".action = close-window;
         "Mod+H".action = focus-column-left;
-        "Mod+J".action = focus-window-down;
-        "Mod+K".action = focus-window-up;
+        "Mod+J".action = focus-window-or-workspace-down;
+        "Mod+K".action = focus-window-or-workspace-up;
         "Mod+L".action = focus-column-right;
         "Mod+Ctrl+H".action = focus-monitor-left;
         "Mod+Ctrl+J".action = focus-monitor-down;
         "Mod+Ctrl+K".action = focus-monitor-up;
         "Mod+Ctrl+L".action = focus-monitor-right;
         "Mod+Shift+H".action = move-column-left;
-        "Mod+Shift+J".action = move-window-down;
-        "Mod+Shift+K".action = move-window-up;
+        "Mod+Shift+J".action = move-window-down-or-to-workspace-down;
+        "Mod+Shift+K".action = move-window-up-or-to-workspace-up;
         "Mod+Shift+L".action = move-column-right;
+        "Mod+Ctrl+Shift+H".action = move-column-to-monitor-left;
+        "Mod+Ctrl+Shift+J".action = move-column-to-monitor-down;
+        "Mod+Ctrl+Shift+K".action = move-column-to-monitor-up;
+        "Mod+Ctrl+Shift+L".action = move-column-to-monitor-right;
         "Mod+U".action = focus-workspace-down;
         "Mod+I".action = focus-workspace-up;
+        "Mod+Shift+U".action = move-column-to-workspace-down;
+        "Mod+Shift+I".action = move-column-to-workspace-up;
         "Mod+V".action = toggle-window-floating;
         "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
         "Mod+W".action = toggle-column-tabbed-display;
         "Mod+C".action = center-column;
-        # "Mod+Tab".action = focus-workspace-next;
-        # "Mod+Shift+Tab".action = focus-workspace-previous;
         "Mod+BracketLeft".action = consume-or-expel-window-left;
         "Mod+BracketRight".action = consume-or-expel-window-right;
         "Mod+Comma".action = consume-window-into-column;
@@ -176,13 +215,13 @@
         "Mod+R".action = switch-preset-column-width;
         "Mod+Shift+R".action = switch-preset-window-height;
         "Mod+Ctrl+R".action = reset-window-height;
+        "Mod+Shift+Ctrl+R".action = reset-window-height;
         "Mod+Minus".action.set-column-width = "-10%";
         "Mod+Equal".action.set-column-width = "+10%";
         "Mod+Shift+Minus".action.set-window-height = "-10%";
         "Mod+Shift+Equal".action.set-window-height = "+10%";
         "Shift+Print".action.screenshot = { };
         "Print".action.screenshot-screen = { };
-        # "Alt+Print".action = screenshot-window;
         "Mod+E".action.spawn = [
           "bash"
           "-c"
@@ -190,11 +229,16 @@
         ];
         "Mod+Z".action.spawn = "firefox";
         "Mod+D".action.spawn = "supersonic";
+        "Mod+N".action.spawn = "keepassxc";
         "Mod+T".action.spawn = "soffice";
         "Mod+Shift+T".action.spawn = "gnome-system-monitor";
-        # "Mod+Shift+C".action.spawn = "swaylock";
-        "Mod+Return".action.spawn = "kitty";
-        "Mod+X".action.spawn = "kitty";
+        "Mod+Shift+C".action.spawn = [
+          "swaylock"
+          "--scaling"
+          "fill"
+        ];
+        "Mod+Return".action.spawn = "ghostty";
+        "Mod+X".action.spawn = "ghostty";
       };
     };
   };

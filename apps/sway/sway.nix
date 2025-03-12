@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  user,
   ...
 }:
 {
@@ -11,7 +10,6 @@
     grim
     slurp
     pamixer
-    swaylock
   ];
   home.file = {
     "scripts".source = pkgs.fetchFromGitHub {
@@ -25,7 +23,7 @@
     enable = true;
     wrapperFeatures.gtk = true;
     xwayland = true;
-    config = rec {
+    config = {
       terminal = "ghostty";
       modifier = "Mod4";
       input = {

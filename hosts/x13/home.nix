@@ -8,25 +8,26 @@
 {
   imports = [
     ../common-user-packages.nix
-    inputs.nix-flatpak.homeManagerModules.nix-flatpak
-    ../../apps/flatpak/flatpak.nix
-    inputs.hyprland.homeManagerModules.default
-    ../../apps/hyprland/hyprland.nix
+    # inputs.nix-flatpak.homeManagerModules.nix-flatpak
+    # ../../apps/flatpak/flatpak.nix
+    # inputs.hyprland.homeManagerModules.default
+    # ../../apps/hyprland/hyprland.nix
+    inputs.niri.homeModules.niri
+    inputs.niri.homeModules.stylix
+    ../../apps/niri/niri.nix
+    ../../apps/stylix/stylix.nix
+    ../../apps/swaylock/swaylock.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
     ../../apps/mako/mako.nix
     ../../apps/gammastep/gammastep.nix
     ../../apps/autoscreen/autoscreen.nix
     ../../apps/autoscreen-gaming/autoscreen-gaming.nix
-    ../../apps/stylix/stylix.nix
-    inputs.niri.homeModules.niri
-    inputs.niri.homeModules.stylix
-    ../../apps/niri/niri.nix
 
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
     ../../apps/tmux/tmux.nix
-    ../../apps/kitty/kitty.nix
+    ../../apps/ghostty/ghostty.nix
     ../../apps/direnv/direnv.nix
     ../../apps/python/python.nix
     ../../apps/helix/helix.nix
