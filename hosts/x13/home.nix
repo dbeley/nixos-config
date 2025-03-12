@@ -19,6 +19,9 @@
     ../../apps/autoscreen/autoscreen.nix
     ../../apps/autoscreen-gaming/autoscreen-gaming.nix
     ../../apps/stylix/stylix.nix
+    inputs.niri.homeModules.niri
+    inputs.niri.homeModules.stylix
+    ../../apps/niri/niri.nix
 
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
@@ -29,6 +32,7 @@
     ../../apps/helix/helix.nix
     # ../../apps/vscode/vscode.nix
     ../../apps/nnn/nnn.nix
+    ../../apps/yazi/yazi.nix
     ../../apps/udiskie/udiskie.nix
     ../../apps/mime/mime.nix
     ../../apps/imv/imv.nix

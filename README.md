@@ -8,7 +8,7 @@
 |----------------|------------------------------------------|
 | **Shell:**     | fish                                     |
 | **DM:**        | tty1                                     |
-| **WM:**        | hyprland or sway + waybar                |
+| **WM:**        | hyprland, sway, niri (+ waybar), gnome   |
 | **Editor:**    | doom-emacs / neovim / helix / kakoune    |
 | **Terminal:**  | ghostty / kitty                          |
 | **Launcher:**  | tofi                                     |
@@ -27,7 +27,7 @@
 
 ## Notable Features
 
-- Support for multiple desktop environments ([`hyprland`](./apps/hyprland/), [`gnome`](./apps/gnome/), [`sway`](./apps/sway/))
+- Support for multiple desktop environments ([`hyprland`](./apps/hyprland/), [`gnome`](./apps/gnome/), [`sway`](./apps/sway/), [`niri`](./apps/niri/))
 - [Extensive `hyprland` configuration](./apps/hyprland/)
   - scratchpads, window rules, monitor rules, etc.
   - touchscreen support with gestures, rotation and on-screen keyboard
@@ -135,5 +135,4 @@ Some tools and utilities to test
 - sops-nix
 - nixos-generators
 - git-hooks
-- niri windows manager
 - nh

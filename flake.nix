@@ -132,6 +132,10 @@
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
     };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

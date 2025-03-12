@@ -1,12 +1,17 @@
 {
   programs.waybar = {
     enable = true;
+    systemd = {
+      enable = true;
+    };
     settings = [
       {
-        layer = "bottom";
+        layer = "top";
         modules-left = [
           "hyprland/workspaces"
+          "niri/workspaces"
           "hyprland/window"
+          "niri/window"
           # "mpd"
         ];
         modules-center = [ "clock" ];
@@ -30,6 +35,10 @@
           "on-click" = "activate";
           "on-scroll-up" = "hyprctl dispatch workspace e+1";
           "on-scroll-down" = "hyprctl dispatch workspace e-1";
+        };
+        "niri/workspaces" = {
+          "all-outputs" = true;
+          "show-special" = false;
         };
         mpd = {
           "max-length" = 30;
