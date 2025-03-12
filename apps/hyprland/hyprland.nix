@@ -118,9 +118,9 @@
         };
         shadow = {
           enabled = false;
-        #   range = 4;
-        #   render_power = 3;
-        #   color = "rgba(1a1a1aee)";
+          #   range = 4;
+          #   render_power = 3;
+          #   color = "rgba(1a1a1aee)";
         };
       };
       animations = {
@@ -276,6 +276,12 @@
         "fullscreen,class:gamescope"
         "forcergbx,class:gamescope"
         "opaque,title:(.*)(- YouTube)(.*)$"
+        "nofocus,class:^jetbrains-(?!toolbox),floating:1,title:^win\d+$"
+        "dimaround,class:^(jetbrains-.*)$,floating:1,title:^(?!win)"
+        "center,class:^(jetbrains-.*)$,floating:1,title:^(?!win)"
+        "noanim,class:^(jetbrains-.*)$,title:^(win.*)$"
+        "noinitialfocus,class:^(jetbrains-.*)$,title:^(win.*)$"
+        "rounding 0,class:^(jetbrains-.*)$,title:^(win.*)$"
       ];
       plugin = {
         touch_gestures = {
@@ -319,14 +325,14 @@
           drawActiveWorkspace = false;
         };
         hyprexpo = {
-        #   columns = 3;
-        #   gap_size = 5;
-        #   # bg_col = "rgb(111111)";
-        #   workspace_method = "center current";
+          #   columns = 3;
+          #   gap_size = 5;
+          #   # bg_col = "rgb(111111)";
+          #   workspace_method = "center current";
           enable_gesture = false;
-        #   gesture_fingers = 3;
-        #   gesture_distance = 300;
-        #   gesture_positive = true;
+          #   gesture_fingers = 3;
+          #   gesture_distance = 300;
+          #   gesture_positive = true;
         };
       };
     };

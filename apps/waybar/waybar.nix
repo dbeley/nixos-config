@@ -7,7 +7,7 @@
         modules-left = [
           "hyprland/workspaces"
           "hyprland/window"
-          "mpd"
+          # "mpd"
         ];
         modules-center = [ "clock" ];
         modules-right = [
