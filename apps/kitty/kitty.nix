@@ -11,6 +11,7 @@
       shell_integration = "no-cursor";
       allow_remote_control = "yes";
       listen_on = "unix:/tmp/kitty";
+      hide_window_decorations = "yes";
     };
     shellIntegration = {
       enableFishIntegration = true;

@@ -52,6 +52,8 @@
       if test (tty) = /dev/tty1
         if type -q sway
           exec sway
+        else if type -q niri-session
+          exec niri-session
         else if type -q Hyprland
           exec /home/${user}/.local/bin/wrappedhl
         else
