@@ -136,3 +136,4 @@ Some tools and utilities to test
 - nixos-generators
 - git-hooks
 - nh
+- cachix

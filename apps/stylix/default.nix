@@ -3,20 +3,20 @@
   stylix = {
     enable = true;
     # abstract light rays black
-    # image = pkgs.fetchurl {
-    #   url = "https://images.unsplash.com/photo-1672491441167-1daa7c3c95a8";
-    #   sha256 = "WoYwXx6WT+mzAmnsY+eY+eCMzf+PwMApUQuOTNaIjGE=";
-    # };
+    image = pkgs.fetchurl {
+      url = "https://images.unsplash.com/photo-1672491441167-1daa7c3c95a8";
+      sha256 = "WoYwXx6WT+mzAmnsY+eY+eCMzf+PwMApUQuOTNaIjGE=";
+    };
     # planet-like blue paint waves
     # image = pkgs.fetchurl {
     #   url = "https://images.unsplash.com/photo-1542052605271-43cf9ff1609f";
     #   sha256 = "aR1JAQLBisLuz2Gd9ARV8qW0ePQqMpUiLq7teth2p4Q=";
     # };
     # HK plant
-    image = pkgs.fetchurl {
-      url = "https://raw.githubusercontent.com/dbeley/photo-stream/refs/heads/master/photos/original/HK%20P9162201.jpg";
-      sha256 = "+l73wncx2U79NQmBzjP0yVzUENqopIFjNzfOKTBxe2Q=";
-    };
+    # image = pkgs.fetchurl {
+    #   url = "https://raw.githubusercontent.com/dbeley/photo-stream/refs/heads/master/photos/original/HK%20P9162201.jpg";
+    #   sha256 = "+l73wncx2U79NQmBzjP0yVzUENqopIFjNzfOKTBxe2Q=";
+    # };
     # Taiwan road
     # image = pkgs.fetchurl {
     #   url = "https://raw.githubusercontent.com/dbeley/photo-stream/refs/heads/master/photos/original/P9131591.jpg";

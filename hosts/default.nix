@@ -16,6 +16,7 @@
     modules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
       inputs.stylix.nixosModules.stylix
+      ../apps/stylix/default.nix
       ./p14s/hardware-configuration.nix
       ../modules/configuration.nix
       ../modules/overlays.nix
@@ -29,7 +30,6 @@
       ../apps/steam/default.nix
       ../apps/udiskie/default.nix
       ../apps/android/default.nix
-      ../apps/stylix/default.nix
 
       inputs.home-manager.nixosModules.home-manager
       {
@@ -63,6 +63,7 @@
       inputs.nixos-hardware.nixosModules.common-cpu-intel
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       inputs.stylix.nixosModules.stylix
+      ../apps/stylix/default.nix
       ../modules/configuration.nix
       ../modules/overlays.nix
       ../modules/common/uefi.nix
@@ -77,7 +78,6 @@
       # ../apps/steam/default.nix
       ../apps/udiskie/default.nix
       ../apps/android/default.nix
-      ../apps/stylix/default.nix
 
       inputs.home-manager.nixosModules.home-manager
       {
@@ -110,19 +110,20 @@
       ../modules/impermanence/default.nix
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x13-amd
       inputs.stylix.nixosModules.stylix
+      ../apps/stylix/default.nix
       ../modules/configuration.nix
       ../modules/overlays.nix
       ../modules/common/uefi.nix
       ../modules/common/laptop.nix
       ../modules/common/laptop-thermald.nix
       ../modules/common/xbox.nix
-      ../apps/hyprland/default.nix
+      # ../apps/hyprland/default.nix
+      ../apps/swaylock/default.nix
       # ../apps/docker/default.nix
       # ../apps/flatpak/default.nix
       ../apps/steam/default.nix
       ../apps/udiskie/default.nix
       # ../apps/android/default.nix
-      ../apps/stylix/default.nix
 
       inputs.home-manager.nixosModules.home-manager
       {
@@ -152,6 +153,7 @@
       inputs.nixos-hardware.nixosModules.common-gpu-intel
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       inputs.stylix.nixosModules.stylix
+      ../apps/stylix/default.nix
       ./latitude/hardware-configuration.nix
       ../modules/configuration.nix
       ../modules/overlays.nix
@@ -164,7 +166,6 @@
       # ../apps/gnome/default.nix
       ../apps/docker/default.nix
       ../apps/udiskie/default.nix
-      ../apps/stylix/default.nix
 
       inputs.home-manager.nixosModules.home-manager
       {
@@ -193,6 +194,7 @@
       inputs.nixos-hardware.nixosModules.common-cpu-amd
       inputs.nixos-hardware.nixosModules.common-gpu-amd
       inputs.stylix.nixosModules.stylix
+      ../apps/stylix/default.nix
       ./sg13/hardware-configuration.nix
       ../modules/configuration.nix
       ../modules/overlays.nix
@@ -201,7 +203,6 @@
       ../apps/gnome/default.nix
       ../apps/steam/default.nix
       ../apps/udiskie/default.nix
-      ../apps/stylix/default.nix
 
       inputs.home-manager.nixosModules.home-manager
       {
