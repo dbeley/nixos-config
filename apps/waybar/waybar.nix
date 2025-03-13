@@ -37,8 +37,7 @@
           "on-scroll-down" = "hyprctl dispatch workspace e-1";
         };
         "niri/workspaces" = {
-          "all-outputs" = true;
-          "show-special" = false;
+          "all-outputs" = false;
         };
         mpd = {
           "max-length" = 30;

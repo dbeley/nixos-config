@@ -104,6 +104,18 @@
               app-id = "steam";
               title = "Steam Settings";
             }
+            {
+              app-id = "jetbrains.*";
+              title = "Open File or Project";
+            }
+            {
+              app-id = "jetbrains.*";
+              title = "Settings";
+            }
+            {
+              app-id = "jetbrains.*";
+              title = "Confirm Exit";
+            }
           ];
           open-floating = true;
         }
@@ -239,6 +251,8 @@
         ];
         "Mod+Return".action.spawn = "ghostty";
         "Mod+X".action.spawn = "ghostty";
+        "Mod+Shift+P".action.spawn = "poweroff";
+        "Mod+Shift+O".action.spawn = "reboot";
       };
     };
   };
