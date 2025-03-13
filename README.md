@@ -6,7 +6,7 @@
 
 | Type           | Program                                  |
 |----------------|------------------------------------------|
-| **Shell:**     | fish                                     |
+| **Shell:**     | fish, zsh                                |
 | **DM:**        | tty1                                     |
 | **WM:**        | hyprland, sway, niri (+ waybar), gnome   |
 | **Editor:**    | doom-emacs / neovim / helix / kakoune    |
@@ -15,22 +15,17 @@
 | **Browser:**   | firefox / qutebrowser                    |
 | **Theme:**     | stylix                                   |
 
-## Hosts
-
-- **p14s**: my main laptop (Lenovo ThinkPad P14s Gen 4: AMD Ryzen 7 7840U, 16GB RAM, hyprland)
-- **x1yoga**: my secondary laptop (Lenovo ThinkPad X1 Yoga Gen 5: Intel Core i5-10210U, 8GB RAM, hyprland + touch gestures w/ hyprgrass, impermanence)
-- **sg13**: my main desktop computer (Silverstone SG13: AMD Ryzen 5 2600, RX 580 8GB, 16GB RAM, gnome)
-- **x61s**: my retro laptop (Lenovo Thinkpad X61s: Intel Core 2 Duo L7500, 3GB RAM, sway)
-- **x13**: my previous main laptop (Lenovo ThinkPad X13 Gen 1: AMD Ryzen 5 4650U, 16GB RAM, hyprland, impermanence)
-- (deprecated) **t470s**: my previous main laptop (Lenovo Thinkpad T470s: Intel Core i5-6300U, 8GB RAM, hyprland)
-- (deprecated) **era1**: my first server image installed in a Proxmox VM (Fractal Design Era: Intel N100, 32GB RAM)
-
 ## Notable Features
 
 - Support for multiple desktop environments ([`hyprland`](./apps/hyprland/), [`gnome`](./apps/gnome/), [`sway`](./apps/sway/), [`niri`](./apps/niri/))
 - [Extensive `hyprland` configuration](./apps/hyprland/)
-  - scratchpads, window rules, monitor rules, etc.
-  - touchscreen support with gestures, rotation and on-screen keyboard
+  - Scratchpads, window rules, monitor rules, etc.
+  - Touchscreen support with gestures, rotation and on-screen keyboard
+- [Extensive `niri` configuration](./apps/niri/)
+  - Window rules, monitor rules, etc.
+- [Extensive `gnome` configuration](./apps/gnome/)
+  - Configuration via dconf
+  - Pre-installed extensions
 - [Automatic styling with `stylix`](./apps/stylix/)
 - [Extensive `firefox` configuration with `about:config` settings, automatic add-ons installation and declarative containers](./apps/firefox/firefox.nix)
 - [Declarative partitioning with `disko`](./modules/disko/encrypted-btrfs-impermanence.nix)
@@ -45,6 +40,14 @@
 - Support for [fingerprint scanner](./modules/common/fingerprint-scanner.nix), printers, bluetooth, [xbox gamepad](./modules/common/xbox.nix)
 - Some [common overlays that fix currently broken packages](./modules/overlays.nix) 
 - `flatpak` with automatic packages installation
+
+## Hosts
+
+- **p14s**: my main laptop (Lenovo ThinkPad P14s Gen 4: AMD Ryzen 7 7840U, 16GB RAM, hyprland)
+- **x1yoga**: my secondary laptop (Lenovo ThinkPad X1 Yoga Gen 5: Intel Core i5-10210U, 8GB RAM, hyprland + touch gestures w/ hyprgrass, impermanence)
+- **sg13**: my main desktop computer (Silverstone SG13: AMD Ryzen 5 2600, RX 580 8GB, 16GB RAM, gnome)
+- **x61s**: my retro laptop (Lenovo Thinkpad X61s: Intel Core 2 Duo L7500, 3GB RAM, sway)
+- **x13**: my previous main laptop (Lenovo ThinkPad X13 Gen 1: AMD Ryzen 5 4650U, 16GB RAM, hyprland, impermanence)
 
 ## Common Usage
 
