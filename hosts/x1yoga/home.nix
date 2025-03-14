@@ -12,6 +12,8 @@
     # ../../apps/flatpak/flatpak.nix
     inputs.hyprland.homeManagerModules.default
     ../../apps/hyprland/hyprland.nix
+    ../../apps/stylix/stylix.nix
+    ../../apps/hyprlock/hyprlock.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
     ../../apps/mako/mako.nix
@@ -20,7 +22,6 @@
     ../../apps/autoscreen-gaming/autoscreen-gaming.nix
     # ../../apps/gnome/gnome.nix
     # ../../apps/autoscreen-gnome/autoscreen-gnome.nix
-    ../../apps/stylix/stylix.nix
 
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
@@ -31,6 +32,7 @@
     ../../apps/helix/helix.nix
     # ../../apps/vscode/vscode.nix
     ../../apps/nnn/nnn.nix
+    ../../apps/yazi/yazi.nix
     ../../apps/udiskie/udiskie.nix
     ../../apps/mime/mime.nix
     ../../apps/imv/imv.nix
