@@ -135,6 +135,14 @@
               app-id = "jetbrains.*";
               title = "Confirm Exit";
             }
+            {
+              app-id = "jetbrains.*";
+              title = "Update Project";
+            }
+            {
+              app-id = "jetbrains.*";
+              title = "^ $";
+            }
           ];
           open-floating = true;
         }
