@@ -54,7 +54,6 @@
         "desc:LG Display 0x067C,preferred,auto,2"
       ];
       exec-once = [
-        "waybar"
         "keepassxc"
         "command -v wvkbd-mobintl && wvkbd-mobintl -L 250 --hidden"
         "command -v iio-hyprland && iio-hyprland"
