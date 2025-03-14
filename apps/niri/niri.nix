@@ -48,11 +48,18 @@
         trackball = {
           left-handed = true;
         };
+        focus-follows-mouse = {
+          enable = true;
+        };
       };
       outputs = {
         # niri msg outputs
         eDP-1 = {
           scale = 1.25;
+          variable-refresh-rate = true;
+        };
+        "LG Display 0x067C Unknown" = {
+          scale = 2;
           variable-refresh-rate = true;
         };
       };
@@ -61,6 +68,18 @@
       };
       layout = {
         gaps = 16;
+        preset-column-widths = [
+          { proportion = 1. / 4.; }
+          { proportion = 1. / 3.; }
+          { proportion = 1. / 2.; }
+          { proportion = 2. / 3.; }
+        ];
+        preset-window-heights = [
+          { proportion = 1. / 4.; }
+          { proportion = 1. / 3.; }
+          { proportion = 1. / 2.; }
+          { proportion = 2. / 3.; }
+        ];
       };
       screenshot-path = "~/Nextcloud/10-19_Images/11_Captures-d-écran/11.09_Captures-d-écran_Niri/%Y-%d-%d %H-%M-%S.png";
       spawn-at-startup = [

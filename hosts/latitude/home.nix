@@ -9,25 +9,31 @@
 {
   imports = [
     ../common-user-packages.nix
-    inputs.hyprland.homeManagerModules.default
-    ../../apps/hyprland/hyprland.nix
+    # inputs.nix-flatpak.homeManagerModules.nix-flatpak
+    # ../../apps/flatpak/flatpak.nix
+    # inputs.hyprland.homeManagerModules.default
+    # ../../apps/hyprland/hyprland.nix
+    # ../../apps/gnome/gnome.nix
+    inputs.niri.homeModules.niri
+    inputs.niri.homeModules.stylix
+    ../../apps/niri/niri.nix
+    ../../apps/stylix/stylix.nix
+    ../../apps/swaylock/swaylock.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
     ../../apps/mako/mako.nix
     ../../apps/gammastep/gammastep.nix
-    # ../../apps/gnome/gnome.nix
-    ../../apps/stylix/stylix.nix
 
     ../../apps/git/git.nix
     ../../apps/fish/fish.nix
     ../../apps/tmux/tmux.nix
-    ../../apps/kitty/kitty.nix
+    ../../apps/ghostty/ghostty.nix
     ../../apps/direnv/direnv.nix
     ../../apps/python/python.nix
     # inputs.nixvim.homeManagerModules.nixvim
     # ../../apps/nixvim/nixvim.nix
     # ../../apps/emacs/emacs.nix
-    ../../apps/kakoune/kakoune.nix
+    # ../../apps/kakoune/kakoune.nix
     ../../apps/helix/helix.nix
     # ../../apps/vscode/vscode.nix
     ../../apps/lazygit/lazygit.nix
