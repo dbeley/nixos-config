@@ -143,6 +143,18 @@
               app-id = "jetbrains.*";
               title = "^ $";
             }
+            {
+              app-id = "swayimg";
+            }
+            {
+              title = "Ouvrir.*";
+            }
+            {
+              title = "Extension.*";
+            }
+            {
+              title = "Add.*";
+            }
           ];
           open-floating = true;
         }
@@ -255,6 +267,10 @@
         "Mod+Ctrl+Shift+Down".action = move-column-to-monitor-down;
         "Mod+Ctrl+Shift+Up".action = move-column-to-monitor-up;
         "Mod+Ctrl+Shift+Right".action = move-column-to-monitor-right;
+        "Mod+WheelScrollDown" = focus-column-left;
+        "Mod+WheelScrollUp".action = focus-column-right;
+        "Mod+Shift+WheelScrollDown" = focus-window-or-workspace-up;
+        "Mod+Shift+WheelScrollUp".action = focus-window-or-workspace-down;
         "Mod+U".action = focus-workspace-down;
         "Mod+I".action = focus-workspace-up;
         "Mod+Shift+U".action = move-column-to-workspace-down;
@@ -294,9 +310,6 @@
         "Mod+X".action.spawn = "ghostty";
         "Mod+Shift+P".action.spawn = "poweroff";
         "Mod+Shift+O".action.spawn = "reboot";
-        "Mod+Shift+S".action.spawn = [
-          "hyprlock & disown && systemctl suspend"
-        ];
       };
     };
   };
