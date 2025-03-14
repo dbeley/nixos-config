@@ -20,26 +20,6 @@
       sha256 = "XBumWlu4+z/jTKLK71Lr0hMeLhc43XD3oEzY+YUMzN4=";
     };
   };
-  programs.hyprlock = {
-    enable = true;
-    settings = {
-      auth = {
-        pam = {
-          enabled = true;
-        };
-        fingerprint = {
-          enabled = true;
-        };
-      };
-      label = {
-        text = "$TIME";
-        font_size = 50;
-        position = "0, 100";
-        halign = "center";
-        valign = "center";
-      };
-    };
-  };
   wayland.windowManager.hyprland = {
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     enable = true;

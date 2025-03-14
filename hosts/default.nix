@@ -25,6 +25,7 @@
       ../modules/common/xbox.nix
       ../modules/common/fingerprint-scanner.nix
       ../apps/hyprland/default.nix
+      ../apps/hyprlock/default.nix
       # ../apps/gnome/default.nix
       ../apps/docker/default.nix
       ../apps/steam/default.nix
@@ -73,6 +74,7 @@
       ../modules/common/fingerprint-scanner.nix
       ../modules/common/screen-rotation.nix
       ../apps/hyprland/default.nix
+      ../apps/hyprlock/default.nix
       # ../apps/gnome/default.nix
       ../apps/docker/default.nix
       # ../apps/steam/default.nix
@@ -118,7 +120,8 @@
       ../modules/common/laptop-thermald.nix
       ../modules/common/xbox.nix
       # ../apps/hyprland/default.nix
-      ../apps/swaylock/default.nix
+      ../apps/hyprlock/default.nix
+      # ../apps/swaylock/default.nix
       # ../apps/docker/default.nix
       # ../apps/flatpak/default.nix
       ../apps/steam/default.nix
@@ -163,7 +166,8 @@
       ../modules/common/fingerprint-scanner.nix
       ../modules/common/printing.nix
       # ../apps/hyprland/default.nix
-      ../apps/swaylock/default.nix
+      ../apps/hyprlock/default.nix
+      # ../apps/swaylock/default.nix
       # ../apps/gnome/default.nix
       ../apps/docker/default.nix
       ../apps/udiskie/default.nix

@@ -9,6 +9,7 @@
   imports = [
     ../common-user-packages.nix
     ../../apps/sway/sway.nix
+    ../../apps/swaylock/swaylock.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
     ../../apps/mako/mako.nix
