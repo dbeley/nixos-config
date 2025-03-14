@@ -47,7 +47,7 @@
 - **x1yoga**: my secondary laptop (Lenovo ThinkPad X1 Yoga Gen 5: Intel Core i5-10210U, 8GB RAM, hyprland + touch gestures w/ hyprgrass, impermanence)
 - **sg13**: my main desktop computer (Silverstone SG13: AMD Ryzen 5 2600, RX 580 8GB, 16GB RAM, gnome)
 - **x61s**: my retro laptop (Lenovo Thinkpad X61s: Intel Core 2 Duo L7500, 3GB RAM, sway)
-- **x13**: my previous main laptop (Lenovo ThinkPad X13 Gen 1: AMD Ryzen 5 4650U, 16GB RAM, hyprland, impermanence)
+- **x13**: my previous main laptop (Lenovo ThinkPad X13 Gen 1: AMD Ryzen 5 4650U, 16GB RAM, niri, impermanence)
 
 ## Common Usage
 
@@ -98,6 +98,7 @@ The target disk can be any mounted disk (except the one the system is currently 
 
 ```
 # On a new host don't forget to generate the hardware-configuration.nix file and copy it on hosts/{host}/hardware-configuration.nix
+# You can do that from a live ISO and then copy it to your build host
 nixos-generate-config --no-filesystems
 
 # disko + impermanence install on an existing host called "x1yoga"
@@ -113,7 +114,7 @@ sudo mount -o subvol=persistent /dev/mapper/luks-1 /mnt/root/persistent
 sudo mount -o subvol=nix /dev/mapper/luks-1 /mnt/root/nix
 sudo mount /dev/sda1 /mnt/root/boot
 
-# Create password file
+# Create password file - mandatory
 mkpasswd > temp_passwd_file
 sudo mv temp_passwd_file /mnt/root/persistent/passwd_$USER
 sudo chown root:root /mnt/root/persistent/passwd_$USER
