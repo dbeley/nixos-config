@@ -56,7 +56,7 @@
       # inputs.nixpkgs.follows = "nixpkgs";
       # inputs.systems.follows = "systems";
       # inputs.hyprlang.follows = "hyprlang";
-      # inputs.pre-commit-hooks.follows = "git-hooks";
+      inputs.pre-commit-hooks.follows = "git-hooks";
       # inputs.hyprland-qtutils.follows = "hyprland-qtutils";
       # inputs.hyprutils.follows = "hyprutils";
     };
@@ -67,6 +67,7 @@
     hyprspace = {
       url = "github:KZDKM/Hyprspace";
       inputs.hyprland.follows = "hyprland";
+      inputs.systems.follows = "systems";
     };
     iio-hyprland = {
       url = "github:JeanSchoeller/iio-hyprland";
