@@ -267,9 +267,9 @@
         "Mod+Ctrl+Shift+Down".action = move-column-to-monitor-down;
         "Mod+Ctrl+Shift+Up".action = move-column-to-monitor-up;
         "Mod+Ctrl+Shift+Right".action = move-column-to-monitor-right;
-        "Mod+WheelScrollDown" = focus-column-left;
+        "Mod+WheelScrollDown".action = focus-column-left;
         "Mod+WheelScrollUp".action = focus-column-right;
-        "Mod+Shift+WheelScrollDown" = focus-window-or-workspace-up;
+        "Mod+Shift+WheelScrollDown".action = focus-window-or-workspace-up;
         "Mod+Shift+WheelScrollUp".action = focus-window-or-workspace-down;
         "Mod+U".action = focus-workspace-down;
         "Mod+I".action = focus-workspace-up;
