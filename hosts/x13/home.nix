@@ -43,6 +43,7 @@
     ../../apps/zathura/zathura.nix
 
     ../../apps/firefox/firefox.nix
+    ../../apps/zen-browser/zen-browser.nix
     ../../apps/ungoogled-chromium/ungoogled-chromium.nix
     # ../../apps/qutebrowser/qutebrowser.nix
     ../../apps/ledger/ledger.nix

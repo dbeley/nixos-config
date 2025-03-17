@@ -109,6 +109,10 @@
       ];
       window-rules = [
         {
+          matches = [ { is-focused = false; } ];
+          opacity = 0.95;
+        }
+        {
           matches = [
             {
               app-id = "firefox";
@@ -151,6 +155,9 @@
             }
             {
               title = "Extension.*";
+            }
+            {
+              title = "Enregistrer.*";
             }
             {
               title = "Add.*";
