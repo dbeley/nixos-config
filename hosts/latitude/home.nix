@@ -47,6 +47,7 @@
     ../../apps/zathura/zathura.nix
 
     ../../apps/firefox/firefox.nix
+    ../../apps/zen-browser/zen-browser.nix
     ../../apps/ungoogled-chromium/ungoogled-chromium.nix
     ../../apps/pycharm-professional/pycharm.nix
     ../../apps/tealdeer/tealdeer.nix
