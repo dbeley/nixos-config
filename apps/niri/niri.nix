@@ -15,8 +15,8 @@
     };
   };
   programs.niri = {
-    enable = true;
-    package = pkgs.niri-unstable;
+    # enable = true;
+    # package = pkgs.niri-unstable;
     settings = {
       environment = {
         "NIXOS_OZONE_WL" = "1";

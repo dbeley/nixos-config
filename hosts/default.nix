@@ -119,6 +119,8 @@
       ../modules/common/laptop.nix
       ../modules/common/laptop-thermald.nix
       ../modules/common/xbox.nix
+      inputs.niri.nixosModules.niri
+      ../apps/niri/default.nix
       # ../apps/hyprland/default.nix
       ../apps/hyprlock/default.nix
       # ../apps/swaylock/default.nix
@@ -165,6 +167,8 @@
       ../modules/common/laptop-thermald.nix
       ../modules/common/fingerprint-scanner.nix
       ../modules/common/printing.nix
+      inputs.niri.nixosModules.niri
+      ../apps/niri/default.nix
       # ../apps/hyprland/default.nix
       ../apps/hyprlock/default.nix
       # ../apps/swaylock/default.nix
