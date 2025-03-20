@@ -158,8 +158,8 @@
         "browser.safebrowsing.enabled" = false;
         "browser.safebrowsing.malware.enabled" = false;
         "browser.search.context.loadInBackground" = true;
-        "browser.search.defaultenginename" = "DuckDuckGo";
-        "browser.search.order.1" = "DuckDuckGo";
+        "browser.search.defaultenginename" = "ddg";
+        "browser.search.order.1" = "ddg";
         "browser.search.region" = "FR";
         "browser.send_pings" = false;
         "browser.sessionstore.interval" = 60000;
@@ -280,8 +280,8 @@
       ];
       search = {
         force = true;
-        default = "DuckDuckGo";
-        order = [ "DuckDuckGo" ];
+        default = "ddg";
+        order = [ "ddg" ];
       };
     };
   };

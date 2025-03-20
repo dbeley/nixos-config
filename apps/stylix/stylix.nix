@@ -10,5 +10,6 @@
     nixvim.enable = false;
     hyprland.enable = true;
     firefox.profileNames = [ "${user}" ];
+    mpv.enable = false;
   };
 }

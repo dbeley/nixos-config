@@ -12,8 +12,8 @@
     # ../../apps/flatpak/flatpak.nix
     # inputs.hyprland.homeManagerModules.default
     # ../../apps/hyprland/hyprland.nix
-    inputs.niri.homeModules.niri
-    inputs.niri.homeModules.stylix
+    # inputs.niri.homeModules.niri
+    # inputs.niri.homeModules.stylix
     ../../apps/niri/niri.nix
     ../../apps/stylix/stylix.nix
     # ../../apps/swaylock/swaylock.nix

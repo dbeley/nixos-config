@@ -15,8 +15,8 @@
     };
   };
   programs.niri = {
-    enable = true;
-    package = pkgs.niri-unstable;
+    # enable = true;
+    # package = pkgs.niri-unstable;
     settings = {
       environment = {
         "NIXOS_OZONE_WL" = "1";
@@ -144,8 +144,16 @@
               title = "Update Project";
             }
             {
-              app-id = "jetbrains.*";
-              title = "^ $";
+              app-id = "zoom";
+              title = "Zoom Workplace";
+            }
+            {
+              app-id = "zoom";
+              title = "Settings";
+            }
+            {
+              app-id = "zoom";
+              title = "zoom";
             }
             {
               app-id = "swayimg";
