@@ -144,10 +144,6 @@
               title = "Update Project";
             }
             {
-              app-id = "jetbrains.*";
-              title = "^ $";
-            }
-            {
               app-id = "swayimg";
             }
             {
