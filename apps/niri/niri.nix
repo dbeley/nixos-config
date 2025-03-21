@@ -144,8 +144,16 @@
               title = "Update Project";
             }
             {
-              app-id = "jetbrains.*";
-              title = "^ $";
+              app-id = "zoom";
+              title = "Zoom Workplace";
+            }
+            {
+              app-id = "zoom";
+              title = "Settings";
+            }
+            {
+              app-id = "zoom";
+              title = "zoom";
             }
             {
               app-id = "swayimg";
