@@ -75,6 +75,7 @@
     files = [
       ".cache/tofi-compgen"
       ".local/state/tofi-history"
+      ".steam/registry.vdf"
     ];
   };
 
