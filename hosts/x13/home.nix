@@ -10,11 +10,11 @@
     ../common-user-packages.nix
     # inputs.nix-flatpak.homeManagerModules.nix-flatpak
     # ../../apps/flatpak/flatpak.nix
-    inputs.hyprland.homeManagerModules.default
-    ../../apps/hyprland/hyprland.nix
-    # inputs.niri.homeModules.niri
-    # inputs.niri.homeModules.stylix
-    # ../../apps/niri/niri.nix
+    # inputs.hyprland.homeManagerModules.default
+    # ../../apps/hyprland/hyprland.nix
+    inputs.niri.homeModules.niri
+    inputs.niri.homeModules.stylix
+    ../../apps/niri/niri.nix
     ../../apps/stylix/stylix.nix
     ../../apps/hyprlock/hyprlock.nix
     ../../apps/waybar/waybar.nix

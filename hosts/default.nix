@@ -119,7 +119,7 @@
       ../modules/common/laptop.nix
       ../modules/common/laptop-thermald.nix
       ../modules/common/xbox.nix
-      ../apps/hyprland/default.nix
+      # ../apps/hyprland/default.nix
       ../apps/hyprlock/default.nix
       # ../apps/docker/default.nix
       # ../apps/flatpak/default.nix
@@ -166,7 +166,6 @@
       ../modules/common/printing.nix
       # ../apps/hyprland/default.nix
       ../apps/hyprlock/default.nix
-      # ../apps/swaylock/default.nix
       # ../apps/gnome/default.nix
       ../apps/docker/default.nix
       ../apps/udiskie/default.nix
