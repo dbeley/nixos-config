@@ -2,7 +2,10 @@
   # Bootloader.
   boot = {
     loader = {
-      grub.enable = true;
+      grub = {
+        enable = true;
+        device = "/dev/sda";
+      };
     };
   };
 }
