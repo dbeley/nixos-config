@@ -31,7 +31,7 @@
     ];
     settings = {
       "$MOD" = "SUPER";
-      "$TERMINAL" = "kitty";
+      "$TERMINAL" = "ghostty";
       "$BROWSER" = "firefox";
       "$MENU" = "tofi-run | xargs hyprctl dispatch exec";
       "$SCREENSHOT_FOLDER" =
