@@ -20,7 +20,7 @@
       ./p14s/hardware-configuration.nix
       ../modules/configuration.nix
       ../modules/overlays.nix
-      ../modules/common/uefi.nix
+      ../modules/common/bootloader-systemd-boot.nix
       ../modules/common/laptop.nix
       ../modules/common/xbox.nix
       ../modules/common/fingerprint-scanner.nix
@@ -67,7 +67,7 @@
       ../apps/stylix/default.nix
       ../modules/configuration.nix
       ../modules/overlays.nix
-      ../modules/common/uefi.nix
+      ../modules/common/bootloader-systemd-boot.nix
       ../modules/common/laptop.nix
       ../modules/common/laptop-thermald.nix
       ../modules/common/xbox.nix
@@ -115,7 +115,7 @@
       ../apps/stylix/default.nix
       ../modules/configuration.nix
       ../modules/overlays.nix
-      ../modules/common/uefi.nix
+      ../modules/common/bootloader-systemd-boot.nix
       ../modules/common/laptop.nix
       ../modules/common/laptop-thermald.nix
       ../modules/common/xbox.nix
@@ -159,7 +159,7 @@
       ./latitude/hardware-configuration.nix
       ../modules/configuration.nix
       ../modules/overlays.nix
-      ../modules/common/uefi.nix
+      ../modules/common/bootloader-systemd-boot.nix
       ../modules/common/laptop.nix
       ../modules/common/laptop-thermald.nix
       ../modules/common/fingerprint-scanner.nix
@@ -191,7 +191,7 @@
     specialArgs = {
       inherit user inputs;
       hostName = "sg13";
-      stateVersion = "22.11";
+      stateVersion = "24.11";
     };
     modules = [
       inputs.nixos-hardware.nixosModules.common-cpu-amd
@@ -201,7 +201,7 @@
       ./sg13/hardware-configuration.nix
       ../modules/configuration.nix
       ../modules/overlays.nix
-      ../modules/common/uefi.nix
+      ../modules/common/bootloader-grub.nix
       ../modules/common/xbox.nix
       ../apps/gnome/default.nix
       ../apps/steam/default.nix
@@ -214,7 +214,7 @@
           useUserPackages = true;
           extraSpecialArgs = {
             inherit user inputs system;
-            stateVersion = "22.11";
+            stateVersion = "24.11";
           };
           users.${user} = {
             imports = [ (import ./sg13/home.nix) ];
@@ -283,7 +283,7 @@
       ./nixos-example/hardware-configuration.nix
       ../modules/configuration.nix
       ../modules/overlays.nix
-      ../modules/common/uefi.nix
+      ../modules/common/bootloader-systemd-boot.nix
       ../apps/gnome/default.nix
 
       inputs.home-manager.nixosModules.home-manager

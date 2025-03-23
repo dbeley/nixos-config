@@ -4,6 +4,7 @@ with lib.hm.gvariant;
   home.packages = with pkgs; [
     gnome-tweaks
     gnomeExtensions.no-overview
+    gnome-disk-utility
   ];
   # mostly taken from https://hoverbear.org/blog/declarative-gnome-configuration-in-nixos/
   gtk = {
