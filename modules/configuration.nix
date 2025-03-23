@@ -134,12 +134,6 @@
   '';
 
   services.gvfs.enable = true;
-  # services.dbus.enable = true;
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    config.common.default = "*";
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
