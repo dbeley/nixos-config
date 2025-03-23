@@ -19,6 +19,7 @@
     # inputs.nixvim.homeManagerModules.nixvim
     # ../../apps/nixvim/nixvim.nix
     ../../apps/helix/helix.nix
+    ../../apps/kitty/kitty.nix
     ../../apps/udiskie/udiskie.nix
     ../../apps/bat/bat.nix
 

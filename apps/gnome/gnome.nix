@@ -8,20 +8,6 @@ with lib.hm.gvariant;
   # mostly taken from https://hoverbear.org/blog/declarative-gnome-configuration-in-nixos/
   gtk = {
     enable = true;
-    #iconTheme = {
-    #  name = "Papirus-Dark";
-    #  package = pkgs.papirus-icon-theme;
-    #};
-
-    #theme = {
-    #  name = "palenight";
-    #  package = pkgs.palenight-theme;
-    #};
-
-    #cursorTheme = {
-    #  name = "Numix-Cursor";
-    #  package = pkgs.numix-cursor-theme;
-    #};
 
     gtk3.extraConfig = {
       Settings = ''
@@ -37,7 +23,6 @@ with lib.hm.gvariant;
   };
 
   services.gnome-keyring.enable = true;
-  # home.sessionVariables.GTK_THEME = "palenight";
 
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {

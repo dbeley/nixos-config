@@ -25,6 +25,5 @@
     games.enable = false;
     core-utilities.enable = false;
   };
-  # programs.gnome-terminal.enable = false;
   environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
 }

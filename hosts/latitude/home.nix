@@ -18,7 +18,6 @@
     inputs.niri.homeModules.stylix
     ../../apps/niri/niri.nix
     ../../apps/stylix/stylix.nix
-    # ../../apps/swaylock/swaylock.nix
     ../../apps/hyprlock/hyprlock.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
