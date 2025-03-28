@@ -71,6 +71,10 @@
       ".local/share/zoxide"
       ".local/share/fish"
       ".cache/fish/generated_completions"
+      ".wine"
+      ".config/itch"
+      ".renpy"
+      ".config/Meltytech"
     ];
     files = [
       ".cache/tofi-compgen"

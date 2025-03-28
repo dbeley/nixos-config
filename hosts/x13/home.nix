@@ -60,6 +60,7 @@
     claude-code
     discord
     heroic
+    itch
     # musescore
     shotcut
     supersonic
