@@ -95,7 +95,7 @@
         # Check if we have both arguments
         if test (count $argv) -ne 2
           echo "Error: Need two arguments - filename and speed factor"
-          echo "Usage: speed <video_file> <speed_factor>"
+          echo "Usage: reduce_speed <video_file> <speed_factor>"
           return 1
         end
 
@@ -114,6 +114,21 @@
                -filter_complex "$filter_complex" \
                -map "[v]" -map "[a]" \
                $output_file
+      '';
+      youtube_short = ''
+        if test (count $argv) -ne 1
+          echo "Error: Need one argument - filename"
+          echo "Usage: youtube_short <video_file>"
+          return 1
+        end
+        set -l input_file $argv[1]
+        set -l extension (string match -r '\.[^\.]*$' $input_file)
+        set -l filename (string replace -r '\.[^\.]*$' "" $input_file)
+        set -l output_file "$filename""_short$extension"
+        ffmpeg -i $input_file -t 60 -vf "
+        scale=w=1080:h=1920:force_original_aspect_ratio=increase,
+        crop=1080:1920
+        " -c:v libx264 -c:a aac -preset medium -crf 23 -maxrate 5M -bufsize 10M $output_file
       '';
     };
 
