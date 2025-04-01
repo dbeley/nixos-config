@@ -62,6 +62,14 @@
           scale = 2;
           variable-refresh-rate = true;
         };
+        "Samsung Electric Company Q90A 0x01000E00" = {
+          scale = 2;
+          mode = {
+            height = 2160;
+            width = 3840;
+            refresh = 60.0;
+          };
+        };
       };
       cursor = {
         hide-after-inactive-ms = 5000;
