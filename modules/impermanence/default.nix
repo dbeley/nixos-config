@@ -18,6 +18,7 @@
       "/var/lib/NetworkManager"
       "/var/lib/iwd"
       "/etc/NetworkManager/system-connections"
+      "/etc/wireguard"
       {
         directory = "/var/lib/colord";
         user = "colord";
