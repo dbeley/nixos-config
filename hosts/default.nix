@@ -164,7 +164,8 @@
       ../modules/common/laptop-thermald.nix
       ../modules/common/fingerprint-scanner.nix
       ../modules/common/printing.nix
-      # ../apps/hyprland/default.nix
+      ../apps/hyprland/default.nix
+      # ../apps/niri/default.nix
       ../apps/hyprlock/default.nix
       # ../apps/gnome/default.nix
       ../apps/docker/default.nix

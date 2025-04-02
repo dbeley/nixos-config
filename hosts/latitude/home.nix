@@ -10,12 +10,12 @@
     ../home-manager-common-config.nix
     # inputs.nix-flatpak.homeManagerModules.nix-flatpak
     # ../../apps/flatpak/flatpak.nix
-    # inputs.hyprland.homeManagerModules.default
-    # ../../apps/hyprland/hyprland.nix
+    inputs.hyprland.homeManagerModules.default
+    ../../apps/hyprland/hyprland.nix
     # ../../apps/gnome/gnome.nix
-    inputs.niri.homeModules.niri
-    inputs.niri.homeModules.stylix
-    ../../apps/niri/niri.nix
+    # inputs.niri.homeModules.niri
+    # inputs.niri.homeModules.stylix
+    # ../../apps/niri/niri.nix
     ../../apps/stylix/stylix.nix
     ../../apps/hyprlock/hyprlock.nix
     ../../apps/waybar/waybar.nix
@@ -46,7 +46,7 @@
 
     ../../apps/firefox/firefox.nix
     ../../apps/zen-browser/zen-browser.nix
-    ../../apps/ungoogled-chromium/ungoogled-chromium.nix
+    # ../../apps/ungoogled-chromium/ungoogled-chromium.nix
     ../../apps/pycharm-professional/pycharm.nix
     ../../apps/tealdeer/tealdeer.nix
   ];
@@ -55,6 +55,7 @@
     gh
     nautilus
     supersonic
+    google-chrome
 
     slack
     awscli2
