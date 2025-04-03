@@ -76,6 +76,7 @@
       ".config/itch"
       ".renpy"
       ".config/Meltytech"
+      ".config/audacity"
     ];
     files = [
       ".cache/tofi-compgen"
