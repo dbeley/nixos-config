@@ -61,7 +61,7 @@
     discord
     heroic
     itch
-    # musescore
+    musescore
     shotcut
     supersonic
     xfce.thunar
