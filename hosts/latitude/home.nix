@@ -62,7 +62,7 @@
     zoom-us
     teleport
     kubectl
-    cloudflared
+    # cloudflared
     google-cloud-sdk
     vault
     gnumake
@@ -82,4 +82,14 @@
       onepassword-password-manager
     ])
   ];
+
+  xdg.mimeApps = {
+    defaultApplications = {
+      "application/xhtml+xml" = lib.mkForce [ "google-chrome.desktop" ];
+      "application/xhtml_xml" = lib.mkForce [ "google-chrome.desktop" ];
+      "text/html" = lib.mkForce [ "google-chrome.desktop" ];
+      "x-scheme-handler/http" = lib.mkForce [ "google-chrome.desktop" ];
+      "x-scheme-handler/https" = lib.mkForce [ "google-chrome.desktop" ];
+    };
+  };
 }
