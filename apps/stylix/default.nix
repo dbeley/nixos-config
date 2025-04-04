@@ -3,10 +3,10 @@
   stylix = {
     enable = true;
     # abstract light rays black
-    image = pkgs.fetchurl {
-      url = "https://images.unsplash.com/photo-1672491441167-1daa7c3c95a8";
-      sha256 = "WoYwXx6WT+mzAmnsY+eY+eCMzf+PwMApUQuOTNaIjGE=";
-    };
+    # image = pkgs.fetchurl {
+    #   url = "https://images.unsplash.com/photo-1672491441167-1daa7c3c95a8";
+    #   sha256 = "WoYwXx6WT+mzAmnsY+eY+eCMzf+PwMApUQuOTNaIjGE=";
+    # };
     # planet-like blue paint waves
     # image = pkgs.fetchurl {
     #   url = "https://images.unsplash.com/photo-1542052605271-43cf9ff1609f";
@@ -42,6 +42,11 @@
     #   url = "https://raw.githubusercontent.com/dbeley/photo-stream/refs/heads/master/photos/original/ET012548.jpg";
     #   sha256 = "54yf34yXHRJj6pHlttoaXTXjP0AfvE8dMVyOO0ktH+g=";
     # };
+    # Purple waves
+    image = pkgs.fetchurl {
+      url = "https://raw.githubusercontent.com/dbeley/nixos-config/refs/heads/main/imgs/wallpapers/9580633.jpg";
+      sha256 = "Ooq+nJpzwS3f3wuio90m/4UEguD7GmGvnlCsEKjYLGE=";
+    };
     imageScalingMode = "fit";
 
     polarity = "dark";
