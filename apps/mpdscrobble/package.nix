@@ -1,5 +1,5 @@
-{ lib, python3 }:
-with python3.pkgs;
+{ lib, python }:
+with python.pkgs;
 buildPythonApplication rec {
   pname = "mpdscrobble";
   version = "0.3.4";
