@@ -1,4 +1,7 @@
-{ pkgs, inputs, ... }:
+{ inputs, ... }:
 {
-  home.packages = with pkgs; [ inputs.zen-browser.packages."${system}".twilight ];
+  imports = [ inputs.zen-browser.homeModules.twilight ];
+  programs.zen-browser = {
+    enable = true;
+  };
 }
