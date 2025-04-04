@@ -77,6 +77,7 @@
       ".renpy"
       ".config/Meltytech"
       ".config/audacity"
+      ".zen"
     ];
     files = [
       ".cache/tofi-compgen"
