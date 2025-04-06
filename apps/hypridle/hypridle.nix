@@ -8,16 +8,16 @@
       };
       listener = [
         {
-          timeout = 180;
+          timeout = 600;
           on-timeout = "brightnessctl -s && brightnessctl s 5%";
           on-resume = "brightnessctl -r";
         }
         {
-          timeout = 600;
+          timeout = 1200;
           on-timeout = "pidof hyprlock || hyprlock";
         }
         {
-          timeout = 1200;
+          timeout = 1800;
           on-timeout = "systemctl suspend";
         }
       ];
