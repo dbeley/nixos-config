@@ -69,6 +69,7 @@
       ".local/share/HotlineMiami"
       ".local/Tendershoot"
       ".cache/keepassxc"
+      ".cache/supersonic"
       ".local/share/zoxide"
       ".local/share/fish"
       ".cache/fish/generated_completions"
