@@ -224,14 +224,14 @@
           "bigdown"
         ];
         "XF86MonBrightnessDown".action.spawn = [
-          "light"
-          "-U"
-          "5%"
+          "brightnessctl"
+          "s"
+          "5%-"
         ];
         "XF86MonBrightnessUp".action.spawn = [
-          "light"
-          "-A"
-          "5%"
+          "brightnessctl"
+          "s"
+          "+5%"
         ];
         "XF86Display".action.spawn = [
           "~/scripts/toggle_gammastep.sh"

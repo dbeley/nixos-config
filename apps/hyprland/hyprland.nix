@@ -223,8 +223,8 @@
         "SHIFT, xf86audiolowervolume, exec, ~/scripts/volume_pamixer.sh bigdown"
         ", xf86audioraisevolume, exec, ~/scripts/volume_pamixer.sh up"
         "SHIFT, xf86audioraisevolume, exec, ~/scripts/volume_pamixer.sh bigup"
-        ", xf86monbrightnessdown, exec, light -U 5%"
-        ", xf86monbrightnessup, exec, light -A 5%"
+        ", xf86monbrightnessdown, exec, brightnessctl s 5%-"
+        ", xf86monbrightnessup, exec, brightnessctl s +5%"
       ];
       bindm = [
         "$MOD, mouse:272, movewindow"
@@ -284,8 +284,8 @@
             ", swipe:3:d, fullscreen"
             ", swipe:4:u, exec, ~/scripts/volume_pamixer.sh mute"
             ", swipe:4:d, killactive"
-            ", swipe:5:u, exec, light -A 5%"
-            ", swipe:5:d, exec, light -U 5%"
+            ", swipe:5:u, exec, brightnessctl s +5%"
+            ", swipe:5:d, exec, brightnessctl s 5%-"
             ", swipe:3:l, movefocus, l"
             ", swipe:3:r, movefocus, r"
             ", swipe:3:ld, exec, nautilus"

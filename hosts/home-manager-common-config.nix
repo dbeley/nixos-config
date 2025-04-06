@@ -21,6 +21,7 @@
   services.mpris-proxy.enable = true;
 
   home.packages = with pkgs; [
+    brightnessctl
     btop
     eza
     fd

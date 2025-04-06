@@ -97,8 +97,8 @@
           "XF86AudioLowerVolume" = "exec ~/scripts/volume_pamixer.sh down";
           "Shift+XF86AudioLowerVolume" = "exec ~/scripts/volume_pamixer.sh bigdown";
           "XF86AudioMute" = "exec ~/scripts/volume_pamixer.sh mute";
-          "XF86MonBrightnessUp" = "exec light -A 5%";
-          "XF86MonBrightnessDown" = "exec light -U 5%";
+          "XF86MonBrightnessUp" = "exec brightnessctl s +5%";
+          "XF86MonBrightnessDown" = "exec brightnessctl -s 5%-";
           "XF86Screensaver" = "exec swaylock -f -c 000000";
           "XF86Suspend" = "exec swaylock -f -c 000000";
           "XF86Back" = "workspace prev";
