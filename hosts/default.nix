@@ -120,12 +120,17 @@
       ../modules/common/laptop-thermald.nix
       ../modules/common/xbox.nix
       # ../apps/hyprland/default.nix
+      ../apps/niri/default.nix
       ../apps/hyprlock/default.nix
       # ../apps/docker/default.nix
       # ../apps/flatpak/default.nix
       ../apps/steam/default.nix
       ../apps/udiskie/default.nix
       # ../apps/android/default.nix
+
+      {
+        my.stylix.wallpaper = "blue-planet";
+      }
 
       inputs.home-manager.nixosModules.home-manager
       {
