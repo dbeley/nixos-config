@@ -8,26 +8,30 @@
 |----------------|------------------------------------------|
 | **Shell:**     | fish, zsh                                |
 | **DM:**        | tty1                                     |
-| **WM:**        | hyprland, sway, niri (+ waybar), gnome   |
-| **Editor:**    | doom-emacs / neovim / helix / kakoune    |
+| **WM:**        | niri, hyprland, sway, gnome              |
+| **Bar:**       | waybar                                   |
+| **Editor:**    | helix / doom-emacs / neovim / kakoune    |
 | **Terminal:**  | ghostty / kitty                          |
 | **Launcher:**  | tofi                                     |
-| **Browser:**   | firefox / qutebrowser                    |
+| **Browser:**   | firefox / qutebrowser / zen              |
 | **Theme:**     | stylix                                   |
 
 ## Notable Features
 
 - Support for multiple desktop environments ([`hyprland`](./apps/hyprland/), [`gnome`](./apps/gnome/), [`sway`](./apps/sway/), [`niri`](./apps/niri/))
+- [Extensive `niri` configuration](./apps/niri/)
+  - Window rules, monitor rules, etc.
 - [Extensive `hyprland` configuration](./apps/hyprland/)
   - Scratchpads, window rules, monitor rules, etc.
   - Touchscreen support with gestures, rotation and on-screen keyboard
-- [Extensive `niri` configuration](./apps/niri/)
-  - Window rules, monitor rules, etc.
 - [Extensive `gnome` configuration](./apps/gnome/)
   - Configuration via dconf
   - Pre-installed extensions
 - [Automatic styling with `stylix`](./apps/stylix/)
-- [Extensive `firefox` configuration with `about:config` settings, automatic add-ons installation and declarative containers](./apps/firefox/firefox.nix)
+- [Extensive `firefox` configuration](./apps/firefox/firefox.nix)
+  - `about:config` settings
+  - Pre-installed add-ons
+  - Declarative containers
 - [Declarative partitioning with `disko`](./modules/disko/encrypted-btrfs-impermanence.nix)
 - [Epheremeal file system with `impermanence` on btrfs subvolumes](./modules/impermanence/)
 - Configuration for common hardware with `nixos-hardware`
