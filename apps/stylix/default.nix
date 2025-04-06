@@ -17,10 +17,9 @@ in
   config.stylix = {
     enable = true;
     inherit (wallpaperCatalog.wallpapers.${cfg.wallpaper})
-      image;
+      image
+      imageScalingMode;
 
-    # stretch, fill, fit, center, tile
-    imageScalingMode = "fit";
     polarity = "dark";
     fonts = {
       serif = {

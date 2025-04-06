@@ -81,6 +81,10 @@
       ../apps/udiskie/default.nix
       ../apps/android/default.nix
 
+      {
+        my.stylix.wallpaper = "purple-waves";
+      }
+
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -129,7 +133,7 @@
       # ../apps/android/default.nix
 
       {
-        my.stylix.wallpaper = "blue-planet";
+        my.stylix.wallpaper = "nyc-425-park-avenue";
       }
 
       inputs.home-manager.nixosModules.home-manager
@@ -176,6 +180,10 @@
       ../apps/docker/default.nix
       ../apps/udiskie/default.nix
 
+      {
+        my.stylix.wallpaper = "abstract-light-rays";
+      }
+
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -212,6 +220,10 @@
       ../apps/gnome/default.nix
       ../apps/steam/default.nix
       ../apps/udiskie/default.nix
+
+      {
+        my.stylix.wallpaper = "hk-plant";
+      }
 
       inputs.home-manager.nixosModules.home-manager
       {
