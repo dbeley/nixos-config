@@ -15,6 +15,7 @@
     ../../apps/niri/niri.nix
     ../../apps/stylix/stylix.nix
     ../../apps/hyprlock/hyprlock.nix
+    ../../apps/hypridle/hypridle.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
     ../../apps/mako/mako.nix
@@ -57,15 +58,16 @@
     beets
     # borgbackup
     # borgmatic
-    claude-code
+    # claude-code
     discord
     heroic
     itch
     musescore
+    nautilus
     shotcut
     supersonic
-    xfce.thunar
-    xfce.tumbler
+    # xfce.thunar
+    # xfce.tumbler
   ];
 
   # services.flatpak.packages = [
