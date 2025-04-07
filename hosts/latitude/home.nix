@@ -18,6 +18,7 @@
     # ../../apps/niri/niri.nix
     ../../apps/stylix/stylix.nix
     ../../apps/hyprlock/hyprlock.nix
+    ../../apps/hypridle/hypridle.nix
     ../../apps/waybar/waybar.nix
     ../../apps/tofi/tofi.nix
     ../../apps/mako/mako.nix
