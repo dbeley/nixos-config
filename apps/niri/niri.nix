@@ -20,7 +20,6 @@
     settings = {
       environment = {
         "NIXOS_OZONE_WL" = "1";
-        "DISPLAY" = ":0";
       };
       input = {
         keyboard = {
@@ -56,11 +55,9 @@
         # niri msg outputs
         eDP-1 = {
           scale = 1.25;
-          variable-refresh-rate = true;
         };
         "LG Display 0x067C Unknown" = {
           scale = 2;
-          variable-refresh-rate = true;
         };
         "Samsung Electric Company Q90A 0x01000E00" = {
           scale = 2;
