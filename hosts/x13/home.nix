@@ -24,6 +24,7 @@
     ../../apps/autoscreen-gaming/autoscreen-gaming.nix
 
     ../../apps/git/git.nix
+    ../../apps/lazygit/lazygit.nix
     ../../apps/fish/fish.nix
     ../../apps/tmux/tmux.nix
     ../../apps/ghostty/ghostty.nix

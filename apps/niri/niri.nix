@@ -20,6 +20,7 @@
     settings = {
       environment = {
         "NIXOS_OZONE_WL" = "1";
+        "DISPLAY" = ":0";
       };
       input = {
         keyboard = {
