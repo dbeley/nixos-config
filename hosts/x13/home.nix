@@ -21,7 +21,7 @@
     ../../apps/mako/mako.nix
     ../../apps/gammastep/gammastep.nix
     ../../apps/autoscreen/autoscreen.nix
-    ../../apps/autoscreen-gaming/autoscreen-gaming.nix
+    # ../../apps/autoscreen-gaming/autoscreen-gaming.nix
 
     ../../apps/git/git.nix
     ../../apps/lazygit/lazygit.nix
@@ -67,8 +67,6 @@
     nautilus
     shotcut
     supersonic
-    # xfce.thunar
-    # xfce.tumbler
   ];
 
   # services.flatpak.packages = [

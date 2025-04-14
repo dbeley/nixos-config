@@ -34,6 +34,7 @@
     ffmpegthumbnailer
     gnome-system-monitor
     htop
+    imagemagick
     jq
     just
     keepassxc
