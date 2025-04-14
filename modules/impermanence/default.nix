@@ -79,6 +79,8 @@
       ".config/Meltytech"
       ".config/audacity"
       ".zen"
+      ".config/discord"
+      ".config/nuclearthrone"
     ];
     files = [
       ".cache/tofi-compgen"
