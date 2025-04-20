@@ -47,11 +47,12 @@
 
 ## Hosts
 
-- **p14s**: my main laptop (Lenovo ThinkPad P14s Gen 4: AMD Ryzen 7 7840U, 16GB RAM, hyprland)
+- **x13**: my main laptop (Lenovo ThinkPad X13 Gen 1: AMD Ryzen 5 4650U, 16GB RAM, niri, impermanence)
 - **x1yoga**: my secondary laptop (Lenovo ThinkPad X1 Yoga Gen 5: Intel Core i5-10210U, 8GB RAM, hyprland + touch gestures w/ hyprgrass, impermanence)
 - **sg13**: my main desktop computer (Silverstone SG13: AMD Ryzen 5 2600, RX 580 8GB, 16GB RAM, gnome)
 - **x61s**: my retro laptop (Lenovo Thinkpad X61s: Intel Core 2 Duo L7500, 3GB RAM, sway)
-- **x13**: my previous main laptop (Lenovo ThinkPad X13 Gen 1: AMD Ryzen 5 4650U, 16GB RAM, niri, impermanence)
+- **p14s**: my previous main laptop (Lenovo ThinkPad P14s Gen 4: AMD Ryzen 7 7840U, 16GB RAM, hyprland)
+- **latitude**: my work laptop (Dell Latitude 7420: Intel Core i7 1165G7, 16GB RAM, hyprland)
 
 ## Common Usage
 
@@ -97,7 +98,7 @@ On a new install, you should first copy `/etc/nixos/hardware-configuration.nix` 
 ### Impermanence
 
 Installation can be done from any computer running nix, using a live ISO running from a USB key is not recommended as it will most likely run out of space during the install.
-The target disk can be any mounted disk (except the one the system is currently running on!) and will then have to be installed on the host compuster after the installation is complete.
+The target disk can be any mounted disk (except the one the system is currently running on!) and will then have to be installed on the host computer after the installation is complete.
 :
 
 ```
