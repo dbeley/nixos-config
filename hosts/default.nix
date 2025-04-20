@@ -130,7 +130,7 @@
       # ../apps/flatpak/default.nix
       ../apps/steam/default.nix
       ../apps/udiskie/default.nix
-      # ../apps/android/default.nix
+      ../apps/android/default.nix
 
       {
         my.stylix.wallpaper = "nyc-425-park-avenue";
