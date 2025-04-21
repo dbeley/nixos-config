@@ -68,6 +68,13 @@
             refresh = 60.0;
           };
         };
+        "Dell Inc. DELL S2721DGF 6C1TR83" = {
+          mode = {
+            height = 1440;
+            width = 2560;
+            refresh = 143.912;
+          };
+        };
       };
       cursor = {
         hide-after-inactive-ms = 5000;
