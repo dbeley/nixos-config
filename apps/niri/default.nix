@@ -6,6 +6,8 @@
       xdg-desktop-portal-gnome
       xdg-desktop-portal-gtk
     ];
-    config.common.default = "*";
+    configPackages = [
+      pkgs.niri-unstable
+    ];
   };
 }

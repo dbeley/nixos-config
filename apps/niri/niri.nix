@@ -94,7 +94,7 @@
           { proportion = 2. / 3.; }
         ];
       };
-      screenshot-path = "~/Nextcloud/10-19_Images/11_Captures-d-écran/11.09_Captures-d-écran_Niri/%Y-%d-%d %H-%M-%S.png";
+      screenshot-path = "~/Nextcloud/10-19_Images/11_Captures-d-écran/11.09_Captures-d-écran_Niri/%Y-%m-%d %H-%M-%S.png";
       spawn-at-startup = [
         {
           command = [
@@ -241,6 +241,10 @@
         "XF86Display".action.spawn = [
           "~/scripts/toggle_gammastep.sh"
         ];
+        "XF86NotificationCenter".action = toggle-overview;
+        "XF86PickupPhone".action = toggle-overview;
+        "XF86HangupPhone".action = toggle-overview;
+        "XF86Favorites".action = toggle-overview;
         "Mod+1".action.focus-workspace = 1;
         "Mod+2".action.focus-workspace = 2;
         "Mod+3".action.focus-workspace = 3;
@@ -338,6 +342,7 @@
         "Mod+X".action.spawn = "ghostty";
         "Mod+Shift+P".action.spawn = "poweroff";
         "Mod+Shift+O".action.spawn = "reboot";
+        "Mod+Tab".action = toggle-overview;
       };
     };
   };
