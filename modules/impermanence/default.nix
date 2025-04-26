@@ -81,6 +81,9 @@
       ".zen"
       ".config/discord"
       ".config/nuclearthrone"
+      ".local/share/CassetteBeasts"
+      ".local/share/Monster Sanctuary"
+      ".config/unity3d"
     ];
     files = [
       ".cache/tofi-compgen"
