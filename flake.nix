@@ -65,7 +65,7 @@
       inputs.hyprland.follows = "hyprland";
     };
     hyprspace = {
-      url = "github:KZDKM/Hyprspace";
+      url = "github:KZDKM/Hyprspace?ref=refs/pull/162/head";
       inputs.hyprland.follows = "hyprland";
       inputs.systems.follows = "systems";
     };
