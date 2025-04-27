@@ -49,9 +49,11 @@
         "eDP-1,preferred,auto,1.6"
         "desc:AU Optronics 0xFA9B,preferred,auto,1.2"
         "desc:Lenovo Group Limited 0x403D,preferred,auto,1.2"
-        "desc:Dell Inc. DELL S2721DGF 6C1TR83,preferred,0x0,1"
+        "desc:Dell Inc. DELL S2721DGF 6C1TR83,preferred,0x0,1" # Dell 27"
         "desc:Lenovo Group Limited 0x4094,preferred,auto,1.2"
-        "desc:LG Display 0x067C,preferred,auto,2"
+        "desc:LG Display 0x067C,preferred,auto,2" # LG ultra-wide
+        "desc:LG Display 0x05EF,preferred,auto,1.6" # Thinkpad X1 Yoga
+        "desc:Samsung Electric Company Q90A 0x01000E00,preferred,auto,2" # Samsung TV
       ];
       exec-once = [
         "keepassxc"
