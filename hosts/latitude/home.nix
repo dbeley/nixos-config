@@ -10,12 +10,12 @@
     ../home-manager-common-config.nix
     # inputs.nix-flatpak.homeManagerModules.nix-flatpak
     # ../../apps/flatpak/flatpak.nix
-    inputs.hyprland.homeManagerModules.default
-    ../../apps/hyprland/hyprland.nix
+    # inputs.hyprland.homeManagerModules.default
+    # ../../apps/hyprland/hyprland.nix
     # ../../apps/gnome/gnome.nix
-    # inputs.niri.homeModules.niri
-    # inputs.niri.homeModules.stylix
-    # ../../apps/niri/niri.nix
+    inputs.niri.homeModules.niri
+    inputs.niri.homeModules.stylix
+    ../../apps/niri/niri.nix
     ../../apps/stylix/stylix.nix
     ../../apps/hyprlock/hyprlock.nix
     ../../apps/hypridle/hypridle.nix
@@ -63,7 +63,7 @@
     zoom-us
     teleport
     kubectl
-    # cloudflared
+    cloudflared
     google-cloud-sdk
     vault
     gnumake
