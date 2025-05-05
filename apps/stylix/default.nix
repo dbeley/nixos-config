@@ -1,10 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.my.stylix;
   wallpaperCatalog = import ./wallpapers.nix { inherit pkgs; };
   wallpaperNames = builtins.attrNames wallpaperCatalog.wallpapers;
-in 
+in
 {
   options.my.stylix = {
     wallpaper = lib.mkOption {
@@ -18,7 +23,8 @@ in
     enable = true;
     inherit (wallpaperCatalog.wallpapers.${cfg.wallpaper})
       image
-      imageScalingMode;
+      imageScalingMode
+      ;
 
     polarity = "dark";
     fonts = {
