@@ -253,7 +253,7 @@
       ./x61s/hardware-configuration.nix
       ../modules/configuration.nix
       ../modules/overlays.nix
-      ../modules/common/bios.nix
+      ../modules/common/bootloader-grub-bios.nix
       ../modules/common/laptop.nix
       ../apps/swaylock/default.nix
       ../apps/steam/default.nix
@@ -271,6 +271,48 @@
           };
           users.${user} = {
             imports = [ (import ./x61s/home.nix) ];
+          };
+        };
+      }
+    ];
+  };
+  nf210 = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit user inputs;
+      hostName = "nf210";
+      stateVersion = "25.05";
+    };
+    modules = [
+      ./nf210/hardware-configuration.nix
+      inputs.stylix.nixosModules.stylix
+      ../apps/stylix/default.nix
+      ../modules/configuration.nix
+      ../modules/overlays.nix
+      ../modules/common/bootloader-systemd-boot.nix
+      ../modules/common/laptop.nix
+      ../modules/common/laptop-thermald.nix
+      ../modules/common/xbox.nix
+      ../apps/niri/default.nix
+      ../apps/hyprlock/default.nix
+      ../apps/steam/default.nix
+      ../apps/udiskie/default.nix
+
+      {
+        my.stylix.wallpaper = "blue-planet";
+      }
+
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {
+            inherit user inputs system;
+            stateVersion = "25.05";
+          };
+          users.${user} = {
+            imports = [ (import ./nf210/home.nix) ];
           };
         };
       }
