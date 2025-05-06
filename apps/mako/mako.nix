@@ -7,9 +7,9 @@
       icons = true;
       margin = "10";
       padding = "8";
-      borderSize = 3;
-      borderRadius = 5;
-      defaultTimeout = 5000;
+      border-size = 3;
+      border-radius = 5;
+      default-timeout = 5000;
     };
   };
 }
