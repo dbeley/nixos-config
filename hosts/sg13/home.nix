@@ -15,7 +15,7 @@
     ../../apps/tmux/tmux.nix
     ../../apps/direnv/direnv.nix
     # inputs.nixvim.homeManagerModules.nixvim
-    # ../../apps/nixvim/nixvim.nix
+    # ../../apps/neovim-nixvim/neovim-nixvim.nix
     ../../apps/helix/helix.nix
     ../../apps/kitty/kitty.nix
     ../../apps/udiskie/udiskie.nix

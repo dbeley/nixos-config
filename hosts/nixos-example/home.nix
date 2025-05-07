@@ -23,7 +23,7 @@
     ../../apps/ghostty/ghostty.nix
     ../../apps/direnv/direnv.nix
     inputs.nixvim.homeManagerModules.nixvim
-    ../../apps/nixvim/nixvim.nix
+    ../../apps/neovim-nixvim/neovim-nixvim.nix
     # ../../apps/emacs/emacs.nix
     # ../../apps/kakoune/kakoune.nix
     # ../../apps/helix/helix.nix

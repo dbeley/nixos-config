@@ -31,7 +31,9 @@
     ../../apps/direnv/direnv.nix
     ../../apps/python/python.nix
     # inputs.nixvim.homeManagerModules.nixvim
-    # ../../apps/nixvim/nixvim.nix
+    # ../../apps/neovim-nixvim/neovim-nixvim.nix
+    inputs.nvf.homeManagerModules.default
+    ../../apps/neovim-nvf/neovim-nvf.nix
     # ../../apps/emacs/emacs.nix
     # ../../apps/kakoune/kakoune.nix
     ../../apps/helix/helix.nix

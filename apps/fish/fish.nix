@@ -12,7 +12,6 @@
   programs.fish = {
     enable = true;
     shellAliases = {
-      vim = "nvim";
       ls = "eza --icons --group-directories-first -s Name";
       l = "eza --icons --group-directories-first -s Name";
       ll = "eza -1lh --icons --group-directories-first -s Name --time-style long-iso";
