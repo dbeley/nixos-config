@@ -6,8 +6,6 @@
 {
   imports = [
     ../home-manager-common-config.nix
-    # inputs.nix-flatpak.homeManagerModules.nix-flatpak
-    # ../../apps/flatpak/flatpak.nix
     inputs.hyprland.homeManagerModules.default
     ../../apps/hyprland/hyprland.nix
     ../../apps/stylix/stylix.nix
@@ -65,9 +63,4 @@
     supersonic
     wvkbd
   ];
-
-  # services.flatpak.packages = [
-  #   "com.valvesoftware.Steam"
-  #   "com.heroicgameslauncher.hgl"
-  # ];
 }

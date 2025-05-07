@@ -77,7 +77,7 @@
       ../apps/hyprlock/default.nix
       # ../apps/gnome/default.nix
       ../apps/docker/default.nix
-      # ../apps/steam/default.nix
+      ../apps/steam/default.nix
       ../apps/udiskie/default.nix
       ../apps/android/default.nix
 
