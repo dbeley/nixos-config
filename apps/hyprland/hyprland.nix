@@ -124,7 +124,7 @@
         new_status = "slave";
         orientation = "center";
         slave_count_for_center_master = 2;
-        center_master_slaves_on_right = false;
+        center_master_fallback = "right";
         mfact = 0.6;
       };
       gestures = {
@@ -184,8 +184,8 @@
           "$MOD, mouse_up, workspace, e-1"
           ", xf86display, exec, ~/scripts/toggle_gammastep.sh"
           "SHIFT, xf86display, exec, ~/scripts/hyprland_switch_monitor.sh eDP-1"
-          ", print, exec, grim $SCREENSHOT_FOLDER/\"$(date +%s)\".png"
-          "SHIFT, print, exec, grim -g \"$(slurp -d)\" $SCREENSHOT_FOLDER/\"$(date +%s)\"_cropped.png"
+          ", print, exec, grim $SCREENSHOT_FOLDER/\"$(date +%Y-%m-%d_%H:%M:%S_%s)\"_hyprland.png"
+          "SHIFT, print, exec, grim -g \"$(slurp -d)\" $SCREENSHOT_FOLDER/\"$(date +%Y-%m-%d_%H:%M:%S_%s)\"_hyprland_cropped.png"
           "$MOD, Tab, overview:toggle"
           "$MOD SHIFT, Tab, hyprexpo:expo, toggle"
           "$MOD, a, layoutmsg, cyclenext"
