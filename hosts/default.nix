@@ -4,204 +4,161 @@
   user,
   ...
 }:
+let
+  mkHost =
+    {
+      hostName,
+      stateVersion,
+      system ? "x86_64-linux",
+      modules ? [ ],
+      homeModules ? [ ],
+    }:
+    lib.nixosSystem {
+      inherit system;
+      specialArgs = {
+        inherit
+          user
+          inputs
+          hostName
+          stateVersion
+          ;
+      };
+      modules = [
+        ../modules/configuration.nix
+        ../modules/overlays.nix
+        ../apps/udiskie/default.nix
+
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {
+              inherit
+                user
+                inputs
+                system
+                stateVersion
+                ;
+            };
+            users.${user} = {
+              imports = [
+                (import ./${hostName}/home.nix)
+              ] ++ homeModules;
+            };
+          };
+        }
+
+        ./${hostName}/hardware-configuration.nix
+      ] ++ modules;
+    };
+  laptopModules = [
+    ../modules/common/laptop.nix
+    ../modules/common/fingerprint-scanner.nix
+  ];
+  hyprlandModules = [
+    ../apps/hyprland/default.nix
+    ../apps/hyprlock/default.nix
+  ];
+  gnomeModules = [
+    ../apps/gnome/default.nix
+  ];
+  stylixModules = [
+    inputs.stylix.nixosModules.stylix
+    ../apps/stylix/default.nix
+  ];
+  impermanenceModules = [
+    inputs.disko.nixosModules.disko
+    ../modules/disko/encrypted-btrfs-impermanence.nix
+    inputs.impermanence.nixosModules.impermanence
+    ../modules/impermanence/default.nix
+  ];
+  niriModules = [
+    ../apps/niri/default.nix
+    ../apps/hyprlock/default.nix
+  ];
+  steamModules = [
+    ../modules/common/xbox.nix
+    ../apps/steam/default.nix
+  ];
+  dockerModules = [
+    ../apps/docker/default.nix
+  ];
+in
 {
-  p14s = lib.nixosSystem {
-    system = "x86_64-linux";
-    specialArgs = {
-      inherit user inputs;
-      hostName = "p14s";
-      stateVersion = "24.05";
-    };
-    modules = [
-      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
-      inputs.stylix.nixosModules.stylix
-      ../apps/stylix/default.nix
-      ./p14s/hardware-configuration.nix
-      ../modules/configuration.nix
-      ../modules/overlays.nix
-      ../modules/common/bootloader-systemd-boot.nix
-      ../modules/common/laptop.nix
-      ../modules/common/xbox.nix
-      ../modules/common/fingerprint-scanner.nix
-      ../apps/hyprland/default.nix
-      ../apps/hyprlock/default.nix
-      # ../apps/gnome/default.nix
-      ../apps/docker/default.nix
-      ../apps/steam/default.nix
-      ../apps/udiskie/default.nix
-      ../apps/android/default.nix
-
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = {
-            inherit user inputs;
-            system = "x86_64-linux";
-            stateVersion = "24.05";
-          };
-          users.${user} = {
-            imports = [ (import ./p14s/home.nix) ];
-          };
-        };
-      }
-    ];
+  p14s = mkHost {
+    hostName = "p14s";
+    stateVersion = "24.05";
+    modules =
+      [
+        inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
+        ../modules/common/bootloader-systemd-boot.nix
+        ../apps/android/default.nix
+      ]
+      ++ laptopModules
+      ++ hyprlandModules
+      ++ stylixModules
+      ++ dockerModules
+      ++ steamModules;
   };
-  x1yoga = lib.nixosSystem {
-    system = "x86_64-linux";
-    specialArgs = {
-      inherit user inputs;
-      hostName = "x1yoga";
-      stateVersion = "25.05";
-    };
-    modules = [
-      inputs.disko.nixosModules.disko
-      ../modules/disko/encrypted-btrfs-impermanence.nix
-      ./x1yoga/hardware-configuration.nix
-      inputs.impermanence.nixosModules.impermanence
-      ../modules/impermanence/default.nix
-      inputs.nixos-hardware.nixosModules.common-cpu-intel
-      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-      inputs.stylix.nixosModules.stylix
-      ../apps/stylix/default.nix
-      ../modules/configuration.nix
-      ../modules/overlays.nix
-      ../modules/common/bootloader-systemd-boot.nix
-      ../modules/common/laptop.nix
-      ../modules/common/laptop-thermald.nix
-      ../modules/common/xbox.nix
-      ../modules/common/fingerprint-scanner.nix
-      ../modules/common/screen-rotation.nix
-      ../apps/hyprland/default.nix
-      ../apps/hyprlock/default.nix
-      # ../apps/gnome/default.nix
-      ../apps/docker/default.nix
-      ../apps/steam/default.nix
-      ../apps/udiskie/default.nix
-      ../apps/android/default.nix
-
-      {
-        my.stylix.wallpaper = "purple-waves";
-      }
-
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = {
-            inherit user inputs;
-            system = "x86_64-linux";
-            stateVersion = "25.05";
-          };
-          users.${user} = {
-            imports = [ (import ./x1yoga/home.nix) ];
-          };
-        };
-      }
-    ];
+  x1yoga = mkHost {
+    hostName = "x1yoga";
+    stateVersion = "25.05";
+    modules =
+      [
+        inputs.nixos-hardware.nixosModules.common-cpu-intel
+        inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+        ../modules/common/laptop-thermald.nix
+        ../modules/common/bootloader-systemd-boot.nix
+        ../modules/common/screen-rotation.nix
+        ../apps/android/default.nix
+        {
+          my.stylix.wallpaper = "purple-waves";
+        }
+      ]
+      ++ laptopModules
+      ++ impermanenceModules
+      ++ hyprlandModules
+      ++ stylixModules
+      ++ steamModules;
   };
-  x13 = lib.nixosSystem {
-    system = "x86_64-linux";
-    specialArgs = {
-      inherit user inputs;
-      hostName = "x13";
-      stateVersion = "24.11";
-    };
-    modules = [
-      inputs.disko.nixosModules.disko
-      ../modules/disko/encrypted-btrfs-impermanence.nix
-      ./x13/hardware-configuration.nix
-      inputs.impermanence.nixosModules.impermanence
-      ../modules/impermanence/default.nix
-      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x13-amd
-      inputs.stylix.nixosModules.stylix
-      ../apps/stylix/default.nix
-      ../modules/configuration.nix
-      ../modules/overlays.nix
-      ../modules/common/bootloader-systemd-boot.nix
-      ../modules/common/laptop.nix
-      ../modules/common/laptop-thermald.nix
-      ../modules/common/xbox.nix
-      # ../apps/hyprland/default.nix
-      ../apps/niri/default.nix
-      ../apps/hyprlock/default.nix
-      # ../apps/docker/default.nix
-      # ../apps/flatpak/default.nix
-      ../apps/steam/default.nix
-      ../apps/udiskie/default.nix
-      ../apps/android/default.nix
-
-      {
-        my.stylix.wallpaper = "nyc-425-park-avenue";
-      }
-
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = {
-            inherit user inputs;
-            system = "x86_64-linux";
-            stateVersion = "24.11";
-          };
-          users.${user} = {
-            imports = [ (import ./x13/home.nix) ];
-          };
-        };
-      }
-    ];
+  x13 = mkHost {
+    hostName = "x13";
+    stateVersion = "24.11";
+    modules =
+      [
+        inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x13-amd
+        ../modules/common/bootloader-systemd-boot.nix
+        ../apps/android/default.nix
+        {
+          my.stylix.wallpaper = "nyc-425-park-avenue";
+        }
+      ]
+      ++ laptopModules
+      ++ impermanenceModules
+      ++ niriModules
+      ++ stylixModules
+      ++ steamModules;
   };
-  latitude = lib.nixosSystem {
-    system = "x86_64-linux";
-    specialArgs = {
-      inherit user inputs;
-      hostName = "latitude";
-      stateVersion = "24.05";
-    };
-    modules = [
-      inputs.nixos-hardware.nixosModules.common-cpu-intel
-      inputs.nixos-hardware.nixosModules.common-gpu-intel
-      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-      inputs.stylix.nixosModules.stylix
-      ../apps/stylix/default.nix
-      ./latitude/hardware-configuration.nix
-      ../modules/configuration.nix
-      ../modules/overlays.nix
-      ../modules/common/bootloader-systemd-boot.nix
-      ../modules/common/laptop.nix
-      ../modules/common/laptop-thermald.nix
-      ../modules/common/fingerprint-scanner.nix
-      ../modules/common/printing.nix
-      # ../apps/hyprland/default.nix
-      ../apps/niri/default.nix
-      ../apps/hyprlock/default.nix
-      # ../apps/gnome/default.nix
-      ../apps/docker/default.nix
-      ../apps/udiskie/default.nix
-
-      {
-        my.stylix.wallpaper = "abstract-light-rays";
-      }
-
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = {
-            inherit user inputs;
-            system = "x86_64-linux";
-            stateVersion = "24.05";
-          };
-          users.${user} = {
-            imports = [ (import ./latitude/home.nix) ];
-          };
-        };
-      }
-    ];
+  latitude = mkHost {
+    hostname = "latitude";
+    stateVersion = "24.05";
+    modules =
+      [
+        inputs.nixos-hardware.nixosModules.common-cpu-intel
+        inputs.nixos-hardware.nixosModules.common-gpu-intel
+        inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+        ../modules/common/bootloader-systemd-boot.nix
+        ../modules/common/laptop-thermald.nix
+        ../modules/common/printing.nix
+        {
+          my.stylix.wallpaper = "abstract-light-rays";
+        }
+      ]
+      ++ laptopModules
+      ++ niriModules
+      ++ stylixModules
+      ++ dockerModules;
   };
   sg13 = lib.nixosSystem {
     system = "x86_64-linux";

@@ -160,7 +160,11 @@
       ...
     }:
     let
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+      user = "david";
 
       # Small tool to iterate over each systems
       eachSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f nixpkgs.legacyPackages.${system});
@@ -177,9 +181,10 @@
       nixosConfigurations = import ./hosts {
         inherit
           nixpkgs
-          inputs;
-        lib = nixpkgs.lib;
-        user = "david";
+          inputs
+          user
+          ;
+        inherit (nixpkgs) lib;
       };
     };
 }
