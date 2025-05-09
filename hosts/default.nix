@@ -1,13 +1,12 @@
 {
   lib,
   inputs,
-  system,
   user,
   ...
 }:
 {
   p14s = lib.nixosSystem {
-    inherit system;
+    system = "x86_64-linux";
     specialArgs = {
       inherit user inputs;
       hostName = "p14s";
@@ -38,7 +37,8 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = {
-            inherit user inputs system;
+            inherit user inputs;
+            system = "x86_64-linux";
             stateVersion = "24.05";
           };
           users.${user} = {
@@ -49,7 +49,7 @@
     ];
   };
   x1yoga = lib.nixosSystem {
-    inherit system;
+    system = "x86_64-linux";
     specialArgs = {
       inherit user inputs;
       hostName = "x1yoga";
@@ -91,7 +91,8 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = {
-            inherit user inputs system;
+            inherit user inputs;
+            system = "x86_64-linux";
             stateVersion = "25.05";
           };
           users.${user} = {
@@ -102,7 +103,7 @@
     ];
   };
   x13 = lib.nixosSystem {
-    inherit system;
+    system = "x86_64-linux";
     specialArgs = {
       inherit user inputs;
       hostName = "x13";
@@ -142,7 +143,8 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = {
-            inherit user inputs system;
+            inherit user inputs;
+            system = "x86_64-linux";
             stateVersion = "24.11";
           };
           users.${user} = {
@@ -153,7 +155,7 @@
     ];
   };
   latitude = lib.nixosSystem {
-    inherit system;
+    system = "x86_64-linux";
     specialArgs = {
       inherit user inputs;
       hostName = "latitude";
@@ -190,7 +192,8 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = {
-            inherit user inputs system;
+            inherit user inputs;
+            system = "x86_64-linux";
             stateVersion = "24.05";
           };
           users.${user} = {
@@ -201,7 +204,7 @@
     ];
   };
   sg13 = lib.nixosSystem {
-    inherit system;
+    system = "x86_64-linux";
     specialArgs = {
       inherit user inputs;
       hostName = "sg13";
@@ -231,7 +234,8 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = {
-            inherit user inputs system;
+            inherit user inputs;
+            system = "x86_64-linux";
             stateVersion = "24.11";
           };
           users.${user} = {
@@ -242,7 +246,7 @@
     ];
   };
   x61s = lib.nixosSystem {
-    inherit system;
+    system = "x86_64-linux";
     specialArgs = {
       inherit user inputs;
       hostName = "x61s";
@@ -266,7 +270,8 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = {
-            inherit user inputs system;
+            inherit user inputs;
+            system = "x86_64-linux";
             stateVersion = "22.11";
           };
           users.${user} = {
@@ -277,7 +282,7 @@
     ];
   };
   nixos-example = lib.nixosSystem {
-    inherit system;
+    system = "x86_64-linux";
     specialArgs = {
       inherit user inputs;
       hostName = "nixos-example";
@@ -310,7 +315,8 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = {
-            inherit user inputs system;
+            inherit user inputs;
+            system = "x86_64-linux";
             stateVersion = "24.05";
           };
           users.${user} = {

@@ -160,15 +160,10 @@
       ...
     }:
     let
-      system = "x86_64-linux";
-      user = "david";
-      pkgs = import nixpkgs {
-        inherit system;
-      };
-      inherit (nixpkgs) lib;
+      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
 
       # Small tool to iterate over each systems
-      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+      eachSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f nixpkgs.legacyPackages.${system});
       # Eval the treefmt modules from ./treefmt.nix
       treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
@@ -181,12 +176,10 @@
       });
       nixosConfigurations = import ./hosts {
         inherit
-          lib
-          inputs
-          pkgs
-          user
-          system
-          ;
+          nixpkgs
+          inputs;
+        lib = nixpkgs.lib;
+        user = "david";
       };
     };
 }
