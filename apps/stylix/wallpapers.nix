@@ -39,15 +39,15 @@
     };
     "taiwan-road" = {
       image = pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/dbeley/photo-stream/refs/heads/master/photos/original/P9040182.jpg";
+        url = "https://raw.githubusercontent.com/dbeley/photo-stream/refs/heads/master/photos/original/P9131591.jpg";
         sha256 = "rGs1PrdYZbtX0VrwTHPSfxNMjJ/9eVYcGpg09Jtg8Us=";
       };
       imageScalingMode = "fill";
     };
     "taiwan-bus" = {
       image = pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/dbeley/photo-stream/refs/heads/master/photos/original/P9131591.jpg";
-        sha256 = "rGs1PrdYZbtX0VrwTHPSfxNMjJ/9eVYcGpg09Jtg8Us=";
+        url = "https://raw.githubusercontent.com/dbeley/photo-stream/refs/heads/master/photos/original/P9040182.jpg";
+        sha256 = "YRMTzAPjd+J+wq5+cBIqAioQjq79GnBjY6lyqM6jxMA=";
       };
       imageScalingMode = "fill";
     };
