@@ -22,6 +22,12 @@ let
       ];
       home = [ ];
     };
+    bootloader-systemd-boot = {
+      system = [
+        ../modules/common/bootloader-systemd-boot.nix
+      ];
+      home = [ ];
+    };
     personal = {
       system = [ ];
       home = [
@@ -131,6 +137,12 @@ let
         ../apps/neovim-nvf/neovim-nvf.nix
       ];
     };
+    android-tools = {
+      system = [
+        ../apps/android/default.nix
+      ];
+      home = [ ];
+    };
   };
   mkHost =
     {
@@ -231,19 +243,19 @@ in
     stateVersion = "24.05";
     profiles = [
       "laptop"
-      "hyprland"
+      "bootloader-systemd-boot"
       "personal"
+      "hyprland"
+      "android-tools"
       "docker"
+      "steam"
       "firefox"
       "chromium"
       "mpd"
-      "steam"
       "python"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
-      ../modules/common/bootloader-systemd-boot.nix
-      ../apps/android/default.nix
     ];
     extraHomeModules = [
       ../apps/qutebrowser/qutebrowser.nix
@@ -259,8 +271,10 @@ in
     profiles = [
       "laptop"
       "impermanence"
+      "bootloader-systemd-boot"
       "personal"
       "hyprland"
+      "android-tools"
       "steam"
       "mpd"
       "firefox"
@@ -269,10 +283,8 @@ in
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-      ../modules/common/bootloader-systemd-boot.nix
       ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
-      ../apps/android/default.nix
       {
         my.stylix.wallpaper = "purple-waves";
       }
@@ -284,8 +296,10 @@ in
     profiles = [
       "laptop"
       "impermanence"
+      "bootloader-systemd-boot"
       "personal"
       "niri"
+      "android-tools"
       "steam"
       "firefox"
       "chromium"
@@ -294,8 +308,6 @@ in
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x13-amd
-      ../modules/common/bootloader-systemd-boot.nix
-      ../apps/android/default.nix
       {
         my.stylix.wallpaper = "nyc-425-park-avenue";
       }
@@ -306,6 +318,7 @@ in
     stateVersion = "24.05";
     profiles = [
       "laptop"
+      "bootloader-systemd-boot"
       "niri"
       "python"
       "docker"
@@ -316,11 +329,10 @@ in
       inputs.nixos-hardware.nixosModules.common-cpu-intel
       inputs.nixos-hardware.nixosModules.common-gpu-intel
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-      ../modules/common/bootloader-systemd-boot.nix
       ../modules/common/laptop-thermald.nix
       ../modules/common/printing.nix
       {
-        my.stylix.wallpaper = "taiwan-bus";
+        my.stylix.wallpaper = "hk-plant";
       }
     ];
     extraHomeModules = [
@@ -341,7 +353,7 @@ in
       inputs.nixos-hardware.nixosModules.common-cpu-amd
       inputs.nixos-hardware.nixosModules.common-gpu-amd
       ./sg13/hardware-configuration.nix
-      ../modules/common/bootloader-grub.nix
+      ../modules/common/bootloader-grub-uefi.nix
       {
         my.stylix.wallpaper = "hk-plant";
       }
@@ -365,7 +377,7 @@ in
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x200s
-      ../modules/common/bios.nix
+      ../modules/common/bootloader-grub-bios.nix
     ];
   };
 }
