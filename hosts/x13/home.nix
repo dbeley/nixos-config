@@ -6,9 +6,8 @@
   home.packages = with pkgs; [
     audacity
     beets
-    # borgbackup
-    # borgmatic
-    # claude-code
+    borgbackup
+    borgmatic
     discord
     heroic
     itch
