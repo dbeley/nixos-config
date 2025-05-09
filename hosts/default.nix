@@ -5,14 +5,154 @@
   ...
 }:
 let
+  moduleProfiles = {
+    laptop = {
+      system = [
+        ../modules/common/laptop.nix
+        ../modules/common/fingerprint-scanner.nix
+      ];
+      home = [ ];
+    };
+    impermanence = {
+      system = [
+        inputs.disko.nixosModules.disko
+        ../modules/disko/encrypted-btrfs-impermanence.nix
+        inputs.impermanence.nixosModules.impermanence
+        ../modules/impermanence/default.nix
+      ];
+      home = [ ];
+    };
+    niri = {
+      system = [
+        ../apps/niri/default.nix
+        ../apps/hyprlock/default.nix
+      ];
+      home = [
+        inputs.niri.homeModules.niri
+        inputs.niri.homeModules.stylix
+        ../apps/niri/niri.nix
+        ../apps/hyprlock/hyprlock.nix
+        ../apps/hypridle/hypridle.nix
+        ../apps/autoscreen/autoscreen.nix
+        ../apps/waybar/waybar.nix
+        ../apps/tofi/tofi.nix
+        ../apps/mako/mako.nix
+        ../apps/gammastep/gammastep.nix
+      ];
+    };
+    hyprland = {
+      system = [
+        ../apps/hyprland/default.nix
+        ../apps/hyprlock/default.nix
+      ];
+      home = [
+        inputs.hyprland.homeManagerModules.default
+        ../apps/hyprland/hyprland.nix
+        ../apps/hyprlock/hyprlock.nix
+        ../apps/hypridle/hypridle.nix
+        ../apps/autoscreen/autoscreen.nix
+        ../apps/autoscreen-gaming/autoscreen-gaming.nix
+        ../apps/waybar/waybar.nix
+        ../apps/tofi/tofi.nix
+        ../apps/mako/mako.nix
+        ../apps/gammastep/gammastep.nix
+      ];
+    };
+    gnome = {
+      system = [
+        ../apps/gnome/default.nix
+      ];
+      home = [
+        ../apps/gnome/gnome.nix
+        ../apps/autoscreen-gnome/autoscreen-gnome.nix
+      ];
+    };
+    sway = {
+      system = [
+        ../apps/swaylock/default.nix
+      ];
+      home = [
+        ../apps/sway/sway.nix
+        ../apps/swaylock/swaylock.nix
+        ../apps/waybar/waybar.nix
+        ../apps/tofi/tofi.nix
+        ../apps/mako/mako.nix
+        ../apps/gammastep/gammastep.nix
+        ../apps/autoscreen/autoscreen.nix
+      ];
+    };
+    steam = {
+      system = [
+        ../modules/common/xbox.nix
+        ../apps/steam/default.nix
+      ];
+      home = [ ../apps/steam/steam.nix ];
+    };
+    docker = {
+      system = [
+        ../apps/docker/default.nix
+      ];
+      home = [ ];
+    };
+    firefox = {
+      system = [ ];
+      home = [ ../apps/firefox/firefox.nix ];
+    };
+    chromium = {
+      system = [ ];
+      home = [ ../apps/ungoogled-chromium/ungoogled-chromium.nix ];
+    };
+    mpd = {
+      system = [ ];
+      home = [
+        ../apps/mpd/mpd.nix
+        ../apps/mpdscrobble/mpdscrobble.nix
+      ];
+    };
+    python = {
+      system = [ ];
+      home = [
+        ../apps/direnv/direnv.nix
+        ../apps/python/python.nix
+      ];
+    };
+    neovim-nvf = {
+      system = [ ];
+      home = [
+        inputs.nvf.homeManagerModules.default
+        ../apps/neovim-nvf/neovim-nvf.nix
+      ];
+    };
+  };
   mkHost =
     {
       hostName,
       stateVersion,
       system ? "x86_64-linux",
-      modules ? [ ],
-      homeModules ? [ ],
+      profiles ? [ ],
+      extraModules ? [ ],
+      extraHomeModules ? [ ],
+      homeConfig ? ../hosts/${hostName}/home.nix,
     }:
+    let
+      # Extract system modules from profiles
+      systemModules = lib.concatMap (
+        profile:
+        if moduleProfiles ? ${profile} && moduleProfiles.${profile} ? system then
+          moduleProfiles.${profile}.system
+        else
+          [ ]
+      ) profiles;
+
+      # Extract home-manager modules from profiles
+      homeModules = lib.concatMap (
+        profile:
+        if moduleProfiles ? ${profile} && moduleProfiles.${profile} ? home then
+          moduleProfiles.${profile}.home
+        else
+          [ ]
+      ) profiles;
+    in
     lib.nixosSystem {
       inherit system;
       specialArgs = {
@@ -23,147 +163,171 @@ let
           stateVersion
           ;
       };
-      modules = [
-        ../modules/configuration.nix
-        ../modules/overlays.nix
-        ../apps/udiskie/default.nix
-
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = {
-              inherit
-                user
-                inputs
-                system
-                stateVersion
-                ;
+      modules =
+        [
+          ../modules/configuration.nix
+          ../modules/overlays.nix
+          inputs.stylix.nixosModules.stylix
+          ../apps/stylix/default.nix
+          ../apps/udiskie/default.nix
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                inherit
+                  user
+                  inputs
+                  system
+                  stateVersion
+                  ;
+                selectedProfiles = profiles;
+              };
+              users.${user} = {
+                imports =
+                  [
+                    ../hosts/home-manager-common-config.nix
+                    ../apps/git/git.nix
+                    ../apps/lazygit/lazygit.nix
+                    ../apps/fish/fish.nix
+                    ../apps/tmux/tmux.nix
+                    ../apps/stylix/stylix.nix
+                    ../apps/ghostty/ghostty.nix
+                    ../apps/helix/helix.nix
+                    ../apps/nnn/nnn.nix
+                    ../apps/yazi/yazi.nix
+                    ../apps/udiskie/udiskie.nix
+                    ../apps/mime/mime.nix
+                    ../apps/imv/imv.nix
+                    ../apps/bat/bat.nix
+                    ../apps/zoxide/zoxide.nix
+                    ../apps/zathura/zathura.nix
+                    ../apps/ledger/ledger.nix
+                    ../apps/mpv/mpv.nix
+                    ../apps/nextcloud-client/nextcloud-client.nix
+                    ../apps/tealdeer/tealdeer.nix
+                    homeConfig
+                  ]
+                  ++ homeModules
+                  ++ extraHomeModules;
+              };
             };
-            users.${user} = {
-              imports = [
-                (import ./${hostName}/home.nix)
-              ] ++ homeModules;
-            };
-          };
-        }
-
-        ./${hostName}/hardware-configuration.nix
-      ] ++ modules;
+          }
+          ../hosts/${hostName}/hardware-configuration.nix
+        ]
+        ++ systemModules
+        ++ extraModules;
     };
-  laptopModules = [
-    ../modules/common/laptop.nix
-    ../modules/common/fingerprint-scanner.nix
-  ];
-  hyprlandModules = [
-    ../apps/hyprland/default.nix
-    ../apps/hyprlock/default.nix
-  ];
-  gnomeModules = [
-    ../apps/gnome/default.nix
-  ];
-  stylixModules = [
-    inputs.stylix.nixosModules.stylix
-    ../apps/stylix/default.nix
-  ];
-  impermanenceModules = [
-    inputs.disko.nixosModules.disko
-    ../modules/disko/encrypted-btrfs-impermanence.nix
-    inputs.impermanence.nixosModules.impermanence
-    ../modules/impermanence/default.nix
-  ];
-  niriModules = [
-    ../apps/niri/default.nix
-    ../apps/hyprlock/default.nix
-  ];
-  steamModules = [
-    ../modules/common/xbox.nix
-    ../apps/steam/default.nix
-  ];
-  dockerModules = [
-    ../apps/docker/default.nix
-  ];
 in
 {
   p14s = mkHost {
     hostName = "p14s";
     stateVersion = "24.05";
-    modules =
-      [
-        inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
-        ../modules/common/bootloader-systemd-boot.nix
-        ../apps/android/default.nix
-      ]
-      ++ laptopModules
-      ++ hyprlandModules
-      ++ stylixModules
-      ++ dockerModules
-      ++ steamModules;
+    profiles = [
+      "laptop"
+      "hyprland"
+      "docker"
+      "firefox"
+      "chromium"
+      "mpd"
+      "steam"
+      "python"
+    ];
+    extraModules = [
+      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
+      ../modules/common/bootloader-systemd-boot.nix
+      ../apps/android/default.nix
+    ];
+    extraHomeModules = [
+      ../apps/qutebrowser/qutebrowser.nix
+      ../apps/emacs/emacs.nix
+      ../apps/kakoune/kakoune.nix
+      ../apps/obs/obs.nix
+      ../apps/pycharm/pycharm.nix
+    ];
   };
   x1yoga = mkHost {
     hostName = "x1yoga";
     stateVersion = "25.05";
-    modules =
-      [
-        inputs.nixos-hardware.nixosModules.common-cpu-intel
-        inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-        ../modules/common/laptop-thermald.nix
-        ../modules/common/bootloader-systemd-boot.nix
-        ../modules/common/screen-rotation.nix
-        ../apps/android/default.nix
-        {
-          my.stylix.wallpaper = "purple-waves";
-        }
-      ]
-      ++ laptopModules
-      ++ impermanenceModules
-      ++ hyprlandModules
-      ++ stylixModules
-      ++ steamModules;
+    profiles = [
+      "laptop"
+      "impermanence"
+      "hyprland"
+      "steam"
+      "mpd"
+      "firefox"
+      "chromium"
+    ];
+    extraModules = [
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
+      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      ../modules/common/laptop-thermald.nix
+      ../modules/common/bootloader-systemd-boot.nix
+      ../modules/common/screen-rotation.nix
+      ../apps/android/default.nix
+      {
+        my.stylix.wallpaper = "purple-waves";
+      }
+    ];
   };
   x13 = mkHost {
     hostName = "x13";
     stateVersion = "24.11";
-    modules =
-      [
-        inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x13-amd
-        ../modules/common/bootloader-systemd-boot.nix
-        ../apps/android/default.nix
-        {
-          my.stylix.wallpaper = "nyc-425-park-avenue";
-        }
-      ]
-      ++ laptopModules
-      ++ impermanenceModules
-      ++ niriModules
-      ++ stylixModules
-      ++ steamModules;
+    profiles = [
+      "laptop"
+      "impermanence"
+      "niri"
+      "steam"
+      "firefox"
+      "chromium"
+      "mpd"
+      "python"
+    ];
+    extraModules = [
+      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x13-amd
+      ../modules/common/bootloader-systemd-boot.nix
+      ../apps/android/default.nix
+      {
+        my.stylix.wallpaper = "nyc-425-park-avenue";
+      }
+    ];
   };
   latitude = mkHost {
     hostName = "latitude";
     stateVersion = "24.05";
-    modules =
-      [
-        inputs.nixos-hardware.nixosModules.common-cpu-intel
-        inputs.nixos-hardware.nixosModules.common-gpu-intel
-        inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-        ../modules/common/bootloader-systemd-boot.nix
-        ../modules/common/laptop-thermald.nix
-        ../modules/common/printing.nix
-        {
-          my.stylix.wallpaper = "abstract-light-rays";
-        }
-      ]
-      ++ laptopModules
-      ++ niriModules
-      ++ stylixModules
-      ++ dockerModules;
+    profiles = [
+      "laptop"
+      "niri"
+      "python"
+      "docker"
+      "neovim-nvf"
+    ];
+    extraModules = [
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
+      inputs.nixos-hardware.nixosModules.common-gpu-intel
+      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      ../modules/common/bootloader-systemd-boot.nix
+      ../modules/common/laptop-thermald.nix
+      ../modules/common/printing.nix
+      {
+        my.stylix.wallpaper = "abstract-light-rays";
+      }
+    ];
+    extraHomeModules = [
+      ../apps/pycharm-professional/pycharm.nix
+    ];
   };
   sg13 = mkHost {
     hostName = "sg13";
     stateVersion = "24.11";
-    modules = [
+    profiles = [
+      "gnome"
+      "steam"
+      "firefox"
+      "chromium"
+    ];
+    extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-amd
       inputs.nixos-hardware.nixosModules.common-gpu-amd
       ./sg13/hardware-configuration.nix
@@ -171,20 +335,26 @@ in
       {
         my.stylix.wallpaper = "hk-plant";
       }
-    ]
-    ++ gnomeModules
-    ++ stylixModules
-    ++ steamModules;
+    ];
+    extraHomeModules = [
+      ../apps/kitty/kitty.nix
+    ];
   };
   x61s = mkHost {
     hostName = "x61s";
     stateVersion = "22.11";
-    modules = [
+    profiles = [
+      "laptop"
+      "sway"
+      "python"
+      "steam"
+      "mpd"
+      "firefox"
+      "chromium"
+    ];
+    extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x200s
       ../modules/common/bios.nix
-      ../apps/swaylock/default.nix
-    ]
-    ++ laptopModules ++ steamModules
-    ;
+    ];
   };
 }
