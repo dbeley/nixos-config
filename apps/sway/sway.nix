@@ -128,14 +128,15 @@
           }
           {
             command = "move to scratchpad";
-            criteria = [
-              {
-                app_id = "org.keepassxc.KeePassXC";
-              }
-              {
-                app_id = "Supersonic";
-              }
-            ];
+            criteria = {
+              app_id = "org.keepassxc.KeePassXC";
+            };
+          }
+          {
+            command = "move to scratchpad";
+            criteria = {
+              app_id = "Supersonic";
+            };
           }
           {
             command = "move to scratchpad, scratchpad show";
@@ -162,44 +163,6 @@
           { app_id = "com.nextcloud.desktopclient.nextcloud"; }
         ];
         titlebar = false;
-      };
-
-      colors = {
-        focused = {
-          border = "$background";
-          background = "$background";
-          text = "$tx";
-          indicator = "$color3";
-          childBorder = "$color3";
-        };
-        unfocused = {
-          border = "$color4";
-          background = "$color4";
-          text = "$tx";
-          indicator = "$color1";
-          childBorder = "$color1";
-        };
-        focusedInactive = {
-          border = "$color4";
-          background = "$color4";
-          text = "$tx";
-          indicator = "$color1";
-          childBorder = "$color1";
-        };
-        urgent = {
-          border = "$tx";
-          background = "$tx";
-          text = "$tx";
-          indicator = "$tx";
-          childBorder = "$tx";
-        };
-        placeholder = {
-          border = "$tx";
-          background = "$tx";
-          text = "$tx";
-          indicator = "$tx";
-          childBorder = "$tx";
-        };
       };
 
       startup = [
