@@ -22,6 +22,14 @@ let
       ];
       home = [ ];
     };
+    personal = {
+      system = [ ];
+      home = [
+        ../apps/ledger/ledger.nix
+        ../apps/mpv/mpv.nix
+        ../apps/nextcloud-client/nextcloud-client.nix
+      ];
+    };
     niri = {
       system = [
         ../apps/niri/default.nix
@@ -188,11 +196,11 @@ let
                 imports =
                   [
                     ../hosts/home-manager-common-config.nix
+                    ../apps/stylix/stylix.nix
                     ../apps/git/git.nix
                     ../apps/lazygit/lazygit.nix
                     ../apps/fish/fish.nix
                     ../apps/tmux/tmux.nix
-                    ../apps/stylix/stylix.nix
                     ../apps/ghostty/ghostty.nix
                     ../apps/helix/helix.nix
                     ../apps/nnn/nnn.nix
@@ -203,9 +211,6 @@ let
                     ../apps/bat/bat.nix
                     ../apps/zoxide/zoxide.nix
                     ../apps/zathura/zathura.nix
-                    ../apps/ledger/ledger.nix
-                    ../apps/mpv/mpv.nix
-                    ../apps/nextcloud-client/nextcloud-client.nix
                     ../apps/tealdeer/tealdeer.nix
                     homeConfig
                   ]
@@ -227,6 +232,7 @@ in
     profiles = [
       "laptop"
       "hyprland"
+      "personal"
       "docker"
       "firefox"
       "chromium"
@@ -253,6 +259,7 @@ in
     profiles = [
       "laptop"
       "impermanence"
+      "personal"
       "hyprland"
       "steam"
       "mpd"
@@ -262,8 +269,8 @@ in
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-      ../modules/common/laptop-thermald.nix
       ../modules/common/bootloader-systemd-boot.nix
+      ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
       ../apps/android/default.nix
       {
@@ -277,6 +284,7 @@ in
     profiles = [
       "laptop"
       "impermanence"
+      "personal"
       "niri"
       "steam"
       "firefox"
@@ -302,6 +310,7 @@ in
       "python"
       "docker"
       "neovim-nvf"
+      "firefox"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -311,7 +320,7 @@ in
       ../modules/common/laptop-thermald.nix
       ../modules/common/printing.nix
       {
-        my.stylix.wallpaper = "abstract-light-rays";
+        my.stylix.wallpaper = "taiwan-bus";
       }
     ];
     extraHomeModules = [
@@ -322,6 +331,7 @@ in
     hostName = "sg13";
     stateVersion = "24.11";
     profiles = [
+      "personal"
       "gnome"
       "steam"
       "firefox"
@@ -345,6 +355,7 @@ in
     stateVersion = "22.11";
     profiles = [
       "laptop"
+      "personal"
       "sway"
       "python"
       "steam"

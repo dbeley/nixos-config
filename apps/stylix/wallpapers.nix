@@ -23,13 +23,6 @@
       };
       imageScalingMode = "fill";
     };
-    "taiwan-road" = {
-      image = pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/dbeley/photo-stream/refs/heads/master/photos/original/P9131591.jpg";
-        sha256 = "rGs1PrdYZbtX0VrwTHPSfxNMjJ/9eVYcGpg09Jtg8Us=";
-      };
-      imageScalingMode = "fill";
-    };
     "hk-buildings" = {
       image = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/dbeley/photo-stream/refs/heads/master/photos/original/HK%20P1011753.jpg";
@@ -41,6 +34,20 @@
       image = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/dbeley/photo-stream/refs/heads/master/photos/original/HK%20P1010917.jpg";
         sha256 = "smPIXjBiSVcQiEdR1eXdIh069HQbZOWmc9uBu86VcSI=";
+      };
+      imageScalingMode = "fill";
+    };
+    "taiwan-road" = {
+      image = pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/dbeley/photo-stream/refs/heads/master/photos/original/P9040182.jpg";
+        sha256 = "rGs1PrdYZbtX0VrwTHPSfxNMjJ/9eVYcGpg09Jtg8Us=";
+      };
+      imageScalingMode = "fill";
+    };
+    "taiwan-bus" = {
+      image = pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/dbeley/photo-stream/refs/heads/master/photos/original/P9131591.jpg";
+        sha256 = "rGs1PrdYZbtX0VrwTHPSfxNMjJ/9eVYcGpg09Jtg8Us=";
       };
       imageScalingMode = "fill";
     };

@@ -2,14 +2,14 @@
 {
   stylix.targets = {
     waybar.enable = false;
-    tmux.enable = false;
-    fish.enable = false;
+    tmux.enable = true;
+    fish.enable = true;
     firefox.enable = true;
+    firefox.profileNames = [ "${user}" ];
     mangohud.enable = false;
     gnome.enable = true;
-    nixvim.enable = false;
+    nixvim.enable = true;
     hyprland.enable = true;
-    firefox.profileNames = [ "${user}" ];
     mpv.enable = false;
   };
 }
