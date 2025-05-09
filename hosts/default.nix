@@ -141,7 +141,7 @@ in
       ++ steamModules;
   };
   latitude = mkHost {
-    hostname = "latitude";
+    hostName = "latitude";
     stateVersion = "24.05";
     modules =
       [
@@ -160,127 +160,31 @@ in
       ++ stylixModules
       ++ dockerModules;
   };
-  sg13 = lib.nixosSystem {
-    system = "x86_64-linux";
-    specialArgs = {
-      inherit user inputs;
-      hostName = "sg13";
-      stateVersion = "24.11";
-    };
+  sg13 = mkHost {
+    hostName = "sg13";
+    stateVersion = "24.11";
     modules = [
       inputs.nixos-hardware.nixosModules.common-cpu-amd
       inputs.nixos-hardware.nixosModules.common-gpu-amd
-      inputs.stylix.nixosModules.stylix
-      ../apps/stylix/default.nix
       ./sg13/hardware-configuration.nix
-      ../modules/configuration.nix
-      ../modules/overlays.nix
       ../modules/common/bootloader-grub.nix
-      ../modules/common/xbox.nix
-      ../apps/gnome/default.nix
-      ../apps/steam/default.nix
-      ../apps/udiskie/default.nix
-
       {
         my.stylix.wallpaper = "hk-plant";
       }
-
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = {
-            inherit user inputs;
-            system = "x86_64-linux";
-            stateVersion = "24.11";
-          };
-          users.${user} = {
-            imports = [ (import ./sg13/home.nix) ];
-          };
-        };
-      }
-    ];
+    ]
+    ++ gnomeModules
+    ++ stylixModules
+    ++ steamModules;
   };
-  x61s = lib.nixosSystem {
-    system = "x86_64-linux";
-    specialArgs = {
-      inherit user inputs;
-      hostName = "x61s";
-      stateVersion = "22.11";
-    };
+  x61s = mkHost {
+    hostName = "x61s";
+    stateVersion = "22.11";
     modules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x200s
-      ./x61s/hardware-configuration.nix
-      ../modules/configuration.nix
-      ../modules/overlays.nix
       ../modules/common/bios.nix
-      ../modules/common/laptop.nix
       ../apps/swaylock/default.nix
-      ../apps/steam/default.nix
-      ../apps/udiskie/default.nix
-      ../apps/android/default.nix
-
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = {
-            inherit user inputs;
-            system = "x86_64-linux";
-            stateVersion = "22.11";
-          };
-          users.${user} = {
-            imports = [ (import ./x61s/home.nix) ];
-          };
-        };
-      }
-    ];
-  };
-  nixos-example = lib.nixosSystem {
-    system = "x86_64-linux";
-    specialArgs = {
-      inherit user inputs;
-      hostName = "nixos-example";
-      stateVersion = "24.05";
-    };
-    modules = [
-      # Uncomment based on the CPU of you machine
-      # inputs.nixos-hardware.nixosModules.common-cpu-amd
-      # inputs.nixos-hardware.nixosModules.common-cpu-intel
-
-      # Uncomment if you have a laptop
-      # inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-      # ../modules/common/laptop.nix
-
-      # Uncomment the system apps you want
-      # ../apps/docker/default.nix
-      # ../apps/steam/default.nix
-      # ../apps/udiskie/default.nix
-      # ../apps/android/default.nix
-
-      ./nixos-example/hardware-configuration.nix
-      ../modules/configuration.nix
-      ../modules/overlays.nix
-      ../modules/common/bootloader-systemd-boot.nix
-      ../apps/gnome/default.nix
-
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = {
-            inherit user inputs;
-            system = "x86_64-linux";
-            stateVersion = "24.05";
-          };
-          users.${user} = {
-            imports = [ (import ./nixos-example/home.nix) ];
-          };
-        };
-      }
-    ];
+    ]
+    ++ laptopModules ++ steamModules
+    ;
   };
 }
