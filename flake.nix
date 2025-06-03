@@ -55,10 +55,10 @@
       # Doing so will make the cache useless, since you’re building from a different Nixpkgs commit.
       # inputs.nixpkgs.follows = "nixpkgs";
       # inputs.systems.follows = "systems";
-      # inputs.hyprlang.follows = "hyprlang";
+      inputs.hyprlang.follows = "hyprlang";
       inputs.pre-commit-hooks.follows = "git-hooks";
-      # inputs.hyprland-qtutils.follows = "hyprland-qtutils";
-      # inputs.hyprutils.follows = "hyprutils";
+      inputs.hyprland-qtutils.follows = "hyprland-qtutils";
+      inputs.hyprutils.follows = "hyprutils";
     };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -100,6 +100,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nuschtosSearch.follows = "search";
       inputs.flake-parts.follows = "flake-parts";
+      inputs.systems.follows = "systems";
     };
     nvf = {
       url = "github:notashelf/nvf";
@@ -126,7 +127,7 @@
       inputs.home-manager.follows = "home-manager";
       inputs.git-hooks.follows = "git-hooks";
       inputs.flake-compat.follows = "flake-compat";
-      inputs.flake-utils.follows = "flake-utils";
+      inputs.flake-parts.follows = "flake-parts";
       inputs.systems.follows = "systems";
       inputs.base16.follows = "base16";
       inputs.nur.follows = "nur";
