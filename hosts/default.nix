@@ -143,6 +143,12 @@ let
       ];
       home = [ ];
     };
+    vscode = {
+      system = [ ];
+      home = [
+        ../apps/vscode/vscode.nix
+      ];
+    };
   };
   mkHost =
     {
@@ -324,6 +330,7 @@ in
       "docker"
       "neovim-nvf"
       "firefox"
+      "vscode"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
