@@ -11,7 +11,6 @@ let
         ../modules/common/laptop.nix
         ../modules/common/fingerprint-scanner.nix
       ];
-      home = [ ];
     };
     impermanence = {
       system = [
@@ -20,16 +19,13 @@ let
         inputs.impermanence.nixosModules.impermanence
         ../modules/impermanence/default.nix
       ];
-      home = [ ];
     };
     bootloader-systemd-boot = {
       system = [
         ../modules/common/bootloader-systemd-boot.nix
       ];
-      home = [ ];
     };
     personal = {
-      system = [ ];
       home = [
         ../apps/ledger/ledger.nix
         ../apps/mpv/mpv.nix
@@ -106,32 +102,26 @@ let
       system = [
         ../apps/docker/default.nix
       ];
-      home = [ ];
     };
     firefox = {
-      system = [ ];
       home = [ ../apps/firefox/firefox.nix ];
     };
     chromium = {
-      system = [ ];
       home = [ ../apps/ungoogled-chromium/ungoogled-chromium.nix ];
     };
     mpd = {
-      system = [ ];
       home = [
         ../apps/mpd/mpd.nix
         ../apps/mpdscrobble/mpdscrobble.nix
       ];
     };
     python = {
-      system = [ ];
       home = [
         ../apps/direnv/direnv.nix
         ../apps/python/python.nix
       ];
     };
     neovim-nvf = {
-      system = [ ];
       home = [
         inputs.nvf.homeManagerModules.default
         ../apps/neovim-nvf/neovim-nvf.nix
@@ -141,13 +131,26 @@ let
       system = [
         ../apps/android/default.nix
       ];
-      home = [ ];
     };
     vscode = {
-      system = [ ];
       home = [
         ../apps/vscode/vscode.nix
       ];
+    };
+    qutebrowser = {
+      home = [ ../apps/qutebrowser/qutebrowser.nix ];
+    };
+    emacs = {
+      home = [ ../apps/emacs/emacs.nix ];
+    };
+    kakoune = {
+      home = [ ../apps/kakoune/kakoune.nix ];
+    };
+    obs = {
+      home = [ ../apps/obs/obs.nix ];
+    };
+    pycharm = {
+      home = [ ../apps/pycharm/pycharm.nix ];
     };
   };
   mkHost =
@@ -259,16 +262,14 @@ in
       "chromium"
       "mpd"
       "python"
+      "qutebrowser"
+      "emacs"
+      "kakoune"
+      "obs"
+      "pycharm"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
-    ];
-    extraHomeModules = [
-      ../apps/qutebrowser/qutebrowser.nix
-      ../apps/emacs/emacs.nix
-      ../apps/kakoune/kakoune.nix
-      ../apps/obs/obs.nix
-      ../apps/pycharm/pycharm.nix
     ];
   };
   x1yoga = mkHost {
@@ -330,6 +331,7 @@ in
       "steam"
       "firefox"
       "chromium"
+      "mpd"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
