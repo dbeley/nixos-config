@@ -78,11 +78,10 @@
     }
   ];
 
-  users.mutableUsers = false;
+  users.mutableUsers = lib.mkDefault true;
   users.users.${user} = {
     isNormalUser = true;
     description = "$user";
-    hashedPasswordFile = "/persistent/passwd_${user}";
     extraGroups = [
       "networkmanager"
       "wheel"

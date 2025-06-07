@@ -5,6 +5,8 @@
   ...
 }:
 {
+  users.mutableUsers = lib.mkForce false;
+  users.users.${user}.hashedPasswordFile = "/persistent/passwd_${user}";
   programs.fuse.userAllowOther = true;
   environment.persistence."/persistent" = {
     enable = true;
