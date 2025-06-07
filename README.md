@@ -47,12 +47,13 @@
 
 ## Hosts
 
-- **x13**: my main laptop (Lenovo ThinkPad X13 Gen 1: AMD Ryzen 5 4650U, 16GB RAM, niri, impermanence)
-- **x1yoga**: my secondary laptop (Lenovo ThinkPad X1 Yoga Gen 5: Intel Core i5-10210U, 8GB RAM, hyprland + touch gestures w/ hyprgrass, impermanence)
-- **sg13**: my main desktop computer (Silverstone SG13: AMD Ryzen 5 2600, RX 580 8GB, 16GB RAM, gnome)
-- **x61s**: my retro laptop (Lenovo Thinkpad X61s: Intel Core 2 Duo L7500, 3GB RAM, sway)
-- **p14s**: my previous main laptop (Lenovo ThinkPad P14s Gen 4: AMD Ryzen 7 7840U, 16GB RAM, hyprland)
-- **latitude**: my work laptop (Dell Latitude 7420: Intel Core i7 1165G7, 16GB RAM, hyprland)
+- **x13**: Lenovo ThinkPad X13 Gen 1 (AMD Ryzen 5 4650U, 16GB RAM, niri, impermanence)
+- **vaio**: Sony Vaio Pro PK13 (Intel Core i5-1035G1, 16GB RAM, niri)
+- **x1yoga**: Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, 8GB RAM, hyprland + touch gestures w/ hyprgrass, impermanence)
+- **sg13**: Silverstone SG13 (AMD Ryzen 5 2600, RX 580 8GB, 16GB RAM, gnome)
+- **x61s**: Lenovo Thinkpad X61s (Intel Core 2 Duo L7500, 3GB RAM, sway)
+- **p14s**: Lenovo ThinkPad P14s Gen 4 (AMD Ryzen 7 7840U, 16GB RAM, hyprland)
+- **latitude**: Dell Latitude 7420 (Intel Core i7 1165G7, 16GB RAM, hyprland)
 
 ## Common Usage
 

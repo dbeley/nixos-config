@@ -319,6 +319,27 @@ in
       }
     ];
   };
+  vaio = mkHost {
+    hostName = "vaio";
+    stateVersion = "25.05";
+    profiles = [
+      "laptop"
+      "bootloader-systemd-boot"
+      "personal"
+      "niri"
+      "steam"
+      "firefox"
+      "chromium"
+    ];
+    extraModules = [
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
+      inputs.nixos-hardware.nixosModules.common-gpu-intel
+      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      {
+        my.stylix.wallpaper = "blue-planet";
+      }
+    ];
+  };
   latitude = mkHost {
     hostName = "latitude";
     stateVersion = "24.05";
