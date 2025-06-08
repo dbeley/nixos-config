@@ -280,10 +280,8 @@ in
       "impermanence"
       "bootloader-systemd-boot"
       "personal"
-      "hyprland"
-      "android-tools"
+      "niri"
       "steam"
-      "mpd"
       "firefox"
       "chromium"
     ];

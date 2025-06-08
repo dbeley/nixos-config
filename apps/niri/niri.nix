@@ -75,6 +75,14 @@
             refresh = 143.912;
           };
         };
+        "LG Display 0x05EF Unknown" = {
+          scale = 1.6;
+          mode = {
+            height = 1440;
+            width = 2560;
+            refresh = 59.998;
+          };
+        };
       };
       cursor = {
         hide-after-inactive-ms = 5000;

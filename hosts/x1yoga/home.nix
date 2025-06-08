@@ -15,7 +15,6 @@
     nautilus
     papers
     shotcut
-    supersonic
     wvkbd
   ];
 }
