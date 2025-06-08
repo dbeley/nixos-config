@@ -70,7 +70,7 @@
         url = "https://raw.githubusercontent.com/dbeley/nixos-config/refs/heads/main/imgs/wallpapers/9580633.jpg";
         sha256 = "Ooq+nJpzwS3f3wuio90m/4UEguD7GmGvnlCsEKjYLGE=";
       };
-      imageScalingMode = "fit";
+      imageScalingMode = "fill";
     };
   };
   defaultWallpaper = "abstract-light-rays";

@@ -86,11 +86,13 @@
       ".local/share/CassetteBeasts"
       ".local/share/Monster Sanctuary"
       ".config/unity3d"
+      ".config/thumbnails"
     ];
     files = [
       ".cache/tofi-compgen"
       ".local/state/tofi-history"
       ".steam/registry.vdf"
+      ".config/monitors.xml"
     ];
   };
 

@@ -18,7 +18,7 @@
 
   services.gnome = {
     games.enable = false;
-    core-utilities.enable = false;
+    core-apps.enable = false;
   };
   environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
 }

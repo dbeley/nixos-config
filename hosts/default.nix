@@ -280,7 +280,7 @@ in
       "impermanence"
       "bootloader-systemd-boot"
       "personal"
-      "niri"
+      "gnome"
       "steam"
       "firefox"
       "chromium"
