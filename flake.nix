@@ -150,6 +150,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    cursor = {
+      url = "github:omarcresp/cursor-flake/main";
+    };
   };
 
   outputs =

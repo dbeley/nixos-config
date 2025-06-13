@@ -359,6 +359,7 @@ in
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       ../modules/common/laptop-thermald.nix
       ../modules/common/printing.nix
+      ../apps/cursor/default.nix
       {
         my.stylix.wallpaper = "hk-plant";
       }
