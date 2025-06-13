@@ -11,7 +11,9 @@
       e = "~/nfs/Expansion/Downloads";
       t = "~/Téléchargements";
       d = "~/Documents";
+      f = "~/nfs";
       m = "~/nfs/WDC14/Musique";
+      r = "~/Nextcloud/20-29_Médias/20_Partitions/20.04_Real-Books";
       p = "~/Nextcloud/20-29_Médias/20_Partitions/20.05_Real-Books-Individual-Songs";
       c = "~/Nextcloud/20-29_Médias/20_Partitions/20.06_Christmas-Individual-Songs";
     };
