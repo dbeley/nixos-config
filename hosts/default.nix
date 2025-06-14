@@ -249,27 +249,26 @@ in
 {
   p14s = mkHost {
     hostName = "p14s";
-    stateVersion = "24.05";
+    stateVersion = "25.05";
     profiles = [
       "laptop"
+      "impermanence"
       "bootloader-systemd-boot"
       "personal"
-      "hyprland"
+      "niri"
       "android-tools"
-      "docker"
+      # "docker"
       "steam"
       "firefox"
       "chromium"
       "mpd"
       "python"
-      "qutebrowser"
-      "emacs"
-      "kakoune"
-      "obs"
-      "pycharm"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
+      {
+        my.stylix.wallpaper = "abstract-light-rays";
+      }
     ];
   };
   x1yoga = mkHost {
