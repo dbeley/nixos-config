@@ -42,10 +42,12 @@
       set -x IMG_VIEWER imv-dir
       set -x NNN_FIFO /tmp/nnn.fifo
 
-      export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
-      if test -n "$DESKTOP_SESSION" | test -n "$WAYLAND_DISPLAY"
-        set (gnome-keyring-daemon --start | string split "=")
-      end
+      # export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
+      # if test -n "$DESKTOP_SESSION"; or test -n "$WAYLAND_DISPLAY"
+      #   for line in (gnome-keyring-daemon --start)
+      #     set -x (string split "=" $line)
+      #   end
+      # end
     '';
     loginShellInit = ''
       if test (tty) = /dev/tty1
@@ -61,6 +63,7 @@
       end
     '';
     functions = {
+      fish_greeting = "";
       wav2flac = ''
         set ORIGINAL_SIZE (du -hs | cut -f1)
 
@@ -137,14 +140,10 @@
         src = pkgs.fetchFromGitHub {
           owner = "oh-my-fish";
           repo = "theme-bobthefish";
-          rev = "736356d73f297cab3a8fac877db73d79aff30eeb";
+          rev = "dd2d5c6cbbc911409523aa4d3ee421a1818c1023";
           sha256 = "yjSZrlN2f5B5hReBsdksI3bJ9mGoaOpv9wWaWO0ccWE=";
         };
       }
     ];
-
-    functions = {
-      fish_greeting = "";
-    };
   };
 }

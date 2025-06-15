@@ -23,8 +23,6 @@ with lib.hm.gvariant;
     };
   };
 
-  services.gnome-keyring.enable = true;
-
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
       xkb-options = [ "ctrl:nocaps" ];

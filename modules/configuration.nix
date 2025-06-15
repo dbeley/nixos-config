@@ -124,6 +124,7 @@
 
   services.printing.enable = lib.mkDefault false;
   services.gnome.gnome-keyring.enable = true;
+  services.gnome.gcr-ssh-agent.enable = true;
   services.fstrim.enable = true;
   services.journald.extraConfig = ''
     SystemMaxUse=50M
