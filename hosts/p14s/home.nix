@@ -9,10 +9,11 @@
     borgbackup
     borgmatic
     heroic
+    nautilus
     shotcut
     supersonic
-    xfce.thunar
-    xfce.tumbler
+    # xfce.thunar
+    # xfce.tumbler
 
     discord
   ];
