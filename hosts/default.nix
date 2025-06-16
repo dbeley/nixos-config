@@ -312,6 +312,7 @@ in
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x13-amd
+      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       {
         my.stylix.wallpaper = "nyc-425-park-avenue";
       }
@@ -329,6 +330,7 @@ in
       "firefox"
       "chromium"
       "mpd"
+      "python"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
