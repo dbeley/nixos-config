@@ -41,13 +41,6 @@
       set -x EDITOR hx
       set -x IMG_VIEWER imv-dir
       set -x NNN_FIFO /tmp/nnn.fifo
-
-      # export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
-      # if test -n "$DESKTOP_SESSION"; or test -n "$WAYLAND_DISPLAY"
-      #   for line in (gnome-keyring-daemon --start)
-      #     set -x (string split "=" $line)
-      #   end
-      # end
     '';
     loginShellInit = ''
       if test (tty) = /dev/tty1
