@@ -17,7 +17,14 @@
       ll = "eza -1lh --icons --group-directories-first -s Name --time-style long-iso";
       la = "eza -1lah --icons --group-directories-first -s Name --time-style long-iso";
       gd = "git diff";
+      gds = "git diff --staged";
       gs = "git status";
+      gss = "git status --staged";
+      gc = "git commit -m";
+      gca = "git commit --amend";
+      gpf = "git push -f";
+      gcb = "git switch -c";
+      gbc = "git switch -c";
       cpr = "rsync -azvhP --stats --inplace --zc=zstd --zl=3";
       mpv720 = ''mpv --ytdl-format="(bestvideo[height<=720]+bestaudio)[ext=webm]/bestvideo[height<=720]+bestaudio/best[height<=720]/bestvideo+bestaudio/best" '';
       mpv1080 = ''mpv --ytdl-format="(bestvideo[height<=1080]+bestaudio)[ext=webm]/bestvideo[height<=1080]+bestaudio/best[height<=1080]/bestvideo+bestaudio/best" '';
