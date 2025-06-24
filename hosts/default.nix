@@ -196,6 +196,7 @@ let
         [
           ../modules/configuration.nix
           ../modules/overlays.nix
+          ../modules/cachix/cachix.nix
           inputs.stylix.nixosModules.stylix
           ../apps/stylix/default.nix
           ../apps/udiskie/default.nix

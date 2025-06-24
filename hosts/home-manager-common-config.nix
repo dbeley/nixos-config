@@ -28,6 +28,7 @@
   home.packages = with pkgs; [
     brightnessctl
     btop
+    cachix
     eza
     fd
     ffmpeg
