@@ -362,6 +362,7 @@ in
       ../modules/common/laptop-thermald.nix
       ../modules/common/printing.nix
       ../apps/cursor/default.nix
+      ../apps/gemini/gemini.nix
       {
         my.stylix.wallpaper = "hk-plant";
       }
