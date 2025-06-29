@@ -270,6 +270,10 @@ in
       {
         my.stylix.wallpaper = "abstract-light-rays";
       }
+      ../apps/cursor/default.nix
+    ];
+    extraHomeModules = [
+      ../apps/gemini/gemini.nix
     ];
   };
   x1yoga = mkHost {
@@ -362,13 +366,13 @@ in
       ../modules/common/laptop-thermald.nix
       ../modules/common/printing.nix
       ../apps/cursor/default.nix
-      ../apps/gemini/gemini.nix
       {
         my.stylix.wallpaper = "hk-plant";
       }
     ];
     extraHomeModules = [
       ../apps/pycharm-professional/pycharm.nix
+      ../apps/gemini/gemini.nix
     ];
   };
   sg13 = mkHost {
