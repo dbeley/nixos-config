@@ -48,6 +48,7 @@
       ".config/keepassxc"
       ".config/libreoffice/4/user"
       ".config/mpdscrobble"
+      ".config/mpd"
       ".config/supersonic"
       ".config/beets"
       ".config/Nextcloud"
@@ -86,7 +87,7 @@
       ".local/share/CassetteBeasts"
       ".local/share/Monster Sanctuary"
       ".config/unity3d"
-      ".config/thumbnails"
+      ".cache/thumbnails/x-large"
     ];
     files = [
       ".cache/tofi-compgen"
