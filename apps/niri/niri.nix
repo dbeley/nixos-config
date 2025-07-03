@@ -346,8 +346,8 @@
         "Mod+Shift+C".action.spawn = [
           "hyprlock"
         ];
-        "Mod+Return".action.spawn = "ghostty";
-        "Mod+X".action.spawn = "ghostty";
+        "Mod+Return".action.spawn = "kitty";
+        "Mod+X".action.spawn = "kitty";
         "Mod+Shift+P".action.spawn = "poweroff";
         "Mod+Shift+O".action.spawn = "reboot";
         "Mod+Tab".action = toggle-overview;

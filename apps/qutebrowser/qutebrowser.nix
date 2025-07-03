@@ -19,7 +19,7 @@
       };
       editor = {
         command = [
-          "ghostty"
+          "kitty"
           "-e"
           "nvim"
           "{}"

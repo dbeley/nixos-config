@@ -24,7 +24,7 @@
     wrapperFeatures.gtk = true;
     xwayland = true;
     config = {
-      terminal = "ghostty";
+      terminal = "kitty";
       modifier = "Mod4";
       input = {
         "type:keyboard" = {
@@ -75,11 +75,11 @@
         in
         lib.mkOptionDefault {
           "${mod}+e" = "exec ${pkgs.tofi}/bin/tofi-run | xargs swaymsg exec --";
-          "${mod}+Return" = "exec ${pkgs.ghostty}/bin/ghostty";
+          "${mod}+Return" = "exec ${pkgs.kitty}/bin/kitty";
           "${mod}+q" = "kill";
           "${mod}+z" = "exec ${pkgs.firefox}/bin/firefox";
           "${mod}+Shift+z" = "exec ${pkgs.emacs}/bin/emacs";
-          "${mod}+x" = "exec ${pkgs.ghostty}/bin/ghostty";
+          "${mod}+x" = "exec ${pkgs.kitty}/bin/kitty";
           "${mod}+Shift+x" = "exec ${pkgs.steam}/bin/steam";
           "${mod}+t" = "exec ${pkgs.libreoffice}/bin/soffice";
           "${mod}+Shift+t" = "exec ${pkgs.gnome-system-monitor}/bin/gnome-system-monitor";
@@ -171,7 +171,7 @@
         { command = "udiskie -a"; }
         { command = "nextcloud --background"; }
         { command = "keepassxc"; }
-        { command = "${pkgs.ghostty}/bin/ghostty --class=scratchpad -e ${pkgs.lf}"; }
+        { command = "${pkgs.kitty}/bin/kitty --class=scratchpad -e ${pkgs.lf}"; }
       ];
     };
 

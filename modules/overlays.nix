@@ -44,9 +44,9 @@
       #   ];
       # });
       # to fix shell not found error, cf. https://github.com/anthropics/claude-code/issues/330
-      claude-code = super.claude-code.overrideAttrs (oldAttrs: {
-        version = "0.2.32";
-      });
+      # claude-code = super.claude-code.overrideAttrs (oldAttrs: {
+      #   version = "0.2.32";
+      # });
     })
   ];
 }

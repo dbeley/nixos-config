@@ -223,7 +223,7 @@ let
                     ../apps/lazygit/lazygit.nix
                     ../apps/fish/fish.nix
                     ../apps/tmux/tmux.nix
-                    ../apps/ghostty/ghostty.nix
+                    ../apps/kitty/kitty.nix
                     ../apps/helix/helix.nix
                     ../apps/nnn/nnn.nix
                     ../apps/yazi/yazi.nix
@@ -373,6 +373,7 @@ in
     extraHomeModules = [
       ../apps/pycharm-professional/pycharm.nix
       ../apps/gemini/gemini.nix
+      ../apps/claude/claude.nix
     ];
   };
   sg13 = mkHost {
