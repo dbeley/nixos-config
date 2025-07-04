@@ -90,7 +90,7 @@ For the recipes to work properly, create a `.env` and fill it with the needed en
 
 ```
 HOST=x13
-````
+```
 
 ## Install
 
