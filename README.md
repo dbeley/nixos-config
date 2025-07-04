@@ -33,7 +33,7 @@
   - Pre-installed add-ons
   - Declarative containers
 - [Declarative partitioning with `disko`](./modules/disko/encrypted-btrfs-impermanence.nix)
-- [Epheremeal file system with `impermanence` on btrfs subvolumes](./modules/impermanence/)
+- [Ephemeral file system with `impermanence` on btrfs subvolumes](./modules/impermanence/)
 - Configuration for common hardware with `nixos-hardware`
 - Automatic microcode updates for AMD CPUs with `ucodenix`
 - Automatic development shells with `direnv` and `shell.nix`
