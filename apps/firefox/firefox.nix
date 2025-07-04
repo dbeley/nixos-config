@@ -55,6 +55,16 @@
             "color" = "blue";
           }
           {
+            "name" = "Instagram";
+            "icon" = "chill";
+            "color" = "turquoise";
+          }
+          {
+            "name" = "TikTok";
+            "icon" = "cart";
+            "color" = "orange";
+          }
+          {
             "name" = "Microsoft";
             "icon" = "fence";
             "color" = "blue";
