@@ -336,6 +336,7 @@ in
       "chromium"
       "mpd"
       "python"
+      "obs"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
