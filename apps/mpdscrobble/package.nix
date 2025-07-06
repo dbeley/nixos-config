@@ -18,6 +18,8 @@ buildPythonApplication rec {
   # No tests included
   doCheck = false;
   pythonImportsCheck = [ "mpdscrobble" ];
+  pyproject = true;
+  build-system = [ setuptools ];
 
   meta = with lib; {
     homepage = "https://github.com/dbeley/mpdscrobble";
