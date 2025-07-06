@@ -9,6 +9,7 @@
     borgbackup
     borgmatic
     heroic
+    musescore
     nautilus
     shotcut
     supersonic
