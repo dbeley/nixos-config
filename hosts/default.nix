@@ -288,6 +288,7 @@ in
       "steam"
       "firefox"
       "chromium"
+      "python"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
