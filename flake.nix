@@ -123,9 +123,6 @@
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-      inputs.git-hooks.follows = "git-hooks";
-      inputs.flake-compat.follows = "flake-compat";
       inputs.flake-parts.follows = "flake-parts";
       inputs.systems.follows = "systems";
       inputs.base16.follows = "base16";
