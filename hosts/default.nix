@@ -419,4 +419,14 @@ in
       ../modules/common/bootloader-grub-bios.nix
     ];
   };
+  homelab = mkHost {
+    hostName = "homelab";
+    stateVersion = "24.11";
+    profiles = [
+      "docker"
+    ];
+    extraModules = [
+      ../apps/homelab/default.nix
+    ];
+  };
 }
