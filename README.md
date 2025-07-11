@@ -86,6 +86,12 @@ just switch
 just clean
 ```
 
+To generate a bootable image for a host with `nixos-generators`:
+
+```
+just generate-image HOST install-iso
+```
+
 For the recipes to work properly, create a `.env` and fill it with the needed environment variables:
 
 ```
@@ -149,6 +155,5 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 Some tools and utilities to test
 
 - sops-nix
-- nixos-generators
 - git-hooks
 - nh

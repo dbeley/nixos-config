@@ -27,3 +27,7 @@ first-install-disko host target:
   sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake .#{{host}} --disk main {{target}} --show-trace
 
 all: update switch clean optimize
+
+generate-image host format="install-iso":
+  @echo "Generating $format image for host {{host}}"
+  ./scripts/generate-image.sh {{host}} {{format}}
