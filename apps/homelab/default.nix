@@ -29,6 +29,11 @@ let
     (mkService { name = "paperless"; image = "ghcr.io/paperless-ngx/paperless-ngx"; port = 8000; })
     (mkService { name = "nextcloud"; image = "nextcloud"; port = 8081; })
     (mkService { name = "homeassistant"; image = "ghcr.io/home-assistant/home-assistant"; port = 8123; })
+    (mkService { name = "filebrowser"; image = "filebrowser/filebrowser"; port = 8082; })
+    (mkService { name = "freshrss"; image = "lscr.io/linuxserver/freshrss"; port = 8085; })
+    (mkService { name = "jellyfin"; image = "lscr.io/linuxserver/jellyfin"; port = 8096; })
+    (mkService { name = "librespeed"; image = "lscr.io/linuxserver/librespeed"; port = 8084; })
+    (mkService { name = "slskd"; image = "ghcr.io/slskd/slskd"; port = 5030; })
   ];
 
   composeFile = pkgs.writeText "docker-compose.yml" (lib.generators.toYAML {} {
@@ -48,6 +53,11 @@ in
     paperless.enable = lib.mkEnableOption "Paperless";
     nextcloud.enable = lib.mkEnableOption "Nextcloud";
     homeassistant.enable = lib.mkEnableOption "Home Assistant";
+    filebrowser.enable = lib.mkEnableOption "File Browser";
+    freshrss.enable = lib.mkEnableOption "FreshRSS";
+    jellyfin.enable = lib.mkEnableOption "Jellyfin";
+    librespeed.enable = lib.mkEnableOption "LibreSpeed";
+    slskd.enable = lib.mkEnableOption "slskd";
   };
 
   config = {
