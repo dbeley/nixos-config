@@ -152,6 +152,10 @@ let
     pycharm = {
       home = [ ../apps/pycharm/pycharm.nix ];
     };
+    nix-tools = {
+      system = [ ../modules/common/nix-ld.nix ];
+      home = [ ../apps/nix-index/default.nix ];
+    };
   };
   mkHost =
     {
@@ -264,6 +268,7 @@ in
       "chromium"
       "mpd"
       "python"
+      "nix-tools"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
@@ -289,6 +294,7 @@ in
       "firefox"
       "chromium"
       "python"
+      "nix-tools"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -315,6 +321,7 @@ in
       "chromium"
       "mpd"
       "python"
+      "nix-tools"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x13-amd
@@ -338,6 +345,7 @@ in
       "mpd"
       "python"
       "obs"
+      "nix-tools"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -360,6 +368,7 @@ in
       "neovim-nvf"
       "firefox"
       "vscode"
+      "nix-tools"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -387,6 +396,7 @@ in
       "steam"
       "firefox"
       "chromium"
+      "nix-tools"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-amd
@@ -413,6 +423,7 @@ in
       "mpd"
       "firefox"
       "chromium"
+      "nix-tools"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x200s

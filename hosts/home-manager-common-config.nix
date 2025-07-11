@@ -36,6 +36,7 @@
     imagemagick
     jq
     just
+    nh
     keepassxc
     libreoffice-fresh
     ncdu

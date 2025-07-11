@@ -37,6 +37,9 @@
 - Configuration for common hardware with `nixos-hardware`
 - Automatic microcode updates for AMD CPUs with `ucodenix`
 - Automatic development shells with `direnv` and `shell.nix`
+- Fast package lookup with `nix-index` and command-not-found integration
+- Ability to run unpatched binaries thanks to `nix-ld`
+- Helpful `nh` CLI for managing Nix generations
 - My own custom packages including [`autoscreen`](./apps/autoscreen/) (tool to take screenshots randomly each hour) and [`mpdscrobble`](./apps/mpdscrobble/) (utility to send MPD listening history to Last.fm)
 - [`mpv` configuration with plugins](./apps/mpv/mpv.nix)
 - [`nnn` configuration with plugins and bookmarks](./apps/nnn/nnn.nix)
@@ -151,4 +154,3 @@ Some tools and utilities to test
 - sops-nix
 - nixos-generators
 - git-hooks
-- nh
