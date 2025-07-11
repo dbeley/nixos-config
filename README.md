@@ -37,6 +37,7 @@
 - Configuration for common hardware with `nixos-hardware`
 - Automatic microcode updates for AMD CPUs with `ucodenix`
 - Automatic development shells with `direnv` and `shell.nix`
+- Secret management using [`sops-nix`](https://github.com/Mic92/sops-nix)
 - My own custom packages including [`autoscreen`](./apps/autoscreen/) (tool to take screenshots randomly each hour) and [`mpdscrobble`](./apps/mpdscrobble/) (utility to send MPD listening history to Last.fm)
 - [`mpv` configuration with plugins](./apps/mpv/mpv.nix)
 - [`nnn` configuration with plugins and bookmarks](./apps/nnn/nnn.nix)
@@ -148,7 +149,6 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 
 Some tools and utilities to test
 
-- sops-nix
 - nixos-generators
 - git-hooks
 - nh
