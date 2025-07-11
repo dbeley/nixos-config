@@ -36,6 +36,7 @@
 - [Ephemeral file system with `impermanence` on btrfs subvolumes](./modules/impermanence/)
 - Configuration for common hardware with `nixos-hardware`
 - Automatic microcode updates for AMD CPUs with `ucodenix`
+- Secure boot with [lanzaboote](https://github.com/nix-community/lanzaboote)
 - Automatic development shells with `direnv` and `shell.nix`
 - My own custom packages including [`autoscreen`](./apps/autoscreen/) (tool to take screenshots randomly each hour) and [`mpdscrobble`](./apps/mpdscrobble/) (utility to send MPD listening history to Last.fm)
 - [`mpv` configuration with plugins](./apps/mpv/mpv.nix)

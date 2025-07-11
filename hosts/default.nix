@@ -25,6 +25,11 @@ let
         ../modules/common/bootloader-systemd-boot.nix
       ];
     };
+    secureboot = {
+      system = [
+        ../modules/common/secureboot.nix
+      ];
+    };
     personal = {
       home = [
         ../apps/ledger/ledger.nix
@@ -255,6 +260,7 @@ in
       "laptop"
       "impermanence"
       "bootloader-systemd-boot"
+      "secureboot"
       "personal"
       "niri"
       "android-tools"
@@ -283,6 +289,7 @@ in
       "laptop"
       "impermanence"
       "bootloader-systemd-boot"
+      "secureboot"
       "personal"
       "gnome"
       "steam"
@@ -307,6 +314,7 @@ in
       "laptop"
       "impermanence"
       "bootloader-systemd-boot"
+      "secureboot"
       "personal"
       "niri"
       "android-tools"
@@ -330,6 +338,7 @@ in
     profiles = [
       "laptop"
       "bootloader-systemd-boot"
+      "secureboot"
       "personal"
       "niri"
       "steam"
@@ -354,6 +363,7 @@ in
     profiles = [
       "laptop"
       "bootloader-systemd-boot"
+      "secureboot"
       "niri"
       "python"
       "docker"
