@@ -391,7 +391,6 @@ in
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-amd
       inputs.nixos-hardware.nixosModules.common-gpu-amd
-      ./sg13/hardware-configuration.nix
       ../modules/common/bootloader-grub-uefi.nix
       {
         my.stylix.wallpaper = "hk-plant";
@@ -419,14 +418,15 @@ in
       ../modules/common/bootloader-grub-bios.nix
     ];
   };
-  homelab = mkHost {
-    hostName = "homelab";
-    stateVersion = "24.11";
+  nixos-01 = mkHost {
+    hostName = "nixos-01";
+    stateVersion = "25.05";
     profiles = [
+      "bootloader-systemd-boot"
       "docker"
     ];
     extraModules = [
-      ../apps/homelab/default.nix
+      ../hosts/nixos-01/default.nix
     ];
   };
 }
