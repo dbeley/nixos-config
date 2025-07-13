@@ -161,7 +161,7 @@
       ];
       trusted-users = [
         "root"
-        "$user"
+        "${user}"
       ];
       nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
       auto-optimise-store = true;
