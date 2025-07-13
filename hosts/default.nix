@@ -108,6 +108,11 @@ let
         ../apps/docker/default.nix
       ];
     };
+    podman = {
+      system = [
+        ../apps/podman/default.nix
+      ];
+    };
     firefox = {
       home = [ ../apps/firefox/firefox.nix ];
     };
@@ -428,7 +433,7 @@ in
     stateVersion = "25.05";
     profiles = [
       "bootloader-grub"
-      "docker"
+      "podman"
     ];
     extraModules = [
       ../hosts/nixos-01/default.nix

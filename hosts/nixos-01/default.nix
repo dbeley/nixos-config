@@ -65,14 +65,14 @@ in
     environment.etc."homelab/docker-compose.yml".source = composeFile;
 
     systemd.services.homelab-compose = {
-      description = "Start homelab docker compose";
-      after = [ "docker.service" ];
+      description = "Start homelab podman compose";
+      after = [ "podman.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "oneshot";
         WorkingDirectory = "/etc/homelab";
-        ExecStart = "${pkgs.docker-compose}/bin/docker-compose -f /etc/homelab/docker-compose.yml up -d";
-        ExecStop = "${pkgs.docker-compose}/bin/docker-compose -f /etc/homelab/docker-compose.yml down";
+        ExecStart = "${pkgs.podman-compose}/bin/podman-compose -f /etc/homelab/docker-compose.yml up -d";
+        ExecStop = "${pkgs.podman-compose}/bin/podman-compose -f /etc/homelab/docker-compose.yml down";
         RemainAfterExit = true;
       };
     };
