@@ -71,8 +71,8 @@ in
       serviceConfig = {
         Type = "oneshot";
         WorkingDirectory = "/etc/homelab";
-        ExecStart = "${pkgs.podman-compose}/bin/podman-compose -f /etc/homelab/docker-compose.yml up -d";
-        ExecStop = "${pkgs.podman-compose}/bin/podman-compose -f /etc/homelab/docker-compose.yml down";
+        ExecStart = "${pkgs.podman-compose}/bin/podman-compose --podman ${lib.getExe pkgs.podman} -f /etc/homelab/docker-compose.yml up -d";
+        ExecStop = "${pkgs.podman-compose}/bin/podman-compose --podman ${lib.getExe pkgs.podman} -f /etc/homelab/docker-compose.yml down";
         RemainAfterExit = true;
       };
     };
