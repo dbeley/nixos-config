@@ -1,8 +1,20 @@
-{ config, lib, pkgs, user, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  user,
+  ...
+}:
 let
   cfg = config.my.homelab;
 
-  mkService = { name, image, port, volumes ? [] }:
+  mkService =
+    {
+      name,
+      image,
+      port,
+      volumes ? [ ],
+    }:
     lib.optionalAttrs cfg.${name}.enable {
       ${name} = {
         inherit image;
@@ -22,26 +34,84 @@ let
     };
 
   services = lib.foldl' lib.recursiveUpdate { } [
-    (mkService { name = "lidarr"; image = "lscr.io/linuxserver/lidarr"; port = 8686; })
-    (mkService { name = "radarr"; image = "lscr.io/linuxserver/radarr"; port = 7878; })
-    (mkService { name = "sonarr"; image = "lscr.io/linuxserver/sonarr"; port = 8989; })
-    (mkService { name = "qbittorrent"; image = "lscr.io/linuxserver/qbittorrent"; port = 8080; })
-    (mkService { name = "navidrome"; image = "deluan/navidrome"; port = 4533; })
-    (mkService { name = "adguardhome"; image = "adguard/adguardhome"; port = 3000; })
-    (mkService { name = "paperless"; image = "ghcr.io/paperless-ngx/paperless-ngx"; port = 8000; })
-    (mkService { name = "nextcloud"; image = "nextcloud"; port = 8081; })
-    (mkService { name = "homeassistant"; image = "ghcr.io/home-assistant/home-assistant"; port = 8123; })
-    (mkService { name = "filebrowser"; image = "filebrowser/filebrowser"; port = 8082; })
-    (mkService { name = "freshrss"; image = "lscr.io/linuxserver/freshrss"; port = 8085; })
-    (mkService { name = "jellyfin"; image = "lscr.io/linuxserver/jellyfin"; port = 8096; })
-    (mkService { name = "librespeed"; image = "lscr.io/linuxserver/librespeed"; port = 8084; })
-    (mkService { name = "slskd"; image = "ghcr.io/slskd/slskd"; port = 5030; })
+    (mkService {
+      name = "lidarr";
+      image = "lscr.io/linuxserver/lidarr";
+      port = 8686;
+    })
+    (mkService {
+      name = "radarr";
+      image = "lscr.io/linuxserver/radarr";
+      port = 7878;
+    })
+    (mkService {
+      name = "sonarr";
+      image = "lscr.io/linuxserver/sonarr";
+      port = 8989;
+    })
+    (mkService {
+      name = "qbittorrent";
+      image = "lscr.io/linuxserver/qbittorrent";
+      port = 8080;
+    })
+    (mkService {
+      name = "navidrome";
+      image = "deluan/navidrome";
+      port = 4533;
+    })
+    (mkService {
+      name = "adguardhome";
+      image = "adguard/adguardhome";
+      port = 3000;
+    })
+    (mkService {
+      name = "paperless";
+      image = "ghcr.io/paperless-ngx/paperless-ngx";
+      port = 8000;
+    })
+    (mkService {
+      name = "nextcloud";
+      image = "nextcloud";
+      port = 8081;
+    })
+    (mkService {
+      name = "homeassistant";
+      image = "ghcr.io/home-assistant/home-assistant";
+      port = 8123;
+    })
+    (mkService {
+      name = "filebrowser";
+      image = "filebrowser/filebrowser";
+      port = 8082;
+    })
+    (mkService {
+      name = "freshrss";
+      image = "lscr.io/linuxserver/freshrss";
+      port = 8085;
+    })
+    (mkService {
+      name = "jellyfin";
+      image = "lscr.io/linuxserver/jellyfin";
+      port = 8096;
+    })
+    (mkService {
+      name = "librespeed";
+      image = "lscr.io/linuxserver/librespeed";
+      port = 8084;
+    })
+    (mkService {
+      name = "slskd";
+      image = "ghcr.io/slskd/slskd";
+      port = 5030;
+    })
   ];
 
-  composeFile = pkgs.writeText "docker-compose.yml" (lib.generators.toYAML {} {
-    version = "3";
-    services = services;
-  });
+  composeFile = pkgs.writeText "docker-compose.yml" (
+    lib.generators.toYAML { } {
+      version = "3";
+      inherit services;
+    }
+  );
 
 in
 {
@@ -73,6 +143,7 @@ in
       serviceConfig = {
         Type = "oneshot";
         WorkingDirectory = "/etc/homelab";
+        User = user;
         ExecStart = "${pkgs.podman-compose}/bin/podman-compose --podman-path ${lib.getExe pkgs.podman} -f /etc/homelab/docker-compose.yml up -d";
         ExecStop = "${pkgs.podman-compose}/bin/podman-compose --podman-path ${lib.getExe pkgs.podman} -f /etc/homelab/docker-compose.yml down";
         RemainAfterExit = true;
