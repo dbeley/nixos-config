@@ -91,13 +91,31 @@ in
     services.openssh = {
       enable = true;
       settings.PasswordAuthentication = false;
+      settings.PermitRootLogin = "yes";
     };
 
     users.users.${user}.openssh.authorizedKeys.keyFiles = [
       (pkgs.fetchurl {
         url = "https://github.com/dbeley.keys";
-        sha256 = lib.fakeSha256;
+        sha256 = "vuTotxRNVwGQjv64k8dKiM5Nz/iA0q+SkhA7CKVJQQw=";
       })
     ];
+
+    my.homelab = {
+      lidarr.enable = true;
+      radarr.enable = true;
+      sonarr.enable = true;
+      qbittorrent.enable = true;
+      navidrome.enable = true;
+      adguardhome.enable = true;
+      paperless.enable = true;
+      nextcloud.enable = true;
+      homeassistant.enable = true;
+      filebrowser.enable = true;
+      freshrss.enable = true;
+      jellyfin.enable = true;
+      librespeed.enable = true;
+      slskd.enable = true;
+    };
   };
 }
