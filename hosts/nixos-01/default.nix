@@ -4,19 +4,21 @@ let
 
   mkService = { name, image, port, volumes ? [] }:
     lib.optionalAttrs cfg.${name}.enable {
-      inherit image;
-      restart = "unless-stopped";
-      environment = {
-        PUID = "1000";
-        PGID = "1000";
-        TZ = "Europe/Paris";
+      ${name} = {
+        inherit image;
+        restart = "unless-stopped";
+        environment = {
+          PUID = "1000";
+          PGID = "1000";
+          TZ = "Europe/Paris";
+        };
+        inherit volumes;
+        labels = [
+          "traefik.enable=true"
+          "traefik.http.routers.${name}.rule=Host(`${name}.homelab.home`)"
+          "traefik.http.services.${name}.loadbalancer.server.port=${toString port}"
+        ];
       };
-      inherit volumes;
-      labels = [
-        "traefik.enable=true"
-        "traefik.http.routers.${name}.rule=Host(`${name}.homelab.home`)"
-        "traefik.http.services.${name}.loadbalancer.server.port=${toString port}"
-      ];
     };
 
   services = lib.foldl' lib.recursiveUpdate { } [
@@ -71,8 +73,8 @@ in
       serviceConfig = {
         Type = "oneshot";
         WorkingDirectory = "/etc/homelab";
-        ExecStart = "${pkgs.podman-compose}/bin/podman-compose --podman ${lib.getExe pkgs.podman} -f /etc/homelab/docker-compose.yml up -d";
-        ExecStop = "${pkgs.podman-compose}/bin/podman-compose --podman ${lib.getExe pkgs.podman} -f /etc/homelab/docker-compose.yml down";
+        ExecStart = "${pkgs.podman-compose}/bin/podman-compose --podman-path ${lib.getExe pkgs.podman} -f /etc/homelab/docker-compose.yml up -d";
+        ExecStop = "${pkgs.podman-compose}/bin/podman-compose --podman-path ${lib.getExe pkgs.podman} -f /etc/homelab/docker-compose.yml down";
         RemainAfterExit = true;
       };
     };
