@@ -65,14 +65,14 @@ in
     environment.etc."homelab/docker-compose.yml".source = composeFile;
 
     systemd.services.homelab-compose = {
-      description = "Start homelab docker compose";
-      after = [ "docker.service" ];
+      description = "Start homelab containers with podman-compose";
+      after = [ "podman.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "oneshot";
         WorkingDirectory = "/etc/homelab";
-        ExecStart = "${pkgs.docker-compose}/bin/docker-compose -f /etc/homelab/docker-compose.yml up -d";
-        ExecStop = "${pkgs.docker-compose}/bin/docker-compose -f /etc/homelab/docker-compose.yml down";
+        ExecStart = "${pkgs.podman-compose}/bin/podman-compose -f /etc/homelab/docker-compose.yml up -d";
+        ExecStop = "${pkgs.podman-compose}/bin/podman-compose -f /etc/homelab/docker-compose.yml down";
         RemainAfterExit = true;
       };
     };
@@ -82,6 +82,9 @@ in
       staticConfigOptions = {
         entryPoints.web.address = ":80";
         providers.docker = {
+          # Podman exposes a Docker compatible socket when dockerSocket.enable
+          # is set in virtualisation.podman.  Traefik can therefore keep using
+          # the Docker provider.
           endpoint = "unix:///var/run/docker.sock";
           exposedByDefault = false;
         };
@@ -93,6 +96,7 @@ in
       settings.PasswordAuthentication = false;
       settings.PermitRootLogin = "yes";
     };
+
 
     users.users.${user}.openssh.authorizedKeys.keyFiles = [
       (pkgs.fetchurl {
