@@ -103,9 +103,9 @@ let
       ];
       home = [ ../apps/steam/steam.nix ];
     };
-    docker = {
+    podman = {
       system = [
-        ../apps/docker/default.nix
+        ../apps/podman/default.nix
       ];
     };
     firefox = {
@@ -361,7 +361,7 @@ in
       "bootloader-systemd-boot"
       "niri"
       "python"
-      "docker"
+      "podman"
       "neovim-nvf"
       "firefox"
       "vscode"
@@ -428,7 +428,7 @@ in
     stateVersion = "25.05";
     profiles = [
       "bootloader-grub"
-      "docker"
+      "podman"
     ];
     extraModules = [
       ../hosts/nixos-01/default.nix
