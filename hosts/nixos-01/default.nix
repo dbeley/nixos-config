@@ -3,6 +3,7 @@
   lib,
   pkgs,
   user,
+  hostName,
   ...
 }:
 let
@@ -27,7 +28,8 @@ let
         inherit volumes;
         labels = [
           "traefik.enable=true"
-          "traefik.http.routers.${name}.rule=Host(`${name}.homelab.home`)"
+          "traefik.http.routers.${name}.entrypoints=web"
+          "traefik.http.routers.${name}.rule=Host(`${name}.${hostName}.home`)"
           "traefik.http.services.${name}.loadbalancer.server.port=${toString port}"
         ];
       };
@@ -154,8 +156,12 @@ in
       enable = true;
       staticConfigOptions = {
         entryPoints.web.address = ":80";
+        api = {
+          insecure = true;
+          dashboard = true;
+        };
         providers.docker = {
-          endpoint = "unix:///var/run/docker.sock";
+          endpoint = "unix:///run/user/1000/podman/podman.sock";
           exposedByDefault = false;
         };
       };
