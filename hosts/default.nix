@@ -25,6 +25,11 @@ let
         ../modules/common/bootloader-systemd-boot.nix
       ];
     };
+    bootloader-grub = {
+      system = [
+        ../modules/common/bootloader-grub-uefi.nix
+      ];
+    };
     personal = {
       home = [
         ../apps/ledger/ledger.nix
@@ -383,6 +388,7 @@ in
     stateVersion = "24.11";
     profiles = [
       "personal"
+      "bootloader-grub"
       "gnome"
       "steam"
       "firefox"
@@ -391,7 +397,6 @@ in
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-amd
       inputs.nixos-hardware.nixosModules.common-gpu-amd
-      ../modules/common/bootloader-grub-uefi.nix
       {
         my.stylix.wallpaper = "hk-plant";
       }
@@ -422,7 +427,7 @@ in
     hostName = "nixos-01";
     stateVersion = "25.05";
     profiles = [
-      "bootloader-systemd-boot"
+      "bootloader-grub"
       "docker"
     ];
     extraModules = [
