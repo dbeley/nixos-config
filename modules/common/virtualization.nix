@@ -1,9 +1,14 @@
-{ user, pkgs, ... }:
+{
+  lib,
+  user,
+  pkgs,
+  ...
+}:
 
 {
   programs.dconf.enable = true;
 
-  users.users.${user}.extraGroups = [ "libvirtd" ];
+  users.users.${user}.extraGroups = lib.mkMerge [[ "libvirtd" ]];
 
   environment.systemPackages = with pkgs; [
     virt-viewer

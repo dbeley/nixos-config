@@ -1,4 +1,4 @@
-_:
+{ lib, user, ... }:
 {
   virtualisation.podman = {
     enable = true;
@@ -8,5 +8,9 @@ _:
       enable = true;
       dates = "weekly";
     };
+    defaultNetwork.settings.dns_enabled = true;
+  };
+  users.users.${user} = {
+    extraGroups = lib.mkMerge [[ "podman" ]];
   };
 }
