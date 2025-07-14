@@ -139,15 +139,15 @@ in
     environment.etc."homelab/docker-compose.yml".source = composeFile;
 
     systemd.services.homelab-compose = {
-      description = "Start homelab podman compose";
-      after = [ "podman.service" ];
+      description = "Start homelab docker compose";
+      after = [ "docker.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "oneshot";
         WorkingDirectory = "/etc/homelab";
         User = user;
-        ExecStart = "${pkgs.podman-compose}/bin/podman-compose --podman-path ${lib.getExe pkgs.podman} -f /etc/homelab/docker-compose.yml up -d";
-        ExecStop = "${pkgs.podman-compose}/bin/podman-compose --podman-path ${lib.getExe pkgs.podman} -f /etc/homelab/docker-compose.yml down";
+        ExecStart = "${pkgs.docker-compose}/bin/docker-compose -f /etc/homelab/docker-compose.yml up -d";
+        ExecStop = "${pkgs.docker-compose}/bin/docker-compose -f /etc/homelab/docker-compose.yml down";
         RemainAfterExit = true;
       };
     };
@@ -161,7 +161,7 @@ in
           dashboard = true;
         };
         providers.docker = {
-          endpoint = "unix:///run/user/1000/podman/podman.sock";
+          endpoint = "unix:///run/user/1000/docker.sock";
           exposedByDefault = false;
         };
       };

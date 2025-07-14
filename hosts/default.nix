@@ -433,7 +433,7 @@ in
     stateVersion = "25.05";
     profiles = [
       "bootloader-grub"
-      "podman"
+      "docker"
     ];
     extraModules = [
       ../hosts/nixos-01/default.nix
