@@ -256,6 +256,8 @@ let
         ++ systemModules
         ++ extraModules;
     };
+  mkArmHost = args: mkHost (args // { system = "aarch64-linux"; });
+
 in
 {
   p14s = mkHost {
