@@ -145,7 +145,7 @@ in
       serviceConfig = {
         Type = "oneshot";
         WorkingDirectory = "/etc/homelab";
-        User = user;
+        # User = user;
         ExecStart = "${pkgs.docker-compose}/bin/docker-compose -f /etc/homelab/docker-compose.yml up -d";
         ExecStop = "${pkgs.docker-compose}/bin/docker-compose -f /etc/homelab/docker-compose.yml down";
         RemainAfterExit = true;
@@ -154,16 +154,17 @@ in
 
     services.traefik = {
       enable = true;
+      # group = user;
       staticConfigOptions = {
         entryPoints.web.address = ":80";
         api = {
           insecure = true;
           dashboard = true;
         };
-        providers.docker = {
-          endpoint = "unix:///run/user/1000/docker.sock";
-          exposedByDefault = false;
-        };
+        # providers.docker = {
+        #   endpoint = "unix:///var/run/docker.sock";
+        #   exposedByDefault = false;
+        # };
       };
     };
 

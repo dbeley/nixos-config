@@ -6,10 +6,10 @@
       enable = true;
       dates = "weekly";
     };
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
+    # rootless = {
+    #   enable = true;
+    #   setSocketVariable = true;
+    # };
   };
   users.users.${user}.extraGroups = lib.mkMerge [[ "docker" ]];
 }
