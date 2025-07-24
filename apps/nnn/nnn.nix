@@ -38,8 +38,8 @@
         (pkgs.fetchFromGitHub {
           owner = "jarun";
           repo = "nnn";
-          rev = "v5.0";
-          sha256 = "sha256-HShHSjqD0zeE1/St1Y2dUeHfac6HQnPFfjmFvSuEXUA=";
+          rev = "v5.1";
+          sha256 = "17mygdwdsb49zd0w1r4injaybmwp99dhhaabj30i7aas3ca4asgv";
         })
         + "/plugins";
     };
