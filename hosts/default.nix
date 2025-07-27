@@ -162,6 +162,12 @@ let
     pycharm = {
       home = [ ../apps/pycharm/pycharm.nix ];
     };
+    sunshine = {
+      system = [ ../apps/sunshine/default.nix ];
+    };
+    moonlight = {
+      home = [ ../apps/moonlight/moonlight.nix ];
+    };
   };
   mkHost =
     {
@@ -343,11 +349,13 @@ in
       "personal"
       "niri"
       "steam"
+      "android-tools"
       "firefox"
       "chromium"
       "mpd"
       "python"
       "obs"
+      "moonlight"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -396,6 +404,7 @@ in
       "bootloader-grub"
       "gnome"
       "steam"
+      "sunshine"
       "firefox"
       "chromium"
     ];
