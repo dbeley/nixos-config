@@ -30,6 +30,11 @@ let
         ../modules/common/bootloader-grub-uefi.nix
       ];
     };
+    openssh-server = {
+      system = [
+        ../modules/common/openssh-server.nix
+      ];
+    };
     personal = {
       home = [
         ../apps/ledger/ledger.nix
@@ -400,6 +405,7 @@ in
     profiles = [
       "personal"
       "bootloader-grub"
+      "openssh-server"
       "gnome"
       "steam"
       "sunshine"
@@ -440,6 +446,7 @@ in
     stateVersion = "25.05";
     profiles = [
       "bootloader-grub"
+      "openssh-server"
       "docker"
     ];
     extraModules = [
