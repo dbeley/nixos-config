@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
@@ -9,4 +10,6 @@
     nautilus
     supersonic
   ];
+
+  programs.niri.outputs."Dell Inc. DELL S2721DGF 6C1TR83".mode.refresh = lib.mkForce 59.951;
 }

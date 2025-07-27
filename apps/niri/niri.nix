@@ -72,8 +72,7 @@
           mode = {
             height = 1440;
             width = 2560;
-            # refresh = 143.912;
-            refresh = 59.951;
+            refresh = 143.912;
           };
         };
         "LG Display 0x05EF Unknown" = {
