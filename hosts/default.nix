@@ -208,59 +208,57 @@ let
           stateVersion
           ;
       };
-      modules =
-        [
-          ../modules/configuration.nix
-          ../modules/overlays.nix
-          ../modules/cachix/cachix.nix
-          inputs.stylix.nixosModules.stylix
-          ../apps/stylix/default.nix
-          ../apps/udiskie/default.nix
-          inputs.home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = {
-                inherit
-                  user
-                  inputs
-                  system
-                  stateVersion
-                  ;
-                selectedProfiles = profiles;
-              };
-              users.${user} = {
-                imports =
-                  [
-                    ../hosts/home-manager-common-config.nix
-                    ../apps/stylix/stylix.nix
-                    ../apps/git/git.nix
-                    ../apps/lazygit/lazygit.nix
-                    ../apps/fish/fish.nix
-                    ../apps/tmux/tmux.nix
-                    ../apps/kitty/kitty.nix
-                    ../apps/helix/helix.nix
-                    ../apps/nnn/nnn.nix
-                    ../apps/yazi/yazi.nix
-                    ../apps/udiskie/udiskie.nix
-                    ../apps/mime/mime.nix
-                    ../apps/imv/imv.nix
-                    ../apps/bat/bat.nix
-                    ../apps/zoxide/zoxide.nix
-                    ../apps/zathura/zathura.nix
-                    ../apps/tealdeer/tealdeer.nix
-                    homeConfig
-                  ]
-                  ++ homeModules
-                  ++ extraHomeModules;
-              };
+      modules = [
+        ../modules/configuration.nix
+        ../modules/overlays.nix
+        ../modules/cachix/cachix.nix
+        inputs.stylix.nixosModules.stylix
+        ../apps/stylix/default.nix
+        ../apps/udiskie/default.nix
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {
+              inherit
+                user
+                inputs
+                system
+                stateVersion
+                ;
+              selectedProfiles = profiles;
             };
-          }
-          ../hosts/${hostName}/hardware-configuration.nix
-        ]
-        ++ systemModules
-        ++ extraModules;
+            users.${user} = {
+              imports = [
+                ../hosts/home-manager-common-config.nix
+                ../apps/stylix/stylix.nix
+                ../apps/git/git.nix
+                ../apps/lazygit/lazygit.nix
+                ../apps/fish/fish.nix
+                ../apps/tmux/tmux.nix
+                ../apps/kitty/kitty.nix
+                ../apps/helix/helix.nix
+                ../apps/nnn/nnn.nix
+                ../apps/yazi/yazi.nix
+                ../apps/udiskie/udiskie.nix
+                ../apps/mime/mime.nix
+                ../apps/imv/imv.nix
+                ../apps/bat/bat.nix
+                ../apps/zoxide/zoxide.nix
+                ../apps/zathura/zathura.nix
+                ../apps/tealdeer/tealdeer.nix
+                homeConfig
+              ]
+              ++ homeModules
+              ++ extraHomeModules;
+            };
+          };
+        }
+        ../hosts/${hostName}/hardware-configuration.nix
+      ]
+      ++ systemModules
+      ++ extraModules;
     };
 in
 {
