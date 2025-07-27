@@ -136,79 +136,78 @@
         disable_splash_rendering = true;
         vfr = true;
       };
-      bind =
-        [
-          "$MOD, return, exec, $TERMINAL"
-          "$MOD, z, exec, $BROWSER"
-          "$MOD SHIFT, z, exec, emacs"
-          "$MOD, x, exec, $TERMINAL"
-          "$MOD SHIFT, x, exec, steam"
-          "$MOD, c, exec, soffice"
-          "$MOD SHIFT, c, exec, hyprlock"
-          "$MOD, t, exec, soffice"
-          "$MOD SHIFT, t, exec, gnome-system-monitor"
-          "$MOD, d, exec, supersonic"
-          "$MOD, e, exec, $MENU"
-          "$MOD, q, killactive"
-          "$MOD, v, togglefloating"
-          "$MOD, p, pseudo"
-          "$MOD, s, togglesplit"
-          "$MOD SHIFT, s, pin"
-          "$MOD, m, fullscreen"
-          "$MOD, w, togglegroup"
-          "$MOD, page_down, changegroupactive, b"
-          "$MOD, page_up, changegroupactive, f"
-          "$MOD, left, movefocus, l"
-          "$MOD, right, movefocus, r"
-          "$MOD, up, movefocus, u"
-          "$MOD, down, movefocus, d"
-          "$MOD, h, movefocus, l"
-          "$MOD, l, movefocus, r"
-          "$MOD, k, movefocus, u"
-          "$MOD, j, movefocus, d"
-          "$MOD SHIFT, left, movewindow, l"
-          "$MOD SHIFT, right, movewindow, r"
-          "$MOD SHIFT, up, movewindow, u"
-          "$MOD SHIFT, down, movewindow, d"
-          "$MOD SHIFT, h, movewindow, l"
-          "$MOD SHIFT, l, movewindow, r"
-          "$MOD SHIFT, k, movewindow, u"
-          "$MOD SHIFT, j, movewindow, d"
-          "$MOD, n, togglespecialworkspace, scratchpad"
-          "$MOD SHIFT, g, movetoworkspace, special:scratchpad"
-          "$MOD, g, togglespecialworkspace, scratchpad2"
-          "$MOD SHIFT, g, movetoworkspace, special:scratchpad2"
-          "$MOD, d, togglespecialworkspace, scratchpad3"
-          "$MOD SHIFT, d, movetoworkspace, special:scratchpad3"
-          "$MOD, mouse_down, workspace, e+1"
-          "$MOD, mouse_up, workspace, e-1"
-          ", xf86display, exec, ~/scripts/toggle_gammastep.sh"
-          "SHIFT, xf86display, exec, ~/scripts/hyprland_switch_monitor.sh eDP-1"
-          ", print, exec, grim $SCREENSHOT_FOLDER/\"$(date +%Y-%m-%d_%H:%M:%S_%s)\"_hyprland.png"
-          "SHIFT, print, exec, grim -g \"$(slurp -d)\" $SCREENSHOT_FOLDER/\"$(date +%Y-%m-%d_%H:%M:%S_%s)\"_hyprland_cropped.png"
-          "$MOD, Tab, overview:toggle"
-          "$MOD SHIFT, Tab, hyprexpo:expo, toggle"
-          "$MOD, a, layoutmsg, cyclenext"
-          "$MOD SHIFT, m, layoutmsg, swapwithmaster"
-          "$MOD, y, exec, hyprctl keyword general:layout \"dwindle\""
-          "$MOD SHIFT, y, exec, hyprctl keyword general:layout \"master\""
-        ]
-        ++ (
-          # workspaces
-          # binds $MOD + [shift +] {1..9} to [move to] workspace {1..9}
-          builtins.concatLists (
-            builtins.genList (
-              i:
-              let
-                ws = i;
-              in
-              [
-                "$MOD, ${toString i}, workspace, ${toString ws}"
-                "$MOD SHIFT, ${toString i}, movetoworkspace, ${toString ws}"
-              ]
-            ) 9
-          )
-        );
+      bind = [
+        "$MOD, return, exec, $TERMINAL"
+        "$MOD, z, exec, $BROWSER"
+        "$MOD SHIFT, z, exec, emacs"
+        "$MOD, x, exec, $TERMINAL"
+        "$MOD SHIFT, x, exec, steam"
+        "$MOD, c, exec, soffice"
+        "$MOD SHIFT, c, exec, hyprlock"
+        "$MOD, t, exec, soffice"
+        "$MOD SHIFT, t, exec, gnome-system-monitor"
+        "$MOD, d, exec, supersonic"
+        "$MOD, e, exec, $MENU"
+        "$MOD, q, killactive"
+        "$MOD, v, togglefloating"
+        "$MOD, p, pseudo"
+        "$MOD, s, togglesplit"
+        "$MOD SHIFT, s, pin"
+        "$MOD, m, fullscreen"
+        "$MOD, w, togglegroup"
+        "$MOD, page_down, changegroupactive, b"
+        "$MOD, page_up, changegroupactive, f"
+        "$MOD, left, movefocus, l"
+        "$MOD, right, movefocus, r"
+        "$MOD, up, movefocus, u"
+        "$MOD, down, movefocus, d"
+        "$MOD, h, movefocus, l"
+        "$MOD, l, movefocus, r"
+        "$MOD, k, movefocus, u"
+        "$MOD, j, movefocus, d"
+        "$MOD SHIFT, left, movewindow, l"
+        "$MOD SHIFT, right, movewindow, r"
+        "$MOD SHIFT, up, movewindow, u"
+        "$MOD SHIFT, down, movewindow, d"
+        "$MOD SHIFT, h, movewindow, l"
+        "$MOD SHIFT, l, movewindow, r"
+        "$MOD SHIFT, k, movewindow, u"
+        "$MOD SHIFT, j, movewindow, d"
+        "$MOD, n, togglespecialworkspace, scratchpad"
+        "$MOD SHIFT, g, movetoworkspace, special:scratchpad"
+        "$MOD, g, togglespecialworkspace, scratchpad2"
+        "$MOD SHIFT, g, movetoworkspace, special:scratchpad2"
+        "$MOD, d, togglespecialworkspace, scratchpad3"
+        "$MOD SHIFT, d, movetoworkspace, special:scratchpad3"
+        "$MOD, mouse_down, workspace, e+1"
+        "$MOD, mouse_up, workspace, e-1"
+        ", xf86display, exec, ~/scripts/toggle_gammastep.sh"
+        "SHIFT, xf86display, exec, ~/scripts/hyprland_switch_monitor.sh eDP-1"
+        ", print, exec, grim $SCREENSHOT_FOLDER/\"$(date +%Y-%m-%d_%H:%M:%S_%s)\"_hyprland.png"
+        "SHIFT, print, exec, grim -g \"$(slurp -d)\" $SCREENSHOT_FOLDER/\"$(date +%Y-%m-%d_%H:%M:%S_%s)\"_hyprland_cropped.png"
+        "$MOD, Tab, overview:toggle"
+        "$MOD SHIFT, Tab, hyprexpo:expo, toggle"
+        "$MOD, a, layoutmsg, cyclenext"
+        "$MOD SHIFT, m, layoutmsg, swapwithmaster"
+        "$MOD, y, exec, hyprctl keyword general:layout \"dwindle\""
+        "$MOD SHIFT, y, exec, hyprctl keyword general:layout \"master\""
+      ]
+      ++ (
+        # workspaces
+        # binds $MOD + [shift +] {1..9} to [move to] workspace {1..9}
+        builtins.concatLists (
+          builtins.genList (
+            i:
+            let
+              ws = i;
+            in
+            [
+              "$MOD, ${toString i}, workspace, ${toString ws}"
+              "$MOD SHIFT, ${toString i}, movetoworkspace, ${toString ws}"
+            ]
+          ) 9
+        )
+      );
       binde = [
         # xf86bluetooth
         # xf86keyboard

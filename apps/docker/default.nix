@@ -11,5 +11,5 @@
     #   setSocketVariable = true;
     # };
   };
-  users.users.${user}.extraGroups = lib.mkMerge [[ "docker" ]];
+  users.users.${user}.extraGroups = lib.mkMerge [ [ "docker" ] ];
 }
