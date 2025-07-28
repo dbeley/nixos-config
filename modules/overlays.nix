@@ -48,5 +48,8 @@
       #   version = "0.2.32";
       # });
     })
+    (self: super: {
+      lact = super.callPackage ../apps/lact/package.nix {};
+    })
   ];
 }
