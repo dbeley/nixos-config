@@ -420,7 +420,8 @@ in
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-amd
-      inputs.nixos-hardware.nixosModules.common-gpu-amd
+      inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+      (inputs.nixos-hardware + "/common/gpu/nvidia/ampere")
       {
         my.stylix.wallpaper = "hk-plant";
       }

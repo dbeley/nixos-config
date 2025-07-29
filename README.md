@@ -51,7 +51,7 @@
 - **vaio**: Sony Vaio Pro PK13 (Intel Core i5-1035G1, 16GB RAM, niri)
 - **x13**: Lenovo ThinkPad X13 Gen 1 (AMD Ryzen 5 4650U, 16GB RAM, niri, impermanence)
 - **x1yoga**: Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, 8GB RAM, hyprland + touch gestures w/ hyprgrass, impermanence)
-- **sg13**: Silverstone SG13 (AMD Ryzen 5 2600, RX 580 8GB, 16GB RAM, gnome)
+- **sg13**: Silverstone SG13 (AMD Ryzen 5 2600, RTX 3070, 16GB RAM, gnome)
 - **x61s**: Lenovo Thinkpad X61s (Intel Core 2 Duo L7500, 3GB RAM, sway)
 - **latitude**: Dell Latitude 7420 (Intel Core i7 1165G7, 16GB RAM, hyprland)
 
