@@ -84,7 +84,7 @@ let
       ];
       home = [
         ../apps/gnome/gnome.nix
-        ../apps/autoscreen-gnome/autoscreen-gnome.nix
+        # ../apps/autoscreen-gnome/autoscreen-gnome.nix
       ];
     };
     sway = {
@@ -248,7 +248,8 @@ let
                 ../apps/yazi/yazi.nix
                 ../apps/udiskie/udiskie.nix
                 ../apps/mime/mime.nix
-                ../apps/imv/imv.nix
+                # ../apps/imv/imv.nix
+                ../apps/swayimg/swayimg.nix
                 ../apps/bat/bat.nix
                 ../apps/zoxide/zoxide.nix
                 ../apps/zathura/zathura.nix

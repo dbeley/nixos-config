@@ -46,7 +46,7 @@
       set -g theme_color_scheme dark
       set -x VIRTUAL_ENV_DISABLE_PROMPT 1
       set -x EDITOR hx
-      set -x IMG_VIEWER imv-dir
+      set -x IMG_VIEWER swayimg
       set -x NNN_FIFO /tmp/nnn.fifo
     '';
     loginShellInit = ''

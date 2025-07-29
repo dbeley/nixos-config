@@ -241,94 +241,117 @@
         "audio/x-wav" = [ "mpv.desktop" ];
         "audio/x-wavpack" = [ "mpv.desktop" ];
         "image/bmp" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/gif" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/jpeg" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/jpg" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/pjpeg" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/png" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/svg+xml" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/tiff" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/webp" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/x-bmp" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/x-emf" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/x-freehand" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/x-ico" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/x-pcx" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/x-png" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/x-portable-anymap" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/x-portable-bitmap" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/x-portable-graymap" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/x-portable-pixmap" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/x-tga" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/x-wmf" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/x-xbitmap" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/xpm" = [
+          "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
