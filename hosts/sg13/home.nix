@@ -5,6 +5,7 @@
 }:
 {
   home.packages = with pkgs; [
+    gnome-terminal
     nautilus
     supersonic
   ];

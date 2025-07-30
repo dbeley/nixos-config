@@ -412,6 +412,7 @@ in
       "sunshine"
       "firefox"
       "chromium"
+      "python"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-amd
