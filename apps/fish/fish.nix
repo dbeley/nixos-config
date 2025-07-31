@@ -166,11 +166,11 @@
                 set album (mpc list album albumartist "$artist" | fzf --prompt="💿 Pick album: ")
                 test -z "$album"; and return
 
-                mpc find albumartist "$artist" album "$album" \
+                mpc find albumartist "$artist" album "$album" | sort \
                 | fzf --multi \
                     --prompt="💿 Enter: play all • ^A: queue all • ^E: play sel. • ^S: queue sel. > " \
                     --bind 'enter:execute(
-                        set tracks (mpc find albumartist "'"$artist"'" album "'"$album"'");
+                        set tracks (mpc find albumartist "'"$artist"'" album "'"$album"'" | sort);
                         set before (mpc playlist | wc -l);
                         for t in $tracks
                             mpc add "$t"
@@ -179,7 +179,7 @@
                         mpc play $play_index
                     )+abort' \
                     --bind 'ctrl-a:execute(
-                        for t in (mpc find albumartist "'"$artist"'" album "'"$album"'")
+                        for t in (mpc find albumartist "'"$artist"'" album "'"$album"'" | sort)
                             mpc add "$t"
                         end
                     )+abort' \
