@@ -207,8 +207,8 @@
           ];
           open-floating = true;
           default-floating-position = { x = 0; y = 0; relative-to = "top"; };
-          default-window-height = { proportion = 0.5; };
-          default-column-width = { proportion = 0.5; };
+          default-window-height = { proportion = 0.3; };
+          default-column-width = { proportion = 0.4; };
         }
         {
           matches = [ ];

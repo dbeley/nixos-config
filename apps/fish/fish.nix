@@ -133,41 +133,32 @@
         " -c:v libx264 -c:a aac -preset medium -crf 23 -maxrate 5M -bufsize 10M $output_file
       '';
       mpd_picker = ''
-        set choice (printf "🎵 Play song\n➕ Queue song\n💿 Queue album\n🎤 Browse artist" | fzf --prompt="Choose action: ")
+        set action (printf "🎵 Search Songs\n👤 Search Artists" | fzf --prompt="🎧 Pick action: ")
+        test -z "$action"; and return
 
-        switch $choice
-            case "🎵 Play song"
-                mpc listall | fzf --cycle --prompt="🎵 Play song: " | read -l s
-                and mpc add "$s"
-                and mpc play (mpc playlist | wc -l)
+        switch $action
+            case "🎵 Search Songs"
+                mpc listall \
+                | fzf --multi \
+                    --prompt="🎵 Songs | Enter: play first • Ctrl-A: queue all > " \
+                    --bind 'enter:execute(echo {+} | head -n1 | while read s; mpc add "$s"; mpc play $(mpc playlist | wc -l); end; echo {+} | tail -n +2 | while read s; mpc add "$s"; end)+abort' \
+                    --bind 'ctrl-a:execute(echo {+} | while read s; mpc add "$s"; end)+abort'
+                return
 
-            case "➕ Queue song"
-                mpc listall | fzf --cycle --prompt="➕ Queue song: " | read -l s
-                and mpc add "$s"
-
-            case "💿 Queue album"
-                set album (mpc list album | fzf --cycle --prompt="💿 Pick album to queue: ")
-                test -z "$album"; and return
-
-                set album_tracks (mpc find album "$album")
-                test -z "$album_tracks"; and return
-
-                for track in $album_tracks
-                    mpc add "$track"
-            end
-            case "🎤 Browse artist"
-                set artist (mpc list albumartist | fzf --cycle --prompt="🎤 Pick artist: ")
+            case "👤 Search Artists"
+                set artist (mpc list albumartist | fzf --prompt="👤 Pick artist: ")
                 test -z "$artist"; and return
 
-                set album (mpc list album albumartist "$artist" | fzf --cycle --prompt="💿 Pick album from '$artist': ")
+                set album (mpc list album albumartist "$artist" | fzf --prompt="💿 Pick album: ")
                 test -z "$album"; and return
 
-                set album_tracks (mpc find albumartist "$artist" album "$album")
-                test -z "$album_tracks"; and return
+                mpc find albumartist "$artist" album "$album" | fzf --multi --prompt="🎧 '$album' by $artist | Enter: play all songs • Ctrl-A: queue all • Ctrl-E: play selection • Ctrl-G: queue selection > " \
+                    --bind 'enter:execute(for t in (mpc find albumartist "'"$artist"'" album "'"$album"'"); mpc add "$t"; end; mpc play $(mpc playlist | wc -l);)+abort' \
+                    --bind 'ctrl-a:execute(for t in (mpc find albumartist "'"$artist"'" album "'"$album"'"); mpc add "$t"; end)+abort' \
+                    --bind 'ctrl-e:execute(echo {+} | head -n1 | while read s; mpc add "$s"; mpc play $(mpc playlist | wc -l); end; echo {+} | tail -n +2 | while read s; mpc add "$s"; end)+abort' \
+                    --bind 'ctrl-g:execute(echo {+} | while read s; mpc add "$s"; end)+abort'
+                 return
 
-                for track in $album_tracks
-                    mpc add "$track"
-            end
         end
       '';
       real_book_picker = ''
