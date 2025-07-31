@@ -132,6 +132,31 @@
         crop=1080:1920
         " -c:v libx264 -c:a aac -preset medium -crf 23 -maxrate 5M -bufsize 10M $output_file
       '';
+      mpd_pick = ''
+        set choice (printf "🎵 Play song\n➕ Queue song\n💿 Queue album" | fzf --prompt="Choose action: ")
+
+        switch $choice
+            case "🎵 Play song"
+                mpc listall | fzf --cycle --prompt="🎵 Play song: " | read -l s
+                and mpc add "$s"
+                and mpc play (mpc playlist | wc -l)
+
+            case "➕ Queue song"
+                mpc listall | fzf --cycle --prompt="➕ Queue song: " | read -l s
+                and mpc add "$s"
+
+            case "💿 Queue album"
+                set album (mpc list album | fzf --cycle --prompt="💿 Pick album to queue: ")
+                test -z "$album"; and return
+
+                set album_tracks (mpc find album "$album")
+                test -z "$album_tracks"; and return
+
+                for track in $album_tracks
+                    mpc add "$track"
+            end
+        end
+      '';
     };
 
     plugins = [

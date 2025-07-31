@@ -201,6 +201,15 @@
           block-out-from = "screen-capture";
         }
         {
+          matches = [
+            { app-id = "music-picker"; }
+          ];
+          open-floating = true;
+          default-floating-position = { x = 0; y = 0; relative-to = "top"; };
+          default-window-height = { proportion = 0.5; };
+          default-column-width = { proportion = 0.5; };
+        }
+        {
           matches = [ ];
           geometry-corner-radius = {
             bottom-left = 12.0;
@@ -311,8 +320,8 @@
         "Mod+WheelScrollDown".action = focus-column-right;
         "Mod+Shift+WheelScrollUp".action = focus-window-or-workspace-up;
         "Mod+Shift+WheelScrollDown".action = focus-window-or-workspace-down;
-        "Mod+U".action = focus-workspace-down;
-        "Mod+I".action = focus-workspace-up;
+        # "Mod+U".action = focus-workspace-down;
+        # "Mod+I".action = focus-workspace-up;
         "Mod+Shift+U".action = move-column-to-workspace-down;
         "Mod+Shift+I".action = move-column-to-workspace-up;
         "Mod+V".action = toggle-window-floating;
@@ -342,6 +351,10 @@
         "Mod+D".action.spawn = "supersonic";
         "Mod+N".action.spawn = "keepassxc";
         "Mod+T".action.spawn = "soffice";
+        "Mod+U".action.spawn = [ "mpc" "prev" ];
+        "Mod+I".action.spawn = [ "mpc" "toggle" ];
+        "Mod+O".action.spawn = [ "mpc" "next" ];
+        "Mod+P".action.spawn = [ "kitty" "--class" "music-picker" "fish" "-c" "mpd_pick" ];
         "Mod+Shift+T".action.spawn = "gnome-system-monitor";
         "Mod+Shift+C".action.spawn = [
           "hyprlock"

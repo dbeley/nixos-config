@@ -4,8 +4,6 @@
     enable = true;
     settings = {
       font-size = lib.mkForce "25";
-      font-features = "";
-      font-variations = "";
       hint-font = true;
       prompt-background-padding = 0;
       prompt-background-corner-radius = 0;
@@ -19,7 +17,6 @@
       selection-background-corner-radius = 0;
       prompt-text = "run: ";
       prompt-padding = 0;
-      placeholder-text = "";
       num-results = 10;
       result-spacing = 25;
       horizontal = false;
@@ -34,7 +31,6 @@
       padding-right = "35%";
       clip-to-padding = true;
       scale = true;
-      output = "";
       anchor = "center";
       exclusive-zone = -1;
       margin-top = 0;
