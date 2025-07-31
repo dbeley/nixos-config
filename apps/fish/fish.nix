@@ -132,8 +132,8 @@
         crop=1080:1920
         " -c:v libx264 -c:a aac -preset medium -crf 23 -maxrate 5M -bufsize 10M $output_file
       '';
-      mpd_pick = ''
-        set choice (printf "🎵 Play song\n➕ Queue song\n💿 Queue album" | fzf --prompt="Choose action: ")
+      mpd_picker = ''
+        set choice (printf "🎵 Play song\n➕ Queue song\n💿 Queue album\n🎤 Browse artist" | fzf --prompt="Choose action: ")
 
         switch $choice
             case "🎵 Play song"
@@ -155,7 +155,27 @@
                 for track in $album_tracks
                     mpc add "$track"
             end
+            case "🎤 Browse artist"
+                set artist (mpc list albumartist | fzf --cycle --prompt="🎤 Pick artist: ")
+                test -z "$artist"; and return
+
+                set album (mpc list album albumartist "$artist" | fzf --cycle --prompt="💿 Pick album from '$artist': ")
+                test -z "$album"; and return
+
+                set album_tracks (mpc find albumartist "$artist" album "$album")
+                test -z "$album_tracks"; and return
+
+                for track in $album_tracks
+                    mpc add "$track"
+            end
         end
+      '';
+      real_book_picker = ''
+        fd . ~/Nextcloud/20-29_Médias/20_Partitions/20.05_Real-Books-Individual-Songs -e pdf \
+        | awk '{print gensub(".*/", "", "g") "\t" $0}' \
+        | fzf --with-nth=1 --delimiter='\t' --prompt="🎷 Real Book Sheet: " \
+              --bind 'enter:execute-silent(setsid zathura {2} >/dev/null 2>&1 < /dev/null &)+abort'
+        kill $fish_pid
       '';
     };
 

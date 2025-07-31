@@ -202,7 +202,8 @@
         }
         {
           matches = [
-            { app-id = "music-picker"; }
+            { app-id = "mpd-picker"; }
+            { app-id = "real-book-picker"; }
           ];
           open-floating = true;
           default-floating-position = { x = 0; y = 0; relative-to = "top"; };
@@ -320,8 +321,8 @@
         "Mod+WheelScrollDown".action = focus-column-right;
         "Mod+Shift+WheelScrollUp".action = focus-window-or-workspace-up;
         "Mod+Shift+WheelScrollDown".action = focus-window-or-workspace-down;
-        # "Mod+U".action = focus-workspace-down;
-        # "Mod+I".action = focus-workspace-up;
+        "Mod+U".action = focus-workspace-down;
+        "Mod+I".action = focus-workspace-up;
         "Mod+Shift+U".action = move-column-to-workspace-down;
         "Mod+Shift+I".action = move-column-to-workspace-up;
         "Mod+V".action = toggle-window-floating;
@@ -351,10 +352,11 @@
         "Mod+D".action.spawn = "supersonic";
         "Mod+N".action.spawn = "keepassxc";
         "Mod+T".action.spawn = "soffice";
-        "Mod+U".action.spawn = [ "mpc" "prev" ];
-        "Mod+I".action.spawn = [ "mpc" "toggle" ];
-        "Mod+O".action.spawn = [ "mpc" "next" ];
-        "Mod+P".action.spawn = [ "kitty" "--class" "music-picker" "fish" "-c" "mpd_pick" ];
+        "Mod+F1".action.spawn = [ "kitty" "--class" "mpd-picker" "fish" "-c" "mpd_picker" ];
+        "Mod+F2".action.spawn = [ "mpc" "toggle" ];
+        "Mod+F3".action.spawn = [ "mpc" "prev" ];
+        "Mod+F4".action.spawn = [ "mpc" "next" ];
+        "Mod+F8".action.spawn = [ "kitty" "--class" "real-book-picker" "fish" "-c" "real_book_picker" ];
         "Mod+Shift+T".action.spawn = "gnome-system-monitor";
         "Mod+Shift+C".action.spawn = [
           "hyprlock"
