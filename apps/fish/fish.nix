@@ -140,10 +140,24 @@
             case "🎵 Search Songs"
                 mpc listall \
                 | fzf --multi \
-                    --prompt="🎵 Songs | Enter: play first • Ctrl-A: queue all > " \
-                    --bind 'enter:execute(echo {+} | head -n1 | while read s; mpc add "$s"; mpc play $(mpc playlist | wc -l); end; echo {+} | tail -n +2 | while read s; mpc add "$s"; end)+abort' \
-                    --bind 'ctrl-a:execute(echo {+} | while read s; mpc add "$s"; end)+abort'
-                return
+                    --prompt="🎵 Enter: play selection • ^A: queue selection > " \
+                    --bind 'enter:execute(
+                        set before (mpc playlist | wc -l);
+                        for s in (string split \n -- {+})
+                            if test -n "$s"
+                                mpc add "$s"
+                            end
+                        end;
+                        set play_index (math $before + 1);
+                        mpc play $play_index
+                    )+abort' \
+                    --bind 'ctrl-a:execute(
+                        for s in (string split \n -- {+})
+                            if test -n "$s"
+                                mpc add "$s"
+                            end
+                        end
+                    )+abort'
 
             case "👤 Search Artists"
                 set artist (mpc list albumartist | fzf --prompt="👤 Pick artist: ")
@@ -152,13 +166,40 @@
                 set album (mpc list album albumartist "$artist" | fzf --prompt="💿 Pick album: ")
                 test -z "$album"; and return
 
-                mpc find albumartist "$artist" album "$album" | fzf --multi --prompt="🎧 '$album' by $artist | Enter: play all songs • Ctrl-A: queue all • Ctrl-E: play selection • Ctrl-G: queue selection > " \
-                    --bind 'enter:execute(for t in (mpc find albumartist "'"$artist"'" album "'"$album"'"); mpc add "$t"; end; mpc play $(mpc playlist | wc -l);)+abort' \
-                    --bind 'ctrl-a:execute(for t in (mpc find albumartist "'"$artist"'" album "'"$album"'"); mpc add "$t"; end)+abort' \
-                    --bind 'ctrl-e:execute(echo {+} | head -n1 | while read s; mpc add "$s"; mpc play $(mpc playlist | wc -l); end; echo {+} | tail -n +2 | while read s; mpc add "$s"; end)+abort' \
-                    --bind 'ctrl-g:execute(echo {+} | while read s; mpc add "$s"; end)+abort'
-                 return
-
+                mpc find albumartist "$artist" album "$album" \
+                | fzf --multi \
+                    --prompt="💿 Enter: play all • ^A: queue all • ^E: play sel. • ^S: queue sel. > " \
+                    --bind 'enter:execute(
+                        set tracks (mpc find albumartist "'"$artist"'" album "'"$album"'");
+                        set before (mpc playlist | wc -l);
+                        for t in $tracks
+                            mpc add "$t"
+                        end;
+                        set play_index (math $before + 1);
+                        mpc play $play_index
+                    )+abort' \
+                    --bind 'ctrl-a:execute(
+                        for t in (mpc find albumartist "'"$artist"'" album "'"$album"'")
+                            mpc add "$t"
+                        end
+                    )+abort' \
+                    --bind 'ctrl-e:execute(
+                        set before (mpc playlist | wc -l);
+                        for s in (string split \n -- {+})
+                            if test -n "$s"
+                                mpc add "$s"
+                            end
+                        end;
+                        set play_index (math $before + 1);
+                        mpc play $play_index
+                    )+abort' \
+                    --bind 'ctrl-s:execute(
+                        for s in (string split \n -- {+})
+                            if test -n "$s"
+                                mpc add "$s"
+                            end
+                        end
+                    )+abort'
         end
       '';
       real_book_picker = ''
