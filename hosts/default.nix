@@ -173,6 +173,9 @@ let
     moonlight = {
       home = [ ../apps/moonlight/moonlight.nix ];
     };
+    lact = {
+      system = [ ../apps/lact/default.nix ];
+    };
   };
   mkHost =
     {
@@ -410,6 +413,7 @@ in
       "gnome"
       "steam"
       "sunshine"
+      "lact"
       "firefox"
       "chromium"
       "python"
@@ -419,6 +423,13 @@ in
       inputs.nixos-hardware.nixosModules.common-gpu-amd
       {
         my.stylix.wallpaper = "hk-plant";
+      }
+      {
+        my.lact = {
+          enable = true;
+          gpuId = "0000:00:00.0";
+          maxVoltage = 950;
+        };
       }
     ];
     extraHomeModules = [
