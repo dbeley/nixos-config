@@ -5,7 +5,7 @@
 }:
 {
   home.packages = with pkgs; [
-    audacity
+    # audacity
     beets
     borgbackup
     borgmatic
