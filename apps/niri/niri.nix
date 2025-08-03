@@ -206,9 +206,17 @@
             { app-id = "real-book-picker"; }
           ];
           open-floating = true;
-          default-floating-position = { x = 0; y = 0; relative-to = "top"; };
-          default-window-height = { proportion = 0.3; };
-          default-column-width = { proportion = 0.4; };
+          default-floating-position = {
+            x = 0;
+            y = 0;
+            relative-to = "top";
+          };
+          default-window-height = {
+            proportion = 0.3;
+          };
+          default-column-width = {
+            proportion = 0.4;
+          };
         }
         {
           matches = [ ];
@@ -352,11 +360,34 @@
         "Mod+D".action.spawn = "supersonic";
         "Mod+N".action.spawn = "keepassxc";
         "Mod+T".action.spawn = "soffice";
-        "Mod+F1".action.spawn = [ "kitty" "--class" "mpd-picker" "fish" "-c" "mpd_picker" ];
-        "Mod+F2".action.spawn = [ "mpc" "toggle" ];
-        "Mod+F3".action.spawn = [ "mpc" "prev" ];
-        "Mod+F4".action.spawn = [ "mpc" "next" ];
-        "Mod+F8".action.spawn = [ "kitty" "--class" "real-book-picker" "fish" "-c" "real_book_picker" ];
+        "Mod+F1".action.spawn = [
+          "kitty"
+          "--class"
+          "mpd-picker"
+          "fish"
+          "-c"
+          "mpd_picker"
+        ];
+        "Mod+F2".action.spawn = [
+          "mpc"
+          "toggle"
+        ];
+        "Mod+F3".action.spawn = [
+          "mpc"
+          "prev"
+        ];
+        "Mod+F4".action.spawn = [
+          "mpc"
+          "next"
+        ];
+        "Mod+F8".action.spawn = [
+          "kitty"
+          "--class"
+          "real-book-picker"
+          "fish"
+          "-c"
+          "real_book_picker"
+        ];
         "Mod+Shift+T".action.spawn = "gnome-system-monitor";
         "Mod+Shift+C".action.spawn = [
           "hyprlock"
