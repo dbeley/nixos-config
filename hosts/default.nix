@@ -369,6 +369,10 @@ in
         my.stylix.wallpaper = "blue-planet";
       }
     ];
+    extraHomeModules = [
+      ../apps/claude/claude.nix
+      ../apps/codex/codex.nix
+    ];
   };
   latitude = mkHost {
     hostName = "latitude";
