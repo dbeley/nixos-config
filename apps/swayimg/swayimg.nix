@@ -25,6 +25,10 @@
         "Shift+z" = "zoom fill";
         bracketleft = "rotate_left";
         bracketright = "rotate_right";
+        d = "info";
+        "Shift+d" = "info";
+        i = "zoom +10";
+        u = "zoom -10";
       };
     };
   };
