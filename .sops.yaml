@@ -1,0 +1,10 @@
+# SOPS configuration for nixos-config
+# Replace age1example... with your actual Age public key
+keys:
+  - &main age1exampleexampleexampleexamplexxxxxxxxxxxxxxxxxxxx
+
+creation_rules:
+  - path_regex: secrets/.*\.(yaml|yml|json|env)$
+    key_groups:
+      - age:
+          - *main

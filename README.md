@@ -37,6 +37,7 @@
 - Configuration for common hardware with `nixos-hardware`
 - Automatic microcode updates for AMD CPUs with `ucodenix`
 - Automatic development shells with `direnv` and `shell.nix`
+- Secrets management with [`sops-nix`](https://github.com/Mic92/sops-nix)
 - My own custom packages including [`autoscreen`](./apps/autoscreen/) (tool to take screenshots randomly each hour) and [`mpdscrobble`](./apps/mpdscrobble/) (utility to send MPD listening history to Last.fm)
 - [`mpv` configuration with plugins](./apps/mpv/mpv.nix)
 - [`nnn` configuration with plugins and bookmarks](./apps/nnn/nnn.nix)
@@ -91,6 +92,51 @@ For the recipes to work properly, create a `.env` and fill it with the needed en
 ```
 HOST=x13
 ```
+
+## Secrets management with sops-nix
+
+This configuration can manage secrets with [sops-nix](https://github.com/Mic92/sops-nix). All secrets are stored encrypted in the `secrets/` directory and decrypted during activation.
+
+### Generate an Age key
+
+Create an Age key pair and keep the private key outside the repository:
+
+```
+age-keygen -o ~/.config/sops/age/keys.txt
+```
+
+Copy the printed public key and replace the placeholder in [`.sops.yaml`](./.sops.yaml).
+
+### Encrypt secrets
+
+Add or edit your encrypted secrets file:
+
+```
+mkdir -p secrets
+sops secrets/secrets.yaml
+```
+
+Example structure:
+
+```yaml
+ssh:
+  id_ed25519: |
+    -----BEGIN OPENSSH PRIVATE KEY-----
+    ...
+nextcloud:
+  password: my-password
+```
+
+Save and commit the encrypted file. Only the private Age key must remain uncommitted.
+
+### Use secrets in the system
+
+Enable the `secrets` profile for a host in `hosts/default.nix`. The module installs the secrets at runtime:
+
+* `ssh/id_ed25519` → `~/.ssh/id_ed25519`
+* `nextcloud/password` → `~/.config/nextcloud/credentials`
+
+Additional secrets can be added to `secrets/secrets.yaml` following the same pattern.
 
 ## Install
 
@@ -148,7 +194,6 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 
 Some tools and utilities to test
 
-- sops-nix
 - nixos-generators
 - git-hooks
 - nh

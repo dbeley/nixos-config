@@ -35,6 +35,11 @@ let
         ../modules/common/openssh-server.nix
       ];
     };
+    secrets = {
+      system = [
+        ../modules/common/sops.nix
+      ];
+    };
     personal = {
       home = [
         ../apps/ledger/ledger.nix
