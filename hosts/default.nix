@@ -30,6 +30,16 @@ let
         ../modules/common/bootloader-grub-uefi.nix
       ];
     };
+    sops = {
+      system = [
+        inputs.sops-nix.nixosModules.sops
+        ../modules/sops/default.nix
+      ];
+      home = [
+        inputs.sops-nix.homeManagerModules.sops
+        ../modules/sops/sops.nix
+      ];
+    };
     openssh-server = {
       system = [
         ../modules/common/openssh-server.nix
@@ -39,8 +49,7 @@ let
       home = [
         ../apps/ledger/ledger.nix
         ../apps/mpv/mpv.nix
-        # ../apps/nextcloud-client/nextcloud-client.nix
-        ../apps/nextcloud-client-rclone/nextcloud-client-rclone.nix
+        ../apps/nextcloud-client/nextcloud-client.nix
       ];
     };
     niri = {
@@ -222,8 +231,6 @@ let
         ../apps/stylix/default.nix
         ../apps/udiskie/default.nix
         inputs.home-manager.nixosModules.home-manager
-        inputs.sops-nix.nixosModules.sops
-        ../modules/sops/default.nix
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -354,6 +361,7 @@ in
       "laptop"
       "bootloader-systemd-boot"
       "personal"
+      "sops"
       "niri"
       "steam"
       "android-tools"
