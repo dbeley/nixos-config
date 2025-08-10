@@ -221,6 +221,8 @@ let
         ../apps/stylix/default.nix
         ../apps/udiskie/default.nix
         inputs.home-manager.nixosModules.home-manager
+        inputs.sops-nix.nixosModules.sops
+        ../modules/sops/default.nix
         {
           home-manager = {
             useGlobalPkgs = true;
