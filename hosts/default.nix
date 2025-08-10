@@ -39,7 +39,8 @@ let
       home = [
         ../apps/ledger/ledger.nix
         ../apps/mpv/mpv.nix
-        ../apps/nextcloud-client/nextcloud-client.nix
+        # ../apps/nextcloud-client/nextcloud-client.nix
+        ../apps/nextcloud-client-rclone/nextcloud-client-rclone.nix
       ];
     };
     niri = {
