@@ -29,9 +29,11 @@
         # Open in editor with admin rights
         s = "-!sudo -e \\$nnn*";
         # Open folder images recursively in a sequential order
-        g = "-!fd -e png -e jpg -X eza --sort newest | swayimg";
+        g = "-!swayimg -r -o mtime";
+        G = "-!swayimg -r -o mtime --gallery";
         # Open folder images recursively in a random order
-        r = "-!fd -e png -e jpg | shuf | swayimg";
+        r = "-!swayimg -r -o random";
+        R = "-!swayimg -r -o random --gallery";
         x = "togglex";
       };
       src =

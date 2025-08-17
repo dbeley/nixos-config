@@ -8,6 +8,7 @@
       };
       viewer = {
         scale = "fit";
+        preload = 5;
       };
       list = {
         all = "yes";
@@ -29,6 +30,14 @@
         "Shift+d" = "info";
         i = "zoom +10";
         u = "zoom -10";
+        r = "rand_file";
+      };
+      "keys.gallery" = {
+        h = "step_left";
+        j = "step_down";
+        k = "step_up";
+        l = "step_right";
+        
       };
     };
   };
