@@ -13,6 +13,9 @@
       list = {
         all = "yes";
       };
+      gallery = {
+        preload = "yes";
+      };
       "keys.viewer" = {
         p = "prev_file";
         n = "next_file";
@@ -37,7 +40,6 @@
         j = "step_down";
         k = "step_up";
         l = "step_right";
-        
       };
     };
   };
