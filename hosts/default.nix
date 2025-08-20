@@ -300,10 +300,10 @@ in
       {
         my.stylix.wallpaper = "abstract-light-rays";
       }
-      ../apps/cursor/default.nix
     ];
     extraHomeModules = [
       ../apps/gemini/gemini.nix
+      ../apps/cursor/cursor.nix
     ];
   };
   x1yoga = mkHost {
@@ -404,7 +404,6 @@ in
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       ../modules/common/laptop-thermald.nix
       ../modules/common/printing.nix
-      ../apps/cursor/default.nix
       {
         my.stylix.wallpaper = "hk-plant";
       }
@@ -413,6 +412,7 @@ in
       ../apps/pycharm-professional/pycharm.nix
       ../apps/gemini/gemini.nix
       ../apps/claude/claude.nix
+      ../apps/cursor/cursor.nix
     ];
   };
   sg13 = mkHost {
