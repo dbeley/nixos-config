@@ -415,6 +415,33 @@ in
       ../apps/cursor/cursor.nix
     ];
   };
+  letsnote = mkHost {
+    hostName = "letsnote";
+    stateVersion = "25.05";
+    profiles = [
+      "laptop"
+      "impermanence"
+      "bootloader-systemd-boot"
+      "personal"
+      "gnome"
+      "steam"
+      "firefox"
+      # "chromium"
+      "python"
+    ];
+    extraModules = [
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
+      inputs.nixos-hardware.nixosModules.common-gpu-intel
+      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      {
+        my.stylix.wallpaper = "blue-planet";
+      }
+      ../modules/common/laptop-thermald.nix
+      ../modules/common/screen-rotation.nix
+    ];
+    extraHomeModules = [
+    ];
+  };
   sg13 = mkHost {
     hostName = "sg13";
     stateVersion = "24.11";
