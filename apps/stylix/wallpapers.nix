@@ -14,7 +14,7 @@
         url = "https://images.unsplash.com/photo-1542052605271-43cf9ff1609f";
         sha256 = "aR1JAQLBisLuz2Gd9ARV8qW0ePQqMpUiLq7teth2p4Q=";
       };
-      imageScalingMode = "fit";
+      imageScalingMode = "fill";
     };
     "hk-plant" = {
       image = pkgs.fetchurl {

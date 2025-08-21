@@ -26,12 +26,4 @@
       toolkit-accessibility = lib.mkForce true;
     };
   };
-  xdg.mimeApps = {
-    defaultApplications = {
-      "application/pdf" = lib.mkForce [
-        "org.gnome.Papers.desktop"
-        "org.pwmt.zathura.desktop"
-      ];
-    };
-  };
 }

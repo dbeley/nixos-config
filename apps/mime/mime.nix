@@ -33,8 +33,8 @@
         "application/mxf" = [ "mpv.desktop" ];
         "application/ogg" = [ "mpv.desktop" ];
         "application/pdf" = [
-          "org.pwmt.zathura.desktop"
           "org.gnome.Papers.desktop"
+          "org.pwmt.zathura.desktop"
         ];
         "application/vnd.comicbook+zip" = [ "org.pwmt.zathura.desktop" ];
         "application/vnd.comicbook-rar" = [ "org.pwmt.zathura.desktop" ];
