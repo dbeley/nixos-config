@@ -69,6 +69,14 @@ with lib.hm.gvariant;
       enabled-extensions = [
         "no-overview@fthx"
       ];
+      favorite-apps = [
+        "org.gnome.Nautilus.desktop"
+        "kitty.desktop"
+        "firefox.desktop"
+        "org.keepassxc.KeePassXC.desktop"
+        "steam.desktop"
+        "org.gnome.SystemMonitor.desktop"
+      ];
     };
   };
 }
