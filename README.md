@@ -55,7 +55,7 @@
 - **sg13**: Silverstone SG13 (AMD Ryzen 5 2600, RTX 3070, 16GB RAM, gnome)
 - **x61s**: Lenovo Thinkpad X61s (Intel Core 2 Duo L7500, 3GB RAM, sway)
 - **latitude**: Dell Latitude 7420 (Intel Core i7-1165G7, 16GB RAM, hyprland)
-- **letsnote**: Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, 8GB RAM, gnome)
+- **letsnote**: Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, 8GB RAM, gnome, impermanence)
 
 ## Common Usage
 
