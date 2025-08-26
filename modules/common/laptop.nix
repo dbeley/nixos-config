@@ -21,7 +21,11 @@
   };
   services.blueman.enable = true;
   services.logind = {
-    lidSwitch = "ignore";
-    powerKey = "ignore";
+    settings = {
+      Login = {
+        HandleLidSwitch = "ignore";
+        HandlePowerKey = "ignore";
+      };
+    };
   };
 }
