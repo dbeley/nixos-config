@@ -55,4 +55,9 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  services.tlp.settings = {
+    CPU_BOOST_ON_BAT = lib.mkForce 1;
+    CPU_SCALING_GOVERNOR_ON_BAT = lib.mkForce "performance";
+  };
 }
