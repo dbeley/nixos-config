@@ -9,7 +9,7 @@
     beets
     # musescore
     nautilus
-    # shotcut
+    shotcut
     papers
     supersonic
   ];
