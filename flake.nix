@@ -150,7 +150,6 @@
     cursor = {
       url = "github:thinktankmachine/cursor-nixos-flake";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
     sops-nix = {
       url = "github:Mic92/sops-nix";
