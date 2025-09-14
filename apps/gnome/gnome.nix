@@ -71,7 +71,7 @@ with lib.hm.gvariant;
       ];
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
-        "kitty.desktop"
+        "org.gnome.Terminal.desktop"
         "firefox.desktop"
         "org.keepassxc.KeePassXC.desktop"
         "steam.desktop"
