@@ -5,6 +5,7 @@
 }:
 {
   home.packages = with pkgs; [
+    beets
     gnome-terminal
     nautilus
     supersonic
