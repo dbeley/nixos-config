@@ -302,8 +302,10 @@ in
       }
     ];
     extraHomeModules = [
-      ../apps/gemini/gemini.nix
-      ../apps/cursor/cursor.nix
+      # ../apps/claude/claude.nix
+      # ../apps/cursor/cursor.nix
+      # ../apps/gemini/gemini.nix
+      ../apps/codex/codex.nix
     ];
   };
   x1yoga = mkHost {

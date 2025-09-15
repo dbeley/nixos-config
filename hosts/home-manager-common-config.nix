@@ -46,4 +46,13 @@
     unzip
     yt-dlp
   ];
+
+  dconf.settings = {
+    "org/gnome/gnome-system-monitor" = {
+      graph-update-interval = 1000;
+      graph-data-points = 600;
+      update-interval = 5000;
+      disks-interval = 10000;
+    };
+  };
 }
