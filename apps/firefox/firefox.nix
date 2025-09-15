@@ -180,6 +180,8 @@
         "browser.tabs.insertAfterCurrent" = true;
         "browser.tabs.loadBookmarksInBackground" = true;
         "browser.tabs.tabmanager.enabled" = false;
+        "browser.theme.content-theme" = 2;
+        "browser.theme.toolbar-theme" = 2;
         "browser.toolbars.bookmarks.visibility" = "never";
         "browser.translation.neverForLanguages" = "fr";
         "browser.uidensity" = 1;
@@ -188,6 +190,7 @@
         "browser.urlbar.suggest.topsites" = false;
         "browser.urlbar.trimURLS" = false;
         "browser.urlbar.unitConversion.enabled" = true;
+        "layout.css.prefers-color-scheme.content-override" = 2;
         "dom.battery.enabled" = false;
         "dom.enable_web_task_scheduling" = true;
         "dom.event.clipboardevents.enabled" = false;
