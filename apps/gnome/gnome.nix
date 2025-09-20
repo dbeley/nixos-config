@@ -5,6 +5,7 @@ with lib.hm.gvariant;
     gnome-tweaks
     gnomeExtensions.no-overview
     gnome-disk-utility
+    gnome-terminal
   ];
   # mostly taken from https://hoverbear.org/blog/declarative-gnome-configuration-in-nixos/
   gtk = {
