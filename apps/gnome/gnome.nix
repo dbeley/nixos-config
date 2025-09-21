@@ -52,6 +52,7 @@ with lib.hm.gvariant;
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       tap-to-click = true;
+      disable-while-typing = false;
     };
     "org/gnome/settings-daemon/plugins/power" = {
       sleep-inactive-ac-type = "nothing";
