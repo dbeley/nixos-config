@@ -75,6 +75,16 @@
             "color" = "turquoise";
           }
           {
+            "name" = "Facebook";
+            "icon" = "fingerprint";
+            "color" = "blue";
+          }
+          {
+            "name" = "Instagram";
+            "icon" = "pet";
+            "color" = "orange";
+          }
+          {
             "name" = "Google";
             "icon" = "chill";
             "color" = "red";
