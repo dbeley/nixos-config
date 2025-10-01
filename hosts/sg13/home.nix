@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     beets
     nautilus
+    papers
     supersonic
   ];
 
