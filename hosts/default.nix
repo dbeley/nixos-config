@@ -68,6 +68,7 @@ let
         ../apps/tofi/tofi.nix
         ../apps/mako/mako.nix
         ../apps/gammastep/gammastep.nix
+        ../apps/kitty/kitty.nix
       ];
     };
     hyprland = {
@@ -86,6 +87,7 @@ let
         ../apps/tofi/tofi.nix
         ../apps/mako/mako.nix
         ../apps/gammastep/gammastep.nix
+        ../apps/kitty/kitty.nix
       ];
     };
     gnome = {
@@ -109,6 +111,7 @@ let
         ../apps/mako/mako.nix
         ../apps/gammastep/gammastep.nix
         ../apps/autoscreen/autoscreen.nix
+        ../apps/kitty/kitty.nix
       ];
     };
     steam = {
@@ -252,7 +255,6 @@ let
                 ../apps/lazygit/lazygit.nix
                 ../apps/fish/fish.nix
                 ../apps/tmux/tmux.nix
-                ../apps/kitty/kitty.nix
                 ../apps/helix/helix.nix
                 ../apps/nnn/nnn.nix
                 ../apps/yazi/yazi.nix
@@ -465,9 +467,6 @@ in
       {
         my.stylix.wallpaper = "hk-plant";
       }
-    ];
-    extraHomeModules = [
-      ../apps/kitty/kitty.nix
     ];
   };
   x61s = mkHost {
