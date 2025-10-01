@@ -295,7 +295,7 @@
         return-youtube-dislikes
         # sidebery
         sponsorblock
-        # steam-database
+        steam-database
         ublock-origin
         vimium
         violentmonkey
