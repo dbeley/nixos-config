@@ -5,7 +5,7 @@
 }:
 {
   home.packages = with pkgs; [
-    # audacity
+    audacity
     beets
     borgbackup
     borgmatic
@@ -16,6 +16,7 @@
     nautilus
     papers
     shotcut
+    transcribe
     wvkbd
   ];
   dconf.settings = {
