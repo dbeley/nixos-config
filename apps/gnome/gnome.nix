@@ -44,6 +44,12 @@ with lib.hm.gvariant;
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,maximize,close";
     };
+    "org/gnome/desktop/wm/keybindings" = {
+      "switch-applications" = [ ];
+      "switch-applications-backward" = [ ];
+      "switch-windows" = [ "<Alt>Tab" ];
+      "switch-windows-backward" = [ "<Alt><Shift>Tab" ];
+    };
     "org/gnome/desktop/session" = {
       idle-delay = mkUint32 0;
     };
