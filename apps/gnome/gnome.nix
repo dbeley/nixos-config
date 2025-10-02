@@ -1,6 +1,11 @@
 { pkgs, lib, ... }:
 with lib.hm.gvariant;
 {
+  # Ensure user services that hook into graphical-session.target (for example
+  # the Nextcloud client) are started automatically when the GNOME session
+  # comes up.
+  systemd.user.enableGraphicalSession = true;
+
   home.packages = with pkgs; [
     gnome-tweaks
     gnomeExtensions.no-overview
