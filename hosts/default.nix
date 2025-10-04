@@ -455,7 +455,7 @@ in
       "openssh-server"
       "gnome"
       "steam"
-      "sunshine"
+      # "sunshine"
       "firefox"
       "chromium"
       "python"
