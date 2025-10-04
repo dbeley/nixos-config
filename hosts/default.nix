@@ -469,6 +469,9 @@ in
         my.stylix.wallpaper = "hk-plant";
       }
     ];
+    extraHomeModules = [
+      ../apps/codex/codex.nix
+    ];
   };
   x61s = mkHost {
     hostName = "x61s";
