@@ -24,7 +24,7 @@ let
       if /run/current-system/sw/bin/nvidia-smi -pm 1; then
         break
       fi
-      if [ "${attempt}" -eq 5 ]; then
+      if [ "$attempt" -eq 5 ]; then
         exit 1
       fi
       sleep 2
