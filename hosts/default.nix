@@ -186,6 +186,14 @@ let
     moonlight = {
       home = [ ../apps/moonlight/moonlight.nix ];
     };
+    code-agents = {
+      home = [
+        # ../apps/claude/claude.nix
+        # ../apps/gemini/gemini.nix
+        ../apps/codex/codex.nix
+        ../apps/cursor/cursor.nix
+      ];
+    };
   };
   mkHost =
     {
@@ -296,18 +304,13 @@ in
       "chromium"
       "mpd"
       "python"
+      "code-agents"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
       {
         my.stylix.wallpaper = "abstract-light-rays";
       }
-    ];
-    extraHomeModules = [
-      # ../apps/claude/claude.nix
-      # ../apps/cursor/cursor.nix
-      # ../apps/gemini/gemini.nix
-      ../apps/codex/codex.nix
     ];
   };
   x1yoga = mkHost {
@@ -374,7 +377,7 @@ in
       "mpd"
       "python"
       "obs"
-      "moonlight"
+      "code-agents"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -383,10 +386,6 @@ in
       {
         my.stylix.wallpaper = "blue-planet";
       }
-    ];
-    extraHomeModules = [
-      ../apps/claude/claude.nix
-      ../apps/codex/codex.nix
     ];
   };
   latitude = mkHost {
@@ -398,9 +397,10 @@ in
       "niri"
       "python"
       "docker"
-      "neovim-nvf"
+      # "neovim-nvf"
       "firefox"
       "vscode"
+      "code-agents"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -414,9 +414,6 @@ in
     ];
     extraHomeModules = [
       ../apps/pycharm-professional/pycharm.nix
-      ../apps/gemini/gemini.nix
-      ../apps/claude/claude.nix
-      ../apps/cursor/cursor.nix
     ];
   };
   letsnote = mkHost {
@@ -430,7 +427,7 @@ in
       "gnome"
       "steam"
       "firefox"
-      # "chromium"
+      "chromium"
       "python"
     ];
     extraModules = [
@@ -443,8 +440,6 @@ in
       ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
     ];
-    extraHomeModules = [
-    ];
   };
   sg13 = mkHost {
     hostName = "sg13";
@@ -455,10 +450,10 @@ in
       "openssh-server"
       "gnome"
       "steam"
-      # "sunshine"
       "firefox"
       "chromium"
       "python"
+      "code-agents"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-amd
@@ -467,9 +462,6 @@ in
       {
         my.stylix.wallpaper = "hk-plant";
       }
-    ];
-    extraHomeModules = [
-      ../apps/codex/codex.nix
     ];
   };
   x61s = mkHost {
