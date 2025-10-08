@@ -147,12 +147,13 @@
   # services.openssh.enable = true;
 
   nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes ca-derivations
-      keep-outputs = true
-      keep-derivations = true
-    '';
     settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      keep-outputs = true;
+      keep-derivations = true;
       substituters = [
         "https://cache.nixos.org"
       ];
