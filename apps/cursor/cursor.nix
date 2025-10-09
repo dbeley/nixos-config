@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ pkgs, ... }:
 {
-  home.packages = [ inputs.cursor.packages.x86_64-linux.cursor ];
+  home.packages = [ pkgs.code-cursor ];
 }

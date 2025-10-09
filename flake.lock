@@ -117,26 +117,6 @@
         "type": "github"
       }
     },
-    "cursor": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1758681788,
-        "narHash": "sha256-n0rbPBGMe4PDJjGPDPVZjElQSBukTZA20B3ynMV0+WI=",
-        "owner": "thinktankmachine",
-        "repo": "cursor-nixos-flake",
-        "rev": "25890c795884b0cd0d8cb321622eb3be556d1501",
-        "type": "github"
-      },
-      "original": {
-        "owner": "thinktankmachine",
-        "repo": "cursor-nixos-flake",
-        "type": "github"
-      }
-    },
     "devshell": {
       "inputs": {
         "nixpkgs": [
@@ -1008,7 +988,6 @@
     "root": {
       "inputs": {
         "base16": "base16",
-        "cursor": "cursor",
         "devshell": "devshell",
         "disko": "disko",
         "flake-compat": "flake-compat",

@@ -8,7 +8,7 @@
 
   systemd.user.services.nextcloud-client = {
     Unit = {
-      After = pkgs.lib.mkForce "graphical-session.target"; 
+      After = pkgs.lib.mkForce "graphical-session.target";
     };
   };
 }
