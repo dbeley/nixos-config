@@ -48,11 +48,11 @@
 
 ## Hosts
 
+- **sg13**: Silverstone SG13 (AMD Ryzen 9 5950X, RTX 3070, 32GB RAM, gnome)
 - **p14s**: Lenovo ThinkPad P14s Gen 4 (AMD Ryzen 7 7840U, 16GB RAM, niri, impermanence)
 - **vaio**: Sony Vaio Pro PK13 (Intel Core i5-1035G1, 16GB RAM, niri)
 - **x13**: Lenovo ThinkPad X13 Gen 1 (AMD Ryzen 5 4650U, 16GB RAM, niri, impermanence)
 - **x1yoga**: Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, 8GB RAM, gnome, impermanence)
-- **sg13**: Silverstone SG13 (AMD Ryzen 5 2600, RTX 3070, 16GB RAM, gnome)
 - **x61s**: Lenovo Thinkpad X61s (Intel Core 2 Duo L7500, 3GB RAM, sway)
 - **latitude**: Dell Latitude 7420 (Intel Core i7-1165G7, 16GB RAM, hyprland)
 - **letsnote**: Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, 8GB RAM, gnome, impermanence)
