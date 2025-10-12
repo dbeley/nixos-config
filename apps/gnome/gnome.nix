@@ -6,6 +6,14 @@ with lib.hm.gvariant;
     gnomeExtensions.no-overview
     gnome-disk-utility
     gnome-terminal
+    totem
+    # Ensure Totem has the GStreamer GL/codec plugins it needs at runtime
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-bad
+    gst_all_1.gst-plugins-ugly
+    gst_all_1.gst-libav
+    gst_all_1.gst-vaapi
   ];
   # mostly taken from https://hoverbear.org/blog/declarative-gnome-configuration-in-nixos/
   gtk = {
@@ -85,6 +93,12 @@ with lib.hm.gvariant;
         "steam.desktop"
         "org.gnome.SystemMonitor.desktop"
       ];
+    };
+  };
+  stylix.targets = {
+    qt = {
+      enable = true;
+      platform = lib.mkForce "qtct";
     };
   };
 }
