@@ -6,9 +6,10 @@
       horizontal = true;
       battery = true;
       cpu_stats = true;
-      cpu_load = true;
+      # core_load = true;
+      # core_bars = true;
       cpu_temp = true;
-      cpu_power = true;
+      # cpu_power = true;
       gpu_stats = true;
       gpu_load = true;
       gpu_temp = true;

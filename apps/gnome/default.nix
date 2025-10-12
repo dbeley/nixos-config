@@ -1,4 +1,4 @@
-{ user, config, pkgs, lib, ... }:
+{ user, pkgs, lib, ... }:
 {
   config = {
     services.displayManager = {
