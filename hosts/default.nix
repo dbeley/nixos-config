@@ -459,6 +459,7 @@ in
       inputs.nixos-hardware.nixosModules.common-cpu-amd
       inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
       (inputs.nixos-hardware + "/common/gpu/nvidia/ampere")
+      ../apps/boinc/default.nix
       {
         my.stylix.wallpaper = "hk-plant";
       }
