@@ -9,14 +9,15 @@
   services.boinc = {
     enable = true;
     allowRemoteGuiRpc = true;
-    extraEnvPackages =
-      with pkgs;
-      [
-        ocl-icd
-      ];
+    extraEnvPackages = with pkgs; [
+      ocl-icd
+    ];
   };
 
-  users.users.boinc.extraGroups = [ "video" "render" ];
+  users.users.boinc.extraGroups = [
+    "video"
+    "render"
+  ];
 
   environment.systemPackages = [
     pkgs.boinc
@@ -25,6 +26,7 @@
 
   users.users.${user}.extraGroups = lib.mkAfter [ "boinc" ];
 
-  networking.firewall.allowedTCPPorts =
-    lib.optionals config.services.boinc.allowRemoteGuiRpc [ 31416 ];
+  networking.firewall.allowedTCPPorts = lib.optionals config.services.boinc.allowRemoteGuiRpc [
+    31416
+  ];
 }
