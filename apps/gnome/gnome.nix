@@ -1,12 +1,14 @@
 { pkgs, lib, ... }:
 with lib.hm.gvariant;
 {
-  home.packages = with pkgs; [
-    gnome-tweaks
-    gnomeExtensions.no-overview
-    gnome-disk-utility
-    gnome-terminal
-  ];
+  home.packages = with pkgs;
+    [
+      gnome-tweaks
+      gnomeExtensions.no-overview
+      gnome-disk-utility
+      gnome-terminal
+      showtime
+    ];
   # mostly taken from https://hoverbear.org/blog/declarative-gnome-configuration-in-nixos/
   gtk = {
     enable = true;

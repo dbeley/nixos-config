@@ -382,44 +382,158 @@
         "text/x-tcl" = [ "editor.desktop" ];
         "text/x-tex" = [ "editor.desktop" ];
         "text/xml" = [ "editor.desktop" ];
-        "video/3gp" = [ "mpv.desktop" ];
-        "video/3gpp2" = [ "mpv.desktop" ];
-        "video/3gpp" = [ "mpv.desktop" ];
-        "video/avi" = [ "mpv.desktop" ];
-        "video/divx" = [ "mpv.desktop" ];
-        "video/dv" = [ "mpv.desktop" ];
-        "video/fli" = [ "mpv.desktop" ];
-        "video/flv" = [ "mpv.desktop" ];
-        "video/mkv" = [ "mpv.desktop" ];
-        "video/mp2t" = [ "mpv.desktop" ];
-        "video/mp4" = [ "mpv.desktop" ];
-        "video/mp4v-es" = [ "mpv.desktop" ];
-        "video/mpeg" = [ "mpv.desktop" ];
-        "video/msvideo" = [ "mpv.desktop" ];
-        "video/ogg" = [ "mpv.desktop" ];
-        "video/quicktime" = [ "mpv.desktop" ];
-        "video/vnd.divx" = [ "mpv.desktop" ];
-        "video/vnd.mpegurl" = [ "mpv.desktop" ];
-        "video/vnd.rn-realvideo" = [ "mpv.desktop" ];
-        "video/webm" = [ "mpv.desktop" ];
-        "video/x-avi" = [ "mpv.desktop" ];
-        "video/x-flc" = [ "mpv.desktop" ];
-        "video/x-flic" = [ "mpv.desktop" ];
-        "video/x-flv" = [ "mpv.desktop" ];
-        "video/x-m4v" = [ "mpv.desktop" ];
-        "video/x-matroska" = [ "mpv.desktop" ];
-        "video/x-mpeg2" = [ "mpv.desktop" ];
-        "video/x-mpeg3" = [ "mpv.desktop" ];
-        "video/x-ms-afs" = [ "mpv.desktop" ];
-        "video/x-ms-asf" = [ "mpv.desktop" ];
-        "video/x-ms-wmv" = [ "mpv.desktop" ];
-        "video/x-ms-wmx" = [ "mpv.desktop" ];
-        "video/x-ms-wvxvideo" = [ "mpv.desktop" ];
-        "video/x-msvideo" = [ "mpv.desktop" ];
-        "video/x-ogm+ogg" = [ "mpv.desktop" ];
-        "video/x-ogm" = [ "mpv.desktop" ];
-        "video/x-theora+ogg" = [ "mpv.desktop" ];
-        "video/x-theora" = [ "mpv.desktop" ];
+        "video/3gp" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/3gpp2" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/3gpp" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/avi" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/divx" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/dv" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/fli" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/flv" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/mkv" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/mp2t" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/mp4" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/mp4v-es" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/mpeg" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/msvideo" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/ogg" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/quicktime" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/vnd.divx" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/vnd.mpegurl" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/vnd.rn-realvideo" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/webm" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-avi" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-flc" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-flic" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-flv" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-m4v" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-matroska" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-mpeg2" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-mpeg3" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-ms-afs" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-ms-asf" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-ms-wmv" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-ms-wmx" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-ms-wvxvideo" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-msvideo" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-ogm+ogg" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-ogm" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-theora+ogg" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
+        "video/x-theora" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
         "x-scheme-handler/callto" = [ "Zoom.desktop" ];
         "x-scheme-handler/ftp" = [ "editor.desktop" ];
         "x-scheme-handler/http" = [ "firefox.desktop" ];
