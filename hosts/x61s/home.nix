@@ -5,6 +5,7 @@
 {
   home.packages = with pkgs; [
     beets
+    btop
     borgbackup
     borgmatic
     supersonic

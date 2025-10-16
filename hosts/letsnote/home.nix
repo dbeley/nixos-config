@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     # audacity
     beets
+    btop
     # musescore
     nautilus
     shotcut

@@ -25,7 +25,6 @@
 
   home.packages = with pkgs; [
     brightnessctl
-    btop-cuda
     cachix
     eza
     fd

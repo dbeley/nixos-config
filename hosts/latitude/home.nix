@@ -7,6 +7,7 @@
 {
   home.packages = with pkgs; [
     gh
+    btop
     nautilus
     supersonic
     google-chrome

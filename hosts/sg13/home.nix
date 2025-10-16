@@ -6,6 +6,7 @@
 {
   home.packages = with pkgs; [
     beets
+    btop-cuda
     nautilus
     papers
     supersonic

@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     audacity
     beets
+    btop-rocm
     borgbackup
     borgmatic
     heroic
