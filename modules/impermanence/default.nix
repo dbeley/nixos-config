@@ -19,6 +19,7 @@
       "/var/lib/fprint"
       "/var/lib/NetworkManager"
       "/var/lib/iwd"
+      "/var/lib/boinc"
       "/etc/NetworkManager/system-connections"
       "/etc/wireguard"
       {

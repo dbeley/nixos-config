@@ -311,6 +311,7 @@ in
       {
         my.stylix.wallpaper = "abstract-light-rays";
       }
+      ../apps/boinc/default.nix
     ];
   };
   x1yoga = mkHost {
