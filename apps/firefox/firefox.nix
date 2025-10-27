@@ -162,6 +162,9 @@
         "browser.formfill.enable" = false;
         "browser.fullscreen.autohide" = false;
         "browser.menu.showViewImageInfo" = true;
+        "browser.ml.chat.menu" = false;
+        "browser.ml.chat.enabled" = false;
+        "browser.ml.linkPreview.optin" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
         "browser.newtabpage.activity-stream.default.sites" = "";
@@ -187,6 +190,7 @@
         "browser.startup.page" = 3;
         "browser.tabs.firefox-view" = false;
         "browser.tabs.firefox-view-next" = false;
+        "browser.tabs.groups.smart.userEnabled" = false;
         "browser.tabs.insertAfterCurrent" = true;
         "browser.tabs.loadBookmarksInBackground" = true;
         "browser.tabs.tabmanager.enabled" = false;
@@ -275,6 +279,7 @@
         "security.ssl.enable_ocsp_must_staple" = true;
         "security.ssl.enable_ocsp_stapling" = true;
         "security.ssl.require_safe_negotiation" = true;
+        "sidebar.notification.badge.aichat" = false;
         "signon.autofillForms" = false;
         "signon.generation.enabled" = false;
         "signon.management.page.breach-alerts.enabled" = false;
