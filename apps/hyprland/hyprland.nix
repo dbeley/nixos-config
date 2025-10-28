@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   config,
+  lib,
   ...
 }:
 {
@@ -195,8 +196,8 @@
       ++ (
         # workspaces
         # binds $MOD + [shift +] {1..9} to [move to] workspace {1..9}
-        builtins.concatLists (
-          builtins.genList (
+        lib.flatten (
+          lib.genList (
             i:
             let
               ws = i;
