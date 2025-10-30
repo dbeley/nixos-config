@@ -115,7 +115,7 @@
       #   overpass
       noto-fonts
       noto-fonts-cjk-sans
-      #   noto-fonts-emoji
+      #   noto-fonts-color-emoji
     ];
     fontconfig = {
       enable = true;
