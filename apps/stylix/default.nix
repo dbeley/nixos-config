@@ -8,7 +8,7 @@
 let
   cfg = config.my.stylix;
   wallpaperCatalog = import ./wallpapers.nix { inherit pkgs; };
-  wallpaperNames = builtins.attrNames wallpaperCatalog.wallpapers;
+  wallpaperNames = lib.attrNames wallpaperCatalog.wallpapers;
 in
 {
   options.my.stylix = {

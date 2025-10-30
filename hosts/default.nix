@@ -207,22 +207,23 @@ let
     }:
     let
       # Extract system modules from profiles
-      systemModules = lib.concatMap (
-        profile:
-        if moduleProfiles ? ${profile} && moduleProfiles.${profile} ? system then
-          moduleProfiles.${profile}.system
-        else
-          [ ]
-      ) profiles;
+      # Using optionals is more efficient than if-then-else for list construction
+      systemModules = lib.flatten (
+        map (
+          profile:
+          lib.optionals (moduleProfiles ? ${profile} && moduleProfiles.${profile} ? system)
+            moduleProfiles.${profile}.system
+        ) profiles
+      );
 
       # Extract home-manager modules from profiles
-      homeModules = lib.concatMap (
-        profile:
-        if moduleProfiles ? ${profile} && moduleProfiles.${profile} ? home then
-          moduleProfiles.${profile}.home
-        else
-          [ ]
-      ) profiles;
+      homeModules = lib.flatten (
+        map (
+          profile:
+          lib.optionals (moduleProfiles ? ${profile} && moduleProfiles.${profile} ? home)
+            moduleProfiles.${profile}.home
+        ) profiles
+      );
     in
     lib.nixosSystem {
       inherit system;

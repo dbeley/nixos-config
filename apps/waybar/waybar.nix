@@ -127,6 +127,6 @@
         };
       }
     ];
-    style = builtins.readFile ./waybar.css;
+    style = lib.readFile ./waybar.css;
   };
 }

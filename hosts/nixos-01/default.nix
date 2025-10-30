@@ -35,7 +35,9 @@ let
       };
     };
 
-  services = lib.foldl' lib.recursiveUpdate { } [
+  # Merge all service configurations efficiently
+  # lib.mergeAttrsList is more efficient than foldl' recursiveUpdate for many small attribute sets
+  services = lib.mergeAttrsList [
     (mkService {
       name = "lidarr";
       image = "lscr.io/linuxserver/lidarr";
