@@ -415,6 +415,7 @@ in
     ];
     extraHomeModules = [
       ../apps/pycharm-professional/pycharm.nix
+      ../apps/gemini/gemini.nix
     ];
   };
   letsnote = mkHost {

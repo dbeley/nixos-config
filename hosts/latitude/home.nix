@@ -15,7 +15,7 @@
     slack
     awscli2
     zoom-us
-    teleport
+    teleport_18
     kubectl
     cloudflared
     google-cloud-sdk
@@ -29,6 +29,7 @@
     insomnia
     nodejs
     postgresql
+    bruno
   ];
 
   programs.firefox.profiles.${user}.extensions.packages = lib.mkMerge [
