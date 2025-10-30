@@ -1,6 +1,6 @@
 { user, pkgs, ... }:
 {
-  home.packages = with pkgs; [ mpc-cli ];
+  home.packages = with pkgs; [ mpc ];
   # home.file = {
   #   "scripts/mpdnotify.conf".text = ''
   #     MUSIC_DIR="~/nfs/WDC14/Musique"
