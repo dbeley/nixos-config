@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   programs.waybar = {
     enable = true;
