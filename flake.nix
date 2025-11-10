@@ -41,14 +41,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
     };
-    hyprland-qtutils = {
-      url = "github:hyprwm/hyprland-qtutils";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-      inputs.hyprutils.follows = "hyprutils";
-      inputs.hyprland-qt-support.follows = "hyprland-qt-support";
-      inputs.hyprlang.follows = "hyprlang";
-    };
     hyprland = {
       url = "github:hyprwm/hyprland";
       # Do not override Hyprland’s nixpkgs input unless you know what you are doing.
@@ -57,7 +49,6 @@
       # inputs.systems.follows = "systems";
       inputs.hyprlang.follows = "hyprlang";
       inputs.pre-commit-hooks.follows = "git-hooks";
-      inputs.hyprland-qtutils.follows = "hyprland-qtutils";
       inputs.hyprutils.follows = "hyprutils";
     };
     hyprland-plugins = {
