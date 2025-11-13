@@ -18,7 +18,7 @@
 
 ## Notable Features
 
-- Support for multiple desktop environments ([`hyprland`](./apps/hyprland/), [`gnome`](./apps/gnome/), [`sway`](./apps/sway/), [`niri`](./apps/niri/))
+- Support for multiple desktop environments ([`niri`](./apps/niri/), [`hyprland`](./apps/hyprland/), [`gnome`](./apps/gnome/), [`sway`](./apps/sway/))
 - [Extensive `niri` configuration](./apps/niri/)
   - Window rules, monitor rules, etc.
 - [Extensive `hyprland` configuration](./apps/hyprland/)
@@ -34,7 +34,7 @@
   - Declarative containers
 - [Declarative partitioning with `disko`](./modules/disko/encrypted-btrfs-impermanence.nix)
 - [Ephemeral file system with `impermanence` on btrfs subvolumes](./modules/impermanence/)
-- Secrets management with `sops-nix`
+- Secrets management with `sops-nix` (unused for now)
 - Configuration for common hardware with `nixos-hardware`
 - Automatic microcode updates for AMD CPUs with `ucodenix`
 - Automatic development shells with `direnv` and `shell.nix`
@@ -54,7 +54,7 @@
 - **x13**: Lenovo ThinkPad X13 Gen 1 (AMD Ryzen 5 4650U, 16GB RAM, niri, impermanence)
 - **x1yoga**: Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, 8GB RAM, gnome, impermanence)
 - **x61s**: Lenovo Thinkpad X61s (Intel Core 2 Duo L7500, 3GB RAM, sway)
-- **latitude**: Dell Latitude 7420 (Intel Core i7-1165G7, 16GB RAM, hyprland)
+- **latitude**: Dell Latitude 7420 (Intel Core i7-1165G7, 16GB RAM, niri)
 - **letsnote**: Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, 8GB RAM, gnome, impermanence)
 
 ## Common Usage
