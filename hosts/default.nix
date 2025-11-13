@@ -401,6 +401,7 @@ in
       "docker"
       # "neovim-nvf"
       "firefox"
+      "qutebrowser"
       "vscode"
       "code-agents"
     ];

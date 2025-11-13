@@ -17,7 +17,7 @@
 
   services.ucodenix = {
     enable = true;
-    cpuModelId = "00A70F41";
+    cpuModelId = "auto";
   };
 
   boot.initrd.availableKernelModules = [
