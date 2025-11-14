@@ -11,7 +11,6 @@
       cpu_temp = true;
       # cpu_power = true;
       gpu_stats = true;
-      gpu_load = true;
       gpu_temp = true;
       gpu_core_clock = true;
       gpu_mem_clock = true;

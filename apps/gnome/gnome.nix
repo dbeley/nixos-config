@@ -8,6 +8,7 @@ with lib.hm.gvariant;
       gnome-disk-utility
       gnome-terminal
       showtime
+      loupe
     ];
   # mostly taken from https://hoverbear.org/blog/declarative-gnome-configuration-in-nixos/
   gtk = {
