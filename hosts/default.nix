@@ -455,7 +455,7 @@ in
       "gnome"
       "steam"
       "firefox"
-      "chromium"
+      # "chromium"
       "python"
       "code-agents"
     ];
@@ -464,9 +464,15 @@ in
       inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
       (inputs.nixos-hardware + "/common/gpu/nvidia/ampere")
       ../apps/boinc/default.nix
+      ../modules/hardware/hid-tmff2.nix
       {
         my.stylix.wallpaper = "hk-plant";
       }
+      ({
+        ...
+      }: {
+        hardware.hid-tmff2.enable = true;
+      })
     ];
   };
   x61s = mkHost {
