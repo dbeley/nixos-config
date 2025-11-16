@@ -328,6 +328,7 @@ in
       "firefox"
       "chromium"
       "python"
+      "code-agents"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
