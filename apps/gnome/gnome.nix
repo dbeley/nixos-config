@@ -90,10 +90,10 @@ with lib.hm.gvariant;
       ];
     };
   };
-  stylix.targets = {
-    qt = {
-      enable = true;
-      platform = lib.mkForce "qtct";
-    };
-  };
+  # stylix.targets = {
+  #   qt = {
+  #     enable = true;
+  #     platform = lib.mkForce "qtct";
+  #   };
+  # };
 }
