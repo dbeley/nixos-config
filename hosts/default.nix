@@ -211,8 +211,9 @@ let
       systemModules = lib.flatten (
         map (
           profile:
-          lib.optionals (moduleProfiles ? ${profile} && moduleProfiles.${profile} ? system)
-            moduleProfiles.${profile}.system
+          lib.optionals (
+            moduleProfiles ? ${profile} && moduleProfiles.${profile} ? system
+          ) moduleProfiles.${profile}.system
         ) profiles
       );
 
@@ -220,8 +221,9 @@ let
       homeModules = lib.flatten (
         map (
           profile:
-          lib.optionals (moduleProfiles ? ${profile} && moduleProfiles.${profile} ? home)
-            moduleProfiles.${profile}.home
+          lib.optionals (
+            moduleProfiles ? ${profile} && moduleProfiles.${profile} ? home
+          ) moduleProfiles.${profile}.home
         ) profiles
       );
     in
@@ -470,11 +472,12 @@ in
       {
         my.stylix.wallpaper = "hk-plant";
       }
-      ({
-        ...
-      }: {
-        hardware.hid-tmff2.enable = true;
-      })
+      (
+        _:
+        {
+          hardware.hid-tmff2.enable = true;
+        }
+      )
     ];
   };
   x61s = mkHost {

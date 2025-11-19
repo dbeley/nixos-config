@@ -26,9 +26,9 @@
     enable = true;
     xwayland.enable = true;
     plugins = [
-      inputs.hyprgrass.packages.${pkgs.system}.default
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
-      inputs.hyprspace.packages.${pkgs.system}.Hyprspace
+      inputs.hyprgrass.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
+      inputs.hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.Hyprspace
     ];
     settings = {
       "$MOD" = "SUPER";

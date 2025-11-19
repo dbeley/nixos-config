@@ -2,7 +2,7 @@
 {
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.systemPackages = [
-    inputs.iio-hyprland.packages.${pkgs.system}.default
+    inputs.iio-hyprland.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
   xdg.portal = {
     enable = true;
