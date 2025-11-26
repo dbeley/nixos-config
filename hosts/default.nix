@@ -337,6 +337,7 @@ in
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
+      ../hosts/x1yoga/throttled.nix
       {
         my.stylix.wallpaper = "purple-waves";
       }
