@@ -337,7 +337,7 @@ in
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
-      ../hosts/x1yoga/throttled.nix
+      ../modules/hardware/throttled.nix
       {
         my.stylix.wallpaper = "purple-waves";
       }
@@ -460,7 +460,7 @@ in
       "gnome"
       "steam"
       "firefox"
-      # "chromium"
+      "chromium"
       "python"
       "code-agents"
     ];
@@ -471,7 +471,7 @@ in
       ../apps/boinc/default.nix
       ../modules/hardware/hid-tmff2.nix
       {
-        my.stylix.wallpaper = "hk-plant";
+        my.stylix.wallpaper = "abstract-light-rays";
       }
       (
         _:
