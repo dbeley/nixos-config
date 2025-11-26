@@ -434,7 +434,7 @@ in
       "gnome"
       "steam"
       "firefox"
-      # "chromium"
+      "chromium"
       "python"
       "code-agents"
     ];

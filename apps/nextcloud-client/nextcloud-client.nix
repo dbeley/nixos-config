@@ -3,7 +3,7 @@
   home.packages = with pkgs; [ nextcloud-client ];
   services.nextcloud-client = {
     enable = true;
-    startInBackground = false;
+    startInBackground = true;
   };
 
   systemd.user.services.nextcloud-client = {
