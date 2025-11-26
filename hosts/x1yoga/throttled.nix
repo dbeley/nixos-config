@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }:
@@ -13,35 +12,35 @@ Autoreload: True
 
 [BATTERY]
 Update_Rate_s: 30
-PL1_Tdp_W: 25
+PL1_Tdp_W: 20
 PL1_Duration_s: 28
-PL2_Tdp_W: 35
-PL2_Duration_S: 0.002
+PL2_Tdp_W: 25
+PL2_Duration_S: 28
 Trip_Temp_C: 85
 cTDP: 0
 Disable_BDPROCHOT: False
 
 [AC]
-Update_Rate_s: 5
-PL1_Tdp_W: 35
-PL1_Duration_s: 30
-PL2_Tdp_W: 55
-PL2_Duration_S: 0.002
-Trip_Temp_C: 95
+Update_Rate_s: 30
+PL1_Tdp_W: 20
+PL1_Duration_s: 28
+PL2_Tdp_W: 25
+PL2_Duration_S: 28
+Trip_Temp_C: 90
 cTDP: 0
 Disable_BDPROCHOT: False
 
 [UNDERVOLT.BATTERY]
-CORE: -50
+CORE: -140
 GPU: -50
-CACHE: -50
+CACHE: -100
 UNCORE: -50
 ANALOGIO: 0
 
 [UNDERVOLT.AC]
-CORE: -50
+CORE: -140
 GPU: -50
-CACHE: -50
+CACHE: -100
 UNCORE: -50
 ANALOGIO: 0
   '';
