@@ -88,6 +88,9 @@ with lib.hm.gvariant;
         "org.gnome.SystemMonitor.desktop"
       ];
     };
+    "org/gnome/settings-daemon/plugins/housekeeping" = {
+      donation-reminder-enabled = false;
+    };
   };
   # stylix.targets = {
   #   qt = {
