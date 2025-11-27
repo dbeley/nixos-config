@@ -474,12 +474,9 @@ in
       {
         my.stylix.wallpaper = "abstract-light-rays";
       }
-      (
-        _:
-        {
-          hardware.hid-tmff2.enable = true;
-        }
-      )
+      (_: {
+        hardware.hid-tmff2.enable = true;
+      })
     ];
   };
   x61s = mkHost {
