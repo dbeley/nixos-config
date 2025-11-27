@@ -44,6 +44,7 @@
       "nfs"
       ".gnupg"
       ".ssh"
+      ".codex"
       ".config/chromium"
       ".config/gtk-3.0"
       ".config/keepassxc"
@@ -71,6 +72,8 @@
       ".local/share/Baba_Is_You"
       ".local/share/Celeste"
       ".local/share/HotlineMiami"
+      ".local/share/Brotato"
+      ".local/share/IntoTheBreach"
       ".local/Tendershoot"
       ".cache/keepassxc"
       ".cache/supersonic"
@@ -95,6 +98,7 @@
       ".local/state/tofi-history"
       ".steam/registry.vdf"
       ".config/monitors.xml"
+      ".config/dconf/user"
     ];
   };
 
