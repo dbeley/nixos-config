@@ -67,8 +67,14 @@
     };
   };
 
+  security.sudo = {
+    enable = true;
+    extraConfig = ''
+      Defaults timestamp_timeout=30
+      Defaults timestamp_type=global
+    '';
+  };
   security.doas.enable = false;
-  security.sudo.enable = true;
   # Configure doas
   security.doas.extraRules = [
     {
