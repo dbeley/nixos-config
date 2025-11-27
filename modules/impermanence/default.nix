@@ -58,6 +58,7 @@
       ".local/share/flatpak"
       ".local/share/keyrings"
       ".local/share/mpd"
+      ".local/share/battery-monitor"
       ".mozilla/firefox/david"
       ".mozilla/native-messaging-hosts"
       ".cache/tealdeer/tldr-pages"

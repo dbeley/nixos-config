@@ -13,8 +13,8 @@ in
 
     package = lib.mkOption {
       type = lib.types.package;
-      default = config.boot.kernelPackages.callPackage ../../pkgs/hid-tmff2 { };
-      defaultText = "config.boot.kernelPackages.callPackage ../../pkgs/hid-tmff2 { }";
+      default = config.boot.kernelPackages.callPackage ../hid-tmff2 { };
+      defaultText = "config.boot.kernelPackages.callPackage ../hid-tmff2 { }";
       description = "hid-tmff2 kernel module package to install.";
     };
 
