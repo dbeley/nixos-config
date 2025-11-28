@@ -20,7 +20,7 @@ in
   systemd.user.timers.battery-monitor = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "*:0/10";
+      OnCalendar = "*:0/5";
       Persistent = true;
     };
   };
