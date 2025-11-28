@@ -66,11 +66,12 @@
     };
   };
 
-  security.sudo = {
+  security.sudo.enable = false;
+  security.sudo-rs = {
     enable = true;
     extraConfig = ''
       Defaults timestamp_timeout=30
-      Defaults timestamp_type=global
+      # Defaults timestamp_type=global
     '';
   };
 
