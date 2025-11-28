@@ -109,11 +109,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764282671,
-        "narHash": "sha256-/hDjiqPW1997zPUEVZc2xPIrGeHNKPbE3mpd52IScMw=",
+        "lastModified": 1764290195,
+        "narHash": "sha256-SRuNc3nlOqif/9PGdF7VYw9Gj+Q1cMdhw0HjbMLAXkA=",
         "owner": "dbeley",
         "repo": "battery-monitor",
-        "rev": "69d2eb2787de9771a6457610432a870da031035c",
+        "rev": "9d1f127d85a943f4e07ccf027a2e5f9bc5021ac8",
         "type": "github"
       },
       "original": {

@@ -13,9 +13,8 @@
 {
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "${hostName}";
+  networking.hostName = hostName;
 
-  # Enable networking
   networking.networkmanager = {
     enable = true;
     wifi.backend = "iwd";
@@ -74,26 +73,17 @@
       Defaults timestamp_type=global
     '';
   };
-  security.doas.enable = false;
-  # Configure doas
-  security.doas.extraRules = [
-    {
-      users = [ "$user" ];
-      keepEnv = true;
-      persist = true;
-    }
-  ];
 
   users.mutableUsers = lib.mkDefault true;
   users.users.${user} = {
     isNormalUser = true;
-    description = "$user";
+    description = user;
     extraGroups = [
       "networkmanager"
       "wheel"
       "video"
     ];
-    shell = "${pkgs.fish}/bin/fish";
+    shell = pkgs.fish;
   };
 
   # Allow unfree packages
@@ -104,10 +94,10 @@
   nixpkgs.overlays = [ inputs.nur.overlays.default ];
 
   environment.systemPackages = with pkgs; [
+    git
     killall
     nfs-utils
     wireguard-tools
-    git
   ];
 
   programs.command-not-found.enable = false;
@@ -168,7 +158,7 @@
       ];
       trusted-users = [
         "root"
-        "${user}"
+        user
       ];
       nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
       auto-optimise-store = true;
@@ -182,7 +172,7 @@
     channel.enable = false;
   };
 
-  environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
+  environment.etc."nix/inputs/nixpkgs".source = inputs.nixpkgs;
 
   zramSwap = {
     enable = true;
@@ -195,5 +185,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "${stateVersion}"; # Did you read the comment?
+  system.stateVersion = stateVersion; # Did you read the comment?
 }
