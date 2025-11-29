@@ -18,22 +18,19 @@
     ];
     settings = {
       editor = {
-        clipboard-provider = "osc52";
         cursorline = true;
         cursorcolumn = false;
         gutters = [ "diagnostics" "spacer" "line-numbers" "spacer" ];
         auto-completion = true;
         auto-format = true;
         auto-save = false;
-        format-on-save = true;
         statusline = {
-          left = [ "mode" "spinner" "file_name" ];
+          left = [ "mode" "spinner" "file-name" ];
           center = [ "diagnostics" ];
-          right = [ "position" "total_line_count" "file_type" ];
+          right = [ "position" "total-line-numbers" "file-type" "version-control" ];
         };
         scrolloff = 5;
         auto-pairs = true;
-        matching-brackets = "always";
         whitespace = {
           render = "all";
           characters = {
