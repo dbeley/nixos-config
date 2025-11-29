@@ -30,5 +30,7 @@
   };
   home.packages = with pkgs; [
     nixd
+    wl-clipboard # for Wayland
+    xclip # for X11 fallback
   ];
 }

@@ -1,6 +1,17 @@
-{ hostName, ... }:
+{
+  pkgs,
+  hostName,
+  ...
+}:
 {
   boot.supportedFilesystems = [ "btrfs" ];
+  boot.initrd.systemd.enable = true;
+  boot.initrd.extraUtilsCommands = ''
+    copy_bin_and_libs ${pkgs.busybox}/bin/busybox
+  '';
+  boot.initrd.preLVMCommands = ''
+    busybox --install -s
+  '';
   disko.devices = {
     disk = {
       main = {
