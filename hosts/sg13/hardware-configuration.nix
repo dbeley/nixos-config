@@ -6,6 +6,7 @@
   lib,
   pkgs,
   modulesPath,
+  user,
   ...
 }:
 
@@ -51,4 +52,22 @@
   boot.kernelParams = [ "amd_pstate=guided" ];
   powerManagement.enable = true;
   powerManagement.cpuFreqGovernor = "schedutil";
+
+  systemd.tmpfiles.rules = [
+    "d /home/${user}/nfs 0755 ${user} users -"
+  ];
+
+  fileSystems."/home/${user}/nfs" = {
+      device = "omv.home:/";
+      fsType = "nfs";
+      options = [
+        "_netdev"
+        "noauto"
+        "nofail"
+        "x-systemd.automount"
+        "x-systemd.idle-timeout=600"
+        "x-systemd.mount-timeout=10s"
+      ];
+  };
+
 }
