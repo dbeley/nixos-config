@@ -155,6 +155,7 @@
       nixpkgs,
       systems,
       treefmt-nix,
+      git-hooks,
       ...
     }:
     let
@@ -168,14 +169,68 @@
       eachSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f nixpkgs.legacyPackages.${system});
       # Eval the treefmt modules from ./treefmt.nix
       treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+
+      # Pre-commit hooks configuration
+      pre-commit-check = eachSystem (
+        pkgs:
+        git-hooks.lib.${pkgs.system}.run {
+          src = ./.;
+          hooks = {
+            nixfmt-rfc-style = {
+              enable = true;
+              package = pkgs.nixfmt-rfc-style;
+            };
+            statix.enable = true;
+            deadnix.enable = true;
+            actionlint.enable = true;
+            check-merge-conflict.enable = true;
+            check-added-large-files.enable = true;
+            end-of-file-fixer.enable = true;
+            trailing-whitespace.enable = true;
+          };
+        }
+      );
     in
     {
       # for `nix fmt`
       formatter = eachSystem (pkgs: treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.wrapper);
+
       # for `nix flake check`
       checks = eachSystem (pkgs: {
+        pre-commit = pre-commit-check.${pkgs.system};
         formatting = treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.check self;
       });
+
+      # Development shells
+      devShells = eachSystem (
+        pkgs:
+        {
+          default = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              nixfmt-rfc-style
+              statix
+              deadnix
+              actionlint
+              just
+              git
+            ];
+            shellHook =
+              pre-commit-check.${pkgs.system}.shellHook
+              + ''
+                echo "🚀 NixOS Config Development Shell"
+                echo "=================================="
+                echo "Available commands:"
+                echo "  nix fmt           - Format Nix code"
+                echo "  nix flake check   - Run all checks"
+                echo "  just --list       - Show available just recipes"
+                echo "  just switch       - Rebuild NixOS configuration"
+                echo ""
+                echo "Pre-commit hooks are installed automatically."
+              '';
+          };
+        }
+      );
+
       nixosConfigurations = import ./hosts {
         inherit
           nixpkgs
