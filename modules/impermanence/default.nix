@@ -61,7 +61,7 @@
       ".local/share/battery-monitor"
       ".mozilla/firefox/david"
       ".mozilla/native-messaging-hosts"
-      ".cache/tealdeer/tldr-pages"
+      ".cache/tealdeer"
       ".var/app"
       ".config/heroic/GamesConfig"
       ".config/heroic/store"
