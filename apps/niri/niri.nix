@@ -116,9 +116,6 @@
           command = [ "mako" ];
         }
         {
-          command = [ "xwayland-satellite" ];
-        }
-        {
           command = [
             "swaybg"
             "-m"
