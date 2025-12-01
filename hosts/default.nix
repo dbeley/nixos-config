@@ -339,6 +339,7 @@ in
       ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
       ../modules/hardware/throttled.nix
+      ../hosts/x1yoga/throttled.nix
       {
         my.stylix.wallpaper = "purple-waves";
       }
@@ -390,6 +391,8 @@ in
       inputs.nixos-hardware.nixosModules.common-cpu-intel
       inputs.nixos-hardware.nixosModules.common-gpu-intel
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      ../modules/hardware/throttled.nix
+      ../hosts/vaio/throttled.nix
       {
         my.stylix.wallpaper = "blue-planet";
       }

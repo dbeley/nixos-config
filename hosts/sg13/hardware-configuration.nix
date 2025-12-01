@@ -58,16 +58,16 @@
   ];
 
   fileSystems."/home/${user}/nfs" = {
-      device = "omv.home:/";
-      fsType = "nfs";
-      options = [
-        "_netdev"
-        "noauto"
-        "nofail"
-        "x-systemd.automount"
-        "x-systemd.idle-timeout=600"
-        "x-systemd.mount-timeout=10s"
-      ];
+    device = "omv.home:/";
+    fsType = "nfs";
+    options = [
+      "_netdev"
+      "noauto"
+      "nofail"
+      "x-systemd.automount"
+      "x-systemd.idle-timeout=600"
+      "x-systemd.mount-timeout=10s"
+    ];
   };
 
 }
