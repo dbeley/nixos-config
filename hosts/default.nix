@@ -452,6 +452,8 @@ in
       }
       ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
+      ../modules/hardware/throttled.nix
+      ../hosts/x1yoga/throttled.nix
     ];
   };
   sg13 = mkHost {
