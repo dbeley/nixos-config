@@ -111,9 +111,10 @@
       # url = "github:SenchoPens/base16.nix?ref=refs/pull/19/head";
       url = "github:SenchoPens/base16.nix";
     };
-    battery-monitor = {
-      url = "github:dbeley/battery-monitor";
+    symmetri = {
+      url = "github:dbeley/symmetri";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
     stylix = {
       # url = "github:danth/stylix?ref=refs/pull/1860/head";

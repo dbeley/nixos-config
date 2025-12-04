@@ -10,7 +10,7 @@ let
       system = [
         ../modules/common/laptop.nix
         ../modules/common/fingerprint-scanner.nix
-        ../apps/battery-monitor/default.nix
+        ../apps/symmetri/default.nix
       ];
     };
     impermanence = {
