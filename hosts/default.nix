@@ -477,7 +477,7 @@ in
       ../apps/boinc/default.nix
       ../modules/hardware/hid-tmff2.nix
       {
-        my.stylix.wallpaper = "abstract-light-rays";
+        my.stylix.wallpaper = "nyc-425-park-avenue";
       }
       (_: {
         hardware.hid-tmff2.enable = true;
