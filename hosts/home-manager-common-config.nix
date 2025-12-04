@@ -43,7 +43,6 @@
     ripgrep
     ripgrep-all
     unzip
-    wl-clipboard-rs
     yt-dlp
   ];
 

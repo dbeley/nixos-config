@@ -11,6 +11,7 @@
     grim
     slurp
     pamixer
+    wl-clipboard-rs
   ];
   home.file.".local/bin/wrappedhl".source = ./wrappedhl;
   home.file = {

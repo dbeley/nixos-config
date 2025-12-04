@@ -5,6 +5,7 @@
     swaybg
     libnotify
     pamixer
+    wl-clipboard-rs
   ];
   home.file = {
     "scripts".source = pkgs.fetchFromGitHub {
