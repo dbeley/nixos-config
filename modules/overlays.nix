@@ -50,6 +50,16 @@
       # claude-code = super.claude-code.overrideAttrs (oldAttrs: {
       #   version = "0.2.32";
       # });
+      # cf. https://github.com/NixOS/nixpkgs/issues/467164
+      xpadneo = super.xpadneo.overrideAttrs (oldAttrs: {
+        patches = (oldAttrs.patches or [ ]) ++ [
+          (super.fetchpatch {
+            url = "https://github.com/orderedstereographic/xpadneo/commit/233e1768fff838b70b9e942c4a5eee60e57c54d4.patch";
+            hash = "sha256-HL+SdL9kv3gBOdtsSyh49fwYgMCTyNkrFrT+Ig0ns7E=";
+            stripLen = 2;
+          })
+        ];
+      });
     })
   ];
 }

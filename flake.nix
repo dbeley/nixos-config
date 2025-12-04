@@ -43,10 +43,9 @@
     };
     hyprland = {
       url = "github:hyprwm/hyprland";
-      # Do not override Hyprland’s nixpkgs input unless you know what you are doing.
-      # Doing so will make the cache useless, since you’re building from a different Nixpkgs commit.
-      # inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.systems.follows = "systems";
+      # Follow the repo defaults to avoid extra lock entries; note this opts out of Hyprland’s cache pin.
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
       inputs.hyprlang.follows = "hyprlang";
       inputs.pre-commit-hooks.follows = "git-hooks";
       inputs.hyprutils.follows = "hyprutils";
@@ -98,6 +97,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
       inputs.systems.follows = "systems";
+      inputs.flake-compat.follows = "flake-compat";
     };
     disko = {
       url = "github:nix-community/disko";
