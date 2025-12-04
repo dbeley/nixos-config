@@ -1,4 +1,8 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 {
   # overlays that should apply to all hosts (to fix build, fix bugs, etc.)
   networking.extraHosts = ''
@@ -51,15 +55,37 @@
       #   version = "0.2.32";
       # });
       # cf. https://github.com/NixOS/nixpkgs/issues/467164
-      xpadneo = super.xpadneo.overrideAttrs (oldAttrs: {
-        patches = (oldAttrs.patches or [ ]) ++ [
-          (super.fetchpatch {
-            url = "https://github.com/orderedstereographic/xpadneo/commit/233e1768fff838b70b9e942c4a5eee60e57c54d4.patch";
-            hash = "sha256-HL+SdL9kv3gBOdtsSyh49fwYgMCTyNkrFrT+Ig0ns7E=";
-            stripLen = 2;
-          })
-        ];
-      });
+      linuxPackages_latest = super.linuxPackages_latest.extend (
+        _lfinal: lprev: {
+          xpadneo = lprev.xpadneo.overrideAttrs (old: {
+            patches = (old.patches or [ ]) ++ [
+              (super.fetchpatch {
+                url = "https://github.com/orderedstereographic/xpadneo/commit/233e1768fff838b70b9e942c4a5eee60e57c54d4.patch";
+                hash = "sha256-HL+SdL9kv3gBOdtsSyh49fwYgMCTyNkrFrT+Ig0ns7E=";
+                stripLen = 2;
+              })
+            ];
+          });
+          nvidiaPackages = lprev.nvidiaPackages // {
+            stable =
+              if lprev.nvidiaPackages.stable ? open then
+                lprev.nvidiaPackages.stable
+                // {
+                  open = lprev.nvidiaPackages.stable.open.overrideAttrs (old: {
+                    patches = (old.patches or [ ]) ++ [
+                      (super.fetchpatch {
+                        name = "get_dev_pagemap.patch";
+                        url = "https://github.com/NVIDIA/open-gpu-kernel-modules/commit/3e230516034d29e84ca023fe95e284af5cd5a065.patch";
+                        hash = "sha256-BhL4mtuY5W+eLofwhHVnZnVf0msDj7XBxskZi8e6/k8=";
+                      })
+                    ];
+                  });
+                }
+              else
+                lprev.nvidiaPackages.stable;
+          };
+        }
+      );
     })
   ];
 }
