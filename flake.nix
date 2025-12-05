@@ -8,104 +8,142 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-utils = {
       url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
+      inputs = {
+        systems.follows = "systems";
+      };
     };
     gitignore = {
       url = "github:hercules-ci/gitignore.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.gitignore.follows = "gitignore";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        gitignore.follows = "gitignore";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     hyprutils = {
       url = "github:hyprwm/hyprutils";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
     };
     hyprlang = {
       url = "github:hyprwm/hyprlang";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-      inputs.hyprutils.follows = "hyprutils";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        hyprutils.follows = "hyprutils";
+      };
     };
     hyprland-qt-support = {
       url = "github:hyprwm/hyprland-qt-support";
-      inputs.hyprlang.follows = "hyprlang";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
+      inputs = {
+        hyprlang.follows = "hyprlang";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
     };
     hyprland = {
       url = "github:hyprwm/hyprland";
       # Follow the repo defaults to avoid extra lock entries; note this opts out of Hyprland’s cache pin.
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-      inputs.hyprlang.follows = "hyprlang";
-      inputs.pre-commit-hooks.follows = "git-hooks";
-      inputs.hyprutils.follows = "hyprutils";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        hyprlang.follows = "hyprlang";
+        pre-commit-hooks.follows = "git-hooks";
+        hyprutils.follows = "hyprutils";
+      };
     };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
+      inputs = {
+        hyprland.follows = "hyprland";
+      };
     };
     hyprspace = {
       # url = "github:KZDKM/Hyprspace?ref=refs/pull/162/head";
       url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
-      inputs.systems.follows = "systems";
+      inputs = {
+        hyprland.follows = "hyprland";
+        systems.follows = "systems";
+      };
     };
     iio-hyprland = {
       url = "github:JeanSchoeller/iio-hyprland";
-      inputs.nixpkgs.follows = "hyprland/nixpkgs";
-      inputs.systems.follows = "hyprland/systems";
+      inputs = {
+        nixpkgs.follows = "hyprland/nixpkgs";
+        systems.follows = "hyprland/systems";
+      };
     };
     hyprgrass = {
       # url = "github:horriblename/hyprgrass?ref=refs/pull/207/head";
       url = "github:horriblename/hyprgrass";
-      inputs.hyprland.follows = "hyprland";
+      inputs = {
+        hyprland.follows = "hyprland";
+      };
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     nur = {
       url = "github:nix-community/nur";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
     search = {
       url = "github:nuschtos/search";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nuschtosSearch.follows = "search";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.systems.follows = "systems";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nuschtosSearch.follows = "search";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+      };
     };
     nvf = {
       url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.systems.follows = "systems";
-      inputs.flake-compat.follows = "flake-compat";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+        flake-compat.follows = "flake-compat";
+      };
     };
     disko = {
       url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     devshell = {
       url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     base16 = {
       # url = "github:SenchoPens/base16.nix?ref=refs/pull/19/head";
@@ -113,17 +151,21 @@
     };
     symmetri = {
       url = "github:dbeley/symmetri";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
     };
     stylix = {
       # url = "github:danth/stylix?ref=refs/pull/1860/head";
       url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.systems.follows = "systems";
-      inputs.base16.follows = "base16";
-      inputs.nur.follows = "nur";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+        base16.follows = "base16";
+        nur.follows = "nur";
+      };
     };
     ucodenix = {
       url = "github:e-tho/ucodenix";
@@ -136,16 +178,22 @@
     };
     niri = {
       url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
   };
 
@@ -153,9 +201,6 @@
     inputs@{
       self,
       nixpkgs,
-      systems,
-      treefmt-nix,
-      git-hooks,
       ...
     }:
     let
@@ -165,71 +210,43 @@
       ];
       user = "david";
 
-      # Small tool to iterate over each systems
-      eachSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f nixpkgs.legacyPackages.${system});
-      # Eval the treefmt modules from ./treefmt.nix
-      treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
-
-      # Pre-commit hooks configuration
-      pre-commit-check = eachSystem (
-        pkgs:
-        git-hooks.lib.${pkgs.system}.run {
-          src = ./.;
-          hooks = {
-            nixfmt-rfc-style = {
-              enable = true;
-              package = pkgs.nixfmt-rfc-style;
-            };
-            statix.enable = true;
-            deadnix.enable = true;
-            actionlint.enable = true;
-            check-merge-conflict.enable = true;
-            check-added-large-files.enable = true;
-            end-of-file-fixer.enable = true;
-            trailing-whitespace.enable = true;
-          };
-        }
-      );
+      # Small tool to iterate over each supported system
+      eachSystem = nixpkgs.lib.genAttrs supportedSystems;
     in
     {
-      # for `nix fmt`
-      formatter = eachSystem (pkgs: treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.wrapper);
-
-      # for `nix flake check`
-      checks = eachSystem (pkgs: {
-        pre-commit = pre-commit-check.${pkgs.system};
-        formatting = treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.check self;
-      });
-
-      # Development shells
-      devShells = eachSystem (
-        pkgs:
+      checks = eachSystem (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
         {
-          default = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              nixfmt-rfc-style
-              statix
-              deadnix
-              actionlint
-              just
-              git
-            ];
-            shellHook =
-              pre-commit-check.${pkgs.system}.shellHook
-              + ''
-                echo "🚀 NixOS Config Development Shell"
-                echo "=================================="
-                echo "Available commands:"
-                echo "  nix fmt           - Format Nix code"
-                echo "  nix flake check   - Run all checks"
-                echo "  just --list       - Show available just recipes"
-                echo "  just switch       - Rebuild NixOS configuration"
-                echo ""
-                echo "Pre-commit hooks are installed automatically."
-              '';
+          pre-commit-check = inputs.git-hooks.lib.${system}.run {
+            src = ./.;
+            package = pkgs.prek;
+            hooks = {
+              nixfmt.enable = true;
+              statix.enable = true;
+              deadnix.enable = true;
+              end-of-file-fixer.enable = true;
+              ruff.enable = true;
+              shellcheck.enable = true;
+            };
           };
         }
       );
+
+      devShells = eachSystem (system: {
+        default =
+          let
+            pkgs = nixpkgs.legacyPackages.${system};
+            inherit (self.checks.${system}.pre-commit-check) shellHook enabledPackages;
+          in
+          pkgs.mkShell {
+            inherit shellHook;
+            buildInputs = enabledPackages;
+            shell = pkgs.fish;
+          };
+      });
 
       nixosConfigurations = import ./hosts {
         inherit

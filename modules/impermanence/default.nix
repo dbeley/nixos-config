@@ -103,9 +103,11 @@
     ];
   };
 
-  fileSystems."/persistent".neededForBoot = true;
-  fileSystems."/nix".neededForBoot = true;
-  fileSystems."/var/log".neededForBoot = true;
+  fileSystems = {
+    "/persistent".neededForBoot = true;
+    "/nix".neededForBoot = true;
+    "/var/log".neededForBoot = true;
+  };
 
   # Impermanence
   boot.initrd.postResumeCommands = lib.mkAfter ''

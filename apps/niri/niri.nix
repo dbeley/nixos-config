@@ -91,16 +91,16 @@
       layout = {
         gaps = 16;
         preset-column-widths = [
-          { proportion = 1. / 4.; }
-          { proportion = 1. / 3.; }
-          { proportion = 1. / 2.; }
-          { proportion = 2. / 3.; }
+          { proportion = 1.0 / 4.0; }
+          { proportion = 1.0 / 3.0; }
+          { proportion = 1.0 / 2.0; }
+          { proportion = 2.0 / 3.0; }
         ];
         preset-window-heights = [
-          { proportion = 1. / 4.; }
-          { proportion = 1. / 3.; }
-          { proportion = 1. / 2.; }
-          { proportion = 2. / 3.; }
+          { proportion = 1.0 / 4.0; }
+          { proportion = 1.0 / 3.0; }
+          { proportion = 1.0 / 2.0; }
+          { proportion = 2.0 / 3.0; }
         ];
       };
       screenshot-path = "~/Nextcloud/10-19_Images/11_Captures-d-écran/11.09_Captures-d-écran_Niri/%Y-%m-%d %H-%M-%S.png";

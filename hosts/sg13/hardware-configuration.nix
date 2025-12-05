@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   user,
   ...
@@ -15,25 +14,45 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "ahci"
-    "usbhid"
-    "usb_storage"
-    "sd_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/df09b0ea-ad9c-47ce-a092-1ed748c01ced";
-    fsType = "ext4";
+  boot = {
+    initrd = {
+      availableKernelModules = [
+        "xhci_pci"
+        "ahci"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+      ];
+      kernelModules = [ ];
+    };
+    kernelModules = [ "kvm-amd" ];
+    extraModulePackages = [ ];
+    kernelParams = [ "amd_pstate=guided" ];
   };
 
-  fileSystems."/home/david/Disque2To" = {
-    device = "/dev/disk/by-uuid/e6913fa7-2069-4d38-9a32-89c4891afd0b";
-    fsType = "ext4";
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/df09b0ea-ad9c-47ce-a092-1ed748c01ced";
+      fsType = "ext4";
+    };
+
+    "/home/david/Disque2To" = {
+      device = "/dev/disk/by-uuid/e6913fa7-2069-4d38-9a32-89c4891afd0b";
+      fsType = "ext4";
+    };
+
+    "/home/${user}/nfs" = {
+      device = "omv.home:/";
+      fsType = "nfs";
+      options = [
+        "_netdev"
+        "noauto"
+        "nofail"
+        "x-systemd.automount"
+        "x-systemd.idle-timeout=600"
+        "x-systemd.mount-timeout=10s"
+      ];
+    };
   };
 
   swapDevices = [ ];
@@ -49,25 +68,11 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  boot.kernelParams = [ "amd_pstate=guided" ];
   powerManagement.enable = true;
   powerManagement.cpuFreqGovernor = "schedutil";
 
   systemd.tmpfiles.rules = [
     "d /home/${user}/nfs 0755 ${user} users -"
   ];
-
-  fileSystems."/home/${user}/nfs" = {
-    device = "omv.home:/";
-    fsType = "nfs";
-    options = [
-      "_netdev"
-      "noauto"
-      "nofail"
-      "x-systemd.automount"
-      "x-systemd.idle-timeout=600"
-      "x-systemd.mount-timeout=10s"
-    ];
-  };
 
 }

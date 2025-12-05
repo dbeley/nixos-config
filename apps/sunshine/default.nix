@@ -1,10 +1,14 @@
-{ pkgs, ... }:
-{
-  services.sunshine = {
-    enable = true;
-    autoStart = true;
-    capSysAdmin = true;
-    openFirewall = true;
+_: {
+  services = {
+    sunshine = {
+      enable = true;
+      autoStart = true;
+      capSysAdmin = true;
+      openFirewall = true;
+    };
+
+    avahi.publish.enable = true;
+    avahi.publish.userServices = true;
   };
 
   networking.firewall = {
@@ -27,6 +31,4 @@
     ];
   };
 
-  services.avahi.publish.enable = true;
-  services.avahi.publish.userServices = true;
 }

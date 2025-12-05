@@ -13,14 +13,14 @@
 {
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = hostName;
-
-  networking.networkmanager = {
-    enable = true;
-    wifi.backend = "iwd";
+  networking = {
+    inherit hostName;
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+    };
+    firewall.enable = lib.mkDefault false;
   };
-  networking.firewall.enable = lib.mkDefault false;
-  services.resolved.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -49,30 +49,50 @@
   };
 
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
+  services = {
+    resolved.enable = true;
+    pulseaudio.enable = false;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      jack.enable = true;
 
-    wireplumber.extraConfig.wireplumber-disable-camera = {
-      "wireplumber.profiles" = {
-        "monitor.libcamera" = "disabled";
+      wireplumber.extraConfig.wireplumber-disable-camera = {
+        "wireplumber.profiles" = {
+          "monitor.libcamera" = "disabled";
+        };
       };
     };
+
+    printing.enable = lib.mkDefault false;
+    gnome = {
+      gnome-keyring.enable = true;
+      gcr-ssh-agent.enable = true;
+    };
+    fstrim.enable = true;
+    journald.extraConfig = ''
+      SystemMaxUse=50M
+      SystemMaxFileSize=10M
+      RuntimeMaxUse=50M
+      RuntimeMaxFileSize=10M
+    '';
+
+    gvfs.enable = true;
   };
 
-  security.sudo.enable = false;
-  security.sudo-rs = {
-    enable = true;
-    extraConfig = ''
-      Defaults timestamp_timeout=30
-      # Defaults timestamp_type=global
-    '';
+  security = {
+    rtkit.enable = true;
+    sudo.enable = false;
+    sudo-rs = {
+      enable = true;
+      extraConfig = ''
+        Defaults timestamp_timeout=30
+        # Defaults timestamp_type=global
+      '';
+    };
   };
 
   users.mutableUsers = lib.mkDefault true;
@@ -89,11 +109,13 @@
   };
 
   # Allow unfree packages
-  nixpkgs.config = {
-    allowUnfree = true;
-    chromium.enableWideVine = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      chromium.enableWideVine = true;
+    };
+    overlays = [ inputs.nur.overlays.default ];
   };
-  nixpkgs.overlays = [ inputs.nur.overlays.default ];
 
   environment.systemPackages = with pkgs; [
     git
@@ -119,19 +141,6 @@
       enable = true;
     };
   };
-
-  services.printing.enable = lib.mkDefault false;
-  services.gnome.gnome-keyring.enable = true;
-  services.gnome.gcr-ssh-agent.enable = true;
-  services.fstrim.enable = true;
-  services.journald.extraConfig = ''
-    SystemMaxUse=50M
-    SystemMaxFileSize=10M
-    RuntimeMaxUse=50M
-    RuntimeMaxFileSize=10M
-  '';
-
-  services.gvfs.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

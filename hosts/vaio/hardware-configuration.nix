@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }:
@@ -14,32 +13,37 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "nvme"
-    "usb_storage"
-    "sd_mod"
-    "rtsx_pci_sdmmc"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/4e715e6a-d275-4746-9914-4e59a935ce53";
-    fsType = "ext4";
+  boot = {
+    initrd = {
+      availableKernelModules = [
+        "xhci_pci"
+        "nvme"
+        "usb_storage"
+        "sd_mod"
+        "rtsx_pci_sdmmc"
+      ];
+      kernelModules = [ ];
+      luks.devices."luks-ce5deb3c-2d9c-4ea8-960b-558191a5f067".device =
+        "/dev/disk/by-uuid/ce5deb3c-2d9c-4ea8-960b-558191a5f067";
+    };
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
   };
 
-  boot.initrd.luks.devices."luks-ce5deb3c-2d9c-4ea8-960b-558191a5f067".device =
-    "/dev/disk/by-uuid/ce5deb3c-2d9c-4ea8-960b-558191a5f067";
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/4e715e6a-d275-4746-9914-4e59a935ce53";
+      fsType = "ext4";
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/BA0D-DB9B";
-    fsType = "vfat";
-    options = [
-      "fmask=0077"
-      "dmask=0077"
-    ];
+    "/boot" = {
+      device = "/dev/disk/by-uuid/BA0D-DB9B";
+      fsType = "vfat";
+      options = [
+        "fmask=0077"
+        "dmask=0077"
+      ];
+    };
   };
 
   swapDevices = [ ];
