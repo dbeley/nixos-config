@@ -108,18 +108,10 @@
         flake-parts.follows = "flake-parts";
       };
     };
-    search = {
-      url = "github:nuschtos/search";
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        nuschtosSearch.follows = "search";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
       };
