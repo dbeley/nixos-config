@@ -1,8 +1,6 @@
 # nixos-config
 
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
-[![CI](https://github.com/dbeley/nixos-config/actions/workflows/ci.yml/badge.svg)](https://github.com/dbeley/nixos-config/actions/workflows/ci.yml)
-[![Update Flake Lock](https://github.com/dbeley/nixos-config/actions/workflows/update-flake-lock.yml/badge.svg)](https://github.com/dbeley/nixos-config/actions/workflows/update-flake-lock.yml)
 
 ![t470s](imgs/t470s.png)
 
@@ -182,7 +180,3 @@ Some tools and utilities to test
 
 - nixos-generators
 - nh
-
-## Contributing
-
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project.
