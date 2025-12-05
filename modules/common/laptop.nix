@@ -6,6 +6,7 @@
   };
   services = {
     power-profiles-daemon.enable = false;
+    tlp.enable = false;
     upower.enable = true;
     tuned = {
       enable = true;

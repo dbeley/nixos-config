@@ -100,9 +100,11 @@ in
           (builtins.readFile cfg.package.passthru.udevRules);
     in
     {
-      boot.extraModulePackages = [ cfg.package ];
-      boot.kernelModules = [ "hid-tmff-new" ];
-      boot.blacklistedKernelModules = lib.optionals cfg.blacklistHidThrustmaster [ "hid_thrustmaster" ];
+      boot = {
+        extraModulePackages = [ cfg.package ];
+        kernelModules = [ "hid-tmff-new" ];
+        blacklistedKernelModules = lib.optionals cfg.blacklistHidThrustmaster [ "hid_thrustmaster" ];
+      };
 
       services.udev.extraRules = lib.mkAfter patchedRules;
     }

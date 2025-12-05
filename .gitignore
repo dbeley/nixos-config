@@ -1,1 +1,4 @@
 .env
+.direnv/
+todo.txt
+/.pre-commit-config.yaml

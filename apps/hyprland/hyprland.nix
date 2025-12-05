@@ -6,20 +6,22 @@
   ...
 }:
 {
-  home.packages = with pkgs; [
-    libnotify
-    grim
-    slurp
-    pamixer
-    wl-clipboard-rs
-  ];
-  home.file.".local/bin/wrappedhl".source = ./wrappedhl;
-  home.file = {
-    "scripts".source = pkgs.fetchFromGitHub {
-      owner = "dbeley";
-      repo = "scripts";
-      rev = "a8607fbfb8c50543629e14ec483473459229091d";
-      sha256 = "XBumWlu4+z/jTKLK71Lr0hMeLhc43XD3oEzY+YUMzN4=";
+  home = {
+    packages = with pkgs; [
+      libnotify
+      grim
+      slurp
+      pamixer
+      wl-clipboard-rs
+    ];
+    file = {
+      ".local/bin/wrappedhl".source = ./wrappedhl;
+      "scripts".source = pkgs.fetchFromGitHub {
+        owner = "dbeley";
+        repo = "scripts";
+        rev = "a8607fbfb8c50543629e14ec483473459229091d";
+        sha256 = "XBumWlu4+z/jTKLK71Lr0hMeLhc43XD3oEzY+YUMzN4=";
+      };
     };
   };
   wayland.windowManager.hyprland = {

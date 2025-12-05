@@ -59,32 +59,6 @@
 
 ## Common Usage
 
-### Development Environment
-
-This repository includes a comprehensive development environment with pre-commit hooks and quality tools.
-
-**Enter the development shell:**
-```bash
-nix develop
-```
-
-This will:
-- Install pre-commit hooks automatically
-- Provide development tools (nixfmt, statix, deadnix, just, etc.)
-- Display helpful commands
-
-**Format code:**
-```bash
-nix fmt
-```
-
-**Run all checks:**
-```bash
-nix flake check
-```
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed development workflow and guidelines.
-
 ### Rebuilding the System
 
 Rebuild the system

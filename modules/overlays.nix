@@ -1,5 +1,4 @@
 {
-  pkgs,
   inputs,
   ...
 }:
@@ -10,7 +9,7 @@
   '';
   nixpkgs.overlays = [
     inputs.niri.overlays.niri
-    (self: super: {
+    (_: super: {
       # # to fix zoom memory leak, working version found here https://github.com/NixOS/nixpkgs/pull/361097
       # zoom-us = super.zoom-us.overrideAttrs (oldAttrs: {
       #   version = "6.2.11.5069";
