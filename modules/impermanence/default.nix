@@ -93,6 +93,9 @@
       ".local/share/Monster Sanctuary"
       ".config/unity3d"
       ".cache/thumbnails/x-large"
+      ".cursor"
+      ".config/Cursor"
+      ".gemini"
     ];
     files = [
       ".cache/tofi-compgen"
