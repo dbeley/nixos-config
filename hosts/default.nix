@@ -419,6 +419,8 @@ in
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       ../modules/common/laptop-thermald.nix
       ../modules/common/printing.nix
+      ../modules/hardware/throttled.nix
+      ../hosts/latitude/throttled.nix
       {
         my.stylix.wallpaper = "hk-plant";
       }
