@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-cd ~
+cd ~ || exit
 exec Hyprland
