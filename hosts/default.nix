@@ -10,7 +10,6 @@ let
       system = [
         ../modules/common/laptop.nix
         ../modules/common/fingerprint-scanner.nix
-        ../apps/symmetri/default.nix
       ];
     };
     impermanence = {
@@ -193,6 +192,7 @@ let
         ../apps/gemini/gemini.nix
         ../apps/codex/codex.nix
         ../apps/cursor/cursor.nix
+        ../apps/github-copilot-cli/github-copilot-cli.nix
       ];
     };
   };
@@ -245,6 +245,7 @@ let
         inputs.stylix.nixosModules.stylix
         ../apps/stylix/default.nix
         ../apps/udiskie/default.nix
+        ../apps/symmetri/default.nix
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
