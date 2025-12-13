@@ -192,7 +192,7 @@ let
         ../apps/gemini/gemini.nix
         ../apps/codex/codex.nix
         ../apps/cursor/cursor.nix
-        ../apps/github-copilot-cli/github-copilot-cli.nix
+        ../apps/copilot/copilot.nix
       ];
     };
   };

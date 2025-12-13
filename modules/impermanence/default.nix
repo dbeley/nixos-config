@@ -44,6 +44,7 @@
       "nfs"
       ".gnupg"
       ".ssh"
+      ".claude"
       ".codex"
       ".config/chromium"
       ".config/gtk-3.0"
