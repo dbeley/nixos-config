@@ -100,11 +100,6 @@
       ".config/nix"
     ];
     files = [
-      ".cache/tofi-compgen"
-      ".local/state/tofi-history"
-      ".steam/registry.vdf"
-      ".config/monitors.xml"
-      ".config/dconf/user"
       ".claude.json"
     ];
   };
