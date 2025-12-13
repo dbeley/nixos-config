@@ -97,6 +97,7 @@
       ".cursor"
       ".config/Cursor"
       ".gemini"
+      ".config/nix"
     ];
     files = [
       ".cache/tofi-compgen"
@@ -104,6 +105,7 @@
       ".steam/registry.vdf"
       ".config/monitors.xml"
       ".config/dconf/user"
+      ".claude.json"
     ];
   };
 
