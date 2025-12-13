@@ -287,6 +287,7 @@
         "ui.systemUsesDarkTheme" = 1;
         "webgl.disabled" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 0;
+        "xpinstall.signatures.required" = false;
       };
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         augmented-steam
