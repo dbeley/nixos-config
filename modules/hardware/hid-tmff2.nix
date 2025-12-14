@@ -106,7 +106,12 @@ in
         blacklistedKernelModules = lib.optionals cfg.blacklistHidThrustmaster [ "hid_thrustmaster" ];
       };
 
-      services.udev.extraRules = lib.mkAfter patchedRules;
+      services.udev.extraRules = lib.mkAfter (
+        patchedRules
+        + ''
+          KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="b696", MODE="0666"
+        ''
+      );
     }
   );
 }
