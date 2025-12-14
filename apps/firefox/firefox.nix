@@ -288,25 +288,37 @@
         "webgl.disabled" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 0;
         "xpinstall.signatures.required" = false;
+        "xpinstall.whitelist.required" = false;
       };
-      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-        augmented-steam
-        # darkreader
-        hover-zoom-plus
-        keepassxc-browser
-        multi-account-containers
-        # protondb-for-steam
-        # reddit-comment-collapser
-        reddit-enhancement-suite
-        return-youtube-dislikes
-        # sidebery
-        sponsorblock
-        steam-database
-        ublock-origin
-        vimium
-        violentmonkey
-        web-scrobbler
-      ];
+      extensions.packages =
+        (with pkgs.nur.repos.rycee.firefox-addons; [
+          augmented-steam
+          # darkreader
+          hover-zoom-plus
+          keepassxc-browser
+          multi-account-containers
+          # protondb-for-steam
+          # reddit-comment-collapser
+          reddit-enhancement-suite
+          return-youtube-dislikes
+          # sidebery
+          sponsorblock
+          steam-database
+          ublock-origin
+          vimium
+          violentmonkey
+          web-scrobbler
+        ])
+        ++ [
+          (pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon {
+            pname = "comping";
+            version = "0.1.6";
+            addonId = "{c68c9819-5621-497c-a2ea-ecc5f61b0c21}";
+            url = "https://github.com/dbeley/comping/releases/download/v0.1.6/comping-0.1.6.xpi";
+            sha256 = "sha256-7FHmon6F5mqLmcIrwhnb6lMy1bKLN1IJNX7zBtJSfVk=";
+            meta = { };
+          })
+        ];
       search = {
         force = true;
         default = "ddg";
