@@ -310,14 +310,32 @@
           web-scrobbler
         ])
         ++ [
-          (pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon {
-            pname = "comping";
-            version = "0.1.6";
-            addonId = "{c68c9819-5621-497c-a2ea-ecc5f61b0c21}";
-            url = "https://github.com/dbeley/comping/releases/download/v0.1.6/comping-0.1.6.xpi";
-            sha256 = "sha256-7FHmon6F5mqLmcIrwhnb6lMy1bKLN1IJNX7zBtJSfVk=";
-            meta = { };
-          })
+          (pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon (
+            let
+              version = "0.1.3";
+            in
+            {
+              pname = "cachearena";
+              inherit version;
+              addonId = "cachearena@dbeley.ovh";
+              url = "https://github.com/dbeley/cachearena/releases/download/v${version}/cachearena-${version}.xpi";
+              sha256 = "sha256-QDli3Q2E2yHrv3DG+12oNkL7+RaoISGd7AUR9EfdMgo=";
+              meta = { };
+            }
+          ))
+          (pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon (
+            let
+              version = "0.2.0";
+            in
+            {
+              pname = "comping";
+              inherit version;
+              addonId = "{c68c9819-5621-497c-a2ea-ecc5f61b0c21}";
+              url = "https://github.com/dbeley/comping/releases/download/v${version}/comping-${version}.xpi";
+              sha256 = "sha256-fEKUJnEK6LB2lux3yq9u2W3hjxhRmzdcsRUS/nOjtqk=";
+              meta = { };
+            }
+          ))
         ];
       search = {
         force = true;
