@@ -103,7 +103,6 @@
       ".local/share/symmetri"
     ];
     files = [
-      ".claude.json"
     ];
   };
 
