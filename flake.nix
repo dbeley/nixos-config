@@ -141,13 +141,6 @@
       # url = "github:SenchoPens/base16.nix?ref=refs/pull/19/head";
       url = "github:SenchoPens/base16.nix";
     };
-    symmetri = {
-      url = "github:dbeley/symmetri";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-    };
     stylix = {
       # url = "github:danth/stylix?ref=refs/pull/1860/head";
       url = "github:danth/stylix";
@@ -185,6 +178,20 @@
       url = "github:Mic92/sops-nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+      };
+    };
+    symmetri = {
+      url = "github:dbeley/symmetri";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+    };
+    impulse = {
+      url = "github:dbeley/impulse";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
       };
     };
   };

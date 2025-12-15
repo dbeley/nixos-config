@@ -50,6 +50,7 @@ let
         ../apps/ledger/ledger.nix
         ../apps/mpv/mpv.nix
         ../apps/nextcloud-client/nextcloud-client.nix
+        ../apps/impulse/impulse.nix
       ];
     };
     niri = {
