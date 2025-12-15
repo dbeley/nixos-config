@@ -330,7 +330,7 @@
             {
               pname = "comping";
               inherit version;
-              addonId = "{c68c9819-5621-497c-a2ea-ecc5f61b0c21}";
+              addonId = "comping@dbeley.ovh";
               url = "https://github.com/dbeley/comping/releases/download/v${version}/comping-${version}.xpi";
               sha256 = "sha256-fEKUJnEK6LB2lux3yq9u2W3hjxhRmzdcsRUS/nOjtqk=";
               meta = { };
