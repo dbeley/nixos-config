@@ -209,6 +209,72 @@
               --bind 'enter:execute-silent(setsid zathura {2} >/dev/null 2>&1 < /dev/null &)+abort'
         kill $fish_pid
       '';
+      mergecsv = ''
+        # Merge multiple CSV files into one, preserving the header from the first file.
+        # Usage: mergecsv [-o output.csv] [files...]
+        # Options:
+        #   -o output.csv : Specify output file (default: merged.csv)
+        # If no files specified, merges all *.csv in current directory.
+        if test (count $argv) -eq 0
+          set files *.csv
+        else if test "$argv[1]" = "-o"
+          set output $argv[2]
+          set files $argv[3..-1]
+        else
+          set files $argv
+        end
+
+        if test (count $files) -eq 0
+          echo "Error: No CSV files found"
+          return 1
+        end
+
+        if not set -q output
+          set output merged.csv
+        end
+
+        echo "Merging" (count $files) "CSV files into $output..."
+
+        head -n 1 $files[1] > $output
+        for file in $files
+          tail -n +2 $file >> $output
+          echo >> $output
+        end
+
+        echo "Done! Merged into $output"
+      '';
+      mergefiles = ''
+        # Concatenate multiple files into one.
+        # Usage: mergefiles [-o output.txt] [files...]
+        # Options:
+        #   -o output.txt : Specify output file (default: merged.txt)
+        # If no files specified, merges all files in current directory.
+        if test (count $argv) -eq 0
+          set files *
+        else if test "$argv[1]" = "-o"
+          set output $argv[2]
+          set files $argv[3..-1]
+        else
+          set files $argv
+        end
+
+        if test (count $files) -eq 0
+          echo "Error: No files found"
+          return 1
+        end
+
+        if not set -q output
+          set output merged.txt
+        end
+
+        echo "Merging" (count $files) "files into $output..."
+
+        for file in $files
+          cat $file >> $output
+        end
+
+        echo "Done! Merged into $output"
+      '';
     };
 
     plugins = [
