@@ -146,6 +146,8 @@
         "browser.bookmarks.openInTabClosesMenu" = false;
         "browser.bookmarks.restore_default_bookmarks" = false;
         "browser.bookmarks.showMobileBookmarks" = false;
+        "browser.cache.disk.enable" = false;
+        "browser.cache.memory.enable" = true;
         "browser.compactmode.show" = true;
         "browser.contentblocking.category" = "strict";
         "browser.display.background_color" = "#666666";
@@ -185,7 +187,8 @@
         "browser.search.order.1" = "ddg";
         "browser.search.region" = "FR";
         "browser.send_pings" = false;
-        "browser.sessionstore.interval" = 60000;
+        "browser.sessionstore.interval" = 600000;
+        "browser.sessionstore.resume_from_crash" = false;
         "browser.shell.checkDefaultBrowser" = false;
         "browser.startup.page" = 3;
         "browser.tabs.firefox-view" = false;
@@ -325,14 +328,14 @@
           ))
           (pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon (
             let
-              version = "0.2.2";
+              version = "0.2.3";
             in
             {
               pname = "comping";
               inherit version;
               addonId = "comping@dbeley.ovh";
               url = "https://github.com/dbeley/comping/releases/download/v${version}/comping-${version}.xpi";
-              sha256 = "sha256-ZDOD7gfTQ+uW2j3I/+4fjuaJVLKLxs545Po7B4KpW68=";
+              sha256 = "sha256-C6IsLjl53vlhZUtTtJimA6m4EZ0O09vxx75icvmIKh8=";
               meta = { };
             }
           ))
