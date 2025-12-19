@@ -15,8 +15,8 @@
     "scripts".source = pkgs.fetchFromGitHub {
       owner = "dbeley";
       repo = "scripts";
-      rev = "a8607fbfb8c50543629e14ec483473459229091d";
-      sha256 = "XBumWlu4+z/jTKLK71Lr0hMeLhc43XD3oEzY+YUMzN4=";
+      rev = "ef62f03bd228a72d163da6b4ec2bb9413a395f6c";
+      sha256 = "sha256-q++rg38qyztlpzJG3sKsDhNsproEaIbAECGXjTD+50k=";
     };
   };
   wayland.windowManager.sway = {

@@ -24,7 +24,7 @@ let
       src = fetchFromGitHub {
         owner = "Kimplul";
         repo = "hid-tmff2";
-        rev = "2a7b3568792d50e94479298b5d0e5602d4e230f8";
+        rev = "26995429a3b92047f0c2f9ab90fe4202c86fd72b";
         sha256 = "sha256-NcIQ0rW7ZPujq7MRMYW0sQ4qWRwhLnovHDqzzxkwtwY=";
         fetchSubmodules = true;
       };
