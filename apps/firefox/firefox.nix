@@ -325,14 +325,14 @@
           ))
           (pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon (
             let
-              version = "0.2.0";
+              version = "0.2.2";
             in
             {
               pname = "comping";
               inherit version;
               addonId = "comping@dbeley.ovh";
               url = "https://github.com/dbeley/comping/releases/download/v${version}/comping-${version}.xpi";
-              sha256 = "sha256-fEKUJnEK6LB2lux3yq9u2W3hjxhRmzdcsRUS/nOjtqk=";
+              sha256 = "sha256-ZDOD7gfTQ+uW2j3I/+4fjuaJVLKLxs545Po7B4KpW68=";
               meta = { };
             }
           ))
