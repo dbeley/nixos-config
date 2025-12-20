@@ -99,6 +99,7 @@
       ".zen"
       # personal projects
       ".config/impulse"
+      ".local/share/impulse"
       ".config/mpdscrobble"
       ".local/share/symmetri"
     ];
