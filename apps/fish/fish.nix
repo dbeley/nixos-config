@@ -271,6 +271,13 @@
 
         for file in $files
           cat $file >> $output
+          # Ensure file ends with newline if it doesn't
+          if test -s $output
+            set last_char (tail -c1 $output | od -An -tx1 | string trim)
+            if test "$last_char" != "0a"
+              echo >> $output
+            end
+          end
         end
 
         echo "Done! Merged into $output"
