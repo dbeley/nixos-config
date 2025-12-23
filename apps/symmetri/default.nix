@@ -4,7 +4,7 @@
   ...
 }:
 let
-  symmetri = inputs.symmetri.packages.${pkgs.system}.default;
+  symmetri = inputs.symmetri.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   environment.systemPackages = [ symmetri ];
