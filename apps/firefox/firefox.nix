@@ -196,6 +196,7 @@
         "browser.tabs.groups.smart.userEnabled" = false;
         "browser.tabs.insertAfterCurrent" = true;
         "browser.tabs.loadBookmarksInBackground" = true;
+        "browser.tabs.splitView.enabled" = true;
         "browser.tabs.tabmanager.enabled" = false;
         "browser.theme.content-theme" = 2;
         "browser.theme.toolbar-theme" = 2;
