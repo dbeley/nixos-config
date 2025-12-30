@@ -16,5 +16,9 @@
     shellIntegration = {
       enableFishIntegration = true;
     };
+    keybindings = {
+      "ctrl+shift+j" = "previous_tab";
+      "ctrl+shift+k" = "next_tab";
+    };
   };
 }
