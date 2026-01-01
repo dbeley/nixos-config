@@ -22,4 +22,6 @@
       toolkit-accessibility = lib.mkForce true;
     };
   };
+
+  programs.niri.settings.outputs.eDP-1.scale = lib.mkForce 1.5;
 }

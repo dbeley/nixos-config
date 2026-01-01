@@ -190,7 +190,7 @@ let
     code-agents = {
       home = [
         ../apps/claude/claude.nix
-        ../apps/gemini/gemini.nix
+        # ../apps/gemini/gemini.nix
         ../apps/codex/codex.nix
         ../apps/cursor/cursor.nix
         ../apps/copilot/copilot.nix
@@ -429,7 +429,6 @@ in
     ];
     extraHomeModules = [
       ../apps/pycharm-professional/pycharm.nix
-      ../apps/gemini/gemini.nix
     ];
   };
   letsnote = mkHost {
@@ -440,10 +439,12 @@ in
       "impermanence"
       "bootloader-systemd-boot"
       "personal"
-      "gnome"
+      "niri"
+      # "gnome"
       "steam"
       "firefox"
       "chromium"
+      "qutebrowser"
       "python"
       "code-agents"
     ];
@@ -457,7 +458,7 @@ in
       ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
       ../modules/hardware/throttled.nix
-      ../hosts/x1yoga/throttled.nix
+      ../hosts/letsnote/throttled.nix
     ];
   };
   sg13 = mkHost {
