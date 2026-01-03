@@ -87,6 +87,7 @@
       ".local/share/keyrings"
       ".local/share/Monster Sanctuary"
       ".local/share/mpd"
+      ".local/share/qutebrowser/sessions"
       ".local/share/Steam"
       ".local/share/zoxide"
       ".local/Tendershoot"

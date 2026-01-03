@@ -1,12 +1,21 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.qutebrowser = {
     enable = true;
     settings = {
+      auto_save.session = true;
       url.default_page = "https://start.duckduckgo.com";
+      window.hide_decoration = true;
+      colors.webpage.preferred_color_scheme = "dark";
+      colors.webpage.darkmode.enabled = true;
       content = {
         headers.do_not_track = true;
         default_encoding = "utf-8";
+        autoplay = false;
+        javascript.clipboard = "access";
+        cookies.accept = "no-3rdparty";
+        pdfjs = true;
+        blocking.method = "both";
         blocking.adblock.lists = [
           "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2024.txt"
           "https://easylist.to/easylist/easylist.txt"
@@ -28,8 +37,13 @@
       downloads = {
         position = "bottom";
         location.directory = "~/Téléchargements";
+        remove_finished = 10000;
       };
+      hints.chars = "asdfwerjklh";
+      input.insert_mode.auto_load = true;
+      input.insert_mode.auto_leave = true;
       scrolling.smooth = false;
+      scrolling.bar = "overlay";
       statusbar = {
         show = "in-mode";
         position = "bottom";
@@ -49,6 +63,9 @@
         position = "top";
         new_position.related = "next";
         new_position.unrelated = "next";
+        indicator.width = 3;
+        title.format = "{audio}{index}: {current_title}";
+        last_close = "close";
       };
     };
     keyBindings = {
@@ -76,6 +93,7 @@
       "lfmd" = "https://www.last.fm/fr/music/{}";
       "rym" = "https://rateyourmusic.com/search?searchtype=a&searchterm={}";
       "rymd" = "https://rateyourmusic.com/artist/{}";
+      "rymm" = "https://rateyourmusic.com/search?searchterm={}&searchtype=films";
       "scr" = "https://www.senscritique.com/search?query={}";
       "map" = "https://www.google.fr/maps/?q={}";
       "eba" = "https://www.ebay.fr/sch/i.html?_nkw={}";
@@ -131,4 +149,8 @@
       '')
     ];
   };
+  xdg.configFile."qutebrowser/quickmarks".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Nextcloud/00-09_Documents/05_Config/05.06_qutebrowser/quickmarks";
+  xdg.configFile."qutebrowser/bookmarks/urls".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Nextcloud/00-09_Documents/05_Config/05.06_qutebrowser/bookmarks/urls";
 }
