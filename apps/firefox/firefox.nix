@@ -55,11 +55,6 @@
             "color" = "blue";
           }
           {
-            "name" = "Instagram";
-            "icon" = "chill";
-            "color" = "turquoise";
-          }
-          {
             "name" = "TikTok";
             "icon" = "cart";
             "color" = "orange";
@@ -82,7 +77,7 @@
           {
             "name" = "Instagram";
             "icon" = "pet";
-            "color" = "orange";
+            "color" = "turquoise";
           }
           {
             "name" = "Google";
@@ -139,15 +134,12 @@
     };
     profiles.${user} = {
       settings = {
-        "accessibility.force_disabled" = 1;
         "apz.overscroll.enabled" = true;
         "beacon.enabled" = false;
         "browser.aboutConfig.showWarning" = false;
         "browser.bookmarks.openInTabClosesMenu" = false;
         "browser.bookmarks.restore_default_bookmarks" = false;
         "browser.bookmarks.showMobileBookmarks" = false;
-        "browser.cache.disk.enable" = false;
-        "browser.cache.memory.enable" = true;
         "browser.compactmode.show" = true;
         "browser.contentblocking.category" = "strict";
         "browser.display.background_color" = "#666666";
@@ -158,9 +150,6 @@
         "browser.download.open_pdf_attachments_inline" = true;
         "browser.download.panel.shown" = true;
         "browser.download.useDownloadDir" = false;
-        "browser.download.viewableInternally.typeWasRegistered.svg" = true;
-        "browser.download.viewableInternally.typeWasRegistered.webp" = true;
-        "browser.download.viewableInternally.typeWasRegistered.xml" = true;
         "browser.formfill.enable" = false;
         "browser.fullscreen.autohide" = false;
         "browser.menu.showViewImageInfo" = true;
@@ -183,8 +172,6 @@
         "browser.safebrowsing.enabled" = false;
         "browser.safebrowsing.malware.enabled" = false;
         "browser.search.context.loadInBackground" = true;
-        "browser.search.defaultenginename" = "ddg";
-        "browser.search.order.1" = "ddg";
         "browser.search.region" = "FR";
         "browser.send_pings" = false;
         "browser.sessionstore.interval" = 600000;
@@ -210,19 +197,12 @@
         "browser.urlbar.unitConversion.enabled" = true;
         "layout.css.prefers-color-scheme.content-override" = 2;
         "dom.battery.enabled" = false;
-        "dom.enable_web_task_scheduling" = true;
         "dom.event.clipboardevents.enabled" = false;
         "dom.security.sanitizer.enabled" = true;
-        # "extensions.formautofill.addresses.enabled" = false;
-        # "extensions.formautofill.available" = "off";
-        # "extensions.formautofill.creditCards.enabled" = false;
         "extensions.getAddons.showPane" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
-        # "extensions.pocket.enabled" = false;
         "findbar.highlightAll" = true;
-        "fission.autostart" = true;
         "font.default.x-western" = "serif";
-        # "font.name.monospace.x-western" = "IosevkaTerm Nerd Font Mono";
         "font.name.sans-serif.x-western" = "Overpass";
         "font.name.serif.x-western" = "EB Garamond";
         "full-screen-api.transition-duration.enter" = "0 0";
@@ -231,11 +211,9 @@
         "full-screen-api.warning.timeout" = 0;
         "general.autoScroll" = true;
         "general.smoothScroll" = false;
-        "gfx.webrender.all" = true;
         "identity.fxaccounts.enabled" = true;
         "javascript.use_us_english_locale" = true;
         "layout.css.grid-template-masonry-value.enabled" = true;
-        "layout.css.has-selector.enabled" = true;
         "layout.spellcheckDefault" = 0;
         "media.ffmpeg.vaapi.enabled" = true;
         "media.ffvpx.enabled" = false;
@@ -247,10 +225,7 @@
         "mousewheel.default.delta_multiplier_y" = 275;
         "network.IDN_show_punycode" = true;
         "network.cookie.cookieBehavior" = 5;
-        "network.dns.max_high_priority_threads" = 8;
         "network.dnsCacheExpiration" = 3600;
-        "network.http.pacing.requests.enabled" = false;
-        "network.ssl_tokens_cache_capacity" = 10240;
         "nglayout.initialpaint.delay" = 0;
         "nglayout.initialpaint.delay_in_oopif" = 0;
         "privacy.clearOnShutdown.cache" = true;
@@ -261,20 +236,18 @@
         "privacy.clearOnShutdown.offlineApps" = false;
         "privacy.clearOnShutdown.sessions" = true;
         "privacy.donottrackheader.enabled" = true;
-        "privacy.firstparty.isolate" = true;
-        "privacy.firstparty.isolate.restrict_opener_access" = true;
         "privacy.query_stripping.enabled" = true;
         "privacy.query_stripping.enabled.pbmode" = true;
         "privacy.resistFingerprinting" = true;
         "privacy.resistFingerprinting.autoDeclineNoUserInputCanvasPrompts" = false;
         "privacy.sanitize.sanitizeOnShutdown" = true;
-        "privacy.spoof_english" = 2;
         "privacy.trackingprotection.enabled" = true;
+        "privacy.trackingprotection.fingerprinting.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
         "privacy.userContext.enabled" = true;
         "privacy.userContext.extension" = "@testpilot-containers";
         "privacy.userContext.ui.enabled" = true;
-        "privacy.window.maxInnerHeigth" = 900;
+        "privacy.window.maxInnerHeight" = 900;
         "privacy.window.maxInnerWidth" = 1600;
         "security.OCSP.enabled" = 1;
         "security.OCSP.require" = true;
@@ -290,7 +263,6 @@
         "signon.rememberSignons" = false;
         "ui.systemUsesDarkTheme" = 1;
         "webgl.disabled" = false;
-        "widget.use-xdg-desktop-portal.file-picker" = 0;
         "xpinstall.signatures.required" = false;
         "xpinstall.whitelist.required" = false;
       };
