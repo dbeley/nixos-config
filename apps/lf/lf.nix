@@ -24,13 +24,13 @@
       "bh" = "cd ~";
       "bd" = "cd ~/Documents";
       "bn" = "cd ~/Nextcloud";
-      "ba" = "cd ~/Nextcloud/10-19_Images/11_Captures-d-écran/11.01_autoscreen";
-      "bs" = "cd ~/Nextcloud/10-19_Images/11_Captures-d-écran";
+      "ba" = "cd ~/Nextcloud/30-39_Images/32_Captures-d-écran/32.11_autoscreen";
+      "bs" = "cd ~/Nextcloud/30-39_Images/32_Captures-d-écran";
       "be" = "cd ~/nfs/Expansion/Downloads";
       "bt" = "cd ~/Téléchargements";
       "bm" = "cd ~/nfs/WDC14/Musique";
-      "bp" = "cd ~/Nextcloud/20-29_Médias/20_Partitions/20.05_Real-Books-Individual-Songs";
-      "bc" = "cd ~/Nextcloud/20-29_Médias/20_Partitions/20.06_Christmas-Individual-Songs";
+      "bp" = "cd ~/Nextcloud/40-49_Médias/41_Partitions/41.15_Real-Books-Individual-Songs";
+      "bc" = "cd ~/Nextcloud/40-49_Médias/41_Partitions/41.16_Christmas-Individual-Songs";
 
       # Other mappings
       "D" = "delete";

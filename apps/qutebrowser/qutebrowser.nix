@@ -150,7 +150,7 @@
     ];
   };
   xdg.configFile."qutebrowser/quickmarks".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Nextcloud/00-09_Documents/05_Config/05.06_qutebrowser/quickmarks";
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Nextcloud/10-19_Documents/18_Config/18.16_qutebrowser/quickmarks";
   xdg.configFile."qutebrowser/bookmarks/urls".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Nextcloud/00-09_Documents/05_Config/05.06_qutebrowser/bookmarks/urls";
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Nextcloud/10-19_Documents/18_Config/18.16_qutebrowser/bookmarks/urls";
 }
