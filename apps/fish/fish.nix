@@ -203,7 +203,7 @@
         end
       '';
       real_book_picker = ''
-        fd . ~/Nextcloud/20-29_Médias/20_Partitions/20.05_Real-Books-Individual-Songs -e pdf \
+        fd . ~/Nextcloud/40-49_Médias/41_Partitions/41.15_Real-Books-Individual-Songs -e pdf \
         | awk '{print gensub(".*/", "", "g") "\t" $0}' \
         | fzf --with-nth=1 --delimiter='\t' --prompt="🎷 Real Book Sheet: " \
               --bind 'enter:execute-silent(setsid zathura {2} >/dev/null 2>&1 < /dev/null &)+abort'

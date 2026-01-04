@@ -103,7 +103,7 @@
           { proportion = 2.0 / 3.0; }
         ];
       };
-      screenshot-path = "~/Nextcloud/10-19_Images/11_Captures-d-écran/11.09_Captures-d-écran_Niri/%Y-%m-%d %H-%M-%S.png";
+      screenshot-path = "~/Nextcloud/30-39_Images/32_Captures-d-écran/32.19_Captures-d-écran_Niri/%Y-%m-%d %H-%M-%S.png";
       spawn-at-startup = [
         {
           command = [

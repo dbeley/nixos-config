@@ -6,16 +6,16 @@
     bookmarks = {
       h = "~";
       n = "~/Nextcloud";
-      a = "~/Nextcloud/10-19_Images/11_Captures-d-écran/11.01_autoscreen";
-      s = "~/Nextcloud/10-19_Images/11_Captures-d-écran";
+      a = "~/Nextcloud/30-39_Images/32_Captures-d-écran/32.11_autoscreen";
+      s = "~/Nextcloud/30-39_Images/32_Captures-d-écran";
       e = "~/nfs/Expansion1/Downloads";
       t = "~/Téléchargements";
       d = "~/Documents";
       f = "~/nfs";
       m = "~/nfs/WDC14/Musique";
-      r = "~/Nextcloud/20-29_Médias/20_Partitions/20.04_Real-Books";
-      p = "~/Nextcloud/20-29_Médias/20_Partitions/20.05_Real-Books-Individual-Songs";
-      c = "~/Nextcloud/20-29_Médias/20_Partitions/20.06_Christmas-Individual-Songs";
+      r = "~/Nextcloud/40-49_Médias/41_Partitions/41.14_Real-Books";
+      p = "~/Nextcloud/40-49_Médias/41_Partitions/41.15_Real-Books-Individual-Songs";
+      c = "~/Nextcloud/40-49_Médias/41_Partitions/41.16_Christmas-Individual-Songs";
     };
     plugins = {
       mappings = {

@@ -178,9 +178,9 @@
     extraConfigEarly = ''
       set $tx #ffffff
 
-      bindsym --release Print exec "grim ~/Nextcloud/10-19_Images/11_Captures-d-écran/11.07_Captures-d-écran_Sway/$(date +%s).png"
-      bindsym --release Shift+Print exec 'grim -g "$(slurp -d)" ~/Nextcloud/10-19_Images/11_Captures-d-écran/11.07_Captures-d-écran_Sway/$(date +%s)_cropped.png'
-      bindsym --release XF86SelectiveScreenshot exec 'grim -g "$(slurp -d)" ~/Nextcloud/10-19_Images/11_Captures-d-écran/11.07_Captures-d-écran_Sway/$(date +%s)_cropped.png'
+      bindsym --release Print exec "grim ~/Nextcloud/30-39_Images/32_Captures-d-écran/32.17_Captures-d-écran_Sway/$(date +%s).png"
+      bindsym --release Shift+Print exec 'grim -g "$(slurp -d)" ~/Nextcloud/30-39_Images/32_Captures-d-écran/32.17_Captures-d-écran_Sway/$(date +%s)_cropped.png'
+      bindsym --release XF86SelectiveScreenshot exec 'grim -g "$(slurp -d)" ~/Nextcloud/30-39_Images/32_Captures-d-écran/32.17_Captures-d-écran_Sway/$(date +%s)_cropped.png'
     '';
   };
 }
