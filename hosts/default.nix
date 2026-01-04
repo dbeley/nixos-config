@@ -308,6 +308,7 @@ in
       "steam"
       "firefox"
       "chromium"
+      "qutebrowser"
       "mpd"
       "python"
       "code-agents"
