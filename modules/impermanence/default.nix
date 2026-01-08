@@ -111,10 +111,8 @@
   fileSystems = {
     "/persistent".neededForBoot = true;
     "/nix".neededForBoot = true;
-    "/var/log".neededForBoot = true;
   };
 
-  # Impermanence
   boot.initrd.postResumeCommands = lib.mkAfter ''
     mkdir /btrfs_tmp
     mount /dev/mapper/root_vg_${hostName} /btrfs_tmp
