@@ -19,8 +19,8 @@
       "scripts".source = pkgs.fetchFromGitHub {
         owner = "dbeley";
         repo = "scripts";
-        rev = "ef62f03bd228a72d163da6b4ec2bb9413a395f6c";
-        sha256 = "sha256-q++rg38qyztlpzJG3sKsDhNsproEaIbAECGXjTD+50k=";
+        rev = "3ca27d817733c56ac269897835d3088369e99adf";
+        sha256 = "sha256-R2GVSUkyPXiIASDe3o92gE1XzVsTzbXB8hQBSo7FlAc=";
       };
     };
   };
