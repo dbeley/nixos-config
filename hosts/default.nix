@@ -194,6 +194,7 @@ let
         ../apps/codex/codex.nix
         ../apps/cursor/cursor.nix
         ../apps/copilot/copilot.nix
+        ../apps/opencode/opencode.nix
       ];
     };
   };
