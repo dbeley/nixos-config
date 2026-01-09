@@ -8,7 +8,7 @@
       n = "~/Nextcloud";
       a = "~/Nextcloud/30-39_Images/32_Captures-d-écran/32.11_autoscreen";
       s = "~/Nextcloud/30-39_Images/32_Captures-d-écran";
-      e = "~/nfs/Expansion1/Downloads";
+      e = "~/nfs/WDC14_2/Downloads";
       t = "~/Téléchargements";
       d = "~/Documents";
       f = "~/nfs";

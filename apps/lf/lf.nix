@@ -26,7 +26,7 @@
       "bn" = "cd ~/Nextcloud";
       "ba" = "cd ~/Nextcloud/30-39_Images/32_Captures-d-écran/32.11_autoscreen";
       "bs" = "cd ~/Nextcloud/30-39_Images/32_Captures-d-écran";
-      "be" = "cd ~/nfs/Expansion/Downloads";
+      "be" = "cd ~/nfs/WDC14_2/Downloads";
       "bt" = "cd ~/Téléchargements";
       "bm" = "cd ~/nfs/WDC14/Musique";
       "bp" = "cd ~/Nextcloud/40-49_Médias/41_Partitions/41.15_Real-Books-Individual-Songs";
