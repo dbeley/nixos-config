@@ -189,9 +189,9 @@ let
     };
     code-agents = {
       home = [
-        ../apps/claude/claude.nix
+        # ../apps/claude/claude.nix
         # ../apps/gemini/gemini.nix
-        ../apps/codex/codex.nix
+        # ../apps/codex/codex.nix
         ../apps/cursor/cursor.nix
         ../apps/copilot/copilot.nix
         ../apps/opencode/opencode.nix
