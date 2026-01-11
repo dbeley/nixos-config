@@ -223,6 +223,7 @@
         "full-screen-api.warning.timeout" = 0;
         "general.autoScroll" = true;
         "general.smoothScroll" = false;
+        "gfx.webrender.layer-compositor" = true;
         "identity.fxaccounts.enabled" = true;
         "javascript.use_us_english_locale" = true;
         "layout.css.grid-template-masonry-value.enabled" = true;
