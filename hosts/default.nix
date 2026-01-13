@@ -413,9 +413,10 @@ in
       "docker"
       # "neovim-nvf"
       "firefox"
-      "qutebrowser"
-      "vscode"
+      # "qutebrowser"
+      # "vscode"
       "code-agents"
+      "pycharm"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -428,9 +429,6 @@ in
       {
         my.stylix.wallpaper = "hk-plant";
       }
-    ];
-    extraHomeModules = [
-      ../apps/pycharm-professional/pycharm.nix
     ];
   };
   letsnote = mkHost {
