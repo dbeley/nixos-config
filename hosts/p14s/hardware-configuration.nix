@@ -6,6 +6,7 @@
   inputs,
   lib,
   modulesPath,
+  user,
   ...
 }:
 
@@ -41,6 +42,19 @@
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  fileSystems."/home/${user}/nfs" = {
+    device = "omv.home:/";
+    fsType = "nfs";
+    options = [
+      "_netdev"
+      "noauto"
+      "nofail"
+      "x-systemd.automount"
+      "x-systemd.idle-timeout=600"
+      "x-systemd.mount-timeout=10s"
+    ];
+  };
+
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp102s0f4u1u1.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp1s0f0.useDHCP = lib.mkDefault true;
@@ -48,4 +62,8 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  systemd.tmpfiles.rules = [
+    "d /home/${user}/nfs 0755 ${user} users -"
+  ];
 }
