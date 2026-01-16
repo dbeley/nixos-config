@@ -57,6 +57,14 @@
 - **latitude**: Dell Latitude 7420 (Intel Core i7-1165G7, 16GB RAM, niri)
 - **letsnote**: Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, 8GB RAM, gnome, impermanence)
 
+### Proxmox VMs (Kimsufi Dedicated Server)
+- **nixos-kimsufi-01**
+- **nixos-kimsufi-02**
+- **nixos-kimsufi-03**
+
+### Proxmox VMs (Era Local Server)
+- **nixos-era-01**
+
 ## Common Usage
 
 ### Rebuilding the System
