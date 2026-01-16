@@ -180,6 +180,12 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    workmux = {
+      url = "github:raine/workmux";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     symmetri = {
       url = "github:dbeley/symmetri";
       inputs = {

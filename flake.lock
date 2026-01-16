@@ -1149,6 +1149,7 @@
         "systems": "systems",
         "treefmt-nix": "treefmt-nix",
         "ucodenix": "ucodenix",
+        "workmux": "workmux",
         "zen-browser": "zen-browser"
       }
     },
@@ -1389,6 +1390,26 @@
       "original": {
         "owner": "e-tho",
         "repo": "ucodenix",
+        "type": "github"
+      }
+    },
+    "workmux": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1768592103,
+        "narHash": "sha256-2zhybYTG82tS+s0yZ48CZLpnimLNkvJWEtSUqeu/LlY=",
+        "owner": "raine",
+        "repo": "workmux",
+        "rev": "74ea35232e68147293f0240990b4c0f1e50691b1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "raine",
+        "repo": "workmux",
         "type": "github"
       }
     },
