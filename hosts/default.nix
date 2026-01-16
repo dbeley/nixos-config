@@ -507,16 +507,37 @@ in
       ../modules/common/bootloader-grub-bios.nix
     ];
   };
-  nixos-01 = mkHost {
-    hostName = "nixos-01";
-    stateVersion = "25.05";
+  nixos-kimsufi-01 = mkHost {
+    hostName = "nixos-kimsufi-01";
+    stateVersion = "25.11";
+    profiles = [
+      "bootloader-grub"
+      "openssh-server"
+    ];
+  };
+  nixos-kimsufi-02 = mkHost {
+    hostName = "nixos-kimsufi-02";
+    stateVersion = "25.11";
+    profiles = [
+      "bootloader-grub"
+      "openssh-server"
+    ];
+  };
+  nixos-kimsufi-03 = mkHost {
+    hostName = "nixos-kimsufi-03";
+    stateVersion = "25.11";
     profiles = [
       "bootloader-grub"
       "openssh-server"
       "docker"
     ];
-    extraModules = [
-      ../hosts/nixos-01/default.nix
+  };
+  nixos-era-01 = mkHost {
+    hostName = "nixos-era-01";
+    stateVersion = "25.11";
+    profiles = [
+      "bootloader-grub"
+      "openssh-server"
     ];
   };
 }
