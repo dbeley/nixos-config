@@ -4,7 +4,6 @@
     python3
     pyright
     ruff
-    poetry
     uv
   ];
 }
