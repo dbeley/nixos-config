@@ -157,6 +157,10 @@
     };
     impermanence = {
       url = "github:nix-community/impermanence";
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
