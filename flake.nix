@@ -12,6 +12,14 @@
         systems.follows = "systems";
       };
     };
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     gitignore = {
       url = "github:hercules-ci/gitignore.nix";
       inputs = {
@@ -242,6 +250,7 @@
             };
           };
         }
+        // (inputs.deploy-rs.lib.${system}.deployChecks self.deploy)
       );
 
       devShells = eachSystem (system: {
@@ -264,6 +273,60 @@
           user
           ;
         inherit (nixpkgs) lib;
+      };
+
+      # deploy-rs configuration for remote deployments
+      deploy.nodes = {
+        nixos-kimsufi-01 = {
+          hostname = "10.10.20.10";
+          sshUser = "root";
+          sshOpts = [
+            "-J"
+            "kimsufi"
+          ];
+          profiles.system = {
+            user = "root";
+            path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.nixos-kimsufi-01;
+            magicRollback = true;
+            autoRollback = true;
+            activationTimeout = 300;
+            confirmTimeout = 60;
+          };
+        };
+
+        nixos-kimsufi-02 = {
+          hostname = "10.10.20.11";
+          sshUser = "root";
+          sshOpts = [
+            "-J"
+            "kimsufi"
+          ];
+          profiles.system = {
+            user = "root";
+            path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.nixos-kimsufi-02;
+            magicRollback = true;
+            autoRollback = true;
+            activationTimeout = 300;
+            confirmTimeout = 60;
+          };
+        };
+
+        nixos-kimsufi-03 = {
+          hostname = "10.10.20.12";
+          sshUser = "root";
+          sshOpts = [
+            "-J"
+            "kimsufi"
+          ];
+          profiles.system = {
+            user = "root";
+            path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.nixos-kimsufi-03;
+            magicRollback = true;
+            autoRollback = true;
+            activationTimeout = 300;
+            confirmTimeout = 60;
+          };
+        };
       };
     };
 }

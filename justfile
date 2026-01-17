@@ -32,8 +32,13 @@ install-proxmox-vm-kimsufi hostname ip:
   @echo "  ssh -J kimsufi nixos@{{ip}}"
   @echo "  bash /tmp/install-nixos.sh {{hostname}}"
 
+deploy-kimsufi:
+  @echo "Deploying all kimsufi VMs in parallel with auto-rollback..."
+  deploy . -- --targets '.#nixos-kimsufi-01' '.#nixos-kimsufi-02' '.#nixos-kimsufi-03'
+
 switch-proxmox-vm-kimsufi hostname ip:
   @echo "Deploying config for {{hostname}} to {{ip}} via kimsufi jump host"
+  @echo "WARNING: Consider using 'just deploy-kimsufi' instead for auto-rollback safety"
   NIX_SSHOPTS="-J kimsufi" nixos-rebuild switch --flake .#{{hostname}} --target-host {{ip}} --sudo --ask-sudo-password
 
 clean:
