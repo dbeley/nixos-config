@@ -204,12 +204,19 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   outputs =
     inputs@{
       self,
       nixpkgs,
+      nixos-generators,
       ...
     }:
     let
@@ -219,8 +226,53 @@
       ];
       user = "david";
 
-      # Small tool to iterate over each supported system
       eachSystem = nixpkgs.lib.genAttrs supportedSystems;
+
+      hostConfigs = import ./hosts {
+        inherit
+          nixpkgs
+          inputs
+          user
+          ;
+        inherit (nixpkgs) lib;
+      };
+
+      mkISO =
+        {
+          hostName,
+          system ? "x86_64-linux",
+        }:
+        nixos-generators.nixosGenerate {
+          inherit system;
+          modules = [
+            ./iso-configs/common.nix
+            {
+              environment.etc."iso-config".source = self;
+              networking.hostName = "nixos-installer-${hostName}";
+            }
+          ];
+          format = "install-iso";
+        };
+
+      mkProxmox =
+        {
+          hostName,
+          system ? "x86_64-linux",
+        }:
+        nixos-generators.nixosGenerate {
+          inherit system;
+          modules = [
+            {
+              imports = [
+                hostConfigs.${hostName}.config.environment.etc."nixos/configuration.nix".source
+                  or ./modules/configuration.nix
+              ];
+              services.qemuGuest.enable = true;
+              services.openssh.enable = true;
+            }
+          ];
+          format = "proxmox";
+        };
     in
     {
       checks = eachSystem (
@@ -257,13 +309,30 @@
           };
       });
 
-      nixosConfigurations = import ./hosts {
-        inherit
-          nixpkgs
-          inputs
-          user
-          ;
-        inherit (nixpkgs) lib;
-      };
+      packages = eachSystem (system: {
+        iso-installer = mkISO {
+          hostName = "installer";
+          inherit system;
+        };
+
+        proxmox-nixos-kimsufi-01 = mkProxmox {
+          hostName = "nixos-kimsufi-01";
+          inherit system;
+        };
+        proxmox-nixos-kimsufi-02 = mkProxmox {
+          hostName = "nixos-kimsufi-02";
+          inherit system;
+        };
+        proxmox-nixos-kimsufi-03 = mkProxmox {
+          hostName = "nixos-kimsufi-03";
+          inherit system;
+        };
+        proxmox-nixos-era-01 = mkProxmox {
+          hostName = "nixos-era-01";
+          inherit system;
+        };
+      });
+
+      nixosConfigurations = hostConfigs;
     };
 }

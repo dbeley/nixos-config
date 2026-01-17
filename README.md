@@ -112,6 +112,31 @@ Then add a new definition of the host in `hosts/default.nix` with the wanted pro
 
 Installation without impermanence/disko can be done normally from the NixOS Live ISO, then just clone this repo and `just switch` (cf. above).
 
+### Installing with Custom ISO
+
+You can generate a universal installer ISO that includes all your host configurations:
+
+```bash
+just build-iso
+
+# Flash the ISO to a USB drive (replace /dev/sdX with your USB device)
+sudo dd if=$(nix build .#iso-installer --print-out-paths)/iso/*.iso of=/dev/sdX bs=4M status=progress
+```
+
+Boot from the ISO, then:
+
+**For hosts with impermanence/disko:**
+```bash
+# Install with automatic partitioning for any host
+sudo disko-install --flake /etc/iso-config#HOSTNAME --disk main /dev/DEVICE
+```
+
+**For standard hosts:**
+```bash
+# Partition manually, then install any host:
+sudo nixos-install --flake /etc/iso-config#HOSTNAME
+```
+
 ### Impermanence/disko
 
 When using the impermanence/disko module, the installation changes quite a bit and can even be done from a separate host by plugging the destination storage device.
@@ -147,6 +172,15 @@ sudo chown root:root /mnt/root/persistent/passwd_$USER
 sudo nixos-enter --root /mnt
 ```
 
+### Proxmox VM Images
+
+You can generate Proxmox-ready VMA images for your VM hosts:
+
+```bash
+# Build a Proxmox image for a specific host
+just build-proxmox nixos-kimsufi-01
+```
+
 ## Post-install
 
 For doom-emacs:
@@ -160,5 +194,4 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 
 Some tools and utilities to test
 
-- nixos-generators
 - nh
