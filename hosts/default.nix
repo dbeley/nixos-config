@@ -198,6 +198,11 @@ let
         ../apps/opencode/opencode.nix
       ];
     };
+    qbittorrent = {
+      system = [
+        ../apps/qbittorrent/default.nix
+      ];
+    };
   };
   mkHost =
     {
@@ -514,6 +519,7 @@ in
     profiles = [
       "bootloader-grub"
       "openssh-server"
+      "qbittorrent"
     ];
   };
   nixos-kimsufi-02 = mkHost {
