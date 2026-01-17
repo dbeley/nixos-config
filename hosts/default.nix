@@ -437,8 +437,8 @@ in
       }
     ];
   };
-  letsnote = mkHost {
-    hostName = "letsnote";
+  cf-rz6 = mkHost {
+    hostName = "cf-rz6";
     stateVersion = "25.05";
     profiles = [
       "laptop"
@@ -464,7 +464,7 @@ in
       ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
       ../modules/hardware/throttled.nix
-      ../hosts/letsnote/throttled.nix
+      ../hosts/cf-rz6/throttled.nix
     ];
   };
   sg13 = mkHost {
