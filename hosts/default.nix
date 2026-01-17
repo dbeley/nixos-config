@@ -35,10 +35,6 @@ let
         inputs.sops-nix.nixosModules.sops
         ../modules/sops/default.nix
       ];
-      home = [
-        inputs.sops-nix.homeManagerModules.sops
-        ../modules/sops/sops.nix
-      ];
     };
     openssh-server = {
       system = [
