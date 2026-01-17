@@ -55,7 +55,7 @@
 - **x1yoga**: Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, 8GB RAM, gnome, impermanence)
 - **x61s**: Lenovo Thinkpad X61s (Intel Core 2 Duo L7500, 3GB RAM, sway)
 - **latitude**: Dell Latitude 7420 (Intel Core i7-1165G7, 16GB RAM, niri)
-- **cf-rz6**: Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, 8GB RAM, gnome, impermanence)
+- **cf-rz6**: Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, 8GB RAM, niri, impermanence)
 
 ### Proxmox VMs (Kimsufi Dedicated Server)
 - **nixos-kimsufi-01**
@@ -91,17 +91,16 @@ nix-store --optimise -v
 
 ### just
 
-A `justfile` is provided, see https://github.com/casey/just for more information.
+After first installation you can use just recipes (or `nh` if it is installed on your system).
+For the recipes to work properly, create a `.env` file and fill it with the needed environment variables:
+
+```
+HOST=x13
+```
 
 ```
 just switch
 just clean
-```
-
-For the recipes to work properly, create a `.env` and fill it with the needed environment variables:
-
-```
-HOST=x13
 ```
 
 ## Install
@@ -111,6 +110,31 @@ On a new install, you should first copy `/etc/nixos/hardware-configuration.nix` 
 Then add a new definition of the host in `hosts/default.nix` with the wanted profiles.
 
 Installation without impermanence/disko can be done normally from the NixOS Live ISO, then just clone this repo and `just switch` (cf. above).
+
+### Installing with Custom ISO
+
+From this repo, you can generate a universal installer ISO that includes all the available host configurations:
+
+```bash
+just build-iso-image
+
+# Flash the ISO to a USB drive (replace /dev/sdX with your USB device and ISO_NAME to your newly built ISO image)
+sudo dd if=result/iso/<ISO_NAME>.iso of=/dev/sdX bs=4M status=progress conv=fsync
+```
+
+Boot from the ISO, then:
+
+**For hosts with impermanence/disko:**
+```bash
+# Install with automatic partitioning for any host
+sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake /etc/iso-config#HOSTNAME --disk main /dev/DEVICE
+```
+
+Don't forget to apply the post-installation steps described in the next section (password file).
+
+**For standard hosts (without disko):**
+
+The custom ISO only works for disko-enabled hosts. For standard hosts, use the official NixOS ISO and follow the manual installation process below.
 
 ### Impermanence/disko
 
@@ -147,6 +171,15 @@ sudo chown root:root /mnt/root/persistent/passwd_$USER
 sudo nixos-enter --root /mnt
 ```
 
+### Proxmox VM Images
+
+Dedicated just recipes exist in order to install and deploy remote images
+
+```bash
+just install-proxmox-vm HOSTNAME IP
+just switch-proxmox-vm HOSTNAME IP
+```
+
 ## Post-install
 
 For doom-emacs:
@@ -155,10 +188,3 @@ For doom-emacs:
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
 ```
-
-## TODO
-
-Some tools and utilities to test
-
-- nixos-generators
-- nh
