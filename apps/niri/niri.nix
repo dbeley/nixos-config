@@ -1,4 +1,10 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  inputs,
+  system,
+  ...
+}:
 {
   home.packages = with pkgs; [
     xwayland-satellite
@@ -6,6 +12,7 @@
     libnotify
     pamixer
     wl-clipboard-rs
+    inputs.nsticky.packages.${system}.nsticky
   ];
   home.file = {
     "scripts".source = pkgs.fetchFromGitHub {
@@ -124,6 +131,9 @@
             "-i"
             "${config.stylix.image}"
           ];
+        }
+        {
+          command = [ "nsticky" ];
         }
       ];
       window-rules = [
@@ -395,6 +405,16 @@
         "Mod+Shift+P".action.spawn = "poweroff";
         "Mod+Shift+O".action.spawn = "reboot";
         "Mod+Tab".action = toggle-overview;
+        "Mod+Ctrl+Space".action.spawn = [
+          "nsticky"
+          "sticky"
+          "toggle-active"
+        ];
+        "Mod+Shift+Space".action.spawn = [
+          "nsticky"
+          "stage"
+          "toggle-active"
+        ];
       };
     };
   };
