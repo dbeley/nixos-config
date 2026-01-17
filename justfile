@@ -22,40 +22,40 @@ boot:
   @echo "Rebuilding config for host $HOST (available at next boot)"
   nh os boot -H $HOST .
 
-install-proxmox-vm-local hostname ip:
-  @echo "Installing {{hostname}} on {{ip}} (local network)"
+rollback:
+  @echo "Rolling back to previous generation"
+  nh os rollback
+
+build-iso-image:
+  @echo "Building generic installer ISO"
+  nix build .#iso-installer --print-out-paths
+
+install-proxmox-vm hostname ip:
+  @echo "Installing {{hostname}} on {{ip}}"
   scp scripts/install-nixos.sh nixos@{{ip}}:/tmp/
   @echo "Script uploaded. Now SSH to the VM and run:"
   @echo "  ssh nixos@{{ip}}"
   @echo "  bash /tmp/install-nixos.sh {{hostname}}"
 
-switch-proxmox-vm-local hostname ip:
-  @echo "Deploying config for {{hostname}} to {{ip}} (local network)"
-  nixos-rebuild switch --flake .#{{hostname}} --target-host root@{{ip}} --sudo
-
-install-proxmox-vm-kimsufi hostname ip:
-  @echo "Installing {{hostname}} on {{ip}} via kimsufi jump host"
-  scp -J kimsufi scripts/install-nixos.sh nixos@{{ip}}:/tmp/
-  @echo "Script uploaded. Now SSH to the VM and run:"
-  @echo "  ssh -J kimsufi nixos@{{ip}}"
-  @echo "  bash /tmp/install-nixos.sh {{hostname}}"
-
-switch-proxmox-vm-kimsufi hostname ip:
-  @echo "Deploying config for {{hostname}} to {{ip}} via kimsufi jump host"
-  NIX_SSHOPTS="-J kimsufi" nixos-rebuild switch --flake .#{{hostname}} --target-host {{ip}} --sudo --ask-sudo-password
+switch-proxmox-vm hostname ip:
+  @echo "Deploying config for {{hostname}} to {{ip}}"
+  nh os switch -H {{hostname}} . --target-host david@{{ip}}
 
 clean:
   @echo "Cleaning old generations and garbage collecting"
-  nh clean all --keep 5
-
-# Legacy nix cleanup (if nh has issues)
-legacy-clean:
-  sudo nix-collect-garbage -d
-  nix-collect-garbage -d
-  # sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
+  nh clean all --keep-since 7d --keep 5
 
 optimize:
-  nix-store --optimize -v
+  @echo "Cleaning and optimizing nix store"
+  nh clean all --keep-since 7d --keep 5 --optimise
+
+search query:
+  @echo "Searching for packages: {{query}}"
+  nh search {{query}}
+
+info:
+  @echo "Listing available generations"
+  nh os info
 
 first-install-disko host target:
   @echo "Installing host {{host}} on target disk {{target}}"

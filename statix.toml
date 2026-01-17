@@ -1,0 +1,4 @@
+# Statix configuration
+# Disable W04 (manual_inherit_from) because it produces false positives
+# when extracting values from nested attribute sets with string interpolation
+disabled = ["manual_inherit_from"]
