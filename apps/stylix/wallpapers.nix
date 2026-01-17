@@ -72,6 +72,13 @@
       };
       imageScalingMode = "fill";
     };
+    "nix-aero" = {
+      image = pkgs.fetchurl {
+        url = "https://i.imgur.com/hfm78Sj.png";
+        sha256 = "1l4kqxljz363ygsj7yikbydgf3lijwj149l7ps1qxg6lmzj8hs88";
+      };
+      imageScalingMode = "fill";
+    };
   };
   defaultWallpaper = "abstract-light-rays";
 }
