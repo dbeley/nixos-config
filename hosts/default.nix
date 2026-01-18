@@ -324,6 +324,7 @@ in
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
       {
         my.stylix.wallpaper = "abstract-light-rays";
+        disko.mainDisk = "/dev/nvme0n1";
       }
       ../apps/boinc/default.nix
     ];
