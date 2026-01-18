@@ -212,6 +212,14 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    direnv-instant = {
+      url = "github:Mic92/direnv-instant";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
+      };
+    };
   };
 
   outputs =

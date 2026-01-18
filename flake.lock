@@ -138,6 +138,32 @@
         "type": "github"
       }
     },
+    "direnv-instant": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1768707867,
+        "narHash": "sha256-bNHBR07JIJUMjDGqd3/KwhPsI7e43JkAoeczO2cQ8h8=",
+        "owner": "Mic92",
+        "repo": "direnv-instant",
+        "rev": "522eeea04ab1bc360464e51477963b0c3e18284a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "direnv-instant",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -1112,6 +1138,7 @@
       "inputs": {
         "base16": "base16",
         "devshell": "devshell",
+        "direnv-instant": "direnv-instant",
         "disko": "disko",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",

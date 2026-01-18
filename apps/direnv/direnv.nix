@@ -1,4 +1,10 @@
+{ inputs, ... }:
 {
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
+  imports = [
+    inputs.direnv-instant.homeModules.direnv-instant
+  ];
+
+  programs.direnv-instant = {
+    enable = true;
+  };
 }
