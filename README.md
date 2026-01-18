@@ -127,6 +127,7 @@ Boot from the ISO, then:
 **For hosts with impermanence/disko:**
 ```bash
 # Install with automatic partitioning for any host
+# Note: The --disk main parameter should match your disko.mainDisk setting
 sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake /etc/iso-config#HOSTNAME --disk main /dev/DEVICE
 ```
 
@@ -150,6 +151,7 @@ The target disk can be any mounted disk (except the one the system is currently 
 nixos-generate-config --no-filesystems
 
 # disko + impermanence install on an existing host called "x1yoga"
+# Note: /dev/sda must match the host's disko.mainDisk setting
 sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake .#x1yoga --disk main /dev/sda --show-trace
 # Using just
 just first-install-disko x1yoga /dev/sda

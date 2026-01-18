@@ -9,7 +9,7 @@
     disko.mainDisk = lib.mkOption {
       type = lib.types.str;
       default = "/dev/nvme0n1";
-      description = "Main disk device for disko partitioning";
+      description = "Main disk device for disko partitioning. Override this for different hardware configurations. Use `lsblk` to identify the correct device.";
     };
   };
 
