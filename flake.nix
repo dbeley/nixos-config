@@ -12,6 +12,14 @@
         systems.follows = "systems";
       };
     };
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     gitignore = {
       url = "github:hercules-ci/gitignore.nix";
       inputs = {
@@ -258,6 +266,7 @@
             };
           };
         }
+        // (inputs.deploy-rs.lib.${system}.deployChecks self.deploy)
       );
 
       devShells = eachSystem (system: {
@@ -281,5 +290,69 @@
           ;
         inherit (nixpkgs) lib;
       };
+
+      # deploy-rs configuration for remote deployments
+      deploy.nodes =
+        let
+          # Helper to create a deploy node configuration for a host
+          mkDeployNode =
+            {
+              hostName,
+              hostname,
+              sshUser ? "root",
+              sshOpts ? [ ],
+              user ? "root",
+              magicRollback ? true,
+              autoRollback ? true,
+              activationTimeout ? 300,
+              confirmTimeout ? 60,
+            }:
+            let
+              hostConfig = self.nixosConfigurations.${hostName};
+              # Derive system architecture from the nixosConfiguration
+              inherit (hostConfig.pkgs) system;
+            in
+            {
+              inherit hostname sshUser sshOpts;
+              profiles.system = {
+                inherit
+                  user
+                  magicRollback
+                  autoRollback
+                  activationTimeout
+                  confirmTimeout
+                  ;
+                path = inputs.deploy-rs.lib.${system}.activate.nixos hostConfig;
+              };
+            };
+        in
+        {
+          nixos-kimsufi-01 = mkDeployNode {
+            hostName = "nixos-kimsufi-01";
+            hostname = "10.10.20.10";
+            sshOpts = [
+              "-J"
+              "kimsufi"
+            ];
+          };
+
+          nixos-kimsufi-02 = mkDeployNode {
+            hostName = "nixos-kimsufi-02";
+            hostname = "10.10.20.11";
+            sshOpts = [
+              "-J"
+              "kimsufi"
+            ];
+          };
+
+          nixos-kimsufi-03 = mkDeployNode {
+            hostName = "nixos-kimsufi-03";
+            hostname = "10.10.20.12";
+            sshOpts = [
+              "-J"
+              "kimsufi"
+            ];
+          };
+        };
     };
 }
