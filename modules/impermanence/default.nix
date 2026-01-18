@@ -51,6 +51,7 @@
       ".codex"
       ".config/.copilot"
       ".config/audacity"
+      ".config/backrest"
       ".config/beets"
       ".config/chromium"
       ".config/Cursor"
@@ -77,6 +78,7 @@
       ".gemini"
       ".gnupg"
       ".local/share/Baba_Is_You"
+      ".local/share/backrest"
       ".local/share/Brotato"
       ".local/share/CassetteBeasts"
       ".local/share/Celeste"
@@ -101,7 +103,7 @@
       ".var/app"
       ".wine"
       ".zen"
-      # personal projects
+      # Personal projects
       ".config/impulse"
       ".local/share/impulse"
       ".config/mpdscrobble"
@@ -140,5 +142,22 @@
     btrfs subvolume create /btrfs_tmp/root
     umount /btrfs_tmp
   '';
+
+  # Temporary workaround for Téléchargements folder, cf. https://github.com/nix-community/impermanence/issues/290
+  systemd.mounts = [
+    {
+      name = lib.mkForce "home-${user}-T\xc3\xa9l\xc3\xa9chargements.mount"; # result of systemd-escape home/${user}/Téléchargements.mount
+      wantedBy = [ "local-fs.target" ];
+      before = [ "local-fs.target" ];
+      where = "/home/${user}/Téléchargements";
+      what = "/persistent/home/${user}/Téléchargements";
+      unitConfig.DefaultDependencies = false;
+      type = "none";
+      options = lib.concatStringsSep "," [
+        "bind"
+        "x-gvfs-hide"
+      ];
+    }
+  ];
 
 }
