@@ -1,4 +1,9 @@
-{ hostName, lib, ... }:
+{
+  hostName,
+  lib,
+  config,
+  ...
+}:
 {
   options = {
     disko.mainDisk = lib.mkOption {
@@ -14,7 +19,7 @@
       disk = {
         main = {
           type = "disk";
-          device = lib.mkDefault "/dev/nvme0n1";
+          device = config.disko.mainDisk;
           content = {
             type = "gpt";
             partitions = {

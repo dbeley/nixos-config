@@ -52,10 +52,6 @@ build-proxmox host:
   @echo "Building Proxmox image for {{host}}"
   nix build .#proxmox-{{host}} --print-out-paths
 
-build-all-proxmox:
-  @echo "Building all Proxmox images"
-  nix build .#proxmox-nixos-kimsufi-01 .#proxmox-nixos-kimsufi-02 .#proxmox-nixos-kimsufi-03 .#proxmox-nixos-era-01
-
 first-install-disko host target:
   @echo "Installing host {{host}} on target disk {{target}}"
   sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake .#{{host}} --disk main {{target}} --show-trace

@@ -114,7 +114,7 @@ Installation without impermanence/disko can be done normally from the NixOS Live
 
 ### Installing with Custom ISO
 
-You can generate a universal installer ISO that includes all your host configurations:
+From this repo, you can generate a universal installer ISO that includes all the available host configurations:
 
 ```bash
 just build-iso
@@ -130,6 +130,8 @@ Boot from the ISO, then:
 # Install with automatic partitioning for any host
 sudo disko-install --flake /etc/iso-config#HOSTNAME --disk main /dev/DEVICE
 ```
+
+Don't forget to apply the post-installation steps described in the next section (password file).
 
 **For standard hosts:**
 ```bash
@@ -177,7 +179,6 @@ sudo nixos-enter --root /mnt
 You can generate Proxmox-ready VMA images for your VM hosts:
 
 ```bash
-# Build a Proxmox image for a specific host
 just build-proxmox nixos-kimsufi-01
 ```
 
