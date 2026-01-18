@@ -126,6 +126,14 @@
 
   programs.command-not-found.enable = false;
 
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep-since 7d --keep 5";
+    };
+  };
+
   fonts = {
     # Now handled by stylix except noto-fonts for emojis and special characters
     packages = with pkgs; [
@@ -175,9 +183,7 @@
       auto-optimise-store = true;
     };
     gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
+      automatic = false;
     };
     registry.nixpkgs.flake = inputs.nixpkgs;
     channel.enable = false;

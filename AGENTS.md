@@ -181,6 +181,29 @@ nix build .#<pkg>  # Ensure derivation succeeds before committing
 2. Add overlay to `nixpkgs.overlays` list
 3. Test with `nix build .#<pkg>` before committing
 
+### Build System and Deployment
+
+**Build tool:** This repository uses `nh` (Yet Another Nix Helper) as the primary build tool, configured via `programs.nh.enable` in `modules/configuration.nix`.
+
+**Justfile commands:**
+- `just switch` - Build and activate configuration (uses `nh os switch`)
+- `just boot` - Build and set as boot default (uses `nh os boot`)
+- `just test` - Build and activate without bootloader update (uses `nh os test`)
+- `just build` - Just build the configuration (uses `nh os build`)
+- `just clean` - Manual garbage collection (uses `nh clean all --keep 5`)
+- `just update` - Update flake inputs
+- `just optimize` - Optimize nix store
+
+**Environment variables:**
+- Set `HOST` environment variable (e.g., `export HOST=x13`) or create a `.env` file with `HOST=<hostname>`
+- The `nh` module can optionally use `programs.nh.flake` to set the default flake path
+
+**Garbage collection:**
+- Automatic GC is handled by `programs.nh.clean.enable = true`
+- Systemd service runs periodically keeping generations from last 4 days AND 3 most recent
+- Manual cleanup available via `just clean` or `nh clean all`
+- Traditional `nix.gc.automatic` is disabled to avoid conflicts
+
 ### Common Configuration Patterns
 
 **System defaults (from `configuration.nix`):**
@@ -189,5 +212,6 @@ nix build .#<pkg>  # Ensure derivation succeeds before committing
 - Audio: PipeWire with wireplumber (camera disabled)
 - sudo: `sudo-rs` instead of traditional sudo
 - Locale: French (`fr_FR.UTF-8`) with US international keyboard
-- Garbage collection: Automatic weekly cleanup (>7 days old)
+- Build tool: `nh` (Yet Another Nix Helper) configured via `programs.nh.enable`
+- Garbage collection: Managed by `nh clean` service (keeps last 4 days + 3 generations)
 - Swap: Zram with zstd compression

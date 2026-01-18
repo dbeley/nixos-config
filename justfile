@@ -6,13 +6,21 @@ default:
 update:
   nix flake update
 
+test:
+  @echo "Testing config for host $HOST"
+  nh os test -- --flake .#$HOST
+
+build:
+  @echo "Building config for host $HOST"
+  nh os build -- --flake .#$HOST
+
 switch:
   @echo "Rebuilding config for host $HOST"
-  sudo nixos-rebuild switch --flake .#$HOST --max-jobs auto
+  nh os switch -- --flake .#$HOST
 
 boot:
   @echo "Rebuilding config for host $HOST (available at next boot)"
-  sudo nixos-rebuild boot --flake .#$HOST
+  nh os boot -- --flake .#$HOST
 
 install-proxmox-vm-local hostname ip:
   @echo "Installing {{hostname}} on {{ip}} (local network)"
@@ -37,6 +45,11 @@ switch-proxmox-vm-kimsufi hostname ip:
   NIX_SSHOPTS="-J kimsufi" nixos-rebuild switch --flake .#{{hostname}} --target-host {{ip}} --sudo --ask-sudo-password
 
 clean:
+  @echo "Cleaning old generations and garbage collecting"
+  nh clean all --keep 5
+
+# Legacy nix cleanup (if nh has issues)
+legacy-clean:
   sudo nix-collect-garbage -d
   nix-collect-garbage -d
   # sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
