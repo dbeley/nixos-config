@@ -276,57 +276,67 @@
       };
 
       # deploy-rs configuration for remote deployments
-      deploy.nodes = {
-        nixos-kimsufi-01 = {
-          hostname = "10.10.20.10";
-          sshUser = "root";
-          sshOpts = [
-            "-J"
-            "kimsufi"
-          ];
-          profiles.system = {
-            user = "root";
-            path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.nixos-kimsufi-01;
-            magicRollback = true;
-            autoRollback = true;
-            activationTimeout = 300;
-            confirmTimeout = 60;
+      deploy.nodes =
+        let
+          # Helper to create a deploy node configuration for a host
+          mkDeployNode =
+            {
+              hostName,
+              hostname,
+              sshUser ? "root",
+              sshOpts ? [ ],
+              user ? "root",
+              magicRollback ? true,
+              autoRollback ? true,
+              activationTimeout ? 300,
+              confirmTimeout ? 60,
+            }:
+            let
+              hostConfig = self.nixosConfigurations.${hostName};
+              # Derive system architecture from the nixosConfiguration
+              inherit (hostConfig.pkgs) system;
+            in
+            {
+              inherit hostname sshUser sshOpts;
+              profiles.system = {
+                inherit
+                  user
+                  magicRollback
+                  autoRollback
+                  activationTimeout
+                  confirmTimeout
+                  ;
+                path = inputs.deploy-rs.lib.${system}.activate.nixos hostConfig;
+              };
+            };
+        in
+        {
+          nixos-kimsufi-01 = mkDeployNode {
+            hostName = "nixos-kimsufi-01";
+            hostname = "10.10.20.10";
+            sshOpts = [
+              "-J"
+              "kimsufi"
+            ];
           };
-        };
 
-        nixos-kimsufi-02 = {
-          hostname = "10.10.20.11";
-          sshUser = "root";
-          sshOpts = [
-            "-J"
-            "kimsufi"
-          ];
-          profiles.system = {
-            user = "root";
-            path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.nixos-kimsufi-02;
-            magicRollback = true;
-            autoRollback = true;
-            activationTimeout = 300;
-            confirmTimeout = 60;
+          nixos-kimsufi-02 = mkDeployNode {
+            hostName = "nixos-kimsufi-02";
+            hostname = "10.10.20.11";
+            sshOpts = [
+              "-J"
+              "kimsufi"
+            ];
           };
-        };
 
-        nixos-kimsufi-03 = {
-          hostname = "10.10.20.12";
-          sshUser = "root";
-          sshOpts = [
-            "-J"
-            "kimsufi"
-          ];
-          profiles.system = {
-            user = "root";
-            path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.nixos-kimsufi-03;
-            magicRollback = true;
-            autoRollback = true;
-            activationTimeout = 300;
-            confirmTimeout = 60;
+          nixos-kimsufi-03 = mkDeployNode {
+            hostName = "nixos-kimsufi-03";
+            hostname = "10.10.20.12";
+            sshOpts = [
+              "-J"
+              "kimsufi"
+            ];
           };
         };
-      };
     };
 }
