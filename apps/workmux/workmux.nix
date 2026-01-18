@@ -10,4 +10,8 @@
         focus: true
       - split: horizontal
   '';
+
+  programs.fish.interactiveShellInit = ''
+    workmux completions fish | source
+  '';
 }
