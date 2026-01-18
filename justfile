@@ -7,12 +7,12 @@ update:
   nix flake update
 
 switch:
-  @echo "Rebuilding config for host $HOST"
-  sudo nixos-rebuild switch --flake .#$HOST --max-jobs auto
+  @echo "Rebuilding config for host $HOST with nh"
+  nh os switch . -H $HOST
 
 boot:
-  @echo "Rebuilding config for host $HOST (available at next boot)"
-  sudo nixos-rebuild boot --flake .#$HOST
+  @echo "Rebuilding config for host $HOST (available at next boot) with nh"
+  nh os boot . -H $HOST
 
 install-proxmox-vm-local hostname ip:
   @echo "Installing {{hostname}} on {{ip}} (local network)"
@@ -22,8 +22,8 @@ install-proxmox-vm-local hostname ip:
   @echo "  bash /tmp/install-nixos.sh {{hostname}}"
 
 switch-proxmox-vm-local hostname ip:
-  @echo "Deploying config for {{hostname}} to {{ip}} (local network)"
-  nixos-rebuild switch --flake .#{{hostname}} --target-host root@{{ip}} --sudo
+  @echo "Deploying config for {{hostname}} to {{ip}} (local network) with nh"
+  nh os switch . -H {{hostname}} -- --target-host root@{{ip}}
 
 install-proxmox-vm-kimsufi hostname ip:
   @echo "Installing {{hostname}} on {{ip}} via kimsufi jump host"
@@ -33,13 +33,12 @@ install-proxmox-vm-kimsufi hostname ip:
   @echo "  bash /tmp/install-nixos.sh {{hostname}}"
 
 switch-proxmox-vm-kimsufi hostname ip:
-  @echo "Deploying config for {{hostname}} to {{ip}} via kimsufi jump host"
-  NIX_SSHOPTS="-J kimsufi" nixos-rebuild switch --flake .#{{hostname}} --target-host {{ip}} --sudo --ask-sudo-password
+  @echo "Deploying config for {{hostname}} to {{ip}} via kimsufi jump host with nh"
+  NIX_SSHOPTS="-J kimsufi" nh os switch . -H {{hostname}} -- --target-host {{ip}} --ask-sudo-password
 
 clean:
-  sudo nix-collect-garbage -d
-  nix-collect-garbage -d
-  # sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
+  @echo "Cleaning up old generations and garbage with nh"
+  nh clean all --keep 5 --keep-since 7d
 
 optimize:
   nix-store --optimize -v

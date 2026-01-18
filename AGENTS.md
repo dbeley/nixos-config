@@ -8,10 +8,11 @@
 - `justfile` provides canned rebuild/cleanup tasks; keep environment variables (e.g., `HOST`) in `.env`.
 
 ## Build, Test, and Development Commands
-- Rebuild current host: `HOST=<name> just switch` (wraps `sudo nixos-rebuild switch --flake .#$HOST --max-jobs auto`).
-- Remote rebuild: `just switch-remote-host <host> <target>`; boot-only: `HOST=<name> just boot`.
-- Update inputs: `just update`; cleanup: `just clean`; store optimize: `just optimize`.
-- Lint/format: `nix fmt` (treefmt) and `nix flake check` (runs formatting check). Dry-run changes with `nixos-rebuild dry-activate --flake .#<name>` before switching.
+- Rebuild current host: `HOST=<name> just switch` (uses `nh os switch` with build visualization and diffing).
+- Remote rebuild: `just switch-proxmox-vm-local <hostname> <ip>` or `just switch-proxmox-vm-kimsufi <hostname> <ip>`; boot-only: `HOST=<name> just boot`.
+- Update inputs: `just update`; cleanup: `just clean` (uses `nh clean` with smart retention); store optimize: `just optimize`.
+- Lint/format: `nix fmt` (treefmt) and `nix flake check` (runs formatting check). Dry-run changes with `nh os switch --dry` or `nh os build` before switching.
+- Package search: `nh search <query>` for fast Elasticsearch-powered package lookup.
 
 ## Coding Style and Naming
 - Nix code uses 2-space indentation and `nixfmt` formatting; run `nix fmt` before committing. Address `statix` findings surfaced by `nix flake check`.
@@ -20,8 +21,9 @@
 
 ## Testing Guidelines
 - Primary check is `nix flake check`; treat it as the pre-commit gate.
-- For host changes, run `nixos-rebuild dry-activate --flake .#<host>` to catch evaluation errors; for remote targets, prefer dry-run before `switch-remote-host`.
+- For host changes, run `nixos-rebuild dry-activate --flake .#<host>` to catch evaluation errors; for remote targets, prefer dry-run before `switch-proxmox-vm-local`.
 - If altering packages under `pkgs/`, build them explicitly: `nix build .#<pkg>` to ensure derivations succeed.
+- Use `nh os build` or `nh os switch --dry` for visual feedback on what will change without applying it.
 
 ## Commit and Pull Request Practices
 - Use concise, imperative commits with scope prefixes: `area: action` (examples: `sudo: update settings`, `gnome: disable donation reminder`).

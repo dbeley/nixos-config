@@ -11,6 +11,10 @@
   ...
 }:
 {
+  imports = [
+    ./common/nh.nix
+  ];
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking = {
@@ -175,9 +179,7 @@
       auto-optimise-store = true;
     };
     gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
+      automatic = false;
     };
     registry.nixpkgs.flake = inputs.nixpkgs;
     channel.enable = false;
