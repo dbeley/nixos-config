@@ -4,17 +4,17 @@
 
 ![t470s](imgs/t470s.png)
 
-| Type           | Program                                  |
-|----------------|------------------------------------------|
-| **Shell:**     | fish, zsh                                |
-| **DM:**        | tty1                                     |
-| **WM:**        | niri, hyprland, sway, gnome              |
-| **Bar:**       | waybar                                   |
-| **Editor:**    | helix / doom-emacs / neovim / kakoune    |
-| **Terminal:**  | ghostty / kitty                          |
-| **Launcher:**  | tofi                                     |
-| **Browser:**   | firefox / qutebrowser / zen              |
-| **Theme:**     | stylix                                   |
+| Type           | Program                                          |
+|----------------|--------------------------------------------------|
+| **Shell:**     | fish                                             |
+| **DM:**        | tty1                                             |
+| **WM:**        | niri, hyprland, sway, gnome                      |
+| **Bar:**       | waybar                                           |
+| **Editor:**    | helix / doom-emacs / neovim / kakoune            |
+| **Terminal:**  | kitty / ghostty                                  |
+| **Launcher:**  | tofi                                             |
+| **Browser:**   | firefox / qutebrowser / zen / ungoogled-chromium |
+| **Theme:**     | stylix                                           |
 
 ## Notable Features
 
@@ -91,7 +91,12 @@ nix-store --optimise -v
 
 ### just
 
-After first installation you can use just recipes (or `nh` if it is installed on your system).
+On first installation you may need to load the dependencies in your shell for the just recipes to work
+
+```bash
+nix-shell -p just nh
+```
+
 For the recipes to work properly, create a `.env` file and fill it with the needed environment variables:
 
 ```
@@ -101,9 +106,11 @@ HOST=x13
 ```
 just switch
 just clean
+# to check all available recipes
+just
 ```
 
-## Install
+## Manual Install
 
 On a new install, you should first copy `/etc/nixos/hardware-configuration.nix` over `hosts/{host}/hardware-configuration.nix`.
 
@@ -135,7 +142,7 @@ Don't forget to apply the post-installation steps described in the next section 
 
 **For standard hosts (without disko):**
 
-The custom ISO only works for disko-enabled hosts. For standard hosts, use the official NixOS ISO and follow the manual installation process below.
+The custom ISO only works for disko-enabled hosts. For standard hosts, use the official NixOS ISO and follow the manual installation process above.
 
 ### Impermanence/disko
 
@@ -175,7 +182,7 @@ sudo nixos-enter --root /mnt
 
 ### Proxmox VM Images
 
-Dedicated just recipes exist in order to install and deploy remote images
+Dedicated just recipes exist in order to facilite installation and deployment of remote images
 
 ```bash
 just install-proxmox-vm HOSTNAME IP
