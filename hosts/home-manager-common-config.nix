@@ -26,6 +26,7 @@
       fd
       ffmpeg
       ffmpegthumbnailer
+      gh
       gnome-system-monitor
       htop
       imagemagick

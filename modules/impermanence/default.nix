@@ -56,6 +56,7 @@
       ".config/chromium"
       ".config/Cursor"
       ".config/discord"
+      ".config/gh"
       ".config/gtk-3.0"
       ".config/heroic/GamesConfig"
       ".config/heroic/gog_store"
