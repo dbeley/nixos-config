@@ -203,6 +203,11 @@ let
         ../apps/qbittorrent/default.nix
       ];
     };
+    jj = {
+      home = [
+        ../apps/jj/jj.nix
+      ];
+    };
   };
   mkHost =
     {
@@ -424,6 +429,7 @@ in
       # "vscode"
       "code-agents"
       "pycharm"
+      "jj"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
