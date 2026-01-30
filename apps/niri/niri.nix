@@ -100,14 +100,14 @@
         preset-column-widths = [
           { proportion = 1.0 / 2.0; }
           { proportion = 1.0 / 3.0; }
-          { proportion = 1.0 / 4.0; }
           { proportion = 2.0 / 3.0; }
+          { proportion = 1.0 / 4.0; }
         ];
         preset-window-heights = [
           { proportion = 1.0 / 2.0; }
           { proportion = 1.0 / 3.0; }
-          { proportion = 1.0 / 4.0; }
           { proportion = 2.0 / 3.0; }
+          { proportion = 1.0 / 4.0; }
         ];
       };
       screenshot-path = "~/Nextcloud/30-39_Images/32_Captures-d-écran/32.19_Captures-d-écran_Niri/%Y-%m-%d %H-%M-%S.png";
