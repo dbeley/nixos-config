@@ -147,7 +147,7 @@
   # Temporary workaround for Téléchargements folder, cf. https://github.com/nix-community/impermanence/issues/290
   systemd.mounts = [
     {
-      name = lib.mkForce "home-${user}-T\xc3\xa9l\xc3\xa9chargements.mount"; # result of systemd-escape home/${user}/Téléchargements.mount
+      name = lib.mkForce "home-${user}-T\\xc3\\xa9l\\xc3\\xa9chargements.mount"; # result of systemd-escape home/${user}/Téléchargements.mount
       wantedBy = [ "local-fs.target" ];
       before = [ "local-fs.target" ];
       where = "/home/${user}/Téléchargements";
