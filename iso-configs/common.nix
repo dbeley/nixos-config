@@ -26,8 +26,13 @@
     };
   };
 
-  networking.wireless.enable = lib.mkForce false;
-  networking.networkmanager.enable = lib.mkForce true;
+  networking = {
+    wireless.enable = lib.mkForce false;
+    networkmanager = {
+      enable = lib.mkForce true;
+      wifi.backend = lib.mkForce "iwd";
+    };
+  };
 
   users.users.nixos.password = "nixos";
   nix.settings = {
@@ -35,6 +40,11 @@
       "nix-command"
       "flakes"
     ];
+  };
+
+  boot.tmp = {
+    useTmpfs = true;
+    tmpfsSize = "75%";
   };
 
   console = {
