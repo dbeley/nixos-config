@@ -111,6 +111,8 @@
       ".local/share/symmetri"
     ];
     files = [
+      ".config/dconf/user"
+      ".local/state/tofi-history"
     ];
   };
 
