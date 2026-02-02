@@ -189,7 +189,7 @@ let
     };
     code-agents = {
       home = [
-        ../apps/workmux/workmux.nix
+        # ../apps/workmux/workmux.nix
         # ../apps/claude/claude.nix
         # ../apps/gemini/gemini.nix
         # ../apps/codex/codex.nix
@@ -327,6 +327,33 @@ in
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
+      {
+        my.stylix.wallpaper = "abstract-light-rays";
+        disko.mainDisk = "/dev/nvme0n1";
+      }
+      ../apps/boinc/default.nix
+    ];
+  };
+  p14sg6 = mkHost {
+    hostName = "p14sg6";
+    stateVersion = "26.05";
+    profiles = [
+      "laptop"
+      "impermanence"
+      "bootloader-systemd-boot"
+      "personal"
+      "niri"
+      "android-tools"
+      "steam"
+      "firefox"
+      "chromium"
+      "qutebrowser"
+      "mpd"
+      "python"
+      "code-agents"
+    ];
+    extraModules = [
+      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
       {
         my.stylix.wallpaper = "abstract-light-rays";
         disko.mainDisk = "/dev/nvme0n1";
