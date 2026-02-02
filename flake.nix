@@ -220,19 +220,12 @@
         treefmt-nix.follows = "treefmt-nix";
       };
     };
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
   };
 
   outputs =
     inputs@{
       self,
       nixpkgs,
-      nixos-generators,
       ...
     }:
     let
@@ -257,7 +250,7 @@
         {
           system ? "x86_64-linux",
         }:
-        nixos-generators.nixosGenerate {
+        nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             ./iso-configs/common.nix
@@ -266,7 +259,6 @@
               networking.hostName = "nixos-installer";
             }
           ];
-          format = "install-iso";
         };
     in
     {
@@ -305,9 +297,7 @@
       });
 
       packages = eachSystem (system: {
-        iso-installer = mkISO {
-          inherit system;
-        };
+        iso-installer = (mkISO { inherit system; }).config.system.build.isoImage;
       });
 
       nixosConfigurations = hostConfigs;

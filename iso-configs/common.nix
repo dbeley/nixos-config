@@ -42,11 +42,6 @@
     ];
   };
 
-  boot.tmp = {
-    useTmpfs = true;
-    tmpfsSize = "75%";
-  };
-
   console = {
     font = "ter-v24n";
     packages = [ pkgs.terminus_font ];
