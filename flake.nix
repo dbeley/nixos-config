@@ -2,9 +2,9 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default";
-    flake-compat.url = "github:edolstra/flake-compat";
+    flake-compat.url = "github:NixOS/flake-compat";
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-utils = {
       url = "github:numtide/flake-utils";
