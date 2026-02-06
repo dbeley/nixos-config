@@ -16,16 +16,17 @@
   - `modules/cachix/` - Binary cache configurations (hyprland, niri, nix-community)
   - `configuration.nix` - Base system configuration (networking, locale, nix settings)
   - `overlays.nix` - System-wide package overlays
-- **`apps/`** - Reusable application and desktop environment modules (81 total)
+- **`apps/`** - Reusable application and desktop environment modules (73 directories, 85 .nix files total)
   - Desktop environments: `gnome/`, `hyprland/`, `niri/`, `sway/`
   - Terminals: `alacritty/`, `ghostty/`, `kitty/`
-  - Editors: `emacs/`, `helix/`, `kakoune/`, `neovim-nixvim/`, `neovim-nvf/`, `vscode/`
+  - Editors: `emacs/`, `helix/`, `kakoune/`, `neovim-nixvim/`, `neovim-nvf/`, `nvim/`, `vscode/`
   - Browsers: `firefox/`, `qutebrowser/`, `ungoogled-chromium/`, `zen-browser/`
-  - Code agents: `copilot/`, `cursor/`, `opencode/`, `workmux/`
+  - Code agents: `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `opencode/`, `workmux/`
   - File managers: `lf/`, `nnn/`, `yazi/`
-  - Media: `imv/`, `mpd/`, `mpv/`, `obs/`, `zathura/`
-  - Wayland utilities: `gammastep/`, `hypridle/`, `hyprlock/`, `mako/`, `tofi/`, `waybar/`, etc.
-  - See full list in exploration notes
+  - Media: `imv/`, `mpd/`, `mpv/`, `obs/`, `swayimg/`, `zathura/`
+  - Wayland utilities: `gammastep/`, `hypridle/`, `hyprlock/`, `mako/`, `swaylock/`, `tofi/`, `waybar/`, `wofi/`
+  - Shell/CLI tools: `bat/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `zoxide/`
+  - Other apps: `android/`, `autoscreen/`, `autoscreen-gaming/`, `autoscreen-gnome/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `udiskie/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
 - **`imgs/`** - Assets, wallpapers, and screenshots
@@ -86,19 +87,22 @@ mkHost = {
 - `obs` - OBS Studio
 - `pycharm` - PyCharm IDE
 - `moonlight` - Game streaming client
-- `code-agents` - workmux, cursor, copilot, opencode
+- `code-agents` - cursor, copilot, opencode (workmux, claude, gemini, codex commented out)
+- `jj` - Jujutsu version control system
 
 ### Current Hosts
 
 **Workstations:**
+- `p14sg6` - Lenovo ThinkPad P14s Gen 6 (AMD Ryzen AI 7 350, niri, impermanence) - NEW
+- `cf-qv1` - Panasonic Let's Note CF-QV1 (Intel Core i5-1145G7, niri, impermanence) - NEW
 - `p14s` - Lenovo ThinkPad P14s Gen 4 (AMD Ryzen 7 7840U, niri, impermanence)
-- `vaio` - Sony Vaio Pro PK13 (Intel Core i5-1035G1, niri, sops)
-- `x13` - Lenovo ThinkPad X13 Gen 1 (AMD Ryzen 5 4650U, niri, impermanence)
 - `x1yoga` - Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, gnome, impermanence)
 - `latitude` - Dell Latitude 7420 (Intel Core i7-1165G7, niri)
-- `cf-rz6` - Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, niri, impermanence)
 - `sg13` - Silverstone SG13 desktop (AMD Ryzen 9 5950X + RTX 3070, gnome)
-- `x61s` - Lenovo Thinkpad X61s (Intel Core 2 Duo L7500, sway)
+- `vaio` - Sony Vaio Pro PK13 (Intel Core i5-1035G1, niri, sops) - deprecated
+- `x13` - Lenovo ThinkPad X13 Gen 1 (AMD Ryzen 5 4650U, niri, impermanence) - deprecated
+- `cf-rz6` - Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, niri, impermanence) - deprecated
+- `x61s` - Lenovo Thinkpad X61s (Intel Core 2 Duo L7500, sway) - deprecated
 
 **Servers (Kimsufi Proxmox VMs):**
 - `nixos-kimsufi-01` - qbittorrent server
@@ -110,10 +114,10 @@ mkHost = {
 
 ## Testing Guidelines
 - **For verification, run formatting checks only**: Use `nix build .#checks.x86_64-linux.pre-commit-check --max-jobs 2` to verify code formatting/linting without evaluating all NixOS configurations. This is the recommended approach for LLM agents to avoid memory exhaustion.
-- **Why avoid full `nix flake check`**: Running `nix flake check` evaluates all 11+ host configurations simultaneously, which can consume 12GB+ of RAM and cause memory exhaustion on typical LLM agent environments. The pre-commit check covers formatting/linting requirements without this overhead.
-- **For host-specific changes**: Run `nixos-rebuild dry-activate --flake .#<host>` to validate specific host configurations without evaluating all hosts.
+- **Why avoid full `nix flake check`**: Running `nix flake check` evaluates all 14 host configurations simultaneously, which can consume 12GB+ of RAM and cause memory exhaustion on typical LLM agent environments. The pre-commit check covers formatting/linting requirements without this overhead.
+- **For host-specific changes**: Run `nixos-rebuild dry-activate --flake .#<host>` or `just build` to validate specific host configurations without evaluating all hosts.
 - **For package changes**: Build packages explicitly with `nix build .#<pkg>` to ensure derivations succeed.
-- **For systems with ample RAM** (>16GB): You can optionally run full `nix flake check` or `just check`, but this is not required for LLM agents.
+- **For systems with ample RAM** (>16GB): You can optionally run full `nix flake check`, but this is not required for LLM agents.
 
 ### Host Configuration Testing
 **Before deploying to a host:**
@@ -190,7 +194,7 @@ nix build .#<pkg>  # Ensure derivation succeeds before committing
 - `just boot` - Build and set as boot default (uses `nh os boot`)
 - `just test` - Build and activate without bootloader update (uses `nh os test`)
 - `just build` - Just build the configuration (uses `nh os build`)
-- `just clean` - Manual garbage collection (uses `nh clean all --keep 5`)
+- `just clean` - Manual garbage collection (uses `nh clean all --keep-since 7d --keep 5`)
 - `just update` - Update flake inputs
 - `just optimize` - Optimize nix store
 
@@ -200,8 +204,8 @@ nix build .#<pkg>  # Ensure derivation succeeds before committing
 
 **Garbage collection:**
 - Automatic GC is handled by `programs.nh.clean.enable = true`
-- Systemd service runs periodically keeping generations from last 4 days AND 3 most recent
-- Manual cleanup available via `just clean` or `nh clean all`
+- Systemd service runs periodically with `--keep-since 7d --keep 5` (keeping generations from last 7 days AND 5 most recent)
+- Manual cleanup available via `just clean` (keeps 7 days + 5 generations) or `just optimize` (also optimizes store)
 - Traditional `nix.gc.automatic` is disabled to avoid conflicts
 
 ### Common Configuration Patterns
@@ -213,5 +217,6 @@ nix build .#<pkg>  # Ensure derivation succeeds before committing
 - sudo: `sudo-rs` instead of traditional sudo
 - Locale: French (`fr_FR.UTF-8`) with US international keyboard
 - Build tool: `nh` (Yet Another Nix Helper) configured via `programs.nh.enable`
-- Garbage collection: Managed by `nh clean` service (keeps last 4 days + 3 generations)
+- Garbage collection: Managed by `nh clean` service (keeps last 7 days + 5 generations)
 - Swap: Zram with zstd compression
+- Services: systemd-resolved, gvfs, fstrim, gnome-keyring with gcr-ssh-agent
