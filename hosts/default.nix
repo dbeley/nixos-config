@@ -384,7 +384,7 @@ in
       inputs.nixos-hardware.nixosModules.common-gpu-intel
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       {
-        my.stylix.wallpaper = "blue-planet";
+        my.stylix.wallpaper = "cf-qv1";
         disko.mainDisk = "/dev/nvme0n1";
       }
       ../modules/common/laptop-thermald.nix

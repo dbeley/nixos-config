@@ -79,6 +79,10 @@
       };
       imageScalingMode = "fill";
     };
+    "cf-qv1" = {
+      image = ./../../imgs/cf-qv1.jpg;
+      imageScalingMode = "fill";
+    };
   };
   defaultWallpaper = "abstract-light-rays";
 }
