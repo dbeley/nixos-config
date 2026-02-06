@@ -370,12 +370,14 @@ in
       "bootloader-systemd-boot"
       "personal"
       "niri"
+      # "android-tools"
       "steam"
       "firefox"
       # "chromium"
       # "qutebrowser"
+      # "mpd"
       "python"
-      # "code-agents"
+      "code-agents"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -383,6 +385,7 @@ in
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       {
         my.stylix.wallpaper = "blue-planet";
+        disko.mainDisk = "/dev/nvme0n1";
       }
       ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
