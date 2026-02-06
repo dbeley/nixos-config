@@ -15,5 +15,5 @@
     supersonic
   ];
 
-  programs.niri.settings.outputs.eDP-1.scale = lib.mkForce 1.5;
+  programs.niri.settings.outputs.eDP-1.scale = lib.mkForce 2.0;
 }
