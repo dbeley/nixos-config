@@ -361,6 +361,35 @@ in
       ../apps/boinc/default.nix
     ];
   };
+  cf-qv1 = mkHost {
+    hostName = "cf-qv1";
+    stateVersion = "26.05";
+    profiles = [
+      "laptop"
+      "impermanence"
+      "bootloader-systemd-boot"
+      "personal"
+      "niri"
+      "steam"
+      "firefox"
+      # "chromium"
+      # "qutebrowser"
+      "python"
+      # "code-agents"
+    ];
+    extraModules = [
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
+      inputs.nixos-hardware.nixosModules.common-gpu-intel
+      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      {
+        my.stylix.wallpaper = "blue-planet";
+      }
+      ../modules/common/laptop-thermald.nix
+      ../modules/common/screen-rotation.nix
+      ../modules/hardware/throttled.nix
+      ../hosts/cf-qv1/throttled.nix
+    ];
+  };
   x1yoga = mkHost {
     hostName = "x1yoga";
     stateVersion = "25.05";
