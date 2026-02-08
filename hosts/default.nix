@@ -208,6 +208,11 @@ let
         ../apps/jj/jj.nix
       ];
     };
+    openclaw = {
+      home = [
+        ../apps/openclaw/openclaw.nix
+      ];
+    };
   };
   mkHost =
     {
@@ -603,6 +608,7 @@ in
       "bootloader-grub"
       "openssh-server"
       "docker"
+      "openclaw"
     ];
   };
   nixos-era-01 = mkHost {
