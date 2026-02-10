@@ -2,12 +2,13 @@
   lib,
   pkgs,
   inputs,
+  user,
   ...
 }:
 let
-  secretsDir = ".secrets/secrets";
-  documentsDir = ".secrets/documents";
-  configDir = ".secrets/openclaw";
+  secretsDir = /home/${user}/openclaw/.secrets;
+  documentsDir = /home/${user}/openclaw/documents;
+  configDir = /home/${user}/openclaw/config;
 in
 {
   imports = [ inputs.nix-openclaw.homeManagerModules.openclaw ];

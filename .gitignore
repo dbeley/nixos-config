@@ -4,5 +4,3 @@ todo.txt
 /.pre-commit-config.yaml
 result
 .claude
-.secrets
-.claude
