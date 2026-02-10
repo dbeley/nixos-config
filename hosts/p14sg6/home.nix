@@ -9,6 +9,7 @@
     beets
     btop-rocm
     discord
+    feishin
     heroic
     musescore
     nautilus

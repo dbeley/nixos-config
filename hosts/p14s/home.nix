@@ -10,6 +10,7 @@
     btop-rocm
     borgbackup
     borgmatic
+    feishin
     heroic
     musescore
     nautilus
