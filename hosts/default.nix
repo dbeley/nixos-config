@@ -281,6 +281,7 @@ let
                 ../apps/lazygit/lazygit.nix
                 ../apps/fish/fish.nix
                 ../apps/tmux/tmux.nix
+                ../apps/editorconfig/editorconfig.nix
                 ../apps/helix/helix.nix
                 ../apps/nnn/nnn.nix
                 ../apps/yazi/yazi.nix
@@ -389,8 +390,8 @@ in
       }
       ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
-      ../modules/hardware/throttled.nix
-      ../hosts/cf-qv1/throttled.nix
+      # ../modules/hardware/throttled.nix
+      # ../hosts/cf-qv1/throttled.nix
     ];
   };
   x1yoga = mkHost {
