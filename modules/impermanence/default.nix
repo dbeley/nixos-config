@@ -102,6 +102,7 @@
       ".mozilla/native-messaging-hosts"
       ".renpy"
       ".ssh"
+      ".steam"
       ".var/app"
       ".wine"
       ".zen"
