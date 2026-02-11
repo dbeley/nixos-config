@@ -113,6 +113,7 @@
       ".local/share/symmetri"
     ];
     files = [
+      ".claude.json"
       ".config/dconf/user"
       ".local/state/tofi-history"
     ];

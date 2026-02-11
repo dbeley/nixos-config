@@ -8,6 +8,7 @@
     audacity
     beets
     btop
+    feishin
     # musescore
     nautilus
     shotcut
