@@ -150,7 +150,7 @@
         "$MOD SHIFT, c, exec, hyprlock"
         "$MOD, t, exec, soffice"
         "$MOD SHIFT, t, exec, gnome-system-monitor"
-        "$MOD, d, exec, supersonic"
+        "$MOD, d, exec, feishin"
         "$MOD, e, exec, $MENU"
         "$MOD, q, killactive"
         "$MOD, v, togglefloating"

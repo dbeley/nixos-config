@@ -369,7 +369,7 @@
           "tofi-run | xargs niri msg action spawn --"
         ];
         "Mod+Z".action.spawn = "firefox";
-        "Mod+D".action.spawn = "supersonic";
+        "Mod+D".action.spawn = "feishin";
         "Mod+N".action.spawn = "keepassxc";
         "Mod+T".action.spawn = "soffice";
         "Mod+F1".action.spawn = [

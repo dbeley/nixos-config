@@ -13,7 +13,7 @@
     nautilus
     shotcut
     papers
-    supersonic
+    # supersonic
   ];
 
   programs.niri.settings.outputs.eDP-1.scale = lib.mkForce 2.0;

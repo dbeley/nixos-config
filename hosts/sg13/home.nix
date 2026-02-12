@@ -7,9 +7,10 @@
   home.packages = with pkgs; [
     beets
     btop-cuda
+    feishin
     nautilus
     papers
-    supersonic
+    # supersonic
   ];
 
   # disable night light in Gnome

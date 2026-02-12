@@ -15,7 +15,7 @@
     musescore
     nautilus
     shotcut
-    supersonic
+    # supersonic
     # xfce.thunar
     # xfce.tumbler
 

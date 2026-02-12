@@ -8,7 +8,7 @@
     btop
     borgbackup
     borgmatic
-    supersonic
+    # supersonic
     xfce.thunar
     xfce.tumbler
   ];

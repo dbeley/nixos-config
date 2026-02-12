@@ -8,8 +8,9 @@
   home.packages = with pkgs; [
     gh
     btop
+    feishin
     nautilus
-    supersonic
+    # supersonic
     google-chrome
 
     slack

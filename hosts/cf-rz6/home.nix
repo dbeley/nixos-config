@@ -8,11 +8,12 @@
     audacity
     beets
     btop
+    feishin
     # musescore
     nautilus
     shotcut
     papers
-    supersonic
+    # supersonic
   ];
   dconf.settings = {
     "org/gnome/desktop/a11y/applications" = {

@@ -15,6 +15,6 @@
     musescore
     nautilus
     shotcut
-    supersonic
+    # supersonic
   ];
 }
