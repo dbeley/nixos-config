@@ -50,6 +50,7 @@
 
   # Enable sound with pipewire.
   services = {
+    fwupd.enable = true;
     resolved.enable = true;
     pulseaudio.enable = false;
     pipewire = {
