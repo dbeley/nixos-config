@@ -1054,32 +1054,6 @@
         "type": "github"
       }
     },
-    "nsticky": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "treefmt-nix": [
-          "treefmt-nix"
-        ]
-      },
-      "locked": {
-        "lastModified": 1764647460,
-        "narHash": "sha256-N/FHwdinhuJtiDVJsBuQ7h95ZQ2LWI830eGssjb9NFk=",
-        "owner": "lonerOrz",
-        "repo": "nsticky",
-        "rev": "3c6f14ee94c9208cce8505a51a16e8116dd7e79c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lonerOrz",
-        "repo": "nsticky",
-        "type": "github"
-      }
-    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -1161,7 +1135,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
-        "nsticky": "nsticky",
         "nur": "nur",
         "nvf": "nvf",
         "sops-nix": "sops-nix",

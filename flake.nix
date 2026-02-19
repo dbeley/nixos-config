@@ -178,14 +178,6 @@
         home-manager.follows = "home-manager";
       };
     };
-    nsticky = {
-      url = "github:lonerOrz/nsticky";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
-      };
-    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs = {

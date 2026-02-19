@@ -1,8 +1,6 @@
 {
   pkgs,
   config,
-  inputs,
-  system,
   ...
 }:
 {
@@ -12,7 +10,7 @@
     libnotify
     pamixer
     wl-clipboard-rs
-    inputs.nsticky.packages.${system}.nsticky
+    nirius
   ];
   home.file = {
     "scripts".source = pkgs.fetchFromGitHub {
@@ -125,6 +123,9 @@
           ];
         }
         {
+          command = [ "niriusd" ];
+        }
+        {
           command = [ "mako" ];
         }
         {
@@ -135,9 +136,6 @@
             "-i"
             "${config.stylix.image}"
           ];
-        }
-        {
-          command = [ "nsticky" ];
         }
       ];
       window-rules = [
@@ -369,9 +367,9 @@
           "tofi-run | xargs niri msg action spawn --"
         ];
         "Mod+Z".action.spawn = "firefox";
+        "Mod+T".action.spawn = "soffice";
         "Mod+D".action.spawn = "feishin";
         "Mod+N".action.spawn = "keepassxc";
-        "Mod+T".action.spawn = "soffice";
         "Mod+F1".action.spawn = [
           "kitty"
           "--class"
@@ -409,15 +407,21 @@
         "Mod+Shift+P".action.spawn = "poweroff";
         "Mod+Shift+O".action.spawn = "reboot";
         "Mod+Tab".action = toggle-overview;
-        "Mod+Ctrl+Space".action.spawn = [
-          "nsticky"
-          "sticky"
-          "toggle-active"
+        "Mod+Shift+Backspace".action.spawn = [
+          "nirius"
+          "scratchpad-toggle"
         ];
-        "Mod+Shift+Space".action.spawn = [
-          "nsticky"
-          "stage"
-          "toggle-active"
+        "Mod+Backspace".action.spawn = [
+          "nirius"
+          "scratchpad-show"
+        ];
+        "Mod+Ctrl+Backspace".action.spawn = [
+          "nirius"
+          "scratchpad-show-all"
+        ];
+        "Mod+Ctrl+Space".action.spawn = [
+          "nirius"
+          "toggle-follow-mode"
         ];
       };
     };
