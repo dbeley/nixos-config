@@ -93,6 +93,12 @@
             refresh = 59.998;
           };
         };
+        "LG Electronics LG IPS FULLHD 0x01010101" = {
+          position = {
+            x = 0;
+            y = 0;
+          };
+        };
       };
       cursor = {
         hide-after-inactive-ms = 5000;
