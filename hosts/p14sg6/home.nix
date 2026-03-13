@@ -11,6 +11,7 @@
     discord
     feishin
     heroic
+    llmfit
     musescore
     nautilus
     shotcut
