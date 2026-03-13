@@ -208,6 +208,15 @@ let
         ../apps/jj/jj.nix
       ];
     };
+    mullvad = {
+      system = [
+        ../apps/mullvad/default.nix
+      ];
+      home = [ ../apps/mullvad/mullvad.nix ];
+    };
+    ollama = {
+      home = [ ../apps/ollama/ollama.nix ];
+    };
   };
   mkHost =
     {
@@ -352,6 +361,8 @@ in
       "mpd"
       "python"
       "code-agents"
+      "mullvad"
+      "ollama"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5

@@ -28,6 +28,7 @@
         group = "colord";
         mode = "u=rwx,g=rx,o=";
       }
+      "/var/lib/private"
     ];
     files = [
       "/etc/machine-id"
@@ -76,6 +77,7 @@
       ".config/opencode"
       ".config/supersonic"
       ".config/unity3d"
+      ".config/Mullvad VPN"
       ".cursor"
       ".gemini"
       ".gnupg"
@@ -100,6 +102,7 @@
       ".local/Tendershoot"
       ".mozilla/firefox/david"
       ".mozilla/native-messaging-hosts"
+      ".ollama"
       ".renpy"
       ".ssh"
       ".steam"
