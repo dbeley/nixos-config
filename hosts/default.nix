@@ -215,7 +215,7 @@ let
       home = [ ../apps/mullvad/mullvad.nix ];
     };
     ollama = {
-      home = [ ../apps/ollama/ollama.nix ];
+      system = [ ../apps/ollama/default.nix ];
     };
   };
   mkHost =
