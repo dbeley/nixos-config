@@ -6,6 +6,7 @@
   inputs,
   lib,
   modulesPath,
+  pkgs,
   ...
 }:
 
@@ -41,4 +42,21 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  services.ollama = {
+    package = lib.mkForce pkgs.ollama-rocm;
+    rocmOverrideGfx = lib.mkForce "11.5.0";
+    loadModels = lib.mkMerge [
+      [
+        "deepseek-r1:1.5b"
+        "deepseek-r1:8b"
+        "qwen3.5:9b"
+        "glm-4.7-flash"
+        "qwen3-coder-next"
+      ]
+    ];
+    environmentVariables = {
+      OLLAMA_CONTEXT_LENGTH = "64000";
+    };
+  };
 }
