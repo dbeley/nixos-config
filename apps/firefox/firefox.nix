@@ -292,6 +292,7 @@
           # protondb-for-steam
           # reddit-comment-collapser
           reddit-enhancement-suite
+          refined-github
           return-youtube-dislikes
           # sidebery
           sponsorblock
