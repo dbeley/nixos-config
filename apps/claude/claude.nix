@@ -1,4 +1,7 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ claude-code ];
+  home.packages = with pkgs; [
+    claude-code
+    rtk
+  ];
 }
