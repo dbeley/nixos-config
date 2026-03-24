@@ -14,6 +14,7 @@
     llmfit
     musescore
     nautilus
+    python313Packages.subliminal
     shotcut
     # supersonic
   ];
