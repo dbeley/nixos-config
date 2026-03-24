@@ -69,7 +69,7 @@ let
         ../apps/tofi/tofi.nix
         ../apps/mako/mako.nix
         ../apps/gammastep/gammastep.nix
-        ../apps/kitty/kitty.nix
+        ../apps/ghostty/ghostty.nix
       ];
     };
     hyprland = {

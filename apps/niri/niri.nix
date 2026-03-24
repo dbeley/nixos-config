@@ -218,8 +218,8 @@
         }
         {
           matches = [
-            { app-id = "mpd-picker"; }
-            { app-id = "real-book-picker"; }
+            { app-id = "com.ghostty.mpd-picker"; }
+            { app-id = "com.ghostty.real-book-picker"; }
           ];
           open-floating = true;
           default-floating-position = {
@@ -377,9 +377,9 @@
         "Mod+D".action.spawn = "feishin";
         "Mod+N".action.spawn = "keepassxc";
         "Mod+F1".action.spawn = [
-          "kitty"
-          "--class"
-          "mpd-picker"
+          "ghostty"
+          "--class=com.ghostty.mpd-picker"
+          "-e"
           "fish"
           "-c"
           "mpd_picker"
@@ -397,9 +397,9 @@
           "next"
         ];
         "Mod+F8".action.spawn = [
-          "kitty"
-          "--class"
-          "real-book-picker"
+          "ghostty"
+          "--class=com.ghostty.real-book-picker"
+          "-e"
           "fish"
           "-c"
           "real_book_picker"
@@ -408,8 +408,8 @@
         "Mod+Shift+C".action.spawn = [
           "hyprlock"
         ];
-        "Mod+Return".action.spawn = "kitty";
-        "Mod+X".action.spawn = "kitty";
+        "Mod+Return".action.spawn = "ghostty";
+        "Mod+X".action.spawn = "ghostty";
         "Mod+Shift+P".action.spawn = "poweroff";
         "Mod+Shift+O".action.spawn = "reboot";
         "Mod+Tab".action = toggle-overview;
