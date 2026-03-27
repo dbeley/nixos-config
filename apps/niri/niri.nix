@@ -27,6 +27,7 @@
       environment = {
         "NIXOS_OZONE_WL" = "1";
         "DISPLAY" = ":0";
+        "GTK_IM_MODULE" = "simple";
       };
       input = {
         keyboard = {
