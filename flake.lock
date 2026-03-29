@@ -1,5 +1,44 @@
 {
   "nodes": {
+    "agent-skills": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1774607140,
+        "narHash": "sha256-0P89BLGEzRUumWKSOEayi+Dal6mIlVumlBgcyk5Qo6s=",
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "e29bef0e9e56c4cc683cead15a6eda1d6fb1074e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "type": "github"
+      }
+    },
+    "anthropic-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774451446,
+        "narHash": "sha256-w//9LB1OVG9jlllY+VDse7Js0dn5x6Ys2vPuQACKsTM=",
+        "owner": "anthropics",
+        "repo": "skills",
+        "rev": "98669c11ca63e9c81c11501e1437e5c47b556621",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anthropics",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
     "aquamarine": {
       "inputs": {
         "hyprutils": [
@@ -1228,8 +1267,26 @@
         "type": "github"
       }
     },
+    "obra-superpowers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774462089,
+        "narHash": "sha256-r/Z+UxSFQIx99HnSPoU/toWMddXDcnLsbFXpQfLfj1k=",
+        "owner": "obra",
+        "repo": "superpowers",
+        "rev": "eafe962b18f6c5dc70fb7c8cc7e83e61f4cdde06",
+        "type": "github"
+      },
+      "original": {
+        "owner": "obra",
+        "repo": "superpowers",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
+        "agent-skills": "agent-skills",
+        "anthropic-skills": "anthropic-skills",
         "base16": "base16",
         "devshell": "devshell",
         "direnv-instant": "direnv-instant",
@@ -1258,6 +1315,7 @@
         "nixvim": "nixvim",
         "nur": "nur",
         "nvf": "nvf",
+        "obra-superpowers": "obra-superpowers",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
         "symmetri": "symmetri",
