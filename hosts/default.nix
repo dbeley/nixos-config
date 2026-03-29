@@ -197,8 +197,12 @@ let
         ../apps/cursor/cursor.nix
         ../apps/copilot/copilot.nix
         ../apps/opencode/opencode.nix
-        ../apps/zeroclaw/zeroclaw.nix
         ../apps/openskills/openskills.nix
+      ];
+    };
+    zeroclaw = {
+      home = [
+        ../apps/zeroclaw/zeroclaw.nix
       ];
     };
     qbittorrent = {
