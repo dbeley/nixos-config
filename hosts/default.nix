@@ -189,6 +189,7 @@ let
     };
     code-agents = {
       home = [
+        inputs.agent-skills.homeManagerModules.default
         ../apps/workmux/workmux.nix
         ../apps/claude/claude.nix
         ../apps/gemini/gemini.nix
