@@ -1,7 +1,10 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
+let
+  llm = inputs.llm-agents.packages.${pkgs.system};
+in
 {
-  home.packages = with pkgs; [
-    claude-code
-    rtk
+  home.packages = [
+    llm.claude-code
+    llm.rtk
   ];
 }
