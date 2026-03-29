@@ -1,7 +1,73 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
+let
+  llm = inputs.llm-agents.packages.${pkgs.system};
+in
 {
-  home.packages = with pkgs; [
-    opencode
-    rtk
+  home.packages = [
+    llm.opencode
+    llm.oh-my-opencode
+    llm.rtk
   ];
+  xdg.configFile = {
+    "opencode/opencode.json" = {
+      force = true;
+      text = builtins.toJSON {
+        "$schema" = "https://opencode.ai/config.json";
+        autoshare = false;
+        theme = "opencode";
+        plugin = [
+          "oh-my-openagent"
+        ];
+      };
+    };
+    "opencode/plugins/rtk.ts" = {
+      force = true;
+      text = ''
+          import type { Plugin } from "@opencode-ai/plugin"
+
+        // RTK OpenCode plugin — rewrites commands to use rtk for token savings.
+        // Requires: rtk >= 0.23.0 in PATH.
+        //
+        // This is a thin delegating plugin: all rewrite logic lives in `rtk rewrite`,
+        // which is the single source of truth (src/discover/registry.rs).
+        // To add or change rewrite rules, edit the Rust registry — not this file.
+
+        export const RtkOpenCodePlugin: Plugin = async ({ $ }) => {
+          try {
+            await $`which rtk`.quiet()
+          } catch {
+            console.warn("[rtk] rtk binary not found in PATH — plugin disabled")
+            return {}
+          }
+
+          return {
+            "tool.execute.before": async (input, output) => {
+              const tool = String(input?.tool ?? "").toLowerCase()
+              if (tool !== "bash" && tool !== "shell") return
+              const args = output?.args
+              if (!args || typeof args !== "object") return
+
+              const command = (args as Record<string, unknown>).command
+              if (typeof command !== "string" || !command) return
+
+              try {
+                const result = await $`rtk rewrite ''${command}`.quiet().nothrow()
+                const rewritten = String(result.stdout).trim()
+                if (rewritten && rewritten !== command) {
+                  ;(args as Record<string, unknown>).command = rewritten
+                }
+              } catch {
+                // rtk rewrite failed — pass through unchanged
+              }
+            },
+          }
+        }
+      '';
+    };
+    "opencode/oh-my-openagent.jsonc".text = ''
+      {
+        "max_concurrent_background_tasks": 5
+      }
+    '';
+  };
 }

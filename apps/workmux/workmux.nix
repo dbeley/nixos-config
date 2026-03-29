@@ -1,6 +1,9 @@
 { inputs, pkgs, ... }:
+let
+  llm = inputs.llm-agents.packages.${pkgs.system};
+in
 {
-  home.packages = [ inputs.workmux.packages.${pkgs.system}.default ];
+  home.packages = [ llm.workmux ];
 
   xdg.configFile."workmux/config.yaml".text = ''
     merge_strategy: rebase

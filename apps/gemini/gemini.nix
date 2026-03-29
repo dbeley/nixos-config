@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
+let
+  llm = inputs.llm-agents.packages.${pkgs.system};
+in
 {
-  home.packages = with pkgs; [ gemini-cli ];
+  home.packages = [ llm.gemini-cli ];
 }
