@@ -43,6 +43,9 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
+  # Unlock GPU overdrive/performance tuning for Radeon 860M (RDNA 3.5)
+  hardware.amdgpu.overdrive.enable = true;
+
   services.ollama = {
     package = lib.mkForce pkgs.ollama-rocm;
     rocmOverrideGfx = lib.mkForce "11.5.0";

@@ -199,6 +199,11 @@
     algorithm = "zstd";
   };
 
+  # BBR congestion control: lower latency and better throughput than cubic
+  boot.kernel.sysctl = {
+    "net.ipv4.tcp_congestion_control" = "bbr";
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
