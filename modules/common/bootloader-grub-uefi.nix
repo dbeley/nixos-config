@@ -7,6 +7,7 @@
         device = "nodev";
         efiSupport = true;
         efiInstallAsRemovable = true;
+        configurationLimit = 10;
       };
     };
   };
