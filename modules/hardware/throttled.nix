@@ -16,6 +16,9 @@ in
   config = {
     environment.etc."throttled.conf".text = lib.mkDefault defaultConfig;
 
+    # throttled needs the msr kernel module to read/write CPU MSRs
+    boot.kernelModules = [ "msr" ];
+
     systemd.packages = [ pkgs.throttled ];
 
     systemd.services.throttled = {
