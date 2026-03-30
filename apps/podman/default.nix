@@ -1,4 +1,4 @@
-{ lib, user, ... }:
+{ user, ... }:
 {
   virtualisation.podman = {
     enable = true;
@@ -11,6 +11,6 @@
     defaultNetwork.settings.dns_enabled = true;
   };
   users.users.${user} = {
-    extraGroups = lib.mkMerge [ [ "podman" ] ];
+    extraGroups = [ "podman" ];
   };
 }

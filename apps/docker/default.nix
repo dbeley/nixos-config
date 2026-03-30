@@ -1,4 +1,4 @@
-{ lib, user, ... }:
+{ user, ... }:
 {
   virtualisation.docker = {
     enable = true;
@@ -11,5 +11,5 @@
     #   setSocketVariable = true;
     # };
   };
-  users.users.${user}.extraGroups = lib.mkMerge [ [ "docker" ] ];
+  users.users.${user}.extraGroups = [ "docker" ];
 }
