@@ -19,7 +19,7 @@
       enable = true;
       wifi.backend = "iwd";
     };
-    firewall.enable = lib.mkDefault false;
+    firewall.enable = lib.mkDefault true;
   };
 
   # Set your time zone.
