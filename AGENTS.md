@@ -8,29 +8,32 @@
   - Define hosts in `hosts/default.nix` via `mkHost` function
   - Each host has `hardware-configuration.nix` and `home.nix`
 - **`modules/`** - Shared NixOS system modules organized by category:
-  - `modules/common/` - Base system configurations (bootloaders, laptop settings, openssh, printing, virtualization, etc.)
+  - `modules/common/` - Base system configurations (bootloaders, laptop settings, laptop-thermald, openssh, printing, screen-rotation, virtualization, xbox, etc.)
   - `modules/disko/` - Declarative disk partitioning (LUKS + btrfs + impermanence)
   - `modules/impermanence/` - Ephemeral root filesystem configuration
   - `modules/hardware/` - Hardware-specific modules (hid-tmff2, throttled)
   - `modules/sops/` - Secrets management (system and home-manager)
-  - `modules/cachix/` - Binary cache configurations (hyprland, niri, nix-community)
+  - `modules/cachix/` - Binary cache configurations (niri, nix-community)
   - `configuration.nix` - Base system configuration (networking, locale, nix settings)
   - `overlays.nix` - System-wide package overlays
-- **`apps/`** - Reusable application and desktop environment modules (73 directories, 85 .nix files total)
-  - Desktop environments: `gnome/`, `hyprland/`, `niri/`, `sway/`
+- **`apps/`** - Reusable application and desktop environment modules (76 directories, 88 .nix files total)
+  - Desktop environments: `gnome/`, `niri/`, `sway/`
   - Terminals: `alacritty/`, `ghostty/`, `kitty/`
-  - Editors: `emacs/`, `helix/`, `kakoune/`, `neovim-nixvim/`, `neovim-nvf/`, `nvim/`, `vscode/`
+  - Editors: `editorconfig/`, `emacs/`, `helix/`, `kakoune/`, `neovim-nixvim/`, `neovim-nvf/`, `nvim/`, `vscode/`
   - Browsers: `firefox/`, `qutebrowser/`, `ungoogled-chromium/`, `zen-browser/`
-  - Code agents: `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `opencode/`, `workmux/`
+  - Code agents: `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `opencode/`, `openskills/`, `workmux/`
   - File managers: `lf/`, `nnn/`, `yazi/`
   - Media: `imv/`, `mpd/`, `mpv/`, `obs/`, `swayimg/`, `zathura/`
-  - Wayland utilities: `gammastep/`, `hypridle/`, `hyprlock/`, `mako/`, `swaylock/`, `tofi/`, `waybar/`, `wofi/`
+  - Wayland utilities: `gammastep/`, `hyprlock/`, `mako/`, `swayidle/`, `swaylock/`, `tofi/`, `waybar/`, `wofi/`
   - Shell/CLI tools: `bat/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `zoxide/`
-  - Other apps: `android/`, `autoscreen/`, `autoscreen-gaming/`, `autoscreen-gnome/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `udiskie/`
+  - Networking: `mullvad/`
+  - AI/ML: `ollama/`
+  - Other apps: `android/`, `autoscreen/`, `autoscreen-gnome/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `udiskie/`, `zeroclaw/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
 - **`imgs/`** - Assets, wallpapers, and screenshots
 - **`justfile`** - Build and maintenance recipes
+- **`iso-configs/`** - Custom ISO installer configuration for NixOS installations
 - **`.env`** - Environment variables for justfile (e.g., `HOST=x13`) - not committed to git
 
 **Note:** There is NO `pkgs/` directory. Custom packages are defined inline within app modules (e.g., `apps/mpdscrobble/package.nix`, `apps/autoscreen/autoscreen.nix`).
@@ -69,7 +72,6 @@ mkHost = {
 
 **Desktop environments:**
 - `niri` - Niri wayland compositor + waybar + tofi + mako
-- `hyprland` - Hyprland + waybar + tofi + mako + gaming autoscreen
 - `gnome` - GNOME desktop with dconf settings
 - `sway` - Sway + waybar + tofi + mako
 
@@ -87,8 +89,11 @@ mkHost = {
 - `obs` - OBS Studio
 - `pycharm` - PyCharm IDE
 - `moonlight` - Game streaming client
-- `code-agents` - cursor, copilot, opencode (workmux, claude, gemini, codex commented out)
+- `code-agents` - workmux, cursor, opencode, openskills (claude, gemini, codex, copilot commented out)
+- `zeroclaw` - zeroclaw application
 - `jj` - Jujutsu version control system
+- `mullvad` - Mullvad VPN (system + home-manager)
+- `ollama` - Ollama local LLM server
 
 ### Current Hosts
 
@@ -197,6 +202,14 @@ nix build .#<pkg>  # Ensure derivation succeeds before committing
 - `just clean` - Manual garbage collection (uses `nh clean all --keep-since 7d --keep 5`)
 - `just update` - Update flake inputs
 - `just optimize` - Optimize nix store
+- `just rollback` - Roll back to previous generation (uses `nh os rollback`)
+- `just build-iso-image` - Build generic installer ISO
+- `just install-proxmox-vm <hostname> <ip>` - Upload install script to Proxmox VM
+- `just switch-proxmox-vm <hostname> <ip>` - Deploy config to remote Proxmox VM
+- `just search <query>` - Search for packages (uses `nh search`)
+- `just info` - List available generations (uses `nh os info`)
+- `just first-install-disko <host> <target>` - Run disko-install for a host on target disk
+- `just all` - Update, switch, clean, and optimize in sequence
 
 **Environment variables:**
 - Set `HOST` environment variable (e.g., `export HOST=x13`) or create a `.env` file with `HOST=<hostname>`
