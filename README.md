@@ -8,7 +8,7 @@
 |----------------|--------------------------------------------------|
 | **Shell:**     | fish                                             |
 | **DM:**        | tty1                                             |
-| **WM:**        | niri, hyprland, sway, gnome                      |
+| **WM:**        | niri, sway, gnome                      |
 | **Bar:**       | waybar                                           |
 | **Editor:**    | helix / doom-emacs / neovim / kakoune            |
 | **Terminal:**  | kitty / ghostty                                  |
@@ -18,12 +18,9 @@
 
 ## Notable Features
 
-- Support for multiple desktop environments ([`niri`](./apps/niri/), [`hyprland`](./apps/hyprland/), [`gnome`](./apps/gnome/), [`sway`](./apps/sway/))
+- Support for multiple desktop environments ([`niri`](./apps/niri/), [`gnome`](./apps/gnome/), [`sway`](./apps/sway/))
 - [Extensive `niri` configuration](./apps/niri/)
   - Window rules, monitor rules, etc.
-- [Extensive `hyprland` configuration](./apps/hyprland/)
-  - Scratchpads, window rules, monitor rules, etc.
-  - Touchscreen support with gestures, rotation and on-screen keyboard
 - [Extensive `gnome` configuration](./apps/gnome/)
   - Configuration via dconf
   - Pre-installed extensions
@@ -48,12 +45,12 @@
 
 ## Hosts
 
-- **sg13**: Silverstone SG13 (AMD Ryzen 9 5950X, RTX 3070, 32GB RAM, gnome)
 - **p14sg6**: Lenovo ThinkPad P14s Gen 6 (AMD Ryzen AI 7 350, 32GB RAM, niri, impermanence)
 - **cf-qv1**: Panasonic Let's Note CF-QV1 (Intel Core i5-1145G7, 16GB RAM, niri, impermanence)
-- **p14s**: Lenovo ThinkPad P14s Gen 4 (AMD Ryzen 7 7840U, 16GB RAM, niri, impermanence)
+- **sg13**: Silverstone SG13 (AMD Ryzen 9 5950X, RTX 3070, 32GB RAM, gnome)
 - **x1yoga**: Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, 8GB RAM, gnome, impermanence)
 - **latitude**: Dell Latitude 7420 (Intel Core i7-1165G7, 16GB RAM, niri)
+- **p14s** (deprecated): Lenovo ThinkPad P14s Gen 4 (AMD Ryzen 7 7840U, 16GB RAM, niri, impermanence)
 - **vaio** (deprecated): Sony Vaio Pro PK13 (Intel Core i5-1035G1, 16GB RAM, niri)
 - **x13** (deprecated): Lenovo ThinkPad X13 Gen 1 (AMD Ryzen 5 4650U, 16GB RAM, niri, impermanence)
 - **cf-rz6** (deprecated): Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, 8GB RAM, niri, impermanence)
@@ -161,7 +158,6 @@ When using the impermanence/disko module, the installation changes quite a bit a
 
 Installation can be done from any computer running nix, using a live ISO running from a USB key is not recommended as it will most likely run out of space during the install.
 The target disk can be any mounted disk (except the one the system is currently running on!) and will then have to be installed on the host computer after the installation is complete.
-:
 
 ```
 # On a new host don't forget to generate the hardware-configuration.nix file and copy it on hosts/{host}/hardware-configuration.nix
