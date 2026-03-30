@@ -95,6 +95,12 @@
     '';
 
     gvfs.enable = true;
+
+    earlyoom = {
+      enable = true;
+      freeMemThreshold = 5;
+      freeSwapThreshold = 10;
+    };
   };
 
   security = {
