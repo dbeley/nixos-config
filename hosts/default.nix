@@ -63,7 +63,7 @@ let
         inputs.niri.homeModules.stylix
         ../apps/niri/niri.nix
         ../apps/hyprlock/hyprlock.nix
-        ../apps/hypridle/hypridle.nix
+        ../apps/swayidle/swayidle.nix
         ../apps/autoscreen/autoscreen.nix
         ../apps/waybar/waybar.nix
         ../apps/tofi/tofi.nix
@@ -191,11 +191,11 @@ let
       home = [
         inputs.agent-skills.homeManagerModules.default
         ../apps/workmux/workmux.nix
-        ../apps/claude/claude.nix
-        ../apps/gemini/gemini.nix
-        ../apps/codex/codex.nix
+        # ../apps/claude/claude.nix
+        # ../apps/gemini/gemini.nix
+        # ../apps/codex/codex.nix
         ../apps/cursor/cursor.nix
-        ../apps/copilot/copilot.nix
+        # ../apps/copilot/copilot.nix
         ../apps/opencode/opencode.nix
         ../apps/openskills/openskills.nix
       ];
@@ -513,7 +513,7 @@ in
       inputs.nixos-hardware.nixosModules.common-cpu-intel
       inputs.nixos-hardware.nixosModules.common-gpu-intel
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-      ../modules/common/laptop-thermald.nix
+      # ../modules/common/laptop-thermald.nix
       ../modules/common/printing.nix
       ../modules/hardware/throttled.nix
       ../hosts/latitude/throttled.nix
