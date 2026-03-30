@@ -196,9 +196,10 @@
       ];
       nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
       auto-optimise-store = true;
-    };
-    gc = {
-      automatic = false;
+      warn-dirty = false;
+      fallback = true;
+      connect-timeout = 10;
+      download-attempts = 3;
     };
     registry.nixpkgs.flake = inputs.nixpkgs;
     channel.enable = false;
