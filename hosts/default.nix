@@ -353,7 +353,7 @@ in
       "ollama"
     ];
     extraModules = [
-      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
+      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen6
       {
         my.stylix.wallpaper = "abstract-light-rays";
         disko.mainDisk = "/dev/nvme0n1";
