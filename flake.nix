@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default";
-    flake-compat.url = "github:NixOS/flake-compat";
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-utils = {
       url = "github:numtide/flake-utils";
@@ -21,7 +20,6 @@
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs = {
-        flake-compat.follows = "flake-compat";
         gitignore.follows = "gitignore";
         nixpkgs.follows = "nixpkgs";
       };
@@ -122,7 +120,6 @@
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
-        flake-compat.follows = "flake-compat";
       };
     };
     disko = {
