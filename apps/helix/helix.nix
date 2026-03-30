@@ -22,13 +22,15 @@
         nixd = {
           command = "${pkgs.nixd}/bin/nixd";
         };
-        command = "${pkgs.vscode-langservers-extracted}/bin/vscode-json-language-server";
-        args = [ "--stdio" ];
-        config.provideFormatter = true;
-      };
-      marksman = {
-        command = "${pkgs.marksman}/bin/marksman";
-        args = [ "server" ];
+        vscode-json-language-server = {
+          command = "${pkgs.vscode-langservers-extracted}/bin/vscode-json-language-server";
+          args = [ "--stdio" ];
+          config.provideFormatter = true;
+        };
+        marksman = {
+          command = "${pkgs.marksman}/bin/marksman";
+          args = [ "server" ];
+        };
       };
       language = [
         {
