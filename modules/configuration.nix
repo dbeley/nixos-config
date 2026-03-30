@@ -48,17 +48,30 @@
     enable32Bit = true;
   };
 
-  # Enable sound with pipewire.
   services = {
     fwupd.enable = true;
-    resolved.enable = true;
+    resolved = {
+      enable = true;
+      settings.Resolve = {
+        DNS = [
+          "9.9.9.9#dns.quad9.net"
+          "149.112.112.112#dns.quad9.net"
+        ];
+        FallbackDNS = [
+          "1.1.1.1#cloudflare-dns.com"
+          "1.0.0.1#cloudflare-dns.com"
+          "8.8.8.8#dns.google"
+        ];
+        Domains = "~.";
+        DNSOverTLS = "opportunistic";
+      };
+    };
     pulseaudio.enable = false;
     pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
       jack.enable = true;
 
       wireplumber.extraConfig.wireplumber-disable-camera = {
