@@ -30,68 +30,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-    hyprutils = {
-      url = "github:hyprwm/hyprutils";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
-    };
-    hyprlang = {
-      url = "github:hyprwm/hyprlang";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        hyprutils.follows = "hyprutils";
-      };
-    };
-    hyprland-qt-support = {
-      url = "github:hyprwm/hyprland-qt-support";
-      inputs = {
-        hyprlang.follows = "hyprlang";
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
-    };
-    hyprland = {
-      url = "github:hyprwm/hyprland";
-      # Follow the repo defaults to avoid extra lock entries; note this opts out of Hyprland’s cache pin.
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        hyprlang.follows = "hyprlang";
-        pre-commit-hooks.follows = "git-hooks";
-        hyprutils.follows = "hyprutils";
-      };
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs = {
-        hyprland.follows = "hyprland";
-      };
-    };
-    hyprspace = {
-      # url = "github:KZDKM/Hyprspace?ref=refs/pull/162/head";
-      url = "github:KZDKM/Hyprspace";
-      inputs = {
-        hyprland.follows = "hyprland";
-        systems.follows = "systems";
-      };
-    };
-    iio-hyprland = {
-      url = "github:JeanSchoeller/iio-hyprland";
-      inputs = {
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
-    };
-    hyprgrass = {
-      # url = "github:horriblename/hyprgrass?ref=refs/pull/207/head";
-      url = "github:horriblename/hyprgrass";
-      inputs = {
-        hyprland.follows = "hyprland";
-      };
-    };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";

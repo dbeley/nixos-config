@@ -9,7 +9,6 @@
     mangohud.enable = false;
     gnome.enable = true;
     nixvim.enable = true;
-    hyprland.enable = true;
     mpv.enable = false;
   };
 }

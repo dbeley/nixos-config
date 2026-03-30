@@ -72,25 +72,6 @@ let
         ../apps/ghostty/ghostty.nix
       ];
     };
-    hyprland = {
-      system = [
-        ../apps/hyprland/default.nix
-        ../apps/hyprlock/default.nix
-      ];
-      home = [
-        inputs.hyprland.homeManagerModules.default
-        ../apps/hyprland/hyprland.nix
-        ../apps/hyprlock/hyprlock.nix
-        ../apps/hypridle/hypridle.nix
-        ../apps/autoscreen/autoscreen.nix
-        ../apps/autoscreen-gaming/autoscreen-gaming.nix
-        ../apps/waybar/waybar.nix
-        ../apps/tofi/tofi.nix
-        ../apps/mako/mako.nix
-        ../apps/gammastep/gammastep.nix
-        ../apps/kitty/kitty.nix
-      ];
-    };
     gnome = {
       system = [
         ../apps/gnome/default.nix

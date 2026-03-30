@@ -9,9 +9,7 @@
       {
         layer = "top";
         modules-left = [
-          "hyprland/workspaces"
           "niri/workspaces"
-          "hyprland/window"
           "niri/window"
           # "mpd"
         ];
@@ -25,18 +23,6 @@
           "battery"
           "tray"
         ];
-        "hyprland/window" = {
-          "format" = "{}";
-          "separate-outputs" = true;
-        };
-        "hyprland/workspaces" = {
-          "active-only" = false;
-          "all-outputs" = true;
-          "show-special" = false;
-          "on-click" = "activate";
-          "on-scroll-up" = "hyprctl dispatch workspace e+1";
-          "on-scroll-down" = "hyprctl dispatch workspace e-1";
-        };
         "niri/workspaces" = {
           "all-outputs" = false;
         };
