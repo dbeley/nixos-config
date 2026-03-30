@@ -64,6 +64,7 @@
         ];
         Domains = "~.";
         DNSOverTLS = "opportunistic";
+        DNSSEC = "allow-downgrade";
       };
     };
     pulseaudio.enable = false;
