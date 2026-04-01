@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.gamemode = {
     enable = true;
@@ -22,13 +22,15 @@
     extraCompatPackages = with pkgs; [ proton-ge-bin ];
   };
 
-  # Gaming-oriented kernel tuning
-  boot.kernel.sysctl = {
-    # Keep more in RAM, reduce swap tendency (default 60 is too aggressive with 24GB+)
-    "vm.swappiness" = 10;
-    # Disable proactive memory compaction (eliminates latency spikes during gameplay)
-    "vm.compaction_proactiveness" = 0;
-    # Disable split lock mitigation (prevents micro-stutters in some games/emulators)
-    "kernel.split_lock_mitigate" = 0;
+  boot = {
+    kernelModules = lib.mkMerge [ "ntsync" ];
+    kernel.sysctl = {
+      # Keep more in RAM, reduce swap tendency (default 60 is too aggressive with 24GB+)
+      "vm.swappiness" = 10;
+      # Disable proactive memory compaction (eliminates latency spikes during gameplay)
+      "vm.compaction_proactiveness" = 0;
+      # Disable split lock mitigation (prevents micro-stutters in some games/emulators)
+      "kernel.split_lock_mitigate" = 0;
+    };
   };
 }
