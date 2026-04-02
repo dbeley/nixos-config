@@ -8,6 +8,7 @@ in
     Unit = {
       Description = "A simple last.fm scrobbler for MPD";
       After = "mpd.service";
+      ConditionPathExists = "%h/.config/mpdscrobble/mpdscrobble.conf";
     };
     Service = {
       Type = "simple";
