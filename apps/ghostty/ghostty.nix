@@ -1,4 +1,7 @@
+{ pkgs, ... }:
 {
+  home.packages = [ pkgs.ghostty.terminfo ];
+
   programs.ghostty = {
     enable = true;
     enableFishIntegration = true;
