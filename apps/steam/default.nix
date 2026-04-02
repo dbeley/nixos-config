@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   programs.gamemode = {
     enable = true;
@@ -23,7 +23,7 @@
   };
 
   boot = {
-    kernelModules = lib.mkMerge [ "ntsync" ];
+    kernelModules = [ "ntsync" ];
     kernel.sysctl = {
       # Keep more in RAM, reduce swap tendency (default 60 is too aggressive with 24GB+)
       "vm.swappiness" = 10;
