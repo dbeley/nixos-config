@@ -5,7 +5,6 @@ in
 {
   home.packages = [
     llm.opencode
-    llm.oh-my-opencode
     llm.rtk
   ];
   xdg.configFile = {
@@ -15,9 +14,6 @@ in
         "$schema" = "https://opencode.ai/config.json";
         autoshare = false;
         theme = "opencode";
-        plugin = [
-          "oh-my-openagent"
-        ];
       };
     };
     "opencode/plugins/rtk.ts" = {
@@ -64,10 +60,5 @@ in
         }
       '';
     };
-    "opencode/oh-my-openagent.jsonc".text = ''
-      {
-        "max_concurrent_background_tasks": 5
-      }
-    '';
   };
 }
