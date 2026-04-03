@@ -21,6 +21,11 @@ _: {
         "anthropic/frontend-design" # frontend work
         "anthropic/webapp-testing" # playwright testing
         "anthropic/claude-api" # building with Claude API
+        "superpowers/systematic-debugging" # debugging any issues
+        "superpowers/writing-plans" # planning features before implementation
+        "superpowers/test-driven-development" # TDD approach
+        "superpowers/brainstorming" # creative problem solving
+        "superpowers/verification-before-completion" # verifying work before claiming completion
       ];
     };
     targets = {
