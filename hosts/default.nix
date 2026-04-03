@@ -350,7 +350,6 @@ in
       "python"
       "code-agents"
       "mullvad"
-      "ollama"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen6
@@ -373,9 +372,6 @@ in
       # "android-tools"
       "steam"
       "firefox"
-      # "chromium"
-      # "qutebrowser"
-      # "mpd"
       "python"
       "code-agents"
     ];
@@ -389,8 +385,8 @@ in
       }
       ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
-      # ../modules/hardware/throttled.nix
-      # ../hosts/cf-qv1/throttled.nix
+      ../modules/hardware/throttled.nix
+      ../hosts/cf-qv1/throttled.nix
     ];
   };
   x1yoga = mkHost {
@@ -482,10 +478,7 @@ in
       "niri"
       "python"
       "docker"
-      # "neovim-nvf"
       "firefox"
-      # "qutebrowser"
-      # "vscode"
       "code-agents"
       "pycharm"
       "jj"
@@ -512,7 +505,6 @@ in
       "bootloader-systemd-boot"
       "personal"
       "niri"
-      # "gnome"
       "steam"
       "firefox"
       "chromium"
