@@ -10,7 +10,7 @@
       }
       {
         timeout = 1200;
-        command = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+        command = "${pkgs.procps}/bin/pgrep -x hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
       }
       {
         timeout = 3600;
