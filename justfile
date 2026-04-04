@@ -44,10 +44,13 @@ switch-proxmox-vm hostname ip:
 clean:
   @echo "Cleaning old generations and garbage collecting"
   nh clean all --keep-since 7d --keep 5
+  nix store gc
 
 optimize:
   @echo "Cleaning and optimizing nix store"
-  nh clean all --keep-since 7d --keep 5 --optimise
+  nh clean all --keep-since 7d --keep 5
+  nix store gc
+  nix store optimise
 
 search query:
   @echo "Searching for packages: {{query}}"
