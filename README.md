@@ -109,6 +109,17 @@ just clean
 just
 ```
 
+### Maintenance Tools
+
+Additional just recipes are available for maintenance tasks:
+
+```bash
+just clean         # Clean old nix generations
+just optimize      # Optimize nix store
+just flake-linter  # Run flake linter to check for potential duplicate flake inputs
+just nix-olde      # Generate outdated packages report with the help of nix-olde (YYYY-MM-DD_nix-olde-report.txt)
+```
+
 ## Manual Install
 
 On a new install, you should first copy `/etc/nixos/hardware-configuration.nix` over `hosts/{host}/hardware-configuration.nix`.

@@ -61,4 +61,12 @@ first-install-disko host target:
   @echo "Installing host {{host}} on target disk {{target}}"
   sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake .#{{host}} --disk main {{target}} --show-trace
 
+flake-linter:
+	@echo "Running flake linter"
+	nix run github:Mic92/flake-linter
+
+nix-olde:
+	@echo "Checking for outdated packages"
+	nix run github:trofi/nix-olde -- -f . > $(date +%Y-%m-%d)_nix-olde-report.txt
+
 all: update switch clean optimize
