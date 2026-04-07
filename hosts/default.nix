@@ -206,6 +206,9 @@ let
       system = [ ../apps/ollama/default.nix ];
       home = [ ../apps/ollama/ollama.nix ];
     };
+    restic = {
+      home = [ ../apps/restic/restic.nix ];
+    };
   };
   mkHost =
     {
@@ -352,6 +355,7 @@ in
       "code-agents"
       "mullvad"
       "ollama"
+      "restic"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen6

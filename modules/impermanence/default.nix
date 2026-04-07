@@ -58,6 +58,7 @@
       ".config/beets"
       ".config/chromium"
       ".config/Cursor"
+      ".config/dconf"
       ".config/discord"
       ".config/feishin"
       ".config/gh"
@@ -77,6 +78,8 @@
       ".config/nix"
       ".config/nuclearthrone"
       ".config/opencode"
+      ".config/restic"
+      ".config/rclone"
       ".config/supersonic"
       ".config/unity3d"
       ".config/Mullvad VPN"
@@ -119,7 +122,6 @@
     ];
     files = [
       ".claude.json"
-      ".config/dconf/user"
       ".local/state/tofi-history"
     ];
   };
