@@ -117,37 +117,37 @@ let
       Type = "oneshot";
       RemainAfterExit = true;
       ExecStart = ''
-                        ${pkgs.docker}/bin/docker run -d \
-                          --name homelab-traefik \
-                          --restart unless-stopped \
-                          --network ${cfg.traefik_network} \
-                          -p 80:80 \
-                          -p 443:443 \
-                          -v /var/run/docker.sock:/var/run/docker.sock:ro \
-                          -v ${cfg.volume_root}/traefik:/etc/traefik \
-                          -v ${cfg.volume_root}/traefik/acme:/etc/traefik/acme \
-                          --label "traefik.enable=true" \
-                --label "traefik.http.routers.traefik.rule=Host(\`traefik.${cfg.domain}\`)" \
-                          --label "traefik.http.routers.traefik.entrypoints=websecure" \
-                          --label "traefik.http.routers.traefik.tls=true" \
-                          --label "traefik.http.routers.traefik.tls.certresolver=letsencrypt" \
-                          --label "traefik.http.routers.traefik.service=api@internal" \
-                          --label "traefik.http.services.traefik.loadbalancer.server.port=8080" \
-                          traefik:v3.6 \
-                          --api.dashboard=true \
-                          --api.insecure=false \
-                          --entrypoints.web.address=:80 \
-                          --entrypoints.websecure.address=:443 \
-                          --entrypoints.web.http.redirections.entrypoint.to=websecure \
-                          --entrypoints.web.http.redirections.entrypoint.scheme=https \
-                          --providers.docker=true \
-                          --providers.docker.exposedbydefault=false \
-                          --providers.docker.network=${cfg.traefik_network} \
-                          --certificatesresolvers.letsencrypt.acme.httpchallenge=true \
-                          --certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web \
-        --certificatesresolvers.letsencrypt.acme.email=$([ -f "${cfg.letsencrypt_email}" ] && cat "${cfg.letsencrypt_email}" || echo "") \
-                          --certificatesresolvers.letsencrypt.acme.storage=/etc/traefik/acme/acme.json \
-                          --log.level=INFO
+        ${pkgs.docker}/bin/docker run -d \
+          --name homelab-traefik \
+          --restart unless-stopped \
+          --network ${cfg.traefik_network} \
+          -p 80:80 \
+          -p 443:443 \
+          -v /var/run/docker.sock:/var/run/docker.sock:ro \
+          -v ${cfg.volume_root}/traefik:/etc/traefik \
+          -v ${cfg.volume_root}/traefik/acme:/etc/traefik/acme \
+          --label "traefik.enable=true" \
+          --label "traefik.http.routers.traefik.rule=Host(\`traefik.${cfg.domain}\`)" \
+          --label "traefik.http.routers.traefik.entrypoints=websecure" \
+          --label "traefik.http.routers.traefik.tls=true" \
+          --label "traefik.http.routers.traefik.tls.certresolver=letsencrypt" \
+          --label "traefik.http.routers.traefik.service=api@internal" \
+          --label "traefik.http.services.traefik.loadbalancer.server.port=8080" \
+          traefik:v3.6 \
+          --api.dashboard=true \
+          --api.insecure=false \
+          --entrypoints.web.address=:80 \
+          --entrypoints.websecure.address=:443 \
+          --entrypoints.web.http.redirections.entrypoint.to=websecure \
+          --entrypoints.web.http.redirections.entrypoint.scheme=https \
+          --providers.docker=true \
+          --providers.docker.exposedbydefault=false \
+          --providers.docker.network=${cfg.traefik_network} \
+          --certificatesresolvers.letsencrypt.acme.httpchallenge=true \
+          --certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web \
+          --certificatesresolvers.letsencrypt.acme.email=${cfg.letsencrypt_email} \
+          --certificatesresolvers.letsencrypt.acme.storage=/etc/traefik/acme/acme.json \
+          --log.level=INFO
       '';
       ExecStop = "${pkgs.docker}/bin/docker stop -t 10 homelab-traefik";
       ExecStopPost = "${pkgs.docker}/bin/docker rm -f homelab-traefik";
@@ -318,9 +318,9 @@ in
     };
 
     letsencrypt_email = lib.mkOption {
-      type = lib.types.nullOr lib.types.path;
-      default = null;
-      description = "Path to file containing Let's Encrypt email for certificate registration";
+      type = lib.types.str;
+      default = "";
+      description = "Let's Encrypt email for certificate registration";
     };
 
     services = lib.mkOption {
