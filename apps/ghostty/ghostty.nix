@@ -6,6 +6,7 @@
     enable = true;
     enableFishIntegration = true;
     settings = {
+      shell-integration-features = "ssh-terminfo,ssh-env";
       window-decoration = false;
       window-padding-y = 10;
       window-padding-x = 10;
