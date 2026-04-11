@@ -8,11 +8,11 @@
 
   programs.fish = {
     shellAliases = {
-      backup-init = "restic -r rclone:onedrive:backup init";
-      backup-status = "restic -r rclone:onedrive:backup snapshots";
-      backup-restore = "restic -r rclone:onedrive:backup restore latest --target ~/restic-restore";
-      backup-forget = "restic -r rclone:onedrive:backup forget --keep-daily 7 --keep-weekly 4 --keep-monthly 12 --keep-yearly 3 --prune";
-      backup-check = "restic -r rclone:onedrive:backup check";
+      backup-init = "restic -r rclone:onedrive:backup --password-file ~/.config/restic/password init";
+      backup-status = "restic -r rclone:onedrive:backup --password-file ~/.config/restic/password snapshots";
+      backup-restore = "restic -r rclone:onedrive:backup --password-file ~/.config/restic/password restore latest --target ~/restic-restore";
+      backup-forget = "restic -r rclone:onedrive:backup --password-file ~/.config/restic/password forget --keep-daily 7 --keep-weekly 4 --keep-monthly 12 --keep-yearly 3 --prune";
+      backup-check = "restic -r rclone:onedrive:backup --password-file ~/.config/restic/password check";
       rclone-config = "rclone config";
     };
 
@@ -33,7 +33,7 @@
         for folder in (cat $folders_file | grep -v '^#' | grep -v '^$')
           set expanded_folder (eval echo $folder)
           echo "Backing up: $expanded_folder"
-          restic -r rclone:onedrive:backup --verbose backup $expanded_folder
+          restic -r rclone:onedrive:backup --verbose --password-file ~/.config/restic/password backup $expanded_folder
         end
       '';
     };

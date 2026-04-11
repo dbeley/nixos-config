@@ -83,6 +83,7 @@
       ".config/supersonic"
       ".config/unity3d"
       ".config/Mullvad VPN"
+      ".config/sops"
       ".cursor"
       ".gemini"
       ".gnupg"
