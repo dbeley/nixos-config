@@ -2,6 +2,7 @@
 {
   services.swayidle = {
     enable = true;
+    systemdTargets = [ "graphical-session.target" ];
     timeouts = [
       {
         timeout = 900;
@@ -9,13 +10,13 @@
         resumeCommand = "${pkgs.brightnessctl}/bin/brightnessctl -r";
       }
       {
-        timeout = 1200;
-        command = "${pkgs.procps}/bin/pgrep -x hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
-      }
-      {
-        timeout = 3600;
+        timeout = 1800;
         command = "${pkgs.systemd}/bin/systemctl suspend";
       }
     ];
+    events = {
+      "before-sleep" = "${pkgs.procps}/bin/pgrep -x hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+      "lock" = "${pkgs.procps}/bin/pgrep -x hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+    };
   };
 }
