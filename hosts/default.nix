@@ -25,7 +25,12 @@ let
         ../modules/common/bootloader-systemd-boot.nix
       ];
     };
-    bootloader-grub = {
+    bootloader-grub-bios = {
+      system = [
+        ../modules/common/bootloader-grub-bios.nix
+      ];
+    };
+    bootloader-grub-uefi = {
       system = [
         ../modules/common/bootloader-grub-uefi.nix
       ];
@@ -106,6 +111,11 @@ let
     docker = {
       system = [
         ../apps/docker/default.nix
+      ];
+    };
+    docker-homelab = {
+      system = [
+        ../apps/docker-homelab/default.nix
       ];
     };
     podman = {
@@ -271,6 +281,7 @@ let
                 inputs
                 system
                 stateVersion
+                hostName
                 ;
               selectedProfiles = profiles;
             };
@@ -356,6 +367,7 @@ in
       "mullvad"
       "ollama"
       "restic"
+      "sops"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen6
@@ -380,6 +392,7 @@ in
       "firefox"
       "python"
       "code-agents"
+      "sops"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -409,6 +422,7 @@ in
       "chromium"
       "python"
       "code-agents"
+      "sops"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -536,7 +550,7 @@ in
     stateVersion = "24.11";
     profiles = [
       "personal"
-      "bootloader-grub"
+      "bootloader-grub-uefi"
       "openssh-server"
       "gnome"
       "steam"
@@ -581,7 +595,7 @@ in
     hostName = "nixos-kimsufi-01";
     stateVersion = "25.11";
     profiles = [
-      "bootloader-grub"
+      "bootloader-grub-bios"
       "openssh-server"
       "qbittorrent"
     ];
@@ -590,15 +604,16 @@ in
     hostName = "nixos-kimsufi-02";
     stateVersion = "25.11";
     profiles = [
-      "bootloader-grub"
+      "bootloader-grub-bios"
       "openssh-server"
+      "zeroclaw"
     ];
   };
   nixos-kimsufi-03 = mkHost {
     hostName = "nixos-kimsufi-03";
     stateVersion = "25.11";
     profiles = [
-      "bootloader-grub"
+      "bootloader-grub-bios"
       "openssh-server"
       "docker-homelab"
     ];

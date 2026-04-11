@@ -31,7 +31,7 @@
   - Declarative containers
 - [Declarative partitioning with `disko`](./modules/disko/encrypted-btrfs-impermanence.nix)
 - [Ephemeral file system with `impermanence` on btrfs subvolumes](./modules/impermanence/)
-- Secrets management with `sops-nix` (unused for now)
+- Secrets management with `sops-nix`
 - Configuration for common hardware with `nixos-hardware`
 - Automatic microcode updates for AMD CPUs with `ucodenix`
 - Automatic development shells with `direnv` and `shell.nix`

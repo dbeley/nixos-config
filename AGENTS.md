@@ -148,7 +148,6 @@ nix build .#<pkg>  # Ensure derivation succeeds before committing
 - **Configuration:** `.sops.yaml` defines age key and creation rules
 - **Secrets file:** `secrets/secrets.yaml` (encrypted)
 - **Age key location:** `~/.config/sops/age/keys.txt` (or `/home/${user}/.config/sops/age/keys.txt` for system)
-- **Current status:** sops is configured but "unused for now" per README
 
 **To enable sops on a host:**
 1. Ensure age key exists at specified location
