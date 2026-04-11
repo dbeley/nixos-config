@@ -600,7 +600,16 @@ in
     profiles = [
       "bootloader-grub"
       "openssh-server"
-      "docker"
+      "docker-homelab"
+    ];
+    extraModules = [
+      {
+        services.docker-homelab = {
+          enable = true;
+          domain = "dbeley.ovh";
+          letsencrypt_email = "admin@dbeley.ovh";
+        };
+      }
     ];
   };
   nixos-era-01 = mkHost {
