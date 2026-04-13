@@ -28,7 +28,7 @@
   - Shell/CLI tools: `bat/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
-  - Other apps: `android/`, `autoscreen/`, `autoscreen-gnome/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `udiskie/`, `zeroclaw/`
+  - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `udiskie/`, `zeroclaw/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
 - **`imgs/`** - Assets, wallpapers, and screenshots

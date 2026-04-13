@@ -83,7 +83,6 @@ let
       ];
       home = [
         ../apps/gnome/gnome.nix
-        # ../apps/autoscreen-gnome/autoscreen-gnome.nix
       ];
     };
     sway = {
@@ -504,9 +503,7 @@ in
       "jj"
     ];
     extraModules = [
-      inputs.nixos-hardware.nixosModules.common-cpu-intel
-      inputs.nixos-hardware.nixosModules.common-gpu-intel
-      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      inputs.nixos-hardware.nixosModules.dell-latitude-7420
       ../modules/common/laptop-thermald.nix
       ../modules/hardware/throttled.nix
       ../hosts/latitude/throttled.nix
