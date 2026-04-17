@@ -35,7 +35,6 @@
     };
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
-    kernelParams = [ "microcode.amd_sha_check=off" ];
   };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

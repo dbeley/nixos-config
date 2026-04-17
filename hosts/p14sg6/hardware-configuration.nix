@@ -35,7 +35,6 @@
     };
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
-    kernelParams = [ "microcode.amd_sha_check=off" ];
   };
 
   networking.useDHCP = lib.mkDefault true;
