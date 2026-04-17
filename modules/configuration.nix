@@ -73,12 +73,6 @@
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
-
-      wireplumber.extraConfig.wireplumber-disable-camera = {
-        "wireplumber.profiles" = {
-          "monitor.libcamera" = "disabled";
-        };
-      };
     };
 
     printing.enable = lib.mkDefault false;
@@ -134,7 +128,6 @@
       allowUnfree = true;
       chromium.enableWideVine = true;
     };
-    overlays = [ inputs.nur.overlays.default ];
   };
 
   environment.systemPackages = with pkgs; [
