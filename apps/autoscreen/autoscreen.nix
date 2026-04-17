@@ -34,8 +34,5 @@ in
       Type = "oneshot";
       ExecStart = "${autoscreen}/bin/autoscreen";
     };
-    Install = {
-      WantedBy = [ "multi-user.target" ];
-    };
   };
 }
