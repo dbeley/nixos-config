@@ -7,7 +7,7 @@
       stylesheet = "style.css";
       prompt = "";
       filter_rate = "200";
-      insensitve = true;
+      insensitive = true;
       gtk_dark = true;
       term = "foot";
       layer = "overlay";
