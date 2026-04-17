@@ -181,11 +181,7 @@ let
       home = [
         inputs.agent-skills.homeManagerModules.default
         ../apps/workmux/workmux.nix
-        # ../apps/claude/claude.nix
-        # ../apps/gemini/gemini.nix
-        # ../apps/codex/codex.nix
         ../apps/cursor/cursor.nix
-        # ../apps/copilot/copilot.nix
         ../apps/opencode/opencode.nix
         ../apps/openskills/openskills.nix
       ];
@@ -298,7 +294,6 @@ let
                 ../apps/yazi/yazi.nix
                 ../apps/udiskie/udiskie.nix
                 ../apps/mime/mime.nix
-                # ../apps/imv/imv.nix
                 ../apps/swayimg/swayimg.nix
                 ../apps/bat/bat.nix
                 ../apps/zoxide/zoxide.nix
@@ -435,59 +430,6 @@ in
       }
     ];
   };
-  x13 = mkHost {
-    hostName = "x13";
-    stateVersion = "24.11";
-    profiles = [
-      "laptop"
-      "impermanence"
-      "bootloader-systemd-boot"
-      "personal"
-      "niri"
-      "android-tools"
-      "steam"
-      "firefox"
-      "chromium"
-      "mpd"
-      "python"
-    ];
-    extraModules = [
-      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x13-amd
-      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-      {
-        my.stylix.wallpaper = "nyc-425-park-avenue";
-      }
-    ];
-  };
-  vaio = mkHost {
-    hostName = "vaio";
-    stateVersion = "25.05";
-    profiles = [
-      "laptop"
-      "bootloader-systemd-boot"
-      "personal"
-      "sops"
-      "niri"
-      "steam"
-      "android-tools"
-      "firefox"
-      "chromium"
-      "mpd"
-      "python"
-      "obs"
-      "code-agents"
-    ];
-    extraModules = [
-      inputs.nixos-hardware.nixosModules.common-cpu-intel
-      inputs.nixos-hardware.nixosModules.common-gpu-intel
-      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-      ../modules/hardware/throttled.nix
-      ../hosts/vaio/throttled.nix
-      {
-        my.stylix.wallpaper = "blue-planet";
-      }
-    ];
-  };
   latitude = mkHost {
     hostName = "latitude";
     stateVersion = "24.05";
@@ -511,35 +453,6 @@ in
       {
         my.stylix.wallpaper = "hk-plant";
       }
-    ];
-  };
-  cf-rz6 = mkHost {
-    hostName = "cf-rz6";
-    stateVersion = "25.05";
-    profiles = [
-      "laptop"
-      "impermanence"
-      "bootloader-systemd-boot"
-      "personal"
-      "niri"
-      "steam"
-      "firefox"
-      "chromium"
-      "qutebrowser"
-      "python"
-      "code-agents"
-    ];
-    extraModules = [
-      inputs.nixos-hardware.nixosModules.common-cpu-intel
-      inputs.nixos-hardware.nixosModules.common-gpu-intel
-      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-      {
-        my.stylix.wallpaper = "blue-planet";
-      }
-      ../modules/common/laptop-thermald.nix
-      ../modules/common/screen-rotation.nix
-      ../modules/hardware/throttled.nix
-      ../hosts/cf-rz6/throttled.nix
     ];
   };
   sg13 = mkHost {
@@ -568,24 +481,6 @@ in
       (_: {
         hardware.hid-tmff2.enable = true;
       })
-    ];
-  };
-  x61s = mkHost {
-    hostName = "x61s";
-    stateVersion = "22.11";
-    profiles = [
-      "laptop"
-      "personal"
-      "sway"
-      "python"
-      "steam"
-      "mpd"
-      "firefox"
-      "chromium"
-    ];
-    extraModules = [
-      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x200s
-      ../modules/common/bootloader-grub-bios.nix
     ];
   };
   nixos-kimsufi-01 = mkHost {
