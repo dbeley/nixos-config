@@ -1,15 +1,13 @@
-{ user, ... }:
 {
   virtualisation.docker = {
     enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
     autoPrune = {
       enable = true;
       dates = "weekly";
     };
-    # rootless = {
-    #   enable = true;
-    #   setSocketVariable = true;
-    # };
   };
-  users.users.${user}.extraGroups = [ "docker" ];
 }
