@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   user,
@@ -20,7 +19,7 @@
 
   services.boinc = {
     enable = true;
-    allowRemoteGuiRpc = true;
+    allowRemoteGuiRpc = false;
     extraEnvPackages = with pkgs; [
       ocl-icd
     ];
@@ -37,8 +36,4 @@
   ];
 
   users.users.${user}.extraGroups = lib.mkAfter [ "boinc" ];
-
-  networking.firewall.allowedTCPPorts = lib.optionals config.services.boinc.allowRemoteGuiRpc [
-    31416
-  ];
 }
