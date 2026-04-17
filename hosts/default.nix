@@ -519,12 +519,4 @@ in
       }
     ];
   };
-  nixos-era-01 = mkHost {
-    hostName = "nixos-era-01";
-    stateVersion = "25.11";
-    profiles = [
-      "bootloader-grub"
-      "openssh-server"
-    ];
-  };
 }
