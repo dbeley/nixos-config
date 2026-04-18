@@ -16,6 +16,7 @@
       "/var/log"
       "/etc/NetworkManager/system-connections"
       "/etc/wireguard"
+      "/var/cache/ccache"
       "/var/lib/bluetooth"
       "/var/lib/boinc"
       "/var/lib/fprint"
