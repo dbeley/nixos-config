@@ -192,6 +192,7 @@
   zramSwap = {
     enable = true;
     algorithm = "zstd";
+    memoryPercent = 200;
   };
 
   # BBR congestion control: lower latency and better throughput than cubic
