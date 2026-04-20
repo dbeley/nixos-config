@@ -77,8 +77,7 @@
       url = "github:SenchoPens/base16.nix";
     };
     stylix = {
-      # url = "github:danth/stylix?ref=refs/pull/1860/head";
-      url = "github:danth/stylix";
+      url = "github:nix-community/stylix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
