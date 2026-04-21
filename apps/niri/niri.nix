@@ -3,6 +3,15 @@
   config,
   ...
 }:
+let
+  brightness-script = pkgs.writeShellScript "brightness" ''
+    brightnessctl s "$1"
+    PCT=$(brightnessctl -m | cut -d, -f4 | tr -d '%')
+    notify-send -t 500 "BRI ''${PCT}%" \
+      -h string:x-canonical-private-synchronous:brightness \
+      -h int:value:"''${PCT}"
+  '';
+in
 {
   home.packages = with pkgs; [
     xwayland-satellite
@@ -272,14 +281,20 @@
           "bigdown"
         ];
         "XF86MonBrightnessDown".action.spawn = [
-          "brightnessctl"
-          "s"
-          "5%-"
+          "${brightness-script}"
+          "1%-"
         ];
         "XF86MonBrightnessUp".action.spawn = [
-          "brightnessctl"
-          "s"
-          "+5%"
+          "${brightness-script}"
+          "+1%"
+        ];
+        "Shift+XF86MonBrightnessDown".action.spawn = [
+          "${brightness-script}"
+          "10%-"
+        ];
+        "Shift+XF86MonBrightnessUp".action.spawn = [
+          "${brightness-script}"
+          "+10%"
         ];
         "XF86Display".action.spawn = [
           "~/scripts/toggle_gammastep.sh"
