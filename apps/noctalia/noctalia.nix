@@ -43,6 +43,7 @@
               }
             ];
             right = [
+              { id = "Tray"; }
               {
                 id = "SystemMonitor";
                 compactMode = false;
@@ -52,7 +53,6 @@
                 showMemoryUsage = true;
                 showNetworkStats = true;
               }
-              { id = "Tray"; }
               {
                 id = "Volume";
                 displayMode = "alwaysShow";
@@ -99,7 +99,7 @@
               id = "profile-card";
             }
             {
-              enabled = false;
+              enabled = true;
               id = "shortcuts-card";
             }
             {
@@ -119,6 +119,15 @@
               id = "media-sysmon-card";
             }
           ];
+          shortcuts = {
+            left = [
+              { id = "Network"; }
+              { id = "Bluetooth"; }
+              { id = "NightLight"; }
+              { id = "Notifications"; }
+            ];
+            right = [ ];
+          };
         };
         colorSchemes = {
           predefinedScheme = "Monochrome";
@@ -137,6 +146,9 @@
         notifications = {
           enabled = true;
           location = "top_right";
+        };
+        ui = {
+          fontDefault = lib.mkForce "Iosevka Nerd Font";
         };
         dock = {
           enabled = false;

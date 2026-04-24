@@ -47,6 +47,7 @@
       "Téléchargements"
       ".cache/fish/generated_completions"
       ".cache/keepassxc"
+      ".cache/noctalia"
       ".cache/supersonic"
       ".cache/tealdeer"
       ".cache/thumbnails/x-large"
