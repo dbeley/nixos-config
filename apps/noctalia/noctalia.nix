@@ -86,6 +86,10 @@
         appLauncher = {
           terminalCommand = "ghostty -e";
         };
+        sessionMenu = {
+          countdownDuration = 1000;
+          enableCountdown = false;
+        };
         idle = {
           enabled = true;
           lockTimeout = 1800;
