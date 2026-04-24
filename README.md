@@ -8,8 +8,8 @@
 |----------------|--------------------------------------------------|
 | **Shell:**     | fish                                             |
 | **DM:**        | tty1                                             |
-| **WM:**        | niri, sway, gnome                      |
-| **Bar:**       | waybar                                           |
+| **WM:**        | niri, sway, gnome                                |
+| **Bar:**       | noctalia, waybar                                 |
 | **Editor:**    | helix / doom-emacs / neovim / kakoune            |
 | **Terminal:**  | kitty / ghostty                                  |
 | **Launcher:**  | tofi                                             |

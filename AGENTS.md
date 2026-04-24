@@ -16,7 +16,7 @@
   - `modules/cachix/` - Binary cache configurations (niri, nix-community)
   - `configuration.nix` - Base system configuration (networking, locale, nix settings)
   - `overlays.nix` - System-wide package overlays
-- **`apps/`** - Reusable application and desktop environment modules (76 directories, 88 .nix files total)
+- **`apps/`** - Reusable application and desktop environment modules (78 directories, 91 .nix files total)
   - Desktop environments: `gnome/`, `niri/`, `sway/`
   - Terminals: `alacritty/`, `ghostty/`, `kitty/`
   - Editors: `editorconfig/`, `emacs/`, `helix/`, `kakoune/`, `neovim-nixvim/`, `neovim-nvf/`, `nvim/`, `vscode/`
@@ -24,11 +24,11 @@
   - Code agents: `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `opencode/`, `openskills/`, `workmux/`
   - File managers: `lf/`, `nnn/`, `yazi/`
   - Media: `imv/`, `mpd/`, `mpv/`, `obs/`, `swayimg/`, `zathura/`
-  - Wayland utilities: `gammastep/`, `hyprlock/`, `mako/`, `swayidle/`, `swaylock/`, `tofi/`, `waybar/`, `wofi/`
+  - Wayland utilities: `gammastep/`, `hyprlock/`, `mako/`, `noctalia/`, `swayidle/`, `swaylock/`, `tofi/`, `waybar/`, `wofi/`
   - Shell/CLI tools: `bat/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
-  - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `udiskie/`, `zeroclaw/`
+  - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `docker-homelab/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `udiskie/`, `zeroclaw/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
 - **`imgs/`** - Assets, wallpapers, and screenshots
@@ -60,10 +60,12 @@ mkHost = {
 - `laptop` - Power management, bluetooth, tuned
 - `impermanence` - Disko + impermanence setup with automatic root cleanup
 - `bootloader-systemd-boot` - Systemd-boot UEFI bootloader
-- `bootloader-grub` - GRUB UEFI bootloader
+- `bootloader-grub-uefi` - GRUB UEFI bootloader
+- `bootloader-grub-bios` - GRUB BIOS bootloader
 - `sops` - Secrets management (system + home-manager)
 - `openssh-server` - SSH server with GitHub key authentication
 - `docker` - Docker virtualization
+- `docker-homelab` - Docker with homelab services stack
 - `podman` - Podman virtualization
 - `android-tools` - ADB and fastboot
 - `steam` - Gaming with proton-ge
@@ -71,9 +73,10 @@ mkHost = {
 - `qbittorrent` - Torrent client service
 
 **Desktop environments:**
-- `niri` - Niri wayland compositor + waybar + tofi + mako
+- `niri` - Niri wayland compositor + noctalia + autoscreen + ghostty
+- `niri-waybar` - Niri wayland compositor + waybar + tofi + mako + hyprlock + swayidle + autoscreen + ghostty
 - `gnome` - GNOME desktop with dconf settings
-- `sway` - Sway + waybar + tofi + mako
+- `sway` - Sway + waybar + tofi + mako + swaylock + autoscreen + kitty
 
 **Applications:**
 - `personal` - ledger, mpv, nextcloud-client, impulse
@@ -83,43 +86,43 @@ mkHost = {
 - `mpd` - MPD + mpdscrobble (Last.fm scrobbler)
 - `python` - Python development with direnv
 - `neovim-nvf` - Neovim with nvf configuration framework
-- `vscode` - VS Code editor
+- `vscode` - VS Code: editor
 - `emacs` - Emacs editor
 - `kakoune` - Kakoune editor
 - `obs` - OBS Studio
 - `pycharm` - PyCharm IDE
 - `moonlight` - Game streaming client
-- `code-agents` - workmux, cursor, opencode, openskills (claude, gemini, codex, copilot commented out)
+- `code-agents` - workmux, cursor, opencode, openskills
 - `zeroclaw` - zeroclaw application
 - `jj` - Jujutsu version control system
 - `mullvad` - Mullvad VPN (system + home-manager)
 - `ollama` - Ollama local LLM server
+- `restic` - Restic backup tool
 
 ### Current Hosts
 
 **Workstations:**
-- `p14sg6` - Lenovo ThinkPad P14s Gen 6 (AMD Ryzen AI 7 350, niri, impermanence) - NEW
-- `cf-qv1` - Panasonic Let's Note CF-QV1 (Intel Core i5-1145G7, niri, impermanence) - NEW
+- `p14sg6` - Lenovo ThinkPad P14s Gen 6 (AMD Ryzen AI 7 350, niri, impermanence)
+- `cf-qv1` - Panasonic Let's Note CF-QV1 (Intel Core i5-1145G7, niri, impermanence)
 - `p14s` - Lenovo ThinkPad P14s Gen 4 (AMD Ryzen 7 7840U, niri, impermanence)
 - `x1yoga` - Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, gnome, impermanence)
 - `latitude` - Dell Latitude 7420 (Intel Core i7-1165G7, niri)
 - `sg13` - Silverstone SG13 desktop (AMD Ryzen 9 5950X + RTX 3070, gnome)
-- `vaio` - Sony Vaio Pro PK13 (Intel Core i5-1035G1, niri, sops) - deprecated
-- `x13` - Lenovo ThinkPad X13 Gen 1 (AMD Ryzen 5 4650U, niri, impermanence) - deprecated
-- `cf-rz6` - Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, niri, impermanence) - deprecated
-- `x61s` - Lenovo Thinkpad X61s (Intel Core 2 Duo L7500, sway) - deprecated
+
+**Deprecated workstations (no longer in `hosts/default.nix`):**
+- `vaio` - Sony Vaio Pro PK13 (Intel Core i5-1035G1, niri, sops)
+- `x13` - Lenovo ThinkPad X13 Gen 1 (AMD Ryzen 5 4650U, niri, impermanence)
+- `cf-rz6` - Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, niri, impermanence)
+- `x61s` - Lenovo Thinkpad X61s (Intel Core 2 Duo L7500, sway)
 
 **Servers (Kimsufi Proxmox VMs):**
 - `nixos-kimsufi-01` - qbittorrent server
-- `nixos-kimsufi-02` - Basic server
-- `nixos-kimsufi-03` - Docker server
-
-**Servers (Era Local Proxmox VMs):**
-- `nixos-era-01` - Basic server
+- `nixos-kimsufi-02` - zeroclaw server
+- `nixos-kimsufi-03` - Docker homelab server
 
 ## Testing Guidelines
 - **For verification, run formatting checks only**: Use `nix build .#checks.x86_64-linux.pre-commit-check --max-jobs 2` to verify code formatting/linting without evaluating all NixOS configurations. This is the recommended approach for LLM agents to avoid memory exhaustion.
-- **Why avoid full `nix flake check`**: Running `nix flake check` evaluates all 14 host configurations simultaneously, which can consume 12GB+ of RAM and cause memory exhaustion on typical LLM agent environments. The pre-commit check covers formatting/linting requirements without this overhead.
+- **Why avoid full `nix flake check`**: Running `nix flake check` evaluates all 9 active host configurations simultaneously, which can consume 12GB+ of RAM and cause memory exhaustion on typical LLM agent environments. The pre-commit check covers formatting/linting requirements without this overhead.
 - **For host-specific changes**: Run `nixos-rebuild dry-activate --flake .#<host>` or `just build` to validate specific host configurations without evaluating all hosts.
 - **For package changes**: Build packages explicitly with `nix build .#<pkg>` to ensure derivations succeed.
 - **For systems with ample RAM** (>16GB): You can optionally run full `nix flake check`, but this is not required for LLM agents.
@@ -208,6 +211,15 @@ nix build .#<pkg>  # Ensure derivation succeeds before committing
 - `just search <query>` - Search for packages (uses `nh search`)
 - `just info` - List available generations (uses `nh os info`)
 - `just first-install-disko <host> <target>` - Run disko-install for a host on target disk
+- `just flake-linter` - Run flake linter (uses `flake-linter`)
+- `just nix-olde` - Check for outdated packages (uses `nix-olde`)
+- `just secrets-edit` - Edit encrypted secrets with sops
+- `just secrets-view` - View decrypted secrets
+- `just secrets-set <key> <value>` - Set a secret value
+- `just secrets-get <key>` - Get a secret value
+- `just secrets-gen-key` - Generate new age key for sops
+- `just secrets-show-key` - Show current age public key
+- `just secrets-test` - Test sops configuration for current host
 - `just all` - Update, switch, clean, and optimize in sequence
 
 **Environment variables:**
