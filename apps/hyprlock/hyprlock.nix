@@ -1,3 +1,4 @@
+{ config, lib, ... }:
 {
   programs.hyprlock = {
     enable = true;
@@ -16,6 +17,15 @@
         position = "0, 100";
         halign = "center";
         valign = "center";
+      };
+    };
+  };
+  programs.niri.settings = lib.mkIf config.programs.niri.enable {
+    binds = {
+      "Mod+Shift+C".action = lib.mkForce {
+        spawn = [
+          "hyprlock"
+        ];
       };
     };
   };

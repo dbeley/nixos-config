@@ -61,6 +61,19 @@ let
     niri = {
       system = [
         ../apps/niri/default.nix
+      ];
+      home = [
+        inputs.niri.homeModules.niri
+        inputs.niri.homeModules.stylix
+        ../apps/niri/niri.nix
+        ../apps/noctalia/noctalia.nix
+        ../apps/autoscreen/autoscreen.nix
+        ../apps/ghostty/ghostty.nix
+      ];
+    };
+    niri-waybar = {
+      system = [
+        ../apps/niri/default.nix
         ../apps/hyprlock/default.nix
       ];
       home = [
@@ -384,6 +397,7 @@ in
       # "android-tools"
       "steam"
       "firefox"
+      "chromium"
       "python"
       "code-agents"
       "sops"

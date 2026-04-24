@@ -1,5 +1,32 @@
-{ lib, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  brightness-script = pkgs.writeShellScript "brightness" ''
+    brightnessctl s "$1"
+    PCT=$(brightnessctl -m | cut -d, -f4 | tr -d '%')
+    notify-send -t 500 "BRI ''${PCT}%" \
+      -h string:x-canonical-private-synchronous:brightness \
+      -h int:value:"''${PCT}"
+  '';
+in
+{
+  home.packages = with pkgs; [
+    swaybg
+    pamixer
+    libnotify
+  ];
+  home.file = {
+    "scripts".source = pkgs.fetchFromGitHub {
+      owner = "dbeley";
+      repo = "scripts";
+      rev = "3ca27d817733c56ac269897835d3088369e99adf";
+      sha256 = "sha256-R2GVSUkyPXiIASDe3o92gE1XzVsTzbXB8hQBSo7FlAc=";
+    };
+  };
   programs.waybar = {
     enable = true;
     systemd = {
@@ -16,9 +43,9 @@
         modules-center = [ "clock" ];
         modules-right = [
           "network"
-          "cpu"
-          "memory"
-          "temperature"
+          # "cpu"
+          # "memory"
+          # "temperature"
           "pulseaudio"
           "battery"
           "tray"
@@ -115,5 +142,92 @@
       }
     ];
     style = lib.readFile ./waybar.css;
+  };
+  programs.niri.settings = lib.mkIf config.programs.niri.enable {
+    spawn-at-startup = [
+      {
+        command = [
+          "systemctl"
+          "--user"
+          "reset-failed"
+          "waybar-service"
+        ];
+      }
+      {
+        command = [
+          "swaybg"
+          "-m"
+          "fill"
+          "-i"
+          "${config.stylix.image}"
+        ];
+      }
+    ];
+    binds = {
+      "XF86AudioRaiseVolume".action = lib.mkForce {
+        spawn = [
+          "~/scripts/volume_pamixer.sh"
+          "up"
+        ];
+      };
+      "XF86AudioLowerVolume".action = lib.mkForce {
+        spawn = [
+          "~/scripts/volume_pamixer.sh"
+          "down"
+        ];
+      };
+      "XF86AudioMute".action = lib.mkForce {
+        spawn = [
+          "~/scripts/volume_pamixer.sh"
+          "mute"
+        ];
+      };
+      "Shift+XF86AudioRaiseVolume".action = lib.mkForce {
+        spawn = [
+          "~/scripts/volume_pamixer.sh"
+          "bigup"
+        ];
+      };
+      "Shift+XF86AudioLowerVolume".action = lib.mkForce {
+        spawn = [
+          "~/scripts/volume_pamixer.sh"
+          "bigdown"
+        ];
+      };
+      "XF86MonBrightnessDown".action = lib.mkForce {
+        spawn = [
+          "${brightness-script}"
+          "1%-"
+        ];
+      };
+      "XF86MonBrightnessUp".action = lib.mkForce {
+        spawn = [
+          "${brightness-script}"
+          "+1%"
+        ];
+      };
+      "Shift+XF86MonBrightnessDown".action = lib.mkForce {
+        spawn = [
+          "${brightness-script}"
+          "10%-"
+        ];
+      };
+      "Shift+XF86MonBrightnessUp".action = lib.mkForce {
+        spawn = [
+          "${brightness-script}"
+          "+10%"
+        ];
+      };
+      "XF86Display".action = lib.mkForce {
+        spawn = [
+          "~/scripts/toggle_gammastep.sh"
+        ];
+      };
+      "Mod+Shift+C".action = lib.mkForce {
+        spawn = [
+          "hyprlock"
+        ];
+      };
+    };
   };
 }

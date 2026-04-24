@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 {
   programs.tofi = {
     enable = true;
@@ -47,6 +47,17 @@
       late-keyboard-init = false;
       multi-instance = false;
       ascii-input = false;
+    };
+  };
+  programs.niri.settings = lib.mkIf config.programs.niri.enable {
+    binds = {
+      "Mod+E".action = lib.mkForce {
+        spawn = [
+          "bash"
+          "-c"
+          "tofi-run | xargs niri msg action spawn --"
+        ];
+      };
     };
   };
 }
