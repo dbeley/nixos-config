@@ -13,13 +13,13 @@ in
     Service = {
       Type = "simple";
       ExecStartPre = pkgs.writeShellScript "mpdscrobble-setup" ''
-        mkdir -p %h/.config/mpdscrobble
+        mkdir -p ~/.config/mpdscrobble
 
-        LASTFM_API_KEY=$(cat %h/.config/mpdscrobble/api_key 2>/dev/null || echo "")
-        LASTFM_SECRET=$(cat %h/.config/mpdscrobble/secret 2>/dev/null || echo "")
-        LASTFM_PASSWORD=$(cat %h/.config/mpdscrobble/password 2>/dev/null || echo "")
+        LASTFM_API_KEY=$(cat ~/.config/mpdscrobble/api_key 2>/dev/null || echo "")
+        LASTFM_SECRET=$(cat ~/.config/mpdscrobble/secret 2>/dev/null || echo "")
+        LASTFM_PASSWORD=$(cat ~/.config/mpdscrobble/password 2>/dev/null || echo "")
 
-        cat > %h/.config/mpdscrobble/mpdscrobble.conf << EOF
+        cat > ~/.config/mpdscrobble/mpdscrobble.conf << EOF
         [lastfm]
         api_key = $LASTFM_API_KEY
         secret = $LASTFM_SECRET
