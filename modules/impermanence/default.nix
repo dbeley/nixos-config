@@ -126,6 +126,7 @@
     files = [
       ".claude.json"
       ".local/state/tofi-history"
+      ".mozilla/firefox/profiles.ini"
     ];
   };
 

@@ -1,3 +1,4 @@
+{ lib, config, ... }:
 {
   services.mako = {
     enable = true;
@@ -11,5 +12,11 @@
       border-radius = 5;
       default-timeout = 5000;
     };
+  };
+
+  programs.niri.settings = lib.mkIf config.programs.niri.enable {
+    spawn-at-startup = [
+      { command = [ "mako" ]; }
+    ];
   };
 }
