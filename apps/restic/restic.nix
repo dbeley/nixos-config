@@ -13,6 +13,7 @@
       backup-restore = "restic -r rclone:onedrive:backup --password-file ~/.config/restic/password restore latest --target ~/restic-restore";
       backup-forget = "restic -r rclone:onedrive:backup --password-file ~/.config/restic/password forget --keep-daily 7 --keep-weekly 4 --keep-monthly 12 --keep-yearly 3 --prune";
       backup-check = "restic -r rclone:onedrive:backup --password-file ~/.config/restic/password check";
+      backup-unlock = "restic -r rclone:onedrive:backup --password-file ~/.config/restic/password unlock";
       rclone-config = "rclone config";
     };
 
