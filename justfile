@@ -41,6 +41,10 @@ switch-proxmox-vm hostname ip:
   @echo "Deploying config for {{hostname}} to {{ip}}"
   nh os switch -H {{hostname}} . --target-host david@{{ip}}
 
+boot-proxmox-vm hostname ip:
+  @echo "Deploying config for {{hostname}} to {{ip}}"
+  nh os boot -H {{hostname}} . --target-host david@{{ip}}
+
 clean:
   @echo "Cleaning old generations and garbage collecting"
   nh clean all --keep-since 7d --keep 5
