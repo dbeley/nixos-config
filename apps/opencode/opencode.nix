@@ -1,10 +1,18 @@
 { inputs, pkgs, ... }:
 let
   llm = inputs.llm-agents.packages.${pkgs.system};
+  opencode-wrapped = pkgs.symlinkJoin {
+    name = "opencode-wrapped";
+    paths = [ llm.opencode ];
+    buildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/opencode --set OPENCODE_ENABLE_EXA 1
+    '';
+  };
 in
 {
   home.packages = [
-    llm.opencode
+    opencode-wrapped
     llm.rtk
   ];
   xdg.configFile = {
