@@ -58,4 +58,6 @@
       OLLAMA_CONTEXT_LENGTH = "64000";
     };
   };
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 }
