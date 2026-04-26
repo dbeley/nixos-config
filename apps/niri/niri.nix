@@ -99,8 +99,9 @@
           on = [ ];
           width = 4;
           active-color = base0D;
-          # inactive-color = base03;
+          inactive-color = base03;
         };
+
         preset-column-widths._children = [
           { proportion = 1.0 / 2.0; }
           { proportion = 1.0 / 3.0; }
@@ -124,10 +125,6 @@
       window-rule = [
         {
           match._props."is-focused" = false;
-          opacity = 0.85;
-        }
-        {
-          match._props."is-focused" = true;
           opacity = 0.95;
         }
         {
@@ -231,23 +228,6 @@
             12.0
           ];
           "clip-to-geometry" = true;
-          background-effect = {
-            blur = true;
-          };
-          popups = {
-            "geometry-corner-radius"._args = [
-              15.0
-              15.0
-              15.0
-              15.0
-            ];
-            background-effect = {
-              blur = true;
-            };
-          };
-        }
-        {
-          match._props.app-id._raw = ''r"^com\.ghostty"'';
           background-effect = {
             blur = true;
           };
