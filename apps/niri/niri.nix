@@ -1,23 +1,22 @@
-{
-  pkgs,
-  config,
-  ...
-}:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     xwayland-satellite
     wl-clipboard-rs
     nirius
   ];
-  programs.niri = {
+
+  wayland.windowManager.niri = {
     enable = true;
     package = pkgs.niri-unstable;
+
     settings = {
       environment = {
-        "NIXOS_OZONE_WL" = "1";
-        "DISPLAY" = ":0";
-        "GTK_IM_MODULE" = "simple";
+        NIXOS_OZONE_WL = "1";
+        DISPLAY = ":0";
+        GTK_IM_MODULE = "simple";
       };
+
       input = {
         keyboard = {
           repeat-delay = 200;
@@ -29,170 +28,173 @@
           };
         };
         mouse = {
-          left-handed = true;
+          "left-handed" = [ ];
         };
         touchpad = {
-          left-handed = true;
-          tap = true;
-          dwt = true;
-          natural-scroll = true;
-          click-method = "clickfinger";
+          "left-handed" = [ ];
+          tap = [ ];
+          dwt = [ ];
+          "natural-scroll" = [ ];
+          "click-method" = "clickfinger";
         };
         trackpoint = {
-          left-handed = true;
+          "left-handed" = [ ];
         };
         trackball = {
-          left-handed = true;
+          "left-handed" = [ ];
         };
-        focus-follows-mouse = {
-          enable = true;
-        };
+        "focus-follows-mouse" = [ ];
       };
-      outputs = {
-        # niri msg outputs
-        eDP-1 = {
+
+      output = [
+        {
+          _args = [ "eDP-1" ];
           scale = 1.25;
-        };
-        "LG Display 0x067C Unknown" = {
+        }
+        {
+          _args = [ "LG Display 0x067C Unknown" ];
           scale = 2;
-        };
-        "Samsung Electric Company Q90A 0x01000E00" = {
+        }
+        {
+          _args = [ "Samsung Electric Company Q90A 0x01000E00" ];
           scale = 2;
-          mode = {
-            height = 2160;
-            width = 3840;
-            refresh = 60.0;
-          };
-        };
-        "Dell Inc. DELL S2721DGF 6C1TR83" = {
-          mode = {
-            height = 1440;
-            width = 2560;
-            refresh = 143.912;
-          };
-          position = {
+          mode = "3840x2160@60";
+        }
+        {
+          _args = [ "Dell Inc. DELL S2721DGF 6C1TR83" ];
+          mode = "2560x1440@143.912";
+          position._props = {
             x = 0;
             y = 0;
           };
-        };
-        "LG Display 0x05EF Unknown" = {
+        }
+        {
+          _args = [ "LG Display 0x05EF Unknown" ];
           scale = 1.6;
-          mode = {
-            height = 1440;
-            width = 2560;
-            refresh = 59.998;
-          };
-        };
-        "LG Electronics LG IPS FULLHD 0x01010101" = {
-          position = {
+          mode = "2560x1440@59.998";
+        }
+        {
+          _args = [ "LG Electronics LG IPS FULLHD 0x01010101" ];
+          position._props = {
             x = 0;
             y = 0;
           };
-        };
-      };
+        }
+      ];
+
       cursor = {
         hide-after-inactive-ms = 5000;
       };
+
       layout = {
         gaps = 16;
-        preset-column-widths = [
+        preset-column-widths._children = [
           { proportion = 1.0 / 2.0; }
           { proportion = 1.0 / 3.0; }
           { proportion = 2.0 / 3.0; }
           { proportion = 1.0 / 4.0; }
         ];
-        preset-window-heights = [
+        preset-window-heights._children = [
           { proportion = 1.0 / 2.0; }
           { proportion = 1.0 / 3.0; }
           { proportion = 2.0 / 3.0; }
           { proportion = 1.0 / 4.0; }
         ];
       };
+
       screenshot-path = "~/Nextcloud/30-39_Images/32_Captures-d-écran/32.19_Captures-d-écran_Niri/%Y-%m-%d %H-%M-%S.png";
+
       spawn-at-startup = [
-        {
-          command = [ "niriusd" ];
-        }
+        [ "niriusd" ]
       ];
-      window-rules = [
+
+      window-rule = [
         {
-          matches = [ { is-focused = false; } ];
+          match._props."is-focused" = false;
           opacity = 0.95;
         }
         {
-          matches = [
+          match = [
             {
-              app-id = "firefox";
-              title = "Picture-in-Picture";
+              _props = {
+                app-id = "firefox";
+                title = "Picture-in-Picture";
+              };
             }
-            { app-id = "mpv"; }
+            { _props.app-id = "mpv"; }
             {
-              app-id = "steam";
-              title = "Friends List";
-            }
-            {
-              app-id = "steam";
-              title = "Steam Settings";
-            }
-            {
-              app-id = "jetbrains.*";
-              title = "Open File or Project";
+              _props = {
+                app-id = "steam";
+                title = "Friends List";
+              };
             }
             {
-              app-id = "jetbrains.*";
-              title = "Settings";
+              _props = {
+                app-id = "steam";
+                title = "Steam Settings";
+              };
             }
             {
-              app-id = "jetbrains.*";
-              title = "Confirm Exit";
+              _props = {
+                app-id = "jetbrains.*";
+                title = "Open File or Project";
+              };
             }
             {
-              app-id = "jetbrains.*";
-              title = "Update Project";
+              _props = {
+                app-id = "jetbrains.*";
+                title = "Settings";
+              };
             }
             {
-              app-id = "zoom";
-              title = "Zoom Workplace";
+              _props = {
+                app-id = "jetbrains.*";
+                title = "Confirm Exit";
+              };
             }
             {
-              app-id = "zoom";
-              title = "Settings";
+              _props = {
+                app-id = "jetbrains.*";
+                title = "Update Project";
+              };
             }
             {
-              app-id = "zoom";
-              title = "zoom";
+              _props = {
+                app-id = "zoom";
+                title = "Zoom Workplace";
+              };
             }
             {
-              app-id = "swayimg";
+              _props = {
+                app-id = "zoom";
+                title = "Settings";
+              };
             }
             {
-              title = "Ouvrir.*";
+              _props = {
+                app-id = "zoom";
+                title = "zoom";
+              };
             }
-            {
-              title = "Extension.*";
-            }
-            {
-              title = "Enregistrer.*";
-            }
-            {
-              title = "Add.*";
-            }
+            { _props.app-id = "swayimg"; }
+            { _props.title = "Ouvrir.*"; }
+            { _props.title = "Extension.*"; }
+            { _props.title = "Enregistrer.*"; }
+            { _props.title = "Add.*"; }
           ];
           open-floating = true;
         }
         {
-          matches = [
-            { app-id = "org.keepassxc.KeePassXC"; }
-          ];
+          match._props.app-id = "org.keepassxc.KeePassXC";
           block-out-from = "screen-capture";
         }
         {
-          matches = [
-            { app-id = "com.ghostty.mpd-picker"; }
-            { app-id = "com.ghostty.real-book-picker"; }
+          match = [
+            { _props.app-id = "com.ghostty.mpd-picker"; }
+            { _props.app-id = "com.ghostty.real-book-picker"; }
           ];
           open-floating = true;
-          default-floating-position = {
+          "default-floating-position"._props = {
             x = 0;
             y = 0;
             relative-to = "top";
@@ -205,110 +207,141 @@
           };
         }
         {
-          matches = [ ];
-          geometry-corner-radius = {
-            bottom-left = 12.0;
-            bottom-right = 12.0;
-            top-left = 12.0;
-            top-right = 12.0;
+          "geometry-corner-radius"._args = [
+            12.0
+            12.0
+            12.0
+            12.0
+          ];
+          "clip-to-geometry" = true;
+        }
+        {
+          match._props.app-id._raw = ''r"^com\.ghostty"'';
+          background-effect = {
+            blur = true;
           };
-          clip-to-geometry = true;
         }
       ];
+
       hotkey-overlay = {
         skip-at-startup = true;
       };
-      binds = with config.lib.niri.actions; {
-        "Mod+Shift+Slash".action = show-hotkey-overlay;
-        "XF86NotificationCenter".action = toggle-overview;
-        "XF86PickupPhone".action = toggle-overview;
-        "XF86HangupPhone".action = toggle-overview;
-        "XF86Favorites".action = toggle-overview;
-        "Mod+1".action.focus-workspace = 1;
-        "Mod+2".action.focus-workspace = 2;
-        "Mod+3".action.focus-workspace = 3;
-        "Mod+4".action.focus-workspace = 4;
-        "Mod+5".action.focus-workspace = 5;
-        "Mod+6".action.focus-workspace = 6;
-        "Mod+7".action.focus-workspace = 7;
-        "Mod+8".action.focus-workspace = 8;
-        "Mod+9".action.focus-workspace = 9;
-        "Mod+Shift+1".action.move-column-to-workspace = 1;
-        "Mod+Shift+2".action.move-column-to-workspace = 2;
-        "Mod+Shift+3".action.move-column-to-workspace = 3;
-        "Mod+Shift+4".action.move-column-to-workspace = 4;
-        "Mod+Shift+5".action.move-column-to-workspace = 5;
-        "Mod+Shift+6".action.move-column-to-workspace = 6;
-        "Mod+Shift+7".action.move-column-to-workspace = 7;
-        "Mod+Shift+8".action.move-column-to-workspace = 8;
-        "Mod+Shift+9".action.move-column-to-workspace = 9;
-        "Mod+Shift+E".action = quit;
-        "Mod+F".action = maximize-column;
-        "Mod+Shift+F".action = fullscreen-window;
-        "Mod+Q".action = close-window;
-        "Mod+H".action = focus-column-left;
-        "Mod+J".action = focus-window-or-workspace-down;
-        "Mod+K".action = focus-window-or-workspace-up;
-        "Mod+L".action = focus-column-right;
-        "Mod+Left".action = focus-column-left;
-        "Mod+Down".action = focus-window-or-workspace-down;
-        "Mod+Up".action = focus-window-or-workspace-up;
-        "Mod+Right".action = focus-column-right;
-        "Mod+Ctrl+H".action = focus-monitor-left;
-        "Mod+Ctrl+J".action = focus-monitor-down;
-        "Mod+Ctrl+K".action = focus-monitor-up;
-        "Mod+Ctrl+L".action = focus-monitor-right;
-        "Mod+Ctrl+Left".action = focus-monitor-left;
-        "Mod+Ctrl+Down".action = focus-monitor-down;
-        "Mod+Ctrl+Up".action = focus-monitor-up;
-        "Mod+Ctrl+Right".action = focus-monitor-right;
-        "Mod+Shift+H".action = move-column-left;
-        "Mod+Shift+J".action = move-window-down-or-to-workspace-down;
-        "Mod+Shift+K".action = move-window-up-or-to-workspace-up;
-        "Mod+Shift+L".action = move-column-right;
-        "Mod+Shift+Left".action = move-column-left;
-        "Mod+Shift+Down".action = move-window-down-or-to-workspace-down;
-        "Mod+Shift+Up".action = move-window-up-or-to-workspace-up;
-        "Mod+Shift+Right".action = move-column-right;
-        "Mod+Ctrl+Shift+H".action = move-column-to-monitor-left;
-        "Mod+Ctrl+Shift+J".action = move-column-to-monitor-down;
-        "Mod+Ctrl+Shift+K".action = move-column-to-monitor-up;
-        "Mod+Ctrl+Shift+L".action = move-column-to-monitor-right;
-        "Mod+Ctrl+Shift+Left".action = move-column-to-monitor-left;
-        "Mod+Ctrl+Shift+Down".action = move-column-to-monitor-down;
-        "Mod+Ctrl+Shift+Up".action = move-column-to-monitor-up;
-        "Mod+Ctrl+Shift+Right".action = move-column-to-monitor-right;
-        "Mod+WheelScrollUp".action = focus-column-left;
-        "Mod+WheelScrollDown".action = focus-column-right;
-        "Mod+Shift+WheelScrollUp".action = focus-window-or-workspace-up;
-        "Mod+Shift+WheelScrollDown".action = focus-window-or-workspace-down;
-        "Mod+U".action = focus-workspace-down;
-        "Mod+I".action = focus-workspace-up;
-        "Mod+Shift+U".action = move-column-to-workspace-down;
-        "Mod+Shift+I".action = move-column-to-workspace-up;
-        "Mod+V".action = toggle-window-floating;
-        "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
-        "Mod+W".action = toggle-column-tabbed-display;
-        "Mod+C".action = center-column;
-        "Mod+BracketLeft".action = consume-or-expel-window-left;
-        "Mod+BracketRight".action = consume-or-expel-window-right;
-        "Mod+Comma".action = consume-window-into-column;
-        "Mod+Period".action = expel-window-from-column;
-        "Mod+R".action = switch-preset-column-width;
-        "Mod+Shift+R".action = switch-preset-window-height;
-        "Mod+Ctrl+R".action = reset-window-height;
-        "Mod+Shift+Ctrl+R".action = reset-window-height;
-        "Mod+Minus".action.set-column-width = "-10%";
-        "Mod+Equal".action.set-column-width = "+10%";
-        "Mod+Shift+Minus".action.set-window-height = "-10%";
-        "Mod+Shift+Equal".action.set-window-height = "+10%";
-        "Shift+Print".action.screenshot = { };
-        "Print".action.screenshot-screen = { };
-        "Mod+Z".action.spawn = "firefox";
-        "Mod+T".action.spawn = "soffice";
-        "Mod+D".action.spawn = "feishin";
-        "Mod+N".action.spawn = "keepassxc";
-        "Mod+F1".action.spawn = [
+
+      include = [
+        {
+          _args = [ "~/.config/niri/local.kdl" ];
+          _props.optional = true;
+        }
+      ];
+
+      binds = {
+        "Mod+Shift+Slash"."show-hotkey-overlay" = [ ];
+        "XF86NotificationCenter"."toggle-overview" = [ ];
+        "XF86PickupPhone"."toggle-overview" = [ ];
+        "XF86HangupPhone"."toggle-overview" = [ ];
+        "XF86Favorites"."toggle-overview" = [ ];
+
+        "Mod+1"."focus-workspace" = 1;
+        "Mod+2"."focus-workspace" = 2;
+        "Mod+3"."focus-workspace" = 3;
+        "Mod+4"."focus-workspace" = 4;
+        "Mod+5"."focus-workspace" = 5;
+        "Mod+6"."focus-workspace" = 6;
+        "Mod+7"."focus-workspace" = 7;
+        "Mod+8"."focus-workspace" = 8;
+        "Mod+9"."focus-workspace" = 9;
+
+        "Mod+Shift+1"."move-column-to-workspace" = 1;
+        "Mod+Shift+2"."move-column-to-workspace" = 2;
+        "Mod+Shift+3"."move-column-to-workspace" = 3;
+        "Mod+Shift+4"."move-column-to-workspace" = 4;
+        "Mod+Shift+5"."move-column-to-workspace" = 5;
+        "Mod+Shift+6"."move-column-to-workspace" = 6;
+        "Mod+Shift+7"."move-column-to-workspace" = 7;
+        "Mod+Shift+8"."move-column-to-workspace" = 8;
+        "Mod+Shift+9"."move-column-to-workspace" = 9;
+
+        "Mod+Shift+E"."quit" = [ ];
+        "Mod+Shift+P"."spawn" = [ "poweroff" ];
+        "Mod+Shift+O"."spawn" = [ "reboot" ];
+
+        "Mod+F"."maximize-column" = [ ];
+        "Mod+Shift+F"."fullscreen-window" = [ ];
+        "Mod+Q"."close-window" = [ ];
+        "Mod+V"."toggle-window-floating" = [ ];
+        "Mod+Shift+V"."switch-focus-between-floating-and-tiling" = [ ];
+        "Mod+W"."toggle-column-tabbed-display" = [ ];
+        "Mod+C"."center-column" = [ ];
+        "Mod+BracketLeft"."consume-or-expel-window-left" = [ ];
+        "Mod+BracketRight"."consume-or-expel-window-right" = [ ];
+        "Mod+Comma"."consume-window-into-column" = [ ];
+        "Mod+Period"."expel-window-from-column" = [ ];
+        "Mod+R"."switch-preset-column-width" = [ ];
+        "Mod+Shift+R"."switch-preset-window-height" = [ ];
+        "Mod+Ctrl+R"."reset-window-height" = [ ];
+        "Mod+Shift+Ctrl+R"."reset-window-height" = [ ];
+        "Mod+Minus"."set-column-width" = "-10%";
+        "Mod+Equal"."set-column-width" = "+10%";
+        "Mod+Shift+Minus"."set-window-height" = "-10%";
+        "Mod+Shift+Equal"."set-window-height" = "+10%";
+
+        "Mod+H"."focus-column-left" = [ ];
+        "Mod+J"."focus-window-or-workspace-down" = [ ];
+        "Mod+K"."focus-window-or-workspace-up" = [ ];
+        "Mod+L"."focus-column-right" = [ ];
+        "Mod+Left"."focus-column-left" = [ ];
+        "Mod+Down"."focus-window-or-workspace-down" = [ ];
+        "Mod+Up"."focus-window-or-workspace-up" = [ ];
+        "Mod+Right"."focus-column-right" = [ ];
+
+        "Mod+Ctrl+H"."focus-monitor-left" = [ ];
+        "Mod+Ctrl+J"."focus-monitor-down" = [ ];
+        "Mod+Ctrl+K"."focus-monitor-up" = [ ];
+        "Mod+Ctrl+L"."focus-monitor-right" = [ ];
+        "Mod+Ctrl+Left"."focus-monitor-left" = [ ];
+        "Mod+Ctrl+Down"."focus-monitor-down" = [ ];
+        "Mod+Ctrl+Up"."focus-monitor-up" = [ ];
+        "Mod+Ctrl+Right"."focus-monitor-right" = [ ];
+
+        "Mod+Shift+H"."move-column-left" = [ ];
+        "Mod+Shift+J"."move-window-down-or-to-workspace-down" = [ ];
+        "Mod+Shift+K"."move-window-up-or-to-workspace-up" = [ ];
+        "Mod+Shift+L"."move-column-right" = [ ];
+        "Mod+Shift+Left"."move-column-left" = [ ];
+        "Mod+Shift+Down"."move-window-down-or-to-workspace-down" = [ ];
+        "Mod+Shift+Up"."move-window-up-or-to-workspace-up" = [ ];
+        "Mod+Shift+Right"."move-column-right" = [ ];
+
+        "Mod+Ctrl+Shift+H"."move-column-to-monitor-left" = [ ];
+        "Mod+Ctrl+Shift+J"."move-column-to-monitor-down" = [ ];
+        "Mod+Ctrl+Shift+K"."move-column-to-monitor-up" = [ ];
+        "Mod+Ctrl+Shift+L"."move-column-to-monitor-right" = [ ];
+        "Mod+Ctrl+Shift+Left"."move-column-to-monitor-left" = [ ];
+        "Mod+Ctrl+Shift+Down"."move-column-to-monitor-down" = [ ];
+        "Mod+Ctrl+Shift+Up"."move-column-to-monitor-up" = [ ];
+        "Mod+Ctrl+Shift+Right"."move-column-to-monitor-right" = [ ];
+
+        "Mod+WheelScrollUp"."focus-column-left" = [ ];
+        "Mod+WheelScrollDown"."focus-column-right" = [ ];
+        "Mod+Shift+WheelScrollUp"."focus-window-or-workspace-up" = [ ];
+        "Mod+Shift+WheelScrollDown"."focus-window-or-workspace-down" = [ ];
+
+        "Mod+U"."focus-workspace-down" = [ ];
+        "Mod+I"."focus-workspace-up" = [ ];
+        "Mod+Shift+U"."move-column-to-workspace-down" = [ ];
+        "Mod+Shift+I"."move-column-to-workspace-up" = [ ];
+
+        "Shift+Print"."screenshot" = [ ];
+        "Print"."screenshot-window" = {
+          _props."show-pointer" = true;
+        };
+
+        "Mod+Z"."spawn" = [ "firefox" ];
+        "Mod+T"."spawn" = [ "soffice" ];
+        "Mod+D"."spawn" = [ "feishin" ];
+        "Mod+N"."spawn" = [ "keepassxc" ];
+
+        "Mod+F1"."spawn" = [
           "ghostty"
           "--class=com.ghostty.mpd-picker"
           "-e"
@@ -316,19 +349,20 @@
           "-c"
           "mpd_picker"
         ];
-        "Mod+F2".action.spawn = [
+        "Mod+F2"."spawn" = [
           "mpc"
           "toggle"
         ];
-        "Mod+F3".action.spawn = [
+        "Mod+F3"."spawn" = [
           "mpc"
           "prev"
         ];
-        "Mod+F4".action.spawn = [
+        "Mod+F4"."spawn" = [
           "mpc"
           "next"
         ];
-        "Mod+F8".action.spawn = [
+
+        "Mod+F8"."spawn" = [
           "ghostty"
           "--class=com.ghostty.real-book-picker"
           "-e"
@@ -336,25 +370,26 @@
           "-c"
           "real_book_picker"
         ];
-        "Mod+Shift+T".action.spawn = "gnome-system-monitor";
-        "Mod+Return".action.spawn = "ghostty";
-        "Mod+X".action.spawn = "ghostty";
-        "Mod+Shift+P".action.spawn = "poweroff";
-        "Mod+Shift+O".action.spawn = "reboot";
-        "Mod+Tab".action = toggle-overview;
-        "Mod+Shift+Backspace".action.spawn = [
+
+        "Mod+Shift+T"."spawn" = [ "gnome-system-monitor" ];
+        "Mod+Return"."spawn" = [ "ghostty" ];
+        "Mod+X"."spawn" = [ "ghostty" ];
+
+        "Mod+Tab"."toggle-overview" = [ ];
+
+        "Mod+Shift+Backspace"."spawn" = [
           "nirius"
           "scratchpad-toggle"
         ];
-        "Mod+Backspace".action.spawn = [
+        "Mod+Backspace"."spawn" = [
           "nirius"
           "scratchpad-show"
         ];
-        "Mod+Ctrl+Backspace".action.spawn = [
+        "Mod+Ctrl+Backspace"."spawn" = [
           "nirius"
           "scratchpad-show-all"
         ];
-        "Mod+Ctrl+Space".action.spawn = [
+        "Mod+Ctrl+Space"."spawn" = [
           "nirius"
           "toggle-follow-mode"
         ];

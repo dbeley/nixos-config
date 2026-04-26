@@ -5,7 +5,7 @@
 {
   # overlays that should apply to all hosts (to fix build, fix bugs, etc.)
   nixpkgs.overlays = [
-    inputs.niri.overlays.niri
+    inputs.niri-nix.overlays.niri-nix
     inputs.nur.overlays.default
     # (_: super: {
     # # to fix zoom memory leak, working version found here https://github.com/NixOS/nixpkgs/pull/361097
