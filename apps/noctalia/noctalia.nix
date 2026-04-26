@@ -75,7 +75,7 @@
         general = {
           dimmerOpacity = 0.0;
           radiusRatio = 0.2;
-          enableBlurBehind = false;
+          enableBlurBehind = true;
           lockOnSuspend = true;
           lockScreenAnimations = true;
           lockScreenBlur = 0.6;
