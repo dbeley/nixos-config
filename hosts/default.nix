@@ -58,6 +58,9 @@ let
         ../apps/impulse/impulse.nix
       ];
     };
+    workstation = {
+      home = [ ../apps/workstation/workstation.nix ];
+    };
     niri = {
       system = [
         ../apps/niri/default.nix
@@ -331,34 +334,6 @@ let
     };
 in
 {
-  p14s = mkHost {
-    hostName = "p14s";
-    stateVersion = "25.05";
-    profiles = [
-      "laptop"
-      "impermanence"
-      "bootloader-systemd-boot"
-      "personal"
-      "niri"
-      "android-tools"
-      # "docker"
-      "steam"
-      "firefox"
-      "chromium"
-      "qutebrowser"
-      "mpd"
-      "python"
-      "code-agents"
-    ];
-    extraModules = [
-      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
-      {
-        my.stylix.wallpaper = "abstract-light-rays";
-        disko.mainDisk = "/dev/nvme0n1";
-      }
-      ../apps/boinc/default.nix
-    ];
-  };
   p14sg6 = mkHost {
     hostName = "p14sg6";
     stateVersion = "26.05";
@@ -367,6 +342,7 @@ in
       "impermanence"
       "bootloader-systemd-boot"
       "personal"
+      "workstation"
       "niri"
       "android-tools"
       "steam"
@@ -398,6 +374,7 @@ in
       "impermanence"
       "bootloader-systemd-boot"
       "personal"
+      "workstation"
       "niri"
       # "android-tools"
       "steam"
@@ -429,6 +406,7 @@ in
       "impermanence"
       "bootloader-systemd-boot"
       "personal"
+      "workstation"
       "gnome"
       "steam"
       "firefox"
@@ -455,6 +433,7 @@ in
     profiles = [
       "laptop"
       "bootloader-systemd-boot"
+      "workstation"
       "niri"
       "python"
       "docker"
@@ -479,6 +458,7 @@ in
     stateVersion = "24.11";
     profiles = [
       "personal"
+      "workstation"
       "bootloader-grub-uefi"
       "openssh-server"
       "gnome"
