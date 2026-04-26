@@ -21,7 +21,7 @@
   - Terminals: `alacritty/`, `ghostty/`, `kitty/`
   - Editors: `editorconfig/`, `emacs/`, `helix/`, `kakoune/`, `neovim-nixvim/`, `neovim-nvf/`, `nvim/`, `vscode/`
   - Browsers: `firefox/`, `qutebrowser/`, `ungoogled-chromium/`, `zen-browser/`
-  - Code agents: `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `opencode/`, `openskills/`, `workmux/`
+  - Code agents: `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `opencode/`, `openskills/`, `workmux/`, `pi/`, `oh-my-pi/`, `oh-my-opencode/`, `beads/`, `hermes/`
   - File managers: `lf/`, `nnn/`, `yazi/`
   - Media: `imv/`, `mpd/`, `mpv/`, `obs/`, `swayimg/`, `zathura/`
   - Wayland utilities: `gammastep/`, `hyprlock/`, `mako/`, `noctalia/`, `swayidle/`, `swaylock/`, `tofi/`, `waybar/`, `wofi/`
@@ -92,7 +92,7 @@ mkHost = {
 - `obs` - OBS Studio
 - `pycharm` - PyCharm IDE
 - `moonlight` - Game streaming client
-- `code-agents` - workmux, cursor, opencode, openskills
+- `code-agents` - workmux, cursor, opencode, openskills, pi, oh-my-pi, oh-my-opencode, beads, hermes
 - `zeroclaw` - zeroclaw application
 - `jj` - Jujutsu version control system
 - `mullvad` - Mullvad VPN (system + home-manager)
