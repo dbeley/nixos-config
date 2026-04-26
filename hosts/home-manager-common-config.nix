@@ -20,27 +20,17 @@
     inherit stateVersion;
 
     packages = with pkgs; [
-      brightnessctl
       cachix
       eza
       fd
       ffmpeg
-      ffmpegthumbnailer
-      gh
-      gnome-system-monitor
       htop
-      imagemagick
       jq
-      just
-      keepassxc
-      libreoffice-fresh
       ncdu
       nitch
-      pavucontrol
       ripgrep
       ripgrep-all
       unzip
-      yt-dlp
     ];
   };
 
