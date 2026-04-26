@@ -4,9 +4,6 @@
 }:
 {
   # overlays that should apply to all hosts (to fix build, fix bugs, etc.)
-  networking.extraHosts = ''
-    0.0.0.0 modules-cdn.eac-prod.on.epicgames.com
-  '';
   nixpkgs.overlays = [
     inputs.niri.overlays.niri
     inputs.nur.overlays.default
