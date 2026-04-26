@@ -22,6 +22,9 @@ in
         "$schema" = "https://opencode.ai/config.json";
         autoshare = false;
         theme = "opencode";
+        plugin = [
+          "oh-my-openagent"
+        ];
       };
     };
     "opencode/plugins/rtk.ts" = {
