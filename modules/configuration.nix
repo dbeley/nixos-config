@@ -20,6 +20,9 @@
       wifi.backend = "iwd";
     };
     firewall.enable = lib.mkDefault true;
+    extraHosts = ''
+      0.0.0.0 modules-cdn.eac-prod.on.epicgames.com
+    '';
   };
 
   # Set your time zone.
