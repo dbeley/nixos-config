@@ -20,13 +20,11 @@
       };
     };
   };
-  programs.niri.settings = lib.mkIf config.programs.niri.enable {
+  wayland.windowManager.niri.settings = lib.mkIf config.wayland.windowManager.niri.enable {
     binds = {
-      "Mod+Shift+C".action = lib.mkForce {
-        spawn = [
-          "hyprlock"
-        ];
-      };
+      "Mod+Shift+C".spawn = [
+        "hyprlock"
+      ];
     };
   };
 }

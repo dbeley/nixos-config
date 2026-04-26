@@ -14,9 +14,9 @@
     };
   };
 
-  programs.niri.settings = lib.mkIf config.programs.niri.enable {
+  wayland.windowManager.niri.settings = lib.mkIf config.wayland.windowManager.niri.enable {
     spawn-at-startup = [
-      { command = [ "mako" ]; }
+      [ "mako" ]
     ];
   };
 }

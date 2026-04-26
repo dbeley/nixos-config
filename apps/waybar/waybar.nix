@@ -143,91 +143,62 @@ in
     ];
     style = lib.readFile ./waybar.css;
   };
-  programs.niri.settings = lib.mkIf config.programs.niri.enable {
+  wayland.windowManager.niri.settings = lib.mkIf config.wayland.windowManager.niri.enable {
     spawn-at-startup = [
-      {
-        command = [
-          "systemctl"
-          "--user"
-          "reset-failed"
-          "waybar-service"
-        ];
-      }
-      {
-        command = [
-          "swaybg"
-          "-m"
-          "fill"
-          "-i"
-          "${config.stylix.image}"
-        ];
-      }
+      [
+        "systemctl"
+        "--user"
+        "reset-failed"
+        "waybar-service"
+      ]
+      [
+        "swaybg"
+        "-m"
+        "fill"
+        "-i"
+        "${config.stylix.image}"
+      ]
     ];
     binds = {
-      "XF86AudioRaiseVolume".action = lib.mkForce {
-        spawn = [
-          "~/scripts/volume_pamixer.sh"
-          "up"
-        ];
-      };
-      "XF86AudioLowerVolume".action = lib.mkForce {
-        spawn = [
-          "~/scripts/volume_pamixer.sh"
-          "down"
-        ];
-      };
-      "XF86AudioMute".action = lib.mkForce {
-        spawn = [
-          "~/scripts/volume_pamixer.sh"
-          "mute"
-        ];
-      };
-      "Shift+XF86AudioRaiseVolume".action = lib.mkForce {
-        spawn = [
-          "~/scripts/volume_pamixer.sh"
-          "bigup"
-        ];
-      };
-      "Shift+XF86AudioLowerVolume".action = lib.mkForce {
-        spawn = [
-          "~/scripts/volume_pamixer.sh"
-          "bigdown"
-        ];
-      };
-      "XF86MonBrightnessDown".action = lib.mkForce {
-        spawn = [
-          "${brightness-script}"
-          "1%-"
-        ];
-      };
-      "XF86MonBrightnessUp".action = lib.mkForce {
-        spawn = [
-          "${brightness-script}"
-          "+1%"
-        ];
-      };
-      "Shift+XF86MonBrightnessDown".action = lib.mkForce {
-        spawn = [
-          "${brightness-script}"
-          "10%-"
-        ];
-      };
-      "Shift+XF86MonBrightnessUp".action = lib.mkForce {
-        spawn = [
-          "${brightness-script}"
-          "+10%"
-        ];
-      };
-      "XF86Display".action = lib.mkForce {
-        spawn = [
-          "~/scripts/toggle_gammastep.sh"
-        ];
-      };
-      "Mod+Shift+C".action = lib.mkForce {
-        spawn = [
-          "hyprlock"
-        ];
-      };
+      "XF86AudioRaiseVolume".spawn = [
+        "~/scripts/volume_pamixer.sh"
+        "up"
+      ];
+      "XF86AudioLowerVolume".spawn = [
+        "~/scripts/volume_pamixer.sh"
+        "down"
+      ];
+      "XF86AudioMute".spawn = [
+        "~/scripts/volume_pamixer.sh"
+        "mute"
+      ];
+      "Shift+XF86AudioRaiseVolume".spawn = [
+        "~/scripts/volume_pamixer.sh"
+        "bigup"
+      ];
+      "Shift+XF86AudioLowerVolume".spawn = [
+        "~/scripts/volume_pamixer.sh"
+        "bigdown"
+      ];
+      "XF86MonBrightnessDown".spawn = [
+        "${brightness-script}"
+        "1%-"
+      ];
+      "XF86MonBrightnessUp".spawn = [
+        "${brightness-script}"
+        "+1%"
+      ];
+      "Shift+XF86MonBrightnessDown".spawn = [
+        "${brightness-script}"
+        "10%-"
+      ];
+      "Shift+XF86MonBrightnessUp".spawn = [
+        "${brightness-script}"
+        "+10%"
+      ];
+      "XF86Display".spawn = [
+        "~/scripts/toggle_gammastep.sh"
+      ];
     };
   };
 }

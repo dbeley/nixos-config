@@ -16,7 +16,12 @@
     # supersonic
   ];
 
-  programs.niri.settings.outputs.eDP-1.scale = lib.mkForce 2.0;
+  wayland.windowManager.niri.settings.output = lib.mkForce [
+    {
+      _args = [ "eDP-1" ];
+      scale = 2.0;
+    }
+  ];
 
   programs.hyprlock.settings.label.font_size = lib.mkForce 100;
 }

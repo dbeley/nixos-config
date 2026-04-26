@@ -49,15 +49,13 @@
       ascii-input = false;
     };
   };
-  programs.niri.settings = lib.mkIf config.programs.niri.enable {
+  wayland.windowManager.niri.settings = lib.mkIf config.wayland.windowManager.niri.enable {
     binds = {
-      "Mod+E".action = lib.mkForce {
-        spawn = [
-          "bash"
-          "-c"
-          "tofi-run | xargs niri msg action spawn --"
-        ];
-      };
+      "Mod+E".spawn = [
+        "bash"
+        "-c"
+        "tofi-run | xargs niri msg action spawn --"
+      ];
     };
   };
 }
