@@ -205,6 +205,7 @@ let
         ../apps/oh-my-opencode/oh-my-opencode.nix
         ../apps/beads/beads.nix
         ../apps/hermes/hermes.nix
+        ../apps/rtk/rtk.nix
       ];
     };
     zeroclaw = {

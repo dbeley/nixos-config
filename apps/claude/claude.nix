@@ -5,6 +5,5 @@ in
 {
   home.packages = [
     llm.claude-code
-    llm.rtk
   ];
 }
