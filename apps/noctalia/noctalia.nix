@@ -163,83 +163,69 @@
         };
       };
     };
+  };
 
-    niri.settings = lib.mkIf config.programs.niri.enable {
-      spawn-at-startup = [
-        { command = [ "noctalia-shell" ]; }
+  wayland.windowManager.niri.settings = lib.mkIf config.wayland.windowManager.niri.enable {
+    spawn-at-startup = [
+      [ "noctalia-shell" ]
+    ];
+    binds = {
+      "Mod+Shift+C"."spawn" = [
+        "noctalia-shell"
+        "ipc"
+        "call"
+        "lockScreen"
+        "lock"
       ];
-      binds = {
-        "Mod+Shift+C".action = lib.mkForce {
-          spawn = [
-            "noctalia-shell"
-            "ipc"
-            "call"
-            "lockScreen"
-            "lock"
-          ];
-        };
-        "Mod+Space".action.spawn = [
-          "noctalia-shell"
-          "ipc"
-          "call"
-          "launcher"
-          "toggle"
-        ];
-        "Mod+Shift+P".action = lib.mkForce {
-          spawn = [
-            "noctalia-shell"
-            "ipc"
-            "call"
-            "sessionMenu"
-            "toggle"
-          ];
-        };
-        "XF86AudioRaiseVolume".action = lib.mkForce {
-          spawn = [
-            "noctalia-shell"
-            "ipc"
-            "call"
-            "volume"
-            "increase"
-          ];
-        };
-        "XF86AudioLowerVolume".action = lib.mkForce {
-          spawn = [
-            "noctalia-shell"
-            "ipc"
-            "call"
-            "volume"
-            "decrease"
-          ];
-        };
-        "XF86AudioMute".action = lib.mkForce {
-          spawn = [
-            "noctalia-shell"
-            "ipc"
-            "call"
-            "volume"
-            "muteOutput"
-          ];
-        };
-        "XF86MonBrightnessUp".action = lib.mkForce {
-          spawn = [
-            "noctalia-shell"
-            "ipc"
-            "call"
-            "brightness"
-            "increase"
-          ];
-        };
-        "XF86MonBrightnessDown".action = lib.mkForce {
-          spawn = [
-            "noctalia-shell"
-            "ipc"
-            "call"
-            "brightness"
-            "decrease"
-          ];
-        };
-      };
+      "Mod+Space"."spawn" = [
+        "noctalia-shell"
+        "ipc"
+        "call"
+        "launcher"
+        "toggle"
+      ];
+      "Mod+Shift+P"."spawn" = [
+        "noctalia-shell"
+        "ipc"
+        "call"
+        "sessionMenu"
+        "toggle"
+      ];
+      "XF86AudioRaiseVolume"."spawn" = [
+        "noctalia-shell"
+        "ipc"
+        "call"
+        "volume"
+        "increase"
+      ];
+      "XF86AudioLowerVolume"."spawn" = [
+        "noctalia-shell"
+        "ipc"
+        "call"
+        "volume"
+        "decrease"
+      ];
+      "XF86AudioMute"."spawn" = [
+        "noctalia-shell"
+        "ipc"
+        "call"
+        "volume"
+        "muteOutput"
+      ];
+      "XF86MonBrightnessUp"."spawn" = [
+        "noctalia-shell"
+        "ipc"
+        "call"
+        "brightness"
+        "increase"
+      ];
+      "XF86MonBrightnessDown"."spawn" = [
+        "noctalia-shell"
+        "ipc"
+        "call"
+        "brightness"
+        "decrease"
+      ];
     };
   };
 }
