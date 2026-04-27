@@ -27,6 +27,12 @@ in
       ;
 
     polarity = "dark";
+    opacity = {
+      applications = 1.0;
+      desktop = 0.8;
+      popups = 0.6;
+      terminal = 0.8;
+    };
     fonts = {
       serif = {
         package = pkgs.eb-garamond;

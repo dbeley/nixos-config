@@ -118,15 +118,16 @@
 
       screenshot-path = "~/Nextcloud/30-39_Images/32_Captures-d-écran/32.19_Captures-d-écran_Niri/%Y-%m-%d %H-%M-%S.png";
 
+      blur = {
+        passes = 3;
+        offset = 3.0;
+      };
+
       spawn-at-startup = [
         [ "niriusd" ]
       ];
 
       window-rule = [
-        {
-          match._props."is-focused" = false;
-          opacity = 0.95;
-        }
         {
           match = [
             {
@@ -230,7 +231,31 @@
           "clip-to-geometry" = true;
           background-effect = {
             blur = true;
+            xray = true;
           };
+        }
+        {
+          match = [
+            { _props.app-id = "com.mitchellh.ghostty"; }
+            { _props.app-id = "Alacritty"; }
+          ];
+          "draw-border-with-background" = false;
+        }
+        {
+          match = [
+            { _props.app-id = "com.mitchellh.ghostty"; }
+            { _props.app-id = "Alacritty"; }
+            { _props."is-focused" = false; }
+          ];
+          opacity = 0.65;
+        }
+        {
+          match = [
+            { _props.app-id = "com.mitchellh.ghostty"; }
+            { _props.app-id = "Alacritty"; }
+            { _props."is-focused" = true; }
+          ];
+          opacity = 0.85;
         }
       ];
 
