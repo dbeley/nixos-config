@@ -2,7 +2,7 @@
   services.ollama = {
     enable = true;
     loadModels = [
-      "llama3.2:3b"
+      # "llama3.2:3b"
     ];
   };
   services.open-webui = {

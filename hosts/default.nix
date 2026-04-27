@@ -50,16 +50,14 @@ let
         ../modules/common/openssh-server.nix
       ];
     };
-    personal = {
+    productivity = {
       home = [
         ../apps/ledger/ledger.nix
         ../apps/mpv/mpv.nix
         ../apps/nextcloud-client/nextcloud-client.nix
         ../apps/impulse/impulse.nix
+        ../apps/workstation/workstation.nix
       ];
-    };
-    workstation = {
-      home = [ ../apps/workstation/workstation.nix ];
     };
     niri = {
       system = [
@@ -342,15 +340,14 @@ in
       "laptop"
       "impermanence"
       "bootloader-systemd-boot"
-      "personal"
-      "workstation"
+      "productivity"
       "niri"
       "android-tools"
       "steam"
       "firefox"
       "chromium"
-      "qutebrowser"
-      "mpd"
+      # "qutebrowser"
+      # "mpd"
       "python"
       "code-agents"
       "mullvad"
@@ -361,7 +358,7 @@ in
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen6
       {
-        my.stylix.wallpaper = "abstract-light-rays";
+        my.stylix.wallpaper = "blue-planet";
         disko.mainDisk = "/dev/nvme0n1";
       }
       ../apps/boinc/default.nix
@@ -374,8 +371,7 @@ in
       "laptop"
       "impermanence"
       "bootloader-systemd-boot"
-      "personal"
-      "workstation"
+      "productivity"
       "niri"
       # "android-tools"
       "steam"
@@ -406,8 +402,7 @@ in
       "laptop"
       "impermanence"
       "bootloader-systemd-boot"
-      "personal"
-      "workstation"
+      "productivity"
       "gnome"
       "steam"
       "firefox"
@@ -434,7 +429,7 @@ in
     profiles = [
       "laptop"
       "bootloader-systemd-boot"
-      "workstation"
+      "productivity"
       "niri"
       "python"
       "docker"
@@ -458,8 +453,7 @@ in
     hostName = "sg13";
     stateVersion = "24.11";
     profiles = [
-      "personal"
-      "workstation"
+      "productivity"
       "bootloader-grub-uefi"
       "openssh-server"
       "gnome"

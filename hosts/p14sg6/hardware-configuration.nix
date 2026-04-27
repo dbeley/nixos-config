@@ -50,8 +50,8 @@
     rocmOverrideGfx = lib.mkForce "11.5.0";
     loadModels = lib.mkMerge [
       [
-        "qwen3.5:9b"
-        "gemma4:e4b"
+        # "qwen3.5:9b"
+        # "gemma4:e4b"
       ]
     ];
     environmentVariables = {
