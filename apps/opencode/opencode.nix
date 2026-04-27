@@ -21,7 +21,7 @@ in
       text = builtins.toJSON {
         "$schema" = "https://opencode.ai/config.json";
         autoshare = false;
-        theme = "opencode";
+        theme = "system";
         # plugin = [
         #   "oh-my-openagent"
         # ];
