@@ -7,7 +7,6 @@
     audacity
     backrest
     beets
-    btop-rocm
     discord
     feishin
     heroic
@@ -17,4 +16,6 @@
     shotcut
     # supersonic
   ];
+
+  programs.btop.package = pkgs.btop-rocm;
 }

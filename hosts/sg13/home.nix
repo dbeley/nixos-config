@@ -6,12 +6,13 @@
 {
   home.packages = with pkgs; [
     beets
-    btop-cuda
     feishin
     nautilus
     papers
     # supersonic
   ];
+
+  programs.btop.package = pkgs.btop-cuda;
 
   # disable night light in Gnome
   dconf.settings = {

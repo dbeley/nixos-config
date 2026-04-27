@@ -7,7 +7,6 @@
   home.packages = with pkgs; [
     audacity
     beets
-    btop
     borgbackup
     borgmatic
     discord

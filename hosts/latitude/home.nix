@@ -7,7 +7,6 @@
 {
   home.packages = with pkgs; [
     gh
-    btop
     feishin
     nautilus
     # supersonic

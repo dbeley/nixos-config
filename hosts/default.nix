@@ -316,6 +316,7 @@ let
                 ../apps/mime/mime.nix
                 ../apps/swayimg/swayimg.nix
                 ../apps/bat/bat.nix
+                ../apps/btop/btop.nix
                 ../apps/zoxide/zoxide.nix
                 ../apps/zathura/zathura.nix
                 ../apps/tealdeer/tealdeer.nix
