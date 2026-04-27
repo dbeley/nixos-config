@@ -4,16 +4,9 @@
     powertop.enable = false;
   };
   services = {
-    power-profiles-daemon.enable = false;
+    power-profiles-daemon.enable = true;
     tlp.enable = false;
     upower.enable = true;
-    tuned = {
-      enable = true;
-      settings = {
-        sleep_interval = 20;
-        update_interval = 60;
-      };
-    };
   };
   hardware.bluetooth = {
     enable = true;
