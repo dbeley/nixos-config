@@ -120,7 +120,9 @@
 
       blur = {
         passes = 3;
-        offset = 3.0;
+        offset = 4.0;
+        noise = 0.0;
+        saturation = 1.5;
       };
 
       spawn-at-startup = [
@@ -245,7 +247,7 @@
           match = [
             { _props."is-focused" = false; }
           ];
-          opacity = 0.90;
+          opacity = 0.70;
         }
       ];
 

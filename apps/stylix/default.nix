@@ -28,10 +28,10 @@ in
 
     polarity = "dark";
     opacity = {
-      applications = 0.8;
+      applications = 1.0;
       desktop = 0.8;
       popups = 0.5;
-      terminal = 0.8;
+      terminal = 0.75;
     };
     fonts = {
       serif = {
