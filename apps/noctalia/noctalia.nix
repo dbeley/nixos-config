@@ -184,7 +184,7 @@
         "launcher"
         "toggle"
       ];
-      "Mod+Shift+P"."spawn" = [
+      "Mod+Shift+P"."spawn" = lib.mkForce [
         "noctalia-shell"
         "ipc"
         "call"
