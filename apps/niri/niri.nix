@@ -243,19 +243,9 @@
         }
         {
           match = [
-            { _props.app-id = "com.mitchellh.ghostty"; }
-            { _props.app-id = "Alacritty"; }
             { _props."is-focused" = false; }
           ];
-          opacity = 0.65;
-        }
-        {
-          match = [
-            { _props.app-id = "com.mitchellh.ghostty"; }
-            { _props.app-id = "Alacritty"; }
-            { _props."is-focused" = true; }
-          ];
-          opacity = 0.85;
+          opacity = 0.90;
         }
       ];
 

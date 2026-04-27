@@ -28,9 +28,9 @@ in
 
     polarity = "dark";
     opacity = {
-      applications = 1.0;
+      applications = 0.8;
       desktop = 0.8;
-      popups = 0.6;
+      popups = 0.5;
       terminal = 0.8;
     };
     fonts = {
