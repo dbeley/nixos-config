@@ -6,6 +6,7 @@
     fish.enable = true;
     firefox.enable = true;
     firefox.profileNames = [ "${user}" ];
+    zen-browser.profileNames = [ "${user}" ];
     mangohud.enable = false;
     gnome.enable = true;
     nixvim.enable = true;

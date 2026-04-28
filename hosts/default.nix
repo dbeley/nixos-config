@@ -142,6 +142,9 @@ let
     chromium = {
       home = [ ../apps/ungoogled-chromium/ungoogled-chromium.nix ];
     };
+    zen-browser = {
+      home = [ ../apps/zen-browser/zen-browser.nix ];
+    };
     mpd = {
       home = [
         ../apps/mpd/mpd.nix
@@ -347,6 +350,7 @@ in
       "steam"
       "firefox"
       "chromium"
+      "zen-browser"
       # "qutebrowser"
       # "mpd"
       "python"
