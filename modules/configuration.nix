@@ -134,19 +134,18 @@
   };
 
   environment.systemPackages = with pkgs; [
-    git
-    killall
     nfs-utils
-    wireguard-tools
   ];
 
-  programs.command-not-found.enable = false;
-
-  programs.nh = {
-    enable = true;
-    clean = {
+  programs = {
+    command-not-found.enable = false;
+    fish.enable = true;
+    nh = {
       enable = true;
-      extraArgs = "--keep-since 7d --keep 5";
+      clean = {
+        enable = true;
+        extraArgs = "--keep-since 7d --keep 5";
+      };
     };
   };
 
