@@ -115,7 +115,7 @@
   users.mutableUsers = lib.mkDefault true;
   users.users.${user} = {
     isNormalUser = true;
-    description = user;
+    description = (lib.toUpper (lib.substring 0 1 user)) + (lib.substring 1 (-1) user);
     extraGroups = [
       "networkmanager"
       "wheel"
