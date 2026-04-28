@@ -199,6 +199,9 @@
         "browser.translations.neverTranslateLanguages" = "fr";
         "browser.uidensity" = 1;
         "browser.urlbar.doubleClickSelectsAll" = false;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "svg.context-properties.content.enabled" = true;
+        "browser.tabs.allow_transparent_browser" = true;
         "browser.urlbar.quicksuggest.mlEnabled" = false;
         "browser.urlbar.suggest.calculator" = true;
         "browser.urlbar.suggest.topsites" = false;
