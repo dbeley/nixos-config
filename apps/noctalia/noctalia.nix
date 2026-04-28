@@ -34,6 +34,11 @@
                 id = "ActiveWindow";
                 maxWidth = 400;
               }
+              {
+                id = "MediaMini";
+                maxWidth = 300;
+                showVisualizer = true;
+              }
             ];
             center = [
               {
@@ -150,6 +155,7 @@
         notifications = {
           enabled = true;
           location = "top_right";
+          density = "compact";
         };
         ui = {
           fontDefault = lib.mkForce "Iosevka Nerd Font";

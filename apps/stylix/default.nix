@@ -31,7 +31,7 @@ in
       applications = 1.0;
       desktop = 0.8;
       popups = 0.5;
-      terminal = 0.75;
+      terminal = 0.60;
     };
     fonts = {
       serif = {

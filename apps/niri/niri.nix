@@ -52,10 +52,6 @@
 
       output = [
         {
-          _args = [ "eDP-1" ];
-          scale = 1.25;
-        }
-        {
           _args = [ "LG Display 0x067C Unknown" ];
           scale = 2;
         }
@@ -83,6 +79,10 @@
             x = 0;
             y = 0;
           };
+        }
+        {
+          _args = [ "eDP-1" ];
+          scale = 1.25;
         }
       ];
 
@@ -247,7 +247,7 @@
           match = [
             { _props."is-focused" = false; }
           ];
-          opacity = 0.70;
+          opacity = 0.90;
         }
       ];
 
