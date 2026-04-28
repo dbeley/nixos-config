@@ -79,6 +79,7 @@
       ".config/keepassxc"
       ".config/libreoffice/4/user"
       ".config/Meltytech"
+      ".config/mozilla/firefox/${user}"
       ".config/mpd"
       ".config/Nextcloud"
       ".config/nix"
@@ -90,6 +91,7 @@
       ".config/unity3d"
       ".config/Mullvad VPN"
       ".config/sops"
+      ".config/zen/${user}"
       ".cursor"
       ".gemini"
       ".gnupg"
@@ -112,7 +114,6 @@
       ".local/share/zoxide"
       ".local/state/opencode"
       ".local/Tendershoot"
-      ".mozilla/firefox/david"
       ".mozilla/native-messaging-hosts"
       ".ollama"
       ".renpy"
@@ -120,7 +121,6 @@
       ".steam"
       ".var/app"
       ".wine"
-      ".zen"
       # Personal projects
       ".config/impulse"
       ".local/share/impulse"
@@ -130,7 +130,6 @@
     files = [
       ".claude.json"
       ".local/state/tofi-history"
-      ".mozilla/firefox/profiles.ini"
     ];
   };
 

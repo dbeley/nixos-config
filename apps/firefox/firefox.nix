@@ -1,10 +1,13 @@
 {
+  config,
   pkgs,
   user,
   ...
 }:
+
 {
   programs.firefox = {
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     enable = true;
     policies = {
       # DisableAccounts = true;
@@ -14,10 +17,18 @@
       AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
       DisableAppUpdate = true;
+      DisableFeedbackCommands = true;
       DontCheckDefaultBrowser = true;
       NoDefaultBookmarks = true;
       OfferToSaveLogins = false;
       ShowHomeButton = true;
+      EnableTrackingProtection = {
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+      };
+
       Containers = {
         # icon can be fingerprint, briefcase, dollar, cart, vacation, gift, food,
         # fruit, pet, tree, chill, circle, fence
@@ -144,7 +155,6 @@
         "browser.contentblocking.category" = "strict";
         "browser.dataFeatureRecommendations.enabled" = false;
         "browser.discovery.enabled" = false;
-        "browser.display.background_color" = "#666666";
         "browser.download.alwaysOpenPanel" = false;
         "browser.download.always_ask_before_handling_new_types" = true;
         "browser.download.autoHideButton" = false;
@@ -202,6 +212,8 @@
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "svg.context-properties.content.enabled" = true;
         "browser.tabs.allow_transparent_browser" = true;
+        "widget.transparent-windows" = true;
+        "widget.wayland.opaque-region.enabled" = false;
         "browser.urlbar.quicksuggest.mlEnabled" = false;
         "browser.urlbar.suggest.calculator" = true;
         "browser.urlbar.suggest.topsites" = false;
@@ -300,6 +312,7 @@
           # sidebery
           sponsorblock
           steam-database
+          transparent-zen
           ublock-origin
           vimium
           violentmonkey
@@ -340,4 +353,5 @@
       };
     };
   };
+
 }
