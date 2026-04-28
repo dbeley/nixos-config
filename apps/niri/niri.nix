@@ -235,12 +235,6 @@
             blur = true;
             xray = true;
           };
-        }
-        {
-          match = [
-            { _props.app-id = "com.mitchellh.ghostty"; }
-            { _props.app-id = "Alacritty"; }
-          ];
           "draw-border-with-background" = false;
         }
         {

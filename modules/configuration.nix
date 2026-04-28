@@ -139,7 +139,6 @@
 
   programs = {
     command-not-found.enable = false;
-    fish.enable = true;
     nh = {
       enable = true;
       clean = {
