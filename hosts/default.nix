@@ -198,14 +198,14 @@ let
       home = [
         inputs.agent-skills.homeManagerModules.default
         ../apps/workmux/workmux.nix
-        ../apps/cursor/cursor.nix
+        # ../apps/cursor/cursor.nix
         ../apps/opencode/opencode.nix
         ../apps/openskills/openskills.nix
-        ../apps/pi/pi.nix
-        ../apps/oh-my-pi/oh-my-pi.nix
-        ../apps/oh-my-opencode/oh-my-opencode.nix
-        ../apps/beads/beads.nix
-        ../apps/hermes/hermes.nix
+        # ../apps/pi/pi.nix
+        # ../apps/oh-my-pi/oh-my-pi.nix
+        # ../apps/oh-my-opencode/oh-my-opencode.nix
+        # ../apps/beads/beads.nix
+        # ../apps/hermes/hermes.nix
         ../apps/rtk/rtk.nix
       ];
     };

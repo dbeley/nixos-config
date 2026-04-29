@@ -8,40 +8,56 @@
 |----------------|--------------------------------------------------|
 | **Shell:**     | fish                                             |
 | **DM:**        | tty1                                             |
-| **WM:**        | niri, sway, gnome                                |
-| **Bar:**       | noctalia, waybar                                 |
+| **WM:**        | niri / sway / gnome                              |
+| **Bar:**       | noctalia / waybar                                |
 | **Editor:**    | helix / doom-emacs / neovim / kakoune            |
 | **Terminal:**  | kitty / ghostty                                  |
 | **Launcher:**  | tofi                                             |
-| **Browser:**   | firefox / qutebrowser / zen / ungoogled-chromium |
+| **Browser:**   | zen / firefox / qutebrowser / ungoogled-chromium |
 | **Theme:**     | stylix                                           |
 
 ## Notable Features
 
 - Support for multiple desktop environments ([`niri`](./apps/niri/), [`gnome`](./apps/gnome/), [`sway`](./apps/sway/))
-- [Extensive `niri` configuration](./apps/niri/)
-  - Window rules, monitor rules, etc.
-- [Extensive `gnome` configuration](./apps/gnome/)
-  - Configuration via dconf
-  - Pre-installed extensions
+  - Support for multiple bars with [`waybar`](./apps/waybar) and [`noctalia`](./apps/noctalia)
+  - [Extensive `niri` configuration](./apps/niri/)
+    - Window rules, monitor rules
+    - Left handed input devices
+    - Transparency with blur
+    - Overview with unified background
+  - [Extensive `gnome` configuration](./apps/gnome/)
+    - Configuration via dconf
+    - Pre-installed extensions
 - [Automatic styling with `stylix`](./apps/stylix/)
-- [Extensive `firefox` configuration](./apps/firefox/firefox.nix)
-  - `about:config` settings
-  - Pre-installed add-ons
-  - Declarative containers
+- Declarative web browsers configuration
+  - [Extensive `firefox` configuration](./apps/firefox/firefox.nix)
+    - `about:config` settings
+    - Pre-installed add-ons
+    - Declarative containers
+  - [Extensive `zen-browser` configuration](./apps/zen-browser/zen-browser.nix)
+    - Based on firefox configuration
+    - Declarative mods
+    - Transparent websites with `transparent-zen` add-on
+  - [Extensive `qutebrowser` configuration with search engines](./apps/qutebrowser/qutebrowser.nix)
 - [Declarative partitioning with `disko`](./modules/disko/encrypted-btrfs-impermanence.nix)
 - [Ephemeral file system with `impermanence` on btrfs subvolumes](./modules/impermanence/)
 - Secrets management with `sops-nix`
 - Configuration for common hardware with `nixos-hardware`
+- AI code agent ecosystem
+  - `opencode` with [rtk plugin](./apps/opencode/opencode.nix)
+  - [`openskills`](./apps/openskills/) for declarative skill management across agents
+  - [`workmux`](./apps/workmux/) for tmux-based multi-pane agent orchestration
 - Automatic microcode updates for AMD CPUs with `ucodenix`
 - Automatic development shells with `direnv` and `shell.nix`
-- My own custom packages including [`autoscreen`](./apps/autoscreen/) (tool to take screenshots randomly each hour) and [`mpdscrobble`](./apps/mpdscrobble/) (utility to send MPD listening history to Last.fm)
+- Declarative [Docker homelab stack](./apps/docker-homelab/) with Traefik reverse proxy, Jellyfin, Sonarr, Radarr, Lidarr, Bazarr, qBittorrent, and Prowlarr
+- My own custom packages including [`autoscreen`](./apps/autoscreen/) (tool to take screenshots randomly each hour), [`mpdscrobble`](./apps/mpdscrobble/) (utility to send MPD listening history to Last.fm) and [`symmetri`](./apps/symmetri/) (custom system metrics collection service)
 - [`mpv` configuration with plugins](./apps/mpv/mpv.nix)
 - [`nnn` configuration with plugins and bookmarks](./apps/nnn/nnn.nix)
-- [Extensive `qutebrowser` configuration with search engines](./apps/qutebrowser/qutebrowser.nix)
 - Support for [fingerprint scanner](./modules/common/fingerprint-scanner.nix), printers, bluetooth, [xbox gamepad](./modules/common/xbox.nix)
 - Some [common overlays that fix currently broken packages](./modules/overlays.nix) 
 - `flatpak` with automatic packages installation
+- [`steam`](./apps/steam/) with Proton-GE and MangoHud performance overlay
+- Backup scripts with [`rclone` and `restic`](./apps/restic/)
 
 ## Hosts
 
