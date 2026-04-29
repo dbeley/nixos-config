@@ -337,6 +337,10 @@
             }
           ))
         ];
+      mods = [
+        "ad97bb70-0066-4e42-9b5f-173a5e42c6fc" # SuperPins
+        "253a3a74-0cc4-47b7-8b82-996a64f030d5" # Floating History
+      ];
     };
   };
 }
