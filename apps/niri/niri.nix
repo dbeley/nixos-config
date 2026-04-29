@@ -245,6 +245,19 @@
         }
       ];
 
+      layer-rule = [
+        {
+          match = [
+            { _props.namespace = "noctalia-wallpaper*"; }
+          ];
+          "place-within-backdrop" = true;
+        }
+      ];
+      layout.background-color = "transparent";
+      overview.workspace-shadow = {
+        off = [ ];
+      };
+
       hotkey-overlay = {
         skip-at-startup = true;
       };
