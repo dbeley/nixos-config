@@ -100,7 +100,6 @@
       url = "git+https://codeberg.org/BANanaD3V/niri-nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        git-hooks.follows = "git-hooks";
       };
     };
     zen-browser = {
@@ -158,6 +157,7 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        noctalia-qs.inputs.treefmt-nix.follows = "treefmt-nix";
       };
     };
     direnv-instant = {
