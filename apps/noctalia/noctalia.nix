@@ -34,11 +34,11 @@
                 id = "ActiveWindow";
                 maxWidth = 400;
               }
-              {
-                id = "MediaMini";
-                maxWidth = 300;
-                showVisualizer = true;
-              }
+              # {
+              #   id = "MediaMini";
+              #   maxWidth = 300;
+              #   showVisualizer = true;
+              # }
             ];
             center = [
               {
