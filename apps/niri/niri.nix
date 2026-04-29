@@ -371,10 +371,16 @@
           _props."show-pointer" = true;
         };
 
-        "Mod+Z"."spawn" = [ "firefox" ];
+        "Mod+Z"."spawn" = [ "zen-twilight" ];
+        "Mod+S"."spawn" = [ "steam" ];
+        "Mod+Y"."spawn" = [ "nextcloud" ];
+        "Mod+B"."spawn" = [ "chromium" ];
         "Mod+T"."spawn" = [ "soffice" ];
         "Mod+D"."spawn" = [ "feishin" ];
         "Mod+N"."spawn" = [ "keepassxc" ];
+        "Mod+Shift+T"."spawn" = [ "gnome-system-monitor" ];
+        "Mod+Return"."spawn" = [ "ghostty" ];
+        "Mod+X"."spawn" = [ "ghostty" ];
 
         "Mod+F1"."spawn" = [
           "ghostty"
@@ -405,10 +411,6 @@
           "-c"
           "real_book_picker"
         ];
-
-        "Mod+Shift+T"."spawn" = [ "gnome-system-monitor" ];
-        "Mod+Return"."spawn" = [ "ghostty" ];
-        "Mod+X"."spawn" = [ "ghostty" ];
 
         "Mod+Tab"."toggle-overview" = [ ];
 
