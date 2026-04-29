@@ -4,10 +4,16 @@
     waybar.enable = false;
     tmux.enable = true;
     fish.enable = true;
-    firefox.enable = true;
-    firefox.profileNames = [ "${user}" ];
-    zen-browser.enable = true;
-    zen-browser.profileNames = [ "${user}" ];
+    firefox = {
+      enable = true;
+      profileNames = [ "${user}" ];
+      colorTheme.enable = false;
+    };
+    zen-browser = {
+      enable = true;
+      profileNames = [ "${user}" ];
+      enableCss = false;
+    };
     mangohud.enable = false;
     gnome.enable = true;
     nixvim.enable = true;
