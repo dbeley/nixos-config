@@ -164,6 +164,8 @@
         "browser.bookmarks.showMobileBookmarks" = false;
         "browser.menu.showViewImageInfo" = true;
         "browser.translations.neverTranslateLanguages" = "fr";
+        "intl.locale.requested" = "fr";
+        "intl.accept_languages" = "fr,fr-FR,en-US,en";
         "findbar.highlightAll" = true;
         "javascript.use_us_english_locale" = true;
         "layout.css.grid-template-masonry-value.enabled" = true;

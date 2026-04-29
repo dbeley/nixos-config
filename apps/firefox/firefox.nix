@@ -239,6 +239,8 @@
         "general.smoothScroll" = false;
         "gfx.webrender.layer-compositor" = true;
         "identity.fxaccounts.enabled" = true;
+        "intl.locale.requested" = "fr";
+        "intl.accept_languages" = "fr,fr-FR,en-US,en";
         "javascript.use_us_english_locale" = true;
         "layout.css.grid-template-masonry-value.enabled" = true;
         "layout.spellcheckDefault" = 0;
