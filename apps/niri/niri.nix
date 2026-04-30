@@ -5,7 +5,6 @@
 }:
 {
   home.packages = with pkgs; [
-    xwayland-satellite
     wl-clipboard-rs
     nirius
   ];
@@ -27,7 +26,7 @@
           repeat-rate = 60;
           xkb = {
             layout = "us";
-            options = "ctrl:nocaps,shift:both_capslock";
+            options = "ctrl:nocaps,shift:both_capslock,lv3:menu_switch";
             variant = "intl";
           };
         };
@@ -412,6 +411,9 @@
           "real_book_picker"
         ];
 
+        "Muhenkan"."focus-column-left" = [ ];
+        "Henkan_Mode"."focus-column-right" = [ ];
+        "Hiragana_Katakana"."toggle-overview" = [ ];
         "Mod+Tab"."toggle-overview" = [ ];
 
         "Mod+Shift+Backspace"."spawn" = [
