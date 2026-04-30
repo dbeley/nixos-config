@@ -314,7 +314,7 @@ let
                 ../apps/editorconfig/editorconfig.nix
                 ../apps/helix/helix.nix
                 ../apps/nnn/nnn.nix
-                ../apps/yazi/yazi.nix
+                # ../apps/yazi/yazi.nix
                 ../apps/udiskie/udiskie.nix
                 ../apps/mime/mime.nix
                 ../apps/swayimg/swayimg.nix
@@ -379,13 +379,15 @@ in
       "productivity"
       "niri"
       # "android-tools"
-      "steam"
+      # "steam"
       # "firefox"
       "zen-browser"
       "chromium"
       "python"
       "code-agents"
       "sops"
+      "restic"
+      # "mullvad"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel

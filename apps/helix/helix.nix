@@ -4,33 +4,33 @@
     enable = true;
     languages = {
       language-server = {
-        pyright = {
-          command = "${pkgs.pyright}/bin/pyright-langserver";
-          args = [ "--stdio" ];
-        };
+        # pyright = {
+        #   command = "${pkgs.pyright}/bin/pyright-langserver";
+        #   args = [ "--stdio" ];
+        # };
         ruff = {
           command = "${pkgs.ruff}/bin/ruff";
           args = [ "server" ];
         };
-        rust-analyzer = {
-          command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
-          config = {
-            check.command = "clippy";
-            cargo.features = "all";
-          };
-        };
+        # rust-analyzer = {
+        #   command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+        #   config = {
+        #     check.command = "clippy";
+        #     cargo.features = "all";
+        #   };
+        # };
         nixd = {
           command = "${pkgs.nixd}/bin/nixd";
         };
-        vscode-json-language-server = {
-          command = "${pkgs.vscode-langservers-extracted}/bin/vscode-json-language-server";
-          args = [ "--stdio" ];
-          config.provideFormatter = true;
-        };
-        marksman = {
-          command = "${pkgs.marksman}/bin/marksman";
-          args = [ "server" ];
-        };
+        # vscode-json-language-server = {
+        #   command = "${pkgs.vscode-langservers-extracted}/bin/vscode-json-language-server";
+        #   args = [ "--stdio" ];
+        #   config.provideFormatter = true;
+        # };
+        # marksman = {
+        #   command = "${pkgs.marksman}/bin/marksman";
+        #   args = [ "server" ];
+        # };
       };
       language = [
         {
@@ -91,12 +91,12 @@
     };
   };
   home.packages = with pkgs; [
-    pyright
+    # pyright
     ruff
-    rust-analyzer
+    # rust-analyzer
     nixd
-    vscode-langservers-extracted
-    marksman
+    # vscode-langservers-extracted
+    # marksman
     nixfmt
   ];
 }

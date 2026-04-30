@@ -5,12 +5,12 @@
 }:
 {
   home.packages = with pkgs; [
-    audacity
+    # audacity
     beets
     feishin
     # musescore
     nautilus
-    shotcut
+    # shotcut
     papers
     # supersonic
   ];
