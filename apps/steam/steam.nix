@@ -1,4 +1,13 @@
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  home = lib.mkIf config.wayland.windowManager.niri.enable {
+    packages = with pkgs; [ xwayland-satellite ];
+  };
   programs.mangohud = {
     enable = true;
     enableSessionWide = false;
