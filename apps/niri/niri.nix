@@ -365,9 +365,12 @@
         "Mod+Shift+U"."move-column-to-workspace-down" = [ ];
         "Mod+Shift+I"."move-column-to-workspace-up" = [ ];
 
-        "Shift+Print"."screenshot" = [ ];
-        "Print"."screenshot-window" = {
+        "Ctrl+Print"."screenshot-window" = {
           _props."show-pointer" = true;
+        };
+        "Shift+Print"."screenshot" = [ ];
+        "Print"."screenshot-screen" = {
+          _props."show-pointer" = false;
         };
 
         "Mod+Z"."spawn" = [ "zen-twilight" ];
