@@ -2,6 +2,10 @@
 
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
 
+![cf-qv1 (wallpaper hk-plant)](imgs/2026_cf-qv1_niri.png)
+
+![p14sg6 (wallpaper taiwan-bus)](imgs/2026_p14sg6_niri.png)
+
 ![t470s](imgs/t470s.png)
 
 | Type           | Program                                          |
