@@ -81,7 +81,7 @@
 - **nixos-kimsufi-02**
 - **nixos-kimsufi-03**
 
-### Proxmox VMs (Era Local Server)
+### Proxmox VMs (Home Server)
 - **nixos-era-01**
 
 ## Common Usage
@@ -220,10 +220,16 @@ sudo nixos-enter --root /mnt
 
 ### Proxmox VM Images
 
-Dedicated just recipes exist in order to facilite installation and deployment of remote images
+Dedicated just recipes exist in order to facilite installation and deployment of remote images.
+
+- Create a VM in Proxmox
+- Boot the NixOS minimal ISO
+- Set up SSH connection by either setting a password to nixos or root user or adding your ssh key into the VM
 
 ```bash
 just install-proxmox-vm HOSTNAME IP
+# You might need to delete entries in ~/.ssh/known_hosts to properly connect in ssh
+# Connect manually on the VM to change the user password
 just switch-proxmox-vm HOSTNAME IP
 ```
 

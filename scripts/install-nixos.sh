@@ -102,24 +102,24 @@ sudo tee /mnt/etc/nixos/configuration.nix > /dev/null << 'EOF'
   };
 
   users.users.root.initialPassword = "nixos";
-
   users.users.david = {
     isNormalUser = true;
     initialPassword = "nixos";
-    extraGroups = [ "wheel" "networkmanager" ];
-    openssh.authorizedKeys.keyFiles = [
-      (pkgs.fetchurl {
-        url = "https://github.com/dbeley.keys";
-        sha256 = "m3UIHF7Vp6Tut5RAgXcZ9+gnu6V0a/2doEVpIOij+kw=";
-      })
-    ];
+    extraGroups = [ "wheel" "networkmanager"];
+  };
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [
+        "root"
+        "david"
+      ];
+    };
   };
 
   security.sudo.wheelNeedsPassword = false;
 
-  environment.systemPackages = with pkgs; [ vim git btop ];
-
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }
 EOF
 echo "✓ Configuration created"
@@ -139,14 +139,15 @@ echo "Hostname: $HOSTNAME (temporary, will change on final deployment)"
 echo "UUID: $UUID"
 echo ""
 echo "NEXT STEPS:"
-echo "1. On your LOCAL machine, edit:"
+echo "1. If you haven't done so already on step 5:"
+echo "   On your LOCAL machine, edit:"
 echo "     hosts/$HOSTNAME/hardware-configuration.nix"
 echo "   Replace PLACEHOLDER with: $UUID"
 echo ""
 echo "2. Reboot this VM"
 echo ""
-echo "3. After reboot, deploy final config from local machine:"
-echo "     sudo nixos-rebuild switch --flake .#$HOSTNAME --target-host root@<IP>"
+echo "3. After reboot, deploy final config from local machine (initial password: nixos):"
+echo "     sudo nixos-rebuild switch --flake .#$HOSTNAME --target-host david@<IP>"
 echo ""
 echo "=========================================="
 echo ""
