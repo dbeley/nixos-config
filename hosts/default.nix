@@ -51,12 +51,35 @@ let
       ];
     };
     productivity = {
+      system = [
+        inputs.stylix.nixosModules.stylix
+        ../apps/stylix/default.nix
+        ../apps/udiskie/default.nix
+        ../apps/symmetri/default.nix
+      ];
       home = [
+        ../apps/bat/bat.nix
+        ../apps/btop/btop.nix
+        ../apps/editorconfig/editorconfig.nix
+        ../apps/fish/fish.nix
+        ../apps/git/git.nix
+        ../apps/helix/helix.nix
+        ../apps/impulse/impulse.nix
+        ../apps/lazygit/lazygit.nix
         ../apps/ledger/ledger.nix
+        ../apps/mime/mime.nix
         ../apps/mpv/mpv.nix
         ../apps/nextcloud-client/nextcloud-client.nix
-        ../apps/impulse/impulse.nix
+        ../apps/nnn/nnn.nix
+        ../apps/stylix/stylix.nix
+        ../apps/swayimg/swayimg.nix
+        ../apps/tealdeer/tealdeer.nix
+        ../apps/tmux/tmux.nix
+        ../apps/udiskie/udiskie.nix
         ../apps/workstation/workstation.nix
+        # ../apps/yazi/yazi.nix
+        ../apps/zathura/zathura.nix
+        ../apps/zoxide/zoxide.nix
       ];
     };
     niri = {
@@ -284,10 +307,6 @@ let
         ../modules/configuration.nix
         ../modules/overlays.nix
         ../modules/cachix/cachix.nix
-        inputs.stylix.nixosModules.stylix
-        ../apps/stylix/default.nix
-        ../apps/udiskie/default.nix
-        ../apps/symmetri/default.nix
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -306,23 +325,6 @@ let
             users.${user} = {
               imports = [
                 ../hosts/home-manager-common-config.nix
-                ../apps/stylix/stylix.nix
-                ../apps/git/git.nix
-                ../apps/lazygit/lazygit.nix
-                ../apps/fish/fish.nix
-                ../apps/tmux/tmux.nix
-                ../apps/editorconfig/editorconfig.nix
-                ../apps/helix/helix.nix
-                ../apps/nnn/nnn.nix
-                # ../apps/yazi/yazi.nix
-                ../apps/udiskie/udiskie.nix
-                ../apps/mime/mime.nix
-                ../apps/swayimg/swayimg.nix
-                ../apps/bat/bat.nix
-                ../apps/btop/btop.nix
-                ../apps/zoxide/zoxide.nix
-                ../apps/zathura/zathura.nix
-                ../apps/tealdeer/tealdeer.nix
                 homeConfig
               ]
               ++ homeModules
@@ -355,7 +357,7 @@ in
       # "mpd"
       "python"
       "code-agents"
-      "mullvad"
+      # "mullvad"
       "ollama"
       "restic"
       "sops"
@@ -413,13 +415,13 @@ in
       "bootloader-systemd-boot"
       "productivity"
       "gnome"
-      "steam"
+      # "steam"
       # "firefox"
       "zen-browser"
-      "chromium"
-      "python"
-      "code-agents"
-      "sops"
+      # "chromium"
+      # "python"
+      # "code-agents"
+      # "sops"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -491,7 +493,7 @@ in
   };
   nixos-kimsufi-01 = mkHost {
     hostName = "nixos-kimsufi-01";
-    stateVersion = "25.11";
+    stateVersion = "26.05";
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
@@ -500,7 +502,7 @@ in
   };
   nixos-kimsufi-02 = mkHost {
     hostName = "nixos-kimsufi-02";
-    stateVersion = "25.11";
+    stateVersion = "26.05";
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
@@ -509,7 +511,7 @@ in
   };
   nixos-kimsufi-03 = mkHost {
     hostName = "nixos-kimsufi-03";
-    stateVersion = "25.11";
+    stateVersion = "26.05";
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"

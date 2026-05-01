@@ -2,14 +2,21 @@
 {
   home.packages = with pkgs; [
     brightnessctl
+    ffmpeg
     ffmpegthumbnailer
     gh
     # gnome-system-monitor
+    # htop
     imagemagick
     just
     keepassxc
     libreoffice-fresh
+    nitch
+    nix-tree
     pwvucontrol
+    ripgrep-all
+    unzip
+    wireguard-tools
     yt-dlp
   ];
 

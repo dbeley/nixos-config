@@ -23,16 +23,10 @@
       cachix
       eza
       fd
-      ffmpeg
-      htop
       jq
       killall
       ncdu
-      nitch
       ripgrep
-      ripgrep-all
-      unzip
-      wireguard-tools
     ];
   };
 
