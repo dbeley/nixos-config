@@ -30,7 +30,7 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/e3c6a6e7-0ea4-4e65-8f92-74ccf2dd933e";
+      device = "/dev/disk/by-uuid/eee1431f-1e1c-4599-b5a9-7c9510221955";
       fsType = "ext4";
     };
   };
