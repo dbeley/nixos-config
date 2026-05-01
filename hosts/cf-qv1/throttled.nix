@@ -8,9 +8,9 @@
 
     [BATTERY]
     Update_Rate_s: 60
-    PL1_Tdp_W: 20
+    PL1_Tdp_W: 12
     PL1_Duration_s: 60
-    PL2_Tdp_W: 30
+    PL2_Tdp_W: 15
     PL2_Duration_S: 60
     Trip_Temp_C: 90
     cTDP: 0

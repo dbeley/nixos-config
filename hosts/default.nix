@@ -401,6 +401,7 @@ in
       ../modules/common/screen-rotation.nix
       ../modules/hardware/throttled.nix
       ../hosts/cf-qv1/throttled.nix
+      { powerManagement.powertop.enable = lib.mkForce true; }
     ];
   };
   x1yoga = mkHost {
