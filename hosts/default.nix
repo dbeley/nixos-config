@@ -396,7 +396,7 @@ in
       "productivity"
       "niri"
       # "android-tools"
-      # "steam"
+      "steam"
       # "firefox"
       "zen-browser"
       "chromium"
@@ -411,7 +411,7 @@ in
       inputs.nixos-hardware.nixosModules.common-gpu-intel
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       {
-        my.stylix.wallpaper = "hk-plant";
+        my.stylix.wallpaper = "cf-qv1";
         disko.mainDisk = "/dev/nvme0n1";
       }
       ../modules/common/laptop-thermald.nix
