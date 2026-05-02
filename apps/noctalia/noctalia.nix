@@ -133,6 +133,7 @@
               { id = "Network"; }
               { id = "Bluetooth"; }
               { id = "NightLight"; }
+              { id = "PowerProfile"; }
               { id = "Notifications"; }
             ];
             right = [ ];
