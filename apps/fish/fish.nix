@@ -1,4 +1,8 @@
-{ pkgs, user, ... }:
+{
+  pkgs,
+  user,
+  ...
+}:
 {
   home.packages = with pkgs; [ nvd ];
   programs.fzf = {
@@ -47,7 +51,6 @@
       set -x VIRTUAL_ENV_DISABLE_PROMPT 1
       set -x EDITOR hx
       set -x IMG_VIEWER swayimg
-      set -x NNN_FIFO /tmp/nnn.fifo
     '';
     loginShellInit = ''
       if test (tty) = /dev/tty1

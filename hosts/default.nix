@@ -70,14 +70,14 @@ let
         ../apps/mime/mime.nix
         ../apps/mpv/mpv.nix
         ../apps/nextcloud-client/nextcloud-client.nix
-        ../apps/nnn/nnn.nix
+        # ../apps/nnn/nnn.nix
         ../apps/stylix/stylix.nix
         ../apps/swayimg/swayimg.nix
         ../apps/tealdeer/tealdeer.nix
         ../apps/tmux/tmux.nix
         ../apps/udiskie/udiskie.nix
         ../apps/workstation/workstation.nix
-        # ../apps/yazi/yazi.nix
+        ../apps/yazi/yazi.nix
         ../apps/zathura/zathura.nix
         ../apps/zoxide/zoxide.nix
       ];
@@ -403,7 +403,6 @@ in
       ../modules/common/screen-rotation.nix
       ../modules/hardware/throttled.nix
       ../hosts/cf-qv1/throttled.nix
-      { powerManagement.powertop.enable = lib.mkForce true; }
     ];
   };
   x1yoga = mkHost {
