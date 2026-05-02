@@ -14,6 +14,7 @@ in
   home.packages = [
     opencode-wrapped
     llm.rtk
+    pkgs.libnotify
   ];
   xdg.configFile = {
     "opencode/opencode.json" = {
@@ -22,9 +23,89 @@ in
         "$schema" = "https://opencode.ai/config.json";
         autoshare = false;
         theme = "system";
-        # plugin = [
-        #   "oh-my-openagent"
-        # ];
+        plugin = [
+          "@mohak34/opencode-notifier@latest"
+        ];
+      };
+    };
+    "opencode/opencode-notifier.json" = {
+      force = true;
+      text = builtins.toJSON {
+        sound = false;
+        notification = true;
+        bell = false;
+        timeout = 5;
+        showProjectName = true;
+        showSessionTitle = false;
+        showIcon = true;
+        suppressWhenFocused = true;
+        enableOnDesktop = false;
+        linux = {
+          grouping = true;
+        };
+        minDuration = 0;
+        events = {
+          permission = {
+            sound = false;
+            notification = true;
+            command = false;
+            bell = false;
+          };
+          complete = {
+            sound = false;
+            notification = true;
+            command = false;
+            bell = false;
+          };
+          subagent_complete = {
+            sound = false;
+            notification = false;
+            command = false;
+            bell = false;
+          };
+          error = {
+            sound = false;
+            notification = true;
+            command = false;
+            bell = false;
+          };
+          question = {
+            sound = false;
+            notification = true;
+            command = false;
+            bell = false;
+          };
+          user_cancelled = {
+            sound = false;
+            notification = false;
+            command = false;
+            bell = false;
+          };
+          plan_exit = {
+            sound = false;
+            notification = true;
+            command = false;
+            bell = false;
+          };
+          session_started = {
+            sound = false;
+            notification = false;
+            command = false;
+            bell = false;
+          };
+          user_message = {
+            sound = false;
+            notification = false;
+            command = false;
+            bell = false;
+          };
+          client_connected = {
+            sound = false;
+            notification = false;
+            command = false;
+            bell = false;
+          };
+        };
       };
     };
     "opencode/plugins/rtk.ts" = {
