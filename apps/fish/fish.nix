@@ -39,7 +39,7 @@
       fiorandwrite = "fio --rw=randwrite --bs=4k --size=5G --name=randwrite --ioengine=posixaio --runtime=60 --end_fsync=1";
       fiorandread = "fio --rw=randread --bs=4k --size=5G --name=randread --ioengine=posixaio --runtime=60 --end_fsync=1";
       lzg = "lazygit";
-      impermanence_new_files = "sudo fd --one-file-system --base-directory / --type f --hidden --exclude \"{tmp,etc/passwd}\"";
+      impermanence_new_files = "doas fd --one-file-system --base-directory / --type f --hidden --exclude \"{tmp,etc/passwd}\"";
     };
 
     shellInit = ''

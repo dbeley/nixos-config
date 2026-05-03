@@ -53,10 +53,10 @@
     ======================
 
     To install with disko (for impermanence hosts):
-      sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake /etc/iso-config#HOSTNAME --disk main /dev/DEVICE
+      doas nix run 'github:nix-community/disko/latest#disko-install' -- --flake /etc/iso-config#HOSTNAME --disk main /dev/DEVICE
 
     To install traditionally:
-      sudo nixos-install --flake /etc/iso-config#HOSTNAME
+      doas nixos-install --flake /etc/iso-config#HOSTNAME
 
     Useful commands:
       nix flake show /etc/iso-config        # List all hosts
