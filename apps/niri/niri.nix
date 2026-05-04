@@ -416,6 +416,10 @@
 
         "Muhenkan"."focus-column-left" = [ ];
         "Henkan_Mode"."focus-column-right" = [ ];
+        "Shift+Muhenkan"."focus-window-or-workspace-up" = [ ];
+        "Shift+Henkan_Mode"."focus-window-or-workspace-down" = [ ];
+        "Mod+Shift+Muhenkan"."move-window-up-or-to-workspace-up" = [ ];
+        "Mod+Shift+Henkan_Mode"."move-window-down-or-to-workspace-down" = [ ];
         "Hiragana_Katakana"."toggle-overview" = [ ];
         "Mod+Tab"."toggle-overview" = [ ];
 
