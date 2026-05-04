@@ -251,6 +251,11 @@ let
         ../apps/opencode-server/opencode-server.nix
       ];
     };
+    adguard-home = {
+      system = [
+        ../apps/adguard-home/default.nix
+      ];
+    };
     qbittorrent = {
       system = [
         ../apps/qbittorrent/default.nix
@@ -558,6 +563,15 @@ in
       "openssh-server"
       "sops"
       "nixflix"
+    ];
+  };
+  nixos-era-03 = mkHost {
+    hostName = "nixos-era-03";
+    stateVersion = "26.05";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "adguard-home"
     ];
   };
 }
