@@ -103,15 +103,12 @@
   security = {
     rtkit.enable = true;
     sudo.enable = false;
-    doas = {
+    sudo-rs = {
       enable = true;
-      extraRules = [
-        {
-          groups = [ "wheel" ];
-          keepEnv = true;
-          persist = true;
-        }
-      ];
+      extraConfig = ''
+        Defaults timestamp_timeout=30
+        # Defaults timestamp_type=global
+      '';
     };
   };
 

@@ -27,7 +27,7 @@
         # Open in helix
         h = "-!hx \\$nnn*";
         # Open in editor with admin rights
-        s = "-!doas hx \\$nnn*";
+        s = "-!sudo -e \\$nnn*";
         # Open folder images recursively in a sequential order
         g = "-!swayimg -r -o mtime";
         G = "-!swayimg -r -o mtime --gallery";
