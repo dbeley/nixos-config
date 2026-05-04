@@ -547,18 +547,7 @@ in
       "bootloader-grub-bios"
       "openssh-server"
       "opencode-server"
-    ];
-    extraModules = [
-      inputs.sops-nix.nixosModules.sops
-      ../modules/sops/default.nix
-      {
-        sops.secrets."opencode-go-api-key" = {
-          sopsFile = ../secrets/secrets.yaml;
-        };
-        sops.secrets."opencode-server-password" = {
-          sopsFile = ../secrets/secrets.yaml;
-        };
-      }
+      "sops"
     ];
   };
   nixos-era-02 = mkHost {

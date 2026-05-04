@@ -20,7 +20,7 @@ in
       autoupdate = false;
       share = "disabled";
       model = "opencode-go/deepseek-v4-pro";
-      provider.opencode-go.options.apiKey = "{file:/run/secrets/opencode-go-api-key}";
+      provider.opencode-go.options.apiKey = "{file:~/.config/opencode/opencode-go-api-key}";
       permission = {
         edit = "allow";
         bash = "allow";
@@ -40,10 +40,10 @@ in
       ExecStart =
         let
           startScript = pkgs.writeShellScript "opencode-server-start" ''
-            if [ -f /run/secrets/opencode-server-password ]; then
-              export OPENCODE_SERVER_PASSWORD=$(cat /run/secrets/opencode-server-password)
+            if [ -f ~/.config/opencode/opencode-server-password ]; then
+              export OPENCODE_SERVER_PASSWORD=$(< ~/.config/opencode/opencode-server-password)
             fi
-            exec ${opencode-wrapped}/bin/opencode web --hostname 0.0.0.0 --port 80
+            exec ${opencode-wrapped}/bin/opencode web --hostname opencode.home --port 80
           '';
         in
         "${startScript}";
