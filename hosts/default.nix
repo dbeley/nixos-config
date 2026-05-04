@@ -149,11 +149,6 @@ let
         ../apps/docker/default.nix
       ];
     };
-    docker-homelab = {
-      system = [
-        ../apps/docker-homelab/default.nix
-      ];
-    };
     nixflix = {
       system = [
         inputs.nixflix.nixosModules.default
@@ -533,16 +528,6 @@ in
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
-      "docker-homelab"
-    ];
-    extraModules = [
-      {
-        services.docker-homelab = {
-          enable = true;
-          domain = "dbeley.ovh";
-          letsencrypt_email = "admin@dbeley.ovh";
-        };
-      }
     ];
   };
   nixos-era-01 = mkHost {
@@ -553,6 +538,7 @@ in
       "openssh-server"
       "opencode-server"
       "sops"
+      "workstation"
     ];
   };
   nixos-era-02 = mkHost {

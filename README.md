@@ -53,7 +53,7 @@
   - [`workmux`](./apps/workmux/) for tmux-based multi-pane agent orchestration
 - Automatic microcode updates for AMD CPUs with `ucodenix`
 - Automatic development shells with `direnv` and `shell.nix`
-- Declarative [Docker homelab stack](./apps/docker-homelab/) with Traefik reverse proxy, Jellyfin, Sonarr, Radarr, Lidarr, Bazarr, qBittorrent, and Prowlarr
+- Declarative [nixflix stack](./apps/nixflix/) cf. [nixflix](https://github.com/kiriwalawren/nixflix)
 - My own custom packages including [`autoscreen`](./apps/autoscreen/) (tool to take screenshots randomly each hour), [`mpdscrobble`](./apps/mpdscrobble/) (utility to send MPD listening history to Last.fm) and [`symmetri`](./apps/symmetri/) (custom system metrics collection service)
 - [`mpv` configuration with plugins](./apps/mpv/mpv.nix)
 - [`nnn` configuration with plugins and bookmarks](./apps/nnn/nnn.nix)
@@ -76,13 +76,15 @@
 - **cf-rz6** (deprecated): Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, 8GB RAM, niri, impermanence)
 - **x61s** (deprecated): Lenovo Thinkpad X61s (Intel Core 2 Duo L7500, 3GB RAM, sway)
 
-### Proxmox VMs (Kimsufi Dedicated Server)
-- **nixos-kimsufi-01**
-- **nixos-kimsufi-02**
-- **nixos-kimsufi-03**
+### Proxmox Kimsufi VMs (Dedicated Server)
+- **nixos-kimsufi-01**: qbittorrent
+- **nixos-kimsufi-02**: zeroclaw
+- **nixos-kimsufi-03**: unused
 
-### Proxmox VMs (Home Server)
-- **nixos-era-01**
+### Proxmox Era VMs (Home Server)
+- **nixos-era-01**: opencode server
+- **nixos-era-02**: nixflix
+- **nixos-era-03**: adguard-home
 
 ## Common Usage
 
