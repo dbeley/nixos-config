@@ -8,6 +8,6 @@
     historyLimit = 999999;
     escapeTime = 0;
     clock24 = true;
-    extraConfig = lib.fileContents ./tmux.conf;
+    extraConfig = lib.fileContents ./tmuxline.conf + "\n" + lib.fileContents ./tmux.conf;
   };
 }
