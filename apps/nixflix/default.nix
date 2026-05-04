@@ -46,6 +46,13 @@ in
       config = {
         apiKey._secret = secrets."prowlarr_api_key".path;
         hostConfig.password._secret = secrets."prowlarr_password".path;
+        indexers = [
+          {
+            name = "RuTracker.org";
+            username._secret = secrets."rutracker_username".path;
+            password_secret._secret = secrets."rutracker_password".path;
+          }
+        ];
       };
     };
 
@@ -62,6 +69,10 @@ in
     torrentClients.qbittorrent = {
       enable = true;
       password._secret = secrets."qbittorrent_password".path;
+      serverConfig.Preferences.WebUI = {
+        Username = "admin";
+        Password_PBKDF2 = "@ByteArray(VuvMO6udxeXWsDTCJiL4pw==:r5rg6+RmXxEsgUuFleFaxYQB2iUFL3QlFLa2/UBYu8aJ8xDYrLA5iD220MZp+713FgaTZybTCrc392rpoaCT0w==)";
+      };
     };
 
     seerr = {
@@ -86,6 +97,8 @@ in
     "jellyfin_admin_password" = { };
     "seerr_api_key" = { };
     "qbittorrent_password" = { };
+    "rutracker_username" = { };
+    "rutracker_password" = { };
   };
 
   networking.firewall.allowedTCPPorts = [

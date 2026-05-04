@@ -539,7 +539,7 @@ in
       "openssh-server"
       "opencode-server"
       "sops"
-      "workstation"
+      "productivity"
     ];
   };
   nixos-era-02 = mkHost {
