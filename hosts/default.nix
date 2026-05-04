@@ -48,6 +48,7 @@ let
     openssh-server = {
       system = [
         ../modules/common/openssh-server.nix
+        ../modules/common/fail2ban.nix
       ];
     };
     productivity = {
