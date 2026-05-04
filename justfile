@@ -85,14 +85,6 @@ secrets-view:
     @echo "Viewing decrypted secrets"
     SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops -d secrets/secrets.yaml
 
-secrets-set key value:
-    @echo "Setting secret: {{key}} = {{value}}"
-    SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops --set '{{key}} "{{value}}"' secrets/secrets.yaml
-
-secrets-get key:
-    @echo "Getting secret: {{key}}"
-    SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops --extract '{{key}}' -d secrets/secrets.yaml
-
 secrets-gen-key:
     @echo "Generating new age key"
     @echo "This will overwrite existing key at ~/.config/sops/age/keys.txt"
@@ -102,10 +94,6 @@ secrets-gen-key:
     @echo "New key generated. Public key:"
     @grep -o "age1[^ ]*" ~/.config/sops/age/keys.txt
     @echo "Update .sops.yaml with the new public key above"
-
-secrets-show-key:
-    @echo "Age public key:"
-    @grep -o "age1[^ ]*" ~/.config/sops/age/keys.txt 2>/dev/null || echo "No age key found at ~/.config/sops/age/keys.txt"
 
 secrets-test:
     @echo "Testing sops configuration for host $HOST"

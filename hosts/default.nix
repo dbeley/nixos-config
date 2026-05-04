@@ -237,6 +237,14 @@ let
         ../apps/zeroclaw/zeroclaw.nix
       ];
     };
+    opencode-server = {
+      system = [
+        ../apps/opencode-server/default.nix
+      ];
+      home = [
+        ../apps/opencode-server/opencode-server.nix
+      ];
+    };
     qbittorrent = {
       system = [
         ../apps/qbittorrent/default.nix
@@ -522,6 +530,27 @@ in
           enable = true;
           domain = "dbeley.ovh";
           letsencrypt_email = "admin@dbeley.ovh";
+        };
+      }
+    ];
+  };
+  nixos-era-01 = mkHost {
+    hostName = "nixos-era-01";
+    stateVersion = "26.05";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "opencode-server"
+    ];
+    extraModules = [
+      inputs.sops-nix.nixosModules.sops
+      ../modules/sops/default.nix
+      {
+        sops.secrets."opencode-go-api-key" = {
+          sopsFile = ../secrets/secrets.yaml;
+        };
+        sops.secrets."opencode-server-password" = {
+          sopsFile = ../secrets/secrets.yaml;
         };
       }
     ];
