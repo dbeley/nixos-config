@@ -154,6 +154,12 @@ let
         ../apps/docker-homelab/default.nix
       ];
     };
+    nixflix = {
+      system = [
+        inputs.nixflix.nixosModules.default
+        ../apps/nixflix/default.nix
+      ];
+    };
     podman = {
       system = [
         ../apps/podman/default.nix
@@ -553,6 +559,16 @@ in
           sopsFile = ../secrets/secrets.yaml;
         };
       }
+    ];
+  };
+  nixos-era-02 = mkHost {
+    hostName = "nixos-era-02";
+    stateVersion = "26.05";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "sops"
+      "nixflix"
     ];
   };
 }
