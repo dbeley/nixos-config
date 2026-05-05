@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <skill>" >&2
+    exit 1
+fi
+
 SKILL="$1"
 CONFIG="$HOME/.config/opencode-scheduler/config.json"
 LOG_DIR="$HOME/.local/share/opencode-scheduler/logs/$SKILL"
@@ -28,19 +33,20 @@ cleanup_worktree() {
     git -C "$1" worktree remove --force "$2" 2>/dev/null || true
 }
 
+shopt -s nullglob
 for repo_path in "$REPOS_DIR"/*; do
     [ -d "$repo_path/.git" ] || continue
     REPO_NAME=$(basename "$repo_path")
 
     # Check skip list
-    SKIP=$(jq -r ".repos[\"$REPO_NAME\"].skip // [] | index(\"$SKILL\")" "$CONFIG")
+    SKIP=$(jq -r --arg repo "$REPO_NAME" --arg skill "$SKILL" '.repos[$repo].skip // [] | index($skill)' "$CONFIG")
     if [ "$SKIP" != "null" ]; then
         echo "[$REPO_NAME] Skipping job '$SKILL' (in skip list)"
         continue
     fi
 
     # Determine upstream status
-    IS_UPSTREAM=$(jq -r ".repos[\"$REPO_NAME\"].upstream // false" "$CONFIG")
+    IS_UPSTREAM=$(jq -r --arg repo "$REPO_NAME" '.repos[$repo].upstream // false' "$CONFIG")
 
     # Create worktree
     WORKTREE="/tmp/opencode-jobs/$REPO_NAME/$SKILL"
@@ -96,5 +102,6 @@ for repo_path in "$REPOS_DIR"/*; do
     git -C "$repo_path" worktree remove --force "$WORKTREE" 2>/dev/null || true
     trap - EXIT
 done
+shopt -u nullglob
 
 echo "=== Finished at $(date) ==="
