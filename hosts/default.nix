@@ -115,6 +115,17 @@ let
         ../apps/ghostty/ghostty.nix
       ];
     };
+    hyprland = {
+      system = [
+        ../apps/hyprland/default.nix
+      ];
+      home = [
+        ../apps/hyprland/hyprland.nix
+        ../apps/noctalia/noctalia.nix
+        ../apps/autoscreen/autoscreen.nix
+        ../apps/ghostty/ghostty.nix
+      ];
+    };
     gnome = {
       system = [
         ../apps/gnome/default.nix
