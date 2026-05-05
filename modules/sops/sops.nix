@@ -37,7 +37,7 @@
         sopsFile = ../../secrets/secrets.yaml;
         path = "/home/${user}/.config/opencode/opencode-server-password";
       };
-      "github-fine-grained-pat" = {
+      github-fine-grained-pat = {
         sopsFile = ../../secrets/secrets.yaml;
         path = "/home/${user}/.config/opencode-scheduler/github-token";
       };
