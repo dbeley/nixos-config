@@ -7,6 +7,7 @@ result
 .sisyphus
 *_nix-olde-report.txt
 .opencode/
+.worktrees/
 
 # Beads / Dolt files (added by bd init)
 .dolt/
