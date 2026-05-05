@@ -248,8 +248,8 @@ let
       ];
     };
     opencode-scheduler = {
-      systemModules = [ ../apps/opencode-scheduler/default.nix ];
-      homeModules = [ ../apps/opencode-scheduler/scheduler.nix ];
+      system = [ ../apps/opencode-scheduler/default.nix ];
+      home = [ ../apps/opencode-scheduler/scheduler.nix ];
     };
     adguard-home = {
       system = [
