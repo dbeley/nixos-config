@@ -24,6 +24,7 @@ in
       permission = {
         edit = "allow";
         bash = "allow";
+        skill = "allow";
       };
     };
   };
