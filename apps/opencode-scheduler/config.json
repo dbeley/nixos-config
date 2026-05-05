@@ -1,0 +1,13 @@
+{
+  "repos_dir": "/home/david/projects",
+  "repos": {
+    "nixos-config": {
+      "upstream": false,
+      "skip": ["accessibility-checker"]
+    },
+    "nixpkgs": {
+      "upstream": true,
+      "skip": ["mobile-friendly"]
+    }
+  }
+}
