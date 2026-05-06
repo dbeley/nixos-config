@@ -19,8 +19,20 @@
   # 3880x1920 screen needs higher scaling and font size
   wayland.windowManager.niri.settings.output = lib.mkForce [
     {
+      _args = [ "DP-4" ];
+      mode = "2560x1440@143.912";
+      position._props = {
+        x = 0;
+        y = 0;
+      };
+    }
+    {
       _args = [ "eDP-1" ];
       scale = 2.0;
+      position._props = {
+        x = 2560;
+        y = 0;
+      };
     }
   ];
   programs.hyprlock.settings.label.font_size = lib.mkForce 100;
