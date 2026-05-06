@@ -138,6 +138,7 @@
   ];
 
   programs = {
+    nix-ld.enable = true;
     command-not-found.enable = false;
     nh = {
       enable = true;
