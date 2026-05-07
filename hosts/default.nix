@@ -247,6 +247,10 @@ let
         ../apps/opencode-server/opencode-server.nix
       ];
     };
+    opencode-scheduler = {
+      system = [ ../apps/opencode-scheduler/default.nix ];
+      home = [ ../apps/opencode-scheduler/scheduler.nix ];
+    };
     adguard-home = {
       system = [
         ../apps/adguard-home/default.nix
@@ -538,6 +542,7 @@ in
       "bootloader-grub-bios"
       "openssh-server"
       "opencode-server"
+      "opencode-scheduler"
       "sops"
       "productivity"
     ];
