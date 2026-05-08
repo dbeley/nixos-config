@@ -85,6 +85,7 @@
 - **nixos-era-01**: opencode server
 - **nixos-era-02**: nixflix
 - **nixos-era-03**: adguard-home
+- **nixos-era-04**: nextcloud
 
 ## Common Usage
 

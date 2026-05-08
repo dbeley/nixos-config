@@ -65,7 +65,7 @@ let
         ../apps/fish/fish.nix
         ../apps/git/git.nix
         ../apps/helix/helix.nix
-        ../apps/impulse/impulse.nix
+        # ../apps/impulse/impulse.nix
         ../apps/lazygit/lazygit.nix
         ../apps/ledger/ledger.nix
         ../apps/mime/mime.nix
@@ -274,6 +274,11 @@ let
     };
     restic = {
       home = [ ../apps/restic/restic.nix ];
+    };
+    nextcloud-server = {
+      system = [
+        ../apps/nextcloud-server/default.nix
+      ];
     };
   };
   mkHost =
@@ -559,6 +564,16 @@ in
       "bootloader-grub-bios"
       "openssh-server"
       "adguard-home"
+    ];
+  };
+  nixos-era-04 = mkHost {
+    hostName = "nixos-era-04";
+    stateVersion = "26.05";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "nextcloud-server"
+      "sops"
     ];
   };
 }
