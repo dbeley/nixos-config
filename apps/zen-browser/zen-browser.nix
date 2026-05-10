@@ -93,7 +93,7 @@
         "svg.context-properties.content.enabled" = true;
         "widget.transparent-windows" = true;
         "widget.wayland.opaque-region.enabled" = false;
-        "browser.toolbars.bookmarks.visibility" = "never";
+        "browser.toolbars.bookmarks.visibility" = "always";
 
         # ── Tabs & windows ──
         "browser.tabs.insertAfterCurrent" = true;
