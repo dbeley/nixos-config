@@ -31,15 +31,12 @@ in
         contacts
         notes
         calendar
-        richdocuments
         tasks
         ;
     };
 
     settings = {
       default_phone_region = "FR";
-      trusted_domains = [ "nextcloud.home" ];
-      overwrite.cli.url = "http://nextcloud.home";
       maintenance = false;
     };
   };
