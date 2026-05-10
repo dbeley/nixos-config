@@ -171,11 +171,16 @@ Boot from the ISO, then:
 sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake /etc/iso-config#HOSTNAME --disk main /dev/DEVICE
 ```
 
-If you don't have enough storage space (by default it takes RAM for the /nix/store), you can either disable some profiles for the host you're building in `/etc/iso-config/hosts/default.nix` or increase the size of tmpfs with:
+If you don't have enough storage space (by default it takes RAM for the /nix/store), you can either disable some profiles for the host you're building in `/etc/iso-config/hosts/default.nix` or try one of the following:
 
 ```bash
-# allows the /nix/store to take up to 75% of your RAM
+# Option 1: Increase the size of tmpfs (allows /nix/store to use more RAM)
 sudo mount -o remount,size=75% /nix/.rw-store
+
+# Option 2: Create a swapfile on the target disk to avoid using only RAM
+# (requires the target to be mounted at /mnt, e.g. after disko partitioning)
+sudo mkswap -U clear --size 8G --file /mnt/swapfile
+sudo swapon /mnt/swapfile
 ```
 
 If it's still not enough, disable most profiles on the host to have a minimal install, rebuild the iso + flash on the USB stick and try again.
