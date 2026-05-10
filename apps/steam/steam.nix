@@ -5,7 +5,7 @@
   ...
 }:
 {
-  home = lib.mkIf config.wayland.windowManager.niri.enable {
+  home = lib.mkIf (config.wayland.windowManager ? niri) {
     packages = with pkgs; [ xwayland-satellite ];
   };
   programs.mangohud = {
