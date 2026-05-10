@@ -20,9 +20,6 @@
       wifi.backend = "iwd";
     };
     firewall.enable = lib.mkDefault true;
-    extraHosts = ''
-      0.0.0.0 modules-cdn.eac-prod.on.epicgames.com
-    '';
   };
 
   # Set your time zone.
@@ -43,16 +40,7 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  # Configure console keymap
-  console.keyMap = "us-acentos";
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
   services = {
-    fwupd.enable = true;
     resolved = {
       enable = true;
       settings.Resolve = {
@@ -69,20 +57,8 @@
         DNSSEC = "allow-downgrade";
       };
     };
-    pulseaudio.enable = false;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      jack.enable = true;
-    };
 
     printing.enable = lib.mkDefault false;
-    gnome = {
-      gnome-keyring.enable = true;
-      gcr-ssh-agent.enable = true;
-    };
     fstrim.enable = true;
     journald.extraConfig = ''
       SystemMaxUse=50M
@@ -90,18 +66,9 @@
       RuntimeMaxUse=50M
       RuntimeMaxFileSize=10M
     '';
-
-    gvfs.enable = true;
-
-    earlyoom = {
-      enable = true;
-      freeMemThreshold = 5;
-      freeSwapThreshold = 10;
-    };
   };
 
   security = {
-    rtkit.enable = true;
     sudo.enable = false;
     sudo-rs = {
       enable = true;
@@ -146,22 +113,6 @@
         enable = true;
         extraArgs = "--keep-since 7d --keep 5";
       };
-    };
-  };
-
-  fonts = {
-    # Now handled by stylix except noto-fonts for emojis and special characters
-    packages = with pkgs; [
-      #   nerd-fonts.iosevka
-      #   eb-garamond
-      #   liberation_ttf
-      #   overpass
-      noto-fonts
-      noto-fonts-cjk-sans
-      #   noto-fonts-color-emoji
-    ];
-    fontconfig = {
-      enable = true;
     };
   };
 

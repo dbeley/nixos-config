@@ -51,12 +51,14 @@ let
         ../modules/common/fail2ban.nix
       ];
     };
-    productivity = {
+    # Profile to use on all desktops/laptops i.e. not servers
+    workstation = {
       system = [
         inputs.stylix.nixosModules.stylix
         ../apps/stylix/default.nix
         ../apps/udiskie/default.nix
         ../apps/symmetri/default.nix
+        ../apps/workstation/default.nix
       ];
       home = [
         ../apps/bat/bat.nix
@@ -366,7 +368,7 @@ in
       "laptop"
       "impermanence"
       "bootloader-systemd-boot"
-      "productivity"
+      "workstation"
       "niri"
       "android-tools"
       "steam"
@@ -398,7 +400,7 @@ in
       "laptop"
       "impermanence"
       "bootloader-systemd-boot"
-      "productivity"
+      "workstation"
       "niri"
       # "android-tools"
       "steam"
@@ -432,7 +434,7 @@ in
       "laptop"
       "impermanence"
       "bootloader-systemd-boot"
-      "productivity"
+      "workstation"
       "gnome"
       # "steam"
       # "firefox"
@@ -460,7 +462,7 @@ in
     profiles = [
       "laptop"
       "bootloader-systemd-boot"
-      "productivity"
+      "workstation"
       "niri"
       "python"
       "docker"
@@ -485,7 +487,7 @@ in
     hostName = "sg13";
     stateVersion = "24.11";
     profiles = [
-      "productivity"
+      "workstation"
       "bootloader-grub-uefi"
       "openssh-server"
       "gnome"
@@ -544,7 +546,6 @@ in
       "openssh-server"
       "opencode-server"
       "sops"
-      "productivity"
     ];
   };
   nixos-era-02 = mkHost {
