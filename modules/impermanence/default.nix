@@ -192,21 +192,19 @@
       '';
     };
     extraBin = {
-      # "mkfs.ext4" = "${pkgs.e2fsprogs}/bin/mkfs.ext4";
       "mkdir" = "${pkgs.coreutils}/bin/mkdir";
       "date" = "${pkgs.coreutils}/bin/date";
       "stat" = "${pkgs.coreutils}/bin/stat";
       "mv" = "${pkgs.coreutils}/bin/mv";
       "find" = "${pkgs.findutils}/bin/find";
       "btrfs" = "${pkgs.btrfs-progs}/bin/btrfs";
-      # mount & umount already exist
     }; # NOTE: path = [...]; doesnt work for initrd, use full paths in your script or extraBin
   };
 
-  # Temporary workaround for Téléchargements folder, cf. https://github.com/nix-community/impermanence/issues/290
+  # Temporary workaround for Téléchargements folder, see https://github.com/nix-community/impermanence/issues/290
   systemd.mounts = [
     {
-      name = lib.mkForce "home-${user}-T\\xc3\\xa9l\\xc3\\xa9chargements.mount"; # result of systemd-escape home/${user}/Téléchargements.mount
+      name = lib.mkForce "home-${user}-T\\xc3\\xa9l\\xc3\\xa9chargements.mount"; # result of `systemd-escape home/${user}/Téléchargements.mount`
       wantedBy = [ "local-fs.target" ];
       before = [ "local-fs.target" ];
       where = "/home/${user}/Téléchargements";
