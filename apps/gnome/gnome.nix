@@ -83,6 +83,7 @@ with lib.hm.gvariant;
         "org.gnome.Nautilus.desktop"
         "org.gnome.Terminal.desktop"
         "firefox.desktop"
+        "zen-twilight.desktop"
         "org.keepassxc.KeePassXC.desktop"
         "steam.desktop"
         "org.gnome.SystemMonitor.desktop"
