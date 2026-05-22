@@ -379,6 +379,10 @@
         "Mod+B"."spawn" = [ "chromium" ];
         "Mod+T"."spawn" = [ "soffice" ];
         "Mod+D"."spawn" = [ "feishin" ];
+        "Mod+Shift+D"."spawn" = [
+          "chromium"
+          "--app=http://covertone.docker-era.home"
+        ];
         "Mod+N"."spawn" = [ "keepassxc" ];
         "Mod+Shift+T"."spawn" = [ "gnome-system-monitor" ];
         "Mod+Return"."spawn" = [ "ghostty" ];
