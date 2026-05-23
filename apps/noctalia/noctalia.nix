@@ -12,161 +12,67 @@
   };
 
   programs = {
-    noctalia-shell = {
+    noctalia = {
       enable = true;
       settings = {
-        settingsVersion = 59;
-        bar = {
-          position = "top";
-          density = "spacious";
-          showCapsule = false;
-          backgroundOpacity = lib.mkForce 0.0;
-          useSeparateOpacity = true;
-          widgets = {
-            left = [
-              {
-                id = "Workspace";
-                hideUnoccupied = false;
-                labelMode = "index";
-                pillSize = 0.7;
-              }
-              {
-                id = "ActiveWindow";
-                maxWidth = 400;
-              }
-              # {
-              #   id = "MediaMini";
-              #   maxWidth = 300;
-              #   showVisualizer = true;
-              # }
-            ];
-            center = [
-              {
-                id = "Clock";
-                formatHorizontal = "ddd dd MMM HH:mm:ss";
-                tooltipFormat = "HH:mm, ddd dd MMM YYYY";
-              }
-            ];
-            right = [
-              { id = "Tray"; }
-              {
-                id = "SystemMonitor";
-                compactMode = false;
-                showCpuTemp = true;
-                showCpuUsage = true;
-                showMemoryAsPercent = true;
-                showMemoryUsage = true;
-                showNetworkStats = true;
-              }
-              {
-                id = "Volume";
-                displayMode = "alwaysShow";
-              }
-              {
-                id = "Brightness";
-                displayMode = "alwaysShow";
-              }
-              {
-                id = "Battery";
-                displayMode = "graphic";
-              }
-              {
-                id = "ControlCenter";
-                icon = "currency";
-              }
-            ];
-          };
-        };
-        general = {
-          dimmerOpacity = 0.0;
-          radiusRatio = 0.2;
-          enableBlurBehind = false;
-          lockOnSuspend = true;
-          lockScreenAnimations = true;
-          lockScreenBlur = 0.6;
-          enableLockScreenCountdown = false;
-          compactLockScreen = true;
-          showSessionButtonsOnLockScreen = false;
-        };
-        appLauncher = {
-          terminalCommand = "ghostty -e";
-        };
-        sessionMenu = {
-          countdownDuration = 1000;
-          enableCountdown = false;
-        };
-        idle = {
-          enabled = true;
-          lockTimeout = 1800;
-          screenOffTimeout = 900;
-          suspendTimeout = 1800;
-        };
-        controlCenter = {
-          cards = [
-            {
-              enabled = true;
-              id = "profile-card";
-            }
-            {
-              enabled = true;
-              id = "shortcuts-card";
-            }
-            {
-              enabled = true;
-              id = "audio-card";
-            }
-            {
-              enabled = true;
-              id = "brightness-card";
-            }
-            {
-              enabled = true;
-              id = "weather-card";
-            }
-            {
-              enabled = true;
-              id = "media-sysmon-card";
-            }
-          ];
-          shortcuts = {
-            left = [
-              { id = "Network"; }
-              { id = "Bluetooth"; }
-              { id = "NightLight"; }
-              { id = "PowerProfile"; }
-              { id = "Notifications"; }
-            ];
-            right = [ ];
-          };
-        };
-        colorSchemes = {
-          predefinedScheme = "Monochrome";
-          darkMode = true;
-        };
-        location = {
-          name = "Paris, France";
-          monthBeforeDay = true;
-        };
-        nightLight = {
-          enabled = true;
-          autoSchedule = true;
-          dayTemp = "6500";
-          nightTemp = "4000";
-        };
-        notifications = {
-          enabled = true;
-          location = "top_right";
-          density = "compact";
-        };
-        ui = {
-          fontDefault = lib.mkForce "Iosevka Nerd Font";
-        };
-        dock = {
-          enabled = false;
+        theme = {
+          mode = "dark";
+          source = "wallpaper";
         };
         wallpaper = {
           enabled = true;
-          directory = "${config.home.homeDirectory}/.config/noctalia/wallpapers";
+          default.path = "${config.home.homeDirectory}/.config/noctalia/wallpapers/stylix-wallpaper";
+        };
+        "bar.default" = {
+          background_opacity = 0.5;
+          end = [
+            "tray"
+            "notifications"
+            "volume"
+            "brightness"
+            "battery"
+            "session"
+          ];
+          start = [ "workspaces" ];
+        };
+        nightlight = {
+          enabled = true;
+          start_time = "20:30";
+          stop_time = "08:00";
+        };
+        idle = {
+          behavior_order = [
+            "lock"
+            "screen-off"
+            "suspend"
+          ];
+          pre_action_fade_seconds = 0.0;
+          "idle.behavior.lock" = {
+            action = "lock";
+            enabled = true;
+            timeout = 1800;
+          };
+          "idle.behavior.screen-off" = {
+            action = "screen_off";
+            enabled = true;
+            timeout = 900;
+          };
+          "idle.behavior.suspend" = {
+            action = "suspend";
+            enabled = true;
+            lock_before_suspend = true;
+            timeout = 1800;
+          };
+        };
+        weather = {
+          address = "Paris, France";
+          auto_locate = true;
+        };
+        "widget.clock" = {
+          format = "{:%a %d %b %H:%M}";
+        };
+        "widget.battery" = {
+          display_mode = "graphic";
         };
       };
     };
@@ -174,64 +80,51 @@
 
   wayland.windowManager.niri.settings = lib.mkIf config.wayland.windowManager.niri.enable {
     spawn-at-startup = [
-      [ "noctalia-shell" ]
+      [ "noctalia" ]
     ];
     binds = {
       "Mod+Shift+C"."spawn" = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "lockScreen"
-        "lock"
+        "noctalia"
+        "msg"
+        "screen-lock"
       ];
       "Mod+Space"."spawn" = [
-        "noctalia-shell"
-        "ipc"
-        "call"
+        "noctalia"
+        "msg"
+        "panel-toggle"
         "launcher"
-        "toggle"
       ];
       "Mod+Shift+P"."spawn" = lib.mkForce [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "sessionMenu"
-        "toggle"
+        "noctalia"
+        "msg"
+        "panel-toggle"
+        "session"
       ];
       "XF86AudioRaiseVolume"."spawn" = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "volume"
-        "increase"
+        "noctalia"
+        "msg"
+        "volume-up"
       ];
       "XF86AudioLowerVolume"."spawn" = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "volume"
-        "decrease"
+        "noctalia"
+        "msg"
+        "volume-down"
       ];
       "XF86AudioMute"."spawn" = [
-        "noctalia-shell"
-        "ipc"
-        "call"
+        "noctalia"
+        "msg"
         "volume"
-        "muteOutput"
+        "volume-mute"
       ];
       "XF86MonBrightnessUp"."spawn" = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "brightness"
-        "increase"
+        "noctalia"
+        "msg"
+        "brightness-up"
       ];
       "XF86MonBrightnessDown"."spawn" = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "brightness"
-        "decrease"
+        "noctalia"
+        "msg"
+        "brightness-down"
       ];
     };
   };
