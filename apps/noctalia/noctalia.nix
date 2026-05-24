@@ -23,17 +23,28 @@
           enabled = true;
           default.path = "${config.home.homeDirectory}/.config/noctalia/wallpapers/stylix-wallpaper";
         };
-        "bar.default" = {
+        shell = {
+          telemetry_enabled = false;
+        };
+        bar.default = {
           background_opacity = 0.5;
+          margin_ends = 80.0;
           end = [
             "tray"
-            "notifications"
+            "cpu"
+            "temp"
+            "ram"
+            # "network_rx"
+            # "network_tx"
+            # "notifications"
             "volume"
             "brightness"
             "battery"
-            "session"
           ];
-          start = [ "workspaces" ];
+          start = [
+            "workspaces"
+            "active_window"
+          ];
         };
         nightlight = {
           enabled = true;
@@ -47,32 +58,59 @@
             "suspend"
           ];
           pre_action_fade_seconds = 0.0;
-          "idle.behavior.lock" = {
-            action = "lock";
-            enabled = true;
-            timeout = 1800;
-          };
-          "idle.behavior.screen-off" = {
-            action = "screen_off";
-            enabled = true;
-            timeout = 900;
-          };
-          "idle.behavior.suspend" = {
-            action = "suspend";
-            enabled = true;
-            lock_before_suspend = true;
-            timeout = 1800;
+          behavior = {
+            lock = {
+              action = "lock";
+              enabled = true;
+              timeout = 1800;
+            };
+            screen-off = {
+              action = "screen_off";
+              enabled = true;
+              timeout = 900;
+            };
+            suspend = {
+              action = "suspend";
+              enabled = true;
+              lock_before_suspend = true;
+              timeout = 1800;
+            };
           };
         };
         weather = {
           address = "Paris, France";
           auto_locate = true;
         };
-        "widget.clock" = {
-          format = "{:%a %d %b %H:%M}";
-        };
-        "widget.battery" = {
-          display_mode = "graphic";
+        widget = {
+          active_window = {
+            title_scroll = "on_hover";
+            max_length = 400.0;
+          };
+          battery = {
+            display_mode = "graphic";
+            show_label = true;
+          };
+          clock = {
+            format = "{:%a %d %b %H:%M}";
+          };
+          cpu = {
+            display = "text";
+          };
+          network_rx = {
+            display = "text";
+          };
+          network_tx = {
+            display = "text";
+          };
+          ram = {
+            display = "text";
+          };
+          sysmon = {
+            display = "text";
+          };
+          temp = {
+            display = "text";
+          };
         };
       };
     };

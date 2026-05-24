@@ -118,6 +118,7 @@
       ".local/share/qutebrowser/sessions"
       ".local/share/Steam"
       ".local/share/zoxide"
+      ".local/state/noctalia"
       ".local/state/opencode"
       ".local/Tendershoot"
       ".mozilla/native-messaging-hosts"
