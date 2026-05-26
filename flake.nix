@@ -241,11 +241,8 @@
               shellcheck.enable = true;
             };
           };
-          deploy-rs-nodes = pkgs.symlinkJoin {
-            name = "deploy-rs-nodes";
-            paths = builtins.attrValues (deployLib.deployChecks self.deploy);
-          };
         }
+        // deployLib.deployChecks self.deploy
       );
 
       devShells = eachSystem (system: {
