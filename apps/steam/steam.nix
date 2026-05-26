@@ -5,9 +5,13 @@
   ...
 }:
 {
-  home = lib.mkIf (config.wayland.windowManager ? niri) {
-    packages = with pkgs; [ xwayland-satellite ];
-  };
+  home.packages =
+    with pkgs;
+    [
+      openmw
+      protonup-qt
+    ]
+    ++ lib.optionals (config.wayland.windowManager ? niri) [ xwayland-satellite ];
   programs.mangohud = {
     enable = true;
     enableSessionWide = false;
