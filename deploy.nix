@@ -13,9 +13,19 @@ let
   decryptSops =
     key:
     let
-      drv = pkgs.runCommand "sops-${key}" { nativeBuildInputs = [ pkgs.sops ]; } ''
-        sops --decrypt --extract '["${key}"]' ${sopsFile} > $out
-      '';
+      ageKeyFile = builtins.path {
+        path = /home/david/.config/sops/age/keys.txt;
+        name = "sops-age-key";
+      };
+      drv =
+        pkgs.runCommand "sops-${key}"
+          {
+            nativeBuildInputs = [ pkgs.sops ];
+            SOPS_AGE_KEY_FILE = ageKeyFile;
+          }
+          ''
+            sops --decrypt --extract '["${key}"]' ${sopsFile} > $out
+          '';
     in
     nixpkgs.lib.strings.trim (builtins.readFile drv);
 in
