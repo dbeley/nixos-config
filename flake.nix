@@ -226,6 +226,7 @@
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
+          deployLib = deploy-rs.lib.${system};
         in
         {
           pre-commit-check = inputs.git-hooks.lib.${system}.run {
@@ -239,6 +240,10 @@
               ruff.enable = true;
               shellcheck.enable = true;
             };
+          };
+          deploy-rs-nodes = pkgs.symlinkJoin {
+            name = "deploy-rs-nodes";
+            paths = builtins.attrValues (deployLib.deployChecks self.deploy);
           };
         }
       );
