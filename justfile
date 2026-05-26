@@ -37,13 +37,31 @@ install-proxmox-vm hostname ip:
   @echo "  ssh nixos@{{ip}}"
   @echo "  bash /tmp/install-nixos.sh {{hostname}}"
 
+# DEPRECATED: use `deploy-vm <hostname>` instead
 switch-proxmox-vm hostname ip:
   @echo "Deploying config for {{hostname}} to {{ip}}"
   nh os switch -H {{hostname}} . --target-host david@{{ip}}
 
+# DEPRECATED: use `deploy-vm <hostname>` instead
 boot-proxmox-vm hostname ip:
   @echo "Deploying config for {{hostname}} to {{ip}}"
   nh os boot -H {{hostname}} . --target-host david@{{ip}}
+
+deploy-vm hostname:
+    @echo "Deploying {{hostname}}"
+    deploy .#{{hostname}} -- --impure
+
+deploy-era:
+    @echo "Deploying all ERA VMs"
+    deploy .#nixos-era-01 -- --impure && deploy .#nixos-era-02 -- --impure && deploy .#nixos-era-03 -- --impure && deploy .#nixos-era-04 -- --impure
+
+deploy-kimsufi:
+    @echo "Deploying all Kimsufi VMs"
+    deploy .#nixos-kimsufi-01 -- --impure && deploy .#nixos-kimsufi-02 -- --impure && deploy .#nixos-kimsufi-03 -- --impure
+
+deploy-all-vms:
+    @echo "Deploying all VMs"
+    deploy .#nixos-era-01 -- --impure && deploy .#nixos-era-02 -- --impure && deploy .#nixos-era-03 -- --impure && deploy .#nixos-era-04 -- --impure && deploy .#nixos-kimsufi-01 -- --impure && deploy .#nixos-kimsufi-02 -- --impure && deploy .#nixos-kimsufi-03 -- --impure
 
 clean-proxmox-vm hostname ip:
     @echo "Cleaning on {{hostname}} at {{ip}}"
