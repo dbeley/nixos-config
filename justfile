@@ -48,20 +48,25 @@ boot-proxmox-vm hostname ip:
   nh os boot -H {{hostname}} . --target-host david@{{ip}}
 
 deploy-vm hostname:
-    @echo "Deploying {{hostname}}"
-    deploy .#{{hostname}} -- --impure
+  @echo "Deploying {{hostname}}"
+  nix run github:serokell/deploy-rs -- .#{{hostname}} -- --impure
 
 deploy-era:
-    @echo "Deploying all ERA VMs"
-    deploy .#nixos-era-01 -- --impure && deploy .#nixos-era-02 -- --impure && deploy .#nixos-era-03 -- --impure && deploy .#nixos-era-04 -- --impure
+  @echo "Deploying all ERA VMs"
+  nix run github:serokell/deploy-rs -- .#nixos-era-01 -- --impure; \
+  nix run github:serokell/deploy-rs -- .#nixos-era-02 -- --impure; \
+  nix run github:serokell/deploy-rs -- .#nixos-era-03 -- --impure; \
+  nix run github:serokell/deploy-rs -- .#nixos-era-04 -- --impure
 
 deploy-kimsufi:
-    @echo "Deploying all Kimsufi VMs"
-    deploy .#nixos-kimsufi-01 -- --impure && deploy .#nixos-kimsufi-02 -- --impure && deploy .#nixos-kimsufi-03 -- --impure
+  @echo "Deploying all Kimsufi VMs"
+  nix run github:serokell/deploy-rs -- .#nixos-kimsufi-01 -- --impure; \
+  nix run github:serokell/deploy-rs -- .#nixos-kimsufi-02 -- --impure; \
+  nix run github:serokell/deploy-rs -- .#nixos-kimsufi-03 -- --impure
 
 deploy-all-vms:
-    @echo "Deploying all VMs"
-    deploy .#nixos-era-01 -- --impure && deploy .#nixos-era-02 -- --impure && deploy .#nixos-era-03 -- --impure && deploy .#nixos-era-04 -- --impure && deploy .#nixos-kimsufi-01 -- --impure && deploy .#nixos-kimsufi-02 -- --impure && deploy .#nixos-kimsufi-03 -- --impure
+  @echo "Deploying all VMs"
+  @just deploy-era; just deploy-kimsufi
 
 clean-proxmox-vm hostname ip:
     @echo "Cleaning on {{hostname}} at {{ip}}"
