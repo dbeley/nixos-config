@@ -24,6 +24,7 @@
           default.path = "${config.home.homeDirectory}/.config/noctalia/wallpapers/stylix-wallpaper";
         };
         shell = {
+          clipboard_enabled = false;
           telemetry_enabled = false;
         };
         bar.default = {
@@ -50,6 +51,9 @@
           enabled = true;
           start_time = "20:30";
           stop_time = "08:00";
+        };
+        notification = {
+          background_opacity = 0.5;
         };
         idle = {
           behavior_order = [
