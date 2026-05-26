@@ -185,6 +185,7 @@
     inputs@{
       self,
       nixpkgs,
+      deploy-rs,
       ...
     }:
     let
@@ -260,5 +261,11 @@
       });
 
       nixosConfigurations = hostConfigs;
+
+      deploy = import ./deploy.nix {
+        inherit self;
+        inherit deploy-rs;
+        inherit nixpkgs;
+      };
     };
 }
