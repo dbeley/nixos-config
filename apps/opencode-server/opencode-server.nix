@@ -37,6 +37,9 @@ in
       WantedBy = [ "default.target" ];
     };
     Service = {
+      Environment = [
+        "PATH=/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:%h/.nix-profile/bin:/usr/local/bin:/usr/bin:/bin"
+      ];
       ExecStart =
         let
           startScript = pkgs.writeShellScript "opencode-server-start" ''
