@@ -3,6 +3,10 @@
   ...
 }:
 {
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+  ];
+
   # overlays that should apply to all hosts (to fix build, fix bugs, etc.)
   nixpkgs.overlays = [
     inputs.niri-nix.overlays.niri-nix
