@@ -14,7 +14,7 @@
     PL2_Duration_S: 60
     Trip_Temp_C: 90
     cTDP: 0
-    Disable_BDPROCHOT: False
+    Disable_BDPROCHOT: True
 
     [AC]
     Update_Rate_s: 60
@@ -24,6 +24,6 @@
     PL2_Duration_S: 60
     Trip_Temp_C: 90
     cTDP: 0
-    Disable_BDPROCHOT: False
+    Disable_BDPROCHOT: True
   '';
 }

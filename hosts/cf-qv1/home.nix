@@ -8,9 +8,10 @@
     # audacity
     beets
     feishin
+    losslesscut
     # musescore
     nautilus
-    # shotcut
+    shotcut
     papers
     # supersonic
   ];
@@ -22,7 +23,7 @@
       _args = [ "DP-4" ];
       mode = "2560x1440@143.912";
       position._props = {
-        x = 0;
+        x = 1440;
         y = 0;
       };
     }
@@ -30,7 +31,7 @@
       _args = [ "eDP-1" ];
       scale = 2.0;
       position._props = {
-        x = 2560;
+        x = 0;
         y = 0;
       };
     }
