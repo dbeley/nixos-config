@@ -37,6 +37,10 @@
         sopsFile = ../../secrets/secrets.yaml;
         path = "/home/${user}/.config/opencode/opencode-server-password";
       };
+      hermes-webui-password = {
+        sopsFile = ../../secrets/secrets.yaml;
+        path = "/home/${user}/.config/hermes/webui-password";
+      };
     };
   };
 }

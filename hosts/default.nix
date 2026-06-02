@@ -250,6 +250,14 @@ let
         ../apps/opencode-server/opencode-server.nix
       ];
     };
+    hermes-server = {
+      system = [
+        ../apps/hermes/default.nix
+      ];
+      home = [
+        ../apps/hermes/hermes-server.nix
+      ];
+    };
     adguard-home = {
       system = [
         ../apps/adguard-home/default.nix
@@ -546,6 +554,7 @@ in
       "bootloader-grub-bios"
       "openssh-server"
       "opencode-server"
+      "hermes-server"
       "sops"
     ];
   };
