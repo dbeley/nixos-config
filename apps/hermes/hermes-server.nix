@@ -34,6 +34,24 @@ in
 {
   home.packages = [ llm.hermes-agent ];
 
+  systemd.user.services.hermes-gateway = {
+    Unit = {
+      Description = "Hermes Gateway (cron jobs, messaging)";
+      After = [ "network.target" ];
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+    Service = {
+      Environment = [
+        "PATH=/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:%h/.nix-profile/bin"
+      ];
+      ExecStart = "${llm.hermes-agent}/bin/hermes gateway run";
+      Restart = "always";
+      RestartSec = 10;
+    };
+  };
+
   systemd.user.services.hermes-webui = {
     Unit = {
       Description = "Hermes WebUI";
