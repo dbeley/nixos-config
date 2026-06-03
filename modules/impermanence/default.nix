@@ -126,6 +126,7 @@
       ".local/state/opencode"
       ".local/Tendershoot"
       ".mozilla/native-messaging-hosts"
+      ".mwarband"
       ".ollama"
       ".renpy"
       ".ssh"
