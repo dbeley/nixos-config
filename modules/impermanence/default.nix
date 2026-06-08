@@ -112,6 +112,7 @@
       ".local/share/direnv"
       ".local/share/fish"
       ".local/share/flatpak"
+      ".local/share/goose"
       ".local/share/HotlineMiami"
       ".local/share/IntoTheBreach"
       ".local/share/keyrings"
