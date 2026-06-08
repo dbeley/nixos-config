@@ -11,7 +11,10 @@
   ...
 }:
 {
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    tmp.cleanOnBoot = true;
+  };
 
   networking = {
     inherit hostName;
