@@ -232,8 +232,9 @@ let
         # ../apps/oh-my-pi/oh-my-pi.nix
         # ../apps/oh-my-opencode/oh-my-opencode.nix
         # ../apps/beads/beads.nix
-        # ../apps/hermes/hermes.nix
+        ../apps/hermes/hermes.nix
         ../apps/rtk/rtk.nix
+        ../apps/goose/goose.nix
       ];
     };
     zeroclaw = {

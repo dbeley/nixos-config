@@ -26,6 +26,12 @@ in
         plugin = [
           "@mohak34/opencode-notifier@latest"
         ];
+        command = {
+          last30days = {
+            description = "Research any topic across Reddit, X, YouTube, TikTok, HN, Polymarket, GitHub, and the web";
+            template = "Run the last30days skill to research this topic across all available sources: {{input}}";
+          };
+        };
       };
     };
     "opencode/opencode-notifier.json" = {

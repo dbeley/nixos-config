@@ -12,6 +12,11 @@ _: {
         subdir = "skills";
         idPrefix = "superpowers";
       };
+      last30days = {
+        input = "last30days-skill";
+        subdir = "skills";
+        idPrefix = "last30days";
+      };
     };
     skills = {
       enableAll = [ "superpowers" ];
@@ -26,6 +31,7 @@ _: {
         "superpowers/test-driven-development" # TDD approach
         "superpowers/brainstorming" # creative problem solving
         "superpowers/verification-before-completion" # verifying work before claiming completion
+        "last30days/last30days" # research topics across Reddit, X, YouTube, HN, Polymarket, and the web
       ];
     };
     targets = {
