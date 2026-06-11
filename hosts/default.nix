@@ -403,7 +403,7 @@ in
       "bootloader-systemd-boot"
       "workstation"
       "niri"
-      # "android-tools"
+      "android-tools"
       "steam"
       # "firefox"
       "zen-browser"
