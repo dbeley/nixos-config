@@ -1,17 +1,69 @@
-_: {
+{ pkgs, ... }:
+
+let
+  zoomPlugin =
+    pkgs.runCommandNoCC "zoom.yazi"
+      {
+        src = pkgs.fetchFromGitHub {
+          owner = "yazi-rs";
+          repo = "plugins";
+          rev = "598cdb671401574ac27aeee257e2f3b0c80610a1";
+          hash = "sha256-bqGN6JxbU+/o7TlM/Cm9Qj/s1McA4pB5QWArGZPcme4=";
+        };
+      }
+      ''
+        cp -r $src/zoom.yazi/. $out
+      '';
+
+in
+{
   programs.yazi = {
     enable = true;
     shellWrapperName = "y";
     enableFishIntegration = true;
 
+    plugins = {
+      inherit (pkgs.yaziPlugins) smart-enter;
+      zoom = zoomPlugin;
+    };
+
+    initLua = ''
+      require("smart-enter"):setup()
+    '';
+
     settings = {
       mgr = {
         linemode = "size";
+      };
+      plugin = {
+        prepend_previewers = [
+          {
+            mime = "image/{jpeg,png,webp,bmp}";
+            run = "zoom 5";
+          }
+        ];
       };
     };
 
     keymap = {
       mgr.prepend_keymap = [
+        # Smart enter: Enter directory or open file
+        {
+          on = "l";
+          run = "plugin smart-enter";
+          desc = "Smart enter";
+        }
+        # Zoom in/out
+        {
+          on = "+";
+          run = "plugin zoom 1";
+          desc = "Zoom in";
+        }
+        {
+          on = "-";
+          run = "plugin zoom -1";
+          desc = "Zoom out";
+        }
         # Bookmarks
         {
           on = [
