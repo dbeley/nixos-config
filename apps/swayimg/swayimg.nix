@@ -85,6 +85,9 @@
     swayimg.viewer.on_key("r", function()
       swayimg.viewer.switch_image("random")
     end)
+    swayimg.viewer.on_key("q", function()
+      swayimg.exit()
+    end)
 
     -- Key bindings - gallery mode
     swayimg.gallery.on_key("h", function()
