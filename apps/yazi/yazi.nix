@@ -28,7 +28,7 @@ in
     };
 
     initLua = ''
-      require("smart-enter"):setup()
+      require("smart-enter"):setup({})
     '';
 
     settings = {
