@@ -147,6 +147,10 @@
       url = "github:mvanhorn/last30days-skill";
       flake = false;
     };
+    ponytail = {
+      url = "github:DietrichGebert/ponytail";
+      flake = false;
+    };
     symmetri = {
       url = "github:dbeley/symmetri";
       inputs = {

@@ -25,6 +25,7 @@ in
         theme = "system";
         plugin = [
           "@mohak34/opencode-notifier@latest"
+          "${inputs.ponytail}/.opencode/plugins/ponytail.mjs"
         ];
         command = {
           last30days = {

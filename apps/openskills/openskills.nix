@@ -17,21 +17,30 @@ _: {
         subdir = "skills";
         idPrefix = "last30days";
       };
+      ponytail = {
+        input = "ponytail";
+        subdir = "skills";
+        idPrefix = "ponytail";
+      };
     };
     skills = {
       enableAll = [ "superpowers" ];
       enable = [
-        "anthropic/skill-creator" # creating/improving skills themselves
-        "anthropic/mcp-builder" # building MCP servers
-        "anthropic/frontend-design" # frontend work
-        "anthropic/webapp-testing" # playwright testing
-        "anthropic/claude-api" # building with Claude API
-        "superpowers/systematic-debugging" # debugging any issues
-        "superpowers/writing-plans" # planning features before implementation
-        "superpowers/test-driven-development" # TDD approach
-        "superpowers/brainstorming" # creative problem solving
-        "superpowers/verification-before-completion" # verifying work before claiming completion
-        "last30days/last30days" # research topics across Reddit, X, YouTube, HN, Polymarket, and the web
+        "anthropic/skill-creator"
+        "anthropic/mcp-builder"
+        "anthropic/frontend-design"
+        "anthropic/webapp-testing"
+        "anthropic/claude-api"
+        "superpowers/systematic-debugging"
+        "superpowers/writing-plans"
+        "superpowers/test-driven-development"
+        "superpowers/brainstorming"
+        "superpowers/verification-before-completion"
+        "last30days/last30days"
+        "ponytail/ponytail"
+        "ponytail/ponytail-review"
+        "ponytail/ponytail-audit"
+        "ponytail/ponytail-debt"
       ];
     };
     targets = {
@@ -43,7 +52,6 @@ _: {
       claude.enable = true;
       codex.enable = true;
       cursor.enable = true;
-      # agents target uses ~/.agents/skills (universal path)
       agents.enable = true;
     };
   };
