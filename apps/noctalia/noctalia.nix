@@ -155,7 +155,6 @@
       "XF86AudioMute"."spawn" = [
         "noctalia"
         "msg"
-        "volume"
         "volume-mute"
       ];
       "XF86MonBrightnessUp"."spawn" = [
