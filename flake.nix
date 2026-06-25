@@ -128,13 +128,6 @@
         treefmt-nix.follows = "treefmt-nix";
       };
     };
-    hermes-webui-nix = {
-      url = "github:dbeley/hermes-webui-nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        llm-agents.follows = "llm-agents";
-      };
-    };
     agent-skills = {
       url = "github:Kyure-A/agent-skills-nix";
       inputs = {
@@ -170,6 +163,13 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
+      };
+    };
+    hermes-webui-nix = {
+      url = "github:dbeley/hermes-webui-nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        llm-agents.follows = "llm-agents";
       };
     };
     noctalia = {

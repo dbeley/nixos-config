@@ -252,10 +252,25 @@ let
     };
     hermes-server = {
       system = [
-        ../apps/hermes-webui/default.nix
+        inputs.hermes-webui-nix.nixosModules.default
+        {
+          services.hermes-webui = {
+            enable = true;
+            port = 80;
+            inherit user;
+          };
+          boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 80;
+        }
       ];
       home = [
-        ../apps/hermes-webui/hermes-webui.nix
+        inputs.hermes-webui-nix.homeModules.default
+        {
+          services.hermes-webui = {
+            enable = true;
+            port = 80;
+            passwordFile = "$HOME/.config/hermes/webui-password";
+          };
+        }
       ];
     };
     adguard-home = {
@@ -553,7 +568,6 @@ in
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
-      "opencode-server"
       "hermes-server"
       "sops"
     ];
