@@ -252,10 +252,22 @@ let
     };
     hermes-server = {
       system = [
-        ../apps/hermes/default.nix
+        inputs.hermes-webui-nix.nixosModules.default
+        {
+          services.hermes-webui = {
+            enable = true;
+            inherit user;
+          };
+        }
       ];
       home = [
-        ../apps/hermes/hermes-server.nix
+        inputs.hermes-webui-nix.homeModules.default
+        {
+          services.hermes-webui = {
+            enable = true;
+            passwordFile = "$HOME/.config/hermes/webui-password";
+          };
+        }
       ];
     };
     adguard-home = {

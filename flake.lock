@@ -410,6 +410,29 @@
         "type": "github"
       }
     },
+    "hermes-webui-nix": {
+      "inputs": {
+        "llm-agents": [
+          "llm-agents"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782397941,
+        "narHash": "sha256-5VDkj5oOCTz1bLN5nO+RlRugl02I5nqid12LqMaUSHU=",
+        "owner": "dbeley",
+        "repo": "hermes-webui-nix",
+        "rev": "8794084a827ea6f801f545821073a9b6ecd925ab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dbeley",
+        "repo": "hermes-webui-nix",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -820,6 +843,7 @@
         "flake-utils": "flake-utils",
         "git-hooks": "git-hooks",
         "gitignore": "gitignore",
+        "hermes-webui-nix": "hermes-webui-nix",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "impulse": "impulse",
