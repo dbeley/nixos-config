@@ -16,20 +16,20 @@
   - `modules/cachix/` - Binary cache configurations (niri, nix-community)
   - `configuration.nix` - Base system configuration (networking, locale, nix settings)
   - `overlays.nix` - System-wide package overlays
-- **`apps/`** - Reusable application and desktop environment modules (89 directories, 102 .nix files total)
+- **`apps/`** - Reusable application and desktop environment modules (91 directories, 106 .nix files total)
   - Desktop environments: `gnome/`, `niri/`, `sway/`
   - Terminals: `alacritty/`, `ghostty/`, `kitty/`
   - Editors: `editorconfig/`, `emacs/`, `helix/`, `kakoune/`, `neovim-nixvim/`, `neovim-nvf/`, `nvim/`, `vscode/`
   - Browsers: `firefox/`, `qutebrowser/`, `ungoogled-chromium/`, `zen-browser/`
-  - Code agents: `beads/`, `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `hermes/`, `oh-my-opencode/`, `oh-my-pi/`, `opencode/`, `openskills/`, `pi/`, `rtk/`, `workmux/`
+  - Code agents: `beads/`, `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `goose/`, `hermes/`, `oh-my-opencode/`, `oh-my-pi/`, `opencode/`, `openskills/`, `pi/`, `rtk/`, `workmux/`
   - File managers: `lf/`, `nnn/`, `yazi/`
   - Media: `feishin/`, `imv/`, `mpd/`, `mpv/`, `obs/`, `swayimg/`, `zathura/`
   - Wayland utilities: `gammastep/`, `hyprlock/`, `mako/`, `noctalia/`, `swayidle/`, `swaylock/`, `tofi/`, `waybar/`, `wofi/`
   - Shell/CLI tools: `bat/`, `btop/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `workstation/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
-  - Servers: `adguard-home/`, `nixflix/`, `opencode-server/`
-  - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `udiskie/`, `zeroclaw/`
+  - Servers: `adguard-home/`, `hermes-server/`, `nextcloud-server/`, `nixflix/`, `opencode-server/`
+  - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `udiskie/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
 - **`imgs/`** - Assets, wallpapers, and screenshots
@@ -79,7 +79,7 @@ mkHost = {
 - `sway` - Sway + waybar + tofi + mako + swaylock + autoscreen + kitty
 
 **Applications:**
-- `productivity` - workstation, bat, btop, fish, git, helix, impulse, lazygit, ledger, mime, mpv, nextcloud-client, stylix, swayimg, tealdeer, tmux, udiskie, yazi, zathura, zoxide, symmetri, editorconfig
+- `workstation` - bat, btop, editorconfig, fish, git, helix, lazygit, ledger, mime, mpv, nextcloud-client, stylix, swayimg, tealdeer, tmux, udiskie, workstation, yazi, zathura, zoxide (system modules: stylix, udiskie, symmetri, workstation)
 - `firefox` - Firefox browser with extensive policies and addons
 - `chromium` - Ungoogled chromium
 - `zen-browser` - Zen browser
@@ -93,17 +93,20 @@ mkHost = {
 - `obs` - OBS Studio
 - `pycharm` - PyCharm IDE
 - `moonlight` - Game streaming client
-- `code-agents` - workmux, opencode, openskills, rtk
-- `zeroclaw` - zeroclaw application
+- `code-agents` - workmux, opencode, openskills, rtk, hermes, goose
 - `jj` - Jujutsu version control system
 - `mullvad` - Mullvad VPN (system + home-manager)
 - `ollama` - Ollama local LLM server
+- `hermes-server` - Hermes Web UI (port 80), NixOS system service with sops auth
+- `nextcloud-server` - Nextcloud server
 - `restic` - Restic backup tool
 
 **Servers:**
 - `nixflix` - Nixflix media server
 - `opencode-server` - OpenCode server
+- `hermes-server` - Hermes Web UI
 - `adguard-home` - AdGuard Home DNS ad-blocker
+- `nextcloud-server` - Nextcloud server
 
 ### Current Hosts
 
@@ -123,17 +126,18 @@ mkHost = {
 
 **Servers (Kimsufi Proxmox VMs):**
 - `nixos-kimsufi-01` - qbittorrent server
-- `nixos-kimsufi-02` - zeroclaw server
-- `nixos-kimsufi-03` - Docker homelab server
+- `nixos-kimsufi-02` - unused
+- `nixos-kimsufi-03` - unused
 
 **Servers (ERA VPS):**
-- `nixos-era-01` - OpenCode server
+- `nixos-era-01` - Hermes Web UI
 - `nixos-era-02` - Nixflix media server
 - `nixos-era-03` - AdGuard Home DNS server
+- `nixos-era-04` - Nextcloud server
 
 ## Testing Guidelines
 - **For verification, run formatting checks only**: Use `nix build .#checks.x86_64-linux.pre-commit-check --max-jobs 2` to verify code formatting/linting without evaluating all NixOS configurations. This is the recommended approach for LLM agents to avoid memory exhaustion.
-- **Why avoid full `nix flake check`**: Running `nix flake check` evaluates all 11 active host configurations simultaneously, which can consume 12GB+ of RAM and cause memory exhaustion on typical LLM agent environments. The pre-commit check covers formatting/linting requirements without this overhead.
+- **Why avoid full `nix flake check`**: Running `nix flake check` evaluates all 12 active host configurations simultaneously, which can consume 12GB+ of RAM and cause memory exhaustion on typical LLM agent environments. The pre-commit check covers formatting/linting requirements without this overhead.
 - **For host-specific changes**: Run `nixos-rebuild dry-activate --flake .#<host>` or `just build` to validate specific host configurations without evaluating all hosts.
 - **For package changes**: Build packages explicitly with `nix build .#<pkg>` to ensure derivations succeed.
 - **For systems with ample RAM** (>16GB): You can optionally run full `nix flake check`, but this is not required for LLM agents.

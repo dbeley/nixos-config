@@ -51,6 +51,8 @@
   - `opencode` with [rtk plugin](./apps/opencode/opencode.nix)
   - [`openskills`](./apps/openskills/) for declarative skill management across agents
   - [`workmux`](./apps/workmux/) for tmux-based multi-pane agent orchestration
+  - [`opencode-server`](./apps/opencode-server/) for OpenCode Web UI
+  - [`hermes-server`](./apps/hermes-server/) for Hermes Web UI cf. [hermes-webui-nix](https://github.com/dbeley/hermes-webui-nix)
 - Automatic microcode updates for AMD CPUs with `ucodenix`
 - Automatic development shells with `direnv` and `shell.nix`
 - Declarative [nixflix stack](./apps/nixflix/) cf. [nixflix](https://github.com/kiriwalawren/nixflix)
@@ -78,11 +80,11 @@
 
 ### Proxmox Kimsufi VMs (Dedicated Server)
 - **nixos-kimsufi-01**: qbittorrent
-- **nixos-kimsufi-02**: zeroclaw
+- **nixos-kimsufi-02**: unused
 - **nixos-kimsufi-03**: unused
 
 ### Proxmox Era VMs (Home Server)
-- **nixos-era-01**: opencode server
+- **nixos-era-01**: hermes-webui
 - **nixos-era-02**: nixflix
 - **nixos-era-03**: adguard-home
 - **nixos-era-04**: nextcloud

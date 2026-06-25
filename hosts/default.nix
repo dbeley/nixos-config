@@ -253,24 +253,11 @@ let
     hermes-server = {
       system = [
         inputs.hermes-webui-nix.nixosModules.default
-        {
-          services.hermes-webui = {
-            enable = true;
-            port = 80;
-            inherit user;
-          };
-          boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 80;
-        }
+        ../apps/hermes-server/system.nix
       ];
       home = [
         inputs.hermes-webui-nix.homeModules.default
-        {
-          services.hermes-webui = {
-            enable = true;
-            port = 80;
-            passwordFile = "$HOME/.config/hermes/webui-password";
-          };
-        }
+        ../apps/hermes-server/home.nix
       ];
     };
     adguard-home = {
@@ -551,7 +538,6 @@ in
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
-      "zeroclaw"
     ];
   };
   nixos-kimsufi-03 = mkHost {
