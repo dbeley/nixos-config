@@ -11,6 +11,17 @@
   nixpkgs.overlays = [
     inputs.niri-nix.overlays.niri-nix
     inputs.nur.overlays.default
+    (final: prev: {
+      nur = prev.nur // {
+        repos = prev.nur.repos // {
+          rycee = prev.nur.repos.rycee // {
+            firefox-addons = prev.nur.repos.rycee.firefox-addons // {
+              transparent-zen = final.callPackage ../apps/zen-browser/transparent-zen-patched.nix { };
+            };
+          };
+        };
+      };
+    })
     # (_: super: {
     # # to fix zoom memory leak, working version found here https://github.com/NixOS/nixpkgs/pull/361097
     # zoom-us = super.zoom-us.overrideAttrs (oldAttrs: {
