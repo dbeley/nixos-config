@@ -22,7 +22,10 @@
       enable = true;
       wifi.backend = "iwd";
     };
-    firewall.enable = lib.mkDefault true;
+    firewall = {
+      enable = lib.mkDefault true;
+      allowedTCPPorts = [ 3000 8000 ];
+    };
   };
 
   # Set your time zone.
