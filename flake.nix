@@ -20,7 +20,6 @@
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs = {
-        gitignore.follows = "gitignore";
         nixpkgs.follows = "nixpkgs";
       };
     };
@@ -117,7 +116,10 @@
     };
     nixflix = {
       url = "github:kiriwalawren/nixflix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
+      };
     };
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
