@@ -130,6 +130,13 @@
 
       window-rule = [
         {
+          match._props = {
+            app-id = "chromium";
+            title = ".*covertone.*";
+          };
+          tiled-state = true;
+        }
+        {
           match = [
             {
               _props = {
@@ -382,6 +389,7 @@
         "Mod+Shift+D"."spawn" = [
           "chromium"
           "--app=http://covertone.docker-era.home"
+          "--disable-extensions"
         ];
         "Mod+N"."spawn" = [ "keepassxc" ];
         "Mod+Shift+T"."spawn" = [ "gnome-system-monitor" ];
