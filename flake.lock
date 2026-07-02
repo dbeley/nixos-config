@@ -417,17 +417,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1782825514,
-        "narHash": "sha256-xqshAF92KqshjF/tu8aYF1en0GPU20pkCdssZqtkzX0=",
+        "type": "github",
         "owner": "dbeley",
         "repo": "hermes-webui-nix",
-        "rev": "b3e802a9edadf534444377cb71e64f221e567cf5",
-        "type": "github"
+        "rev": "daf2eaaf45228ce32f16cf7f5dd0f792932fa39c",
+        "ref": "feat/gateway-unit-sync",
+        "narHash": "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
       },
       "original": {
+        "type": "github",
         "owner": "dbeley",
         "repo": "hermes-webui-nix",
-        "type": "github"
+        "ref": "feat/gateway-unit-sync"
       }
     },
     "home-manager": {
