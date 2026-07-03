@@ -115,6 +115,7 @@
         ];
       };
 
+      prefer-no-csd = true;
       screenshot-path = "~/Nextcloud/30-39_Images/32_Captures-d-écran/32.19_Captures-d-écran_Niri/%Y-%m-%d %H-%M-%S.png";
 
       blur = {
@@ -129,13 +130,6 @@
       ];
 
       window-rule = [
-        {
-          match._props = {
-            app-id = "chromium";
-            title = ".*covertone.*";
-          };
-          tiled-state = true;
-        }
         {
           match = [
             {
