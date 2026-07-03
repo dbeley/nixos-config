@@ -165,6 +165,26 @@
         "type": "github"
       }
     },
+    "cairn": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783119992,
+        "narHash": "sha256-UMIUPU3A18+xf30BpGDnLNPuF5VnxL3KQIS2+SbXSHw=",
+        "owner": "dbeley",
+        "repo": "cairn",
+        "rev": "b3277d68744d1d5779cf58c379e46be591644b12",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dbeley",
+        "repo": "cairn",
+        "type": "github"
+      }
+    },
     "cpu-microcodes": {
       "flake": false,
       "locked": {
@@ -835,6 +855,7 @@
         "agent-skills": "agent-skills",
         "anthropic-skills": "anthropic-skills",
         "base16": "base16",
+        "cairn": "cairn",
         "devshell": "devshell",
         "direnv-instant": "direnv-instant",
         "disko": "disko",

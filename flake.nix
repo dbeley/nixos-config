@@ -160,6 +160,12 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    cairn = {
+      url = "github:dbeley/cairn";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     impulse = {
       url = "github:dbeley/impulse";
       inputs = {

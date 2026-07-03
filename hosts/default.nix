@@ -557,6 +557,34 @@ in
       "hermes-server"
       "sops"
     ];
+    extraModules = [
+      inputs.cairn.nixosModules.cairn
+      {
+        services.cairn = {
+          enable = true;
+          domain = "localhost";
+
+          kiwix = {
+            enable = true;
+            zimFiles = {};  # No ZIM files yet — download later
+          };
+
+          ollama = {
+            enable = true;
+            gpu = null;  # CPU-only — this VPS has no GPU
+            models = [];  # No models yet — pull later
+          };
+
+          open-webui.enable = true;
+          cyberchef.enable = true;
+
+          caddy = {
+            enable = true;
+            port = 8080;  # Hermes is on port 80
+          };
+        };
+      }
+    ];
   };
   nixos-era-02 = mkHost {
     hostName = "nixos-era-02";
