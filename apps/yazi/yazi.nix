@@ -2,7 +2,7 @@
 
 let
   zoomPlugin =
-    pkgs.runCommandNoCC "zoom.yazi"
+    pkgs.runCommand "zoom.yazi"
       {
         src = pkgs.fetchFromGitHub {
           owner = "yazi-rs";
