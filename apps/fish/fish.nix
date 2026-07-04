@@ -9,8 +9,8 @@
     enable = true;
     enableFishIntegration = true;
     defaultCommand = "fd --type file --ignore-case --hidden --follow --exclude .git";
-    fileWidgetCommand = "fd --type file --ignore-case --hidden --follow --exclude .git";
-    changeDirWidgetCommand = "fd --ignore-case --hidden -t d";
+    fileWidget.command = "fd --type file --ignore-case --hidden --follow --exclude .git";
+    changeDirWidget.command = "fd --ignore-case --hidden -t d";
     tmux.enableShellIntegration = true;
   };
   programs.fish = {
