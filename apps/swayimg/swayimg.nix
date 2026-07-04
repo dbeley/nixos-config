@@ -3,8 +3,6 @@
 
   xdg.configFile."swayimg/init.lua".text = ''
     -- General config
-    swayimg.set_mode("viewer")
-
     -- Image list configuration
     swayimg.imagelist.enable_adjacent(true)
 
