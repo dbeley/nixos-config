@@ -4,6 +4,7 @@
     enable = true;
     openFirewall = true;
     port = 80;
+    settings = { };
   };
 
   networking.firewall.allowedTCPPorts = [ 53 ];
