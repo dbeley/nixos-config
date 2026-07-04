@@ -172,11 +172,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783119992,
-        "narHash": "sha256-UMIUPU3A18+xf30BpGDnLNPuF5VnxL3KQIS2+SbXSHw=",
+        "lastModified": 1783141098,
+        "narHash": "sha256-yvjTlBdvpCLsEFz/LMcSj0oOaX5ozyaUATvXgTFkajQ=",
         "owner": "dbeley",
         "repo": "cairn",
-        "rev": "b3277d68744d1d5779cf58c379e46be591644b12",
+        "rev": "1d43c0f26f10a64cbe9b52e64571972adf0e3de8",
         "type": "github"
       },
       "original": {
