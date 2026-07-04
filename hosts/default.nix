@@ -583,6 +583,7 @@ in
             port = 8080;  # Hermes is on port 80
           };
         };
+        networking.firewall.allowedTCPPorts = [ 8080 ];
       }
     ];
   };
