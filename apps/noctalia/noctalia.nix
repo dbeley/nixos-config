@@ -17,11 +17,9 @@
       settings = {
         theme = {
           mode = "dark";
-          source = "wallpaper";
         };
         wallpaper = {
           enabled = true;
-          default.path = "${config.home.homeDirectory}/.config/noctalia/wallpapers/stylix-wallpaper";
         };
         shell = {
           clipboard_enabled = false;
