@@ -566,13 +566,19 @@ in
 
           kiwix = {
             enable = true;
-            zimFiles = {};  # No ZIM files yet — download later
+            zimFiles = {
+              wikipedia = {
+                filename = "wikipedia_en_top_maxi_2026-06.zim";
+                url = "https://lb.download.kiwix.org/zim/wikipedia/wikipedia_en_top_maxi_2026-06.zim";
+                sha256 = "sha256-02cwhdjz0ccm387mwiad9914hx3q3f8x2ylisqd58v82krc5si8v=";
+              };
+            };
           };
 
           ollama = {
             enable = true;
-            gpu = null;  # CPU-only — this VPS has no GPU
-            models = [];  # No models yet — pull later
+            gpu = null;  # CPU-only
+            models = [];
           };
 
           open-webui.enable = true;
