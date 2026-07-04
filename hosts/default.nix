@@ -562,7 +562,7 @@ in
       {
         services.cairn = {
           enable = true;
-          domain = "localhost";
+          domain = "hermes.home";
 
           kiwix = {
             enable = true;
