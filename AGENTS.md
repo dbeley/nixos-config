@@ -114,15 +114,7 @@ mkHost = {
 - `p14sg6` - Lenovo ThinkPad P14s Gen 6 (AMD Ryzen AI 7 350, niri, impermanence)
 - `cf-qv1` - Panasonic Let's Note CF-QV1 (Intel Core i5-1145G7, niri, impermanence)
 - `x1yoga` - Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, gnome, impermanence)
-- `latitude` - Dell Latitude 7420 (Intel Core i7-1165G7, niri)
 - `sg13` - Silverstone SG13 desktop (AMD Ryzen 9 5950X + RTX 3070, gnome)
-
-**Deprecated workstations (no longer in `hosts/default.nix`):**
-- `vaio` - Sony Vaio Pro PK13 (Intel Core i5-1035G1, niri, sops)
-- `x13` - Lenovo ThinkPad X13 Gen 1 (AMD Ryzen 5 4650U, niri, impermanence)
-- `cf-rz6` - Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, niri, impermanence)
-- `p14s` - Lenovo ThinkPad P14s Gen 4 (AMD Ryzen 7 7840U, niri, impermanence)
-- `x61s` - Lenovo Thinkpad X61s (Intel Core 2 Duo L7500, sway)
 
 **Servers (Kimsufi Proxmox VMs):**
 - `nixos-kimsufi-01` - qbittorrent server

@@ -467,33 +467,6 @@ in
       }
     ];
   };
-  latitude = mkHost {
-    hostName = "latitude";
-    stateVersion = "24.05";
-    profiles = [
-      "laptop"
-      "bootloader-systemd-boot"
-      "workstation"
-      "niri"
-      "python"
-      "docker"
-      # "firefox"
-      "zen-browser"
-      "code-agents"
-      "pycharm"
-      "jj"
-    ];
-    extraModules = [
-      inputs.nixos-hardware.nixosModules.dell-latitude-7420
-      ../modules/common/laptop-thermald.nix
-      ../modules/hardware/throttled.nix
-      ../hosts/latitude/throttled.nix
-      ../modules/common/printing.nix
-      {
-        my.stylix.wallpaper = "hk-plant";
-      }
-    ];
-  };
   sg13 = mkHost {
     hostName = "sg13";
     stateVersion = "24.11";
@@ -577,8 +550,8 @@ in
 
           ollama = {
             enable = true;
-            gpu = null;  # CPU-only
-            models = [];
+            gpu = null; # CPU-only
+            models = [ ];
           };
 
           open-webui.enable = true;
@@ -586,10 +559,14 @@ in
 
           caddy = {
             enable = true;
-            port = 8080;  # Hermes is on port 80
+            port = 8080; # Hermes is on port 80
           };
         };
-        networking.firewall.allowedTCPPorts = [ 8080 9090 9091 ];
+        networking.firewall.allowedTCPPorts = [
+          8080
+          9090
+          9091
+        ];
       }
     ];
   };

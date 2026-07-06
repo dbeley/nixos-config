@@ -71,12 +71,19 @@
 - **cf-qv1**: Panasonic Let's Note CF-QV1 (Intel Core i5-1145G7, 16GB RAM, niri, impermanence)
 - **sg13**: Silverstone SG13 (AMD Ryzen 9 5950X, RTX 3070, 32GB RAM, gnome)
 - **x1yoga**: Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, 8GB RAM, gnome, impermanence)
-- **latitude**: Dell Latitude 7420 (Intel Core i7-1165G7, 16GB RAM, niri)
+
+<details>
+
+<summary><b>Deprecated hosts</b></summary>
+
+- **latitude** (deprecated): Dell Latitude 7420 (Intel Core i7-1165G7, 16GB RAM, niri)
 - **p14s** (deprecated): Lenovo ThinkPad P14s Gen 4 (AMD Ryzen 7 7840U, 16GB RAM, niri, impermanence)
 - **vaio** (deprecated): Sony Vaio Pro PK13 (Intel Core i5-1035G1, 16GB RAM, niri)
 - **x13** (deprecated): Lenovo ThinkPad X13 Gen 1 (AMD Ryzen 5 4650U, 16GB RAM, niri, impermanence)
 - **cf-rz6** (deprecated): Panasonic Let's Note CF-RZ6 (Intel Core i5-7Y57, 8GB RAM, niri, impermanence)
 - **x61s** (deprecated): Lenovo Thinkpad X61s (Intel Core 2 Duo L7500, 3GB RAM, sway)
+
+</details>
 
 ### Proxmox Kimsufi VMs (Dedicated Server)
 - **nixos-kimsufi-01**: qbittorrent
