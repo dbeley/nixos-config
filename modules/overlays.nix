@@ -3,14 +3,11 @@
   ...
 }:
 {
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-39.8.10"
-  ];
-
   # overlays that should apply to all hosts (to fix build, fix bugs, etc.)
   nixpkgs.overlays = [
     inputs.niri-nix.overlays.niri-nix
     inputs.nur.overlays.default
+    inputs.llm-agents.overlays.shared-nixpkgs
     # (_: super: {
     # # to fix zoom memory leak, working version found here https://github.com/NixOS/nixpkgs/pull/361097
     # zoom-us = super.zoom-us.overrideAttrs (oldAttrs: {

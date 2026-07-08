@@ -1,6 +1,6 @@
 { inputs, pkgs, ... }:
 let
-  llm = inputs.llm-agents.packages.${pkgs.system};
+  llm = pkgs.llm-agents;
 
   skills = builtins.listToAttrs (
     builtins.concatLists [
