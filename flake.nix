@@ -184,12 +184,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-    herdr = {
-      url = "github:ogulcancelik/herdr";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
     direnv-instant = {
       url = "github:Mic92/direnv-instant";
       inputs = {
@@ -276,7 +270,6 @@
 
       packages = eachSystem (system: {
         iso-installer = (mkISO { inherit system; }).config.system.build.isoImage;
-        herdr = inputs.herdr.packages.${system}.default;
       });
 
       nixosConfigurations = hostConfigs;

@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
-  home.packages = [ inputs.herdr.packages.${pkgs.system}.default ];
+  home.packages = [ pkgs.herdr ];
 }

@@ -95,7 +95,7 @@
       end
     end)
 
-    -- Key bindings - gallery mode (vim-inspired)
+    -- Key bindings - gallery mode
     swayimg.gallery.on_key("h", function()
       swayimg.gallery.switch_image("left")
     end)
@@ -108,52 +108,6 @@
     swayimg.gallery.on_key("l", function()
       swayimg.gallery.switch_image("right")
     end)
-    -- g/G: first/last
-    swayimg.gallery.on_key("g", function()
-      swayimg.gallery.switch_image("first")
-    end)
-    swayimg.gallery.on_key("G", function()
-      swayimg.gallery.switch_image("last")
-    end)
-    -- Ctrl-d/Ctrl-u: page down/up
-    swayimg.gallery.on_key("Ctrl-d", function()
-      swayimg.gallery.switch_image("pgdown")
-    end)
-    swayimg.gallery.on_key("Ctrl-u", function()
-      swayimg.gallery.switch_image("pgup")
-    end)
-    -- Enter/Space: open selected image in viewer
-    swayimg.gallery.on_key("Return", function()
-      swayimg.set_mode("viewer")
-    end)
-    swayimg.gallery.on_key("space", function()
-      swayimg.set_mode("viewer")
-    end)
-    -- q/Escape: quit
-    swayimg.gallery.on_key("q", function()
-      swayimg.exit()
-    end)
-    swayimg.gallery.on_key("Escape", function()
-      swayimg.exit()
-    end)
-    -- d: toggle text overlay
-    swayimg.gallery.on_key("d", function()
-      if swayimg.text.visible() then
-        swayimg.text.hide()
-      else
-        swayimg.text.show()
-      end
-    end)
-    -- R: reload gallery
-    swayimg.gallery.on_key("R", function()
-      swayimg.gallery.reload()
-      swayimg.text.set_status("Gallery reloaded")
-    end)
-    -- m: toggle mark on selected image
-    swayimg.gallery.on_key("m", function()
-      swayimg.gallery.mark_image()
-    end)
-    -- S-Delete: delete selected image
     swayimg.gallery.on_key("S-Delete", function()
       local image = swayimg.gallery.get_image()
       if image then
@@ -161,21 +115,6 @@
         swayimg.text.set_status("Deleted: " .. image.path)
         swayimg.gallery.reload()
       end
-    end)
-    -- Ctrl-p: print paths of all marked files
-    swayimg.gallery.on_key("Ctrl-p", function()
-      local entries = swayimg.imagelist.get()
-      for _, entry in ipairs(entries) do
-        if entry.mark then
-          print(entry.path)
-        end
-      end
-    end)
-
-    -- Key bindings - viewer mode additions
-    -- Escape: go back to gallery mode
-    swayimg.viewer.on_key("Escape", function()
-      swayimg.set_mode("gallery")
     end)
   '';
 }
