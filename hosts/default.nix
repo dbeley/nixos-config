@@ -254,6 +254,7 @@ let
         # ../apps/hermes/hermes.nix
         ../apps/rtk/rtk.nix
         ../apps/goose/goose.nix
+        ../apps/herdr/herdr.nix
       ];
     };
     hermes-server = {
