@@ -86,6 +86,14 @@
     swayimg.viewer.on_key("q", function()
       swayimg.exit()
     end)
+    swayimg.viewer.on_key("S-Delete", function()
+      local image = swayimg.viewer.get_image()
+      if image then
+        os.remove(image.path)
+        swayimg.text.set_status("Deleted: " .. image.path)
+        swayimg.viewer.switch_image("next")
+      end
+    end)
 
     -- Key bindings - gallery mode
     swayimg.gallery.on_key("h", function()
@@ -99,6 +107,14 @@
     end)
     swayimg.gallery.on_key("l", function()
       swayimg.gallery.switch_image("right")
+    end)
+    swayimg.gallery.on_key("S-Delete", function()
+      local image = swayimg.gallery.get_image()
+      if image then
+        os.remove(image.path)
+        swayimg.text.set_status("Deleted: " .. image.path)
+        swayimg.gallery.reload()
+      end
     end)
   '';
 }
