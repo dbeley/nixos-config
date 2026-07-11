@@ -4,16 +4,16 @@
 }:
 {
   home.packages = with pkgs; [
-    audacity
+    # audacity
     backrest
     beets
-    discord
+    # discord
     feishin
     heroic
-    musescore
+    # musescore
     nautilus
     python313Packages.subliminal
-    shotcut
+    # shotcut
     # supersonic
   ];
 

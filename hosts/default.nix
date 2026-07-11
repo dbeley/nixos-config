@@ -224,7 +224,6 @@ let
     code-agents = {
       home = [
         inputs.agent-skills.homeManagerModules.default
-        ../apps/workmux/workmux.nix
         # ../apps/cursor/cursor.nix
         ../apps/opencode/opencode.nix
         ../apps/openskills/openskills.nix
@@ -232,7 +231,7 @@ let
         # ../apps/oh-my-pi/oh-my-pi.nix
         # ../apps/oh-my-opencode/oh-my-opencode.nix
         # ../apps/beads/beads.nix
-        ../apps/hermes/hermes.nix
+        # ../apps/hermes/hermes.nix
         ../apps/rtk/rtk.nix
         ../apps/goose/goose.nix
       ];
@@ -287,6 +286,11 @@ let
     };
     restic = {
       home = [ ../apps/restic/restic.nix ];
+    };
+    cairn = {
+      system = [
+        ../apps/cairn/default.nix
+      ];
     };
     nextcloud-server = {
       system = [
@@ -391,7 +395,7 @@ in
       "python"
       "code-agents"
       # "mullvad"
-      "ollama"
+      # "ollama"
       "restic"
       "sops"
     ];
@@ -529,45 +533,7 @@ in
       "openssh-server"
       "hermes-server"
       "sops"
-    ];
-    extraModules = [
-      inputs.cairn.nixosModules.cairn
-      {
-        services.cairn = {
-          enable = true;
-          domain = "hermes.home";
-
-          kiwix = {
-            enable = true;
-            zimFiles = {
-              wikipedia = {
-                filename = "wikipedia_en_top_maxi_2026-06.zim";
-                url = "https://lb.download.kiwix.org/zim/wikipedia/wikipedia_en_top_maxi_2026-06.zim";
-                sha256 = "sha256-02cwhdjz0ccm387mwiad9914hx3q3f8x2ylisqd58v82krc5si8v=";
-              };
-            };
-          };
-
-          ollama = {
-            enable = true;
-            gpu = null; # CPU-only
-            models = [ ];
-          };
-
-          open-webui.enable = true;
-          cyberchef.enable = true;
-
-          caddy = {
-            enable = true;
-            port = 8080; # Hermes is on port 80
-          };
-        };
-        networking.firewall.allowedTCPPorts = [
-          8080
-          9090
-          9091
-        ];
-      }
+      "cairn"
     ];
   };
   nixos-era-02 = mkHost {
