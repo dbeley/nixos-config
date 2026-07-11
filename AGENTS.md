@@ -21,7 +21,7 @@
   - Terminals: `alacritty/`, `ghostty/`, `kitty/`
   - Editors: `editorconfig/`, `emacs/`, `helix/`, `kakoune/`, `neovim-nixvim/`, `neovim-nvf/`, `nvim/`, `vscode/`
   - Browsers: `firefox/`, `qutebrowser/`, `ungoogled-chromium/`, `zen-browser/`
-  - Code agents: `beads/`, `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `goose/`, `hermes/`, `oh-my-opencode/`, `oh-my-pi/`, `opencode/`, `openskills/`, `pi/`, `rtk/`, `workmux/`
+  - Code agents: `beads/`, `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `goose/`, `hermes/`, `oh-my-opencode/`, `oh-my-pi/`, `opencode/`, `openskills/`, `pi/`, `rtk/`
   - File managers: `lf/`, `nnn/`, `yazi/`
   - Media: `feishin/`, `imv/`, `mpd/`, `mpv/`, `obs/`, `swayimg/`, `zathura/`
   - Wayland utilities: `gammastep/`, `hyprlock/`, `mako/`, `noctalia/`, `swayidle/`, `swaylock/`, `tofi/`, `waybar/`, `wofi/`
@@ -93,7 +93,7 @@ mkHost = {
 - `obs` - OBS Studio
 - `pycharm` - PyCharm IDE
 - `moonlight` - Game streaming client
-- `code-agents` - workmux, opencode, openskills, rtk, hermes, goose
+- `code-agents` - opencode, openskills, rtk, hermes, goose
 - `jj` - Jujutsu version control system
 - `mullvad` - Mullvad VPN (system + home-manager)
 - `ollama` - Ollama local LLM server
