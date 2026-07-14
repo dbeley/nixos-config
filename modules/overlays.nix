@@ -7,7 +7,6 @@
   nixpkgs.overlays = [
     inputs.niri-nix.overlays.niri-nix
     inputs.nur.overlays.default
-    inputs.llm-agents.overlays.shared-nixpkgs
     # (_: super: {
     # # to fix zoom memory leak, working version found here https://github.com/NixOS/nixpkgs/pull/361097
     # zoom-us = super.zoom-us.overrideAttrs (oldAttrs: {
