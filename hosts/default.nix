@@ -533,7 +533,7 @@ in
       "openssh-server"
       "hermes-server"
       "sops"
-      "cairn"
+      # "cairn"
     ];
   };
   nixos-era-02 = mkHost {
