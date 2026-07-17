@@ -124,6 +124,14 @@ in
         {
           on = [
             "b"
+            "e"
+          ];
+          run = "cd ~/nfs/WDC14_2/Medias";
+          desc = "Bookmark: Medias";
+        }
+        {
+          on = [
+            "b"
             "f"
           ];
           run = "cd ~/nfs";
