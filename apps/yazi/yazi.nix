@@ -124,7 +124,7 @@ in
         {
           on = [
             "b"
-            "e"
+            "i"
           ];
           run = "cd ~/nfs/WDC14_2/Medias";
           desc = "Bookmark: Medias";
