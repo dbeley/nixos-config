@@ -7,10 +7,6 @@
 {
   imports = [ inputs.noctalia.homeModules.default ];
 
-  home.file.".config/noctalia/wallpapers/stylix-wallpaper" = {
-    source = config.stylix.image;
-  };
-
   programs = {
     noctalia = {
       enable = true;
@@ -20,6 +16,7 @@
         };
         wallpaper = {
           enabled = true;
+          default.path = "${config.stylix.image}";
         };
         shell = {
           clipboard_enabled = false;

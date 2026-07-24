@@ -402,7 +402,7 @@ in
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen6
       {
-        my.stylix.wallpaper = "blue-planet";
+        my.stylix.wallpaper = "nyc-425-park-avenue";
         disko.mainDisk = "/dev/nvme0n1";
       }
       ../apps/boinc/default.nix
