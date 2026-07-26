@@ -13,6 +13,7 @@
     nautilus
     shotcut
     papers
+    python3Packages.subliminal
     # supersonic
   ];
 

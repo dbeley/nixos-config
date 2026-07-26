@@ -12,7 +12,7 @@
     heroic
     # musescore
     nautilus
-    python313Packages.subliminal
+    python3Packages.subliminal
     # shotcut
     # supersonic
   ];
