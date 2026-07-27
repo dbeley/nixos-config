@@ -166,6 +166,9 @@ let
     firefox = {
       home = [ ../apps/firefox/firefox.nix ];
     };
+    thunderbird = {
+      home = [ ../apps/thunderbird/thunderbird.nix ];
+    };
     chromium = {
       home = [ ../apps/ungoogled-chromium/ungoogled-chromium.nix ];
     };
@@ -392,6 +395,7 @@ in
       "chromium"
       # "qutebrowser"
       # "mpd"
+      "thunderbird"
       "python"
       "code-agents"
       # "mullvad"
