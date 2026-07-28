@@ -410,8 +410,10 @@ in
         disko.mainDisk = "/dev/nvme0n1";
       }
       ../apps/boinc/default.nix
+      ../modules/hardware/razer-naga.nix
     ];
   };
+
   cf-qv1 = mkHost {
     hostName = "cf-qv1";
     stateVersion = "26.05";
