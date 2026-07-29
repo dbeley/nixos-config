@@ -26,10 +26,6 @@ rollback:
   @echo "Rolling back to previous generation"
   nh os rollback
 
-build-iso-image:
-  @echo "Building generic installer ISO"
-  nix build .#iso-installer --print-out-paths
-
 install-proxmox-vm hostname ip:
   @echo "Installing {{hostname}} on {{ip}}"
   scp scripts/install-nixos.sh nixos@{{ip}}:/tmp/

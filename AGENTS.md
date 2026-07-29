@@ -34,7 +34,6 @@
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
 - **`imgs/`** - Assets, wallpapers, and screenshots
 - **`justfile`** - Build and maintenance recipes
-- **`iso-configs/`** - Custom ISO installer configuration for NixOS installations
 - **`.env`** - Environment variables for justfile (e.g., `HOST=x13`) - not committed to git
 
 **Note:** There is NO `pkgs/` directory. Custom packages are defined inline within app modules (e.g., `apps/mpdscrobble/package.nix`, `apps/autoscreen/autoscreen.nix`).
@@ -212,7 +211,6 @@ nix build .#<pkg>  # Ensure derivation succeeds before committing
 - `just update` - Update flake inputs
 - `just optimize` - Optimize nix store
 - `just rollback` - Roll back to previous generation (uses `nh os rollback`)
-- `just build-iso-image` - Build generic installer ISO
 - `just install-proxmox-vm <hostname> <ip>` - Upload install script to Proxmox VM
 - `just switch-proxmox-vm <hostname> <ip>` - Deploy config to remote Proxmox VM
 - `just boot-proxmox-vm <hostname> <ip>` - Deploy config to remote Proxmox VM (boot only)
