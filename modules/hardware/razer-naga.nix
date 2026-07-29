@@ -30,9 +30,9 @@ in
       settings.main = {
         leftmouse = "rightmouse";
         rightmouse = "leftmouse";
-        "1" = "previoussong";
-        "2" = "playpause";
-        "3" = "nextsong";
+        "1" = "C-S-tab";
+        "2" = "C-w";
+        "3" = "C-tab";
         "4" = "pageup";
         "5" = "up";
         "6" = "home";
