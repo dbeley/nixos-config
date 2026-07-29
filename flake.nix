@@ -203,21 +203,6 @@
           ;
         inherit (nixpkgs) lib;
       };
-
-      mkISO =
-        {
-          system ? "x86_64-linux",
-        }:
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./iso-configs/common.nix
-            {
-              environment.etc."iso-config".source = self;
-              networking.hostName = "nixos-installer";
-            }
-          ];
-        };
     in
     {
       checks = eachSystem (
@@ -252,10 +237,6 @@
             buildInputs = enabledPackages;
             shell = pkgs.fish;
           };
-      });
-
-      packages = eachSystem (system: {
-        iso-installer = (mkISO { inherit system; }).config.system.build.isoImage;
       });
 
       nixosConfigurations = hostConfigs;
