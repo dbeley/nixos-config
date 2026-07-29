@@ -87,11 +87,9 @@ let
     };
     niri = {
       system = [
-        inputs.niri-nix.nixosModules.default
         ../apps/niri/default.nix
       ];
       home = [
-        inputs.niri-nix.homeModules.default
         ../apps/niri/niri.nix
         ../apps/noctalia/noctalia.nix
         ../apps/autoscreen/autoscreen.nix
@@ -100,12 +98,10 @@ let
     };
     niri-waybar = {
       system = [
-        inputs.niri-nix.nixosModules.default
         ../apps/niri/default.nix
         ../apps/hyprlock/default.nix
       ];
       home = [
-        inputs.niri-nix.homeModules.default
         ../apps/niri/niri.nix
         ../apps/hyprlock/hyprlock.nix
         ../apps/swayidle/swayidle.nix
