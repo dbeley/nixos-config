@@ -68,6 +68,10 @@ first-install-disko host target:
   @echo "Installing host {{host}} on target disk {{target}}"
   sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake .#{{host}} --disk main {{target}} --show-trace
 
+post-install-disko host target:
+  @echo "Post-install setup for {{host}} on {{target}}"
+  sudo bash scripts/post-install-disko.sh {{host}} {{target}} $USER
+
 flake-linter:
 	@echo "Running flake linter"
 	nix run github:Mic92/flake-linter
