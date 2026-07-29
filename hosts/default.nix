@@ -296,6 +296,11 @@ let
         ../apps/nextcloud-server/default.nix
       ];
     };
+    immich = {
+      system = [
+        ../apps/immich/default.nix
+      ];
+    };
   };
   mkHost =
     {
@@ -564,6 +569,16 @@ in
       "bootloader-grub-bios"
       "openssh-server"
       "nextcloud-server"
+      "sops"
+    ];
+  };
+  nixos-era-05 = mkHost {
+    hostName = "nixos-era-05";
+    stateVersion = "26.05";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "immich"
       "sops"
     ];
   };
