@@ -76,6 +76,9 @@
             };
           };
         };
+        location = {
+          auto_locate = true;
+        };
         weather = {
           address = "Paris, France";
           auto_locate = true;
