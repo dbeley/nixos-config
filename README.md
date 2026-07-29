@@ -153,100 +153,57 @@ just nix-olde      # Generate outdated packages report with the help of nix-olde
 
 ## Manual Install
 
-On a new install, you should first copy `/etc/nixos/hardware-configuration.nix` over `hosts/{host}/hardware-configuration.nix`.
+On a new install, add a host definition in `hosts/default.nix` with the wanted profiles, then follow the path that matches your setup.
 
-Then add a new definition of the host in `hosts/default.nix` with the wanted profiles.
+### Impermanence/disko hosts
 
-Installation without impermanence/disko can be done normally from the NixOS Live ISO, then just clone this repo and `just switch` (cf. above).
-
-### Installing with Custom ISO
-
-From this repo, you can generate a universal installer ISO that includes all the available host configurations:
+Install from another running NixOS host (your desktop, a server) with the target disk plugged in. The disk can be any device that isn't the one the build host is running on. Once installed, move the disk to the target machine.
 
 ```bash
-just build-iso-image
-
-# Flash the ISO to a USB drive (replace /dev/sdX with your USB device and ISO_NAME to your newly built ISO image)
-sudo dd if=result/iso/<ISO_NAME>.iso of=/dev/sdX bs=4M status=progress conv=fsync
-```
-
-Boot from the ISO, then:
-
-**For hosts with impermanence/disko:**
-```bash
-# Install with automatic partitioning for any host
-# Note: The --disk main parameter should match your disko.mainDisk setting
-sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake /etc/iso-config#HOSTNAME --disk main /dev/DEVICE
-```
-
-If you don't have enough storage space (by default it takes RAM for the /nix/store), you can either disable some profiles for the host you're building in `/etc/iso-config/hosts/default.nix` or try one of the following:
-
-```bash
-# Option 1: Increase the size of tmpfs (allows /nix/store to use more RAM)
-sudo mount -o remount,size=75% /nix/.rw-store
-
-# Option 2: Create a swapfile on the target disk to avoid using only RAM
-# (requires the target to be mounted at /mnt, e.g. after disko partitioning)
-sudo mkswap -U clear --size 8G --file /mnt/swapfile
-sudo swapon /mnt/swapfile
-```
-
-If it's still not enough, disable most profiles on the host to have a minimal install, rebuild the iso + flash on the USB stick and try again.
-
-Don't forget to apply the post-installation steps described in the next section (password file).
-
-**For standard hosts (without disko):**
-
-The custom ISO only works for disko-enabled hosts. For standard hosts, use the official NixOS ISO and follow the manual installation process above.
-
-### Impermanence/disko
-
-When using the impermanence/disko module, the installation changes quite a bit and can even be done from a separate host by plugging the destination storage device.
-
-Installation can be done from any computer running nix, using a live ISO running from a USB key is not recommended as it will most likely run out of space during the install.
-The target disk can be any mounted disk (except the one the system is currently running on!) and will then have to be installed on the host computer after the installation is complete.
-
-```
-# On a new host don't forget to generate the hardware-configuration.nix file and copy it on hosts/{host}/hardware-configuration.nix
-# You can do that from a live ISO and then copy it to your build host
+# Generate hardware-configuration.nix (from a live ISO or the target machine)
+# and copy it to hosts/{host}/hardware-configuration.nix
 nixos-generate-config --no-filesystems
 
-# disko + impermanence install on an existing host called "x1yoga"
-# Note: /dev/sda must match the host's disko.mainDisk setting
-sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake .#x1yoga --disk main /dev/sda --show-trace
-# Using just
+# disko + impermanence install for host "x1yoga" to /dev/sda
 just first-install-disko x1yoga /dev/sda
 
-# Post-installation - mount the newly installed system on /mnt/root
-lsblk # identify luks encrypted partition
-sudo cryptsetup open /dev/sda2 luks-1
-sudo mount -o subvol=root /dev/mapper/luks-1 /mnt/root
-sudo mount -o subvol=persistent /dev/mapper/luks-1 /mnt/root/persistent  
-sudo mount -o subvol=nix /dev/mapper/luks-1 /mnt/root/nix
-sudo mount /dev/sda1 /mnt/root/boot
+# Post-install: mount the new system and create the password file (MANDATORY for impermanence)
+just post-install-disko x1yoga /dev/sda
 
-# Create password file - MANDATORY as password are not mutable in the impermanence/disko module
-mkpasswd > temp_passwd_file
-sudo mv temp_passwd_file /mnt/root/persistent/passwd_$USER
-sudo chown root:root /mnt/root/persistent/passwd_$USER
+# Optional: chroot into the new system
+sudo nixos-enter --root /mnt/root
+```
 
-# Optional: chroot into the new system to apply other changes
-sudo nixos-enter --root /mnt
+### Standard hosts
+
+Install a minimal NixOS from the official ISO, then replace it with your flake config after first boot. This avoids building the full closure in the ISO's RAM-backed store.
+
+```bash
+# From the official NixOS minimal ISO: partition, mount, and install the generated minimal config
+nixos-generate-config --root /mnt
+sudo nixos-install
+# Reboot, log in as root, then:
+nix-shell -p just nh git
+git clone <this-repo> ~/nixos-config && cd ~/nixos-config
+cp /etc/nixos/hardware-configuration.nix hosts/<hostname>/
+echo "HOST=<hostname>" > .env
+just switch
 ```
 
 ### Proxmox VM Images
 
-Dedicated just recipes exist in order to facilite installation and deployment of remote images.
+Dedicated just recipes exist in order to facilitate installation and deployment of remote images.
 
 - Create a VM in Proxmox
 - Boot the NixOS minimal ISO
-- Set up SSH connection by either setting a password to nixos or root user or adding your ssh key into the VM
+- Set up SSH connection by setting a password for the `nixos` user on the ISO, or by adding your SSH key
 
 ```bash
 just install-proxmox-vm HOSTNAME IP
-# You might need to delete entries in ~/.ssh/known_hosts to properly connect in ssh
-# Connect manually on the VM to change the user password
-just switch-proxmox-vm HOSTNAME IP
+# You might need to delete entries in ~/.ssh/known_hosts to connect via SSH
+just boot-proxmox-vm HOSTNAME IP
+# After first boot, log in as david (initial password: nixos) and change it:
+#   passwd
 ```
 
 ## Post-install
