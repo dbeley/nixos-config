@@ -5,16 +5,7 @@
 {
   # overlays that should apply to all hosts (to fix build, fix bugs, etc.)
   nixpkgs.overlays = [
-    inputs.niri-nix.overlays.niri-nix
     inputs.nur.overlays.default
-    # ponytail: libdisplay-info bumped to 0.4.0 in nixpkgs ahead of niri HEAD bumping libdisplay-info-sys
-    # to a 0.4-capable version (niri Cargo.toml still pins libdisplay-info = "0.3.0"). Drop this when
-    # niri-nix's pinned niri-unstable rev moves to a commit with libdisplay-info = "0.4".
-    (_: super: {
-      niri-unstable = super.niri-unstable.override {
-        libdisplay-info = super.libdisplay-info_0_3;
-      };
-    })
     # (_: super: {
     # # to fix zoom memory leak, working version found here https://github.com/NixOS/nixpkgs/pull/361097
     # zoom-us = super.zoom-us.overrideAttrs (oldAttrs: {

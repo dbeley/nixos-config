@@ -11,7 +11,7 @@
 
   wayland.windowManager.niri = {
     enable = true;
-    package = pkgs.niri-unstable;
+    package = pkgs.niri;
 
     settings = {
       environment = {
@@ -48,42 +48,6 @@
         };
         "focus-follows-mouse" = [ ];
       };
-
-      output = [
-        {
-          _args = [ "LG Display 0x067C Unknown" ];
-          scale = 2;
-        }
-        {
-          _args = [ "Samsung Electric Company Q90A 0x01000E00" ];
-          scale = 2;
-          mode = "3840x2160@60";
-        }
-        {
-          _args = [ "Dell Inc. DELL S2721DGF 6C1TR83" ];
-          mode = "2560x1440@143.912";
-          position._props = {
-            x = 0;
-            y = 0;
-          };
-        }
-        {
-          _args = [ "LG Display 0x05EF Unknown" ];
-          scale = 1.6;
-          mode = "2560x1440@59.998";
-        }
-        {
-          _args = [ "LG Electronics LG IPS FULLHD 0x01010101" ];
-          position._props = {
-            x = 0;
-            y = 0;
-          };
-        }
-        {
-          _args = [ "eDP-1" ];
-          scale = 1.25;
-        }
-      ];
 
       cursor = {
         hide-after-inactive-ms = 5000;
@@ -125,134 +89,6 @@
         saturation = 1.5;
       };
 
-      spawn-at-startup = [
-        [ "niriusd" ]
-      ];
-
-      window-rule = [
-        {
-          match = [
-            {
-              _props = {
-                app-id = "firefox";
-                title = "Picture-in-Picture";
-              };
-            }
-            { _props.app-id = "mpv"; }
-            {
-              _props = {
-                app-id = "steam";
-                title = "Friends List";
-              };
-            }
-            {
-              _props = {
-                app-id = "steam";
-                title = "Steam Settings";
-              };
-            }
-            {
-              _props = {
-                app-id = "jetbrains.*";
-                title = "Open File or Project";
-              };
-            }
-            {
-              _props = {
-                app-id = "jetbrains.*";
-                title = "Settings";
-              };
-            }
-            {
-              _props = {
-                app-id = "jetbrains.*";
-                title = "Confirm Exit";
-              };
-            }
-            {
-              _props = {
-                app-id = "jetbrains.*";
-                title = "Update Project";
-              };
-            }
-            {
-              _props = {
-                app-id = "zoom";
-                title = "Zoom Workplace";
-              };
-            }
-            {
-              _props = {
-                app-id = "zoom";
-                title = "Settings";
-              };
-            }
-            {
-              _props = {
-                app-id = "zoom";
-                title = "zoom";
-              };
-            }
-            { _props.app-id = "swayimg"; }
-            { _props.title = "Ouvrir.*"; }
-            { _props.title = "Extension.*"; }
-            { _props.title = "Enregistrer.*"; }
-            { _props.title = "Add.*"; }
-          ];
-          open-floating = true;
-        }
-        {
-          match._props.app-id = "org.keepassxc.KeePassXC";
-          block-out-from = "screen-capture";
-        }
-        {
-          match = [
-            { _props.app-id = "com.ghostty.mpd-picker"; }
-            { _props.app-id = "com.ghostty.real-book-picker"; }
-          ];
-          open-floating = true;
-          "default-floating-position"._props = {
-            x = 0;
-            y = 0;
-            relative-to = "top";
-          };
-          default-window-height = {
-            proportion = 0.3;
-          };
-          default-column-width = {
-            proportion = 0.4;
-          };
-        }
-        {
-          "geometry-corner-radius"._args = [
-            12.0
-            12.0
-            12.0
-            12.0
-          ];
-          "clip-to-geometry" = true;
-          background-effect = {
-            blur = true;
-            xray = true;
-          };
-          "draw-border-with-background" = false;
-        }
-        {
-          match = [
-            { _props."is-focused" = false; }
-          ];
-          opacity = 0.90;
-        }
-      ];
-
-      layer-rule = [
-        {
-          match = [
-            { _props.namespace = "noctalia-wallpaper*"; }
-          ];
-          "place-within-backdrop" = true;
-        }
-      ];
       layout.background-color = "transparent";
       overview.workspace-shadow = {
         off = [ ];
@@ -262,12 +98,10 @@
         skip-at-startup = true;
       };
 
-      include = [
-        {
-          _args = [ "~/.config/niri/local.kdl" ];
-          _props.optional = true;
-        }
-      ];
+      include = {
+        _args = [ "~/.config/niri/local.kdl" ];
+        _props.optional = true;
+      };
 
       binds = {
         "Mod+Shift+Slash"."show-hotkey-overlay" = [ ];
@@ -446,6 +280,195 @@
           "toggle-follow-mode"
         ];
       };
+
+      # Repeated top-level keys use _children for toKDL compatibility
+      # Each entry is a single node in the KDL output
+      _children = [
+        # Outputs
+        {
+          output = {
+            _args = [ "LG Display 0x067C Unknown" ];
+            scale = 2;
+          };
+        }
+        {
+          output = {
+            _args = [ "Samsung Electric Company Q90A 0x01000E00" ];
+            scale = 2;
+            mode = "3840x2160@60";
+          };
+        }
+        {
+          output = {
+            _args = [ "Dell Inc. DELL S2721DGF 6C1TR83" ];
+            mode = "2560x1440@143.912";
+            position._props = {
+              x = 0;
+              y = 0;
+            };
+          };
+        }
+        {
+          output = {
+            _args = [ "LG Display 0x05EF Unknown" ];
+            scale = 1.6;
+            mode = "2560x1440@59.998";
+          };
+        }
+        {
+          output = {
+            _args = [ "LG Electronics LG IPS FULLHD 0x01010101" ];
+            position._props = {
+              x = 0;
+              y = 0;
+            };
+          };
+        }
+        {
+          output = {
+            _args = [ "eDP-1" ];
+            scale = 1.25;
+          };
+        }
+
+        # Window rules
+        {
+          window-rule = {
+            _children = [
+              {
+                match._props = {
+                  app-id = "firefox";
+                  title = "Picture-in-Picture";
+                };
+              }
+              { match._props.app-id = "mpv"; }
+              {
+                match._props = {
+                  app-id = "steam";
+                  title = "Friends List";
+                };
+              }
+              {
+                match._props = {
+                  app-id = "steam";
+                  title = "Steam Settings";
+                };
+              }
+              {
+                match._props = {
+                  app-id = "jetbrains.*";
+                  title = "Open File or Project";
+                };
+              }
+              {
+                match._props = {
+                  app-id = "jetbrains.*";
+                  title = "Settings";
+                };
+              }
+              {
+                match._props = {
+                  app-id = "jetbrains.*";
+                  title = "Confirm Exit";
+                };
+              }
+              {
+                match._props = {
+                  app-id = "jetbrains.*";
+                  title = "Update Project";
+                };
+              }
+              {
+                match._props = {
+                  app-id = "zoom";
+                  title = "Zoom Workplace";
+                };
+              }
+              {
+                match._props = {
+                  app-id = "zoom";
+                  title = "Settings";
+                };
+              }
+              {
+                match._props = {
+                  app-id = "zoom";
+                  title = "zoom";
+                };
+              }
+              { match._props.app-id = "swayimg"; }
+              { match._props.title = "Ouvrir.*"; }
+              { match._props.title = "Extension.*"; }
+              { match._props.title = "Enregistrer.*"; }
+              { match._props.title = "Add.*"; }
+            ];
+            open-floating = true;
+          };
+        }
+        {
+          window-rule = {
+            match._props.app-id = "org.keepassxc.KeePassXC";
+            block-out-from = "screen-capture";
+          };
+        }
+        {
+          window-rule = {
+            _children = [
+              { match._props.app-id = "com.ghostty.mpd-picker"; }
+              { match._props.app-id = "com.ghostty.real-book-picker"; }
+            ];
+            open-floating = true;
+            "default-floating-position"._props = {
+              x = 0;
+              y = 0;
+              relative-to = "top";
+            };
+            default-window-height = {
+              proportion = 0.3;
+            };
+            default-column-width = {
+              proportion = 0.4;
+            };
+          };
+        }
+        {
+          window-rule = {
+            "geometry-corner-radius"._args = [
+              12.0
+              12.0
+              12.0
+              12.0
+            ];
+            "clip-to-geometry" = true;
+            background-effect = {
+              blur = true;
+              xray = true;
+            };
+            "draw-border-with-background" = false;
+          };
+        }
+        {
+          window-rule = {
+            _children = [
+              { match._props."is-focused" = false; }
+            ];
+            opacity = 0.90;
+          };
+        }
+
+        # Layer rules
+        {
+          layer-rule = {
+            _children = [
+              { match._props.namespace = "noctalia-wallpaper*"; }
+            ];
+            "place-within-backdrop" = true;
+          };
+        }
+
+        # Spawn at startup
+        { spawn-at-startup = [ "niriusd" ]; }
+      ];
     };
   };
 }

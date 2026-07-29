@@ -1,15 +1,7 @@
-{ pkgs, ... }:
-{
-  programs.niri.package = pkgs.niri-unstable;
+_: {
+  # Required by home-manager's xdg.portal when using useUserPackages
+  # (wayland.windowManager.niri from home-manager sets up portals)
+  environment.pathsToLink = [ "/share/xdg-desktop-portal" ];
 
   services.gnome.gnome-keyring.enable = true;
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gnome
-      xdg-desktop-portal-gtk
-    ];
-    configPackages = [ pkgs.niri-unstable ];
-  };
 }

@@ -119,8 +119,8 @@
   };
 
   wayland.windowManager.niri.settings = lib.mkIf config.wayland.windowManager.niri.enable {
-    spawn-at-startup = [
-      [ "noctalia" ]
+    _children = [
+      { spawn-at-startup = [ "noctalia" ]; }
     ];
     binds = {
       "Mod+Shift+C"."spawn" = [
