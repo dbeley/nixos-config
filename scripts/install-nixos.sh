@@ -96,12 +96,11 @@ sudo tee /mnt/etc/nixos/configuration.nix > /dev/null << 'EOF'
   services.openssh = {
     enable = true;
     settings = {
-      PermitRootLogin = "yes";
+      PermitRootLogin = "no";
       PasswordAuthentication = true;
     };
   };
 
-  users.users.root.initialPassword = "nixos";
   users.users.david = {
     isNormalUser = true;
     initialPassword = "nixos";
@@ -146,8 +145,12 @@ echo "   Replace PLACEHOLDER with: $UUID"
 echo ""
 echo "2. Reboot this VM"
 echo ""
-echo "3. After reboot, deploy final config from local machine (initial password: nixos):"
-echo "     sudo nixos-rebuild switch --flake .#$HOSTNAME --target-host david@<IP>"
+echo "3. After reboot, deploy final config from your local machine"
+echo "   (initial password for david: nixos):"
+echo "     just boot-proxmox-vm $HOSTNAME <IP>"
+echo ""
+echo "4. After first login as david, CHANGE the password:"
+echo "     passwd"
 echo ""
 echo "=========================================="
 echo ""
