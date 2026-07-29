@@ -31,9 +31,13 @@ in
     # (default is "localhost", which would block remote access despite the firewall port).
     host = "0.0.0.0";
     mediaLocation = "${nfsMount}/Immich";
-    # Run as the owning user so it matches NFS ownership from OMV exports.
     inherit user;
     group = "users";
+    # Run as `david` so NFS writes match OMV ownership. Peer-socket auth then
+    # needs a matching PG role/db, both auto-created by the module only when
+    # their names coincide (the module asserts db name == user name).
+    database.user = user;
+    database.name = user;
   };
 
   systemd.services.immich-server = {
