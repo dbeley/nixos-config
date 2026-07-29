@@ -50,7 +50,7 @@
       "Musique"
       "Nextcloud"
       "nfs"
-      "Téléchargements"
+      # "Téléchargements" - handled by the escaped systemd.mounts workaround below
       ".cache/fish/generated_completions"
       ".cache/keepassxc"
       ".cache/nix"
