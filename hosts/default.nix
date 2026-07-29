@@ -532,8 +532,8 @@ in
       "openssh-server"
     ];
   };
-  nixos-era-01 = mkHost {
-    hostName = "nixos-era-01";
+  nixos-era-hermes = mkHost {
+    hostName = "nixos-era-hermes";
     stateVersion = "26.05";
     profiles = [
       "bootloader-grub-bios"
@@ -543,8 +543,8 @@ in
       # "cairn"
     ];
   };
-  nixos-era-02 = mkHost {
-    hostName = "nixos-era-02";
+  nixos-era-nixflix = mkHost {
+    hostName = "nixos-era-nixflix";
     stateVersion = "26.05";
     profiles = [
       "bootloader-grub-bios"
@@ -553,8 +553,8 @@ in
       "nixflix"
     ];
   };
-  nixos-era-03 = mkHost {
-    hostName = "nixos-era-03";
+  nixos-era-adguard = mkHost {
+    hostName = "nixos-era-adguard";
     stateVersion = "26.05";
     profiles = [
       "bootloader-grub-bios"
@@ -562,8 +562,8 @@ in
       "adguard-home"
     ];
   };
-  nixos-era-04 = mkHost {
-    hostName = "nixos-era-04";
+  nixos-era-nextcloud = mkHost {
+    hostName = "nixos-era-nextcloud";
     stateVersion = "26.05";
     profiles = [
       "bootloader-grub-bios"
@@ -572,8 +572,8 @@ in
       "sops"
     ];
   };
-  nixos-era-05 = mkHost {
-    hostName = "nixos-era-05";
+  nixos-era-immich = mkHost {
+    hostName = "nixos-era-immich";
     stateVersion = "26.05";
     profiles = [
       "bootloader-grub-bios"

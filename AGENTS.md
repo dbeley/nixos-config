@@ -121,10 +121,11 @@ mkHost = {
 - `nixos-kimsufi-03` - unused
 
 **Servers (ERA VPS):**
-- `nixos-era-01` - Hermes Web UI
-- `nixos-era-02` - Nixflix media server
-- `nixos-era-03` - AdGuard Home DNS server
-- `nixos-era-04` - Nextcloud server
+- `nixos-era-hermes` - Hermes Web UI
+- `nixos-era-nixflix` - Nixflix media server
+- `nixos-era-adguard` - AdGuard Home DNS server
+- `nixos-era-nextcloud` - Nextcloud server
+- `nixos-era-immich` - Immich server
 
 ## Testing Guidelines
 - **For verification, run formatting checks only**: Use `nix build .#checks.x86_64-linux.pre-commit-check --max-jobs 2` to verify code formatting/linting without evaluating all NixOS configurations. This is the recommended approach for LLM agents to avoid memory exhaustion.
