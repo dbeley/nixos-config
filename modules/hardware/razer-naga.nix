@@ -33,9 +33,9 @@ in
         "1" = "previoussong";
         "2" = "playpause";
         "3" = "nextsong";
-        "4" = "home";
+        "4" = "pageup";
         "5" = "up";
-        "6" = "pageup";
+        "6" = "home";
         "7" = "left";
         "8" = "middlemouse";
         "9" = "right";
@@ -47,7 +47,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    polychromatic
+    # polychromatic
     razer-cli
   ];
 
