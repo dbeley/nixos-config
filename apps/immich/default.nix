@@ -1,0 +1,48 @@
+{
+  user,
+  ...
+}:
+let
+  nfsServer = "omv.home";
+  nfsExport = "/WDC14_2";
+  nfsMount = "/mnt/nfs/WDC14_2";
+in
+{
+  fileSystems.${nfsMount} = {
+    device = "${nfsServer}:${nfsExport}";
+    fsType = "nfs";
+    options = [
+      "_netdev"
+      "nofail"
+      "hard"
+      "timeo=60"
+      "retrans=3"
+    ];
+  };
+
+  systemd.tmpfiles.settings."immich-nfs-symlink" = {
+    "/home/${user}/nfs".L.argument = "/mnt/nfs";
+  };
+
+  services.immich = {
+    enable = true;
+    openFirewall = true;
+    # Listen on all interfaces so the VM is reachable from the LAN
+    # (default is "localhost", which would block remote access despite the firewall port).
+    host = "0.0.0.0";
+    mediaLocation = "${nfsMount}/Immich";
+    # Run as the owning user so it matches NFS ownership from OMV exports.
+    inherit user;
+    group = "users";
+  };
+
+  systemd.services.immich-server = {
+    requires = [ "mnt-nfs-WDC14_2.mount" ];
+    after = [
+      "mnt-nfs-WDC14_2.mount"
+      "network-online.target"
+    ];
+  };
+
+  networking.firewall.allowedTCPPorts = [ 2283 ];
+}
