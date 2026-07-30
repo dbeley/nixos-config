@@ -216,7 +216,7 @@
         "Mod+D"."spawn" = [ "feishin" ];
         "Mod+Shift+D"."spawn" = [
           "chromium"
-          "--app=http://covertone.docker-era.home"
+          "--app=http://covertone.home"
           "--disable-extensions"
         ];
         "Mod+N"."spawn" = [ "keepassxc" ];
