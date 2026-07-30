@@ -16,7 +16,7 @@
   - `modules/cachix/` - Binary cache configurations (niri, nix-community)
   - `configuration.nix` - Base system configuration (networking, locale, nix settings)
   - `overlays.nix` - System-wide package overlays
-- **`apps/`** - Reusable application and desktop environment modules (91 directories, 106 .nix files total)
+- **`apps/`** - Reusable application and desktop environment modules (96 directories, 110 .nix files total)
   - Desktop environments: `gnome/`, `niri/`, `sway/`
   - Terminals: `alacritty/`, `ghostty/`, `kitty/`
   - Editors: `editorconfig/`, `emacs/`, `helix/`, `kakoune/`, `neovim-nixvim/`, `neovim-nvf/`, `nvim/`, `vscode/`
@@ -28,8 +28,8 @@
   - Shell/CLI tools: `bat/`, `btop/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `workstation/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
-  - Servers: `adguard-home/`, `hermes-server/`, `nextcloud-server/`, `nixflix/`
-  - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `udiskie/`
+  - Servers: `adguard-home/`, `cairn/`, `covertone/`, `hermes-server/`, `immich/`, `maloja/`, `navidrome/`, `nextcloud-server/`, `nixflix/`, `slskd/`
+  - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `thunderbird/`, `udiskie/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
 - **`imgs/`** - Assets, wallpapers, and screenshots
@@ -99,12 +99,19 @@ mkHost = {
 - `hermes-server` - Hermes Web UI (port 80), NixOS system service with sops auth
 - `nextcloud-server` - Nextcloud server
 - `restic` - Restic backup tool
+- `thunderbird` - Thunderbird email client
 
 **Servers:**
-- `nixflix` - Nixflix media server
-- `hermes-server` - Hermes Web UI
 - `adguard-home` - AdGuard Home DNS ad-blocker
+- `cairn` - Self-hosted AI platform (kiwix, ollama, open-webui)
+- `covertone` - Album art server
+- `hermes-server` - Hermes Web UI
+- `immich` - Immich photo server
+- `maloja` - Music scrobbling server
+- `navidrome` - Navidrome music streaming server
 - `nextcloud-server` - Nextcloud server
+- `nixflix` - Nixflix media server
+- `slskd` - Soulseek file sharing client
 
 ### Current Hosts
 
@@ -120,15 +127,16 @@ mkHost = {
 - `nixos-kimsufi-03` - unused
 
 **Servers (ERA VPS):**
-- `nixos-era-hermes` - Hermes Web UI
-- `nixos-era-nixflix` - Nixflix media server
 - `nixos-era-adguard` - AdGuard Home DNS server
+- `nixos-era-hermes` - Hermes Web UI
+- `nixos-era-immich` - Immich photo server
+- `nixos-era-navidrome` - Navidrome music streaming server
 - `nixos-era-nextcloud` - Nextcloud server
-- `nixos-era-immich` - Immich server
+- `nixos-era-nixflix` - Nixflix media server
 
 ## Testing Guidelines
 - **For verification, run formatting checks only**: Use `nix build .#checks.x86_64-linux.pre-commit-check --max-jobs 2` to verify code formatting/linting without evaluating all NixOS configurations. This is the recommended approach for LLM agents to avoid memory exhaustion.
-- **Why avoid full `nix flake check`**: Running `nix flake check` evaluates all 12 active host configurations simultaneously, which can consume 12GB+ of RAM and cause memory exhaustion on typical LLM agent environments. The pre-commit check covers formatting/linting requirements without this overhead.
+- **Why avoid full `nix flake check`**: Running `nix flake check` evaluates all 13 active host configurations simultaneously, which can consume 12GB+ of RAM and cause memory exhaustion on typical LLM agent environments. The pre-commit check covers formatting/linting requirements without this overhead.
 - **For host-specific changes**: Run `nixos-rebuild dry-activate --flake .#<host>` or `just build` to validate specific host configurations without evaluating all hosts.
 - **For package changes**: Build packages explicitly with `nix build .#<pkg>` to ensure derivations succeed.
 - **For systems with ample RAM** (>16GB): You can optionally run full `nix flake check`, but this is not required for LLM agents.

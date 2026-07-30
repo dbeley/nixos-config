@@ -34,34 +34,25 @@
     - Pre-installed extensions
 - [Automatic styling with `stylix`](./apps/stylix/)
 - Declarative web browsers configuration
-  - [Extensive `firefox` configuration](./apps/firefox/firefox.nix)
-    - `about:config` settings
-    - Pre-installed add-ons
-    - Declarative containers
   - [Extensive `zen-browser` configuration](./apps/zen-browser/zen-browser.nix)
-    - Based on firefox configuration
-    - Declarative mods
+    - `about:config` settings
+    - Pre-installed add-ons, Declarative containers
     - Transparent websites with `transparent-zen` add-on
+  - [Extensive `firefox` configuration](./apps/firefox/firefox.nix)
   - [Extensive `qutebrowser` configuration with search engines](./apps/qutebrowser/qutebrowser.nix)
 - [Declarative partitioning with `disko`](./modules/disko/encrypted-btrfs-impermanence.nix)
 - [Ephemeral file system with `impermanence` on btrfs subvolumes](./modules/impermanence/)
 - Secrets management with `sops-nix`
 - Configuration for common hardware with `nixos-hardware`
-- AI code agent ecosystem
-  - `opencode` with [rtk plugin](./apps/opencode/opencode.nix)
-  - [`openskills`](./apps/openskills/) for declarative skill management across agents
-  - [`hermes-server`](./apps/hermes-server/) for Hermes Web UI cf. [hermes-webui-nix](https://github.com/dbeley/hermes-webui-nix)
-- Automatic microcode updates for AMD CPUs with `ucodenix`
-- Automatic development shells with `direnv` and `shell.nix`
+- AI code agent ecosystem (`opencode` with [rtk plugin](./apps/opencode/opencode.nix), [`openskills`](./apps/openskills/), [`hermes-server`](./apps/hermes-server/))
 - Declarative [nixflix stack](./apps/nixflix/) cf. [nixflix](https://github.com/kiriwalawren/nixflix)
+- Self-hosted tools to be deployed on servers ([`navidrome`](./apps/navidrome/), [`immich`](./apps/immich), [`nextcloud`](./apps/nextcloud), etc. cf. proxmox hosts definitions)
+- Automatic development shells with `direnv` and `shell.nix`
 - My own custom packages including [`autoscreen`](./apps/autoscreen/) (tool to take screenshots randomly each hour), [`mpdscrobble`](./apps/mpdscrobble/) (utility to send MPD listening history to Last.fm) and [`symmetri`](./apps/symmetri/) (custom system metrics collection service)
 - [`mpv` configuration with plugins](./apps/mpv/mpv.nix)
-- [`nnn` configuration with plugins and bookmarks](./apps/nnn/nnn.nix)
-- Support for [fingerprint scanner](./modules/common/fingerprint-scanner.nix), printers, bluetooth, [xbox gamepad](./modules/common/xbox.nix)
-- Some [common overlays that fix currently broken packages](./modules/overlays.nix) 
-- `flatpak` with automatic packages installation
 - [`steam`](./apps/steam/) with Proton-GE and MangoHud performance overlay
 - Backup scripts with [`rclone` and `restic`](./apps/restic/)
+- Support for [fingerprint scanner](./modules/common/fingerprint-scanner.nix), printers, bluetooth, [xbox gamepad](./modules/common/xbox.nix)
 
 ## Hosts
 
@@ -94,7 +85,7 @@
 - **nixos-era-adguard**: adguard-home
 - **nixos-era-nextcloud**: nextcloud
 - **nixos-era-immich**: immich
-- **nixos-era-navidrome**: navidrome
+- **nixos-era-navidrome**: navidrome server + music tools (slskd, covertone, maloja)
 
 ## Common Usage
 
@@ -205,13 +196,4 @@ just install-proxmox-vm HOSTNAME IP
 just boot-proxmox-vm HOSTNAME IP
 # After first boot, log in as david (initial password: nixos) and change it:
 #   passwd
-```
-
-## Post-install
-
-For doom-emacs:
-
-```
-git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
-~/.config/emacs/bin/doom install
 ```

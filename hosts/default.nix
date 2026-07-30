@@ -235,11 +235,6 @@ let
         ../apps/goose/goose.nix
       ];
     };
-    zeroclaw = {
-      home = [
-        ../apps/zeroclaw/zeroclaw.nix
-      ];
-    };
     hermes-server = {
       system = [
         inputs.hermes-webui-nix.nixosModules.default
@@ -538,7 +533,7 @@ in
   };
   nixos-era-hermes = mkHost {
     hostName = "nixos-era-hermes";
-    stateVersion = "26.05";
+    stateVersion = "26.11";
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
@@ -568,7 +563,7 @@ in
   };
   nixos-era-nextcloud = mkHost {
     hostName = "nixos-era-nextcloud";
-    stateVersion = "26.05";
+    stateVersion = "26.11";
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
@@ -578,7 +573,7 @@ in
   };
   nixos-era-immich = mkHost {
     hostName = "nixos-era-immich";
-    stateVersion = "26.05";
+    stateVersion = "26.11";
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
@@ -588,7 +583,7 @@ in
   };
   nixos-era-navidrome = mkHost {
     hostName = "nixos-era-navidrome";
-    stateVersion = "26.05";
+    stateVersion = "26.11";
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"

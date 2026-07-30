@@ -65,7 +65,6 @@
       ".hermes"
       ".omp"
       ".pi"
-      ".zeroclaw"
       ".config/.copilot"
       ".config/audacity"
       ".config/backrest"
