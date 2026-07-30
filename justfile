@@ -41,9 +41,18 @@ boot-proxmox-vm hostname ip:
   @echo "Deploying config for {{hostname}} to {{ip}}"
   nh os boot -H {{hostname}} . --target-host david@{{ip}}
 
+boot-all-proxmox-era-vms:
+  @echo "Deploying config for all proxmox VMs on era host"
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-adguard adguard-nixos.home
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-nextcloud nextcloud-nixos.home
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-hermes hermes.home
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-nixflix nixflix.home
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-immich immich.home
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-navidrome navidrome.home
+
 clean-proxmox-vm hostname ip:
-    @echo "Cleaning on {{hostname}} at {{ip}}"
-    ssh david@{{ip}} "nh clean all --keep-since 7d --keep 5 && nix store gc"
+  @echo "Cleaning on {{hostname}} at {{ip}}"
+  ssh david@{{ip}} "nh clean all --keep-since 7d --keep 5 && nix store gc"
 
 clean:
   @echo "Cleaning old generations and garbage collecting"
@@ -82,25 +91,25 @@ nix-olde:
 
 # Secrets management with sops
 secrets-edit:
-    @echo "Editing secrets (requires sops and age key)"
-    SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops secrets/secrets.yaml
+  @echo "Editing secrets (requires sops and age key)"
+  SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops secrets/secrets.yaml
 
 secrets-view:
-    @echo "Viewing decrypted secrets"
-    SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops -d secrets/secrets.yaml
+  @echo "Viewing decrypted secrets"
+  SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops -d secrets/secrets.yaml
 
 secrets-gen-key:
-    @echo "Generating new age key"
-    @echo "This will overwrite existing key at ~/.config/sops/age/keys.txt"
-    @echo "Press Ctrl+C to cancel or Enter to continue..."
-    @read _
-    age-keygen -o ~/.config/sops/age/keys.txt
-    @echo "New key generated. Public key:"
-    @grep -o "age1[^ ]*" ~/.config/sops/age/keys.txt
-    @echo "Update .sops.yaml with the new public key above"
+  @echo "Generating new age key"
+  @echo "This will overwrite existing key at ~/.config/sops/age/keys.txt"
+  @echo "Press Ctrl+C to cancel or Enter to continue..."
+  @read _
+  age-keygen -o ~/.config/sops/age/keys.txt
+  @echo "New key generated. Public key:"
+  @grep -o "age1[^ ]*" ~/.config/sops/age/keys.txt
+  @echo "Update .sops.yaml with the new public key above"
 
 secrets-test:
-    @echo "Testing sops configuration for host $HOST"
-    nixos-rebuild dry-activate --flake .#$HOST
+  @echo "Testing sops configuration for host $HOST"
+  nixos-rebuild dry-activate --flake .#$HOST
 
 all: update switch clean optimize
