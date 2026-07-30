@@ -49,4 +49,16 @@ in
     ];
     serviceConfig.BindReadOnlyPaths = lib.mkAfter [ "/run/secrets" ];
   };
+
+  services.nginx = {
+    enable = true;
+    virtualHosts."navidrome.home" = {
+      locations."/".proxyPass = "http://localhost:4533";
+    };
+  };
+
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 }
