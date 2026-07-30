@@ -17,7 +17,7 @@
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/7cf1f8c6-5d3b-4128-9de1-fc3ec8b11af3";
+    device = "/dev/disk/by-uuid/26fbecac-964d-4d9c-b800-394ff4e74b6f";
     fsType = "ext4";
   };
 
@@ -26,4 +26,5 @@
   networking.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  services.qemuGuest.enable = true;
 }
