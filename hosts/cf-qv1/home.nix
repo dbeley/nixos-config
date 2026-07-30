@@ -14,7 +14,6 @@
     shotcut
     papers
     python3Packages.subliminal
-    # supersonic
   ];
 
   # CF-QV1 specific settings

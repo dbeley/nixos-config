@@ -14,7 +14,6 @@
     nautilus
     python3Packages.subliminal
     # shotcut
-    # supersonic
   ];
 
   programs.btop.package = pkgs.btop-rocm;

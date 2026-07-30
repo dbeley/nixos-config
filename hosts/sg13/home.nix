@@ -9,7 +9,6 @@
     feishin
     nautilus
     papers
-    # supersonic
   ];
 
   programs.btop.package = pkgs.btop-cuda;
