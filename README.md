@@ -50,7 +50,6 @@
 - AI code agent ecosystem
   - `opencode` with [rtk plugin](./apps/opencode/opencode.nix)
   - [`openskills`](./apps/openskills/) for declarative skill management across agents
-  - [`opencode-server`](./apps/opencode-server/) for OpenCode Web UI
   - [`hermes-server`](./apps/hermes-server/) for Hermes Web UI cf. [hermes-webui-nix](https://github.com/dbeley/hermes-webui-nix)
 - Automatic microcode updates for AMD CPUs with `ucodenix`
 - Automatic development shells with `direnv` and `shell.nix`

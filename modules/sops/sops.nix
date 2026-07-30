@@ -29,14 +29,6 @@
         key = "restic_password";
         path = "/home/${user}/.config/restic/password";
       };
-      opencode-go-api-key = {
-        sopsFile = ../../secrets/secrets.yaml;
-        path = "/home/${user}/.config/opencode/opencode-go-api-key";
-      };
-      opencode-server-password = {
-        sopsFile = ../../secrets/secrets.yaml;
-        path = "/home/${user}/.config/opencode/opencode-server-password";
-      };
       hermes-webui-password = {
         sopsFile = ../../secrets/secrets.yaml;
         path = "/home/${user}/.config/hermes/webui-password";

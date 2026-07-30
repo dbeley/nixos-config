@@ -28,7 +28,7 @@
   - Shell/CLI tools: `bat/`, `btop/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `workstation/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
-  - Servers: `adguard-home/`, `hermes-server/`, `nextcloud-server/`, `nixflix/`, `opencode-server/`
+  - Servers: `adguard-home/`, `hermes-server/`, `nextcloud-server/`, `nixflix/`
   - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `udiskie/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
@@ -102,7 +102,6 @@ mkHost = {
 
 **Servers:**
 - `nixflix` - Nixflix media server
-- `opencode-server` - OpenCode server
 - `hermes-server` - Hermes Web UI
 - `adguard-home` - AdGuard Home DNS ad-blocker
 - `nextcloud-server` - Nextcloud server

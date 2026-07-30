@@ -240,14 +240,6 @@ let
         ../apps/zeroclaw/zeroclaw.nix
       ];
     };
-    opencode-server = {
-      system = [
-        ../apps/opencode-server/default.nix
-      ];
-      home = [
-        ../apps/opencode-server/opencode-server.nix
-      ];
-    };
     hermes-server = {
       system = [
         inputs.hermes-webui-nix.nixosModules.default
