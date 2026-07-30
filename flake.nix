@@ -178,6 +178,18 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    maloja = {
+      url = "github:dbeley/maloja";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    covertone = {
+      url = "github:dbeley/covertone";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   outputs =

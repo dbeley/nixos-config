@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   dataDir = "/var/lib/maloja";
   python = pkgs.python312;
@@ -48,12 +53,7 @@ let
   maloja = python.pkgs.buildPythonPackage rec {
     pname = "malojaserver";
     version = "3.2.4";
-    src = pkgs.fetchFromGitHub {
-      owner = "dbeley";
-      repo = "maloja";
-      rev = "a34cdcf";
-      hash = "sha256-uhI5svwgU7yfIYe3NjnRu4oEvZS6fK/Nag8qonWFzvI=";
-    };
+    src = inputs.maloja.outPath;
     pyproject = true;
     nativeBuildInputs = with python.pkgs; [
       flit-core
@@ -81,11 +81,16 @@ let
   };
 in
 {
+  sops.secrets."maloja-env" = { };
+
   systemd.services.maloja = {
     description = "Maloja Music Scrobble Server";
-    after = [ "network.target" ];
+    after = [
+      "network.target"
+      "sops-nix.service"
+    ];
     wantedBy = [ "multi-user.target" ];
-    environment.MALOJA_DATA_DIRECTORY = dataDir;
+    serviceConfig.EnvironmentFile = [ config.sops.secrets."maloja-env".path ];
     serviceConfig = {
       Type = "simple";
       ExecStart = "${maloja}/bin/maloja run";

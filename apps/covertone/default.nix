@@ -1,11 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
-  covertone-src = pkgs.fetchFromGitHub {
-    owner = "dbeley";
-    repo = "covertone";
-    rev = "c7302aa";
-    hash = "sha256-U65moqSFxwlXPOc5oMqcYx03YCYsSRae+79pFAFMSbE=";
-  };
+  covertone-src = inputs.covertone.outPath;
   covertone-dist = pkgs.stdenv.mkDerivation {
     name = "covertone";
     src = covertone-src;
