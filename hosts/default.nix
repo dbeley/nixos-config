@@ -299,6 +299,15 @@ let
     navidrome = {
       system = [ ../apps/navidrome/default.nix ];
     };
+    slskd = {
+      system = [ ../apps/slskd/default.nix ];
+    };
+    maloja = {
+      system = [ ../apps/maloja/default.nix ];
+    };
+    covertone = {
+      system = [ ../apps/covertone/default.nix ];
+    };
     immich = {
       system = [
         ../apps/immich/default.nix
@@ -593,6 +602,9 @@ in
       "openssh-server"
       "navidrome"
       "sops"
+      "slskd"
+      "maloja"
+      "covertone"
     ];
   };
 }
