@@ -296,6 +296,9 @@ let
         ../apps/nextcloud-server/default.nix
       ];
     };
+    navidrome = {
+      system = [ ../apps/navidrome/default.nix ];
+    };
     immich = {
       system = [
         ../apps/immich/default.nix
@@ -579,6 +582,16 @@ in
       "bootloader-grub-bios"
       "openssh-server"
       "immich"
+      "sops"
+    ];
+  };
+  nixos-era-navidrome = mkHost {
+    hostName = "nixos-era-navidrome";
+    stateVersion = "26.05";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "navidrome"
       "sops"
     ];
   };
