@@ -6,10 +6,23 @@ let
   inherit (config.sops) secrets;
 in
 {
+  fileSystems."/mnt/nfs/WDC14_2" = {
+    device = "omv.home:/WDC14_2";
+    fsType = "nfs";
+    options = [
+      "_netdev"
+      "nofail"
+      "hard"
+      "timeo=60"
+      "retrans=3"
+    ];
+  };
+
   nixflix = {
     enable = true;
-    mediaDir = "/data/media";
+    mediaDir = "/mnt/nfs/WDC14_2/Nixflix";
     stateDir = "/data/.state";
+    downloadsDir = "/mnt/nfs/WDC14_2/Downloads/Nixflix";
 
     nginx = {
       enable = true;
@@ -52,6 +65,12 @@ in
             username._secret = secrets."rutracker_username".path;
             password_secret._secret = secrets."rutracker_password".path;
           }
+          {
+            name = "The Pirate Bay";
+          }
+          {
+            name = "1337x";
+          }
         ];
       };
     };
@@ -82,6 +101,11 @@ in
 
     recyclarr.enable = true;
     flaresolverr.enable = true;
+
+    vpn = {
+      enable = true;
+      wgConfFile = config.sops.secrets."mullvad_wg".path;
+    };
   };
 
   sops.secrets = {
@@ -99,6 +123,7 @@ in
     "qbittorrent_password" = { };
     "rutracker_username" = { };
     "rutracker_password" = { };
+    "mullvad_wg" = { };
   };
 
   networking.firewall.allowedTCPPorts = [
