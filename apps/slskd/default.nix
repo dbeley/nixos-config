@@ -10,7 +10,7 @@
     enable = true;
     environmentFile = config.sops.secrets."slskd-env".path;
     openFirewall = true;
-    domain = "slskd.navidrome.home";
+    domain = "slskd.home";
     settings = {
       shares.directories = [ "/mnt/nfs/WDC14/Musique" ];
       directories = {

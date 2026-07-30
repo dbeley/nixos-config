@@ -18,7 +18,7 @@
 
   sops.secrets."maloja-env" = { };
 
-  services.nginx.virtualHosts."maloja.navidrome.home" = {
+  services.nginx.virtualHosts."maloja.home" = {
     locations."/".proxyPass = "http://localhost:42010";
     locations."/".proxyWebsockets = true;
   };

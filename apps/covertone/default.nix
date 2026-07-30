@@ -4,6 +4,6 @@
 
   services.covertone = {
     enable = true;
-    virtualHost = "covertone.navidrome.home";
+    virtualHost = "covertone.home";
   };
 }
