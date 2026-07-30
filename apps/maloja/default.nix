@@ -16,9 +16,10 @@
       location_timezone = "Europe/Berlin";
     };
     environmentFile = config.sops.secrets."maloja-env".path;
-    nginx = {
-      enable = true;
-      domain = "maloja.navidrome.home";
-    };
+  };
+
+  services.nginx.virtualHosts."maloja.navidrome.home" = {
+    locations."/".proxyPass = "http://localhost:42010";
+    locations."/".proxyWebsockets = true;
   };
 }

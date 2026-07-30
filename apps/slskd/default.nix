@@ -1,4 +1,8 @@
-{ config, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 {
   sops.secrets."slskd-env" = { };
 
@@ -14,5 +18,15 @@
         incomplete = "/mnt/nfs/WDC14/Soulseek/incomplete";
       };
     };
+  };
+
+  systemd.services.slskd = {
+    requires = [ "mnt-nfs-WDC14.mount" ];
+    after = [
+      "mnt-nfs-WDC14.mount"
+      "network-online.target"
+      "sops-nix.service"
+    ];
+    serviceConfig.BindReadOnlyPaths = lib.mkAfter [ "/run/secrets" ];
   };
 }
