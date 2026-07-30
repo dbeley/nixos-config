@@ -90,11 +90,12 @@
 - **nixos-kimsufi-03**: unused
 
 ### Proxmox Era VMs (Home Server)
-- **nixos-era-hermes**: hermes-webui
+- **nixos-era-hermes**: hermes with hermes-webui
 - **nixos-era-nixflix**: nixflix
 - **nixos-era-adguard**: adguard-home
 - **nixos-era-nextcloud**: nextcloud
 - **nixos-era-immich**: immich
+- **nixos-era-navidrome**: navidrome
 
 ## Common Usage
 

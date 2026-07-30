@@ -1,4 +1,9 @@
-{ user, ... }:
+{
+  config,
+  lib,
+  user,
+  ...
+}:
 let
   nfsServer = "omv.home";
   nfsExport = "/WDC14";
@@ -28,14 +33,20 @@ in
     settings = {
       Address = "0.0.0.0";
       MusicFolder = "${nfsMount}/Musique";
+      DefaultLanguage = "fr";
     };
+    environmentFile = config.sops.secrets."navidrome-env".path;
   };
+
+  sops.secrets."navidrome-env" = { };
 
   systemd.services.navidrome = {
     requires = [ "mnt-nfs-WDC14.mount" ];
     after = [
       "mnt-nfs-WDC14.mount"
       "network-online.target"
+      "sops-nix.service"
     ];
+    serviceConfig.BindReadOnlyPaths = lib.mkAfter [ "/run/secrets" ];
   };
 }
