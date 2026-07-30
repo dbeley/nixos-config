@@ -188,6 +188,7 @@
       url = "github:dbeley/covertone";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
       };
     };
   };

@@ -1,23 +1,18 @@
-{ pkgs, ... }:
+{ config, ... }:
 {
-  systemd.services.slskd = {
-    description = "Slskd - Soulseek client daemon";
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
-    environment.HOME = "/var/lib/slskd";
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.slskd}/bin/slskd";
-      Restart = "on-failure";
-      RestartSec = "10";
-      DynamicUser = true;
-      StateDirectory = "slskd";
-      WorkingDirectory = "/var/lib/slskd";
-    };
-  };
+  sops.secrets."slskd-env" = { };
 
-  services.nginx.virtualHosts."slskd.navidrome.home" = {
-    locations."/".proxyPass = "http://localhost:5030";
-    locations."/".proxyWebsockets = true;
+  services.slskd = {
+    enable = true;
+    environmentFile = config.sops.secrets."slskd-env".path;
+    openFirewall = true;
+    domain = "slskd.navidrome.home";
+    settings = {
+      shares.directories = [ "/mnt/nfs/WDC14/Musique" ];
+      directories = {
+        downloads = "/mnt/nfs/WDC14/Soulseek";
+        incomplete = "/mnt/nfs/WDC14/Soulseek/incomplete";
+      };
+    };
   };
 }
