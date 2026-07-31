@@ -30,6 +30,8 @@ in
   services.navidrome = {
     enable = true;
     openFirewall = true;
+    inherit user;
+    group = "users";
     settings = {
       Address = "0.0.0.0";
       MusicFolder = "${nfsMount}/Musique";

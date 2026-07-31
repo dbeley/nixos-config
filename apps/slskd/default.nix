@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  user,
   ...
 }:
 {
@@ -11,6 +12,8 @@
     environmentFile = config.sops.secrets."slskd-env".path;
     openFirewall = true;
     domain = "slskd.home";
+    inherit user;
+    group = "users";
     settings = {
       shares.directories = [ "/mnt/nfs/WDC14/Musique" ];
       directories = {
