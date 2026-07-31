@@ -1,4 +1,5 @@
 {
+  config,
   user,
   ...
 }:
@@ -20,16 +21,10 @@ in
     ];
   };
 
-  systemd.tmpfiles.settings."immich-nfs-symlink" = {
-    "/home/${user}/nfs".L.argument = "/mnt/nfs";
-  };
-
   services.immich = {
     enable = true;
-    openFirewall = true;
-    # Listen on all interfaces so the VM is reachable from the LAN
-    # (default is "localhost", which would block remote access despite the firewall port).
-    host = "0.0.0.0";
+    host = "127.0.0.1";
+    port = 2283;
     mediaLocation = "${nfsMount}/Immich";
     inherit user;
     group = "users";
@@ -39,11 +34,32 @@ in
 
   systemd.services.immich-server = {
     requires = [ "mnt-nfs-WDC14_2.mount" ];
+    wants = [ "network-online.target" ];
     after = [
       "mnt-nfs-WDC14_2.mount"
       "network-online.target"
     ];
   };
 
-  networking.firewall.allowedTCPPorts = [ 2283 ];
+  services.nginx = {
+    enable = true;
+    virtualHosts."immich.home" = {
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:${toString config.services.immich.port}";
+        proxyWebsockets = true;
+        recommendedProxySettings = true;
+        extraConfig = ''
+          client_max_body_size 50000M;
+          proxy_read_timeout   600s;
+          proxy_send_timeout   600s;
+          send_timeout         600s;
+        '';
+      };
+    };
+  };
+
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 }

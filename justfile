@@ -49,6 +49,7 @@ boot-all-proxmox-era-vms:
   just --justfile {{justfile()}} boot-proxmox-vm nixos-era-nixflix nixflix.home
   just --justfile {{justfile()}} boot-proxmox-vm nixos-era-immich immich.home
   just --justfile {{justfile()}} boot-proxmox-vm nixos-era-navidrome navidrome.home
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-homelab homelab.home
 
 clean-proxmox-vm hostname ip:
   @echo "Cleaning on {{hostname}} at {{ip}}"

@@ -300,6 +300,16 @@ let
         ../apps/immich/default.nix
       ];
     };
+    jellyfin = {
+      system = [
+        ../apps/jellyfin/default.nix
+      ];
+    };
+    paperless-ngx = {
+      system = [
+        ../apps/paperless-ngx/default.nix
+      ];
+    };
   };
   mkHost =
     {
@@ -592,6 +602,17 @@ in
       "slskd"
       "maloja"
       "covertone"
+    ];
+  };
+  nixos-era-homelab = mkHost {
+    hostName = "nixos-era-homelab";
+    stateVersion = "26.11";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "sops"
+      "jellyfin"
+      "paperless-ngx"
     ];
   };
 }
