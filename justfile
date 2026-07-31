@@ -43,8 +43,8 @@ boot-proxmox-vm hostname ip:
 
 boot-all-proxmox-era-vms:
   @echo "Deploying config for all proxmox VMs on era host"
-  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-adguard adguard-nixos.home
-  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-nextcloud nextcloud-nixos.home
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-adguard adguard.home
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-nextcloud nextcloud.home
   just --justfile {{justfile()}} boot-proxmox-vm nixos-era-hermes hermes.home
   just --justfile {{justfile()}} boot-proxmox-vm nixos-era-nixflix nixflix.home
   just --justfile {{justfile()}} boot-proxmox-vm nixos-era-immich immich.home

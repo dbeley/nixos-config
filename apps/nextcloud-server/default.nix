@@ -1,15 +1,15 @@
-{ config, ... }:
+{ config, user, ... }:
 let
   inherit (config.sops) secrets;
 in
 {
   services.nextcloud = {
     enable = true;
-    hostName = "nextcloud-nixos.home";
+    hostName = "nextcloud.home";
     https = false;
 
     config = {
-      adminuser = "admin";
+      adminuser = user;
       adminpassFile = secrets."nextcloud_admin_password".path;
       dbtype = "pgsql";
       dbname = "nextcloud";
