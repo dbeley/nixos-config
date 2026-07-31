@@ -13,7 +13,6 @@ in
 {
   home.packages = [
     opencode-wrapped
-    llm.rtk
     pkgs.libnotify
   ];
   xdg.configFile = {

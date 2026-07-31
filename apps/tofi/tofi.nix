@@ -49,7 +49,7 @@
       ascii-input = false;
     };
   };
-  wayland.windowManager.niri.settings = lib.mkIf config.wayland.windowManager.niri.enable {
+  wayland.windowManager.niri.settings = lib.mkIf (config.wayland.windowManager.niri.enable or false) {
     binds = {
       "Mod+E".spawn = [
         "bash"
