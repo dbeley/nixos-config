@@ -4,12 +4,6 @@
   config,
   ...
 }:
-let
-  btrfsMountOptions = [
-    "compress=zstd"
-    "noatime"
-  ];
-in
 {
   options = {
     disko.mainDisk = lib.mkOption {
@@ -53,15 +47,27 @@ in
                     subvolumes = {
                       "/root" = {
                         mountpoint = "/";
-                        inherit btrfsMountOptions;
+                        mountOptions = [
+                          "compress=zstd"
+                          "noatime"
+                          "subvol=root"
+                        ];
                       };
                       "/persistent" = {
                         mountpoint = "/persistent";
-                        inherit btrfsMountOptions;
+                        mountOptions = [
+                          "compress=zstd"
+                          "noatime"
+                          "subvol=persistent"
+                        ];
                       };
                       "/nix" = {
                         mountpoint = "/nix";
-                        inherit btrfsMountOptions;
+                        mountOptions = [
+                          "compress=zstd"
+                          "noatime"
+                          "subvol=nix"
+                        ];
                       };
                     };
                   };
