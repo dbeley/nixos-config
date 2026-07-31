@@ -1,5 +1,6 @@
 {
   config,
+  user,
   ...
 }:
 let
@@ -23,6 +24,11 @@ in
     mediaDir = "/mnt/nfs/WDC14_2/Nixflix";
     stateDir = "/data/.state";
     downloadsDir = "/mnt/nfs/WDC14_2/Downloads/Nixflix";
+    mediaUsers = [ user ];
+    globals.libraryOwner = {
+      inherit user;
+      group = "media";
+    };
 
     nginx = {
       enable = true;

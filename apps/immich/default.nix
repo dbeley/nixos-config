@@ -33,9 +33,6 @@ in
     mediaLocation = "${nfsMount}/Immich";
     inherit user;
     group = "users";
-    # Run as `david` so NFS writes match OMV ownership. Peer-socket auth then
-    # needs a matching PG role/db, both auto-created by the module only when
-    # their names coincide (the module asserts db name == user name).
     database.user = user;
     database.name = user;
   };
