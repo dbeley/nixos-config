@@ -22,11 +22,6 @@ in
     ];
   };
 
-  systemd.tmpfiles.settings."navidrome-nfs-symlink" = {
-    "/home/${user}/nfs".L.argument = "/mnt/nfs";
-  };
-
-  # navidrome module sets ProtectHome=true, so MusicFolder must be under /mnt.
   services.navidrome = {
     enable = true;
     openFirewall = true;

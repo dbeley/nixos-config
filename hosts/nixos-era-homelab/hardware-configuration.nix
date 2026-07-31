@@ -17,7 +17,7 @@
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/2d3c6ac2-7497-4a15-9875-bf868e8a78c0";
+    device = "/dev/disk/by-uuid/PLACEHOLDER_ROOT_UUID";
     fsType = "ext4";
   };
 

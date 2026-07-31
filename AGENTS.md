@@ -28,7 +28,7 @@
   - Shell/CLI tools: `bat/`, `btop/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `workstation/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
-  - Servers: `adguard-home/`, `cairn/`, `covertone/`, `hermes-server/`, `immich/`, `maloja/`, `navidrome/`, `nextcloud-server/`, `nixflix/`, `slskd/`
+  - Servers: `adguard-home/`, `cairn/`, `covertone/`, `hermes-server/`, `immich/`, `jellyfin/`, `maloja/`, `navidrome/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`
   - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `thunderbird/`, `udiskie/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
@@ -107,10 +107,12 @@ mkHost = {
 - `covertone` - Album art server
 - `hermes-server` - Hermes Web UI
 - `immich` - Immich photo server
+- `jellyfin` - Jellyfin media server
 - `maloja` - Music scrobbling server
 - `navidrome` - Navidrome music streaming server
 - `nextcloud-server` - Nextcloud server
 - `nixflix` - Nixflix media server
+- `paperless-ngx` - Paperless-ngx document management
 - `slskd` - Soulseek file sharing client
 
 ### Current Hosts
@@ -129,6 +131,7 @@ mkHost = {
 **Servers (ERA VPS):**
 - `nixos-era-adguard` - AdGuard Home DNS server
 - `nixos-era-hermes` - Hermes Web UI
+- `nixos-era-homelab` - Jellyfin + paperless-ngx
 - `nixos-era-immich` - Immich photo server
 - `nixos-era-navidrome` - Navidrome music streaming server
 - `nixos-era-nextcloud` - Nextcloud server
@@ -136,7 +139,7 @@ mkHost = {
 
 ## Testing Guidelines
 - **For verification, run formatting checks only**: Use `nix build .#checks.x86_64-linux.pre-commit-check --max-jobs 2` to verify code formatting/linting without evaluating all NixOS configurations. This is the recommended approach for LLM agents to avoid memory exhaustion.
-- **Why avoid full `nix flake check`**: Running `nix flake check` evaluates all 13 active host configurations simultaneously, which can consume 12GB+ of RAM and cause memory exhaustion on typical LLM agent environments. The pre-commit check covers formatting/linting requirements without this overhead.
+- **Why avoid full `nix flake check`**: Running `nix flake check` evaluates all 14 active host configurations simultaneously, which can consume 12GB+ of RAM and cause memory exhaustion on typical LLM agent environments. The pre-commit check covers formatting/linting requirements without this overhead.
 - **For host-specific changes**: Run `nixos-rebuild dry-activate --flake .#<host>` or `just build` to validate specific host configurations without evaluating all hosts.
 - **For package changes**: Build packages explicitly with `nix build .#<pkg>` to ensure derivations succeed.
 - **For systems with ample RAM** (>16GB): You can optionally run full `nix flake check`, but this is not required for LLM agents.
