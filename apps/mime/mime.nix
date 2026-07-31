@@ -62,7 +62,10 @@
         "application/vnd.ms-word.document.macroEnabled.12" = [ "libreoffice-writer.desktop" ];
         "application/vnd.ms-word.template.macroEnabled.12" = [ "libreoffice-writer.desktop" ];
         "application/vnd.ms-word" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.ms-works" = [ "libreoffice-calc.desktoplibreoffice-writer.desktop;" ];
+        "application/vnd.ms-works" = [
+          "libreoffice-calc.desktop"
+          "libreoffice-writer.desktop"
+        ];
         "application/vnd.nextcloud" = [ "com.nextcloud.desktopclient.nextcloud.desktop" ];
         "application/vnd.oasis.opendocument.chart-template" = [ "libreoffice-calc.desktop" ];
         "application/vnd.oasis.opendocument.chart" = [ "libreoffice-calc.desktop" ];
@@ -197,7 +200,7 @@
         "audio/mpeg2" = [ "mpv.desktop" ];
         "audio/mpeg3" = [ "mpv.desktop" ];
         "audio/mpeg" = [ "mpv.desktop" ];
-        "audio/mpegapplication/octet-stream" = [ "mpv.desktop" ];
+        "application/octet-stream" = [ "mpv.desktop" ];
         "audio/mpegurl" = [ "mpv.desktop" ];
         "audio/mpg" = [ "mpv.desktop" ];
         "audio/musepack" = [ "mpv.desktop" ];

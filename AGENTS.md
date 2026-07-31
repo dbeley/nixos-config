@@ -8,7 +8,7 @@
   - Define hosts in `hosts/default.nix` via `mkHost` function
   - Each host has `hardware-configuration.nix` and `home.nix`
 - **`modules/`** - Shared NixOS system modules organized by category:
-  - `modules/common/` - Base system configurations (bootloaders, laptop settings, laptop-thermald, openssh, printing, screen-rotation, virtualization, xbox, etc.)
+  - `modules/common/` - Base system configurations (bootloaders, laptop settings, laptop-thermald, openssh, screen-rotation, xbox, etc.)
   - `modules/disko/` - Declarative disk partitioning (LUKS + btrfs + impermanence)
   - `modules/impermanence/` - Ephemeral root filesystem configuration
   - `modules/hardware/` - Hardware-specific modules (hid-tmff2, throttled)

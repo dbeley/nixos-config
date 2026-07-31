@@ -36,10 +36,7 @@
         {
           name = "python";
           auto-format = true;
-          language-servers = [
-            "pyright"
-            "ruff"
-          ];
+          language-servers = [ "ruff" ];
           formatter = {
             command = "${pkgs.ruff}/bin/ruff";
             args = [
@@ -52,7 +49,6 @@
         {
           name = "rust";
           auto-format = true;
-          language-servers = [ "rust-analyzer" ];
         }
         {
           name = "nix";
@@ -65,7 +61,6 @@
         {
           name = "json";
           auto-format = false;
-          language-servers = [ "vscode-json-language-server" ];
         }
         {
           name = "csv";
@@ -74,7 +69,6 @@
         {
           name = "markdown";
           auto-format = false;
-          language-servers = [ "marksman" ];
         }
       ];
     };

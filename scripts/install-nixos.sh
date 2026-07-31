@@ -4,15 +4,22 @@
 # Usage: bash install-nixos.sh [hostname]
 # Example: bash install-nixos.sh nixos-kimsufi-01
 
-set -e
+set -euo pipefail
 
 HOSTNAME=${1:-}
 DISK=${2:-/dev/sda}
+STATE_VERSION=${3:-26.05}
 
 if [ -z "$HOSTNAME" ]; then
-    echo "Usage: bash install-nixos.sh <hostname> [disk]"
+    echo "Usage: bash install-nixos.sh <hostname> [disk] [state-version]"
     exit 1
 fi
+
+# Detect partition suffix: nvme/mmcblk use pN, others use N
+case "$DISK" in
+  /dev/nvme*|/dev/mmcblk*) PART="${DISK}p" ;;
+  *) PART="${DISK}" ;;
+esac
 
 echo "============================================"
 echo "NixOS Installation for $HOSTNAME"
@@ -38,22 +45,19 @@ echo "✓ Disk partitioned"
 echo ""
 echo "[2/8] Formatting partitions..."
 # Partition 1 is BIOS boot (no filesystem)
-sudo mkfs.ext4 -L boot "${DISK}2"
-sudo mkfs.ext4 -L nixos "${DISK}3"
-sudo mkswap -L swap "${DISK}4"
-echo "✓ Partitions formatted"
-
-# Wait for kernel to update device symlinks
 sudo partprobe "$DISK"
-sleep 2
 sudo udevadm settle
+sudo mkfs.ext4 -L boot "${PART}2"
+sudo mkfs.ext4 -L nixos "${PART}3"
+sudo mkswap -L swap "${PART}4"
+echo "✓ Partitions formatted"
 
 echo ""
 echo "[3/8] Mounting filesystems..."
 sudo mount /dev/disk/by-label/nixos /mnt
 sudo mkdir -p /mnt/boot
 sudo mount /dev/disk/by-label/boot /mnt/boot
-sudo swapon "${DISK}4"
+sudo swapon "${PART}4"
 echo "✓ Filesystems mounted"
 
 echo ""
@@ -63,7 +67,7 @@ echo "✓ Configuration generated"
 
 echo ""
 echo "[5/8] Getting UUID..."
-UUID=$(sudo blkid "${DISK}3" -s UUID -o value)
+UUID=$(sudo blkid "${PART}3" -s UUID -o value)
 echo "=========================================="
 echo "IMPORTANT: SAVE THIS UUID!"
 echo ""
@@ -78,14 +82,14 @@ read -r -p "Press Enter after you've saved the UUID..."
 
 echo ""
 echo "[6/8] Creating minimal configuration..."
-sudo tee /mnt/etc/nixos/configuration.nix > /dev/null << 'EOF'
+sudo tee /mnt/etc/nixos/configuration.nix > /dev/null << EOF
 { config, pkgs, ... }:
 {
   imports = [ ./hardware-configuration.nix ];
 
   boot.loader.grub = {
     enable = true;
-    device = "/dev/sda";
+    device = "$DISK";
   };
 
   networking = {
@@ -118,7 +122,7 @@ sudo tee /mnt/etc/nixos/configuration.nix > /dev/null << 'EOF'
 
   security.sudo.wheelNeedsPassword = false;
 
-  system.stateVersion = "26.05";
+  system.stateVersion = "$STATE_VERSION";
 }
 EOF
 echo "✓ Configuration created"

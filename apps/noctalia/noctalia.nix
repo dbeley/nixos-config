@@ -118,7 +118,7 @@
     };
   };
 
-  wayland.windowManager.niri.settings = lib.mkIf config.wayland.windowManager.niri.enable {
+  wayland.windowManager.niri.settings = lib.mkIf (config.wayland.windowManager.niri.enable or false) {
     _children = [
       { spawn-at-startup = [ "noctalia" ]; }
     ];

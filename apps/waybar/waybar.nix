@@ -143,7 +143,7 @@ in
     ];
     style = lib.readFile ./waybar.css;
   };
-  wayland.windowManager.niri.settings = lib.mkIf config.wayland.windowManager.niri.enable {
+  wayland.windowManager.niri.settings = lib.mkIf (config.wayland.windowManager.niri.enable or false) {
     spawn-at-startup = [
       [
         "systemctl"
