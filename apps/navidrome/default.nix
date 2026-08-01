@@ -8,6 +8,8 @@ let
   nfsServer = "omv.home";
   nfsExport = "/WDC14";
   nfsMount = "/mnt/nfs/WDC14";
+  navidromeHost = "navidrome.home";
+  navidromeUrl = "http://${navidromeHost}";
 in
 {
   fileSystems.${nfsMount} = {
@@ -31,6 +33,7 @@ in
       Address = "0.0.0.0";
       MusicFolder = "${nfsMount}/Musique";
       DefaultLanguage = "fr";
+      ShareURL = navidromeUrl;
     };
     environmentFile = config.sops.secrets."navidrome-env".path;
   };
@@ -49,7 +52,7 @@ in
 
   services.nginx = {
     enable = true;
-    virtualHosts."navidrome.home" = {
+    virtualHosts.${navidromeHost} = {
       locations."/".proxyPass = "http://localhost:4533";
     };
   };
