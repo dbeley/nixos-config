@@ -7,6 +7,8 @@ let
   nfsServer = "omv.home";
   nfsExport = "/WDC14_2";
   nfsMount = "/mnt/nfs/WDC14_2";
+  paperlessHost = "paperless.home";
+  paperlessUrl = "http://${paperlessHost}";
 in
 {
   fileSystems.${nfsMount} = {
@@ -42,6 +44,7 @@ in
     consumptionDir = "${nfsMount}/Transferts/paperless-ngx";
     passwordFile = config.sops.secrets."paperless_admin_password".path;
     settings = {
+      PAPERLESS_URL = paperlessUrl;
       PAPERLESS_OCR_LANGUAGE = "fra";
     };
   };
@@ -50,7 +53,7 @@ in
 
   services.nginx = {
     enable = true;
-    virtualHosts."paperless.home" = {
+    virtualHosts.${paperlessHost} = {
       locations."/".proxyPass = "http://localhost:28981";
     };
   };
