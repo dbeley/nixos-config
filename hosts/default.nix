@@ -588,7 +588,6 @@ in
       "bootloader-grub-bios"
       "openssh-server"
       "immich"
-      "sops"
     ];
   };
   nixos-era-navidrome = mkHost {
