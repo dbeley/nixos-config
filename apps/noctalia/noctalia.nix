@@ -30,9 +30,6 @@
             "cpu"
             "temp"
             "ram"
-            # "network_rx"
-            # "network_tx"
-            # "notifications"
             "volume"
             "brightness"
             "battery"
@@ -44,8 +41,8 @@
         };
         nightlight = {
           enabled = true;
-          start_time = "20:30";
-          stop_time = "08:00";
+          temperature_day = 6500;
+          temperature_night = 4000;
         };
         notification = {
           background_opacity = 0.5;
@@ -78,10 +75,10 @@
         };
         location = {
           auto_locate = true;
-        };
-        weather = {
           address = "Paris, France";
-          auto_locate = true;
+          custom_schedule = true;
+          sunset = "20:30";
+          sunrise = "08:00";
         };
         widget = {
           active_window = {
@@ -96,22 +93,22 @@
             format = "{:%a %d %b %H:%M}";
           };
           cpu = {
-            display = "text";
-          };
-          network_rx = {
-            display = "text";
-          };
-          network_tx = {
-            display = "text";
+            type = "sysmon";
+            stat = "cpu_usage";
+            visualization = "none";
+            show_value = true;
           };
           ram = {
-            display = "text";
-          };
-          sysmon = {
-            display = "text";
+            type = "sysmon";
+            stat = "ram_pct";
+            visualization = "none";
+            show_value = true;
           };
           temp = {
-            display = "text";
+            type = "sysmon";
+            stat = "cpu_temp";
+            visualization = "none";
+            show_value = true;
           };
         };
       };
