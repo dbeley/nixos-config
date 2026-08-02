@@ -21,6 +21,7 @@
   - Terminals: `alacritty/`, `ghostty/`, `kitty/`
   - Editors: `editorconfig/`, `emacs/`, `helix/`, `kakoune/`, `neovim-nixvim/`, `neovim-nvf/`, `nvim/`, `vscode/`
   - Browsers: `firefox/`, `qutebrowser/`, `ungoogled-chromium/`, `zen-browser/`
+  - `floccus` bookmark sync extension installed in firefox, zen-browser (AMO xpi) and chromium (GitHub crx)
   - Code agents: `beads/`, `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `goose/`, `hermes/`, `oh-my-opencode/`, `oh-my-pi/`, `opencode/`, `openskills/`, `pi/`, `rtk/`
   - File managers: `lf/`, `nnn/`, `yazi/`
   - Media: `feishin/`, `imv/`, `mpd/`, `mpv/`, `obs/`, `swayimg/`, `zathura/`
@@ -28,7 +29,7 @@
   - Shell/CLI tools: `bat/`, `btop/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `workstation/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
-  - Servers: `adguard-home/`, `cairn/`, `covertone/`, `hermes-server/`, `immich/`, `jellyfin/`, `maloja/`, `navidrome/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`
+  - Servers: `adguard-home/`, `cairn/`, `covertone/`, `hermes-server/`, `immich/`, `jellyfin/`, `karakeep/`, `maloja/`, `navidrome/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`
   - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `thunderbird/`, `udiskie/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
@@ -113,6 +114,8 @@ mkHost = {
 - `nextcloud-server` - Nextcloud server
 - `nixflix` - Nixflix media server
 - `paperless-ngx` - Paperless-ngx document management
+- `trek` - TREK travel planner (podman OCI container on 127.0.0.1:3000, nginx vhost trek.home)
+- `karakeep` - Karakeep bookmark-everything app (native nixpkgs service on port 3001, nginx vhost karakeep.home)
 - `slskd` - Soulseek file sharing client
 
 ### Current Hosts
@@ -131,7 +134,7 @@ mkHost = {
 **Servers (ERA VPS):**
 - `nixos-era-adguard` - AdGuard Home DNS server
 - `nixos-era-hermes` - Hermes Web UI
-- `nixos-era-homelab` - Jellyfin + paperless-ngx
+- `nixos-era-homelab` - Jellyfin + paperless-ngx + TREK + Karakeep
 - `nixos-era-immich` - Immich photo server
 - `nixos-era-navidrome` - Navidrome music streaming server
 - `nixos-era-nextcloud` - Nextcloud server

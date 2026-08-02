@@ -302,6 +302,7 @@
         (with pkgs.nur.repos.rycee.firefox-addons; [
           augmented-steam
           # darkreader
+          floccus
           hover-zoom-plus
           keepassxc-browser
           multi-account-containers

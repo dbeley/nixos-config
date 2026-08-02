@@ -310,6 +310,12 @@ let
         ../apps/paperless-ngx/default.nix
       ];
     };
+    trek = {
+      system = [ ../apps/trek/default.nix ];
+    };
+    karakeep = {
+      system = [ ../apps/karakeep/default.nix ];
+    };
   };
   mkHost =
     {
@@ -612,6 +618,8 @@ in
       "sops"
       "jellyfin"
       "paperless-ngx"
+      "trek"
+      "karakeep"
     ];
   };
 }
