@@ -5,4 +5,21 @@ creation_rules:
       age1qwtm2chl4qhvranafhl9s4wv4dpg29rgl6leua0gaxef5jn8u90qq7am44
   - path_regex: 'secrets/nixflix\.yaml$'
     age: >-
+      age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
       age1uj3yr6z6tpmx39pc0w9ch94hj8ucn6vt7fjaw8cj02uc5q6ee9hsnh4cw7
+  - path_regex: 'secrets/hermes\.yaml$'
+    age: >-
+      age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
+      age18c4rk9d3hsjld422zz8xfsklre9jlg9pr5088cs2gg5e0ch8fc3qnxlj9q
+  - path_regex: 'secrets/nextcloud\.yaml$'
+    age: >-
+      age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
+      age16rvcgm7pqh9e2p6nrdey8wwrd5v7p32edgfaf6hvcgmx9fed8epscj3kc2
+  - path_regex: 'secrets/navidrome\.yaml$'
+    age: >-
+      age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
+      age1pk5mpz0nhdnf7an7cvcmyzqydtetsg4tmn2nmm0hdkxtugy9ggqs205ng5
+  - path_regex: 'secrets/homelab\.yaml$'
+    age: >-
+      age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
+      age19a42zcg3w93rpge59nrg8u9kdd0cnvrsl3v5fklnt2x229ax6ajqmphwre

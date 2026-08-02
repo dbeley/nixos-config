@@ -38,7 +38,9 @@ in
     environmentFile = config.sops.secrets."navidrome-env".path;
   };
 
-  sops.secrets."navidrome-env" = { };
+  sops.secrets."navidrome-env" = {
+    sopsFile = ../../secrets/navidrome.yaml;
+  };
 
   systemd.services.navidrome = {
     requires = [ "mnt-nfs-WDC14.mount" ];

@@ -49,7 +49,9 @@ in
     };
   };
 
-  sops.secrets."paperless_admin_password" = { };
+  sops.secrets."paperless_admin_password" = {
+    sopsFile = ../../secrets/homelab.yaml;
+  };
 
   services.nginx = {
     enable = true;

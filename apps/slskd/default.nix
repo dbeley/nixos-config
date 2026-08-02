@@ -5,7 +5,9 @@
   ...
 }:
 {
-  sops.secrets."slskd-env" = { };
+  sops.secrets."slskd-env" = {
+    sopsFile = ../../secrets/navidrome.yaml;
+  };
 
   services.slskd = {
     enable = true;
