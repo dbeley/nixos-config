@@ -319,6 +319,9 @@ let
     audiobookshelf = {
       system = [ ../apps/audiobookshelf/default.nix ];
     };
+    shelfmark = {
+      system = [ ../apps/shelfmark/default.nix ];
+    };
   };
   mkHost =
     {
@@ -624,6 +627,7 @@ in
       "trek"
       "karakeep"
       "audiobookshelf"
+      "shelfmark"
     ];
   };
 }
