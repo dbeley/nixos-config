@@ -1,6 +1,6 @@
 {
   pkgs,
-  user,
+  config,
   ...
 }:
 {
@@ -59,7 +59,7 @@
         else if type -q niri-session
           exec niri-session
         else if type -q Hyprland
-          exec /home/${user}/.local/bin/wrappedhl
+          exec ${config.home.homeDirectory}/.local/bin/wrappedhl
         else
           XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
         end

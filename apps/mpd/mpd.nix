@@ -1,4 +1,4 @@
-{ user, pkgs, ... }:
+{ config, pkgs, ... }:
 {
   home.packages = with pkgs; [ mpc ];
   # home.file = {
@@ -10,8 +10,8 @@
   #   };
   services.mpd = {
     enable = true;
-    musicDirectory = /home/${user}/nfs/WDC14/Musique;
-    playlistDirectory = /home/${user}/.config/mpd/playlists;
+    musicDirectory = "${config.home.homeDirectory}/nfs/WDC14/Musique";
+    playlistDirectory = "${config.home.homeDirectory}/.config/mpd/playlists";
     extraConfig = ''
       max_output_buffer_size "32768"
       max_playlist_length "50000"

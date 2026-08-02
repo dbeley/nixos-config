@@ -1,4 +1,4 @@
-{ pkgs, user, ... }:
+{ pkgs, config, ... }:
 
 {
   home.packages = with pkgs; [
@@ -42,7 +42,7 @@
   sops.secrets = {
     restic-password = {
       key = "restic_password";
-      path = "/home/${user}/.config/restic/password";
+      path = "${config.home.homeDirectory}/.config/restic/password";
     };
   };
 }

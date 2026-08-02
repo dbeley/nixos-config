@@ -1,12 +1,12 @@
 {
   pkgs,
-  user,
+  config,
   ...
 }:
 {
   home.packages = [ pkgs.sops ];
   sops = {
-    age.keyFile = "/home/${user}/.config/sops/age/keys.txt";
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     defaultSopsFile = ../../secrets/secrets.yaml;
   };
 }
