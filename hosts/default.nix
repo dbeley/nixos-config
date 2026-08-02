@@ -238,11 +238,11 @@ let
     hermes-server = {
       system = [
         inputs.hermes-webui-nix.nixosModules.default
-        ../apps/hermes-server/system.nix
+        ../apps/hermes-server/default.nix
       ];
       home = [
         inputs.hermes-webui-nix.homeModules.default
-        ../apps/hermes-server/home.nix
+        ../apps/hermes-server/hermes-server.nix
       ];
     };
     adguard-home = {

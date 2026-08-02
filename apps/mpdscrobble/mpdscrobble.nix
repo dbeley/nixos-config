@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 let
   mpdscrobble = pkgs.python3.pkgs.callPackage ./package.nix { };
 in
@@ -36,6 +36,20 @@ in
     };
     Install = {
       WantedBy = [ "default.target" ];
+    };
+  };
+  sops.secrets = {
+    lastfm-api-key = {
+      key = "lastfm_api_key";
+      path = "/home/${user}/.config/mpdscrobble/api_key";
+    };
+    lastfm-secret = {
+      key = "lastfm_secret";
+      path = "/home/${user}/.config/mpdscrobble/secret";
+    };
+    lastfm-password = {
+      key = "lastfm_password";
+      path = "/home/${user}/.config/mpdscrobble/password";
     };
   };
 }

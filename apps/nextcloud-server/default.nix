@@ -44,6 +44,8 @@ in
   networking.firewall.allowedTCPPorts = [ 80 ];
 
   sops.secrets = {
-    "nextcloud_admin_password" = { };
+    "nextcloud_admin_password" = {
+      sopsFile = ../../secrets/nextcloud.yaml;
+    };
   };
 }

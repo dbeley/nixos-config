@@ -16,7 +16,9 @@
     environmentFile = config.sops.secrets."maloja-env".path;
   };
 
-  sops.secrets."maloja-env" = { };
+  sops.secrets."maloja-env" = {
+    sopsFile = ../../secrets/navidrome.yaml;
+  };
 
   services.nginx.virtualHosts."maloja.home" = {
     locations."/".proxyPass = "http://localhost:42010";

@@ -42,7 +42,9 @@ in
     "d ${trekUploads} 0755 root root -"
   ];
 
-  sops.secrets."trek-env" = { };
+  sops.secrets."trek-env" = {
+    sopsFile = ../../secrets/homelab.yaml;
+  };
 
   services.nginx = {
     enable = true;

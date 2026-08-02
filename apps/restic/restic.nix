@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 
 {
   home.packages = with pkgs; [
@@ -37,6 +37,12 @@
           restic -r rclone:onedrive:backup --verbose --password-file ~/.config/restic/password backup $expanded_folder
         end
       '';
+    };
+  };
+  sops.secrets = {
+    restic-password = {
+      key = "restic_password";
+      path = "/home/${user}/.config/restic/password";
     };
   };
 }
