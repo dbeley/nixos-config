@@ -528,29 +528,13 @@ in
       })
     ];
   };
-  nixos-kimsufi-01 = mkHost {
-    hostName = "nixos-kimsufi-01";
-    stateVersion = "26.05";
+  nixos-kimsufi-qbittorrent = mkHost {
+    hostName = "nixos-kimsufi-qbittorrent";
+    stateVersion = "26.11";
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
       "qbittorrent"
-    ];
-  };
-  nixos-kimsufi-02 = mkHost {
-    hostName = "nixos-kimsufi-02";
-    stateVersion = "26.05";
-    profiles = [
-      "bootloader-grub-bios"
-      "openssh-server"
-    ];
-  };
-  nixos-kimsufi-03 = mkHost {
-    hostName = "nixos-kimsufi-03";
-    stateVersion = "26.05";
-    profiles = [
-      "bootloader-grub-bios"
-      "openssh-server"
     ];
   };
   nixos-era-hermes = mkHost {

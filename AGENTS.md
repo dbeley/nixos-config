@@ -127,9 +127,7 @@ mkHost = {
 - `sg13` - Silverstone SG13 desktop (AMD Ryzen 9 5950X + RTX 3070, gnome)
 
 **Servers (Kimsufi Proxmox VMs):**
-- `nixos-kimsufi-01` - qbittorrent server
-- `nixos-kimsufi-02` - unused
-- `nixos-kimsufi-03` - unused
+- `nixos-kimsufi-qbittorrent` - qbittorrent server
 
 **Servers (ERA VPS):**
 - `nixos-era-adguard` - AdGuard Home DNS server

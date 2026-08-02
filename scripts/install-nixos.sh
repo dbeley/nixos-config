@@ -2,7 +2,7 @@
 # NixOS Installation Script for Proxmox VMs
 # Copy this to the VM and run: bash install-nixos.sh
 # Usage: bash install-nixos.sh [hostname]
-# Example: bash install-nixos.sh nixos-kimsufi-01
+# Example: bash install-nixos.sh nixos-kimsufi-qbittorrent
 
 set -euo pipefail
 

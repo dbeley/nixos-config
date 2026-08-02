@@ -75,9 +75,7 @@
 </details>
 
 ### Proxmox Kimsufi VMs (Dedicated Server)
-- **nixos-kimsufi-01**: qbittorrent
-- **nixos-kimsufi-02**: unused
-- **nixos-kimsufi-03**: unused
+- **nixos-kimsufi-qbittorrent**: qbittorrent
 
 ### Proxmox Era VMs (Home Server)
 - **nixos-era-hermes**: hermes with hermes-webui
