@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   ...
 }:
 let
@@ -12,21 +13,28 @@ in
   virtualisation = {
     podman.enable = true;
     oci-containers.containers.trek = {
-      image = "mauriceboe/trek:latest";
+      image = "docker.io/mauriceboe/trek:latest";
       autoStart = true;
       ports = [ "127.0.0.1:${toString trekPort}:3000" ];
       volumes = [
         "${trekData}:/app/data"
         "${trekUploads}:/app/uploads"
       ];
+      environment = {
+        TZ = "Europe/Paris";
+        APP_URL = "http://${trekHost}";
+        ALLOWED_ORIGINS = "http://${trekHost}";
+        DEFAULT_LANGUAGE = "fr";
+        COOKIE_SECURE = "false";
+      };
       environmentFiles = [ config.sops.secrets."trek-env".path ];
       extraOptions = [ "--pull=newer" ];
     };
   };
 
   systemd.services."podman-trek" = {
-    requires = [ "sops-nix.service" ];
-    after = [ "sops-nix.service" ];
+    requires = lib.mkIf config.sops.useSystemdActivation [ "sops-install-secrets.service" ];
+    after = lib.mkIf config.sops.useSystemdActivation [ "sops-install-secrets.service" ];
   };
 
   systemd.tmpfiles.rules = [

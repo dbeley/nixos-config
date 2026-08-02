@@ -13,6 +13,12 @@
       theme = "dark";
       location_timezone = "Europe/Paris";
     };
+    environment = {
+      MALOJA_SKIP_SETUP = "yes";
+      MALOJA_DATA_DIRECTORY = "var/lib/maloja";
+      MALOJA_SEND_STATS = "false";
+      MALOJA_SCROBBLE_LASTFM = "false";
+    };
     environmentFile = config.sops.secrets."maloja-env".path;
   };
 
