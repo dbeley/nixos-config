@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   user,
   ...
 }:
@@ -114,23 +115,28 @@ in
     };
   };
 
-  sops.secrets = {
-    "sonarr_api_key" = { };
-    "sonarr_password" = { };
-    "radarr_api_key" = { };
-    "radarr_password" = { };
-    "lidarr_api_key" = { };
-    "lidarr_password" = { };
-    "prowlarr_api_key" = { };
-    "prowlarr_password" = { };
-    "jellyfin_api_key" = { };
-    "jellyfin_admin_password" = { };
-    "seerr_api_key" = { };
-    "qbittorrent_password" = { };
-    "rutracker_username" = { };
-    "rutracker_password" = { };
-    "mullvad_wg" = { };
-  };
+  sops.secrets =
+    lib.genAttrs
+      [
+        "sonarr_api_key"
+        "sonarr_password"
+        "radarr_api_key"
+        "radarr_password"
+        "lidarr_api_key"
+        "lidarr_password"
+        "prowlarr_api_key"
+        "prowlarr_password"
+        "jellyfin_api_key"
+        "jellyfin_admin_password"
+        "seerr_api_key"
+        "qbittorrent_password"
+        "rutracker_username"
+        "rutracker_password"
+        "mullvad_wg"
+      ]
+      (_: {
+        sopsFile = ../../secrets/nixflix.yaml;
+      });
 
   networking.firewall.allowedTCPPorts = [
     80

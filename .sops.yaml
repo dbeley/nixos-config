@@ -3,3 +3,6 @@ creation_rules:
     age: >-
       age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
       age1qwtm2chl4qhvranafhl9s4wv4dpg29rgl6leua0gaxef5jn8u90qq7am44
+  - path_regex: 'secrets/nixflix\.yaml$'
+    age: >-
+      age1uj3yr6z6tpmx39pc0w9ch94hj8ucn6vt7fjaw8cj02uc5q6ee9hsnh4cw7

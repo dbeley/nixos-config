@@ -91,13 +91,13 @@ nix-olde:
 	nix run github:trofi/nix-olde -- -f . > $(date +%Y-%m-%d)_nix-olde-report.txt
 
 # Secrets management with sops
-secrets-edit:
+secrets-edit file="secrets/secrets.yaml":
   @echo "Editing secrets (requires sops and age key)"
-  SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops secrets/secrets.yaml
+  SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops {{file}}
 
-secrets-view:
+secrets-view file="secrets/secrets.yaml":
   @echo "Viewing decrypted secrets"
-  SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops -d secrets/secrets.yaml
+  SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops -d {{file}}
 
 secrets-gen-key:
   @echo "Generating new age key"
