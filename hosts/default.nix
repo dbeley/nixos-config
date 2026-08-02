@@ -316,6 +316,9 @@ let
     karakeep = {
       system = [ ../apps/karakeep/default.nix ];
     };
+    audiobookshelf = {
+      system = [ ../apps/audiobookshelf/default.nix ];
+    };
   };
   mkHost =
     {
@@ -620,6 +623,7 @@ in
       "paperless-ngx"
       "trek"
       "karakeep"
+      "audiobookshelf"
     ];
   };
 }
