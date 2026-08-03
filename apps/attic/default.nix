@@ -6,6 +6,7 @@
 #   - Disque: 50-100 Go (chunks + store local)
 #   - Domaine public requis: DNS A → IP de la VM (TLS Let's Encrypt)
 {
+  config,
   lib,
   pkgs,
   ...
@@ -19,8 +20,8 @@ in
 {
   services.atticd = {
     enable = true;
-    # Secret JWT RS256 généré au premier boot (hors du store Nix).
-    environmentFile = "/var/lib/atticd-secret/env";
+    # Secret JWT RS256 (sops, fichier secrets/attic.yaml).
+    environmentFile = config.sops.secrets."atticd-env".path;
     settings = {
       listen = "127.0.0.1:8080";
       allowed-hosts = [ atticDomain ];
@@ -29,26 +30,14 @@ in
     };
   };
 
-  # Génère le secret JWT RS256 au premier démarrage (persistant entre les reboots).
-  systemd.services.atticd-secret-init = {
-    description = "Generate atticd JWT secret on first boot";
-    before = [ "atticd.service" ];
-    wantedBy = [ "multi-user.target" ];
-    path = with pkgs; [
-      coreutils
-      openssl
-    ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-    };
-    script = ''
-      install -d -m 0700 /var/lib/atticd-secret
-      if [ ! -s /var/lib/atticd-secret/env ]; then
-        umask 077
-        printf 'ATTIC_SERVER_TOKEN_RS256_SECRET_BASE64="%s"\n' "$(${pkgs.openssl}/bin/openssl genrsa -traditional 4096 2>/dev/null | ${pkgs.coreutils}/bin/base64 -w0)" > /var/lib/atticd-secret/env
-      fi
-    '';
+  sops.secrets."atticd-env" = {
+    sopsFile = ../../secrets/attic.yaml;
+  };
+
+  # Attendre le déchiffrement sops au boot.
+  systemd.services.atticd = {
+    after = [ "sops-nix.service" ];
+    wants = [ "sops-nix.service" ];
   };
 
   # Remote builder: les machines de david (clés SSH GitHub) peuvent déléguer

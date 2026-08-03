@@ -539,6 +539,7 @@ in
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
+      "sops"
       "attic"
     ];
   };
