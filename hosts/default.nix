@@ -245,6 +245,11 @@ let
         ../apps/qbittorrent/default.nix
       ];
     };
+    tor-relay = {
+      system = [
+        ../apps/tor-relay/default.nix
+      ];
+    };
     jj = {
       home = [
         ../apps/jj/jj.nix
@@ -526,6 +531,15 @@ in
       "bootloader-grub-bios"
       "openssh-server"
       "qbittorrent"
+    ];
+  };
+  nixos-kimsufi-tor = mkHost {
+    hostName = "nixos-kimsufi-tor";
+    stateVersion = "26.11";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "tor-relay"
     ];
   };
   nixos-era-hermes = mkHost {
