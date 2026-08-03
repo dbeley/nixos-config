@@ -245,6 +245,11 @@ let
         ../apps/qbittorrent/default.nix
       ];
     };
+    attic = {
+      system = [
+        ../apps/attic/default.nix
+      ];
+    };
     jj = {
       home = [
         ../apps/jj/jj.nix
@@ -526,6 +531,15 @@ in
       "bootloader-grub-bios"
       "openssh-server"
       "qbittorrent"
+    ];
+  };
+  nixos-kimsufi-attic = mkHost {
+    hostName = "nixos-kimsufi-attic";
+    stateVersion = "26.11";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "attic"
     ];
   };
   nixos-era-hermes = mkHost {

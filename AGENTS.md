@@ -128,6 +128,7 @@ mkHost = {
 
 **Servers (Kimsufi Proxmox VMs):**
 - `nixos-kimsufi-qbittorrent` - qbittorrent server
+- `nixos-kimsufi-attic` - Cache binaire Nix (Attic) + remote builder
 
 **Servers (ERA VPS):**
 - `nixos-era-adguard` - AdGuard Home DNS server
