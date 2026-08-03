@@ -2,6 +2,7 @@
   config,
   lib,
   user,
+  pkgs,
   ...
 }:
 let
@@ -114,6 +115,10 @@ in
       wgConfFile = config.sops.secrets."mullvad_wg".path;
     };
   };
+
+  systemd.services.nixflix-setup-dirs.script = lib.mkForce ''
+    ${pkgs.systemd}/bin/systemd-tmpfiles --create --prefix=/data --prefix=/var
+  '';
 
   sops.secrets =
     lib.genAttrs
