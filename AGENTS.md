@@ -128,6 +128,7 @@ mkHost = {
 
 **Servers (Kimsufi Proxmox VMs):**
 - `nixos-kimsufi-qbittorrent` - qbittorrent server
+- `nixos-kimsufi-tor` - Relais Tor non-exit
 
 **Servers (ERA VPS):**
 - `nixos-era-adguard` - AdGuard Home DNS server
