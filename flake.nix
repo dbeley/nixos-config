@@ -125,8 +125,16 @@
     agent-skills = {
       url = "github:Kyure-A/agent-skills-nix";
       inputs = {
+        blueprint.follows = "blueprint";
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
+      };
+    };
+    blueprint = {
+      url = "github:numtide/blueprint";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
       };
     };
     anthropic-skills = {
