@@ -28,6 +28,7 @@ in
     extraAppsEnable = true;
     extraApps = with config.services.nextcloud.package.packages.apps; {
       inherit
+        bookmarks
         contacts
         notes
         calendar
