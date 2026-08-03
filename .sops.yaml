@@ -27,7 +27,3 @@ creation_rules:
     age: >-
       age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
       age1f4uc39uuyllsxqpuyw8dk7lq5mw88jy7sg9hng4zhnctdcsgg3fsm7htxh
-  - path_regex: 'secrets/attic\.yaml$'
-    age: >-
-      age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
-      age1qdt7c094sq6pt3sh7d3dx2ugj4txdkycs48ha0r33f2787vkxyqsm7xfu3
