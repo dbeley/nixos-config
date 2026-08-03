@@ -3,12 +3,14 @@
   lib,
   user,
   pkgs,
+  inputs,
   ...
 }:
 let
   inherit (config.sops) secrets;
 in
 {
+  imports = [ inputs.nixflix.nixosModules.default ];
   fileSystems."/mnt/nfs/WDC14_2" = {
     device = "omv.home:/WDC14_2";
     fsType = "nfs";

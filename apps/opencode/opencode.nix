@@ -11,6 +11,7 @@ let
   };
 in
 {
+  imports = [ inputs.agent-skills.homeManagerModules.default ];
   home.packages = [
     opencode-wrapped
     pkgs.libnotify

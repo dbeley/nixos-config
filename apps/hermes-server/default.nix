@@ -1,8 +1,10 @@
 {
   user,
+  inputs,
   ...
 }:
 {
+  imports = [ inputs.hermes-webui-nix.nixosModules.default ];
   services.hermes-webui = {
     enable = true;
     port = 80;

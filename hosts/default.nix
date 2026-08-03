@@ -14,9 +14,7 @@ let
     };
     impermanence = {
       system = [
-        inputs.disko.nixosModules.disko
         ../modules/disko/encrypted-btrfs-impermanence.nix
-        inputs.impermanence.nixosModules.impermanence
         ../modules/impermanence/default.nix
       ];
     };
@@ -37,11 +35,9 @@ let
     };
     sops = {
       system = [
-        inputs.sops-nix.nixosModules.sops
         ../modules/sops/default.nix
       ];
       home = [
-        inputs.sops-nix.homeManagerModules.sops
         ../modules/sops/sops.nix
       ];
     };
@@ -54,7 +50,6 @@ let
     # Profile to use on all desktops/laptops i.e. not servers
     workstation = {
       system = [
-        inputs.stylix.nixosModules.stylix
         ../apps/stylix/default.nix
         ../apps/udiskie/default.nix
         ../apps/symmetri/default.nix
@@ -150,7 +145,6 @@ let
     };
     nixflix = {
       system = [
-        inputs.nixflix.nixosModules.default
         ../apps/nixflix/default.nix
       ];
     };
@@ -185,7 +179,6 @@ let
     };
     neovim-nvf = {
       home = [
-        inputs.nvf.homeManagerModules.default
         ../apps/neovim-nvf/neovim-nvf.nix
       ];
     };
@@ -222,7 +215,6 @@ let
     };
     code-agents = {
       home = [
-        inputs.agent-skills.homeManagerModules.default
         # ../apps/cursor/cursor.nix
         ../apps/opencode/opencode.nix
         ../apps/openskills/openskills.nix
@@ -237,11 +229,9 @@ let
     };
     hermes-server = {
       system = [
-        inputs.hermes-webui-nix.nixosModules.default
         ../apps/hermes-server/default.nix
       ];
       home = [
-        inputs.hermes-webui-nix.homeModules.default
         ../apps/hermes-server/hermes-server.nix
       ];
     };
@@ -482,7 +472,7 @@ in
       # "steam"
       # "firefox"
       "zen-browser"
-      # "chromium"
+      "chromium"
       # "python"
       "code-agents"
       # "sops"
@@ -490,9 +480,9 @@ in
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-      ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
       ../modules/hardware/throttled.nix
+      ../modules/hardware/razer-naga.nix
       ../hosts/x1yoga/throttled.nix
       {
         my.stylix.wallpaper = "purple-waves";
@@ -520,6 +510,7 @@ in
       (inputs.nixos-hardware + "/common/gpu/nvidia/ampere")
       ../apps/boinc/default.nix
       ../modules/hardware/hid-tmff2.nix
+      ../modules/hardware/razer-naga.nix
       {
         my.stylix.wallpaper = "nyc-425-park-avenue";
       }

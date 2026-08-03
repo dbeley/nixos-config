@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -11,6 +12,7 @@ let
   wallpaperNames = lib.attrNames wallpaperCatalog.wallpapers;
 in
 {
+  imports = [ inputs.stylix.nixosModules.stylix ];
   options.my.stylix = {
     wallpaper = lib.mkOption {
       type = lib.types.enum wallpaperNames;

@@ -2,9 +2,11 @@
   hostName,
   lib,
   config,
+  inputs,
   ...
 }:
 {
+  imports = [ inputs.disko.nixosModules.disko ];
   options = {
     disko.mainDisk = lib.mkOption {
       type = lib.types.str;
