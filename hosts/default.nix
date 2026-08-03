@@ -255,6 +255,11 @@ let
         ../apps/qbittorrent/default.nix
       ];
     };
+    peertube = {
+      system = [
+        ../apps/peertube/default.nix
+      ];
+    };
     jj = {
       home = [
         ../apps/jj/jj.nix
@@ -535,6 +540,15 @@ in
       "bootloader-grub-bios"
       "openssh-server"
       "qbittorrent"
+    ];
+  };
+  nixos-kimsufi-peertube = mkHost {
+    hostName = "nixos-kimsufi-peertube";
+    stateVersion = "26.11";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "peertube"
     ];
   };
   nixos-era-hermes = mkHost {
