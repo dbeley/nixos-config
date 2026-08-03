@@ -6,8 +6,6 @@
 #   - Disque: 100-200 Go (vidéos + transcodages temporaires)
 #   - Domaine public requis: DNS A → IP de la VM (TLS Let's Encrypt)
 {
-  config,
-  lib,
   pkgs,
   ...
 }:
