@@ -5,18 +5,16 @@
 }:
 {
   home.packages = with pkgs; [
-    audacity
+    # audacity
     beets
-    borgbackup
-    borgmatic
-    discord
-    heroic
-    jamulus
-    musescore
+    # discord
+    # heroic
+    # jamulus
+    # musescore
     nautilus
     papers
-    shotcut
-    transcribe
+    # shotcut
+    # transcribe
     wvkbd
   ];
   dconf.settings = {

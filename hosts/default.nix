@@ -484,7 +484,7 @@ in
       "zen-browser"
       # "chromium"
       # "python"
-      # "code-agents"
+      "code-agents"
       # "sops"
     ];
     extraModules = [

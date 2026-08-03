@@ -140,6 +140,7 @@
     files = [
       ".claude.json"
       ".local/state/tofi-history"
+      ".config/monitors.xml"
     ];
   };
 
