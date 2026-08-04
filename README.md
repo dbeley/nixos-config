@@ -76,6 +76,7 @@
 
 ### Proxmox Kimsufi VMs (Dedicated Server)
 - **nixos-kimsufi-qbittorrent**: qbittorrent
+- **nixos-kimsufi-tor**: non-exit Tor relay
 
 ### Proxmox Era VMs (Home Server)
 - **nixos-era-hermes**: hermes with hermes-webui
