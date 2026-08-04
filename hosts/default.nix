@@ -548,6 +548,7 @@ in
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
+      "sops"
       "tor-relay"
     ];
   };
