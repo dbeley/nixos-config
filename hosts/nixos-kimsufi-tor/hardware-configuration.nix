@@ -25,25 +25,14 @@
     extraModulePackages = [ ];
   };
 
-  # Partitions créées par scripts/install-nixos.sh (labels boot/nixos/swap)
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-label/nixos";
-      fsType = "ext4";
-    };
-    "/boot" = {
-      device = "/dev/disk/by-label/boot";
+      device = "/dev/disk/by-uuid/ee34661b-f018-48d0-9947-1aa816ad149e";
       fsType = "ext4";
     };
   };
 
-  swapDevices = [
-    {
-      device = "/dev/disk/by-label/swap";
-    }
-  ];
-
   networking.useDHCP = lib.mkDefault true;
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  services.qemuGuest.enable = true;
 }
