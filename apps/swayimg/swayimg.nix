@@ -5,14 +5,14 @@
     initLua = ''
       -- General config
       -- Image list configuration
-      swayimg.imagelist.enable_adjacent(true)
+      swayimg.imagelist.adjacent = true
 
       -- Viewer mode
-      swayimg.viewer.set_default_scale("fit")
-      swayimg.viewer.limit_preload(5)
+      swayimg.viewer.default_scale = "fit"
+      swayimg.viewer.preload = 5
 
       -- Gallery mode
-      swayimg.gallery.enable_preload(true)
+      swayimg.gallery.preload = true
 
       -- Key bindings - viewer mode
       swayimg.viewer.on_key("p", function()
@@ -60,25 +60,17 @@
         swayimg.viewer.rotate(90)
       end)
       swayimg.viewer.on_key("d", function()
-        if swayimg.text.visible() then
-          swayimg.text.hide()
-        else
-          swayimg.text.show()
-        end
+        swayimg.text.visible = not swayimg.text.visible
       end)
       swayimg.viewer.on_key("D", function()
-        if swayimg.text.visible() then
-          swayimg.text.hide()
-        else
-          swayimg.text.show()
-        end
+        swayimg.text.visible = not swayimg.text.visible
       end)
       swayimg.viewer.on_key("i", function()
-        local scale = swayimg.viewer.get_scale()
+        local scale = swayimg.viewer.scale
         swayimg.viewer.set_abs_scale(scale + 0.1)
       end)
       swayimg.viewer.on_key("u", function()
-        local scale = swayimg.viewer.get_scale()
+        local scale = swayimg.viewer.scale
         swayimg.viewer.set_abs_scale(scale - 0.1)
       end)
       swayimg.viewer.on_key("r", function()
@@ -91,7 +83,7 @@
         local image = swayimg.viewer.get_image()
         if image then
           os.remove(image.path)
-          swayimg.text.set_status("Deleted: " .. image.path)
+          swayimg.text.status = "Deleted: " .. image.path
           swayimg.viewer.switch_image("next")
         end
       end)
@@ -113,7 +105,7 @@
         local image = swayimg.gallery.get_image()
         if image then
           os.remove(image.path)
-          swayimg.text.set_status("Deleted: " .. image.path)
+          swayimg.text.status = "Deleted: " .. image.path
           swayimg.gallery.reload()
         end
       end)
