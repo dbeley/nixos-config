@@ -156,6 +156,21 @@ let
         ../apps/nixflix/default.nix
       ];
     };
+    komga = {
+      system = [
+        ../apps/komga/default.nix
+      ];
+    };
+    mylar = {
+      system = [
+        ../apps/mylar/default.nix
+      ];
+    };
+    lazylibrarian = {
+      system = [
+        ../apps/lazylibrarian/default.nix
+      ];
+    };
     podman = {
       system = [
         ../apps/podman/default.nix
@@ -568,6 +583,10 @@ in
       "sops"
       "acme"
       "nixflix"
+      "komga"
+      "mylar"
+      "lazylibrarian"
+      "shelfmark"
     ];
   };
   nixos-era-adguard = mkHost {
