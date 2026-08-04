@@ -23,3 +23,7 @@ creation_rules:
     age: >-
       age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
       age19a42zcg3w93rpge59nrg8u9kdd0cnvrsl3v5fklnt2x229ax6ajqmphwre
+  - path_regex: 'secrets/tor\.yaml$'
+    age: >-
+      age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
+      age13txxxvheh5dp0lkt9h3mwlmr0k3j5a89wfllm2nuqtu78extpuasgz49zg
