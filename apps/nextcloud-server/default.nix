@@ -1,12 +1,18 @@
-{ config, user, ... }:
+{
+  config,
+  user,
+  domain,
+  ...
+}:
 let
+  hostName = "nextcloud.${domain}";
   inherit (config.sops) secrets;
 in
 {
   services.nextcloud = {
     enable = true;
-    hostName = "nextcloud.home";
-    https = false;
+    inherit hostName;
+    https = true;
 
     config = {
       adminuser = user;
@@ -42,7 +48,15 @@ in
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
+
+  services.nginx.virtualHosts.${hostName} = {
+    useACMEHost = domain;
+    forceSSL = true;
+  };
 
   sops.secrets = {
     "nextcloud_admin_password" = {

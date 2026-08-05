@@ -1,10 +1,11 @@
 {
   config,
   lib,
+  domain,
   ...
 }:
 let
-  trekHost = "trek.home";
+  trekHost = "trek.${domain}";
   trekPort = 3000;
   trekData = "/var/lib/trek/data";
   trekUploads = "/var/lib/trek/uploads";
@@ -22,10 +23,10 @@ in
       ];
       environment = {
         TZ = "Europe/Paris";
-        APP_URL = "http://${trekHost}";
-        ALLOWED_ORIGINS = "http://${trekHost}";
+        APP_URL = "https://${trekHost}";
+        ALLOWED_ORIGINS = "https://${trekHost}";
         DEFAULT_LANGUAGE = "fr";
-        COOKIE_SECURE = "false";
+        COOKIE_SECURE = "true";
       };
       environmentFiles = [ config.sops.secrets."trek-env".path ];
       extraOptions = [ "--pull=newer" ];
@@ -49,6 +50,8 @@ in
   services.nginx = {
     enable = true;
     virtualHosts.${trekHost} = {
+      useACMEHost = domain;
+      forceSSL = true;
       locations."/" = {
         proxyPass = "http://127.0.0.1:${toString trekPort}";
         proxyWebsockets = true;

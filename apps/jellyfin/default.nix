@@ -1,5 +1,6 @@
 {
   user,
+  domain,
   ...
 }:
 let
@@ -38,7 +39,9 @@ in
 
   services.nginx = {
     enable = true;
-    virtualHosts."jellyfin.home" = {
+    virtualHosts."jellyfin.${domain}" = {
+      useACMEHost = domain;
+      forceSSL = true;
       locations."/".proxyPass = "http://localhost:8096";
     };
   };

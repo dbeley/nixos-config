@@ -1,6 +1,6 @@
-_:
+{ domain, ... }:
 let
-  shelfmarkHost = "shelfmark.home";
+  shelfmarkHost = "shelfmark.${domain}";
   shelfmarkPort = 8084;
 in
 {
@@ -11,6 +11,8 @@ in
   services.nginx = {
     enable = true;
     virtualHosts.${shelfmarkHost} = {
+      useACMEHost = domain;
+      forceSSL = true;
       locations."/" = {
         proxyPass = "http://localhost:${toString shelfmarkPort}";
         proxyWebsockets = true;

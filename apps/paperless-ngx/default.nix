@@ -1,14 +1,15 @@
 {
   config,
   user,
+  domain,
   ...
 }:
 let
   nfsServer = "omv.home";
   nfsExport = "/WDC14_2";
   nfsMount = "/mnt/nfs/WDC14_2";
-  paperlessHost = "paperless.home";
-  paperlessUrl = "http://${paperlessHost}";
+  paperlessHost = "paperless.${domain}";
+  paperlessUrl = "https://${paperlessHost}";
 in
 {
   fileSystems.${nfsMount} = {
@@ -56,6 +57,8 @@ in
   services.nginx = {
     enable = true;
     virtualHosts.${paperlessHost} = {
+      useACMEHost = domain;
+      forceSSL = true;
       locations."/".proxyPass = "http://localhost:28981";
     };
   };

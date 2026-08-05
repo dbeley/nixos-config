@@ -2,6 +2,7 @@
   config,
   lib,
   user,
+  domain,
   ...
 }:
 let
@@ -48,7 +49,9 @@ in
 
     nginx = {
       enable = true;
-      virtualHosts."immich.home" = {
+      virtualHosts."immich.${domain}" = {
+        useACMEHost = domain;
+        forceSSL = true;
         locations."/" = {
           proxyPass = "http://127.0.0.1:${toString config.services.immich.port}";
           proxyWebsockets = true;

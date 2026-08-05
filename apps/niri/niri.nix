@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  domain,
   ...
 }:
 {
@@ -216,7 +217,7 @@
         "Mod+D"."spawn" = [ "feishin" ];
         "Mod+Shift+D"."spawn" = [
           "chromium"
-          "--app=http://covertone.home"
+          "--app=https://covertone.${domain}"
           "--disable-extensions"
         ];
         "Mod+N"."spawn" = [ "keepassxc" ];

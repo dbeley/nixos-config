@@ -2,14 +2,15 @@
   config,
   lib,
   user,
+  domain,
   ...
 }:
 let
   nfsServer = "omv.home";
   nfsExport = "/WDC14";
   nfsMount = "/mnt/nfs/WDC14";
-  navidromeHost = "navidrome.home";
-  navidromeUrl = "http://${navidromeHost}";
+  navidromeHost = "navidrome.${domain}";
+  navidromeUrl = "https://${navidromeHost}";
 in
 {
   fileSystems.${nfsMount} = {
@@ -55,6 +56,8 @@ in
   services.nginx = {
     enable = true;
     virtualHosts.${navidromeHost} = {
+      useACMEHost = domain;
+      forceSSL = true;
       locations."/".proxyPass = "http://localhost:4533";
     };
   };

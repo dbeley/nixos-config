@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  domain,
   ...
 }:
 {
@@ -20,7 +21,9 @@
     sopsFile = ../../secrets/navidrome.yaml;
   };
 
-  services.nginx.virtualHosts."maloja.home" = {
+  services.nginx.virtualHosts."maloja.${domain}" = {
+    useACMEHost = domain;
+    forceSSL = true;
     locations."/".proxyPass = "http://localhost:42010";
     locations."/".proxyWebsockets = true;
   };

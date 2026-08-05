@@ -5,6 +5,9 @@
   ...
 }:
 let
+  # Public domain for the homelab services. Each service becomes
+  # <service>.<domain>.
+  domain = "home.dbeley.ovh";
   moduleProfiles = {
     laptop = {
       system = [
@@ -39,6 +42,11 @@ let
       ];
       home = [
         ../modules/sops/sops.nix
+      ];
+    };
+    acme = {
+      system = [
+        ../modules/acme/default.nix
       ];
     };
     openssh-server = {
@@ -311,9 +319,6 @@ let
     karakeep = {
       system = [ ../apps/karakeep/default.nix ];
     };
-    audiobookshelf = {
-      system = [ ../apps/audiobookshelf/default.nix ];
-    };
     shelfmark = {
       system = [ ../apps/shelfmark/default.nix ];
     };
@@ -358,6 +363,7 @@ let
           inputs
           hostName
           stateVersion
+          domain
           ;
       };
       modules = [
@@ -376,6 +382,7 @@ let
                 system
                 stateVersion
                 hostName
+                domain
                 ;
               selectedProfiles = profiles;
             };
@@ -551,6 +558,7 @@ in
       "openssh-server"
       "hermes-server"
       "sops"
+      "acme"
       # "cairn"
     ];
   };
@@ -561,6 +569,7 @@ in
       "bootloader-grub-bios"
       "openssh-server"
       "sops"
+      "acme"
       "nixflix"
     ];
   };
@@ -581,6 +590,7 @@ in
       "openssh-server"
       "nextcloud-server"
       "sops"
+      "acme"
     ];
   };
   nixos-era-immich = mkHost {
@@ -589,6 +599,8 @@ in
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
+      "sops"
+      "acme"
       "immich"
     ];
   };
@@ -600,6 +612,7 @@ in
       "openssh-server"
       "navidrome"
       "sops"
+      "acme"
       "slskd"
       "maloja"
       "covertone"
@@ -612,11 +625,11 @@ in
       "bootloader-grub-bios"
       "openssh-server"
       "sops"
+      "acme"
       "jellyfin"
       "paperless-ngx"
       "trek"
       "karakeep"
-      "audiobookshelf"
       "shelfmark"
     ];
   };
