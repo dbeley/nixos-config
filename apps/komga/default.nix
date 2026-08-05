@@ -1,10 +1,11 @@
 {
   user,
   lib,
+  domain,
   ...
 }:
 let
-  komgaHost = "komga.home";
+  komgaHost = "komga.${domain}";
   komgaPort = 25600;
 in
 {
@@ -30,6 +31,8 @@ in
   services.nginx = {
     enable = true;
     virtualHosts.${komgaHost} = {
+      useACMEHost = domain;
+      forceSSL = true;
       locations."/" = {
         proxyPass = "http://127.0.0.1:${toString komgaPort}";
         proxyWebsockets = true;

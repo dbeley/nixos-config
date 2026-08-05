@@ -1,10 +1,11 @@
 {
   config,
   user,
+  domain,
   ...
 }:
 let
-  mylarHost = "mylar.home";
+  mylarHost = "mylar.${domain}";
   mylarPort = 8090;
   nfsMount = "/mnt/nfs/WDC14_2";
   configDir = "/var/lib/mylar/config";
@@ -55,6 +56,8 @@ in
   services.nginx = {
     enable = true;
     virtualHosts.${mylarHost} = {
+      useACMEHost = domain;
+      forceSSL = true;
       locations."/" = {
         proxyPass = "http://127.0.0.1:${toString mylarPort}";
         proxyWebsockets = true;

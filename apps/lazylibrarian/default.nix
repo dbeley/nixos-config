@@ -1,10 +1,11 @@
 {
   config,
   user,
+  domain,
   ...
 }:
 let
-  lazylibrarianHost = "lazylibrarian.home";
+  lazylibrarianHost = "lazylibrarian.${domain}";
   lazylibrarianPort = 5299;
   nfsMount = "/mnt/nfs/WDC14_2";
   configDir = "/var/lib/lazylibrarian/config";
@@ -56,6 +57,8 @@ in
   services.nginx = {
     enable = true;
     virtualHosts.${lazylibrarianHost} = {
+      useACMEHost = domain;
+      forceSSL = true;
       locations."/" = {
         proxyPass = "http://127.0.0.1:${toString lazylibrarianPort}";
         proxyWebsockets = true;
