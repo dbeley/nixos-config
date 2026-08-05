@@ -31,7 +31,7 @@
   - Shell/CLI tools: `bat/`, `btop/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `workstation/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
-  - Servers: `adguard-home/`, `cairn/`, `covertone/`, `hermes-server/`, `immich/`, `jellyfin/`, `karakeep/`, `maloja/`, `navidrome/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`
+  - Servers: `adguard-home/`, `cairn/`, `covertone/`, `hermes-server/`, `immich/`, `jellyfin/`, `maloja/`, `navidrome/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`
   - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `thunderbird/`, `udiskie/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
@@ -117,7 +117,6 @@ mkHost = {
 - `nixflix` - Nixflix media server
 - `paperless-ngx` - Paperless-ngx document management
 - `trek` - TREK travel planner
-- `karakeep` - Karakeep bookmark-everything app
 - `slskd` - Soulseek file sharing client
 
 ### Current Hosts
@@ -135,7 +134,7 @@ mkHost = {
 **Servers (ERA VPS):**
 - `nixos-era-adguard` - AdGuard Home DNS server
 - `nixos-era-hermes` - Hermes Web UI
-- `nixos-era-homelab` - Jellyfin + paperless-ngx + TREK + Karakeep + Shelfmark
+- `nixos-era-homelab` - Jellyfin + paperless-ngx + TREK 
 - `nixos-era-immich` - Immich photo server
 - `nixos-era-navidrome` - Navidrome music streaming server + slskd + maloja + covertone
 - `nixos-era-nextcloud` - Nextcloud server

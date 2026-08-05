@@ -85,7 +85,7 @@
 - **nixos-era-nextcloud**: nextcloud
 - **nixos-era-immich**: immich
 - **nixos-era-navidrome**: navidrome server + music tools (slskd, covertone, maloja)
-- **nixos-era-homelab**: generic host for other self-hosted tools (paperless, jellyfin, trek, karakeep, etc.)
+- **nixos-era-homelab**: generic host for other self-hosted tools (paperless, jellyfin, trek, etc.)
 
 ## Common Usage
 

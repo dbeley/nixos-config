@@ -316,9 +316,6 @@ let
     trek = {
       system = [ ../apps/trek/default.nix ];
     };
-    karakeep = {
-      system = [ ../apps/karakeep/default.nix ];
-    };
     shelfmark = {
       system = [ ../apps/shelfmark/default.nix ];
     };
@@ -629,8 +626,6 @@ in
       "jellyfin"
       "paperless-ngx"
       "trek"
-      "karakeep"
-      "shelfmark"
     ];
   };
 }
