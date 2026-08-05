@@ -83,6 +83,16 @@ in
           }
           {
             name = "1337x";
+            tags = [ "flaresolverr" ];
+          }
+          {
+            name = "EZTV";
+          }
+          {
+            name = "LimeTorrents";
+          }
+          {
+            name = "YTS";
           }
         ];
       };
