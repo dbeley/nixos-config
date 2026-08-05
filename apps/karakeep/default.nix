@@ -1,9 +1,10 @@
 {
   lib,
+  domain,
   ...
 }:
 let
-  karakeepHost = "karakeep.home";
+  karakeepHost = "karakeep.${domain}";
   karakeepPort = 3001;
 in
 {
@@ -16,7 +17,7 @@ in
       enable = true;
       extraEnvironment = {
         PORT = toString karakeepPort;
-        NEXTAUTH_URL = "http://${karakeepHost}";
+        NEXTAUTH_URL = "https://${karakeepHost}";
         DISABLE_SIGNUPS = "false";
         LOG_LEVEL = "notice";
       };
@@ -39,6 +40,8 @@ in
     nginx = {
       enable = true;
       virtualHosts.${karakeepHost} = {
+        useACMEHost = domain;
+        forceSSL = true;
         locations."/" = {
           proxyPass = "http://127.0.0.1:${toString karakeepPort}";
           proxyWebsockets = true;

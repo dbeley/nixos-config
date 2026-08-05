@@ -2,6 +2,7 @@
   config,
   lib,
   user,
+  domain,
   ...
 }:
 {
@@ -13,7 +14,11 @@
     enable = true;
     environmentFile = config.sops.secrets."slskd-env".path;
     openFirewall = true;
-    domain = "slskd.home";
+    domain = "slskd.${domain}";
+    nginx = {
+      useACMEHost = domain;
+      forceSSL = true;
+    };
     inherit user;
     group = "users";
     settings = {

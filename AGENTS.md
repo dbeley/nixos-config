@@ -13,10 +13,12 @@
   - `modules/impermanence/` - Ephemeral root filesystem configuration
   - `modules/hardware/` - Hardware-specific modules (hid-tmff2, throttled)
   - `modules/sops/` - Secrets management (system and home-manager)
+  - `modules/acme/` - Shared ACME (Let's Encrypt) module for era hosts: per-host DNS-01 cert via OVH (SANs derived from each host's nginx vhosts), OVH credentials from `secrets/acme.yaml`
   - `modules/cachix/` - Binary cache configurations (niri, nix-community)
   - `configuration.nix` - Base system configuration (networking, locale, nix settings)
   - `overlays.nix` - System-wide package overlays
-- **`apps/`** - Reusable application and desktop environment modules (96 directories, 110 .nix files total)
+  - `hosts/default.nix` - Host definitions and the `domain` specialArg: the public domain used by all era VM services (e.g. `home.example.com`). Passed to every module via `specialArgs`/`extraSpecialArgs`.
+- **`apps/`** - Reusable application and desktop environment modules (102 directories, 116 .nix files total)
   - Desktop environments: `gnome/`, `niri/`, `sway/`
   - Terminals: `alacritty/`, `ghostty/`, `kitty/`
   - Editors: `editorconfig/`, `emacs/`, `helix/`, `kakoune/`, `neovim-nixvim/`, `neovim-nvf/`, `nvim/`, `vscode/`
@@ -97,7 +99,7 @@ mkHost = {
 - `jj` - Jujutsu version control system
 - `mullvad` - Mullvad VPN (system + home-manager)
 - `ollama` - Ollama local LLM server
-- `hermes-server` - Hermes Web UI (port 80), NixOS system service with sops auth
+- `hermes-server` - Hermes Web UI
 - `nextcloud-server` - Nextcloud server
 - `restic` - Restic backup tool
 - `thunderbird` - Thunderbird email client
@@ -114,8 +116,8 @@ mkHost = {
 - `nextcloud-server` - Nextcloud server
 - `nixflix` - Nixflix media server
 - `paperless-ngx` - Paperless-ngx document management
-- `trek` - TREK travel planner (podman OCI container on 127.0.0.1:3000, nginx vhost trek.home)
-- `karakeep` - Karakeep bookmark-everything app (native nixpkgs service on port 3001, nginx vhost karakeep.home)
+- `trek` - TREK travel planner
+- `karakeep` - Karakeep bookmark-everything app
 - `slskd` - Soulseek file sharing client
 
 ### Current Hosts
@@ -133,9 +135,9 @@ mkHost = {
 **Servers (ERA VPS):**
 - `nixos-era-adguard` - AdGuard Home DNS server
 - `nixos-era-hermes` - Hermes Web UI
-- `nixos-era-homelab` - Jellyfin + paperless-ngx + TREK + Karakeep
+- `nixos-era-homelab` - Jellyfin + paperless-ngx + TREK + Karakeep + Shelfmark
 - `nixos-era-immich` - Immich photo server
-- `nixos-era-navidrome` - Navidrome music streaming server
+- `nixos-era-navidrome` - Navidrome music streaming server + slskd + maloja + covertone
 - `nixos-era-nextcloud` - Nextcloud server
 - `nixos-era-nixflix` - Nixflix media server
 
@@ -175,6 +177,25 @@ nix build .#<pkg>  # Ensure derivation succeeds before committing
 1. Ensure age key exists at specified location
 2. Add `sops` to host's `profiles` list in `hosts/default.nix`
 3. Define secrets in `secrets/secrets.yaml` using `sops secrets/secrets.yaml`
+
+### ACME / HTTPS on era hosts
+
+Era VM services (trek, paperless, navidrome, etc.) are served over HTTPS using
+Let's Encrypt via DNS-01, so no public IP or inbound ports are needed:
+
+- **Domain:** the `domain` specialArg in `hosts/default.nix` (plain value; sops cannot feed eval-time values)
+- **Shared ACME module:** `modules/acme/default.nix` — configures `security.acme` with
+  OVH DNS-01, derives each host's certificate SANs from its own nginx vhosts
+  (per-host certs, avoiding LE's 5-identical-certs/week duplicate limit)
+- **OVH credentials:** `secrets/acme.yaml` (encrypted), key `acme-ovh` containing
+  `OVH_ENDPOINT`, `OVH_APPLICATION_KEY`, `OVH_APPLICATION_SECRET`, `OVH_CONSUMER_KEY`.
+  Recipients: user key + homelab, navidrome, nextcloud, nixflix, hermes and immich keys.
+- **Internal DNS:** AdGuard Home (`apps/adguard-home/default.nix`) rewrites each
+  `<service>.<domain>` to the era VM's LAN IP
+- **nixflix:** uses its own wildcard cert `*.nixflix.<domain>` (only host requesting it)
+- To enable on a host: add `acme` (and `sops`) to its `profiles` in `hosts/default.nix`
+- `forceSSL = true` requires port 80 open (for the http→https redirect); cert issuance
+  itself is DNS-01 and needs no inbound ports
 
 ### Impermanence/Disko Setup
 

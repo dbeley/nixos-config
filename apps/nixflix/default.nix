@@ -4,6 +4,7 @@
   user,
   pkgs,
   inputs,
+  domain,
   ...
 }:
 let
@@ -36,7 +37,9 @@ in
 
     nginx = {
       enable = true;
-      domain = "nixflix.home";
+      domain = "nixflix.${domain}";
+      forceSSL = true;
+      enableACME = true;
       addHostsEntries = true;
     };
 
@@ -116,6 +119,14 @@ in
       enable = true;
       wgConfFile = config.sops.secrets."mullvad_wg".path;
     };
+  };
+
+  security.acme.certs."nixflix.${domain}" = {
+    domain = "nixflix.${domain}";
+    extraDomainNames = [ "*.nixflix.${domain}" ];
+    dnsProvider = "ovh";
+    environmentFile = config.sops.secrets."acme-ovh".path;
+    group = "nginx";
   };
 
   systemd.services.nixflix-setup-dirs.script = lib.mkForce ''
