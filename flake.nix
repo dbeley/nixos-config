@@ -180,6 +180,12 @@
         llm-agents.follows = "llm-agents";
       };
     };
+    zeroclaw = {
+      url = "github:zeroclaw-labs/zeroclaw/v0.8.3";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs = {

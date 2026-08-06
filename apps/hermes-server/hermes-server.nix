@@ -37,10 +37,10 @@ in
   sops.secrets = {
     hermes-webui-password = {
       path = "${config.home.homeDirectory}/.config/hermes/webui-password";
-      sopsFile = ../../secrets/hermes.yaml;
+      sopsFile = ../../secrets/agents.yaml;
     };
     hermes-webui-env = {
-      sopsFile = ../../secrets/hermes.yaml;
+      sopsFile = ../../secrets/agents.yaml;
     };
   };
 }

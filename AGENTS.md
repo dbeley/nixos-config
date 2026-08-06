@@ -31,7 +31,7 @@
   - Shell/CLI tools: `bat/`, `btop/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `workstation/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
-  - Servers: `adguard-home/`, `cairn/`, `covertone/`, `hermes-server/`, `immich/`, `jellyfin/`, `maloja/`, `navidrome/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`
+  - Servers: `adguard-home/`, `cairn/`, `covertone/`, `hermes-server/`, `opencode-server/`, `zeroclaw/`, `immich/`, `jellyfin/`, `maloja/`, `navidrome/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`
   - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `thunderbird/`, `udiskie/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
@@ -100,6 +100,8 @@ mkHost = {
 - `mullvad` - Mullvad VPN (system + home-manager)
 - `ollama` - Ollama local LLM server
 - `hermes-server` - Hermes Web UI
+- `opencode-server` - OpenCode web UI (systemd service + shared opencode config)
+- `zeroclaw` - ZeroClaw web dashboard
 - `nextcloud-server` - Nextcloud server
 - `restic` - Restic backup tool
 - `thunderbird` - Thunderbird email client
@@ -109,6 +111,8 @@ mkHost = {
 - `cairn` - Self-hosted AI platform (kiwix, ollama, open-webui)
 - `covertone` - Album art server
 - `hermes-server` - Hermes Web UI
+- `opencode-server` - OpenCode web UI (systemd service + shared opencode config)
+- `zeroclaw` - ZeroClaw web dashboard
 - `immich` - Immich photo server
 - `jellyfin` - Jellyfin media server
 - `maloja` - Music scrobbling server
@@ -133,7 +137,7 @@ mkHost = {
 
 **Servers (ERA VPS):**
 - `nixos-era-adguard` - AdGuard Home DNS server
-- `nixos-era-hermes` - Hermes Web UI
+- `nixos-era-agents` - LLM agent web UIs (hermes-webui, opencode, zeroclaw) under `*.agents.home.dbeley.ovh`
 - `nixos-era-homelab` - Jellyfin + paperless-ngx + TREK 
 - `nixos-era-immich` - Immich photo server
 - `nixos-era-navidrome` - Navidrome music streaming server + slskd + maloja + covertone
@@ -182,7 +186,9 @@ nix build .#<pkg>  # Ensure derivation succeeds before committing
 Era VM services (trek, paperless, navidrome, etc.) are served over HTTPS using
 Let's Encrypt via DNS-01, so no public IP or inbound ports are needed:
 
-- **Domain:** the `domain` specialArg in `hosts/default.nix` (plain value; sops cannot feed eval-time values)
+- **Domain:** the `domain` specialArg in `hosts/default.nix` (plain value; sops cannot feed
+  eval-time values). Defaults to `home.dbeley.ovh`, overridable per host via `mkHost`'s
+  `domain` param (e.g. `nixos-era-agents` uses `agents.home.dbeley.ovh`)
 - **Shared ACME module:** `modules/acme/default.nix` — configures `security.acme` with
   OVH DNS-01, derives each host's certificate SANs from its own nginx vhosts
   (per-host certs, avoiding LE's 5-identical-certs/week duplicate limit)
@@ -192,6 +198,8 @@ Let's Encrypt via DNS-01, so no public IP or inbound ports are needed:
 - **Internal DNS:** AdGuard Home (`apps/adguard-home/default.nix`) rewrites each
   `<service>.<domain>` to the era VM's LAN IP
 - **nixflix:** uses its own wildcard cert `*.nixflix.<domain>` (only host requesting it)
+- **agents:** `nixos-era-agents` serves its UIs under `*.agents.home.dbeley.ovh`
+  (hermes, opencode, zeroclaw); AdGuard wildcard rewrite `*.agents.home.dbeley.ovh` → VM IP
 - To enable on a host: add `acme` (and `sops`) to its `profiles` in `hosts/default.nix`
 - `forceSSL = true` requires port 80 open (for the http→https redirect); cert issuance
   itself is DNS-01 and needs no inbound ports

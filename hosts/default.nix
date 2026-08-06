@@ -6,8 +6,9 @@
 }:
 let
   # Public domain for the homelab services. Each service becomes
-  # <service>.<domain>.
-  domain = "home.dbeley.ovh";
+  # <service>.<domain>. Overridable per host via mkHost's `domain` param
+  # (e.g. the llm-agents VM uses `agents.home.dbeley.ovh`).
+  defaultDomain = "home.dbeley.ovh";
   moduleProfiles = {
     laptop = {
       system = [
@@ -258,6 +259,19 @@ let
         ../apps/hermes-server/hermes-server.nix
       ];
     };
+    opencode-server = {
+      system = [
+        ../apps/opencode-server/default.nix
+      ];
+      home = [
+        ../apps/opencode/opencode.nix
+      ];
+    };
+    zeroclaw = {
+      system = [
+        ../apps/zeroclaw/default.nix
+      ];
+    };
     adguard-home = {
       system = [
         ../apps/adguard-home/default.nix
@@ -340,6 +354,7 @@ let
       hostName,
       stateVersion,
       system ? "x86_64-linux",
+      domain ? defaultDomain,
       profiles ? [ ],
       extraModules ? [ ],
       extraHomeModules ? [ ],
@@ -562,13 +577,16 @@ in
       "tor-relay"
     ];
   };
-  nixos-era-hermes = mkHost {
-    hostName = "nixos-era-hermes";
+  nixos-era-agents = mkHost {
+    hostName = "nixos-era-agents";
     stateVersion = "26.11";
+    domain = "agents.home.dbeley.ovh";
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
       "hermes-server"
+      "opencode-server"
+      "zeroclaw"
       "sops"
       "acme"
       # "cairn"
