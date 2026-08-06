@@ -44,7 +44,7 @@
 - [Ephemeral file system with `impermanence` on btrfs subvolumes](./modules/impermanence/)
 - Secrets management with `sops-nix`
 - Configuration for common hardware with `nixos-hardware`
-- AI code agent ecosystem (`opencode` with [rtk plugin](./apps/opencode/opencode.nix), [`openskills`](./apps/openskills/), [`hermes-server`](./apps/hermes-server/))
+- AI code agent ecosystem (`opencode` with [rtk plugin](./apps/opencode/opencode.nix), [`openskills`](./apps/openskills/), [`opencode-server`](./apps/opencode-server/), [`zeroclaw`](./apps/zeroclaw/), [`hermes-server`](./apps/hermes-server/))
 - Declarative [nixflix stack](./apps/nixflix/) cf. [nixflix](https://github.com/kiriwalawren/nixflix)
 - Self-hosted tools to be deployed on servers ([`navidrome`](./apps/navidrome/), [`immich`](./apps/immich), [`nextcloud`](./apps/nextcloud), etc. cf. proxmox hosts definitions)
 - Automatic development shells with `direnv` and `shell.nix`
@@ -79,7 +79,7 @@
 - **nixos-kimsufi-tor**: non-exit Tor relay
 
 ### Proxmox Era VMs (Home Server)
-- **nixos-era-hermes**: hermes with hermes-webui
+- **nixos-era-agents**: LLM agent web UIs (hermes-webui, opencode web, zeroclaw) under `*.agents.home.dbeley.ovh`
 - **nixos-era-nixflix**: nixflix
 - **nixos-era-adguard**: adguard-home
 - **nixos-era-nextcloud**: nextcloud

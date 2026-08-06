@@ -43,13 +43,13 @@ boot-proxmox-vm hostname ip:
 
 boot-all-proxmox-era-vms:
   @echo "Deploying config for all proxmox VMs on era host"
-  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-adguard adguard.home
-  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-nextcloud nextcloud.home
-  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-hermes hermes.home
-  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-nixflix nixflix.home
-  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-immich immich.home
-  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-navidrome navidrome.home
-  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-homelab homelab.home
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-adguard adguard.home.dbeley.ovh
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-nextcloud nextcloud.home.dbeley.ovh
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-agents agents.home.dbeley.ovh
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-nixflix nixflix.home.dbeley.ovh
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-immich immich.home.dbeley.ovh
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-navidrome navidrome.home.dbeley.ovh
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-homelab homelab.home.dbeley.ovh
 
 clean-proxmox-vm hostname ip:
   @echo "Cleaning on {{hostname}} at {{ip}}"

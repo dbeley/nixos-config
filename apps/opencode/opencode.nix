@@ -23,6 +23,7 @@ in
         "$schema" = "https://opencode.ai/config.json";
         autoshare = false;
         theme = "system";
+        model = "opencode-go/deepseek-v4-flash";
         plugin = [
           "@mohak34/opencode-notifier@latest"
           "${inputs.ponytail}/.opencode/plugins/ponytail.mjs"

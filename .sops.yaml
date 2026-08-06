@@ -7,7 +7,7 @@ creation_rules:
     age: >-
       age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
       age1uj3yr6z6tpmx39pc0w9ch94hj8ucn6vt7fjaw8cj02uc5q6ee9hsnh4cw7
-  - path_regex: 'secrets/hermes\.yaml$'
+  - path_regex: 'secrets/agents\.yaml$'
     age: >-
       age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
       age18c4rk9d3hsjld422zz8xfsklre9jlg9pr5088cs2gg5e0ch8fc3qnxlj9q
