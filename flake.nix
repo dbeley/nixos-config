@@ -173,11 +173,10 @@
         flake-utils.follows = "flake-utils";
       };
     };
-    hermes-webui-nix = {
-      url = "github:dbeley/hermes-webui-nix";
+    hermes-webui = {
+      url = "github:nesquena/hermes-webui";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        llm-agents.follows = "llm-agents";
       };
     };
     noctalia = {

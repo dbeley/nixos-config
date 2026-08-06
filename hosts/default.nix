@@ -254,9 +254,6 @@ let
       system = [
         ../apps/hermes-server/default.nix
       ];
-      home = [
-        ../apps/hermes-server/hermes-server.nix
-      ];
     };
     adguard-home = {
       system = [

@@ -427,26 +427,23 @@
         "type": "gitlab"
       }
     },
-    "hermes-webui-nix": {
+    "hermes-webui": {
       "inputs": {
-        "llm-agents": [
-          "llm-agents"
-        ],
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1785320349,
-        "narHash": "sha256-HAy8+K+u7qFzEfNkrq6gzGDdniGEl/T39GgUAzSJbes=",
-        "owner": "dbeley",
-        "repo": "hermes-webui-nix",
-        "rev": "028cd62018fb1047bd701828605ceafd491a92fa",
+        "lastModified": 1785984354,
+        "narHash": "sha256-/brRIzvCa6HmAdXtcJOOKj7co/jbLEMLsqbtqyUww3w=",
+        "owner": "nesquena",
+        "repo": "hermes-webui",
+        "rev": "5f3117f81e2031361f01e557318baf1010ad21c3",
         "type": "github"
       },
       "original": {
-        "owner": "dbeley",
-        "repo": "hermes-webui-nix",
+        "owner": "nesquena",
+        "repo": "hermes-webui",
         "type": "github"
       }
     },
@@ -839,7 +836,7 @@
         "flake-utils": "flake-utils",
         "git-hooks": "git-hooks",
         "gitignore": "gitignore",
-        "hermes-webui-nix": "hermes-webui-nix",
+        "hermes-webui": "hermes-webui",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "impulse": "impulse",
