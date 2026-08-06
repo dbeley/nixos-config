@@ -587,6 +587,7 @@ in
       "mylar"
       "lazylibrarian"
       "shelfmark"
+      "podman"
     ];
   };
   nixos-era-adguard = mkHost {
