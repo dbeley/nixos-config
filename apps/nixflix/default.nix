@@ -90,6 +90,7 @@ in
       inherit user;
       group = "media";
     };
+    serviceDependencies = [ "mnt-nfs-WDC14_2.mount" ];
 
     nginx = {
       enable = true;
@@ -249,6 +250,8 @@ in
       nixflix-setup-dirs.script = lib.mkForce ''
         ${pkgs.systemd}/bin/systemd-tmpfiles --create --prefix=/data --prefix=/var
       '';
+
+      slskd.after = lib.mkAfter [ "mnt-nfs-WDC14_2.mount" ];
 
       wg.serviceConfig = {
         Restart = "on-failure";
