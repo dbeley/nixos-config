@@ -615,6 +615,8 @@ in
       "bootloader-grub-bios"
       "openssh-server"
       "adguard-home"
+      "sops"
+      "acme"
     ];
   };
   nixos-era-nextcloud = mkHost {
