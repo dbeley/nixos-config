@@ -463,7 +463,7 @@ in
         my.stylix.wallpaper = "nyc-425-park-avenue";
         disko.mainDisk = "/dev/nvme0n1";
       }
-      ../apps/boinc/default.nix
+      # ../apps/boinc/default.nix
       ../modules/hardware/razer-naga.nix
     ];
   };

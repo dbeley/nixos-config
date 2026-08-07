@@ -217,7 +217,7 @@
         "Mod+D"."spawn" = [ "feishin" ];
         "Mod+Shift+D"."spawn" = [
           "chromium"
-          "--app=https://covertone.${domain}"
+          "--app=https://covertone.music.${domain}"
           "--disable-extensions"
         ];
         "Mod+N"."spawn" = [ "keepassxc" ];

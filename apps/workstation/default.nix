@@ -29,6 +29,7 @@
       freeSwapThreshold = 10;
     };
   };
+  systemd.oomd.enable = false;
   security.rtkit.enable = true;
   fonts = {
     packages = with pkgs; [
