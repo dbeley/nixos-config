@@ -140,7 +140,7 @@ mkHost = {
 - `nixos-era-agents` - LLM agent web UIs (hermes-webui, opencode, zeroclaw)
 - `nixos-era-homelab` - Jellyfin + paperless-ngx + TREK 
 - `nixos-era-immich` - Immich photo server
-- `nixos-era-navidrome` - Navidrome music streaming server + slskd + maloja + covertone
+- `nixos-era-music` - Music streaming server and tools (navidrome + slskd + maloja + covertone)
 - `nixos-era-nextcloud` - Nextcloud server
 - `nixos-era-nixflix` - Nixflix media server
 

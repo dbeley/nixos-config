@@ -48,7 +48,7 @@ boot-all-proxmox-era-vms:
   just --justfile {{justfile()}} boot-proxmox-vm nixos-era-agents agents.home.dbeley.ovh
   just --justfile {{justfile()}} boot-proxmox-vm nixos-era-nixflix nixflix.home.dbeley.ovh
   just --justfile {{justfile()}} boot-proxmox-vm nixos-era-immich immich.home.dbeley.ovh
-  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-navidrome navidrome.home.dbeley.ovh
+  just --justfile {{justfile()}} boot-proxmox-vm nixos-era-music music.home.dbeley.ovh
   just --justfile {{justfile()}} boot-proxmox-vm nixos-era-homelab homelab.home.dbeley.ovh
 
 clean-proxmox-vm hostname ip:

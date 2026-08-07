@@ -646,9 +646,10 @@ in
       "immich"
     ];
   };
-  nixos-era-navidrome = mkHost {
-    hostName = "nixos-era-navidrome";
+  nixos-era-music = mkHost {
+    hostName = "nixos-era-music";
     stateVersion = "26.11";
+    domain = "music.home.dbeley.ovh";
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
