@@ -79,8 +79,8 @@
 - **nixos-kimsufi-tor**: non-exit Tor relay
 
 ### Proxmox Era VMs (Home Server)
-- **nixos-era-agents**: LLM agent web UIs (hermes-webui, opencode web, zeroclaw) under `*.agents.home.dbeley.ovh`
-- **nixos-era-nixflix**: nixflix
+- **nixos-era-agents**: LLM agent web UIs (hermes-webui, opencode web, zeroclaw)
+- **nixos-era-nixflix**: nixflix (+ soularr/slskd integration for lidarr, komga, lazylibrarian, shelfmark, youtarr)
 - **nixos-era-adguard**: adguard-home
 - **nixos-era-nextcloud**: nextcloud
 - **nixos-era-immich**: immich

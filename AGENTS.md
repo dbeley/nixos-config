@@ -137,7 +137,7 @@ mkHost = {
 
 **Servers (ERA VPS):**
 - `nixos-era-adguard` - AdGuard Home DNS server
-- `nixos-era-agents` - LLM agent web UIs (hermes-webui, opencode, zeroclaw) under `*.agents.home.dbeley.ovh`
+- `nixos-era-agents` - LLM agent web UIs (hermes-webui, opencode, zeroclaw)
 - `nixos-era-homelab` - Jellyfin + paperless-ngx + TREK 
 - `nixos-era-immich` - Immich photo server
 - `nixos-era-navidrome` - Navidrome music streaming server + slskd + maloja + covertone
@@ -187,8 +187,7 @@ Era VM services (trek, paperless, navidrome, etc.) are served over HTTPS using
 Let's Encrypt via DNS-01, so no public IP or inbound ports are needed:
 
 - **Domain:** the `domain` specialArg in `hosts/default.nix` (plain value; sops cannot feed
-  eval-time values). Defaults to `home.dbeley.ovh`, overridable per host via `mkHost`'s
-  `domain` param (e.g. `nixos-era-agents` uses `agents.home.dbeley.ovh`)
+  eval-time values).
 - **Shared ACME module:** `modules/acme/default.nix` — configures `security.acme` with
   OVH DNS-01, derives each host's certificate SANs from its own nginx vhosts
   (per-host certs, avoiding LE's 5-identical-certs/week duplicate limit)
@@ -197,9 +196,6 @@ Let's Encrypt via DNS-01, so no public IP or inbound ports are needed:
   Recipients: user key + homelab, navidrome, nextcloud, nixflix, hermes and immich keys.
 - **Internal DNS:** AdGuard Home (`apps/adguard-home/default.nix`) rewrites each
   `<service>.<domain>` to the era VM's LAN IP
-- **nixflix:** uses its own wildcard cert `*.nixflix.<domain>` (only host requesting it)
-- **agents:** `nixos-era-agents` serves its UIs under `*.agents.home.dbeley.ovh`
-  (hermes, opencode, zeroclaw); AdGuard wildcard rewrite `*.agents.home.dbeley.ovh` → VM IP
 - To enable on a host: add `acme` (and `sops`) to its `profiles` in `hosts/default.nix`
 - `forceSSL = true` requires port 80 open (for the http→https redirect); cert issuance
   itself is DNS-01 and needs no inbound ports
