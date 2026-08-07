@@ -172,6 +172,16 @@ in
         Username = "admin";
         Password_PBKDF2 = "@ByteArray(VuvMO6udxeXWsDTCJiL4pw==:r5rg6+RmXxEsgUuFleFaxYQB2iUFL3QlFLa2/UBYu8aJ8xDYrLA5iD220MZp+713FgaTZybTCrc392rpoaCT0w==)";
       };
+      serverConfig.BitTorrent.Session = {
+        QueueingSystemEnabled = true;
+        MaxActiveDownloads = 10;
+        MaxActiveUploads = 40;
+        MaxActiveTorrents = 50;
+        IgnoreSlowTorrentsForQueueing = true;
+        SlowTorrentsDownloadRate = 10;
+        SlowTorrentsUploadRate = 10;
+        SlowTorrentsInactivityTimer = 10;
+      };
     };
 
     seerr = {
