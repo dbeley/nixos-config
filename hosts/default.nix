@@ -663,6 +663,7 @@ in
   nixos-era-homelab = mkHost {
     hostName = "nixos-era-homelab";
     stateVersion = "26.11";
+    domain = "homelab.home.dbeley.ovh";
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
