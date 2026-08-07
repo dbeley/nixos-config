@@ -337,6 +337,9 @@ let
         ../apps/jellyfin/default.nix
       ];
     };
+    youtarr = {
+      system = [ ../apps/youtarr/default.nix ];
+    };
     paperless-ngx = {
       system = [
         ../apps/paperless-ngx/default.nix
@@ -595,6 +598,7 @@ in
   nixos-era-nixflix = mkHost {
     hostName = "nixos-era-nixflix";
     stateVersion = "26.05";
+    domain = "nixflix.home.dbeley.ovh";
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
@@ -606,6 +610,7 @@ in
       "lazylibrarian"
       "shelfmark"
       "podman"
+      "youtarr"
     ];
   };
   nixos-era-adguard = mkHost {

@@ -94,7 +94,7 @@ in
 
     nginx = {
       enable = true;
-      domain = "nixflix.${domain}";
+      domain = "${domain}";
       forceSSL = true;
       enableACME = true;
       addHostsEntries = true;
@@ -188,9 +188,9 @@ in
     };
   };
 
-  security.acme.certs."nixflix.${domain}" = {
-    domain = "nixflix.${domain}";
-    extraDomainNames = [ "*.nixflix.${domain}" ];
+  security.acme.certs."${domain}" = {
+    domain = "${domain}";
+    extraDomainNames = [ "*.${domain}" ];
     dnsProvider = "ovh";
     environmentFile = config.sops.secrets."acme-ovh".path;
     group = "nginx";
@@ -202,9 +202,9 @@ in
     group = "media";
     environmentFile = secrets."slskd-env".path;
     openFirewall = true;
-    domain = "slskd.nixflix.${domain}";
+    domain = "slskd.${domain}";
     nginx = {
-      useACMEHost = "nixflix.${domain}";
+      useACMEHost = "${domain}";
       forceSSL = true;
     };
     settings = {
