@@ -113,6 +113,14 @@
         treefmt-nix.follows = "treefmt-nix";
       };
     };
+    youtarr-flake = {
+      url = "github:zms-dev/youtarr-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+      };
+    };
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
       inputs = {
@@ -184,6 +192,7 @@
       url = "github:zeroclaw-labs/zeroclaw/v0.8.3";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
       };
     };
     noctalia = {
