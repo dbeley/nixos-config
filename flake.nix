@@ -113,14 +113,6 @@
         treefmt-nix.follows = "treefmt-nix";
       };
     };
-    youtarr-flake = {
-      url = "github:zms-dev/youtarr-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        systems.follows = "systems";
-      };
-    };
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
       inputs = {

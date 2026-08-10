@@ -337,9 +337,6 @@ let
         ../apps/jellyfin/default.nix
       ];
     };
-    youtarr = {
-      system = [ ../apps/youtarr/default.nix ];
-    };
     paperless-ngx = {
       system = [
         ../apps/paperless-ngx/default.nix
@@ -610,7 +607,6 @@ in
       "lazylibrarian"
       "shelfmark"
       "podman"
-      "youtarr"
     ];
   };
   nixos-era-adguard = mkHost {

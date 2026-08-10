@@ -10,6 +10,7 @@
     # discord
     feishin
     heroic
+    jellyfin-media-player
     # musescore
     nautilus
     python3Packages.subliminal

@@ -80,7 +80,7 @@
 
 ### Proxmox Era VMs (Home Server)
 - **nixos-era-agents**: LLM agent web UIs (hermes-webui, opencode web, zeroclaw)
-- **nixos-era-nixflix**: nixflix (+ soularr/slskd integration for lidarr, komga, lazylibrarian, shelfmark, youtarr)
+- **nixos-era-nixflix**: nixflix (+ soularr/slskd integration for lidarr, komga, lazylibrarian, shelfmark)
 - **nixos-era-adguard**: adguard-home
 - **nixos-era-nextcloud**: nextcloud
 - **nixos-era-immich**: immich
