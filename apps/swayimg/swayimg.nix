@@ -16,10 +16,10 @@
 
       -- Key bindings - viewer mode
       swayimg.viewer.on_key("p", function()
-        swayimg.viewer.switch_image("prev")
+        swayimg.viewer.open("prev")
       end)
       swayimg.viewer.on_key("n", function()
-        swayimg.viewer.switch_image("next")
+        swayimg.viewer.open("next")
       end)
       swayimg.viewer.on_key("h", function()
         local wnd = swayimg.get_window_size()
@@ -74,7 +74,7 @@
         swayimg.viewer.set_abs_scale(scale - 0.1)
       end)
       swayimg.viewer.on_key("r", function()
-        swayimg.viewer.switch_image("random")
+        swayimg.viewer.open("random")
       end)
       swayimg.viewer.on_key("q", function()
         swayimg.exit()
@@ -84,22 +84,22 @@
         if image then
           os.remove(image.path)
           swayimg.text.status = "Deleted: " .. image.path
-          swayimg.viewer.switch_image("next")
+          swayimg.viewer.open("next")
         end
       end)
 
       -- Key bindings - gallery mode
       swayimg.gallery.on_key("h", function()
-        swayimg.gallery.switch_image("left")
+        swayimg.gallery.select("left")
       end)
       swayimg.gallery.on_key("j", function()
-        swayimg.gallery.switch_image("down")
+        swayimg.gallery.select("down")
       end)
       swayimg.gallery.on_key("k", function()
-        swayimg.gallery.switch_image("up")
+        swayimg.gallery.select("up")
       end)
       swayimg.gallery.on_key("l", function()
-        swayimg.gallery.switch_image("right")
+        swayimg.gallery.select("right")
       end)
       swayimg.gallery.on_key("Shift+Delete", function()
         local image = swayimg.gallery.get_image()
