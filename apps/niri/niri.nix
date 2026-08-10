@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     wl-clipboard-rs
     nirius
+    wl-kbptr
   ];
 
   wayland.windowManager.niri = {
@@ -210,7 +211,9 @@
         };
 
         "Mod+Z"."spawn" = [ "zen-twilight" ];
+        "Mod+G"."spawn" = [ "wl-kbptr" ];
         "Mod+S"."spawn" = [ "steam" ];
+        "Mod+Shift+S"."spawn" = [ "jellyfin-media-server" ];
         "Mod+Y"."spawn" = [ "nextcloud" ];
         "Mod+B"."spawn" = [ "chromium" ];
         "Mod+T"."spawn" = [ "soffice" ];
