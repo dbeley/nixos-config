@@ -180,6 +180,10 @@
         llm-agents.follows = "llm-agents";
       };
     };
+    mnemosyne = {
+      url = "github:mnemosyne-oss/mnemosyne";
+      flake = false;
+    };
     zeroclaw = {
       url = "github:zeroclaw-labs/zeroclaw/v0.8.3";
       inputs = {
