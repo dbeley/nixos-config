@@ -170,7 +170,7 @@ in
       password._secret = secrets."qbittorrent_password".path;
       serverConfig.Preferences.WebUI = {
         Username = "admin";
-        Password_PBKDF2 = "@ByteArray(VuvMO6udxeXWsDTCJiL4pw==:r5rg6+RmXxEsgUuFleFaxYQB2iUFL3QlFLa2/UBYu8aJ8xDYrLA5iD220MZp+713FgaTZybTCrc392rpoaCT0w==)";
+        Password_PBKDF2._secret = secrets."qbittorrent_password_pbkdf2".path;
       };
       serverConfig.BitTorrent.Session = {
         QueueingSystemEnabled = true;
@@ -303,6 +303,7 @@ in
         "jellyfin_admin_password"
         "seerr_api_key"
         "qbittorrent_password"
+        "qbittorrent_password_pbkdf2"
         "rutracker_username"
         "rutracker_password"
         "mullvad_wg"

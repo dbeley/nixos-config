@@ -26,8 +26,8 @@ in
 
   systemd = {
     services.paperless-consumer = {
-      requires = [ "mnt-nfs-root.mount" ];
-      after = [ "mnt-nfs-root.mount" ];
+      requires = [ "mnt-nfs-WDC14_2.mount" ];
+      after = [ "mnt-nfs-WDC14_2.mount" ];
     };
 
     services.paperless-scheduler = {
