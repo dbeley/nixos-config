@@ -257,6 +257,7 @@ let
       ];
       home = [
         ../apps/hermes-server/hermes-server.nix
+        ../apps/hermes-server/mnemosyne.nix
       ];
     };
     opencode-server = {
