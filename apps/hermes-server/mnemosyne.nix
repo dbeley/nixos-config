@@ -7,9 +7,6 @@
 let
   python = pkgs.python3;
 
-  # mnemosyne-memory: local-first SQLite memory backend with local embeddings
-  # (fastembed + sqlite-vec = the upstream [embeddings] extra). Semantic recall
-  # runs fully offline; drop these two to go back to keyword/FTS5-only.
   mnemosyne = python.pkgs.buildPythonPackage {
     pname = "mnemosyne-memory";
     version = "3.16.0";
@@ -30,7 +27,6 @@ let
     doCheck = false;
   };
 
-  # mnemosyne-hermes: Hermes MemoryProvider plugin for mnemosyne.
   mnemosyne-hermes = python.pkgs.buildPythonPackage {
     pname = "mnemosyne-hermes";
     version = "0.6.0";
@@ -69,4 +65,6 @@ in
   home.file.".hermes/plugins/mnemosyne" = {
     source = "${mnemosyne-hermes}/${python.sitePackages}/mnemosyne_hermes";
   };
+
+  home.packages = [ mnemosyne ];
 }
