@@ -7,8 +7,8 @@ let
         src = pkgs.fetchFromGitHub {
           owner = "yazi-rs";
           repo = "plugins";
-          rev = "598cdb671401574ac27aeee257e2f3b0c80610a1";
-          hash = "sha256-bqGN6JxbU+/o7TlM/Cm9Qj/s1McA4pB5QWArGZPcme4=";
+          rev = "0be29a913ad61c6d119abfaaf253e96e6af5db67";
+          hash = "sha256-IDmmXzQKFx3QZ9u5lMwcTOeWeMPWzIBeKBXkGAgJMaI=";
         };
       }
       ''

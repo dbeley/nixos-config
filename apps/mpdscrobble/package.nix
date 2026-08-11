@@ -2,15 +2,15 @@
 with python.pkgs;
 buildPythonApplication rec {
   pname = "mpdscrobble";
-  version = "0.3.4";
+  version = "0.3.5";
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "TXmDOaD1ncIN9yU6SYnmOfov2+nQMGoaAgoN+FBGyjo=";
+    sha256 = "sha256-0doBCHXtIrcn50oKV3wThG9wjvRYNKSC9aXGBPIV7bM=";
   };
 
   propagatedBuildInputs = [
-    mpd2
+    python-mpd2
     pylast
     httpx
   ];

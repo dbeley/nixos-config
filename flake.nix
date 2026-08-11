@@ -185,7 +185,7 @@
       flake = false;
     };
     zeroclaw = {
-      url = "github:zeroclaw-labs/zeroclaw/v0.8.3";
+      url = "github:zeroclaw-labs/zeroclaw/v0.8.4";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";

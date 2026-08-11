@@ -19,13 +19,13 @@ let
     in
     stdenv.mkDerivation (finalAttrs: {
       pname = "hid-tmff2";
-      version = "unstable-2025-11-07";
+      version = "unstable-2026-08-09";
 
       src = fetchFromGitHub {
         owner = "Kimplul";
         repo = "hid-tmff2";
-        rev = "26995429a3b92047f0c2f9ab90fe4202c86fd72b";
-        sha256 = "sha256-NcIQ0rW7ZPujq7MRMYW0sQ4qWRwhLnovHDqzzxkwtwY=";
+        rev = "c5b9b79d4e61b77e0827e81dd676420b3c366743";
+        sha256 = "sha256-Su4Qr3z28luv+uxvCAfMVtTXVxJUuAj7K0b5F3OTmfs=";
         fetchSubmodules = true;
       };
 
