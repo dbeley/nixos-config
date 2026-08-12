@@ -163,6 +163,40 @@ in
         policy.isAdministrator = true;
         password._secret = secrets."jellyfin_admin_password".path;
       };
+      plugins = {
+        subbuzz = {
+          enable = true;
+          config = {
+            EnableOpenSubtitles = true;
+            EnableAddic7ed = true;
+            EnablePodnapisiNet = true;
+            EnableSubscene = true;
+            EnableSubf2m = true;
+            EnableYifySubtitles = true;
+            OpenSubUserName = "dbeley";
+            OpenSubPassword._secret = secrets."opensubtitles_password".path;
+            OpenSubApiKey._secret = secrets."opensubtitles_api_key".path;
+          };
+        };
+        "Subtitle Extract" = {
+          enable = true;
+          config.ExtractionDuringLibraryScan = true;
+        };
+      };
+      libraries = {
+        Movies = {
+          subtitleDownloadLanguages = [
+            "eng"
+            "fra"
+          ];
+        };
+        Shows = {
+          subtitleDownloadLanguages = [
+            "eng"
+            "fra"
+          ];
+        };
+      };
     };
 
     torrentClients.qbittorrent = {
@@ -308,6 +342,8 @@ in
         "mullvad_wg"
         "slskd-env"
         "soularr-env"
+        "opensubtitles_password"
+        "opensubtitles_api_key"
       ]
       (_: {
         sopsFile = ../../secrets/nixflix.yaml;
