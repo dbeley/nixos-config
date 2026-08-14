@@ -90,6 +90,12 @@ in
       inherit user;
       group = "media";
     };
+    globals.uids = {
+      qbittorrent = 274;
+      sonarr = 274;
+      radarr = 274;
+      lidarr = 274;
+    };
     serviceDependencies = [ "mnt-nfs-WDC14_2.mount" ];
 
     nginx = {
@@ -232,6 +238,13 @@ in
     };
   };
 
+  users.enforceIdUniqueness = false;
+  users.users.qbittorrent = lib.mkForce {
+    group = "media";
+    isSystemUser = true;
+    uid = 274;
+  };
+
   security.acme.certs."${domain}" = {
     domain = "${domain}";
     extraDomainNames = [ "*.${domain}" ];
@@ -265,7 +278,7 @@ in
     backend = "podman";
     containers.soularr = {
       image = "ghcr.io/mrusse/soularr:latest";
-      user = "306:169";
+      user = "274:992";
       volumes = [
         "/data/slskd:/downloads"
         "/data/soularr:/data"
