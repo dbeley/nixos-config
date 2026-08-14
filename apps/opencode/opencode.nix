@@ -3,10 +3,10 @@ let
   llm = inputs.llm-agents.packages.${pkgs.system};
   opencode-wrapped = pkgs.symlinkJoin {
     name = "opencode-wrapped";
-    paths = [ llm.opencode ];
+    paths = [ llm.opencode2 ];
     buildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
-      wrapProgram $out/bin/opencode --set OPENCODE_ENABLE_EXA 1
+      wrapProgram $out/bin/opencode2 --set OPENCODE_ENABLE_EXA 1
     '';
   };
 in

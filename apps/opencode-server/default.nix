@@ -22,8 +22,8 @@
         "OPENCODE_DISABLE_FFF=1"
       ];
       ExecStart = "${
-        inputs.llm-agents.packages.${pkgs.system}.opencode
-      }/bin/opencode serve --hostname 127.0.0.1 --port 4096";
+        inputs.llm-agents.packages.${pkgs.system}.opencode2
+      }/bin/opencode2 serve --hostname 127.0.0.1 --port 4096";
       EnvironmentFile = config.sops.secrets."opencode-env".path;
       Restart = "always";
       RestartSec = 5;
