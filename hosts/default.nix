@@ -248,6 +248,8 @@ let
         # ../apps/hermes/hermes.nix
         ../apps/rtk/rtk.nix
         ../apps/goose/goose.nix
+        ../apps/ctx/ctx.nix
+        ../apps/icm/icm.nix
       ];
     };
     hermes-server = {
