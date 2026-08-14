@@ -27,21 +27,53 @@ in
         "m:1532:008d"
         "k:1532:008d"
       ];
-      settings.main = {
-        leftmouse = "rightmouse";
-        rightmouse = "leftmouse";
-        "1" = "C-S-tab";
-        "2" = "C-w";
-        "3" = "C-tab";
-        "4" = "pageup";
-        "5" = "up";
-        "6" = "home";
-        "7" = "left";
-        "8" = "middlemouse";
-        "9" = "right";
-        "0" = "pagedown";
-        minus = "down";
-        equal = "end";
+      settings = {
+        main = {
+          leftmouse = "rightmouse";
+          rightmouse = "leftmouse";
+          # 1/2/3 are layer entry points; the tab navigation lives in `tabs`.
+          "1" = "togglelayer(main)";
+          "2" = "togglelayer(tabs)";
+          "3" = "togglelayer(wm)";
+          "4" = "pageup";
+          "5" = "up";
+          "6" = "home";
+          "7" = "left";
+          "8" = "middlemouse";
+          "9" = "right";
+          "0" = "pagedown";
+          minus = "down";
+          equal = "end";
+        };
+        # Button 0 in every layer returns to main.
+        tabs = {
+          "1" = "togglelayer(main)";
+          "2" = "togglelayer(tabs)";
+          "3" = "togglelayer(wm)";
+          "4" = "C-S-tab";
+          "5" = "C-w";
+          "6" = "C-tab";
+          "7" = "C-S-t";
+          "8" = "M-k";
+          "9" = "C-t";
+          "0" = "M-h";
+          minus = "M-j";
+          equal = "M-l";
+        };
+        wm = {
+          "1" = "togglelayer(main)";
+          "2" = "togglelayer(tabs)";
+          "3" = "togglelayer(wm)";
+          "4" = "M-r";
+          "5" = "M-k";
+          "6" = "M-f";
+          "7" = "M-h";
+          "8" = "M-tab";
+          "9" = "M-l";
+          "0" = "M-S-h";
+          minus = "M-j";
+          equal = "M-S-l";
+        };
       };
     };
   };
