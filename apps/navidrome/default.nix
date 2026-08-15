@@ -3,6 +3,7 @@
   lib,
   user,
   domain,
+  pkgs,
   ...
 }:
 let
@@ -30,6 +31,7 @@ in
     openFirewall = true;
     inherit user;
     group = "users";
+    plugins = with pkgs.navidromePlugins; [ audiomuseai ];
     settings = {
       Address = "0.0.0.0";
       MusicFolder = "${nfsMount}/Musique";
