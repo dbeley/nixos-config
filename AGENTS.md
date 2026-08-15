@@ -31,7 +31,7 @@
   - Shell/CLI tools: `bat/`, `btop/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `workstation/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
-  - Servers: `adguard-home/`, `cairn/`, `covertone/`, `hermes-server/`, `opencode-server/`, `zeroclaw/`, `immich/`, `jellyfin/`, `maloja/`, `navidrome/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`
+  - Servers: `adguard-home/`, `audiomuse-ai/`, `cairn/`, `covertone/`, `hermes-server/`, `opencode-server/`, `zeroclaw/`, `immich/`, `jellyfin/`, `maloja/`, `navidrome/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`
   - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `thunderbird/`, `udiskie/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
@@ -117,6 +117,7 @@ mkHost = {
 - `jellyfin` - Jellyfin media server
 - `maloja` - Music scrobbling server
 - `navidrome` - Navidrome music streaming server
+- `audiomuse-ai` - AudioMuse AI sonic analysis and playlist generation (OCI containers)
 - `nextcloud-server` - Nextcloud server
 - `nixflix` - Nixflix media server
 - `paperless-ngx` - Paperless-ngx document management
@@ -140,7 +141,7 @@ mkHost = {
 - `nixos-era-agents` - LLM agent web UIs (hermes-webui, opencode, zeroclaw)
 - `nixos-era-homelab` - Jellyfin + paperless-ngx + TREK 
 - `nixos-era-immich` - Immich photo server
-- `nixos-era-music` - Music streaming server and tools (navidrome + slskd + maloja + covertone)
+- `nixos-era-music` - Music streaming server and tools (navidrome + audiomuse-ai + slskd + maloja + covertone)
 - `nixos-era-nextcloud` - Nextcloud server
 - `nixos-era-nixflix` - Nixflix media server
 
