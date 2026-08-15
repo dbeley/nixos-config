@@ -320,6 +320,9 @@ let
     navidrome = {
       system = [ ../apps/navidrome/default.nix ];
     };
+    audiomuse-ai = {
+      system = [ ../apps/audiomuse-ai/default.nix ];
+    };
     slskd = {
       system = [ ../apps/slskd/default.nix ];
     };
@@ -652,6 +655,7 @@ in
       "bootloader-grub-bios"
       "openssh-server"
       "navidrome"
+      "audiomuse-ai"
       "sops"
       "acme"
       "slskd"
