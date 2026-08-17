@@ -1,4 +1,10 @@
-# Statix configuration
-# Disable W04 (manual_inherit_from) because it produces false positives
-# when extracting values from nested attribute sets with string interpolation
-disabled = ["manual_inherit_from"]
+# Statix (nix-lint) configuration.
+#
+# `deprecated_to_path`: désactivé car `builtins.toPath` reste le seul moyen de
+# convertir une string en path dans un module NixOS en évaluation pure —
+# l'alternative recommandée (`/. + "/path"`) déclenche l'erreur
+# "access to absolute path ... forbidden in pure evaluation mode" pour les
+# chemins hors du store (ex: /run/secrets/...).
+disabled = [
+  "deprecated_to_path"
+]

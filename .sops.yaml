@@ -15,6 +15,11 @@ creation_rules:
     age: >-
       age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
       age16rvcgm7pqh9e2p6nrdey8wwrd5v7p32edgfaf6hvcgmx9fed8epscj3kc2
+  - path_regex: 'secrets/radicle\.yaml$'
+    # TODO(bootstrap): générer la clé age sur la VM (just secrets-gen-key) et l'ajouter ci-dessous,
+    # puis ré-encrypter: just secrets-edit secrets/radicle.yaml
+    age: >-
+      age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3
   - path_regex: 'secrets/navidrome\.yaml$'
     age: >-
       age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,

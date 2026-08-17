@@ -294,6 +294,11 @@ let
         ../apps/jj/jj.nix
       ];
     };
+    radicle = {
+      system = [
+        ../apps/radicle/default.nix
+      ];
+    };
     mullvad = {
       system = [
         ../apps/mullvad/default.nix
@@ -620,6 +625,17 @@ in
       "adguard-home"
       "sops"
       "acme"
+    ];
+  };
+  nixos-kimsufi-radicle = mkHost {
+    hostName = "nixos-kimsufi-radicle";
+    stateVersion = "26.11";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "sops"
+      "acme"
+      "radicle"
     ];
   };
   nixos-era-nextcloud = mkHost {
