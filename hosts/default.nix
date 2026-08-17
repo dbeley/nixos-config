@@ -255,11 +255,6 @@ let
         ../apps/qbittorrent/default.nix
       ];
     };
-    attic = {
-      system = [
-        ../apps/attic/default.nix
-      ];
-    };
     jj = {
       home = [
         ../apps/jj/jj.nix
@@ -326,6 +321,11 @@ let
     };
     shelfmark = {
       system = [ ../apps/shelfmark/default.nix ];
+    };
+    attic = {
+      system = [
+        ../apps/attic/default.nix
+      ];
     };
   };
   mkHost =
@@ -542,16 +542,6 @@ in
       "qbittorrent"
     ];
   };
-  nixos-kimsufi-attic = mkHost {
-    hostName = "nixos-kimsufi-attic";
-    stateVersion = "26.11";
-    profiles = [
-      "bootloader-grub-bios"
-      "openssh-server"
-      "sops"
-      "attic"
-    ];
-  };
   nixos-era-hermes = mkHost {
     hostName = "nixos-era-hermes";
     stateVersion = "26.11";
@@ -612,6 +602,16 @@ in
       "slskd"
       "maloja"
       "covertone"
+    ];
+  };
+  nixos-kimsufi-attic = mkHost {
+    hostName = "nixos-kimsufi-attic";
+    stateVersion = "26.11";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "sops"
+      "attic"
     ];
   };
   nixos-era-homelab = mkHost {
