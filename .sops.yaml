@@ -15,7 +15,7 @@ creation_rules:
     age: >-
       age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
       age16rvcgm7pqh9e2p6nrdey8wwrd5v7p32edgfaf6hvcgmx9fed8epscj3kc2
-  - path_regex: 'secrets/navidrome\.yaml$'
+  - path_regex: 'secrets/music\.yaml$'
     age: >-
       age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
       age1pk5mpz0nhdnf7an7cvcmyzqydtetsg4tmn2nmm0hdkxtugy9ggqs205ng5

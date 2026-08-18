@@ -20,67 +20,79 @@ in
 {
   virtualisation = {
     podman.enable = true;
+    containers.registries.settings = {
+      unqualified-search-registries = [
+        "docker.io"
+        "quay.io"
+      ];
+      registry = [
+        { location = "docker.io"; }
+        { location = "quay.io"; }
+      ];
+    };
     oci-containers = {
       backend = "podman";
-      containers.audiomuse-postgres = {
-        image = "postgres:15-alpine";
-        autoStart = true;
-        ports = [ "127.0.0.1:${toString pgPort}:5432" ];
-        volumes = [ "${pgDataDir}:/var/lib/postgresql/data" ];
-        environment = {
-          inherit TZ;
-          POSTGRES_USER = pgUser;
-          POSTGRES_DB = pgDb;
+      containers = {
+        audiomuse-postgres = {
+          image = "postgres:15-alpine";
+          autoStart = true;
+          ports = [ "127.0.0.1:${toString pgPort}:5432" ];
+          volumes = [ "${pgDataDir}:/var/lib/postgresql/data" ];
+          environment = {
+            inherit TZ;
+            POSTGRES_USER = pgUser;
+            POSTGRES_DB = pgDb;
+          };
+          environmentFiles = [ pgPasswordFile ];
+          extraOptions = [ "--pull=newer" ];
         };
-        environmentFiles = [ pgPasswordFile ];
-        extraOptions = [ "--pull=newer" ];
-      };
 
-      containers.audiomuse-flask = {
-        image = "ghcr.io/neptunehub/audiomuse-ai:v3.2.0";
-        autoStart = true;
-        ports = [ "127.0.0.1:${toString audiomusePort}:8000" ];
-        volumes = [
-          "${tempDir}:/app/temp_audio"
-          "${pluginsDir}:/app/plugin/installed"
-        ];
-        environment = {
-          inherit TZ;
-          SERVICE_TYPE = "flask";
-          POSTGRES_USER = pgUser;
-          POSTGRES_DB = pgDb;
-          POSTGRES_HOST = "127.0.0.1";
-          POSTGRES_PORT = toString pgPort;
-          TEMP_DIR = "/app/temp_audio";
+        audiomuse-flask = {
+          image = "ghcr.io/neptunehub/audiomuse-ai:3.2.0";
+          autoStart = true;
+          ports = [ "127.0.0.1:${toString audiomusePort}:8000" ];
+          volumes = [
+            "${tempDir}:/app/temp_audio"
+            "${pluginsDir}:/app/plugin/installed"
+          ];
+          environment = {
+            inherit TZ;
+            SERVICE_TYPE = "flask";
+            POSTGRES_USER = pgUser;
+            POSTGRES_DB = pgDb;
+            POSTGRES_HOST = "127.0.0.1";
+            POSTGRES_PORT = toString pgPort;
+            TEMP_DIR = "/app/temp_audio";
+          };
+          environmentFiles = [ pgPasswordFile ];
+          extraOptions = [
+            "--pull=newer"
+            "--network=host"
+          ];
         };
-        environmentFiles = [ pgPasswordFile ];
-        extraOptions = [
-          "--pull=newer"
-          "--network=host"
-        ];
-      };
 
-      containers.audiomuse-worker = {
-        image = "ghcr.io/neptunehub/audiomuse-ai:v3.2.0";
-        autoStart = true;
-        volumes = [
-          "${tempDir}:/app/temp_audio"
-          "${pluginsDir}:/app/plugin/installed"
-        ];
-        environment = {
-          inherit TZ;
-          SERVICE_TYPE = "worker";
-          POSTGRES_USER = pgUser;
-          POSTGRES_DB = pgDb;
-          POSTGRES_HOST = "127.0.0.1";
-          POSTGRES_PORT = toString pgPort;
-          TEMP_DIR = "/app/temp_audio";
+        audiomuse-worker = {
+          image = "ghcr.io/neptunehub/audiomuse-ai:3.2.0";
+          autoStart = true;
+          volumes = [
+            "${tempDir}:/app/temp_audio"
+            "${pluginsDir}:/app/plugin/installed"
+          ];
+          environment = {
+            inherit TZ;
+            SERVICE_TYPE = "worker";
+            POSTGRES_USER = pgUser;
+            POSTGRES_DB = pgDb;
+            POSTGRES_HOST = "127.0.0.1";
+            POSTGRES_PORT = toString pgPort;
+            TEMP_DIR = "/app/temp_audio";
+          };
+          environmentFiles = [ pgPasswordFile ];
+          extraOptions = [
+            "--pull=newer"
+            "--network=host"
+          ];
         };
-        environmentFiles = [ pgPasswordFile ];
-        extraOptions = [
-          "--pull=newer"
-          "--network=host"
-        ];
       };
     };
   };
@@ -114,7 +126,7 @@ in
   ];
 
   sops.secrets."audiomuse-pg-password" = {
-    sopsFile = ../../secrets/navidrome.yaml;
+    sopsFile = ../../secrets/music.yaml;
   };
 
   services.nginx = {
