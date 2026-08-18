@@ -18,7 +18,7 @@
   };
 
   sops.secrets."maloja-env" = {
-    sopsFile = ../../secrets/navidrome.yaml;
+    sopsFile = ../../secrets/music.yaml;
   };
 
   services.nginx.virtualHosts."maloja.${domain}" = {

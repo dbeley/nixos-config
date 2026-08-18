@@ -7,7 +7,7 @@
 }:
 {
   sops.secrets."slskd-env" = {
-    sopsFile = ../../secrets/navidrome.yaml;
+    sopsFile = ../../secrets/music.yaml;
   };
 
   services.slskd = {

@@ -42,7 +42,7 @@ in
   };
 
   sops.secrets."navidrome-env" = {
-    sopsFile = ../../secrets/navidrome.yaml;
+    sopsFile = ../../secrets/music.yaml;
   };
 
   systemd.services.navidrome = {
