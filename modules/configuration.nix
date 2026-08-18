@@ -16,8 +16,6 @@
     tmp.useTmpfs = true;
   };
 
-  systemd.services.nix-daemon.environment.TMPDIR = "/var/tmp";
-
   networking = {
     inherit hostName;
     networkmanager = {
@@ -140,7 +138,6 @@
       fallback = true;
       connect-timeout = 10;
       download-attempts = 3;
-      build-dir = "/var/tmp";
     };
     registry.nixpkgs.flake = inputs.nixpkgs;
     channel.enable = false;
