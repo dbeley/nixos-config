@@ -15,12 +15,6 @@
     enable = true;
     hideMounts = true;
     directories = [
-      {
-        inherit user;
-        directory = "/tmp/yazi-1000";
-        group = "users";
-        mode = "u=rwx,g=rx,o=";
-      }
       "/var/log"
       "/etc/NetworkManager/system-connections"
       "/etc/wireguard"
