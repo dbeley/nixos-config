@@ -31,10 +31,13 @@ in
         main = {
           leftmouse = "rightmouse";
           rightmouse = "leftmouse";
-          # 1/2/3 are layer entry points; the tab navigation lives in `tabs`.
-          "1" = "togglelayer(main)";
-          "2" = "togglelayer(tabs)";
-          "3" = "togglelayer(wm)";
+          # Exclusive mode selector: 1 = main, 2 = tabs, 3 = wm.
+          # toggle() enters from main (swap() is a no-op there);
+          # swap() switches exclusively between the toggled layers;
+          # noop makes re-pressing an already-active mode a no-op.
+          "1" = "clear()";
+          "2" = "toggle(tabs)";
+          "3" = "toggle(wm)";
           "4" = "pageup";
           "5" = "up";
           "6" = "home";
@@ -45,25 +48,24 @@ in
           minus = "down";
           equal = "end";
         };
-        # Button 0 in every layer returns to main.
         tabs = {
-          "1" = "togglelayer(main)";
-          "2" = "togglelayer(tabs)";
-          "3" = "togglelayer(wm)";
+          "1" = "clear()";
+          "2" = "noop";
+          "3" = "swap(wm)";
           "4" = "C-S-tab";
           "5" = "C-w";
           "6" = "C-tab";
           "7" = "C-S-t";
-          "8" = "M-k";
+          "8" = "C-r";
           "9" = "C-t";
-          "0" = "M-h";
-          minus = "M-j";
-          equal = "M-l";
+          "0" = "A-h";
+          minus = "C-s";
+          equal = "A-l";
         };
         wm = {
-          "1" = "togglelayer(main)";
-          "2" = "togglelayer(tabs)";
-          "3" = "togglelayer(wm)";
+          "1" = "clear()";
+          "2" = "swap(tabs)";
+          "3" = "noop";
           "4" = "M-r";
           "5" = "M-k";
           "6" = "M-f";
