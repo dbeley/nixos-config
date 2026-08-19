@@ -149,6 +149,10 @@
       url = "github:mvanhorn/last30days-skill";
       flake = false;
     };
+    ip-as-logo-skill = {
+      url = "github:s1dashu/ip-as-logo-skill";
+      flake = false;
+    };
     ponytail = {
       url = "github:DietrichGebert/ponytail";
       flake = false;

@@ -17,6 +17,10 @@ _: {
         subdir = "skills";
         idPrefix = "last30days";
       };
+      ip-as-logo = {
+        input = "ip-as-logo-skill";
+        subdir = ".";
+      };
       ponytail = {
         input = "ponytail";
         subdir = "skills";
@@ -37,6 +41,7 @@ _: {
         "superpowers/brainstorming"
         "superpowers/verification-before-completion"
         "last30days/last30days"
+        "ip-as-logo"
         "ponytail/ponytail"
         "ponytail/ponytail-review"
         "ponytail/ponytail-audit"
