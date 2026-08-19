@@ -54,6 +54,7 @@
       ".cache/opencode"
       ".cache/tealdeer"
       ".cache/thumbnails/x-large"
+      ".cache/yazi"
       ".agent/skills"
       ".claude"
       ".codex"

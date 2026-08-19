@@ -32,6 +32,9 @@ in
     '';
 
     settings = {
+      preview = {
+        cache_dir = "~/.cache/yazi";
+      };
       mgr = {
         linemode = "size";
       };
