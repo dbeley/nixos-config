@@ -22,7 +22,11 @@
         restic -r (backup-repo $argv) --password-file ~/.config/restic/password snapshots
       '';
       backup-restore = ''
-        restic -r (backup-repo $argv) --password-file ~/.config/restic/password restore latest --target ~/restic-restore
+        set restic_snapshot $argv[2]
+        if test -z "$restic_snapshot"
+          set restic_snapshot latest
+        end
+        restic -r (backup-repo $argv[1]) --password-file ~/.config/restic/password restore $restic_snapshot --target ~/restic-restore
       '';
       backup-forget = ''
         restic -r (backup-repo $argv) --password-file ~/.config/restic/password forget --keep-daily 7 --keep-weekly 4 --keep-monthly 12 --keep-yearly 3 --prune
@@ -34,12 +38,12 @@
         restic -r (backup-repo $argv) --password-file ~/.config/restic/password unlock
       '';
       backup-run = ''
-        set repo (backup-repo $argv)
-        set folders_file ~/.config/restic/backup-folders.txt
+        set restic_repo (backup-repo $argv)
+        set restic_folders_file ~/.config/restic/backup-folders.txt
 
-        if not test -f $folders_file
+        if not test -f $restic_folders_file
           echo "No backup folders configured."
-          echo "Create $folders_file with one folder path per line."
+          echo "Create $restic_folders_file with one folder path per line."
           echo ""
           echo "Example:"
           echo "  mkdir -p ~/.config/restic"
@@ -47,10 +51,10 @@
           return 1
         end
 
-        for folder in (cat $folders_file | grep -v '^#' | grep -v '^$')
-          set expanded_folder (eval echo $folder)
-          echo "Backing up: $expanded_folder"
-          restic -r $repo --verbose --password-file ~/.config/restic/password backup $expanded_folder
+        for restic_folder in (cat $restic_folders_file | grep -v '^#' | grep -v '^$')
+          set restic_expanded_folder (eval echo $restic_folder)
+          echo "Backing up: $restic_expanded_folder"
+          restic -r $restic_repo --verbose --password-file ~/.config/restic/password backup $restic_expanded_folder
         end
       '';
     };
