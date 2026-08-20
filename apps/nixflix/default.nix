@@ -1,9 +1,10 @@
 {
   config,
-  lib,
-  user,
-  inputs,
   domain,
+  inputs,
+  lib,
+  pkgs,
+  user,
   ...
 }:
 let
@@ -190,7 +191,6 @@ in
 
   security.acme.certs."${domain}" = {
     domain = "${domain}";
-    extraDomainNames = [ "*.${domain}" ];
     dnsProvider = "ovh";
     environmentFile = config.sops.secrets."acme-ovh".path;
     group = "nginx";
@@ -198,6 +198,10 @@ in
 
   systemd = {
     services = {
+      nixflix-setup-dirs.script = lib.mkForce ''
+        ${pkgs.systemd}/bin/systemd-tmpfiles --create --prefix=/data --prefix=/var
+      '';
+
       wg.serviceConfig = {
         Restart = "on-failure";
         RestartSec = 30;
