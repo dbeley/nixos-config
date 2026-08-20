@@ -182,6 +182,28 @@ nix build .#<pkg>  # Ensure derivation succeeds before committing
 2. Add `sops` to host's `profiles` list in `hosts/default.nix`
 3. Define secrets in `secrets/secrets.yaml` using `sops secrets/secrets.yaml`
 
+### Secrets requiring KEY=VALUE format
+
+Secrets consumed via `environmentFile` / `environmentFiles` (NixOS services or OCI
+containers) **must** be stored as `KEY=VALUE` lines, not raw values. Systemd and
+podman's `--env-file` both expect this format.
+
+| Secret | File | Required format |
+|--------|------|-----------------|
+| `bookorbit-pg-password` | `secrets/nixflix.yaml` | `POSTGRES_PASSWORD=<value>` |
+| `bookorbit-jwt-secret` | `secrets/nixflix.yaml` | `JWT_SECRET=<value>` |
+| `bookorbit-bootstrap-token` | `secrets/nixflix.yaml` | `SETUP_BOOTSTRAP_TOKEN=<value>` |
+| `audiomuse-pg-password` | `secrets/music.yaml` | `POSTGRES_PASSWORD=<value>` |
+| `trek-env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
+| `slskd-env` | `secrets/music.yaml` | multi-line `KEY=VALUE` |
+| `navidrome-env` | `secrets/music.yaml` | multi-line `KEY=VALUE` |
+| `maloja-env` | `secrets/music.yaml` | multi-line `KEY=VALUE` |
+| `zeroclaw-env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
+| `hermes-webui-env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
+| `acme-ovh` | `secrets/acme.yaml` | multi-line `KEY=VALUE` |
+
+To update: `sops set <file> '["<key>"]' '"KEY=VALUE"'`
+
 ### ACME / HTTPS on era hosts
 
 Era VM services (trek, paperless, navidrome, etc.) are served over HTTPS using
