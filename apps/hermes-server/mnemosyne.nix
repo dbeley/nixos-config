@@ -47,19 +47,16 @@ let
 
     doCheck = false;
   };
-
-  # Hermes discovers user memory providers at $HERMES_HOME/plugins/<name>/
-  # (directory scan, not entry points), and the plugin imports both packages
-  # absolutely, so both must live in hermes-agent's site-packages.
-  hermesAgent = inputs.llm-agents.packages.${pkgs.system}.hermes-agent.overridePythonAttrs (old: {
-    dependencies = old.dependencies ++ [
-      mnemosyne
-      mnemosyne-hermes
-    ];
-  });
 in
 {
-  services.hermes-webui.agentPackage = lib.mkForce hermesAgent;
+  # Expose the mnemosyne packages to the agent's Python environment via the
+  # home-manager module's new extraPythonPackages option.  This ensures that
+  # mnemosyne and sqlite-vec are importable by the gateway process at runtime,
+  # so the Mnemosyne memory plugin can load its tools and prefetch memories.
+  services.hermes-webui.extraPythonPackages = [
+    mnemosyne
+    mnemosyne-hermes
+  ];
 
   # MnemosyneMemoryProvider plugin dir; the package directory IS the plugin.
   home.file.".hermes/plugins/mnemosyne" = {
