@@ -31,13 +31,9 @@ in
         main = {
           leftmouse = "rightmouse";
           rightmouse = "leftmouse";
-          # Exclusive mode selector: 1 = main, 2 = tabs, 3 = wm.
-          # toggle() enters from main (swap() is a no-op there);
-          # swap() switches exclusively between the toggled layers;
-          # noop makes re-pressing an already-active mode a no-op.
           "1" = "clear()";
           "2" = "toggle(tabs)";
-          "3" = "toggle(wm)";
+          "3" = "M-tab";
           "4" = "pageup";
           "5" = "up";
           "6" = "home";
@@ -51,30 +47,16 @@ in
         tabs = {
           "1" = "clear()";
           "2" = "noop";
-          "3" = "swap(wm)";
+          "3" = "M-tab";
           "4" = "pageup";
           "5" = "up";
           "6" = "C-S-tab";
-          "7" = "left";
+          "7" = "C-S-t";
           "8" = "middlemouse";
           "9" = "C-w";
           "0" = "pagedown";
           minus = "down";
           equal = "C-tab";
-        };
-        wm = {
-          "1" = "clear()";
-          "2" = "swap(tabs)";
-          "3" = "noop";
-          "4" = "pageup";
-          "5" = "up";
-          "6" = "M-tab";
-          "7" = "left";
-          "8" = "middlemouse";
-          "9" = "right";
-          "0" = "pagedown";
-          minus = "down";
-          equal = "end";
         };
       };
     };
