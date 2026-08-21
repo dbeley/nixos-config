@@ -240,6 +240,7 @@ let
     code-agents = {
       home = [
         # ../apps/cursor/cursor.nix
+        ../apps/agent-fieldnotes/agent-fieldnotes.nix
         ../apps/opencode/opencode.nix
         ../apps/openskills/openskills.nix
         # ../apps/pi/pi.nix
