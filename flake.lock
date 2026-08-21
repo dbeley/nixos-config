@@ -3,11 +3,11 @@
     "agent-fieldnotes": {
       "flake": false,
       "locked": {
-        "lastModified": 1787323722,
-        "narHash": "sha256-7K87WsJDspAACEJVwwmwM1z/iEjPYQzR6ckJXTCgeQs=",
+        "lastModified": 1787333914,
+        "narHash": "sha256-s4LqBS5VYr60IebnxP0WxCnKBnlvcXBNiWZOsBoSqsk=",
         "owner": "dbeley",
         "repo": "agent-fieldnotes",
-        "rev": "be2733a7dac0aab78975cc60f146de42c9454b0a",
+        "rev": "43b2a6c5f594bfca15aa6e211ab81cdfdb30b862",
         "type": "github"
       },
       "original": {
