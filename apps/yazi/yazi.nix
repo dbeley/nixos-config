@@ -1,21 +1,4 @@
 { pkgs, ... }:
-
-let
-  zoomPlugin =
-    pkgs.runCommand "zoom.yazi"
-      {
-        src = pkgs.fetchFromGitHub {
-          owner = "yazi-rs";
-          repo = "plugins";
-          rev = "0be29a913ad61c6d119abfaaf253e96e6af5db67";
-          hash = "sha256-IDmmXzQKFx3QZ9u5lMwcTOeWeMPWzIBeKBXkGAgJMaI=";
-        };
-      }
-      ''
-        cp -r $src/zoom.yazi/. $out
-      '';
-
-in
 {
   programs.yazi = {
     enable = true;
@@ -24,7 +7,6 @@ in
 
     plugins = {
       inherit (pkgs.yaziPlugins) smart-enter;
-      zoom = zoomPlugin;
     };
 
     initLua = ''
@@ -38,14 +20,6 @@ in
       mgr = {
         linemode = "size";
       };
-      plugin = {
-        prepend_previewers = [
-          {
-            mime = "image/{jpeg,png,webp,bmp}";
-            run = "zoom 5";
-          }
-        ];
-      };
     };
 
     keymap = {
@@ -55,17 +29,6 @@ in
           on = "l";
           run = "plugin smart-enter";
           desc = "Smart enter";
-        }
-        # Zoom in/out
-        {
-          on = "+";
-          run = "plugin zoom 1";
-          desc = "Zoom in";
-        }
-        {
-          on = "-";
-          run = "plugin zoom -1";
-          desc = "Zoom out";
         }
         # Bookmarks
         {
