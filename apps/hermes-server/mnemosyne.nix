@@ -9,7 +9,7 @@ let
 
   mnemosyne = python.pkgs.buildPythonPackage {
     pname = "mnemosyne-memory";
-    version = "3.16.0";
+    version = "4.0.0b1";
     src = inputs.mnemosyne;
     pyproject = true;
 
@@ -29,7 +29,7 @@ let
 
   mnemosyne-hermes = python.pkgs.buildPythonPackage {
     pname = "mnemosyne-hermes";
-    version = "0.6.0";
+    version = "0.7.0";
     src = inputs.mnemosyne;
     pyproject = true;
 

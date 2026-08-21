@@ -1,10 +1,5 @@
 { inputs, pkgs, ... }:
 let
-  # The contrib command logic lives ONCE in the agent-fieldnotes repo:
-  #   scripts/fieldnote      = the `fieldnote` writer command
-  #   scripts/klog-read.sh   = the `klog-read` reader command
-  # We read both from the pinned flake input here; scripts/setup-agent-fieldnotes.sh
-  # installs the same files for non-NixOS machines — single source of truth, no drift.
   fieldnote = pkgs.writeShellScriptBin "fieldnote" (
     builtins.readFile "${inputs.agent-fieldnotes}/scripts/fieldnote"
   );
@@ -18,10 +13,6 @@ in
     klog-read
   ];
 
-  # Global opencode instructions: read by every opencode agent on this host in
-  # every project. Tells them to (a) CONSULT the KB before solving hard problems
-  # and (b) CAPTURE reusable, undocumented findings — closing the loop so reads
-  # feed future writes.
   xdg.configFile."opencode/AGENTS.md".text = ''
     # Field notes (klog) — read + capture protocol
 
