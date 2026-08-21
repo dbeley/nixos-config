@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "agent-fieldnotes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787323722,
+        "narHash": "sha256-7K87WsJDspAACEJVwwmwM1z/iEjPYQzR6ckJXTCgeQs=",
+        "owner": "dbeley",
+        "repo": "agent-fieldnotes",
+        "rev": "be2733a7dac0aab78975cc60f146de42c9454b0a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dbeley",
+        "repo": "agent-fieldnotes",
+        "type": "github"
+      }
+    },
     "agent-skills": {
       "inputs": {
         "blueprint": [
@@ -881,6 +897,7 @@
     },
     "root": {
       "inputs": {
+        "agent-fieldnotes": "agent-fieldnotes",
         "agent-skills": "agent-skills",
         "anthropic-skills": "anthropic-skills",
         "base16": "base16",

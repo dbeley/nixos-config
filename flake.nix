@@ -30,6 +30,10 @@
       };
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    agent-fieldnotes = {
+      url = "github:dbeley/agent-fieldnotes";
+      flake = false; # pure source tree; we readFile the canonical scripts/fieldnote
+    };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs = {

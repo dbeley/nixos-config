@@ -1,26 +1,12 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
-  repoUrl = "https://github.com/dbeley/agent-fieldnotes.git";
-  # Data location (persistent, survives cache-wipes; not in ~/workspace to avoid
-  # index/backup noise): respects XDG. The clone's source of truth is GitHub, but
-  # it holds local draft edits, so it lives in the data dir and is persisted via
-  # impermanence (modules/impermanence). ~/.local/share is the XDG home for state
-  # that should survive reboots.
-  repoName = "agent-fieldnotes";
-
-  # `fieldnote` — self-bootstrapping wrapper. Clones the shared KB repo into the
-  # data dir on first use, then delegates to scripts/fieldnote-add.sh.
-  fieldnote = pkgs.writeShellScriptBin "fieldnote" ''
-    set -euo pipefail
-    DATA=''${XDG_DATA_HOME:-$HOME/.local/share}
-    REPO="$DATA/${repoName}"
-    if [[ ! -d "$REPO/.git" ]]; then
-      mkdir -p "$DATA"
-      echo "cloning agent-fieldnotes KB -> $REPO" >&2
-      git clone --depth 1 "${repoUrl}" "$REPO"
-    fi
-    exec "$REPO/scripts/fieldnote-add.sh" "$@"
-  '';
+  # The `fieldnote` command logic lives ONCE, in the agent-fieldnotes repo at
+  # scripts/fieldnote (single source of truth). We read it from the pinned flake
+  # input here, and scripts/setup-agent-fieldnotes.sh copies the same file for
+  # non-NixOS machines — so the Nix packaging and the imperative bootstrap never
+  # drift. Edit scripts/fieldnote in the repo, not this module.
+  fieldnoteScript = builtins.readFile "${inputs.agent-fieldnotes}/scripts/fieldnote";
+  fieldnote = pkgs.writeShellScriptBin "fieldnote" fieldnoteScript;
 in
 {
   home.packages = [ fieldnote ];
