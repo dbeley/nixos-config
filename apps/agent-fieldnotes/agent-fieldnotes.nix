@@ -1,20 +1,21 @@
 { pkgs, ... }:
 let
   repoUrl = "https://github.com/dbeley/agent-fieldnotes.git";
-  # Cache location (reconstructible, not user data): respects XDG. The repo is
-  # a throwaway working clone — its source of truth is GitHub — so it belongs in
-  # the cache, not in ~/workspace (which is user data / backed up / indexed).
+  # Data location (persistent, survives cache-wipes; not in ~/workspace to avoid
+  # index/backup noise): respects XDG. The clone's source of truth is GitHub, but
+  # it holds local draft edits, so it lives in the data dir and is persisted via
+  # impermanence (modules/impermanence). ~/.local/share is the XDG home for state
+  # that should survive reboots.
   repoName = "agent-fieldnotes";
 
   # `fieldnote` — self-bootstrapping wrapper. Clones the shared KB repo into the
-  # cache on first use (impermanence-safe: auto-reclones if wiped), then
-  # delegates to scripts/fieldnote-add.sh.
+  # data dir on first use, then delegates to scripts/fieldnote-add.sh.
   fieldnote = pkgs.writeShellScriptBin "fieldnote" ''
     set -euo pipefail
-    CACHE=''${XDG_CACHE_HOME:-$HOME/.cache}
-    REPO="$CACHE/${repoName}"
+    DATA=''${XDG_DATA_HOME:-$HOME/.local/share}
+    REPO="$DATA/${repoName}"
     if [[ ! -d "$REPO/.git" ]]; then
-      mkdir -p "$CACHE"
+      mkdir -p "$DATA"
       echo "cloning agent-fieldnotes KB -> $REPO" >&2
       git clone --depth 1 "${repoUrl}" "$REPO"
     fi
@@ -49,12 +50,12 @@ in
 
     ## How to publish
       1. Run:  fieldnote "One line title of the finding"
-         (clones the KB to ~/.cache/agent-fieldnotes if needed; creates
-          entries/<id>.yaml as a draft and validates it locally).
+         (clones the KB to ~/.local/share/agent-fieldnotes if needed; creates
+         entries/<id>.yaml as a draft and validates it locally).
       2. Fill in problem / solution / repro in that file.
       3. Commit + push (CI validates + publishes to GitHub Pages).
-         The clone is at ~/.cache/agent-fieldnotes. Use a short alias:
-           export KB=~/.cache/agent-fieldnotes
+         The clone is at ~/.local/share/agent-fieldnotes. Use a short alias:
+           export KB=~/.local/share/agent-fieldnotes
            git -C "$KB" add entries/<id>.yaml
            git -C "$KB" commit
            git -C "$KB" push

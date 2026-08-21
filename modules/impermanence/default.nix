@@ -113,6 +113,7 @@
       ".local/share/keyrings"
       ".local/share/Monster Sanctuary"
       ".local/share/mpd"
+      ".local/share/agent-fieldnotes"
       ".local/share/opencode"
       ".local/share/openmw"
       ".local/share/qutebrowser/sessions"
