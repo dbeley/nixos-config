@@ -162,6 +162,11 @@ let
         ../apps/bookorbit/default.nix
       ];
     };
+    shelfmark = {
+      system = [
+        ../apps/shelfmark/default.nix
+      ];
+    };
     podman = {
       system = [
         ../apps/podman/default.nix
@@ -595,6 +600,7 @@ in
       "acme"
       "nixflix"
       "bookorbit"
+      "shelfmark"
     ];
   };
   nixos-era-adguard = mkHost {
