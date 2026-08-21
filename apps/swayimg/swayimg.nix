@@ -5,6 +5,7 @@
     initLua = ''
       -- General config
       -- Image list configuration
+      swayimg.imagelist.recursive = true
       swayimg.imagelist.adjacent = true
 
       -- Viewer mode

@@ -141,7 +141,7 @@
             "i"
             "g"
           ];
-          run = "shell 'swayimg -r -o mtime \"$@\"' --orphan";
+          run = "shell --orphan 'swayimg -e \"swayimg.imagelist.order = \\\"mtime\\\"\" -- %h'";
           desc = "Swayimg recursive (mtime)";
         }
         {
@@ -149,7 +149,7 @@
             "i"
             "G"
           ];
-          run = "shell 'swayimg -r -o mtime --gallery \"$@\"' --orphan";
+          run = "shell --orphan 'swayimg -g -e \"swayimg.imagelist.order = \\\"mtime\\\"\" -- %h'";
           desc = "Swayimg gallery (mtime)";
         }
         {
@@ -157,7 +157,7 @@
             "i"
             "r"
           ];
-          run = "shell 'swayimg -r -o random \"$@\"' --orphan";
+          run = "shell --orphan 'swayimg -e \"swayimg.imagelist.order = \\\"random\\\"\" -- %h'";
           desc = "Swayimg recursive (random)";
         }
         {
@@ -165,7 +165,7 @@
             "i"
             "R"
           ];
-          run = "shell 'swayimg -r -o random --gallery \"$@\"' --orphan";
+          run = "shell --orphan 'swayimg -g -e \"swayimg.imagelist.order = \\\"random\\\"\" -- %h'";
           desc = "Swayimg gallery (random)";
         }
       ];
