@@ -267,6 +267,7 @@ let
         ../apps/opencode-server/default.nix
       ];
       home = [
+        ../apps/agent-fieldnotes/agent-fieldnotes.nix
         ../apps/opencode/opencode.nix
       ];
     };
