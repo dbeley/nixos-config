@@ -200,8 +200,6 @@ podman's `--env-file` both expect this format.
 | `maloja-env` | `secrets/music.yaml` | multi-line `KEY=VALUE` |
 | `zeroclaw-env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
 | `hermes-webui-env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
-| `tubearchivist-password` | `secrets/homelab.yaml` | `TA_PASSWORD=<value>` |
-| `tubearchivist-elasticsearch-password` | `secrets/homelab.yaml` | `ELASTIC_PASSWORD=<value>` |
 | `acme-ovh` | `secrets/acme.yaml` | multi-line `KEY=VALUE` |
 
 To update: `sops set <file> '["<key>"]' '"KEY=VALUE"'`

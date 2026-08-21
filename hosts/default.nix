@@ -172,11 +172,6 @@ let
         ../apps/podman/default.nix
       ];
     };
-    tubearchivist = {
-      system = [
-        ../apps/tubearchivist/default.nix
-      ];
-    };
     firefox = {
       home = [ ../apps/firefox/firefox.nix ];
     };
@@ -672,7 +667,6 @@ in
       "paperless-ngx"
       "trek"
       "podman"
-      "tubearchivist"
     ];
   };
 }
