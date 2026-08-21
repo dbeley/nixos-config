@@ -1,15 +1,20 @@
 { pkgs, ... }:
 let
   repoUrl = "https://github.com/dbeley/agent-fieldnotes.git";
-  repoPath = "$HOME/workspace/projects/agent-fieldnotes";
+  # Cache location (reconstructible, not user data): respects XDG. The repo is
+  # a throwaway working clone — its source of truth is GitHub — so it belongs in
+  # the cache, not in ~/workspace (which is user data / backed up / indexed).
+  repoName = "agent-fieldnotes";
 
-  # `fieldnote` — self-bootstrapping wrapper. Clones the shared KB repo on
-  # first use (impermanence-safe), then delegates to scripts/fieldnote-add.sh.
+  # `fieldnote` — self-bootstrapping wrapper. Clones the shared KB repo into the
+  # cache on first use (impermanence-safe: auto-reclones if wiped), then
+  # delegates to scripts/fieldnote-add.sh.
   fieldnote = pkgs.writeShellScriptBin "fieldnote" ''
     set -euo pipefail
-    REPO="${repoPath}"
+    CACHE=''${XDG_CACHE_HOME:-$HOME/.cache}
+    REPO="$CACHE/${repoName}"
     if [[ ! -d "$REPO/.git" ]]; then
-      mkdir -p "$(dirname "$REPO")"
+      mkdir -p "$CACHE"
       echo "cloning agent-fieldnotes KB -> $REPO" >&2
       git clone --depth 1 "${repoUrl}" "$REPO"
     fi
@@ -44,13 +49,15 @@ in
 
     ## How to publish
       1. Run:  fieldnote "One line title of the finding"
-         (clones the KB if needed; creates entries/<id>.yaml as a draft and
-          validates it locally).
+         (clones the KB to ~/.cache/agent-fieldnotes if needed; creates
+          entries/<id>.yaml as a draft and validates it locally).
       2. Fill in problem / solution / repro in that file.
-      3. Commit + push (CI validates + publishes to GitHub Pages):
-           git -C ~/workspace/projects/agent-fieldnotes add entries/<id>.yaml
-           git -C ~/workspace/projects/agent-fieldnotes commit
-           git -C ~/workspace/projects/agent-fieldnotes push
+      3. Commit + push (CI validates + publishes to GitHub Pages).
+         The clone is at ~/.cache/agent-fieldnotes. Use a short alias:
+           export KB=~/.cache/agent-fieldnotes
+           git -C "$KB" add entries/<id>.yaml
+           git -C "$KB" commit
+           git -C "$KB" push
 
     ## Rules
     - Keep new entries `status: draft` unless you actually re-ran the repro and
