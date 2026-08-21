@@ -42,7 +42,7 @@
         {
           on = [
             "b"
-            "n"
+            "x"
           ];
           run = "cd ~/Nextcloud";
           desc = "Bookmark: Nextcloud";
@@ -90,10 +90,18 @@
         {
           on = [
             "b"
-            "i"
+            "m"
           ];
           run = "cd ~/nfs/WDC14_2/Medias";
           desc = "Bookmark: Medias";
+        }
+        {
+          on = [
+            "b"
+            "n"
+          ];
+          run = "cd ~/nfs/WDC14_2/Nixflix";
+          desc = "Bookmark: Nixflix";
         }
         {
           on = [
@@ -102,14 +110,6 @@
           ];
           run = "cd ~/nfs";
           desc = "Bookmark: nfs";
-        }
-        {
-          on = [
-            "b"
-            "m"
-          ];
-          run = "cd ~/nfs/WDC14/Musique";
-          desc = "Bookmark: Musique";
         }
         {
           on = [
