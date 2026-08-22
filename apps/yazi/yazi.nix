@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.yazi = {
     enable = true;
@@ -15,7 +15,7 @@
 
     settings = {
       preview = {
-        cache_dir = "~/.cache/yazi";
+        cache_dir = "${config.home.homeDirectory}/.cache/yazi";
       };
       mgr = {
         linemode = "size";

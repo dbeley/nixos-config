@@ -48,7 +48,7 @@ in
         };
 
         audiomuse-flask = {
-          image = "ghcr.io/neptunehub/audiomuse-ai:3.2.0";
+          image = "ghcr.io/neptunehub/audiomuse-ai:3.4.0";
           autoStart = true;
           ports = [ "127.0.0.1:${toString audiomusePort}:8000" ];
           volumes = [
@@ -72,7 +72,7 @@ in
         };
 
         audiomuse-worker = {
-          image = "ghcr.io/neptunehub/audiomuse-ai:3.2.0";
+          image = "ghcr.io/neptunehub/audiomuse-ai:3.4.0";
           autoStart = true;
           volumes = [
             "${tempDir}:/app/temp_audio"
