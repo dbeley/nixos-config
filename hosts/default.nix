@@ -157,6 +157,11 @@ let
         ../apps/nixflix/default.nix
       ];
     };
+    youtarr = {
+      system = [
+        ../apps/youtarr/default.nix
+      ];
+    };
     bookorbit = {
       system = [
         ../apps/bookorbit/default.nix
@@ -601,6 +606,7 @@ in
       "sops"
       "acme"
       "nixflix"
+      "youtarr"
       "bookorbit"
       "shelfmark"
     ];
