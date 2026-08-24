@@ -92,7 +92,7 @@
             "b"
             "m"
           ];
-          run = "cd ~/nfs/WDC14_2/Medias";
+          run = "cd ~/nfs/WDC14/Musique";
           desc = "Bookmark: Medias";
         }
         {
