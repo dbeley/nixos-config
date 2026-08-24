@@ -72,7 +72,7 @@
       ".config/feishin"
       ".config/gh"
       ".config/gtk-3.0"
-      ".config/icm"
+
       ".config/heroic/GamesConfig"
       ".config/heroic/gog_store"
       ".config/heroic/legendaryConfig"
@@ -117,8 +117,7 @@
       ".local/share/opencode"
       ".local/share/openmw"
       ".local/share/qutebrowser/sessions"
-      ".local/share/ctx"
-      ".local/share/dev.icm.icm"
+
       ".local/share/Steam"
       ".local/share/zoxide"
       ".local/state/noctalia"
