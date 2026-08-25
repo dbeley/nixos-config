@@ -33,6 +33,7 @@
         mode = "u=rwx,g=rx,o=";
       }
       "/var/lib/private"
+      "/var/lib/sbctl"
     ];
     files = [
       "/etc/machine-id"
@@ -68,7 +69,6 @@
       ".config/chromium"
       ".config/Cursor"
       ".config/dconf"
-      ".config/discord"
       ".config/feishin"
       ".config/gh"
       ".config/gtk-3.0"
@@ -82,7 +82,6 @@
       ".config/itch"
       ".config/keepassxc"
       ".config/libreoffice/4/user"
-      ".config/Meltytech"
       ".config/mozilla/firefox/${user}"
       ".config/mpd"
       ".config/Nextcloud"
