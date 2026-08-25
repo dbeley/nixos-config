@@ -508,6 +508,22 @@
         "type": "github"
       }
     },
+    "hyperdroid-skill": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1769636863,
+        "narHash": "sha256-sBqxQ1cR9IHCSrLqbo/hbve5+v2cn78Od+dzgGS0B+k=",
+        "owner": "hyperb1iss",
+        "repo": "hyperdroid-skill",
+        "rev": "febe9c56fed36ed9b6316d8628b2ca2b7b56f270",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyperb1iss",
+        "repo": "hyperdroid-skill",
+        "type": "github"
+      }
+    },
     "impermanence": {
       "inputs": {
         "home-manager": [
@@ -912,6 +928,7 @@
         "gitignore": "gitignore",
         "hermes-webui-nix": "hermes-webui-nix",
         "home-manager": "home-manager",
+        "hyperdroid-skill": "hyperdroid-skill",
         "impermanence": "impermanence",
         "impulse": "impulse",
         "ip-as-logo-skill": "ip-as-logo-skill",
