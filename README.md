@@ -42,6 +42,7 @@
   - [Extensive `qutebrowser` configuration with search engines](./apps/qutebrowser/qutebrowser.nix)
 - [Declarative partitioning with `disko`](./modules/disko/encrypted-btrfs-impermanence.nix)
 - [Ephemeral file system with `impermanence` on btrfs subvolumes](./modules/impermanence/)
+- [UEFI Secure Boot via Limine](./modules/common/secure-boot.nix) with sbctl key management
 - Secrets management with `sops-nix`
 - Configuration for common hardware with `nixos-hardware`
 - AI code agent ecosystem (`opencode` with [rtk plugin](./apps/opencode/opencode.nix), [`openskills`](./apps/openskills/), [`opencode-server`](./apps/opencode-server/), [`zeroclaw`](./apps/zeroclaw/), [`hermes-server`](./apps/hermes-server/))
@@ -181,6 +182,52 @@ cp /etc/nixos/hardware-configuration.nix hosts/<hostname>/
 echo "HOST=<hostname>" > .env
 just switch
 ```
+
+### Secure Boot (impermanence/disko hosts)
+
+The `secure-boot` profile is a bootloader profile using Limine that enables UEFI Secure Boot via `sbctl`.
+
+**Add to host profiles in `hosts/default.nix`:**
+```nix
+profiles = [
+  "laptop"
+  "impermanence"
+  "secure-boot"
+  # ...
+];
+```
+
+**Post-install manual steps (required for every new machine):**
+
+Setup is a two-phase process because `sbctl` is only available after the first rebuild.
+
+1. First rebuild (installs Limine + sbctl, signing not active yet):
+   ```bash
+   just switch
+   ```
+
+2. Reboot into firmware (F12 → "Reboot into Firmware") and enter Setup Mode:
+   - Security → Secure Boot → Enable → "Reset to Setup Mode"
+   - F10 to save and exit
+
+3. Boot back into NixOS and create + enroll keys:
+   ```bash
+   sudo sbctl create-keys
+   sudo sbctl enroll-keys --microsoft
+   ```
+
+4. Rebuild so Limine is signed with the enrolled keys:
+   ```bash
+   just switch
+   ```
+
+5. Reboot (on some computers, `sbctl enroll-keys` automatically exits Setup Mode. On other hardware, you may need to manually enable Secure Boot in firmware) and verify:
+   ```bash
+   bootctl status   # should show "Secure Boot: enabled (user)"
+   sudo sbctl verify  # all nixos-generation-*.efi should show ✓
+   ```
+
+**Note:** The sbctl keys at `/var/lib/sbctl` are persisted via impermanence. Without this, keys would be lost on every reboot.
 
 ### Proxmox VM Images
 
