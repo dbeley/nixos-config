@@ -26,6 +26,11 @@ _: {
         subdir = "skills";
         idPrefix = "ponytail";
       };
+      hyperdroid = {
+        input = "hyperdroid-skill";
+        subdir = "skills";
+        idPrefix = "hyperdroid";
+      };
     };
     skills = {
       enableAll = [ "superpowers" ];
@@ -46,6 +51,10 @@ _: {
         "ponytail/ponytail-review"
         "ponytail/ponytail-audit"
         "ponytail/ponytail-debt"
+        "hyperdroid/android"
+        "hyperdroid/android-fastboot"
+        "hyperdroid/android-build"
+        "hyperdroid/lineageos"
       ];
     };
     targets = {

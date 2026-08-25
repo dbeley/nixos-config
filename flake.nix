@@ -161,6 +161,10 @@
       url = "github:DietrichGebert/ponytail";
       flake = false;
     };
+    hyperdroid-skill = {
+      url = "github:hyperb1iss/hyperdroid-skill";
+      flake = false;
+    };
     symmetri = {
       url = "github:dbeley/symmetri";
       inputs = {
