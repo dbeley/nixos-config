@@ -27,6 +27,11 @@ let
         ../modules/common/bootloader-systemd-boot.nix
       ];
     };
+    secure-boot = {
+      system = [
+        ../modules/common/secure-boot.nix
+      ];
+    };
     bootloader-grub-bios = {
       system = [
         ../modules/common/bootloader-grub-bios.nix
@@ -438,7 +443,7 @@ in
     profiles = [
       "laptop"
       "impermanence"
-      "bootloader-systemd-boot"
+      "secure-boot"
       "workstation"
       "niri"
       "android-tools"
