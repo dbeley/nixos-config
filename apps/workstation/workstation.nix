@@ -10,7 +10,7 @@
     imagemagick
     just
     keepassxc
-    libreoffice-fresh
+    libreoffice-stable
     nitch
     nix-tree
     pwvucontrol
