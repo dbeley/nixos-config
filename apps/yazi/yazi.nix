@@ -20,6 +20,12 @@
       mgr = {
         linemode = "size";
       };
+      plugin.prepend_preloaders = [
+        {
+          url = "${config.home.homeDirectory}/nfs/**";
+          run = "noop";
+        }
+      ];
     };
 
     keymap = {
