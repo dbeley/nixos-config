@@ -155,27 +155,24 @@
   boot.kernel.sysctl = {
     "net.ipv4.tcp_congestion_control" = "bbr";
 
-    # Kernel pointer restriction
+    # Kernel information-leak and introspection restrictions
     "kernel.kptr_restrict" = 2;
     "kernel.dmesg_restrict" = 1;
     "kernel.yama.ptrace_scope" = 2;
-    "kernel.sysrq" = 4;
+    "kernel.sysrq" = 0;
     "kernel.perf_event_paranoid" = 3;
-    "kernel.io_uring_disabled" = 2;
 
     # Filesystem protections
     "fs.protected_symlinks" = 1;
     "fs.protected_hardlinks" = 1;
     "fs.protected_fifos" = 2;
     "fs.protected_regular" = 2;
-    "fs.suid_dumpable" = 0;
 
     # Network hardening
     "net.ipv4.conf.all.rp_filter" = 1;
     "net.ipv4.conf.default.rp_filter" = 1;
     "net.ipv4.conf.all.log_martians" = true;
     "net.ipv4.conf.default.log_martians" = true;
-    "net.ipv4.icmp_echo_ignore_broadcasts" = true;
     "net.ipv4.conf.all.accept_redirects" = false;
     "net.ipv4.conf.all.secure_redirects" = false;
     "net.ipv4.conf.default.accept_redirects" = false;
@@ -184,7 +181,6 @@
     "net.ipv6.conf.default.accept_redirects" = false;
     "net.ipv4.conf.all.send_redirects" = false;
     "net.ipv4.conf.default.send_redirects" = false;
-    "net.ipv4.tcp_syncookies" = 1;
     "net.ipv4.tcp_rfc1337" = true;
   };
 
@@ -227,9 +223,9 @@
   ];
 
   boot.kernelParams = [
+    # Exploit mitigations with a modest memory/boot-time cost.
     "slab_nomerge"
     "init_on_alloc=1"
-    "init_on_free=1"
     "page_alloc.shuffle=1"
     "randomize_kstack_offset=on"
     "vsyscall=none"
