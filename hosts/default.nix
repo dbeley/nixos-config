@@ -337,6 +337,9 @@ let
     covertone = {
       system = [ ../apps/covertone/default.nix ];
     };
+    archiveteam-warrior = {
+      system = [ ../apps/archiveteam-warrior/default.nix ];
+    };
     immich = {
       system = [
         ../apps/immich/default.nix
@@ -582,6 +585,16 @@ in
       "openssh-server"
       "sops"
       "tor-relay"
+    ];
+  };
+  nixos-kimsufi-warrior = mkHost {
+    hostName = "nixos-kimsufi-warrior";
+    stateVersion = "26.11";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "docker"
+      "archiveteam-warrior"
     ];
   };
   nixos-era-agents = mkHost {
