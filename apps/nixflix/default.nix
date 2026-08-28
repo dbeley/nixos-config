@@ -132,6 +132,27 @@ in
           enable = true;
           config.ExtractionDuringLibraryScan = true;
         };
+        Trakt = {
+          enable = true;
+          package = inputs.nixflix.lib.jellyfinPlugins.fromRepo {
+            version = "30.0.0.0";
+            hash = "sha256-CLdvWaGYTEZxLzm8ZPVHKhemp0EgCeJ/QvBMZPI2nYk=";
+          };
+        };
+        Simkl = {
+          enable = true;
+          package = inputs.nixflix.lib.jellyfinPlugins.fromRepo {
+            version = "8.0.0.0";
+            hash = "sha256-W6CkM38+DiTToAn0UfNpo591jzvxTeiyK4L7Q/A5DVI=";
+          };
+        };
+        Webhook = {
+          enable = true;
+          package = inputs.nixflix.lib.jellyfinPlugins.fromRepo {
+            version = "21.0.0.0";
+            hash = "sha256-trFb0f2qZh+iWVbLJ65hSfONZgvmrVWvfbQ7qcU4g7c=";
+          };
+        };
       };
       libraries = {
         Movies = {
@@ -222,14 +243,6 @@ in
       wg.serviceConfig = {
         Restart = "on-failure";
         RestartSec = 30;
-      };
-
-      navidrome = {
-        requires = [ "mnt-nfs.mount" ];
-        after = [
-          "mnt-nfs.mount"
-          "network-online.target"
-        ];
       };
     };
   };
