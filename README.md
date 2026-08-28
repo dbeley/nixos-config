@@ -85,8 +85,7 @@
 - **nixos-era-adguard**: adguard-home
 - **nixos-era-nextcloud**: nextcloud
 - **nixos-era-immich**: immich
-- **nixos-era-music**: music tools (slskd, covertone, maloja)
-- **nixos-era-homelab**: generic host for other self-hosted tools (paperless, jellyfin, trek, etc.)
+- **nixos-era-homelab**: generic host for other self-hosted tools (slskd, covertone, maloja, paperless, jellyfin, trek, etc.)
 
 ## Common Usage
 

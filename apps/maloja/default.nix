@@ -18,7 +18,7 @@
   };
 
   sops.secrets."maloja_env" = {
-    sopsFile = ../../secrets/music.yaml;
+    sopsFile = ../../secrets/homelab.yaml;
   };
 
   services.nginx.virtualHosts."maloja.${domain}" = {

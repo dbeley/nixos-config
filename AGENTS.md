@@ -140,9 +140,8 @@ mkHost = {
 **Servers (ERA VPS):**
 - `nixos-era-adguard` - AdGuard Home DNS server
 - `nixos-era-agents` - LLM agent web UIs (hermes-webui, opencode, zeroclaw)
-- `nixos-era-homelab` - Jellyfin + paperless-ngx + TREK 
+- `nixos-era-homelab` - slskd + mlaoja + covertone + Jellyfin + paperless-ngx + TREK 
 - `nixos-era-immich` - Immich photo server
-- `nixos-era-music` - Music streaming server and tools (audiomuse-ai + slskd + maloja + covertone)
 - `nixos-era-nextcloud` - Nextcloud server
 - `nixos-era-nixflix` - Nixflix media server (arr stack, jellyfin, navidrome, yamtrack)
 
@@ -198,9 +197,9 @@ podman's `--env-file` both expect this format.
 | `yamtrack_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
 | `navidrome_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
 | `trek_env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
-| `audiomuse_pg_password` | `secrets/music.yaml` | `POSTGRES_PASSWORD=<value>` |
-| `slskd_env` | `secrets/music.yaml` | multi-line `KEY=VALUE` |
-| `maloja_env` | `secrets/music.yaml` | multi-line `KEY=VALUE` |
+| `audiomuse_pg_password` | `secrets/homelab.yaml` | `POSTGRES_PASSWORD=<value>` |
+| `slskd_env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
+| `maloja_env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
 | `opencode_env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
 | `zeroclaw_env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
 | `hermes_webui_env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |

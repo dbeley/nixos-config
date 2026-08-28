@@ -7,7 +7,7 @@
 }:
 {
   sops.secrets."slskd_env" = {
-    sopsFile = ../../secrets/music.yaml;
+    sopsFile = ../../secrets/homelab.yaml;
   };
 
   services.slskd = {

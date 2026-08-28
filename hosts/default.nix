@@ -661,21 +661,6 @@ in
       "immich"
     ];
   };
-  nixos-era-music = mkHost {
-    hostName = "nixos-era-music";
-    stateVersion = "26.11";
-    domain = "music.home.dbeley.ovh";
-    profiles = [
-      "bootloader-grub-bios"
-      "openssh-server"
-      "audiomuse-ai"
-      "sops"
-      "acme"
-      "slskd"
-      "maloja"
-      "covertone"
-    ];
-  };
   nixos-era-homelab = mkHost {
     hostName = "nixos-era-homelab";
     stateVersion = "26.11";
@@ -689,6 +674,10 @@ in
       "paperless-ngx"
       "trek"
       "podman"
+      # "audiomuse-ai"
+      "slskd"
+      "maloja"
+      "covertone"
     ];
   };
 }

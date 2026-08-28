@@ -126,7 +126,7 @@ in
   ];
 
   sops.secrets."audiomuse_pg_password" = {
-    sopsFile = ../../secrets/music.yaml;
+    sopsFile = ../../secrets/homelab.yaml;
   };
 
   services.nginx = {
