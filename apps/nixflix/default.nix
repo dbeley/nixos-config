@@ -12,8 +12,8 @@ let
 in
 {
   imports = [ inputs.nixflix.nixosModules.default ];
-  fileSystems."/mnt/nfs/WDC14_2" = {
-    device = "omv.home:/WDC14_2";
+  fileSystems."/mnt/nfs" = {
+    device = "omv.home:/";
     fsType = "nfs";
     options = [
       "_netdev"
@@ -149,6 +149,23 @@ in
       };
     };
 
+    navidrome = {
+      enable = true;
+      users = {
+        admin = {
+          userName = "admin";
+          password._secret = secrets."navidrome_password".path;
+          isAdmin = true;
+        };
+      };
+      environmentFile = config.sops.secrets."navidrome-env".path;
+      settings = {
+        MusicFolder = "/mnt/nfs/WDC14/Musique/";
+        LastFM.Enabled = true;
+        DefaultLanguage = "fr";
+      };
+    };
+
     torrentClients.qbittorrent = {
       enable = true;
       password._secret = secrets."qbittorrent_password".path;
@@ -229,6 +246,8 @@ in
         "mullvad_wg"
         "opensubtitles_password"
         "opensubtitles_api_key"
+        "navidrome_password"
+        "navidrome-env"
       ]
       (_: {
         sopsFile = ../../secrets/nixflix.yaml;
