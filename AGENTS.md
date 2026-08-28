@@ -31,7 +31,7 @@
   - Shell/CLI tools: `bat/`, `btop/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `workstation/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
-  - Servers: `adguard-home/`, `audiomuse-ai/`, `cairn/`, `covertone/`, `hermes-server/`, `opencode-server/`, `zeroclaw/`, `immich/`, `jellyfin/`, `maloja/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`
+  - Servers: `adguard-home/`, `audiomuse-ai/`, `cairn/`, `covertone/`, `hermes-server/`, `opencode-server/`, `zeroclaw/`, `immich/`, `jellyfin/`, `maloja/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`, `yamtrack/`
   - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `thunderbird/`, `udiskie/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
@@ -123,6 +123,7 @@ mkHost = {
 - `trek` - TREK travel planner
 - `slskd` - Soulseek file sharing client
 - `youtarr` - Self-hosted Youtube archive
+- `yamtrack` - Media tracker (podman containers, Jellyfin integration)
 
 ### Current Hosts
 
@@ -143,7 +144,7 @@ mkHost = {
 - `nixos-era-immich` - Immich photo server
 - `nixos-era-music` - Music streaming server and tools (audiomuse-ai + slskd + maloja + covertone)
 - `nixos-era-nextcloud` - Nextcloud server
-- `nixos-era-nixflix` - Nixflix media server
+- `nixos-era-nixflix` - Nixflix media server (arr stack, jellyfin, navidrome, yamtrack)
 
 ## Testing Guidelines
 - **For verification, run formatting checks only**: Use `nix build .#checks.x86_64-linux.pre-commit-check --max-jobs 2` to verify code formatting/linting without evaluating all NixOS configurations. This is the recommended approach for LLM agents to avoid memory exhaustion.
@@ -194,6 +195,7 @@ podman's `--env-file` both expect this format.
 | `bookorbit_jwt_secret` | `secrets/nixflix.yaml` | `JWT_SECRET=<value>` |
 | `bookorbit_bootstrap_token` | `secrets/nixflix.yaml` | `SETUP_BOOTSTRAP_TOKEN=<value>` |
 | `youtarr_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
+| `yamtrack_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
 | `navidrome_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
 | `trek_env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
 | `audiomuse_pg_password` | `secrets/music.yaml` | `POSTGRES_PASSWORD=<value>` |

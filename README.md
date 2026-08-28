@@ -46,7 +46,7 @@
 - Secrets management with `sops-nix`
 - Configuration for common hardware with `nixos-hardware`
 - AI code agent ecosystem (`opencode` with [rtk plugin](./apps/opencode/opencode.nix), [`openskills`](./apps/openskills/), [`opencode-server`](./apps/opencode-server/), [`zeroclaw`](./apps/zeroclaw/), [`hermes-server`](./apps/hermes-server/))
-- Self-hosted tools to be deployed on servers ([`immich`](./apps/immich), [`nextcloud`](./apps/nextcloud), [`youtarr`](./apps/youtarr), [`paperless-ngx`](./apps/paperless-ngx), etc. cf. proxmox hosts definitions)
+- Self-hosted tools to be deployed on servers ([`immich`](./apps/immich), [`nextcloud`](./apps/nextcloud), [`youtarr`](./apps/youtarr), [`yamtrack`](./apps/yamtrack), [`paperless-ngx`](./apps/paperless-ngx), etc. cf. proxmox hosts definitions)
 - Declarative [nixflix stack](./apps/nixflix/) cf. [nixflix](https://github.com/kiriwalawren/nixflix)
 - Automatic development shells with `direnv` and `shell.nix`
 - My own custom packages including [`autoscreen`](./apps/autoscreen/) (tool to take screenshots randomly each hour), [`mpdscrobble`](./apps/mpdscrobble/) (utility to send MPD listening history to Last.fm) and [`symmetri`](./apps/symmetri/) (custom system metrics collection service)

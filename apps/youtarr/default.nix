@@ -44,7 +44,7 @@ in
         };
 
         youtarr = {
-          image = "docker.io/dialmaster/youtarr:v1.80.0";
+          image = "docker.io/dialmaster/youtarr:v1.81.0";
           autoStart = true;
           user = "${toString youtarrUid}:${toString mediaGid}";
           volumes = [
@@ -81,11 +81,11 @@ in
       after = [
         "podman-youtarr-db.service"
         "sops-nix.service"
-        "mnt-nfs-WDC14_2.mount"
+        "mnt-nfs.mount"
       ];
       requires = [
         "podman-youtarr-db.service"
-        "mnt-nfs-WDC14_2.mount"
+        "mnt-nfs.mount"
       ];
     };
   };

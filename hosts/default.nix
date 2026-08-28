@@ -355,6 +355,9 @@ let
     trek = {
       system = [ ../apps/trek/default.nix ];
     };
+    yamtrack = {
+      system = [ ../apps/yamtrack/default.nix ];
+    };
   };
   mkHost =
     {
@@ -622,6 +625,7 @@ in
       "youtarr"
       "bookorbit"
       "shelfmark"
+      "yamtrack"
     ];
   };
   nixos-era-adguard = mkHost {

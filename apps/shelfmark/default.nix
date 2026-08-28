@@ -22,9 +22,9 @@ in
   };
 
   systemd.services.shelfmark = {
-    requires = [ "mnt-nfs-WDC14_2.mount" ];
+    requires = [ "mnt-nfs.mount" ];
     after = [
-      "mnt-nfs-WDC14_2.mount"
+      "mnt-nfs.mount"
       "network-online.target"
     ];
     serviceConfig = {

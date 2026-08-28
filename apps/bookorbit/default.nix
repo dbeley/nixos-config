@@ -92,11 +92,11 @@ in
       after = [
         "podman-bookorbit-postgres.service"
         "sops-nix.service"
-        "mnt-nfs-WDC14_2.mount"
+        "mnt-nfs.mount"
       ];
       requires = [
         "podman-bookorbit-postgres.service"
-        "mnt-nfs-WDC14_2.mount"
+        "mnt-nfs.mount"
       ];
     };
   };
