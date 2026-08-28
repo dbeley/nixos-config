@@ -322,9 +322,6 @@ let
         ../apps/nextcloud-server/default.nix
       ];
     };
-    navidrome = {
-      system = [ ../apps/navidrome/default.nix ];
-    };
     audiomuse-ai = {
       system = [ ../apps/audiomuse-ai/default.nix ];
     };
@@ -667,7 +664,6 @@ in
     profiles = [
       "bootloader-grub-bios"
       "openssh-server"
-      "navidrome"
       "audiomuse-ai"
       "sops"
       "acme"

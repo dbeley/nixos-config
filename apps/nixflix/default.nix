@@ -40,7 +40,7 @@ in
       radarr = 274;
       lidarr = 274;
     };
-    serviceDependencies = [ "mnt-nfs-WDC14_2.mount" ];
+    serviceDependencies = [ "mnt-nfs.mount" ];
 
     nginx = {
       enable = true;
@@ -222,6 +222,14 @@ in
       wg.serviceConfig = {
         Restart = "on-failure";
         RestartSec = 30;
+      };
+
+      navidrome = {
+        requires = [ "mnt-nfs.mount" ];
+        after = [
+          "mnt-nfs.mount"
+          "network-online.target"
+        ];
       };
     };
   };

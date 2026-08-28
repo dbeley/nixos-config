@@ -31,7 +31,7 @@
   - Shell/CLI tools: `bat/`, `btop/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `workstation/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
-  - Servers: `adguard-home/`, `audiomuse-ai/`, `cairn/`, `covertone/`, `hermes-server/`, `opencode-server/`, `zeroclaw/`, `immich/`, `jellyfin/`, `maloja/`, `navidrome/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`
+  - Servers: `adguard-home/`, `audiomuse-ai/`, `cairn/`, `covertone/`, `hermes-server/`, `opencode-server/`, `zeroclaw/`, `immich/`, `jellyfin/`, `maloja/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`
   - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `thunderbird/`, `udiskie/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
@@ -109,20 +109,20 @@ mkHost = {
 **Servers:**
 - `adguard-home` - AdGuard Home DNS ad-blocker
 - `cairn` - Self-hosted AI platform (kiwix, ollama, open-webui)
-- `covertone` - Album art server
+- `covertone` - Music player for Navidrome
 - `hermes-server` - Hermes Web UI
 - `opencode-server` - OpenCode web UI (systemd service + shared opencode config)
 - `zeroclaw` - ZeroClaw web dashboard
 - `immich` - Immich photo server
 - `jellyfin` - Jellyfin media server
 - `maloja` - Music scrobbling server
-- `navidrome` - Navidrome music streaming server
 - `audiomuse-ai` - AudioMuse AI sonic analysis and playlist generation (OCI containers)
 - `nextcloud-server` - Nextcloud server
-- `nixflix` - Nixflix media server
+- `nixflix` - Nixflix media server (arr stack, jellyfin, navidrome)
 - `paperless-ngx` - Paperless-ngx document management
 - `trek` - TREK travel planner
 - `slskd` - Soulseek file sharing client
+- `youtarr` - Self-hosted Youtube archive
 
 ### Current Hosts
 
@@ -141,7 +141,7 @@ mkHost = {
 - `nixos-era-agents` - LLM agent web UIs (hermes-webui, opencode, zeroclaw)
 - `nixos-era-homelab` - Jellyfin + paperless-ngx + TREK 
 - `nixos-era-immich` - Immich photo server
-- `nixos-era-music` - Music streaming server and tools (navidrome + audiomuse-ai + slskd + maloja + covertone)
+- `nixos-era-music` - Music streaming server and tools (audiomuse-ai + slskd + maloja + covertone)
 - `nixos-era-nextcloud` - Nextcloud server
 - `nixos-era-nixflix` - Nixflix media server
 
@@ -193,13 +193,15 @@ podman's `--env-file` both expect this format.
 | `bookorbit-pg-password` | `secrets/nixflix.yaml` | `POSTGRES_PASSWORD=<value>` |
 | `bookorbit-jwt-secret` | `secrets/nixflix.yaml` | `JWT_SECRET=<value>` |
 | `bookorbit-bootstrap-token` | `secrets/nixflix.yaml` | `SETUP_BOOTSTRAP_TOKEN=<value>` |
-| `audiomuse-pg-password` | `secrets/music.yaml` | `POSTGRES_PASSWORD=<value>` |
+| `youtarr-env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
+| `navidrome-env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
 | `trek-env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
+| `audiomuse-pg-password` | `secrets/music.yaml` | `POSTGRES_PASSWORD=<value>` |
 | `slskd-env` | `secrets/music.yaml` | multi-line `KEY=VALUE` |
-| `navidrome-env` | `secrets/music.yaml` | multi-line `KEY=VALUE` |
 | `maloja-env` | `secrets/music.yaml` | multi-line `KEY=VALUE` |
-| `zeroclaw-env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
-| `hermes-webui-env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
+| `opencode-env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
+| `zeroclaw-env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
+| `hermes-webui-env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
 | `acme-ovh` | `secrets/acme.yaml` | multi-line `KEY=VALUE` |
 
 To update: `sops set <file> '["<key>"]' '"KEY=VALUE"'`
@@ -216,7 +218,7 @@ Let's Encrypt via DNS-01, so no public IP or inbound ports are needed:
   (per-host certs, avoiding LE's 5-identical-certs/week duplicate limit)
 - **OVH credentials:** `secrets/acme.yaml` (encrypted), key `acme-ovh` containing
   `OVH_ENDPOINT`, `OVH_APPLICATION_KEY`, `OVH_APPLICATION_SECRET`, `OVH_CONSUMER_KEY`.
-  Recipients: user key + homelab, navidrome, nextcloud, nixflix, hermes and immich keys.
+  Recipients: user key + homelab, nextcloud, nixflix, hermes and immich keys.
 - **Internal DNS:** AdGuard Home (`apps/adguard-home/default.nix`) rewrites each
   `<service>.<domain>` to the era VM's LAN IP
 - To enable on a host: add `acme` (and `sops`) to its `profiles` in `hosts/default.nix`

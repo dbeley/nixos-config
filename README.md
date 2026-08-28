@@ -46,8 +46,8 @@
 - Secrets management with `sops-nix`
 - Configuration for common hardware with `nixos-hardware`
 - AI code agent ecosystem (`opencode` with [rtk plugin](./apps/opencode/opencode.nix), [`openskills`](./apps/openskills/), [`opencode-server`](./apps/opencode-server/), [`zeroclaw`](./apps/zeroclaw/), [`hermes-server`](./apps/hermes-server/))
+- Self-hosted tools to be deployed on servers ([`immich`](./apps/immich), [`nextcloud`](./apps/nextcloud), [`youtarr`](./apps/youtarr), [`paperless-ngx`](./apps/paperless-ngx), etc. cf. proxmox hosts definitions)
 - Declarative [nixflix stack](./apps/nixflix/) cf. [nixflix](https://github.com/kiriwalawren/nixflix)
-- Self-hosted tools to be deployed on servers ([`navidrome`](./apps/navidrome/), [`immich`](./apps/immich), [`nextcloud`](./apps/nextcloud), etc. cf. proxmox hosts definitions)
 - Automatic development shells with `direnv` and `shell.nix`
 - My own custom packages including [`autoscreen`](./apps/autoscreen/) (tool to take screenshots randomly each hour), [`mpdscrobble`](./apps/mpdscrobble/) (utility to send MPD listening history to Last.fm) and [`symmetri`](./apps/symmetri/) (custom system metrics collection service)
 - [`mpv` configuration with plugins](./apps/mpv/mpv.nix)
@@ -81,11 +81,11 @@
 
 ### Proxmox Era VMs (Home Server)
 - **nixos-era-agents**: LLM agent web UIs (hermes-webui, opencode web, zeroclaw)
-- **nixos-era-nixflix**: nixflix
+- **nixos-era-nixflix**: nixflix (arr stack, jellyfin, navidrome) + youtarr, bookorbit, shelfmark
 - **nixos-era-adguard**: adguard-home
 - **nixos-era-nextcloud**: nextcloud
 - **nixos-era-immich**: immich
-- **nixos-era-music**: music server and tools (navidrome, slskd, covertone, maloja)
+- **nixos-era-music**: music tools (slskd, covertone, maloja)
 - **nixos-era-homelab**: generic host for other self-hosted tools (paperless, jellyfin, trek, etc.)
 
 ## Common Usage
@@ -144,9 +144,25 @@ just flake-linter  # Run flake linter to check for potential duplicate flake inp
 just nix-olde      # Generate outdated packages report with the help of nix-olde (YYYY-MM-DD_nix-olde-report.txt)
 ```
 
-## Manual Install
+## Installation Instructions
 
 On a new install, add a host definition in `hosts/default.nix` with the wanted profiles, then follow the path that matches your setup.
+
+### Proxmox VM Images
+
+Dedicated just recipes exist in order to facilitate installation and deployment of remote images.
+
+- Create a VM in Proxmox
+- Boot the NixOS minimal ISO
+- Set up SSH connection by setting a password for the `nixos` user on the ISO, or by adding your SSH key
+
+```bash
+just install-proxmox-vm HOSTNAME IP
+# You might need to delete entries in ~/.ssh/known_hosts to connect via SSH
+just boot-proxmox-vm HOSTNAME IP
+# After first boot, log in as david (initial password: nixos) and change it:
+#   passwd
+```
 
 ### Impermanence/disko hosts
 
@@ -228,19 +244,3 @@ Setup is a two-phase process because `sbctl` is only available after the first r
    ```
 
 **Note:** The sbctl keys at `/var/lib/sbctl` are persisted via impermanence. Without this, keys would be lost on every reboot.
-
-### Proxmox VM Images
-
-Dedicated just recipes exist in order to facilitate installation and deployment of remote images.
-
-- Create a VM in Proxmox
-- Boot the NixOS minimal ISO
-- Set up SSH connection by setting a password for the `nixos` user on the ISO, or by adding your SSH key
-
-```bash
-just install-proxmox-vm HOSTNAME IP
-# You might need to delete entries in ~/.ssh/known_hosts to connect via SSH
-just boot-proxmox-vm HOSTNAME IP
-# After first boot, log in as david (initial password: nixos) and change it:
-#   passwd
-```
