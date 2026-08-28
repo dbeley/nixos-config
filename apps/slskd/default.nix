@@ -6,13 +6,13 @@
   ...
 }:
 {
-  sops.secrets."slskd-env" = {
+  sops.secrets."slskd_env" = {
     sopsFile = ../../secrets/music.yaml;
   };
 
   services.slskd = {
     enable = true;
-    environmentFile = config.sops.secrets."slskd-env".path;
+    environmentFile = config.sops.secrets."slskd_env".path;
     openFirewall = true;
     domain = "slskd.${domain}";
     nginx = {

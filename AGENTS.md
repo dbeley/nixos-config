@@ -190,19 +190,19 @@ podman's `--env-file` both expect this format.
 
 | Secret | File | Required format |
 |--------|------|-----------------|
-| `bookorbit-pg-password` | `secrets/nixflix.yaml` | `POSTGRES_PASSWORD=<value>` |
-| `bookorbit-jwt-secret` | `secrets/nixflix.yaml` | `JWT_SECRET=<value>` |
-| `bookorbit-bootstrap-token` | `secrets/nixflix.yaml` | `SETUP_BOOTSTRAP_TOKEN=<value>` |
-| `youtarr-env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
-| `navidrome-env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
-| `trek-env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
-| `audiomuse-pg-password` | `secrets/music.yaml` | `POSTGRES_PASSWORD=<value>` |
-| `slskd-env` | `secrets/music.yaml` | multi-line `KEY=VALUE` |
-| `maloja-env` | `secrets/music.yaml` | multi-line `KEY=VALUE` |
-| `opencode-env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
-| `zeroclaw-env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
-| `hermes-webui-env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
-| `acme-ovh` | `secrets/acme.yaml` | multi-line `KEY=VALUE` |
+| `bookorbit_pg_password` | `secrets/nixflix.yaml` | `POSTGRES_PASSWORD=<value>` |
+| `bookorbit_jwt_secret` | `secrets/nixflix.yaml` | `JWT_SECRET=<value>` |
+| `bookorbit_bootstrap_token` | `secrets/nixflix.yaml` | `SETUP_BOOTSTRAP_TOKEN=<value>` |
+| `youtarr_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
+| `navidrome_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
+| `trek_env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
+| `audiomuse_pg_password` | `secrets/music.yaml` | `POSTGRES_PASSWORD=<value>` |
+| `slskd_env` | `secrets/music.yaml` | multi-line `KEY=VALUE` |
+| `maloja_env` | `secrets/music.yaml` | multi-line `KEY=VALUE` |
+| `opencode_env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
+| `zeroclaw_env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
+| `hermes_webui_env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
+| `acme_ovh` | `secrets/acme.yaml` | multi-line `KEY=VALUE` |
 
 To update: `sops set <file> '["<key>"]' '"KEY=VALUE"'`
 
@@ -216,7 +216,7 @@ Let's Encrypt via DNS-01, so no public IP or inbound ports are needed:
 - **Shared ACME module:** `modules/acme/default.nix` — configures `security.acme` with
   OVH DNS-01, derives each host's certificate SANs from its own nginx vhosts
   (per-host certs, avoiding LE's 5-identical-certs/week duplicate limit)
-- **OVH credentials:** `secrets/acme.yaml` (encrypted), key `acme-ovh` containing
+- **OVH credentials:** `secrets/acme.yaml` (encrypted), key `acme_ovh` containing
   `OVH_ENDPOINT`, `OVH_APPLICATION_KEY`, `OVH_APPLICATION_SECRET`, `OVH_CONSUMER_KEY`.
   Recipients: user key + homelab, nextcloud, nixflix, hermes and immich keys.
 - **Internal DNS:** AdGuard Home (`apps/adguard-home/default.nix`) rewrites each

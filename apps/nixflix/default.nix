@@ -158,7 +158,7 @@ in
           isAdmin = true;
         };
       };
-      environmentFile = config.sops.secrets."navidrome-env".path;
+      environmentFile = config.sops.secrets."navidrome_env".path;
       settings = {
         MusicFolder = "/mnt/nfs/WDC14/Musique/";
         LastFM.Enabled = true;
@@ -209,7 +209,7 @@ in
   security.acme.certs."${domain}" = {
     domain = "${domain}";
     dnsProvider = "ovh";
-    environmentFile = config.sops.secrets."acme-ovh".path;
+    environmentFile = config.sops.secrets."acme_ovh".path;
     group = "nginx";
   };
 
@@ -255,7 +255,7 @@ in
         "opensubtitles_password"
         "opensubtitles_api_key"
         "navidrome_password"
-        "navidrome-env"
+        "navidrome_env"
       ]
       (_: {
         sopsFile = ../../secrets/nixflix.yaml;

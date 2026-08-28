@@ -11,9 +11,9 @@ let
   pgPort = 5432;
   pgUser = "bookorbit";
   pgDb = "bookorbit";
-  pgPasswordFile = config.sops.secrets."bookorbit-pg-password".path;
-  jwtSecretFile = config.sops.secrets."bookorbit-jwt-secret".path;
-  bootstrapTokenFile = config.sops.secrets."bookorbit-bootstrap-token".path;
+  pgPasswordFile = config.sops.secrets."bookorbit_pg_password".path;
+  jwtSecretFile = config.sops.secrets."bookorbit_jwt_secret".path;
+  bootstrapTokenFile = config.sops.secrets."bookorbit_bootstrap_token".path;
   dataDir = "/var/lib/bookorbit";
   pgDataDir = "${dataDir}/postgres";
   booksDir = "/mnt/nfs/WDC14_2/Books";
@@ -132,8 +132,8 @@ in
       };
     in
     {
-      "bookorbit-pg-password" = mkSecret "bookorbit-pg-password";
-      "bookorbit-jwt-secret" = mkSecret "bookorbit-jwt-secret";
-      "bookorbit-bootstrap-token" = mkSecret "bookorbit-bootstrap-token";
+      "bookorbit_pg_password" = mkSecret "bookorbit_pg_password";
+      "bookorbit_jwt_secret" = mkSecret "bookorbit_jwt_secret";
+      "bookorbit_bootstrap_token" = mkSecret "bookorbit_bootstrap_token";
     };
 }

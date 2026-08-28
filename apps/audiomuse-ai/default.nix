@@ -10,7 +10,7 @@ let
   pgPort = 5432;
   pgUser = "audiomuse";
   pgDb = "audiomusedb";
-  pgPasswordFile = config.sops.secrets."audiomuse-pg-password".path;
+  pgPasswordFile = config.sops.secrets."audiomuse_pg_password".path;
   dataDir = "/var/lib/audiomuse-ai";
   tempDir = "${dataDir}/temp_audio";
   pgDataDir = "${dataDir}/postgres";
@@ -125,7 +125,7 @@ in
     "d ${pluginsDir} 0755 root root -"
   ];
 
-  sops.secrets."audiomuse-pg-password" = {
+  sops.secrets."audiomuse_pg_password" = {
     sopsFile = ../../secrets/music.yaml;
   };
 

@@ -9,7 +9,7 @@ let
   youtarrHost = "youtarr.${domain}";
   youtarrData = "/var/lib/youtarr";
   youtarrVideos = "/mnt/nfs/WDC14_2/Youtarr";
-  youtarrEnv = config.sops.secrets."youtarr-env".path;
+  youtarrEnv = config.sops.secrets."youtarr_env".path;
   youtarrUid = 1000;
   mediaGid = 169;
 in
@@ -99,7 +99,7 @@ in
     "d ${youtarrVideos} 0775 ${user} media -"
   ];
 
-  sops.secrets."youtarr-env" = {
+  sops.secrets."youtarr_env" = {
     sopsFile = ../../secrets/nixflix.yaml;
   };
 

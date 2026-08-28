@@ -24,13 +24,13 @@
       ExecStart = "${
         inputs.llm-agents.packages.${pkgs.system}.opencode2
       }/bin/opencode2 serve --hostname 127.0.0.1 --port 4096";
-      EnvironmentFile = config.sops.secrets."opencode-env".path;
+      EnvironmentFile = config.sops.secrets."opencode_env".path;
       Restart = "always";
       RestartSec = 5;
     };
   };
 
-  sops.secrets."opencode-env" = {
+  sops.secrets."opencode_env" = {
     sopsFile = ../../secrets/agents.yaml;
   };
 

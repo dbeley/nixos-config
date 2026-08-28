@@ -13,7 +13,7 @@
   systemd.services."zeroclaw-me".path = [ pkgs.bash ];
 
   services.zeroclaw.instances.me = {
-    environmentFile = config.sops.secrets."zeroclaw-env".path;
+    environmentFile = config.sops.secrets."zeroclaw_env".path;
     settings = {
       schema_version = 3;
       gateway = {
@@ -33,7 +33,7 @@
     };
   };
 
-  sops.secrets."zeroclaw-env" = {
+  sops.secrets."zeroclaw_env" = {
     sopsFile = ../../secrets/agents.yaml;
   };
 

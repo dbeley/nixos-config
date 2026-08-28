@@ -28,7 +28,7 @@ in
         DEFAULT_LANGUAGE = "fr";
         COOKIE_SECURE = "true";
       };
-      environmentFiles = [ config.sops.secrets."trek-env".path ];
+      environmentFiles = [ config.sops.secrets."trek_env".path ];
       extraOptions = [ "--pull=newer" ];
     };
   };
@@ -43,7 +43,7 @@ in
     "d ${trekUploads} 0755 root root -"
   ];
 
-  sops.secrets."trek-env" = {
+  sops.secrets."trek_env" = {
     sopsFile = ../../secrets/homelab.yaml;
   };
 

@@ -17,12 +17,12 @@ in
       inherit domain;
       extraDomainNames = directSubdomains;
       dnsProvider = "ovh";
-      environmentFile = config.sops.secrets."acme-ovh".path;
+      environmentFile = config.sops.secrets."acme_ovh".path;
       group = "nginx";
     };
   };
 
-  sops.secrets."acme-ovh" = {
+  sops.secrets."acme_ovh" = {
     sopsFile = ../../secrets/acme.yaml;
     owner = "acme";
   };

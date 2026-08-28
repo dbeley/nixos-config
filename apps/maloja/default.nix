@@ -14,10 +14,10 @@
       theme = "dark";
       location_timezone = "Europe/Paris";
     };
-    environmentFile = config.sops.secrets."maloja-env".path;
+    environmentFile = config.sops.secrets."maloja_env".path;
   };
 
-  sops.secrets."maloja-env" = {
+  sops.secrets."maloja_env" = {
     sopsFile = ../../secrets/music.yaml;
   };
 
