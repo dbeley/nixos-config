@@ -6,14 +6,13 @@
 }:
 let
   nfsServer = "omv.home";
-  nfsExport = "/WDC14_2";
-  nfsMount = "/mnt/nfs/WDC14_2";
+  nfsMount = "/mnt/nfs";
   paperlessHost = "paperless.${domain}";
   paperlessUrl = "https://${paperlessHost}";
 in
 {
   fileSystems.${nfsMount} = {
-    device = "${nfsServer}:${nfsExport}";
+    device = "${nfsServer}:/";
     fsType = "nfs";
     options = [
       "_netdev"
@@ -26,8 +25,8 @@ in
 
   systemd = {
     services.paperless-consumer = {
-      requires = [ "mnt-nfs-WDC14_2.mount" ];
-      after = [ "mnt-nfs-WDC14_2.mount" ];
+      requires = [ "mnt-nfs.mount" ];
+      after = [ "mnt-nfs.mount" ];
     };
 
     services.paperless-scheduler = {
@@ -42,7 +41,7 @@ in
   services.paperless = {
     enable = true;
     inherit user;
-    consumptionDir = "${nfsMount}/Transferts/paperless-ngx";
+    consumptionDir = "${nfsMount}/WDC14_2/Transferts/paperless-ngx";
     passwordFile = config.sops.secrets."paperless_admin_password".path;
     settings = {
       PAPERLESS_URL = paperlessUrl;

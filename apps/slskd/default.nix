@@ -31,9 +31,9 @@
   };
 
   systemd.services.slskd = {
-    requires = [ "mnt-nfs-WDC14.mount" ];
+    requires = [ "mnt-nfs.mount" ];
     after = [
-      "mnt-nfs-WDC14.mount"
+      "mnt-nfs.mount"
       "network-online.target"
       "sops-nix.service"
     ];
