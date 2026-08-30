@@ -661,11 +661,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1786571937,
-        "narHash": "sha256-aBqzgclL4zy2cpnSv83+9n0yfmV3XUHHAkXqiMOrePc=",
+        "lastModified": 1788092569,
+        "narHash": "sha256-GNF+GABc+NVutjRrGn5o/CmjYZda5bw6b/ZFYJSXP/c=",
         "owner": "dbeley",
         "repo": "maloja",
-        "rev": "444107ae53fe9cf2be3ddcca504d54035d6a3116",
+        "rev": "b1a856a9615d7006603d22f34cc8f3ce63be434f",
         "type": "github"
       },
       "original": {
