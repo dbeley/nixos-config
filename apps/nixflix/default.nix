@@ -30,6 +30,10 @@ in
     stateDir = "/data/.state";
     downloadsDir = "/mnt/nfs/WDC14_2/Downloads/Nixflix";
     mediaUsers = [ user ];
+    theme = {
+      enable = true;
+      name = "aquamarine";
+    };
     globals.libraryOwner = {
       inherit user;
       group = "media";
