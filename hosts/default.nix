@@ -506,6 +506,7 @@ in
       }
       ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
+      ../modules/hardware/cf-qv1-acpi-fix
       # ../modules/hardware/throttled.nix
       # ../hosts/cf-qv1/throttled.nix
     ];
