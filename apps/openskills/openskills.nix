@@ -42,7 +42,6 @@ _: {
       enable = [
         "anthropic/skill-creator"
         "anthropic/mcp-builder"
-        "anthropic/frontend-design"
         "anthropic/webapp-testing"
         "anthropic/claude-api"
         "superpowers/systematic-debugging"
