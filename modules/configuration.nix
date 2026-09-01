@@ -25,6 +25,9 @@
     firewall.enable = lib.mkDefault true;
   };
 
+  systemd.services.NetworkManager.after = [ "iwd.service" ];
+  systemd.services.NetworkManager.wants = [ "iwd.service" ];
+
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
