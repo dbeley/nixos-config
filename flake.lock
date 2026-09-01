@@ -465,6 +465,22 @@
         "type": "gitlab"
       }
     },
+    "hallmark": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786033158,
+        "narHash": "sha256-JflLR1ZgJZuqktK8rnYu7P0l0lKbB+MoQzs/SY/gcJs=",
+        "owner": "Nutlope",
+        "repo": "hallmark",
+        "rev": "13ac0ec7e148655948100b6396439e481361d690",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Nutlope",
+        "repo": "hallmark",
+        "type": "github"
+      }
+    },
     "hermes-webui-nix": {
       "inputs": {
         "llm-agents": [
@@ -926,6 +942,7 @@
         "flake-utils": "flake-utils",
         "git-hooks": "git-hooks",
         "gitignore": "gitignore",
+        "hallmark": "hallmark",
         "hermes-webui-nix": "hermes-webui-nix",
         "home-manager": "home-manager",
         "hyperdroid-skill": "hyperdroid-skill",

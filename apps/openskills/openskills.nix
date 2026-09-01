@@ -31,6 +31,11 @@ _: {
         subdir = "skills";
         idPrefix = "hyperdroid";
       };
+      hallmark = {
+        input = "hallmark";
+        subdir = "skills";
+        idPrefix = "hallmark";
+      };
     };
     skills = {
       enableAll = [ "superpowers" ];
@@ -55,6 +60,7 @@ _: {
         "hyperdroid/android-fastboot"
         "hyperdroid/android-build"
         "hyperdroid/lineageos"
+        "hallmark/hallmark"
       ];
     };
     targets = {
