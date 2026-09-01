@@ -291,6 +291,16 @@
         # Outputs
         {
           output = {
+            _args = [ "AU Optronics 0x116D Unknown" ];
+            scale = 2;
+            position._props = {
+              x = 0;
+              y = 0;
+            };
+          };
+        }
+        {
+          output = {
             _args = [ "LG Display 0x067C Unknown" ];
             scale = 2;
           };
