@@ -165,6 +165,10 @@
       url = "github:hyperb1iss/hyperdroid-skill";
       flake = false;
     };
+    wiki-debate = {
+      url = "github:dbeley/wiki-debate";
+      flake = false;
+    };
     symmetri = {
       url = "github:dbeley/symmetri";
       inputs = {
