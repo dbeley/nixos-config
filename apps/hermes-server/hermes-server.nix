@@ -13,6 +13,7 @@
     passwordFile = "${config.home.homeDirectory}/.config/hermes/webui-password";
     environmentFile = config.sops.secrets."hermes_webui_env".path;
     agentPackage = inputs.llm-agents.packages.${pkgs.system}.hermes-agent;
+    browser.local.enable = true;
   };
   sops.secrets = {
     hermes_webui_password = {
