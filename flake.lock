@@ -476,11 +476,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1786390760,
-        "narHash": "sha256-+jd+MuB8+qK1QZSgNJLznLJ8YMtm3xGHIJR9mJ2F1n0=",
+        "lastModified": 1788635947,
+        "narHash": "sha256-drQPL6SBrgsSzdj1dyxn9btkSlkgd/ZwZOBdddiy4X8=",
         "owner": "dbeley",
         "repo": "hermes-webui-nix",
-        "rev": "e4f21a476ea35a8500253874651af2fc2465bad8",
+        "rev": "fb1d3312d3178db0e9064d02675ecec0e102a4c3",
         "type": "github"
       },
       "original": {
