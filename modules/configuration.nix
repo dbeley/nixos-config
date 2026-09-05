@@ -66,12 +66,12 @@
 
     printing.enable = lib.mkDefault false;
     fstrim.enable = true;
-    journald.extraConfig = ''
-      SystemMaxUse=50M
-      SystemMaxFileSize=10M
-      RuntimeMaxUse=50M
-      RuntimeMaxFileSize=10M
-    '';
+    journald.settings.Journal = {
+      SystemMaxUse = "50M";
+      SystemMaxFileSize = "10M";
+      RuntimeMaxUse = "50M";
+      RuntimeMaxFileSize = "10M";
+    };
   };
 
   security = {

@@ -44,7 +44,7 @@ in
         };
 
         youtarr = {
-          image = "docker.io/dialmaster/youtarr:v1.81.0";
+          image = "docker.io/dialmaster/youtarr:v1.81.1";
           autoStart = true;
           user = "${toString youtarrUid}:${toString mediaGid}";
           volumes = [
