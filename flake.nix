@@ -163,6 +163,9 @@
     };
     hyperdroid-skill = {
       url = "github:hyperb1iss/hyperdroid-skill";
+    };
+    hallmark = {
+      url = "github:Nutlope/hallmark";
       flake = false;
     };
     symmetri = {

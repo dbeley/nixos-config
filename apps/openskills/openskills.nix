@@ -31,13 +31,17 @@ _: {
         subdir = "skills";
         idPrefix = "hyperdroid";
       };
+      hallmark = {
+        input = "hallmark";
+        subdir = "skills";
+        idPrefix = "hallmark";
+      };
     };
     skills = {
       enableAll = [ "superpowers" ];
       enable = [
         "anthropic/skill-creator"
         "anthropic/mcp-builder"
-        "anthropic/frontend-design"
         "anthropic/webapp-testing"
         "anthropic/claude-api"
         "superpowers/systematic-debugging"
@@ -55,6 +59,7 @@ _: {
         "hyperdroid/android-fastboot"
         "hyperdroid/android-build"
         "hyperdroid/lineageos"
+        "hallmark/hallmark"
       ];
     };
     targets = {
