@@ -49,6 +49,8 @@ in
     };
   };
 
+  users.users.${user}.extraGroups = [ config.services.redis.servers.paperless.group ];
+
   sops.secrets."paperless_admin_password" = {
     sopsFile = ../../secrets/homelab.yaml;
   };
