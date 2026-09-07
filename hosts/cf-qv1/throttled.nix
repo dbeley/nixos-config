@@ -12,7 +12,7 @@
     PL1_Duration_s: 60
     PL2_Tdp_W: 15
     PL2_Duration_S: 60
-    Trip_Temp_C: 90
+    Trip_Temp_C: 85
     cTDP: 0
     Disable_BDPROCHOT: True
 
@@ -22,7 +22,7 @@
     PL1_Duration_s: 60
     PL2_Tdp_W: 40
     PL2_Duration_S: 60
-    Trip_Temp_C: 90
+    Trip_Temp_C: 85
     cTDP: 0
     Disable_BDPROCHOT: True
   '';

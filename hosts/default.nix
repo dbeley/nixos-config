@@ -506,8 +506,8 @@ in
       }
       ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
-      # ../modules/hardware/throttled.nix
-      # ../hosts/cf-qv1/throttled.nix
+      ../modules/hardware/throttled.nix
+      ../hosts/cf-qv1/throttled.nix
     ];
   };
   x1yoga = mkHost {
