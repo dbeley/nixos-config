@@ -1,0 +1,167 @@
+diff --git a/agent/auxiliary_client.py b/agent/auxiliary_client.py
+index 890174733..89d198b18 100644
+--- a/agent/auxiliary_client.py
++++ b/agent/auxiliary_client.py
+@@ -1645,6 +1645,10 @@ class _CodexCompletionsAdapter:
+         timeout = kwargs.get("timeout")
+         if timeout is not None:
+             resp_kwargs["timeout"] = timeout
++        # Per-request HTTP headers (OpenCode session affinity, Copilot
++        # x-initiator) map to real headers via the SDK kwarg — forward them.
++        if isinstance(kwargs.get("extra_headers"), dict) and kwargs["extra_headers"]:
++            resp_kwargs["extra_headers"] = dict(kwargs["extra_headers"])
+ 
+         # Note: the Codex endpoint (chatgpt.com/backend-api/codex) does NOT
+         # support max_output_tokens or temperature — omit to avoid 400 errors.
+@@ -2301,6 +2305,13 @@ class _AnthropicCompletionsAdapter:
+             from agent.anthropic_adapter import _forbids_sampling_params
+             if not _forbids_sampling_params(model):
+                 anthropic_kwargs["temperature"] = temperature
++        # Per-request HTTP headers (OpenCode session affinity) — the Anthropic
++        # SDK accepts ``extra_headers`` on messages.create/stream too.
++        if isinstance(kwargs.get("extra_headers"), dict) and kwargs["extra_headers"]:
++            anthropic_kwargs["extra_headers"] = {
++                **(anthropic_kwargs.get("extra_headers") or {}),
++                **kwargs["extra_headers"],
++            }
+ 
+         # Pass through caller-supplied extra_body so providers behind
+         # Anthropic-compatible gateways receive their per-vendor request
+@@ -9187,7 +9198,13 @@ def _build_call_kwargs(
+         ):
+             kwargs["_reasoning_config"] = dict(reasoning_config)
+ 
+-    return kwargs
++    # OpenCode relay session affinity — same key as the main turn so
++    # compression/title/vision calls stay on the conversation's warm backend.
++    from agent.opencode_affinity import merge_opencode_session_headers
++
++    return merge_opencode_session_headers(
++        kwargs, provider, base_url, _runtime_main_value("session_id") or None
++    )
+ 
+ 
+ def _validate_llm_response(
+diff --git a/agent/chat_completion_helpers.py b/agent/chat_completion_helpers.py
+index 258e05661..46bc3d362 100644
+--- a/agent/chat_completion_helpers.py
++++ b/agent/chat_completion_helpers.py
+@@ -1827,6 +1827,25 @@ def interruptible_api_call(agent, api_kwargs: dict):
+ 
+ 
+ def build_api_kwargs(agent, api_messages: list, tools_for_api: list | None = None) -> dict:
++    """Build the keyword arguments dict for the active API mode.
++
++    Wraps the per-api_mode builder so the OpenCode ``x-opencode-session``
++    affinity header rides on every OpenCode request regardless of transport
++    (chat_completions / codex_responses / anthropic_messages all route
++    OpenCode models). No-op for every other provider.
++    """
++    from agent.opencode_affinity import merge_opencode_session_headers
++
++    kwargs = _build_api_kwargs_for_mode(agent, api_messages, tools_for_api)
++    return merge_opencode_session_headers(
++        kwargs,
++        getattr(agent, "provider", None),
++        getattr(agent, "base_url", None),
++        getattr(agent, "session_id", None),
++    )
++
++
++def _build_api_kwargs_for_mode(agent, api_messages: list, tools_for_api: list | None = None) -> dict:
+     """Build the keyword arguments dict for the active API mode."""
+     if tools_for_api is None:
+         tools_for_api = agent.tools
+diff --git a/agent/opencode_affinity.py b/agent/opencode_affinity.py
+new file mode 100644
+index 000000000..89661855b
+--- /dev/null
++++ b/agent/opencode_affinity.py
+@@ -0,0 +1,87 @@
++"""``x-opencode-session`` — OpenCode relay session-affinity header.
++
++OpenCode (opencode.ai Zen/Go/free relay) pins requests that share an
++``x-opencode-session`` value to the same upstream backend, which is what
++keeps its prompt cache warm across the turns of one conversation. The value
++only has to be opaque and consistent per conversation, so it is derived the
++same way as the other conversation-affinity hints Hermes already sends
++(OpenRouter's sticky ``session_id``, xAI's ``x-grok-conv-id``): the ambient
++conversation root first, then the physical session id — normalized through
++``_cache_scope_from_session_id`` so cron fires of one job share a scope.
++
++Every OpenCode request — main turn on any transport, auxiliary calls
++(compression, titles, vision, MoA) — goes through :func:`opencode_session_headers`
++so the header cannot drift per code path.
++
++Backport note: this is upstream commit 139396995 (PR-fix for
++NourResearch/hermes-agent "feat(opencode): send x-opencode-session on every
++OpenCode request for backend affinity") adapted to the v2026.8.31 tree —
++``get_affinity_scope`` does not exist on this tag, so the key is derived from
++the conversation root / session id only.
++"""
++
++from __future__ import annotations
++
++from typing import Any, Optional
++
++OPENCODE_SESSION_HEADER = "x-opencode-session"
++
++
++def is_opencode_target(provider: Optional[str], base_url: Optional[str]) -> bool:
++    """True when *provider* or *base_url* addresses the OpenCode relay.
++
++    Matches the built-in opencode-zen/go/free providers, custom
++    ``opencode-<family>-*`` providers, and any base_url hosted on opencode.ai.
++    """
++    try:
++        from hermes_cli.models import opencode_provider_family
++
++        if opencode_provider_family(provider) is not None:
++            return True
++    except Exception:
++        pass
++    try:
++        from agent.anthropic_endpoints import _is_opencode_endpoint
++
++        return _is_opencode_endpoint(str(base_url or ""))
++    except Exception:
++        return False
++
++
++def opencode_session_headers(
++    provider: Optional[str],
++    base_url: Optional[str],
++    session_id: Optional[str] = None,
++) -> dict[str, str]:
++    """Return ``{"x-opencode-session": <key>}`` for OpenCode targets, else ``{}``."""
++    if not is_opencode_target(provider, base_url):
++        return {}
++    try:
++        from agent.portal_tags import get_conversation_context
++        from agent.transports.codex import _cache_scope_from_session_id
++
++        key = _cache_scope_from_session_id(get_conversation_context() or session_id)
++    except Exception:
++        key = str(session_id or "")
++    return {OPENCODE_SESSION_HEADER: key} if key else {}
++
++
++def merge_opencode_session_headers(
++    kwargs: dict[str, Any],
++    provider: Optional[str],
++    base_url: Optional[str],
++    session_id: Optional[str] = None,
++) -> dict[str, Any]:
++    """Merge the affinity header into ``kwargs["extra_headers"]`` (in place).
++
++    Existing per-request headers win, so a caller-pinned value is preserved.
++    Non-OpenCode targets are left untouched.
++    """
++    headers = opencode_session_headers(provider, base_url, session_id)
++    if headers:
++        existing = kwargs.get("extra_headers")
++        merged = dict(existing) if isinstance(existing, dict) else {}
++        for key, value in headers.items():
++            merged.setdefault(key, value)
++        kwargs["extra_headers"] = merged
++    return kwargs
