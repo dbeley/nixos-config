@@ -359,6 +359,9 @@ let
     yamtrack = {
       system = [ ../apps/yamtrack/default.nix ];
     };
+    nitter = {
+      system = [ ../apps/nitter/default.nix ];
+    };
   };
   mkHost =
     {
@@ -596,6 +599,18 @@ in
       "openssh-server"
       "docker"
       "archiveteam-warrior"
+    ];
+  };
+  nixos-kimsufi-nitter = mkHost {
+    hostName = "nixos-kimsufi-nitter";
+    stateVersion = "26.11";
+    domain = "dbeley.ovh";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "sops"
+      "acme"
+      "nitter"
     ];
   };
   nixos-era-agents = mkHost {

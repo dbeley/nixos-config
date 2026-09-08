@@ -952,6 +952,7 @@
         "systems": "systems",
         "treefmt-nix": "treefmt-nix",
         "ucodenix": "ucodenix",
+        "wiki-debate": "wiki-debate",
         "zen-browser": "zen-browser",
         "zeroclaw": "zeroclaw"
       }
@@ -1207,6 +1208,22 @@
       "original": {
         "owner": "Maroka-chan",
         "repo": "VPN-Confinement",
+        "type": "github"
+      }
+    },
+    "wiki-debate": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788393602,
+        "narHash": "sha256-MwADX5ecmRGxPiiNKNT2VblrhR/2dIBy29ZIsO+t0YM=",
+        "owner": "dbeley",
+        "repo": "wiki-debate",
+        "rev": "a82e09650462897b32378938e091b2028c4689c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dbeley",
+        "repo": "wiki-debate",
         "type": "github"
       }
     },
