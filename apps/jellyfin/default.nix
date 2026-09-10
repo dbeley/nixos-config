@@ -29,9 +29,9 @@ in
 
   systemd = {
     services.jellyfin = {
-      requires = [ "mnt-nfs-root.mount" ];
+      requires = [ "mnt-nfs.mount" ];
       after = [
-        "mnt-nfs-root.mount"
+        "mnt-nfs.mount"
         "network-online.target"
       ];
     };
