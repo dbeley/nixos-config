@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }:
 let
@@ -19,13 +18,13 @@ let
     in
     stdenv.mkDerivation (finalAttrs: {
       pname = "hid-tmff2";
-      version = "unstable-2026-08-09";
+      version = "unstable-2026-08-25";
 
       src = fetchFromGitHub {
         owner = "Kimplul";
         repo = "hid-tmff2";
-        rev = "c5b9b79d4e61b77e0827e81dd676420b3c366743";
-        sha256 = "sha256-Su4Qr3z28luv+uxvCAfMVtTXVxJUuAj7K0b5F3OTmfs=";
+        rev = "d890a93105a0aa52028ac49282fa1b579e12566e";
+        sha256 = "sha256-+fK+rCvlZyDxxcuwGkq8KmhK2C5eHu4atBmdpsaIfRo=";
         fetchSubmodules = true;
       };
 
@@ -54,7 +53,7 @@ let
 
       passthru = {
         inherit (finalAttrs) src;
-        udevRules = "${finalAttrs.src}/udev/99-thrustmaster.rules";
+        udevRules = "${finalAttrs.src}/udev/71-thrustmaster-steamdeck.rules";
       };
 
       meta = with lib; {
@@ -86,18 +85,7 @@ in
 
   config = lib.mkIf cfg.enable (
     let
-      # Upstream rules expect FHS paths; rewrite them to point to nixpkgs binaries.
-      patchedRules =
-        lib.replaceStrings
-          [
-            "/usr/bin/evdev-joystick"
-            "/usr/bin/jscal"
-          ]
-          [
-            "${pkgs.linuxConsoleTools}/bin/evdev-joystick"
-            "${pkgs.linuxConsoleTools}/bin/jscal"
-          ]
-          (builtins.readFile cfg.package.passthru.udevRules);
+      udevRules = builtins.readFile cfg.package.passthru.udevRules;
     in
     {
       boot = {
@@ -107,7 +95,7 @@ in
       };
 
       services.udev.extraRules = lib.mkAfter (
-        patchedRules
+        udevRules
         + ''
           KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="b696", MODE="0666"
         ''
