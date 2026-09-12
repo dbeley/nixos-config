@@ -7,10 +7,14 @@
 
     plugins = {
       inherit (pkgs.yaziPlugins) smart-enter;
+      mime-ext = pkgs.yaziPlugins.mime-ext;
     };
 
     initLua = ''
       require("smart-enter"):setup({})
+      require("mime-ext.local"):setup({
+        fallback_file1 = false,
+      })
     '';
 
     settings = {
@@ -20,12 +24,22 @@
       mgr = {
         linemode = "size";
       };
-      plugin.prepend_preloaders = [
-        {
-          url = "${config.home.homeDirectory}/nfs/**";
-          run = "noop";
-        }
-      ];
+      plugin = {
+        prepend_preloaders = [
+          {
+            url = "${config.home.homeDirectory}/nfs/**";
+            run = "noop";
+          }
+        ];
+        prepend_fetchers = [
+          {
+            url = "local://${config.home.homeDirectory}/nfs/**";
+            run = "mime-ext.local";
+            prio = "high";
+            group = "mime";
+          }
+        ];
+      };
     };
 
     keymap = {
