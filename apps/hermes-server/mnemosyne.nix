@@ -9,7 +9,16 @@ let
 
   mnemosyne = python.pkgs.buildPythonPackage {
     pname = "mnemosyne-memory";
-    version = "4.0.0b1";
+    version =
+      let
+        m = builtins.match ".*__version__ = \"([^\"]+)\".*" (
+          builtins.readFile "${inputs.mnemosyne}/mnemosyne/__init__.py"
+        );
+      in
+      if m == null then
+        throw "cannot extract mnemosyne-memory version from mnemosyne input"
+      else
+        builtins.head m;
     src = inputs.mnemosyne;
     pyproject = true;
 
@@ -29,7 +38,16 @@ let
 
   mnemosyne-hermes = python.pkgs.buildPythonPackage {
     pname = "mnemosyne-hermes";
-    version = "0.7.0";
+    version =
+      let
+        m = builtins.match ".*name = \"mnemosyne-hermes\"\nversion = \"([^\"]+)\".*" (
+          builtins.readFile "${inputs.mnemosyne}/integrations/hermes/pyproject.toml"
+        );
+      in
+      if m == null then
+        throw "cannot extract mnemosyne-hermes version from mnemosyne input"
+      else
+        builtins.head m;
     src = inputs.mnemosyne;
     pyproject = true;
 
