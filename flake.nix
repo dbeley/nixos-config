@@ -129,9 +129,7 @@
     agent-skills = {
       url = "github:Kyure-A/agent-skills-nix";
       inputs = {
-        blueprint.follows = "blueprint";
         nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
       };
     };
     blueprint = {
