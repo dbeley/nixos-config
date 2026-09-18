@@ -38,7 +38,7 @@
         touchpad = {
           "left-handed" = [ ];
           tap = [ ];
-          dwt = [ ];
+          # dwt = [ ];
           "natural-scroll" = [ ];
           "click-method" = "clickfinger";
         };

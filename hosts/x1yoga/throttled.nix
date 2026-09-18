@@ -8,21 +8,21 @@
 
     [BATTERY]
     Update_Rate_s: 30
-    PL1_Tdp_W: 20
-    PL1_Duration_s: 28
-    PL2_Tdp_W: 30
-    PL2_Duration_S: 28
-    Trip_Temp_C: 85
+    PL1_Tdp_W: 25
+    PL1_Duration_s: 60
+    PL2_Tdp_W: 45
+    PL2_Duration_S: 60
+    Trip_Temp_C: 90
     cTDP: 0
     Disable_BDPROCHOT: False
 
     [AC]
     Update_Rate_s: 30
     PL1_Tdp_W: 25
-    PL1_Duration_s: 28
-    PL2_Tdp_W: 40
-    PL2_Duration_S: 28
-    Trip_Temp_C: 85
+    PL1_Duration_s: 60
+    PL2_Tdp_W: 45
+    PL2_Duration_S: 60
+    Trip_Temp_C: 90
     cTDP: 0
     Disable_BDPROCHOT: False
   '';

@@ -482,7 +482,8 @@ in
     profiles = [
       "laptop"
       "impermanence"
-      "bootloader-systemd-boot"
+      "secure-boot"
+      # "bootloader-systemd-boot"
       "workstation"
       "niri"
       "android-tools"
@@ -514,23 +515,26 @@ in
     profiles = [
       "laptop"
       "impermanence"
-      "bootloader-systemd-boot"
+      "secure-boot"
+      # "bootloader-systemd-boot"
       "workstation"
-      "gnome"
-      # "steam"
+      # "gnome"
+      "niri"
+      "steam"
       # "firefox"
       "zen-browser"
       "chromium"
-      # "python"
+      "python"
       "code-agents"
-      # "sops"
+      "restic"
+      "sops"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       ../modules/common/screen-rotation.nix
-      ../modules/hardware/throttled.nix
       ../modules/hardware/razer-naga.nix
+      ../modules/hardware/throttled.nix
       ../hosts/x1yoga/throttled.nix
       {
         my.stylix.wallpaper = "purple-waves";
