@@ -7,7 +7,7 @@
   boot.loader.limine = {
     enable = true;
     enableEditor = false;
-    maxGenerations = 20;
+    maxGenerations = 3;
     secureBoot.enable = true;
   };
 }
