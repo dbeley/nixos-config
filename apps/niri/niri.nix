@@ -221,7 +221,6 @@
         "Mod+Shift+D"."spawn" = [
           "chromium"
           "--app=https://covertone.homelab.${domain}"
-          "--disable-extensions"
         ];
         "Mod+N"."spawn" = [ "keepassxc" ];
         "Mod+Shift+T"."spawn" = [ "gnome-system-monitor" ];
