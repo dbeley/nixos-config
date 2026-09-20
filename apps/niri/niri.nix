@@ -57,6 +57,7 @@
 
       layout = {
         gaps = 16;
+        empty-workspace-above-first = true;
         focus-ring = {
           off = [ ];
         };
