@@ -93,9 +93,6 @@
       nixdiff = ''
         nvd diff /nix/var/nix/profiles/system-$argv[1]-link /nix/var/nix/profiles/system-$argv[2]-link
       '';
-      extractzip = ''
-        fd -e zip -x sh -c 'unzip -o -d "''${0%.*}" "$0"' '{}' ';'
-      '';
       reduce_speed = ''
         # Check if we have both arguments
         if test (count $argv) -ne 2

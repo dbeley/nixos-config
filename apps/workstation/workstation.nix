@@ -13,9 +13,9 @@
     libreoffice-stable
     nitch
     nix-tree
+    p7zip
     pwvucontrol
     ripgrep-all
-    unzip
     wireguard-tools
     yt-dlp
   ];

@@ -9,10 +9,10 @@
     helix
     just
     lazygit
+    p7zip
     ripgrep-all
     tealdeer
     tmux
-    unzip
     wireguard-tools
     zoxide
   ];
