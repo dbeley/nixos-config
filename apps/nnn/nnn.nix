@@ -28,12 +28,12 @@
         h = "-!hx \\$nnn*";
         # Open in editor with admin rights
         s = "-!sudo -e \\$nnn*";
-        # Open folder images recursively in a sequential order
-        g = "-!swayimg -r -o mtime";
-        G = "-!swayimg -r -o mtime --gallery";
-        # Open folder images recursively in a random order
-        r = "-!swayimg -r -o random";
-        R = "-!swayimg -r -o random --gallery";
+        # Open the hovered image in a sequential order
+        g = "-!&swayimg -e \"swayimg.imagelist.order = 'mtime'\" \"$nnn\"";
+        G = "-!&swayimg -g -e \"swayimg.imagelist.order = 'mtime'\" \"$nnn\"";
+        # Open the hovered image in a random order
+        r = "-!&swayimg -e \"swayimg.imagelist.order = 'random'\" \"$nnn\"";
+        R = "-!&swayimg -g -e \"swayimg.imagelist.order = 'random'\" \"$nnn\"";
         x = "togglex";
       };
       src =

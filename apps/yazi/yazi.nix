@@ -162,7 +162,7 @@
             "g"
           ];
           run = "shell --orphan 'swayimg -e \"swayimg.imagelist.order = \\\"mtime\\\"\" -- %h'";
-          desc = "Swayimg recursive (mtime)";
+          desc = "Swayimg (mtime)";
         }
         {
           on = [
@@ -178,7 +178,7 @@
             "r"
           ];
           run = "shell --orphan 'swayimg -e \"swayimg.imagelist.order = \\\"random\\\"\" -- %h'";
-          desc = "Swayimg recursive (random)";
+          desc = "Swayimg (random)";
         }
         {
           on = [
