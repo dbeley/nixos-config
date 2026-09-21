@@ -22,7 +22,7 @@ in
         "$schema" = "https://opencode.ai/config.json";
         share = "disabled";
         theme = "system";
-        model = "opencode-go/deepseek-v4-flash";
+        model = "opencode-go/deepseek-v4.1-flash";
         plugins = [
           # ponytail is disabled: it targets the V1 plugin API, and V1 plugins
           # do not load in OpenCode V2. Re-enable once upstream ships a

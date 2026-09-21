@@ -21,7 +21,7 @@
         port = 42617;
       };
       providers.models.openai.gohome = {
-        model = "deepseek-v4-flash";
+        model = "deepseek-v4.1-flash";
         uri = "https://opencode.ai/zen/go/v1";
         api_key = "$OPENCODE_API_KEY";
       };
