@@ -536,6 +536,7 @@ in
       ../modules/hardware/razer-naga.nix
       ../modules/hardware/throttled.nix
       ../hosts/x1yoga/throttled.nix
+      ../hosts/x1yoga/thinkfan.nix
       {
         my.stylix.wallpaper = "purple-waves";
       }
