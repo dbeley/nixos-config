@@ -9,7 +9,7 @@
   users.users.${user}.openssh.authorizedKeys.keyFiles = [
     (pkgs.fetchurl {
       url = "https://github.com/dbeley.keys";
-      sha256 = "m3UIHF7Vp6Tut5RAgXcZ9+gnu6V0a/2doEVpIOij+kw=";
+      sha256 = "+p0bAnfx/Sx/QAfOIvfg/nbJ3bARptpnTG+Tf6sX9MQ=";
     })
   ];
 }
