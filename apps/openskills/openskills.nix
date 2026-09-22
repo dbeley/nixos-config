@@ -31,6 +31,11 @@ _: {
         subdir = "skills";
         idPrefix = "hyperdroid";
       };
+      wiki-debate = {
+        input = "wiki-debate";
+        subdir = "skills";
+        idPrefix = "wiki-debate";
+      };
     };
     skills = {
       enableAll = [ "superpowers" ];
@@ -55,6 +60,7 @@ _: {
         "hyperdroid/android-fastboot"
         "hyperdroid/android-build"
         "hyperdroid/lineageos"
+        "wiki-debate/wiki-debate"
       ];
     };
     targets = {
