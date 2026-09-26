@@ -75,7 +75,8 @@ let
         ../apps/editorconfig/editorconfig.nix
         ../apps/fish/fish.nix
         ../apps/git/git.nix
-        ../apps/helix/helix.nix
+        # ../apps/helix/helix.nix
+        ../apps/kakoune/kakoune.nix
         # ../apps/impulse/impulse.nix
         ../apps/lazygit/lazygit.nix
         ../apps/ledger/ledger.nix
@@ -226,9 +227,6 @@ let
     };
     emacs = {
       home = [ ../apps/emacs/emacs.nix ];
-    };
-    kakoune = {
-      home = [ ../apps/kakoune/kakoune.nix ];
     };
     obs = {
       home = [ ../apps/obs/obs.nix ];

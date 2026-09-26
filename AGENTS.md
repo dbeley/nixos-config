@@ -81,7 +81,7 @@ mkHost = {
 - `sway` - Sway + waybar + tofi + mako + swaylock + autoscreen + kitty
 
 **Applications:**
-- `workstation` - bat, btop, editorconfig, fish, git, helix, lazygit, ledger, mime, mpv, nextcloud-client, stylix, swayimg, tealdeer, tmux, udiskie, workstation, yazi, zathura, zoxide (system modules: stylix, udiskie, symmetri, workstation)
+- `workstation` - bat, btop, editorconfig, fish, git, kakoune, lazygit, ledger, mime, mpv, nextcloud-client, stylix, swayimg, tealdeer, tmux, udiskie, workstation, yazi, zathura, zoxide (system modules: stylix, udiskie, symmetri, workstation)
 - `firefox` - Firefox browser with extensive policies and addons
 - `chromium` - Ungoogled chromium
 - `zen-browser` - Zen browser

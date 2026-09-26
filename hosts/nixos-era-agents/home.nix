@@ -6,7 +6,7 @@
     fish
     gh
     git
-    helix
+    kakoune
     just
     lazygit
     p7zip

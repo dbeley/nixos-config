@@ -14,7 +14,7 @@
 | **DM:**        | tty1                                             |
 | **WM:**        | niri / sway / gnome                              |
 | **Bar:**       | noctalia / waybar                                |
-| **Editor:**    | helix / doom-emacs / neovim / kakoune            |
+| **Editor:**    | kakoune / doom-emacs / neovim / helix            |
 | **Terminal:**  | kitty / ghostty                                  |
 | **Launcher:**  | tofi                                             |
 | **Browser:**   | zen / firefox / qutebrowser / ungoogled-chromium |
