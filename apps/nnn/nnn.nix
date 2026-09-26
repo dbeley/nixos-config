@@ -24,8 +24,6 @@
         f = "finder";
         v = "imgview";
         p = "preview-tui";
-        # Open in helix
-        h = "-!hx \\$nnn*";
         # Open in editor with admin rights
         s = "-!sudo -e \\$nnn*";
         # Open the hovered image in a sequential order

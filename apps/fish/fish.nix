@@ -49,7 +49,7 @@
       set -g theme_powerline_fonts yes
       set -g theme_color_scheme dark
       set -x VIRTUAL_ENV_DISABLE_PROMPT 1
-      set -x EDITOR hx
+      set -x EDITOR kak
       set -x IMG_VIEWER swayimg
     '';
     loginShellInit = ''
