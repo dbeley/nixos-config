@@ -87,7 +87,7 @@ in
           {
             name = "RuTracker.org";
             username._secret = secrets."rutracker_username".path;
-            password_secret._secret = secrets."rutracker_password".path;
+            password._secret = secrets."rutracker_password".path;
           }
           {
             name = "The Pirate Bay";
@@ -138,24 +138,12 @@ in
         };
         Trakt = {
           enable = true;
-          package = inputs.nixflix.lib.jellyfinPlugins.fromRepo {
-            version = "30.0.0.0";
-            hash = "sha256-CLdvWaGYTEZxLzm8ZPVHKhemp0EgCeJ/QvBMZPI2nYk=";
-          };
         };
         Simkl = {
           enable = true;
-          package = inputs.nixflix.lib.jellyfinPlugins.fromRepo {
-            version = "8.0.0.0";
-            hash = "sha256-W6CkM38+DiTToAn0UfNpo591jzvxTeiyK4L7Q/A5DVI=";
-          };
         };
         Webhook = {
           enable = true;
-          package = inputs.nixflix.lib.jellyfinPlugins.fromRepo {
-            version = "21.0.0.0";
-            hash = "sha256-trFb0f2qZh+iWVbLJ65hSfONZgvmrVWvfbQ7qcU4g7c=";
-          };
         };
       };
       libraries = {
@@ -188,6 +176,25 @@ in
         MusicFolder = "/mnt/nfs/WDC14/Musique/";
         LastFM.Enabled = true;
         DefaultLanguage = "fr";
+      };
+    };
+
+    slskd = {
+      enable = true;
+      username._secret = secrets."slskd_username".path;
+      password._secret = secrets."slskd_password".path;
+      apiKey._secret = secrets."slskd_api_key".path;
+      openFirewall = true;
+      settings = {
+        soulseek = {
+          username._secret = secrets."slskd_soulseek_username".path;
+          password._secret = secrets."slskd_soulseek_password".path;
+        };
+        shares.directories = [ "/mnt/nfs/WDC14/Musique" ];
+        directories = {
+          downloads = "/mnt/nfs/WDC14/Soulseek";
+          incomplete = "/mnt/nfs/WDC14/Soulseek/incomplete";
+        };
       };
     };
 
@@ -273,6 +280,11 @@ in
         "opensubtitles_api_key"
         "navidrome_password"
         "navidrome_env"
+        "slskd_username"
+        "slskd_password"
+        "slskd_api_key"
+        "slskd_soulseek_username"
+        "slskd_soulseek_password"
       ]
       (_: {
         sopsFile = ../../secrets/nixflix.yaml;
