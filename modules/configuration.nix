@@ -135,7 +135,7 @@
         "root"
         user
       ];
-      nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
+      nix-path = lib.mkForce [ "nixpkgs=/etc/nix/inputs/nixpkgs" ];
       auto-optimise-store = true;
       warn-dirty = false;
       fallback = true;
