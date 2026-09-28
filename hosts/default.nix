@@ -535,6 +535,7 @@ in
       ../modules/hardware/throttled.nix
       ../hosts/x1yoga/throttled.nix
       ../hosts/x1yoga/thinkfan.nix
+      ../hosts/x1yoga/memory.nix
       {
         my.stylix.wallpaper = "purple-waves";
       }
@@ -677,7 +678,7 @@ in
       "trek"
       "podman"
       # "audiomuse-ai"
-      "slskd"
+      # "slskd"
       "maloja"
       "covertone"
     ];
