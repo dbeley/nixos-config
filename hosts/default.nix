@@ -493,7 +493,6 @@ in
       "code-agents"
       "sops"
       "restic"
-      # "mullvad"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel

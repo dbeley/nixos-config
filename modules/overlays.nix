@@ -6,6 +6,20 @@
   # overlays that should apply to all hosts (to fix build, fix bugs, etc.)
   nixpkgs.overlays = [
     inputs.nur.overlays.default
+    # gtksourceview ships its own checkPhase calling `meson test` directly,
+    # bypassing the `--timeout-multiplier=0` the meson setup hook adds. Under
+    # load, test-language-specs then hits meson's 30s default and is killed,
+    # failing the build (gtksourceview -> libspelling -> papers).
+    # cf. https://github.com/NixOS/nixpkgs/issues/469034
+    (_final: prev: {
+      gtksourceview5 = prev.gtksourceview5.overrideAttrs (old: {
+        checkPhase =
+          builtins.replaceStrings
+            [ "meson test --no-rebuild --print-errorlogs" ]
+            [ "meson test --no-rebuild --print-errorlogs --timeout-multiplier=0" ]
+            old.checkPhase;
+      });
+    })
     # Restore the grub unicode.pf2 boot-menu font. nixpkgs restructured unifont
     # (unifont.otf moved to share/fonts/opentype/unifont/), so grub's
     # makegrubfonts can no longer find it and the built package ships no .pf2

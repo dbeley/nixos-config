@@ -251,6 +251,9 @@ in
         ${pkgs.systemd}/bin/systemd-tmpfiles --create --prefix=/data --prefix=/var
       '';
 
+      # slskd downloads must be writable by the human user (uid 1000)
+      slskd.serviceConfig.UMask = "0000";
+
       wg.serviceConfig = {
         Restart = "on-failure";
         RestartSec = 30;
