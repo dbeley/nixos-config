@@ -333,6 +333,9 @@ let
     covertone = {
       system = [ ../apps/covertone/default.nix ];
     };
+    stave = {
+      system = [ ../apps/stave/default.nix ];
+    };
     archiveteam-warrior = {
       system = [ ../apps/archiveteam-warrior/default.nix ];
     };
@@ -680,6 +683,7 @@ in
       # "slskd"
       "maloja"
       "covertone"
+      "stave"
     ];
   };
 }

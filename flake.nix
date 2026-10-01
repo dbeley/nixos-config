@@ -214,6 +214,13 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    stave = {
+      url = "github:dbeley/stave";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+    };
   };
 
   outputs =

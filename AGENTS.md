@@ -31,7 +31,7 @@
   - Shell/CLI tools: `bat/`, `btop/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `workstation/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
-  - Servers: `adguard-home/`, `audiomuse-ai/`, `cairn/`, `covertone/`, `hermes-server/`, `opencode-server/`, `zeroclaw/`, `immich/`, `jellyfin/`, `maloja/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`, `yamtrack/`
+  - Servers: `adguard-home/`, `audiomuse-ai/`, `cairn/`, `covertone/`, `stave/`, `hermes-server/`, `opencode-server/`, `zeroclaw/`, `immich/`, `jellyfin/`, `maloja/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`, `yamtrack/`
   - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `thunderbird/`, `udiskie/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
@@ -110,6 +110,7 @@ mkHost = {
 - `adguard-home` - AdGuard Home DNS ad-blocker
 - `cairn` - Self-hosted AI platform (kiwix, ollama, open-webui)
 - `covertone` - Music player for Navidrome
+- `stave` - Terminal-inspired Subsonic/Navidrome music client (PWA)
 - `hermes-server` - Hermes Web UI
 - `opencode-server` - OpenCode web UI (systemd service + shared opencode config)
 - `zeroclaw` - ZeroClaw web dashboard
@@ -140,7 +141,7 @@ mkHost = {
 **Servers (ERA VPS):**
 - `nixos-era-adguard` - AdGuard Home DNS server
 - `nixos-era-agents` - LLM agent web UIs (hermes-webui, opencode, zeroclaw)
-- `nixos-era-homelab` - slskd + mlaoja + covertone + Jellyfin + paperless-ngx + TREK 
+- `nixos-era-homelab` - slskd + mlaoja + covertone + stave + Jellyfin + paperless-ngx + TREK 
 - `nixos-era-immich` - Immich photo server
 - `nixos-era-nextcloud` - Nextcloud server
 - `nixos-era-nixflix` - Nixflix media server (arr stack, jellyfin, navidrome, yamtrack)
