@@ -20,21 +20,6 @@
             old.checkPhase;
       });
     })
-    # Restore the grub unicode.pf2 boot-menu font. nixpkgs restructured unifont
-    # (unifont.otf moved to share/fonts/opentype/unifont/), so grub's
-    # makegrubfonts can no longer find it and the built package ships no .pf2
-    # fonts — breaking `bootloader activation` (install-grub.pl can't copy the
-    # default font to /boot). Regenerate it from unifont.
-    (_final: prev: {
-      grub2 = prev.grub2.overrideAttrs (old: {
-        buildInputs = old.buildInputs ++ [ prev.unifont ];
-        postInstall = (old.postInstall or "") + ''
-          mkdir -p $out/share/grub
-          $out/bin/grub-mkfont -s 16 -o $out/share/grub/unicode.pf2 \
-            ${prev.unifont}/share/fonts/opentype/unifont/unifont.otf
-        '';
-      });
-    })
     # herdr's vendored Zig-built libghostty-vt bundles compiler_rt/ubsan_rt,
     # whose .eh_frame entries duplicate those of the system libgcc. With
     # binutils 2.46, ld.bfd then aborts herdr's final Rust link with
