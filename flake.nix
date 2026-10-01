@@ -201,12 +201,6 @@
         flake-utils.follows = "flake-utils";
       };
     };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
     maloja = {
       url = "github:dbeley/maloja";
       inputs = {
