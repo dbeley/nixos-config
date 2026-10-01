@@ -37,6 +37,22 @@
           '';
       });
     })
+    # torchcodec 0.16.0's `test_audio_against_cli` asserts our encoder matches the
+    # FFmpeg 9 CLI within 1e-3; mp3 encoding of the downsampled sine asset now
+    # differs more than that ("Tensor-likes are not close!"). The test is
+    # disabled upstream in nixpkgs (0.17.0); do the same here until the flake's
+    # nixpkgs catches up. torchcodec is a transitive dep of paperless-ngx
+    # (paperless-ngx -> sentence-transformers -> torchaudio -> torchcodec).
+    # cf. https://github.com/NixOS/nixpkgs/commit/6a3590bb67fd78ca42ac3c4478370b5264670f1e
+    (_final: prev: {
+      python3Packages = prev.python3Packages.overrideScope (
+        _pyfinal: pyprev: {
+          torchcodec = pyprev.torchcodec.overridePythonAttrs (old: {
+            disabledTests = (old.disabledTests or [ ]) ++ [ "test_audio_against_cli" ];
+          });
+        }
+      );
+    })
     # (_: super: {
     # # to fix zoom memory leak, working version found here https://github.com/NixOS/nixpkgs/pull/361097
     # zoom-us = super.zoom-us.overrideAttrs (oldAttrs: {
