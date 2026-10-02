@@ -360,6 +360,9 @@ let
     yamtrack = {
       system = [ ../apps/yamtrack/default.nix ];
     };
+    ntp-pool = {
+      system = [ ../apps/ntp-pool/default.nix ];
+    };
   };
   mkHost =
     {
@@ -600,6 +603,15 @@ in
       "openssh-server"
       "docker"
       "archiveteam-warrior"
+    ];
+  };
+  nixos-kimsufi-ntp = mkHost {
+    hostName = "nixos-kimsufi-ntp";
+    stateVersion = "26.11";
+    profiles = [
+      "bootloader-grub-bios"
+      "openssh-server"
+      "ntp-pool"
     ];
   };
   nixos-era-agents = mkHost {
