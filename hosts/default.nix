@@ -98,6 +98,7 @@ let
     niri = {
       system = [
         ../apps/niri/default.nix
+        ../apps/niri-touchpad-toggle/default.nix
       ];
       home = [
         ../apps/niri/niri.nix
@@ -109,6 +110,7 @@ let
     niri-waybar = {
       system = [
         ../apps/niri/default.nix
+        ../apps/niri-touchpad-toggle/default.nix
         ../apps/hyprlock/default.nix
       ];
       home = [
