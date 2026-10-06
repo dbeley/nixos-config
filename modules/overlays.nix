@@ -20,23 +20,6 @@
             old.checkPhase;
       });
     })
-    # herdr's vendored Zig-built libghostty-vt bundles compiler_rt/ubsan_rt,
-    # whose .eh_frame entries duplicate those of the system libgcc. With
-    # binutils 2.46, ld.bfd then aborts herdr's final Rust link with
-    # ".eh_frame_hdr refers to overlapping FDEs". Stop bundling those runtimes.
-    # Fixed upstream in nixpkgs (commit 277383a8); drop once the flake's
-    # nixpkgs includes it.
-    (_final: prev: {
-      herdr = prev.herdr.overrideAttrs (old: {
-        postPatch =
-          (old.postPatch or "")
-          + prev.lib.optionalString prev.stdenv.hostPlatform.isLinux ''
-            substituteInPlace vendor/libghostty-vt/src/build/GhosttyLibVt.zig \
-              --replace-fail 'lib.bundle_compiler_rt = true;' 'lib.bundle_compiler_rt = false;' \
-              --replace-fail 'lib.bundle_ubsan_rt = true;' 'lib.bundle_ubsan_rt = false;'
-          '';
-      });
-    })
     # torchcodec 0.16.0's `test_audio_against_cli` asserts our encoder matches the
     # FFmpeg 9 CLI within 1e-3; mp3 encoding of the downsampled sine asset now
     # differs more than that ("Tensor-likes are not close!"). The test is
