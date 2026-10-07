@@ -221,6 +221,10 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    niri-touchpad-toggle = {
+      url = "github:dbeley/niri-touchpad-toggle";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

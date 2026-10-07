@@ -695,6 +695,26 @@
         "type": "github"
       }
     },
+    "niri-touchpad-toggle": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791211898,
+        "narHash": "sha256-zrNE7mM+ooQLa5xcQ8y26b9wW++byze0P74ZkpTdDFY=",
+        "owner": "dbeley",
+        "repo": "niri-touchpad-toggle",
+        "rev": "48fe2ab86bf8320aecde4e3fd83b658dfa25cf91",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dbeley",
+        "repo": "niri-touchpad-toggle",
+        "type": "github"
+      }
+    },
     "nixflix": {
       "inputs": {
         "mkdocs-catppuccin": "mkdocs-catppuccin",
@@ -911,6 +931,7 @@
         "llm-agents": "llm-agents",
         "maloja": "maloja",
         "mnemosyne": "mnemosyne",
+        "niri-touchpad-toggle": "niri-touchpad-toggle",
         "nixflix": "nixflix",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",

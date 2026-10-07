@@ -218,6 +218,13 @@
         "Mod+Y"."spawn" = [ "nextcloud" ];
         "Mod+B"."spawn" = [ "chromium" ];
         "Mod+T"."spawn" = [ "soffice" ];
+        "Mod+Ctrl+T" = {
+          _props."hotkey-overlay-title" = "Toggle touchpad";
+          spawn = [
+            "niri-touchpad-toggle"
+            "toggle"
+          ];
+        };
         "Mod+D"."spawn" = [ "feishin" ];
         "Mod+Shift+D"."spawn" = [
           "chromium"
