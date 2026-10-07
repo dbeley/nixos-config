@@ -1,38 +1,12 @@
-{ pkgs, ... }:
-let
-  autoscreen = pkgs.writeShellScriptBin "autoscreen" ''
-    TODAY="$(${pkgs.coreutils-full}/bin/date +%Y-%m-%d)"
-    DESTINATION_DIR="$HOME/Nextcloud/30-39_Images/32_Captures-d-écran/32.11_autoscreen/$TODAY"
-
-    ${pkgs.coreutils-full}/bin/mkdir -p "$DESTINATION_DIR"
-    ${pkgs.grim}/bin/grim "$DESTINATION_DIR/$(${pkgs.coreutils-full}/bin/date +%Y-%m-%d_%H:%M:%S_%s)_$(hostname)_nixos_autoscreen.png"
-  '';
-in
+{ inputs, ... }:
 {
-  home.packages = [ autoscreen ];
+  imports = [ inputs.autoscreen.homeModules.default ];
 
-  systemd.user.timers."autoscreen" = {
-    Unit = {
-      Description = "Run autoscreen every hour at random";
-      After = [ "multi-user.target" ];
-    };
-    Timer = {
-      OnCalendar = "hourly";
-      RandomizedDelaySec = 3600;
-      AccuracySec = "1us";
-    };
-    Install = {
-      WantedBy = [ "timers.target" ];
-    };
-  };
-
-  systemd.user.services."autoscreen" = {
-    Unit = {
-      Description = "Take a screenshot with grim";
-    };
-    Service = {
-      Type = "oneshot";
-      ExecStart = "${autoscreen}/bin/autoscreen";
-    };
+  services.autoscreen = {
+    enable = true;
+    destinationDir = "%h/Nextcloud/30-39_Images/32_Captures-d-écran/32.11_autoscreen";
+    filenameSuffix = "nixos_";
+    format = "jxl";
+    quality = 90;
   };
 }
