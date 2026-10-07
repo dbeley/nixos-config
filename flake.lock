@@ -52,6 +52,26 @@
         "type": "github"
       }
     },
+    "autoscreen": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791368217,
+        "narHash": "sha256-lAvR+nnAQs8kcP/Shb7Ix3zS+CA1KoX340om7ZwsOfI=",
+        "owner": "dbeley",
+        "repo": "autoscreen",
+        "rev": "b957e3bf6358b1dcb099f510eb665b6ebbc4b270",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dbeley",
+        "repo": "autoscreen",
+        "type": "github"
+      }
+    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -891,6 +911,7 @@
         "agent-fieldnotes": "agent-fieldnotes",
         "agent-skills": "agent-skills",
         "anthropic-skills": "anthropic-skills",
+        "autoscreen": "autoscreen",
         "base16": "base16",
         "blueprint": "blueprint",
         "cairn": "cairn",

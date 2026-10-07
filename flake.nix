@@ -221,6 +221,12 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    autoscreen = {
+      url = "github:dbeley/autoscreen";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   outputs =
