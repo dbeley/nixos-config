@@ -14,7 +14,7 @@
     # musescore
     nautilus
     python3Packages.subliminal
-    # shotcut
+    shotcut
   ];
 
   programs.btop.package = pkgs.btop-rocm;
