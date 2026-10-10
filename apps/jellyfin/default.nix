@@ -3,24 +3,7 @@
   domain,
   ...
 }:
-let
-  nfsServer = "omv.home";
-  nfsExport = "/";
-  nfsMount = "/mnt/nfs/root";
-in
 {
-  fileSystems.${nfsMount} = {
-    device = "${nfsServer}:${nfsExport}";
-    fsType = "nfs";
-    options = [
-      "_netdev"
-      "nofail"
-      "hard"
-      "timeo=60"
-      "retrans=3"
-    ];
-  };
-
   services.jellyfin = {
     enable = true;
     inherit user;

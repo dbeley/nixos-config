@@ -26,10 +26,15 @@ in
     resolved.enable = lib.mkForce false;
   };
 
-  networking.firewall.allowedTCPPorts = [
-    53
-    80
-    443
-  ];
-  networking.firewall.allowedUDPPorts = [ 53 ];
+  networking = {
+    firewall = {
+      allowedTCPPorts = [
+        53
+        80
+        443
+      ];
+      allowedUDPPorts = [ 53 ];
+    };
+    tempAddresses = "disabled";
+  };
 }

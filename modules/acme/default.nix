@@ -12,7 +12,10 @@ in
 {
   security.acme = {
     acceptTerms = true;
-    defaults.email = "admin@${domain}";
+    defaults = {
+      email = "admin@${domain}";
+      extraLegoFlags = [ "--dns.propagation.disable-rns" ];
+    };
     certs.${domain} = lib.mkIf (directSubdomains != [ ]) {
       inherit domain;
       extraDomainNames = directSubdomains;

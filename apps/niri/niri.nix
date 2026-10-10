@@ -218,13 +218,13 @@
         "Mod+Y"."spawn" = [ "nextcloud" ];
         "Mod+B"."spawn" = [ "chromium" ];
         "Mod+T"."spawn" = [ "soffice" ];
+        "Mod+Shift+T"."spawn" = [ "gnome-system-monitor" ];
         "Mod+D"."spawn" = [ "feishin" ];
         "Mod+Shift+D"."spawn" = [
           "chromium"
           "--app=https://covertone.homelab.${domain}"
         ];
         "Mod+N"."spawn" = [ "keepassxc" ];
-        "Mod+Shift+T"."spawn" = [ "gnome-system-monitor" ];
         "Mod+Return"."spawn" = [ "ghostty" ];
         "Mod+X"."spawn" = [ "ghostty" ];
 
