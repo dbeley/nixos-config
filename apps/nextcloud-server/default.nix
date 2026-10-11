@@ -30,7 +30,6 @@ in
 
     maxUploadSize = "16G";
 
-    autoUpdateApps.enable = true;
     extraAppsEnable = true;
     extraApps = with config.services.nextcloud.package.packages.apps; {
       inherit

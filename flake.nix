@@ -32,7 +32,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     agent-fieldnotes = {
       url = "github:dbeley/agent-fieldnotes";
-      flake = false; # pure source tree; we readFile the canonical scripts/fieldnote
+      flake = false;
     };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -161,6 +161,10 @@
     };
     hyperdroid-skill = {
       url = "github:hyperb1iss/hyperdroid-skill";
+      flake = false;
+    };
+    rea = {
+      url = "github:morluto/rea";
       flake = false;
     };
     symmetri = {

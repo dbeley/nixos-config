@@ -31,6 +31,11 @@ _: {
         subdir = "skills";
         idPrefix = "hyperdroid";
       };
+      rea = {
+        input = "rea";
+        subdir = ".agents/skills";
+        idPrefix = "rea";
+      };
     };
     skills = {
       enableAll = [ "superpowers" ];
@@ -55,6 +60,7 @@ _: {
         "hyperdroid/android-fastboot"
         "hyperdroid/android-build"
         "hyperdroid/lineageos"
+        "rea/reverse-engineer-anything"
       ];
     };
     targets = {

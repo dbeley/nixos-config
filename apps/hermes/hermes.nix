@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   llm = inputs.llm-agents.packages.${pkgs.system};
 
@@ -77,10 +82,36 @@ let
           "ponytail-help"
         ]
       )
+      # rea skills
+      (map
+        (name: {
+          name = ".hermes/skills/${name}";
+          value = {
+            source = "${inputs.rea}/.agents/skills/${name}";
+            force = true;
+          };
+        })
+        [
+          "reverse-engineer-anything"
+        ]
+      )
     ]
   );
 in
 {
-  home.packages = [ llm.hermes-agent ];
-  home.file = skills;
+  home = {
+    packages = [ llm.hermes-agent ];
+
+    sessionVariables.HERMES_MANAGED_DIR = "${config.home.homeDirectory}/.hermes/managed";
+
+    file = skills // {
+      ".hermes/managed/config.yaml".text = ''
+        mcp_servers:
+          rea:
+            command: "${pkgs.nodejs}/bin/npx"
+            args: ["-y", "rea-agents@6.3.0", "mcp"]
+            enabled: true
+      '';
+    };
+  };
 }

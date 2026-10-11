@@ -29,6 +29,18 @@ in
           # V2-compatible plugin.
           # "${inputs.ponytail}/.opencode/plugins/ponytail.mjs"
         ];
+        mcp = {
+          rea = {
+            type = "local";
+            command = [
+              "${pkgs.nodejs}/bin/npx"
+              "-y"
+              "rea-agents@6.3.0"
+              "mcp"
+            ];
+            enabled = true;
+          };
+        };
         command = {
           last30days = {
             description = "Research any topic across Reddit, X, YouTube, TikTok, HN, Polymarket, GitHub, and the web";

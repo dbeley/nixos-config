@@ -1,4 +1,5 @@
 {
+  pkgs,
   user,
   inputs,
   domain,
@@ -11,6 +12,14 @@
     port = 8787;
     inherit user;
   };
+
+  environment.etc."hermes/config.yaml".text = ''
+    mcp_servers:
+      rea:
+        command: "${pkgs.nodejs}/bin/npx"
+        args: ["-y", "rea-agents@6.3.0", "mcp"]
+        enabled: true
+  '';
 
   services.nginx = {
     enable = true;

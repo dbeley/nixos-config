@@ -15,6 +15,9 @@
     agentPackage = inputs.llm-agents.packages.${pkgs.system}.hermes-agent;
     browser.local.enable = true;
   };
+
+  home.file.".hermes/skills/reverse-engineer-anything".source =
+    "${inputs.rea}/.agents/skills/reverse-engineer-anything";
   sops.secrets = {
     hermes_webui_password = {
       path = "${config.home.homeDirectory}/.config/hermes/webui-password";
