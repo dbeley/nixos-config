@@ -140,6 +140,26 @@
         "type": "github"
       }
     },
+    "bend": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791817440,
+        "narHash": "sha256-wygeH7UH2IRNMUSDtT7gCg9oZEAVNnASBVsdghU4Jjw=",
+        "owner": "bendlang",
+        "repo": "bend",
+        "rev": "0e14aa8b3082e68f419320b2c785762de1d0577b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bendlang",
+        "repo": "bend",
+        "type": "github"
+      }
+    },
     "blueprint": {
       "inputs": {
         "nixpkgs": [
@@ -929,6 +949,7 @@
         "anthropic-skills": "anthropic-skills",
         "autoscreen": "autoscreen",
         "base16": "base16",
+        "bend": "bend",
         "blueprint": "blueprint",
         "cairn": "cairn",
         "covertone": "covertone",

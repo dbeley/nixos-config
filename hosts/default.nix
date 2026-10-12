@@ -207,6 +207,11 @@ let
         ../apps/python/python.nix
       ];
     };
+    bend = {
+      home = [
+        ../apps/bend/bend.nix
+      ];
+    };
     neovim-nvf = {
       home = [
         ../apps/neovim-nvf/neovim-nvf.nix
@@ -615,6 +620,7 @@ in
       "sops"
       "acme"
       # "cairn"
+      "bend"
     ];
   };
   nixos-era-nixflix = mkHost {

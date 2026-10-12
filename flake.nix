@@ -77,6 +77,12 @@
       # url = "github:SenchoPens/base16.nix?ref=refs/pull/19/head";
       url = "github:SenchoPens/base16.nix";
     };
+    bend = {
+      # Bend 2 (bendlang/bend), NOT nixpkgs' `bend` (that is the incompatible
+      # Bend 1). The upstream flake ships a prebuilt release binary.
+      url = "github:bendlang/bend";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix = {
       url = "github:nix-community/stylix";
       inputs = {
