@@ -109,6 +109,7 @@
       ".local/share/goose"
       ".local/share/HotlineMiami"
       ".local/share/IntoTheBreach"
+      ".local/share/jellyfin-desktop"
       ".local/share/keyrings"
       ".local/share/Monster Sanctuary"
       ".local/share/mpd"
