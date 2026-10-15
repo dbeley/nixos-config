@@ -11,9 +11,7 @@ let
   pgPort = 5432;
   pgUser = "bookorbit";
   pgDb = "bookorbit";
-  pgPasswordFile = config.sops.secrets."bookorbit_pg_password".path;
-  jwtSecretFile = config.sops.secrets."bookorbit_jwt_secret".path;
-  bootstrapTokenFile = config.sops.secrets."bookorbit_bootstrap_token".path;
+  bookorbitEnvFile = config.sops.secrets."bookorbit_env".path;
   dataDir = "/var/lib/bookorbit";
   pgDataDir = "${dataDir}/postgres";
   booksDir = "/mnt/nfs/WDC14_2/Books";
@@ -46,7 +44,7 @@ in
             POSTGRES_DB = pgDb;
             PGDATA = "/var/lib/postgresql/data/pgdata";
           };
-          environmentFiles = [ pgPasswordFile ];
+          environmentFiles = [ bookorbitEnvFile ];
           extraOptions = [ "--pull=newer" ];
         };
 
@@ -69,11 +67,7 @@ in
             APP_URL = "https://${bookorbitHost}";
             LIBRARY_BROWSE_ROOT = "/books";
           };
-          environmentFiles = [
-            pgPasswordFile
-            jwtSecretFile
-            bootstrapTokenFile
-          ];
+          environmentFiles = [ bookorbitEnvFile ];
           extraOptions = [
             "--pull=newer"
             "--network=host"
@@ -125,15 +119,5 @@ in
     443
   ];
 
-  sops.secrets =
-    let
-      mkSecret = _: {
-        sopsFile = ../../secrets/nixflix.yaml;
-      };
-    in
-    {
-      "bookorbit_pg_password" = mkSecret "bookorbit_pg_password";
-      "bookorbit_jwt_secret" = mkSecret "bookorbit_jwt_secret";
-      "bookorbit_bootstrap_token" = mkSecret "bookorbit_bootstrap_token";
-    };
+  sops.secrets."bookorbit_env".sopsFile = ../../secrets/nixflix.yaml;
 }

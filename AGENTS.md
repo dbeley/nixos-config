@@ -191,9 +191,7 @@ podman's `--env-file` both expect this format.
 
 | Secret | File | Required format |
 |--------|------|-----------------|
-| `bookorbit_pg_password` | `secrets/nixflix.yaml` | `POSTGRES_PASSWORD=<value>` |
-| `bookorbit_jwt_secret` | `secrets/nixflix.yaml` | `JWT_SECRET=<value>` |
-| `bookorbit_bootstrap_token` | `secrets/nixflix.yaml` | `SETUP_BOOTSTRAP_TOKEN=<value>` |
+| `bookorbit_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
 | `youtarr_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
 | `yamtrack_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
 | `navidrome_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
