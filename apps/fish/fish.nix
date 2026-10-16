@@ -58,6 +58,8 @@
           exec sway
         else if type -q niri-session
           exec niri-session
+        else if type -q desk-session
+          exec desk-session
         else if type -q Hyprland
           exec ${config.home.homeDirectory}/.local/bin/wrappedhl
         else

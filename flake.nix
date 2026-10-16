@@ -237,6 +237,12 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    desk = {
+      url = "github:dbeley/DEsk/nixos-support";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   outputs =

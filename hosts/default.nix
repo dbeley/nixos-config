@@ -146,6 +146,11 @@ let
         ../apps/kitty/kitty.nix
       ];
     };
+    desk = {
+      system = [
+        ../apps/desk/default.nix
+      ];
+    };
     steam = {
       system = [
         ../modules/common/xbox.nix
@@ -456,6 +461,7 @@ in
       "secure-boot"
       "workstation"
       "niri"
+      # "desk"
       "android-tools"
       "steam"
       # "firefox"
