@@ -6,7 +6,9 @@ let
     paths = [ llm.opencode2 ];
     buildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
-      wrapProgram $out/bin/opencode2 --set OPENCODE_ENABLE_EXA 1
+      wrapProgram $out/bin/opencode2 \
+        --set OPENCODE_ENABLE_EXA 1 \
+        --prefix PATH : ${pkgs.nodejs}/bin
     '';
   };
 in
@@ -35,9 +37,13 @@ in
             command = [
               "${pkgs.nodejs}/bin/npx"
               "-y"
-              "rea-agents@6.3.0"
+              "rea-agents@6.5.0"
               "mcp"
             ];
+            environment = {
+              GHIDRA_INSTALL_DIR = "${pkgs.ghidra}/lib/ghidra";
+              JAVA_HOME = "${pkgs.jdk21}/lib/openjdk";
+            };
             enabled = true;
           };
         };

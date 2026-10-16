@@ -109,7 +109,10 @@ in
         mcp_servers:
           rea:
             command: "${pkgs.nodejs}/bin/npx"
-            args: ["-y", "rea-agents@6.3.0", "mcp"]
+            args: ["-y", "rea-agents@6.5.0", "mcp"]
+            env:
+              GHIDRA_INSTALL_DIR: "${pkgs.ghidra}/lib/ghidra"
+              JAVA_HOME: "${pkgs.jdk21}/lib/openjdk"
             enabled: true
       '';
     };
