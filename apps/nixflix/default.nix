@@ -84,11 +84,11 @@ in
         apiKey._secret = secrets."prowlarr_api_key".path;
         hostConfig.password._secret = secrets."prowlarr_password".path;
         indexers = [
-          {
-            name = "RuTracker.org";
-            username._secret = secrets."rutracker_username".path;
-            password._secret = secrets."rutracker_password".path;
-          }
+          # {
+          #   name = "RuTracker.org";
+          #   username._secret = secrets."rutracker_username".path;
+          #   password._secret = secrets."rutracker_password".path;
+          # }
           {
             name = "The Pirate Bay";
           }
@@ -96,9 +96,9 @@ in
             name = "1337x";
             tags = [ "flaresolverr" ];
           }
-          {
-            name = "EZTV";
-          }
+          # {
+          #   name = "EZTV";
+          # }
           {
             name = "LimeTorrents";
           }

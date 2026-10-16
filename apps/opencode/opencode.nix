@@ -25,12 +25,6 @@ in
         share = "disabled";
         theme = "system";
         model = "opencode-go/deepseek-v4.1-flash";
-        plugins = [
-          # ponytail is disabled: it targets the V1 plugin API, and V1 plugins
-          # do not load in OpenCode V2. Re-enable once upstream ships a
-          # V2-compatible plugin.
-          # "${inputs.ponytail}/.opencode/plugins/ponytail.mjs"
-        ];
         mcp = {
           rea = {
             type = "local";
