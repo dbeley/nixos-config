@@ -13,8 +13,8 @@
     settings = {
       "%include" = config.sops.secrets."tor_identity".path;
       ORPort = [ 443 ];
-      BandwidthRate = "16 MB";
-      BandwidthBurst = "20 MB";
+      BandwidthRate = "30 MB";
+      BandwidthBurst = "45 MB";
     };
   };
 
