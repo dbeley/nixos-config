@@ -639,6 +639,7 @@ in
       "sops"
       "acme"
       "nixflix"
+      "podman"
       "youtarr"
       "bookorbit"
       "shelfmark"
