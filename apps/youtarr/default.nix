@@ -76,6 +76,8 @@ in
     "podman-youtarr-db" = {
       after = [ "sops-nix.service" ];
       requires = lib.mkIf config.sops.useSystemdActivation [ "sops-install-secrets.service" ];
+      startLimitBurst = 5;
+      startLimitIntervalSec = 120;
     };
     "podman-youtarr" = {
       after = [
@@ -87,6 +89,8 @@ in
         "podman-youtarr-db.service"
         "mnt-nfs.mount"
       ];
+      startLimitBurst = 5;
+      startLimitIntervalSec = 120;
     };
   };
 
