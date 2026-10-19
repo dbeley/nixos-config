@@ -51,6 +51,9 @@
       set -x VIRTUAL_ENV_DISABLE_PROMPT 1
       set -x EDITOR kak
       set -x IMG_VIEWER swayimg
+      if test -z "$DOCKER_HOST"; and test -S "$XDG_RUNTIME_DIR/docker.sock"
+        set -x DOCKER_HOST "unix://$XDG_RUNTIME_DIR/docker.sock"
+      end
     '';
     loginShellInit = ''
       if test (tty) = /dev/tty1

@@ -469,6 +469,7 @@ in
       "chromium"
       # "qutebrowser"
       # "mpd"
+      "docker"
       "thunderbird"
       "python"
       "code-agents"
