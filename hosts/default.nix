@@ -283,6 +283,11 @@ let
         ../apps/opencode/opencode.nix
       ];
     };
+    pi-web = {
+      system = [
+        ../apps/pi-web/default.nix
+      ];
+    };
     zeroclaw = {
       system = [
         ../apps/zeroclaw/default.nix
@@ -623,6 +628,7 @@ in
       "openssh-server"
       "hermes-server"
       "opencode-server"
+      "pi-web"
       "zeroclaw"
       "sops"
       "acme"
