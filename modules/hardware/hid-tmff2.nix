@@ -11,10 +11,17 @@ let
       stdenv,
       fetchFromGitHub,
       kernel,
+      kernelModuleMakeFlags,
     }:
     let
       kdir = "${kernel.dev}/lib/modules/${kernel.modDirVersion}/build";
       installDir = "kernel/drivers/hid";
+
+      # Same flags the kernel itself is built with, notably the `cmd_sign`
+      # override that makes `modules_install` sign each module with kmodigest
+      # and emit its per-module certificate (`*.ko.cer`). Without them the
+      # kernel modules aggregation fails on Linux >= 7.2.
+      makeFlags = lib.escapeShellArgs kernelModuleMakeFlags;
     in
     stdenv.mkDerivation (finalAttrs: {
       pname = "hid-tmff2";
@@ -32,7 +39,7 @@ let
 
       buildPhase = ''
         runHook preBuild
-        make KDIR=${kdir}
+        make KDIR=${kdir} ${makeFlags}
         runHook postBuild
       '';
 
@@ -40,11 +47,13 @@ let
         runHook preInstall
         make -C deps/hid-tminit \
           KDIR=${kdir} \
+          ${makeFlags} \
           INSTALL_MOD_PATH=$out \
           INSTALL_MOD_DIR=${installDir} \
           install
         make -C ${kdir} \
           M=$PWD \
+          ${makeFlags} \
           INSTALL_MOD_PATH=$out \
           INSTALL_MOD_DIR=${installDir} \
           modules_install

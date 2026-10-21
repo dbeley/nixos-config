@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   ...
 }:
 {
@@ -19,6 +20,29 @@
             [ "meson test --no-rebuild --print-errorlogs --timeout-multiplier=0" ]
             old.checkPhase;
       });
+    })
+    # openrazer installs `driver/*.ko` by hand instead of going through
+    # `modules_install`, so the per-module signing certificate (`*.ko.cer`)
+    # that the kernel build emits for each module is never installed. Since
+    # Linux 7.2 the kernel modules aggregation merges those certificates and
+    # fails when they are missing:
+    #   cat: kernel/drivers/hid/razerkbd.ko.cer: No such file or directory
+    # Sign the modules the same way the kernel does (`cmd_sign = kmodigest $@`).
+    # cf. https://github.com/NixOS/nixpkgs/pull/575818
+    (_final: prev: {
+      linuxPackages_latest = prev.linuxPackages_latest.extend (
+        _kfinal: kprev: {
+          openrazer = kprev.openrazer.overrideAttrs (old: {
+            postInstall =
+              (old.postInstall or "")
+              + lib.optionalString (prev ? kmodigest) ''
+                for module in "$out"/lib/modules/*/kernel/drivers/hid/*.ko; do
+                  ${lib.getExe prev.kmodigest} "$module"
+                done
+              '';
+          });
+        }
+      );
     })
     # (_: super: {
     # # to fix zoom memory leak, working version found here https://github.com/NixOS/nixpkgs/pull/361097
