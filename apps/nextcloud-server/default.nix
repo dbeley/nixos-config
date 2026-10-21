@@ -1,12 +1,10 @@
 {
   config,
-  user,
   domain,
   ...
 }:
 let
   hostName = "nextcloud.${domain}";
-  inherit (config.sops) secrets;
 in
 {
   services.nextcloud = {
@@ -14,9 +12,12 @@ in
     inherit hostName;
     https = true;
 
+    # No admin user is created by the module anymore. On a fresh install,
+    # create it manually. nextcloud-occ re-execs itself as the `nextcloud`
+    # user and only forwards NC_PASS/OC_PASS, so no sudo needed:
+    #   NC_PASS='<strong-password>' nextcloud-occ user:add admin --password-from-env
+    #   nextcloud-occ group:adduser admin admin
     config = {
-      adminuser = user;
-      adminpassFile = secrets."nextcloud_admin_password".path;
       dbtype = "pgsql";
       dbname = "nextcloud";
       dbuser = "nextcloud";
@@ -55,11 +56,5 @@ in
   services.nginx.virtualHosts.${hostName} = {
     useACMEHost = domain;
     forceSSL = true;
-  };
-
-  sops.secrets = {
-    "nextcloud_admin_password" = {
-      sopsFile = ../../secrets/nextcloud.yaml;
-    };
   };
 }
