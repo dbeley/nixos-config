@@ -172,6 +172,7 @@ in
         };
       };
       environmentFile = config.sops.secrets."navidrome_env".path;
+      plugins.lyrics.enable = true;
       settings = {
         MusicFolder = "/mnt/nfs/WDC14/Musique/";
         LastFM.Enabled = true;
