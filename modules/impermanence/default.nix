@@ -91,6 +91,7 @@
       ".config/openmw"
       ".config/restic"
       ".config/rclone"
+      ".config/thunderbird"
       ".config/unity3d"
       ".config/Mullvad VPN"
       ".config/sops"
