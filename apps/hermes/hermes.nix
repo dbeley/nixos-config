@@ -5,8 +5,6 @@
   ...
 }:
 let
-  llm = inputs.llm-agents.packages.${pkgs.system};
-
   skills = builtins.listToAttrs (
     builtins.concatLists [
       # superpowers (from obra-superpowers)
@@ -100,7 +98,7 @@ let
 in
 {
   home = {
-    packages = [ llm.hermes-agent ];
+    packages = [ pkgs.hermes-agent ];
 
     sessionVariables.HERMES_MANAGED_DIR = "${config.home.homeDirectory}/.hermes/managed";
 

@@ -44,6 +44,20 @@
         }
       );
     })
+    # hermes-agent (python >= 3.14 markers) pins prompt_toolkit==3.0.52 and
+    # Markdown==3.10.2, but nixpkgs already ships 3.0.53 / 3.10.3, so
+    # pythonRuntimeDepsCheck fails at build time. Upstream llm-agents only
+    # relaxes some pins; relax these two as well (patch-level bumps).
+    (_final: prev: {
+      hermes-agent =
+        inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.hermes-agent.overridePythonAttrs
+          (old: {
+            pythonRelaxDeps = (old.pythonRelaxDeps or [ ]) ++ [
+              "prompt_toolkit"
+              "markdown"
+            ];
+          });
+    })
     # (_: super: {
     # # to fix zoom memory leak, working version found here https://github.com/NixOS/nixpkgs/pull/361097
     # zoom-us = super.zoom-us.overrideAttrs (oldAttrs: {

@@ -69,7 +69,7 @@ let
   # Hermes discovers user memory providers at $HERMES_HOME/plugins/<name>/
   # (directory scan, not entry points), and the plugin imports both packages
   # absolutely, so both must live in hermes-agent's site-packages.
-  hermesAgent = inputs.llm-agents.packages.${pkgs.system}.hermes-agent.overridePythonAttrs (old: {
+  hermesAgent = pkgs.hermes-agent.overridePythonAttrs (old: {
     dependencies = old.dependencies ++ [
       mnemosyne
       mnemosyne-hermes
