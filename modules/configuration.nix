@@ -93,6 +93,7 @@
       "networkmanager"
       "wheel"
       "video"
+      "dialout"
     ];
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
