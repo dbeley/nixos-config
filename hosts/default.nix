@@ -75,6 +75,7 @@ let
         ../apps/editorconfig/editorconfig.nix
         ../apps/fish/fish.nix
         ../apps/git/git.nix
+        ../apps/glow/glow.nix
         # ../apps/helix/helix.nix
         ../apps/kakoune/kakoune.nix
         # ../apps/impulse/impulse.nix
