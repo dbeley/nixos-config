@@ -118,7 +118,7 @@
       ".local/share/opencode"
       ".local/share/openmw"
       ".local/share/qutebrowser/sessions"
-
+      ".local/share/sc4pac"
       ".local/share/Steam"
       ".local/share/zoxide"
       ".local/state/noctalia"
