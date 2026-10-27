@@ -61,6 +61,12 @@ let
         ../modules/common/fail2ban.nix
       ];
     };
+    # Common to every Proxmox/Kimsufi guest (no physical hardware to drive).
+    vm-guest = {
+      system = [
+        ../modules/common/vm-guest.nix
+      ];
+    };
     # Profile to use on all desktops/laptops i.e. not servers
     workstation = {
       system = [
@@ -596,6 +602,7 @@ in
     stateVersion = "26.11";
     profiles = [
       "bootloader-grub-bios"
+      "vm-guest"
       "openssh-server"
       "qbittorrent"
     ];
@@ -605,6 +612,7 @@ in
     stateVersion = "26.11";
     profiles = [
       "bootloader-grub-bios"
+      "vm-guest"
       "openssh-server"
       "sops"
       "tor-relay"
@@ -615,6 +623,7 @@ in
     stateVersion = "26.11";
     profiles = [
       "bootloader-grub-bios"
+      "vm-guest"
       "openssh-server"
       "docker"
       "archiveteam-warrior"
@@ -626,6 +635,7 @@ in
     domain = "agents.home.dbeley.ovh";
     profiles = [
       "bootloader-grub-bios"
+      "vm-guest"
       "openssh-server"
       "hermes-server"
       "opencode-server"
@@ -643,6 +653,7 @@ in
     domain = "nixflix.home.dbeley.ovh";
     profiles = [
       "bootloader-grub-bios"
+      "vm-guest"
       "openssh-server"
       "sops"
       "acme"
@@ -659,6 +670,7 @@ in
     stateVersion = "26.05";
     profiles = [
       "bootloader-grub-bios"
+      "vm-guest"
       "openssh-server"
       "adguard-home"
       "sops"
@@ -670,6 +682,7 @@ in
     stateVersion = "26.11";
     profiles = [
       "bootloader-grub-bios"
+      "vm-guest"
       "openssh-server"
       "nextcloud-server"
       "sops"
@@ -681,6 +694,7 @@ in
     stateVersion = "26.11";
     profiles = [
       "bootloader-grub-bios"
+      "vm-guest"
       "openssh-server"
       "sops"
       "acme"
@@ -693,6 +707,7 @@ in
     domain = "homelab.home.dbeley.ovh";
     profiles = [
       "bootloader-grub-bios"
+      "vm-guest"
       "openssh-server"
       "sops"
       "acme"

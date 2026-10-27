@@ -17,7 +17,6 @@
     };
     mangohud.enable = false;
     gnome.enable = true;
-    nixvim.enable = true;
     mpv.enable = false;
   };
 }

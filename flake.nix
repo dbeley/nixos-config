@@ -11,12 +11,6 @@
         systems.follows = "systems";
       };
     };
-    gitignore = {
-      url = "github:hercules-ci/gitignore.nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs = {
@@ -47,14 +41,6 @@
         flake-parts.follows = "flake-parts";
       };
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        systems.follows = "systems";
-      };
-    };
     nvf = {
       url = "github:notashelf/nvf";
       inputs = {
@@ -63,12 +49,6 @@
     };
     disko = {
       url = "github:nix-community/disko";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-    devshell = {
-      url = "github:numtide/devshell";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
@@ -136,13 +116,6 @@
       url = "github:Kyure-A/agent-skills-nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-      };
-    };
-    blueprint = {
-      url = "github:numtide/blueprint";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
       };
     };
     anthropic-skills = {

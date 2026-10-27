@@ -21,7 +21,7 @@
 - **`apps/`** - Reusable application and desktop environment modules (102 directories, 116 .nix files total)
   - Desktop environments: `gnome/`, `niri/`, `sway/`
   - Terminals: `alacritty/`, `ghostty/`, `kitty/`
-  - Editors: `editorconfig/`, `emacs/`, `helix/`, `kakoune/`, `neovim-nixvim/`, `neovim-nvf/`, `nvim/`, `vscode/`
+  - Editors: `editorconfig/`, `emacs/`, `helix/`, `kakoune/`, `neovim-nvf/`, `nvim/`, `vscode/`
   - Browsers: `firefox/`, `qutebrowser/`, `ungoogled-chromium/`, `zen-browser/`
   - `floccus` bookmark sync extension installed in firefox, zen-browser (AMO xpi) and chromium (GitHub crx)
   - Code agents: `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `goose/`, `hermes/`, `oh-my-opencode/`, `oh-my-pi/`, `opencode/`, `openskills/`, `pi/`, `rtk/`

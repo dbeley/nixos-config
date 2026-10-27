@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   pkgs,
-  inputs,
   lib,
   user,
   hostName,
@@ -109,11 +108,15 @@
 
   environment.systemPackages = with pkgs; [
     nfs-utils
+    rsync
+    strace
   ];
+  environment.defaultPackages = [ ];
 
   programs = {
     nix-ld.enable = true;
     command-not-found.enable = false;
+    nano.enable = false;
     nh = {
       enable = true;
       clean = {
@@ -130,24 +133,29 @@
         "nix-command"
         "flakes"
       ];
-      keep-outputs = true;
-      keep-derivations = true;
+      # Do not retain build-time outputs/derivations. They made ~96% of the store
+      # unreclaimable; nh clean can now actually free space.
+      keep-outputs = false;
+      keep-derivations = false;
       trusted-users = [
         "root"
         user
       ];
-      nix-path = lib.mkForce [ "nixpkgs=/etc/nix/inputs/nixpkgs" ];
       auto-optimise-store = true;
       warn-dirty = false;
       fallback = true;
       connect-timeout = 10;
       download-attempts = 3;
     };
-    registry.nixpkgs.flake = inputs.nixpkgs;
     channel.enable = false;
   };
 
-  environment.etc."nix/inputs/nixpkgs".source = inputs.nixpkgs;
+  documentation = {
+    doc.enable = false;
+    dev.enable = false;
+    info.enable = false;
+    nixos.enable = false;
+  };
 
   zramSwap = {
     enable = true;
