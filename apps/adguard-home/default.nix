@@ -10,8 +10,9 @@ in
   services = {
     adguardhome = {
       enable = true;
-      port = 3000;
-      settings = { };
+      settings = {
+        http.address = 3000;
+      };
     };
 
     nginx = {
