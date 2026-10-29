@@ -46,7 +46,7 @@
 - Secrets management with `sops-nix`
 - Configuration for common hardware with `nixos-hardware`
 - AI code agent ecosystem (`opencode`, [`openskills`](./apps/openskills/), [`opencode-server`](./apps/opencode-server/), [`zeroclaw`](./apps/zeroclaw/), [`hermes-server`](./apps/hermes-server/))
-- Self-hosted tools to be deployed on servers ([`immich`](./apps/immich), [`nextcloud`](./apps/nextcloud), [`youtarr`](./apps/youtarr), [`yamtrack`](./apps/yamtrack), [`paperless-ngx`](./apps/paperless-ngx), etc. cf. proxmox hosts definitions)
+- Self-hosted tools to be deployed on servers ([`immich`](./apps/immich), [`nextcloud-server`](./apps/nextcloud-server), [`youtarr`](./apps/youtarr), [`yamtrack`](./apps/yamtrack), [`paperless-ngx`](./apps/paperless-ngx), etc. cf. proxmox hosts definitions)
 - Declarative [nixflix stack](./apps/nixflix/) cf. [nixflix](https://github.com/kiriwalawren/nixflix)
 - Automatic development shells with `direnv` and `shell.nix`
 - My own custom packages including [`autoscreen`](./apps/autoscreen/) (tool to take screenshots randomly each hour), [`mpdscrobble`](./apps/mpdscrobble/) (utility to send MPD listening history to Last.fm) and [`symmetri`](./apps/symmetri/) (custom system metrics collection service)
@@ -60,7 +60,7 @@
 - **p14sg6**: Lenovo ThinkPad P14s Gen 6 (AMD Ryzen AI 7 350, 32GB RAM, niri, impermanence)
 - **cf-qv1**: Panasonic Let's Note CF-QV1 (Intel Core i5-1145G7, 16GB RAM, niri, impermanence)
 - **sg13**: Silverstone SG13 (AMD Ryzen 9 5950X, RTX 3070, 32GB RAM, gnome)
-- **x1yoga**: Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, 8GB RAM, gnome, impermanence)
+- **x1yoga**: Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, 8GB RAM, niri, impermanence)
 
 <details>
 
@@ -78,14 +78,15 @@
 ### Proxmox Kimsufi VMs (Dedicated Server)
 - **nixos-kimsufi-qbittorrent**: qbittorrent
 - **nixos-kimsufi-tor**: non-exit Tor relay
+- **nixos-kimsufi-warrior**: ArchiveTeam Warrior
 
 ### Proxmox Era VMs (Home Server)
-- **nixos-era-agents**: LLM agent web UIs (hermes-webui, opencode web, zeroclaw)
-- **nixos-era-nixflix**: nixflix (arr stack, jellyfin, navidrome) + youtarr, bookorbit, shelfmark
+- **nixos-era-agents**: LLM agent web UIs (hermes-webui + mnemosyne, opencode web, pi-web, zeroclaw, bend)
+- **nixos-era-nixflix**: nixflix (arr stack, jellyfin, navidrome) + youtarr, bookorbit, shelfmark, yamtrack
 - **nixos-era-adguard**: adguard-home
 - **nixos-era-nextcloud**: nextcloud
 - **nixos-era-immich**: immich
-- **nixos-era-homelab**: generic host for other self-hosted tools (slskd, covertone, maloja, paperless, jellyfin, trek, etc.)
+- **nixos-era-homelab**: generic host for other self-hosted tools (jellyfin, paperless-ngx, trek, maloja, covertone, stave)
 
 ## Common Usage
 
@@ -122,7 +123,7 @@ nix-shell -p just nh
 For the recipes to work properly, create a `.env` file and fill it with the needed environment variables:
 
 ```
-HOST=x13
+HOST=p14sg6
 ```
 
 ```
