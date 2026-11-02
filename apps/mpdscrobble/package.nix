@@ -15,8 +15,10 @@ buildPythonApplication rec {
     httpx
   ];
 
-  # No tests included
-  doCheck = false;
+  nativeCheckInputs = [ pytestCheckHook ];
+  # The sdist ships the tests but not the `mock_pylast_session_key_generator`
+  # fixture they use, so skip the one file that needs it.
+  disabledTestPaths = [ "tests/test_mpdscrobble_lastfm.py" ];
   pythonImportsCheck = [ "mpdscrobble" ];
   pyproject = true;
   build-system = [ setuptools ];
@@ -24,7 +26,7 @@ buildPythonApplication rec {
   meta = with lib; {
     homepage = "https://github.com/dbeley/mpdscrobble";
     description = "A simple Last.fm scrobbler for MPD.";
-    license = licenses.gpl3;
+    license = licenses.mit;
     platforms = [ "x86_64-linux" ];
     maintainers = [ ];
   };
