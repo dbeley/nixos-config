@@ -9,9 +9,9 @@
       enable = true;
       zimFiles = {
         wikipedia = {
-          filename = "wikipedia_en_top_maxi_2026-06.zim";
-          url = "https://lb.download.kiwix.org/zim/wikipedia/wikipedia_en_top_maxi_2026-06.zim";
-          sha256 = "sha256-02cwhdjz0ccm387mwiad9914hx3q3f8x2ylisqd58v82krc5si8v=";
+          filename = "wikipedia_en_top_maxi_2026-09.zim";
+          url = "https://lb.download.kiwix.org/zim/wikipedia/wikipedia_en_top_maxi_2026-09.zim";
+          sha256 = "sha256-fAjSp1V+9+PadRu0KdCB4cfIlx5Q/uT+8JcCGgPqawo=";
         };
       };
     };
