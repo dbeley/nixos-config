@@ -556,7 +556,6 @@ in
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       ../modules/common/screen-rotation.nix
       ../modules/hardware/razer-naga.nix
-      ../modules/hardware/throttled.nix
       ../hosts/x1yoga/throttled.nix
       ../hosts/x1yoga/thinkfan.nix
       ../hosts/x1yoga/memory.nix
