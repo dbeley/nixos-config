@@ -508,7 +508,6 @@ in
       "laptop"
       "impermanence"
       "secure-boot"
-      # "bootloader-systemd-boot"
       "workstation"
       "niri"
       "android-tools"

@@ -11,7 +11,7 @@ in
     adguardhome = {
       enable = true;
       settings = {
-        http.address = 3000;
+        http.address = "0.0.0.0:3000";
       };
     };
 
