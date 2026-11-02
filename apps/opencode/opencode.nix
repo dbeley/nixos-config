@@ -1,21 +1,17 @@
 { inputs, pkgs, ... }:
 let
   llm = inputs.llm-agents.packages.${pkgs.system};
-  opencode-wrapped = pkgs.symlinkJoin {
-    name = "opencode-wrapped";
-    paths = [ llm.opencode2 ];
-    buildInputs = [ pkgs.makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/opencode2 \
-        --set OPENCODE_ENABLE_EXA 1 \
-        --prefix PATH : ${pkgs.nodejs}/bin
-    '';
-  };
+  # `npx` is a JS script with a `#!/usr/bin/env node` shebang, so node must be
+  # on PATH when the REA MCP server starts.
+  rea-mcp = pkgs.writeShellScript "rea-mcp" ''
+    export PATH=${pkgs.nodejs}/bin:$PATH
+    exec ${pkgs.nodejs}/bin/npx -y rea-agents@6.5.0 mcp "$@"
+  '';
 in
 {
   imports = [ inputs.agent-skills.homeManagerModules.default ];
   home.packages = [
-    opencode-wrapped
+    llm.opencode2
   ];
   xdg.configFile = {
     "opencode/opencode.json" = {
@@ -28,12 +24,7 @@ in
         mcp = {
           rea = {
             type = "local";
-            command = [
-              "${pkgs.nodejs}/bin/npx"
-              "-y"
-              "rea-agents@6.5.0"
-              "mcp"
-            ];
+            command = [ "${rea-mcp}" ];
             environment = {
               GHIDRA_INSTALL_DIR = "${pkgs.ghidra}/lib/ghidra";
               JAVA_HOME = "${pkgs.jdk21}/lib/openjdk";
