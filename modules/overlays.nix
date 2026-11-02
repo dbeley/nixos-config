@@ -6,6 +6,12 @@
   # overlays that should apply to all hosts (to fix build, fix bugs, etc.)
   nixpkgs.overlays = [
     inputs.nur.overlays.default
+    # hermes-agent is not in nixpkgs; expose llm-agents' package as
+    # `pkgs.hermes-agent` (used by apps/hermes-server). Its pythonRelaxDeps
+    # already covers the nixpkgs version bumps, so no extra patching here.
+    (_final: prev: {
+      hermes-agent = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.hermes-agent;
+    })
     # (_: super: {
     # # to fix zoom memory leak, working version found here https://github.com/NixOS/nixpkgs/pull/361097
     # zoom-us = super.zoom-us.overrideAttrs (oldAttrs: {
