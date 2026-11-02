@@ -21,14 +21,14 @@
 }:
 
 let
-  version = "0.12.2";
+  version = "0.13.0";
 
   src = runCommand "pi-web-${version}-src" { nativeBuildInputs = [ jq ]; } ''
     mkdir -p $out
     tar -xzf ${
       fetchurl {
         url = "https://registry.npmjs.org/@agegr/pi-web/-/pi-web-${version}.tgz";
-        hash = "sha256-Fq/g7h/2O5VCmtc4AtE+U6L4MXJGQT7Ri5L3s2/YbGo=";
+        hash = "sha256-3ucPpk7VL7MgUd/EurrCh678ikr1TD0ZAMUeY03t6T0=";
       }
     } -C $out --strip-components=1
     jq 'del(.devDependencies)' $out/package.json > $out/package.json.new
@@ -40,7 +40,7 @@ buildNpmPackage {
   pname = "pi-web";
   inherit version src;
 
-  npmDepsHash = "sha256-K1ZBtK8YFOZNJIAh+Hm760RrFCt/Yo+89mUzsBZinQk=";
+  npmDepsHash = "sha256-bzngO4dzZXgF2/XKiVoSAmsBcIBiRO5HZqFz3DX7HoQ=";
   nodejs = nodejs_22;
 
   dontNpmBuild = true;

@@ -107,7 +107,6 @@ in
         environment = {
           HOME = "/home/${cfg.user}";
           PI_WEB_NO_OPEN = "1";
-          PI_WEB_SKIP_VERSION_CHECK = "1";
         }
         // lib.optionalAttrs (allowedHostnames != [ ]) {
           PI_WEB_ALLOWED_HOSTS = lib.concatStringsSep "," allowedHostnames;
