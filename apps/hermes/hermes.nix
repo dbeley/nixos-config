@@ -5,6 +5,8 @@
   ...
 }:
 let
+  rea-mcp = import ../rea-mcp/package.nix { inherit pkgs; };
+
   skills = builtins.listToAttrs (
     builtins.concatLists [
       # superpowers (from obra-superpowers)
@@ -106,8 +108,7 @@ in
       ".hermes/managed/config.yaml".text = ''
         mcp_servers:
           rea:
-            command: "${pkgs.nodejs}/bin/npx"
-            args: ["-y", "rea-agents@6.5.0", "mcp"]
+            command: "${rea-mcp}"
             env:
               GHIDRA_INSTALL_DIR: "${pkgs.ghidra}/lib/ghidra"
               JAVA_HOME: "${pkgs.jdk21}/lib/openjdk"

@@ -1,12 +1,7 @@
 { inputs, pkgs, ... }:
 let
   llm = inputs.llm-agents.packages.${pkgs.system};
-  # `npx` is a JS script with a `#!/usr/bin/env node` shebang, so node must be
-  # on PATH when the REA MCP server starts.
-  rea-mcp = pkgs.writeShellScript "rea-mcp" ''
-    export PATH=${pkgs.nodejs}/bin:$PATH
-    exec ${pkgs.nodejs}/bin/npx -y rea-agents@6.5.0 mcp "$@"
-  '';
+  rea-mcp = import ../rea-mcp/package.nix { inherit pkgs; };
 in
 {
   imports = [ inputs.agent-skills.homeManagerModules.default ];
