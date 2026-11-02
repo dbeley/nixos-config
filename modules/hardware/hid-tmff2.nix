@@ -1,78 +1,24 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
   cfg = config.hardware.hid-tmff2;
-  hidTmff2Package = config.boot.kernelPackages.callPackage (
-    {
-      lib,
-      stdenv,
-      fetchFromGitHub,
-      kernel,
-      kernelModuleMakeFlags,
-    }:
-    let
-      kdir = "${kernel.dev}/lib/modules/${kernel.modDirVersion}/build";
-      installDir = "kernel/drivers/hid";
 
-      # Same flags the kernel itself is built with, notably the `cmd_sign`
-      # override that makes `modules_install` sign each module with kmodigest
-      # and emit its per-module certificate (`*.ko.cer`). Without them the
-      # kernel modules aggregation fails on Linux >= 7.2.
-      makeFlags = lib.escapeShellArgs kernelModuleMakeFlags;
-    in
-    stdenv.mkDerivation (finalAttrs: {
-      pname = "hid-tmff2";
-      version = "unstable-2026-08-25";
-
-      src = fetchFromGitHub {
-        owner = "Kimplul";
-        repo = "hid-tmff2";
-        rev = "d890a93105a0aa52028ac49282fa1b579e12566e";
-        sha256 = "sha256-+fK+rCvlZyDxxcuwGkq8KmhK2C5eHu4atBmdpsaIfRo=";
-        fetchSubmodules = true;
-      };
-
-      nativeBuildInputs = kernel.moduleBuildDependencies;
-
-      buildPhase = ''
-        runHook preBuild
-        make KDIR=${kdir} ${makeFlags}
-        runHook postBuild
-      '';
-
-      installPhase = ''
-        runHook preInstall
-        make -C deps/hid-tminit \
-          KDIR=${kdir} \
-          ${makeFlags} \
-          INSTALL_MOD_PATH=$out \
-          INSTALL_MOD_DIR=${installDir} \
-          install
-        make -C ${kdir} \
-          M=$PWD \
-          ${makeFlags} \
-          INSTALL_MOD_PATH=$out \
-          INSTALL_MOD_DIR=${installDir} \
-          modules_install
-        runHook postInstall
-      '';
-
-      passthru = {
-        inherit (finalAttrs) src;
-        udevRules = "${finalAttrs.src}/udev/71-thrustmaster-steamdeck.rules";
-      };
-
-      meta = with lib; {
-        description = "Linux kernel module that improves force feedback for Thrustmaster wheels";
-        homepage = "https://github.com/Kimplul/hid-tmff2";
-        license = licenses.gpl3Plus;
-        platforms = platforms.linux;
-      };
-    })
-  ) { };
+  # nixpkgs' derivation is still on an older upstream revision; override just
+  # the source to keep the more recent force-feedback precision fixes.
+  hidTmff2Package = config.boot.kernelPackages.hid-tmff2.overrideAttrs (_old: {
+    version = "unstable-2026-08-25";
+    src = pkgs.fetchFromGitHub {
+      owner = "Kimplul";
+      repo = "hid-tmff2";
+      rev = "d890a93105a0aa52028ac49282fa1b579e12566e";
+      hash = "sha256-+fK+rCvlZyDxxcuwGkq8KmhK2C5eHu4atBmdpsaIfRo=";
+      fetchSubmodules = true;
+    };
+  });
 in
 {
   options.hardware.hid-tmff2 = {
@@ -94,7 +40,7 @@ in
 
   config = lib.mkIf cfg.enable (
     let
-      udevRules = builtins.readFile cfg.package.passthru.udevRules;
+      udevRules = builtins.readFile "${cfg.package.src}/udev/71-thrustmaster-steamdeck.rules";
     in
     {
       boot = {
