@@ -528,7 +528,6 @@ in
         my.stylix.wallpaper = "cf-qv1";
         disko.mainDisk = "/dev/nvme0n1";
       }
-      ../modules/common/laptop-thermald.nix
       ../modules/common/screen-rotation.nix
     ];
   };

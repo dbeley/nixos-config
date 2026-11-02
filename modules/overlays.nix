@@ -1,63 +1,11 @@
 {
   inputs,
-  lib,
   ...
 }:
 {
   # overlays that should apply to all hosts (to fix build, fix bugs, etc.)
   nixpkgs.overlays = [
     inputs.nur.overlays.default
-    # gtksourceview ships its own checkPhase calling `meson test` directly,
-    # bypassing the `--timeout-multiplier=0` the meson setup hook adds. Under
-    # load, test-language-specs then hits meson's 30s default and is killed,
-    # failing the build (gtksourceview -> libspelling -> papers).
-    # cf. https://github.com/NixOS/nixpkgs/issues/469034
-    (_final: prev: {
-      gtksourceview5 = prev.gtksourceview5.overrideAttrs (old: {
-        checkPhase =
-          builtins.replaceStrings
-            [ "meson test --no-rebuild --print-errorlogs" ]
-            [ "meson test --no-rebuild --print-errorlogs --timeout-multiplier=0" ]
-            old.checkPhase;
-      });
-    })
-    # openrazer installs `driver/*.ko` by hand instead of going through
-    # `modules_install`, so the per-module signing certificate (`*.ko.cer`)
-    # that the kernel build emits for each module is never installed. Since
-    # Linux 7.2 the kernel modules aggregation merges those certificates and
-    # fails when they are missing:
-    #   cat: kernel/drivers/hid/razerkbd.ko.cer: No such file or directory
-    # Sign the modules the same way the kernel does (`cmd_sign = kmodigest $@`).
-    # cf. https://github.com/NixOS/nixpkgs/pull/575818
-    (_final: prev: {
-      linuxPackages_latest = prev.linuxPackages_latest.extend (
-        _kfinal: kprev: {
-          openrazer = kprev.openrazer.overrideAttrs (old: {
-            postInstall =
-              (old.postInstall or "")
-              + lib.optionalString (prev ? kmodigest) ''
-                for module in "$out"/lib/modules/*/kernel/drivers/hid/*.ko; do
-                  ${lib.getExe prev.kmodigest} "$module"
-                done
-              '';
-          });
-        }
-      );
-    })
-    # hermes-agent (python >= 3.14 markers) pins prompt_toolkit==3.0.52 and
-    # Markdown==3.10.2, but nixpkgs already ships 3.0.53 / 3.10.3, so
-    # pythonRuntimeDepsCheck fails at build time. Upstream llm-agents only
-    # relaxes some pins; relax these two as well (patch-level bumps).
-    (_final: prev: {
-      hermes-agent =
-        inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system}.hermes-agent.overridePythonAttrs
-          (old: {
-            pythonRelaxDeps = (old.pythonRelaxDeps or [ ]) ++ [
-              "prompt_toolkit"
-              "markdown"
-            ];
-          });
-    })
     # (_: super: {
     # # to fix zoom memory leak, working version found here https://github.com/NixOS/nixpkgs/pull/361097
     # zoom-us = super.zoom-us.overrideAttrs (oldAttrs: {

@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   user,
   ...
 }:
@@ -32,14 +31,5 @@
     "browser.cache.memory.capacity" = 65536;
     "browser.tabs.unloadOnLowMemory" = true;
     "media.memory_cache_max_size" = 8192;
-  };
-
-  dconf.settings = {
-    "org/gnome/desktop/a11y/applications" = {
-      screen-keyboard-enabled = lib.mkForce true;
-    };
-    "org/gnome/desktop/interface" = {
-      toolkit-accessibility = lib.mkForce true;
-    };
   };
 }

@@ -232,7 +232,12 @@ in
     };
   };
 
+  # qbittorrent/sonarr/radarr/lidarr deliberately share uid 274, so the
+  # duplicate-uid check has to be relaxed.
   users.enforceIdUniqueness = false;
+  # nixflix's qbittorrent module tries to set this uid from
+  # nixflix.globals.uids, but writes `mkForce { ... } // optionalAttrs ...`
+  # (the uid ends up outside the mkForce and is dropped), so set it here too.
   users.users.qbittorrent = lib.mkForce {
     group = "media";
     isSystemUser = true;

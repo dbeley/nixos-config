@@ -3,7 +3,6 @@
   inputs,
   lib,
   modulesPath,
-  pkgs,
   ...
 }:
 
@@ -41,14 +40,6 @@
 
   # Unlock GPU overdrive/performance tuning for Radeon 860M (RDNA 3.5)
   hardware.amdgpu.overdrive.enable = true;
-
-  services.ollama = {
-    package = lib.mkForce pkgs.ollama-rocm;
-    rocmOverrideGfx = lib.mkForce "11.5.0";
-    environmentVariables = {
-      OLLAMA_CONTEXT_LENGTH = "64000";
-    };
-  };
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 }
