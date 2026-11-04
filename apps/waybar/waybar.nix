@@ -6,12 +6,24 @@
 }:
 let
   brightness-script = pkgs.writeShellScript "brightness" ''
-    brightnessctl s "$1"
-    PCT=$(brightnessctl -m | cut -d, -f4 | tr -d '%')
-    notify-send -t 500 "BRI ''${PCT}%" \
+    ${pkgs.brightnessctl}/bin/brightnessctl s "$1"
+    PCT=$(${pkgs.brightnessctl}/bin/brightnessctl -m | cut -d, -f4 | tr -d '%')
+    ${pkgs.libnotify}/bin/notify-send -t 500 "BRI ''${PCT}%" \
       -h string:x-canonical-private-synchronous:brightness \
       -h int:value:"''${PCT}"
   '';
+  scripts = "${config.home.homeDirectory}/scripts";
+  colors = config.lib.stylix.colors.withHashtag;
+  style = pkgs.replaceVars ./waybar.css {
+    inherit (colors)
+      base00
+      base01
+      base03
+      base05
+      base0C
+      ;
+    font = config.stylix.fonts.monospace.name;
+  };
 in
 {
   home.packages = with pkgs; [
@@ -42,11 +54,11 @@ in
         ];
         modules-center = [ "clock" ];
         modules-right = [
-          "network"
+          # "network"
           # "cpu"
           # "memory"
           # "temperature"
-          "pulseaudio"
+          "wireplumber"
           "battery"
           "tray"
         ];
@@ -55,7 +67,7 @@ in
         };
         mpd = {
           "max-length" = 30;
-          "format" = "<span foreground='#1da0c3'></span>  {artist} - {title}";
+          "format" = "<span foreground='${colors.base0C}'></span>  {artist} - {title}";
           "format-paused" = "  {artist} - {title}";
           "format-stopped" = "";
           "format-disconnected" = "";
@@ -68,19 +80,12 @@ in
         };
         wireplumber = {
           "tooltip" = false;
-          "format" = "VOL {volume}%";
-          "format-muted" = "VOL mute";
-        };
-        pulseaudio = {
-          "tooltip" = false;
           "scroll-step" = 5;
-          "on-click" = "";
           "format" = "VOL {volume}%";
           "format-muted" = "VOL mute";
         };
         battery = {
-          "format" = "BAT {capacity}%  ";
-          "on-click" = "";
+          "format" = "BAT {capacity}%";
           "states" = {
             "warning" = 30;
             "critical" = 15;
@@ -88,9 +93,9 @@ in
           "tooltip-format" = "{timeTo} ({power}W, {health}%)";
         };
         clock = {
-          "interval" = 1;
-          "format" = "{:%a %d %b %H:%M:%S}";
-          "format-alt" = "{:%H:%M}";
+          "interval" = 60;
+          "format" = "{:%H:%M}";
+          "format-alt" = "{:L%a %d %b %H:%M}";
           "locale" = "fr_FR.UTF-8";
           "timezone" = "Europe/Paris";
           "tooltip-format" = "<tt><small>{calendar}</small></tt>";
@@ -102,7 +107,7 @@ in
             "format" = {
               "months" = "<span color='#ffead3'><b>{}</b></span>";
               "days" = "<span color='#ecc6d9'><b>{}</b></span>";
-              "weeks" = "<span color='#99ffdd'><b>W{}</b></span>";
+              "weeks" = "<span color='#99ffdd'><b>S{}</b></span>";
               "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
               "today" = "<span color='#ff6699'><b><u>{}</u></b></span>";
             };
@@ -117,22 +122,18 @@ in
         };
         cpu = {
           "format" = "CPU {usage}%";
-          "on-click" = "";
           "tooltip" = false;
         };
         memory = {
-          "on-click" = "";
           "format" = "RAM {}%";
         };
         temperature = {
-          "on-click" = "";
           "format" = " {temperatureC}°C";
         };
         network = {
           "tooltip" = true;
           "interval" = 5;
           "format" = "DOWN {bandwidthDownOctets} | UP {bandwidthUpOctets}";
-          "on-click" = "";
           "tooltip-format" = "{ifname} via {gwaddr}";
         };
         tray = {
@@ -141,43 +142,39 @@ in
         };
       }
     ];
-    style = lib.readFile ./waybar.css;
+    inherit style;
   };
   wayland.windowManager.niri.settings = lib.mkIf (config.wayland.windowManager.niri.enable or false) {
-    spawn-at-startup = [
-      [
-        "systemctl"
-        "--user"
-        "reset-failed"
-        "waybar-service"
-      ]
-      [
-        "swaybg"
-        "-m"
-        "fill"
-        "-i"
-        "${config.stylix.image}"
-      ]
+    _children = [
+      {
+        spawn-at-startup = [
+          "swaybg"
+          "-m"
+          "fill"
+          "-i"
+          "${config.stylix.image}"
+        ];
+      }
     ];
     binds = {
       "XF86AudioRaiseVolume".spawn = [
-        "~/scripts/volume_pamixer.sh"
+        "${scripts}/volume_pamixer.sh"
         "up"
       ];
       "XF86AudioLowerVolume".spawn = [
-        "~/scripts/volume_pamixer.sh"
+        "${scripts}/volume_pamixer.sh"
         "down"
       ];
       "XF86AudioMute".spawn = [
-        "~/scripts/volume_pamixer.sh"
+        "${scripts}/volume_pamixer.sh"
         "mute"
       ];
       "Shift+XF86AudioRaiseVolume".spawn = [
-        "~/scripts/volume_pamixer.sh"
+        "${scripts}/volume_pamixer.sh"
         "bigup"
       ];
       "Shift+XF86AudioLowerVolume".spawn = [
-        "~/scripts/volume_pamixer.sh"
+        "${scripts}/volume_pamixer.sh"
         "bigdown"
       ];
       "XF86MonBrightnessDown".spawn = [
@@ -197,7 +194,7 @@ in
         "+10%"
       ];
       "XF86Display".spawn = [
-        "~/scripts/toggle_gammastep.sh"
+        "${scripts}/toggle_gammastep.sh"
       ];
     };
   };
