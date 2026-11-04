@@ -18,171 +18,159 @@
       enable = true;
       defaultApplications = {
         "application/clarisworks" = [
-          "libreoffice-calc.desktop"
-          "libreoffice-draw.desktop"
-          "libreoffice-writer.desktop"
+          "calc.desktop"
+          "draw.desktop"
+          "writer.desktop"
         ];
-        "application/csv" = [ "libreoffice-calc.desktop" ];
-        "application/excel" = [ "libreoffice-calc.desktop" ];
+        "application/csv" = [ "calc.desktop" ];
+        "application/excel" = [ "calc.desktop" ];
         "application/json" = [ "org.pwmt.zathura.desktop" ];
-        "application/macwriteii" = [ "libreoffice-writer.desktop" ];
-        "application/mathml+xml" = [ "libreoffice-math.desktop" ];
-        "application/msexcel" = [ "libreoffice-calc.desktop" ];
-        "application/mspowerpoint" = [ "libreoffice-impress.desktop" ];
-        "application/msword" = [ "libreoffice-writer.desktop" ];
+        "application/macwriteii" = [ "writer.desktop" ];
+        "application/mathml+xml" = [ "math.desktop" ];
+        "application/msword" = [ "writer.desktop" ];
         "application/mxf" = [ "mpv.desktop" ];
+        "application/octet-stream" = [ "mpv.desktop" ];
         "application/ogg" = [ "mpv.desktop" ];
         "application/pdf" = [
           "org.gnome.Papers.desktop"
           "org.pwmt.zathura.desktop"
         ];
+        "application/pkcs12" = [ "gcr-viewer.desktop" ];
+        "application/rtf" = [ "writer.desktop" ];
+        "application/sdp" = [ "mpv.desktop" ];
+        "application/smil+xml" = [ "mpv.desktop" ];
+        "application/streamingmedia" = [ "mpv.desktop" ];
+        "application/tab-separated-values" = [ "calc.desktop" ];
+        "application/vnd.apple.keynote" = [ "impress.desktop" ];
+        "application/vnd.apple.mpegurl" = [ "mpv.desktop" ];
+        "application/vnd.apple.numbers" = [ "calc.desktop" ];
+        "application/vnd.apple.pages" = [ "writer.desktop" ];
         "application/vnd.comicbook+zip" = [ "org.pwmt.zathura.desktop" ];
         "application/vnd.comicbook-rar" = [ "org.pwmt.zathura.desktop" ];
-        "application/rdf+xml" = [ "editor.desktop" ];
-        "application/rss+xml" = [ "editor.desktop" ];
-        "application/rtf" = [ "libreoffice-writer.desktop" ];
-        "application/sdp" = [ "mpv.desktop" ];
-        "application/smil" = [ "mpv.desktop" ];
-        "application/streamingmedia" = [ "mpv.desktop" ];
-        "application/tab-separated-values" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.apple.mpegurl" = [ "mpv.desktop" ];
-        "application/vnd.corel-draw" = [ "libreoffice-draw.desktop" ];
-        "application/vnd.lotus-1-2-3" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.lotus-wordpro" = [ "libreoffice-writer.desktop" ];
+        "application/vnd.corel-draw" = [ "draw.desktop" ];
+        "application/vnd.dbf" = [ "calc.desktop" ];
+        "application/vnd.lotus-1-2-3" = [ "calc.desktop" ];
+        "application/vnd.lotus-wordpro" = [ "writer.desktop" ];
         "application/vnd.ms-asf" = [ "mpv.desktop" ];
-        "application/vnd.ms-excel.sheet.binary.macroEnabled.12" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.ms-excel.sheet.macroEnabled.12" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.ms-excel.template.macroEnabled.12" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.ms-excel" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.ms-powerpoint.presentation.macroEnabled.12" = [ "libreoffice-impress.desktop" ];
-        "application/vnd.ms-powerpoint.slideshow.macroEnabled.12" = [ "libreoffice-impress.desktop" ];
-        "application/vnd.ms-powerpoint.template.macroEnabled.12" = [ "libreoffice-impress.desktop" ];
-        "application/vnd.ms-powerpoint" = [ "libreoffice-impress.desktop" ];
-        "application/vnd.ms-publisher" = [ "libreoffice-draw.desktop" ];
-        "application/vnd.ms-word.document.macroEnabled.12" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.ms-word.template.macroEnabled.12" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.ms-word" = [ "libreoffice-writer.desktop" ];
+        "application/vnd.ms-excel" = [ "calc.desktop" ];
+        "application/vnd.ms-excel.sheet.binary.macroEnabled.12" = [ "calc.desktop" ];
+        "application/vnd.ms-excel.sheet.macroEnabled.12" = [ "calc.desktop" ];
+        "application/vnd.ms-excel.template.macroEnabled.12" = [ "calc.desktop" ];
+        "application/vnd.ms-powerpoint" = [ "impress.desktop" ];
+        "application/vnd.ms-powerpoint.presentation.macroEnabled.12" = [ "impress.desktop" ];
+        "application/vnd.ms-powerpoint.slideshow.macroEnabled.12" = [ "impress.desktop" ];
+        "application/vnd.ms-powerpoint.template.macroEnabled.12" = [ "impress.desktop" ];
+        "application/vnd.ms-publisher" = [ "draw.desktop" ];
+        "application/vnd.ms-word.document.macroEnabled.12" = [ "writer.desktop" ];
+        "application/vnd.ms-word.template.macroEnabled.12" = [ "writer.desktop" ];
         "application/vnd.ms-works" = [
-          "libreoffice-calc.desktop"
-          "libreoffice-writer.desktop"
+          "calc.desktop"
+          "writer.desktop"
         ];
         "application/vnd.nextcloud" = [ "com.nextcloud.desktopclient.nextcloud.desktop" ];
-        "application/vnd.oasis.opendocument.chart-template" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.oasis.opendocument.chart" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.oasis.opendocument.database" = [ "libreoffice-base.desktop" ];
-        "application/vnd.oasis.opendocument.formula-template" = [ "libreoffice-math.desktop" ];
-        "application/vnd.oasis.opendocument.formula" = [ "libreoffice-math.desktop" ];
-        "application/vnd.oasis.opendocument.graphics-flat-xml" = [ "libreoffice-draw.desktop" ];
-        "application/vnd.oasis.opendocument.graphics-template" = [ "libreoffice-draw.desktop" ];
-        "application/vnd.oasis.opendocument.graphics" = [ "libreoffice-draw.desktop" ];
-        "application/vnd.oasis.opendocument.presentation-flat-xml" = [ "libreoffice-impress.desktop" ];
-        "application/vnd.oasis.opendocument.presentation-template" = [ "libreoffice-impress.desktop" ];
-        "application/vnd.oasis.opendocument.presentation" = [ "libreoffice-impress.desktop" ];
-        "application/vnd.oasis.opendocument.spreadsheet-flat-xml" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.oasis.opendocument.spreadsheet-template" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.oasis.opendocument.spreadsheet" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.oasis.opendocument.text-flat-xml" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.oasis.opendocument.text-master-template" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.oasis.opendocument.text-master" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.oasis.opendocument.text-template" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.oasis.opendocument.text-web" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.oasis.opendocument.text" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.openofficeorg.extension" = [ "libreoffice-startcenter.desktop" ];
+        "application/vnd.oasis.opendocument.base" = [ "base.desktop" ];
+        "application/vnd.oasis.opendocument.chart" = [ "calc.desktop" ];
+        "application/vnd.oasis.opendocument.chart-template" = [ "calc.desktop" ];
+        "application/vnd.oasis.opendocument.formula" = [ "math.desktop" ];
+        "application/vnd.oasis.opendocument.formula-template" = [ "math.desktop" ];
+        "application/vnd.oasis.opendocument.graphics" = [ "draw.desktop" ];
+        "application/vnd.oasis.opendocument.graphics-flat-xml" = [ "draw.desktop" ];
+        "application/vnd.oasis.opendocument.graphics-template" = [ "draw.desktop" ];
+        "application/vnd.oasis.opendocument.presentation" = [ "impress.desktop" ];
+        "application/vnd.oasis.opendocument.presentation-flat-xml" = [ "impress.desktop" ];
+        "application/vnd.oasis.opendocument.presentation-template" = [ "impress.desktop" ];
+        "application/vnd.oasis.opendocument.spreadsheet" = [ "calc.desktop" ];
+        "application/vnd.oasis.opendocument.spreadsheet-flat-xml" = [ "calc.desktop" ];
+        "application/vnd.oasis.opendocument.spreadsheet-template" = [ "calc.desktop" ];
+        "application/vnd.oasis.opendocument.text" = [ "writer.desktop" ];
+        "application/vnd.oasis.opendocument.text-flat-xml" = [ "writer.desktop" ];
+        "application/vnd.oasis.opendocument.text-master" = [ "writer.desktop" ];
+        "application/vnd.oasis.opendocument.text-master-template" = [ "writer.desktop" ];
+        "application/vnd.oasis.opendocument.text-template" = [ "writer.desktop" ];
+        "application/vnd.oasis.opendocument.text-web" = [ "writer.desktop" ];
+        "application/vnd.openofficeorg.extension" = [ "startcenter.desktop" ];
         "application/vnd.openxmlformats-officedocument.presentationml.presentation" = [
-          "libreoffice-impress.desktop"
+          "impress.desktop"
         ];
         "application/vnd.openxmlformats-officedocument.presentationml.slide" = [
-          "libreoffice-impress.desktop"
+          "impress.desktop"
         ];
         "application/vnd.openxmlformats-officedocument.presentationml.slideshow" = [
-          "libreoffice-impress.desktop"
+          "impress.desktop"
         ];
         "application/vnd.openxmlformats-officedocument.presentationml.template" = [
-          "libreoffice-impress.desktop"
+          "impress.desktop"
         ];
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = [
-          "libreoffice-calc.desktop"
+          "calc.desktop"
         ];
         "application/vnd.openxmlformats-officedocument.spreadsheetml.template" = [
-          "libreoffice-calc.desktop"
+          "calc.desktop"
         ];
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [
-          "libreoffice-writer.desktop"
+          "writer.desktop"
         ];
         "application/vnd.openxmlformats-officedocument.wordprocessingml.template" = [
-          "libreoffice-writer.desktop"
+          "writer.desktop"
         ];
-        "application/vnd.palm" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.rn-realmedia-vbr" = [ "mpv.desktop" ];
+        "application/vnd.palm" = [ "writer.desktop" ];
         "application/vnd.rn-realmedia" = [ "mpv.desktop" ];
-        "application/vnd.stardivision.writer-global" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.sun.xml.base" = [ "libreoffice-base.desktop" ];
-        "application/vnd.sun.xml.calc.template" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.sun.xml.calc" = [ "libreoffice-calc.desktop" ];
-        "application/vnd.sun.xml.draw.template" = [ "libreoffice-draw.desktop" ];
-        "application/vnd.sun.xml.draw" = [ "libreoffice-draw.desktop" ];
-        "application/vnd.sun.xml.impress.template" = [ "libreoffice-impress.desktop" ];
-        "application/vnd.sun.xml.impress" = [ "libreoffice-impress.desktop" ];
-        "application/vnd.sun.xml.math" = [ "libreoffice-math.desktop" ];
-        "application/vnd.sun.xml.writer.global" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.sun.xml.writer.template" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.sun.xml.writer" = [ "libreoffice-writer.desktop" ];
-        "application/vnd.visio" = [ "libreoffice-draw.desktop" ];
-        "application/vnd.wordperfect" = [ "libreoffice-writer.desktop" ];
-        "application/wordperfect" = [ "libreoffice-writer.desktop" ];
-        "application/x-123" = [ "libreoffice-calc.desktop" ];
-        "application/x-abiword" = [ "libreoffice-writer.desktop" ];
-        "application/x-aportisdoc" = [ "libreoffice-writer.desktop" ];
+        "application/vnd.stardivision.writer-global" = [ "writer.desktop" ];
+        "application/vnd.sun.xml.calc" = [ "calc.desktop" ];
+        "application/vnd.sun.xml.calc.template" = [ "calc.desktop" ];
+        "application/vnd.sun.xml.draw" = [ "draw.desktop" ];
+        "application/vnd.sun.xml.draw.template" = [ "draw.desktop" ];
+        "application/vnd.sun.xml.impress" = [ "impress.desktop" ];
+        "application/vnd.sun.xml.impress.template" = [ "impress.desktop" ];
+        "application/vnd.sun.xml.math" = [ "math.desktop" ];
+        "application/vnd.sun.xml.writer" = [ "writer.desktop" ];
+        "application/vnd.sun.xml.writer.global" = [ "writer.desktop" ];
+        "application/vnd.sun.xml.writer.template" = [ "writer.desktop" ];
+        "application/vnd.visio" = [ "draw.desktop" ];
+        "application/vnd.wordperfect" = [ "writer.desktop" ];
+        "application/x-abiword" = [ "writer.desktop" ];
+        "application/x-aportisdoc" = [ "writer.desktop" ];
         "application/x-cue" = [ "mpv.desktop" ];
-        "application/x-dbase" = [ "libreoffice-calc.desktop" ];
-        "application/x-dbf" = [ "libreoffice-calc.desktop" ];
-        "application/x-doc" = [ "libreoffice-writer.desktop" ];
-        "application/x-dos_ms_excel" = [ "libreoffice-calc.desktop" ];
-        "application/x-excel" = [ "libreoffice-calc.desktop" ];
+        "application/x-doc" = [ "writer.desktop" ];
+        "application/x-dos_ms_excel" = [ "calc.desktop" ];
+        "application/x-excel" = [ "calc.desktop" ];
         "application/x-extension-m4a" = [ "mpv.desktop" ];
         "application/x-extension-mp4" = [ "mpv.desktop" ];
-        "application/x-extension-txt" = [ "libreoffice-writer.desktop" ];
-        "application/x-fictionbook+xml" = [ "libreoffice-writer.desktop" ];
-        "application/x-hwp" = [ "libreoffice-writer.desktop" ];
-        "application/x-iwork-keynote-sffkey" = [ "libreoffice-impress.desktop" ];
-        "application/x-iwork-numbers-sffnumbers" = [ "libreoffice-calc.desktop" ];
-        "application/x-iwork-pages-sffpages" = [ "libreoffice-writer.desktop" ];
+        "application/x-extension-txt" = [ "writer.desktop" ];
+        "application/x-fictionbook+xml" = [ "writer.desktop" ];
+        "application/x-hwp" = [ "writer.desktop" ];
         "application/x-keepass2" = [ "org.keepassxc.KeePassXC.desktop" ];
         "application/x-matroska" = [ "mpv.desktop" ];
         "application/x-mpegurl" = [ "mpv.desktop" ];
-        "application/x-ms-excel" = [ "libreoffice-calc.desktop" ];
-        "application/x-mswrite" = [ "libreoffice-writer.desktop" ];
-        "application/x-ogg" = [ "mpv.desktop" ];
+        "application/x-ms-excel" = [ "calc.desktop" ];
+        "application/x-mswrite" = [ "writer.desktop" ];
+        "application/x-ogm" = [ "mpv.desktop" ];
         "application/x-ogm-audio" = [ "mpv.desktop" ];
         "application/x-ogm-video" = [ "mpv.desktop" ];
-        "application/x-ogm" = [ "mpv.desktop" ];
-        "application/x-pagemaker" = [ "libreoffice-draw.desktop" ];
+        "application/x-pagemaker" = [ "draw.desktop" ];
         "application/x-pem-file" = [ "gcr-viewer.desktop" ];
         "application/x-pem-key" = [ "gcr-viewer.desktop" ];
-        "application/x-pkcs12" = [ "gcr-viewer.desktop" ];
         "application/x-pkcs7-certificates" = [ "gcr-viewer.desktop" ];
-        "application/x-quattropro" = [ "libreoffice-calc.desktop" ];
+        "application/x-quattropro" = [ "calc.desktop" ];
         "application/x-shorten" = [ "mpv.desktop" ];
         "application/x-smil" = [ "mpv.desktop" ];
-        "application/x-sony-bbeb" = [ "libreoffice-writer.desktop" ];
-        "application/x-spkac+base64" = [ "gcr-viewer.desktop" ];
+        "application/x-sony-bbeb" = [ "writer.desktop" ];
         "application/x-spkac" = [ "gcr-viewer.desktop" ];
-        "application/x-starcalc" = [ "libreoffice-calc.desktop" ];
-        "application/x-stardraw" = [ "libreoffice-draw.desktop" ];
-        "application/x-starwriter" = [ "libreoffice-writer.desktop" ];
+        "application/x-spkac+base64" = [ "gcr-viewer.desktop" ];
+        "application/x-starcalc" = [ "calc.desktop" ];
+        "application/x-stardraw" = [ "draw.desktop" ];
+        "application/x-starwriter" = [ "writer.desktop" ];
         "application/x-streamingmedia" = [ "mpv.desktop" ];
-        "application/x-t602" = [ "libreoffice-writer.desktop" ];
+        "application/x-sylk" = [ "calc.desktop" ];
+        "application/x-t602" = [ "writer.desktop" ];
         "application/x-visual-studio-code-workspace" = [ "visual-studio-code.desktop" ];
-        "application/x-wpg" = [ "libreoffice-draw.desktop" ];
+        "application/x-wpg" = [ "draw.desktop" ];
         "application/x-x509-ca-cert" = [ "gcr-viewer.desktop" ];
         "application/x-x509-user-cert" = [ "gcr-viewer.desktop" ];
         "application/x-xpinstall" = [ "firefox.desktop" ];
         "application/x-zoom" = [ "Zoom.desktop" ];
         "application/xhtml+xml" = [ "firefox.desktop" ];
         "application/xhtml_xml" = [ "firefox.desktop" ];
-        "application/xml" = [ "editor.desktop" ];
-        "audio/3gpp2" = [ "mpv.desktop" ];
-        "audio/3gpp" = [ "mpv.desktop" ];
         "audio/AMR" = [ "mpv.desktop" ];
         "audio/aac" = [ "mpv.desktop" ];
         "audio/ac3" = [ "mpv.desktop" ];
@@ -191,59 +179,54 @@
         "audio/dv" = [ "mpv.desktop" ];
         "audio/eac3" = [ "mpv.desktop" ];
         "audio/flac" = [ "mpv.desktop" ];
-        "audio/m3u" = [ "mpv.desktop" ];
-        "audio/m4a" = [ "mpv.desktop" ];
+        # Canonical shared-mime-info names: the x-* variants are only aliases,
+        # and xdg-mime does not resolve aliases when looking up mimeapps.
+        "audio/matroska" = [ "mpv.desktop" ];
         "audio/mp1" = [ "mpv.desktop" ];
         "audio/mp2" = [ "mpv.desktop" ];
-        "audio/mp3" = [ "mpv.desktop" ];
         "audio/mp4" = [ "mpv.desktop" ];
+        "audio/mpeg" = [ "mpv.desktop" ];
         "audio/mpeg2" = [ "mpv.desktop" ];
         "audio/mpeg3" = [ "mpv.desktop" ];
-        "audio/mpeg" = [ "mpv.desktop" ];
-        "application/octet-stream" = [ "mpv.desktop" ];
-        "audio/mpegurl" = [ "mpv.desktop" ];
         "audio/mpg" = [ "mpv.desktop" ];
         "audio/musepack" = [ "mpv.desktop" ];
         "audio/ogg" = [ "mpv.desktop" ];
         "audio/opus" = [ "mpv.desktop" ];
         "audio/rn-mpeg" = [ "mpv.desktop" ];
-        "audio/scpls" = [ "mpv.desktop" ];
         "audio/vnd.dolby.heaac.1" = [ "mpv.desktop" ];
         "audio/vnd.dolby.heaac.2" = [ "mpv.desktop" ];
-        "audio/vnd.dts.hd" = [ "mpv.desktop" ];
         "audio/vnd.dts" = [ "mpv.desktop" ];
+        "audio/vnd.dts.hd" = [ "mpv.desktop" ];
         "audio/vnd.rn-realaudio" = [ "mpv.desktop" ];
-        "audio/vorbis" = [ "mpv.desktop" ];
-        "audio/wav" = [ "mpv.desktop" ];
+        "audio/vnd.wave" = [ "mpv.desktop" ];
         "audio/webm" = [ "mpv.desktop" ];
-        "audio/x-aac" = [ "mpv.desktop" ];
         "audio/x-adpcm" = [ "mpv.desktop" ];
         "audio/x-aiff" = [ "mpv.desktop" ];
         "audio/x-ape" = [ "mpv.desktop" ];
-        "audio/x-m4a" = [ "mpv.desktop" ];
-        "audio/x-matroska" = [ "mpv.desktop" ];
         "audio/x-mp1" = [ "mpv.desktop" ];
-        "audio/x-mp2" = [ "mpv.desktop" ];
-        "audio/x-mp3" = [ "mpv.desktop" ];
         "audio/x-mpegurl" = [ "mpv.desktop" ];
-        "audio/x-mpg" = [ "mpv.desktop" ];
         "audio/x-ms-asf" = [ "mpv.desktop" ];
+        "audio/x-ms-asx" = [
+          "io.github.phoneybadger.Showtime.desktop"
+          "mpv.desktop"
+        ];
         "audio/x-ms-wma" = [ "mpv.desktop" ];
         "audio/x-musepack" = [ "mpv.desktop" ];
         "audio/x-pls" = [ "mpv.desktop" ];
         "audio/x-pn-au" = [ "mpv.desktop" ];
-        "audio/x-pn-realaudio" = [ "mpv.desktop" ];
         "audio/x-pn-wav" = [ "mpv.desktop" ];
         "audio/x-pn-windows-pcm" = [ "mpv.desktop" ];
         "audio/x-realaudio" = [ "mpv.desktop" ];
         "audio/x-scpls" = [ "mpv.desktop" ];
-        "audio/x-shorten" = [ "mpv.desktop" ];
         "audio/x-tta" = [ "mpv.desktop" ];
         "audio/x-vorbis+ogg" = [ "mpv.desktop" ];
-        "audio/x-vorbis" = [ "mpv.desktop" ];
-        "audio/x-wav" = [ "mpv.desktop" ];
         "audio/x-wavpack" = [ "mpv.desktop" ];
         "image/bmp" = [
+          "swayimg.desktop"
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/emf" = [
           "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
@@ -263,11 +246,6 @@
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
-        "image/pjpeg" = [
-          "swayimg.desktop"
-          "imv-dir.desktop"
-          "org.gnome.Loupe.desktop"
-        ];
         "image/png" = [
           "swayimg.desktop"
           "imv-dir.desktop"
@@ -283,32 +261,27 @@
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
+        "image/vnd.microsoft.icon" = [
+          "swayimg.desktop"
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
+        "image/vnd.zbrush.pcx" = [
+          "swayimg.desktop"
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
         "image/webp" = [
           "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
-        "image/x-bmp" = [
-          "swayimg.desktop"
-          "imv-dir.desktop"
-          "org.gnome.Loupe.desktop"
-        ];
-        "image/x-emf" = [
+        "image/wmf" = [
           "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
         "image/x-freehand" = [
-          "swayimg.desktop"
-          "imv-dir.desktop"
-          "org.gnome.Loupe.desktop"
-        ];
-        "image/x-ico" = [
-          "swayimg.desktop"
-          "imv-dir.desktop"
-          "org.gnome.Loupe.desktop"
-        ];
-        "image/x-pcx" = [
           "swayimg.desktop"
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
@@ -343,11 +316,6 @@
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
-        "image/x-wmf" = [
-          "swayimg.desktop"
-          "imv-dir.desktop"
-          "org.gnome.Loupe.desktop"
-        ];
         "image/x-xbitmap" = [
           "swayimg.desktop"
           "imv-dir.desktop"
@@ -358,34 +326,13 @@
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
-        "inode/directory" = [ "lf.desktop" ];
-        "text/comma-separated-values" = [ "libreoffice-calc.desktop" ];
-        "text/csv" = [ "libreoffice-calc.desktop" ];
-        "text/english" = [ "editor.desktop" ];
+        # lf is not enabled on any host; yazi is part of the common home modules
+        "inode/directory" = [ "yazi.desktop" ];
+        "text/comma-separated-values" = [ "calc.desktop" ];
+        "text/csv" = [ "calc.desktop" ];
         "text/html" = [ "firefox.desktop" ];
-        "text/mathml" = [ "libreoffice-math.desktop" ];
-        "text/plain" = [ "editor.desktop" ];
-        "text/rtf" = [ "editor.desktop" ];
-        "text/spreadsheet" = [ "libreoffice-calc.desktop" ];
-        "text/tab-separated-values" = [ "libreoffice-calc.desktop" ];
-        "text/x-c++" = [ "editor.desktop" ];
-        "text/x-c++hdr" = [ "editor.desktop" ];
-        "text/x-c++src" = [ "editor.desktop" ];
-        "text/x-c" = [ "editor.desktop" ];
-        "text/x-chdr" = [ "editor.desktop" ];
-        "text/x-comma-separated-values" = [ "libreoffice-calc.desktop" ];
-        "text/x-csrc" = [ "editor.desktop" ];
-        "text/x-csv" = [ "libreoffice-calc.desktop" ];
-        "text/x-java" = [ "editor.desktop" ];
-        "text/x-makefile" = [ "editor.desktop" ];
-        "text/x-moc" = [ "editor.desktop" ];
-        "text/x-pascal" = [ "editor.desktop" ];
-        "text/x-script.python" = [ "editor.desktop" ];
-        "text/x-shellscript" = [ "editor.desktop" ];
-        "text/x-tcl" = [ "editor.desktop" ];
-        "text/x-tex" = [ "editor.desktop" ];
-        "text/xml" = [ "editor.desktop" ];
-        "video/3gp" = [
+        "text/tab-separated-values" = [ "calc.desktop" ];
+        "video/3gpp" = [
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
@@ -393,28 +340,14 @@
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
-        "video/3gpp" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
-        "video/avi" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
-        "video/divx" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
         "video/dv" = [
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
-        "video/fli" = [
-          "io.github.phoneybadger.Showtime.desktop"
+        "video/matroska" = [
           "mpv.desktop"
         ];
-        "video/flv" = [
-          "io.github.phoneybadger.Showtime.desktop"
+        "video/matroska-3d" = [
           "mpv.desktop"
         ];
         "video/mkv" = [
@@ -429,15 +362,7 @@
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
-        "video/mp4v-es" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
         "video/mpeg" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
-        "video/msvideo" = [
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
@@ -449,7 +374,7 @@
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
-        "video/vnd.divx" = [
+        "video/vnd.avi" = [
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
@@ -465,31 +390,11 @@
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
-        "video/x-avi" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
-        "video/x-flc" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
         "video/x-flic" = [
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
         "video/x-flv" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
-        "video/x-m4v" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
-        "video/x-matroska" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
-        "video/x-mpeg2" = [
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
@@ -501,15 +406,7 @@
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
-        "video/x-ms-asf" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
         "video/x-ms-wmv" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
-        "video/x-ms-wmx" = [
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
@@ -517,15 +414,7 @@
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
-        "video/x-msvideo" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
         "video/x-ogm+ogg" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
-        "video/x-ogm" = [
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
@@ -533,12 +422,7 @@
           "io.github.phoneybadger.Showtime.desktop"
           "mpv.desktop"
         ];
-        "video/x-theora" = [
-          "io.github.phoneybadger.Showtime.desktop"
-          "mpv.desktop"
-        ];
         "x-scheme-handler/callto" = [ "Zoom.desktop" ];
-        "x-scheme-handler/ftp" = [ "editor.desktop" ];
         "x-scheme-handler/http" = [ "firefox.desktop" ];
         "x-scheme-handler/https" = [ "firefox.desktop" ];
         "x-scheme-handler/molotov" = [ "appimagekit-molotov.desktop" ];
@@ -546,7 +430,7 @@
         "x-scheme-handler/steam" = [ "steam.desktop" ];
         "x-scheme-handler/steamlink" = [ "steam.desktop" ];
         "x-scheme-handler/tel" = [ "Zoom.desktop" ];
-        "x-scheme-handler/vnd.libreoffice.cmis" = [ "libreoffice-startcenter.desktop" ];
+        "x-scheme-handler/vnd.libreoffice.cmis" = [ "startcenter.desktop" ];
         "x-scheme-handler/vscode" = [ "visual-studio-code-url-handler.desktop" ];
         "x-scheme-handler/zoommtg" = [ "Zoom.desktop" ];
         "x-scheme-handler/zoomphonecall" = [ "Zoom.desktop" ];
