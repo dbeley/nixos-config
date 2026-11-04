@@ -65,6 +65,7 @@ mkHost = {
 - `bootloader-systemd-boot` - Systemd-boot UEFI bootloader
 - `bootloader-grub-uefi` - GRUB UEFI bootloader
 - `bootloader-grub-bios` - GRUB BIOS bootloader
+- `bootloader-extlinux` - generic-extlinux-compatible bootloader (ARM boards, used by pocket-reform)
 - `sops` - Secrets management (system + home-manager)
 - `openssh-server` - SSH server with GitHub key authentication
 - `docker` - Docker virtualization
@@ -134,6 +135,7 @@ mkHost = {
 - `cf-qv1` - Panasonic Let's Note CF-QV1 (Intel Core i5-1145G7, niri, impermanence)
 - `x1yoga` - Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, gnome, impermanence)
 - `sg13` - Silverstone SG13 desktop (AMD Ryzen 9 5950X + RTX 3070, gnome)
+- `pocket-reform` - MNT Pocket Reform mini laptop (NXP i.MX 8M Plus, 4x Cortex-A53 @1.8GHz, 8GB RAM, aarch64, niri, extlinux; NVMe ext4 root, `/boot` on microSD, no LUKS/impermanence; hardware module from `nixos-mnt-pocket-reform`, install via `scripts/install-pocket.sh`)
 
 **Servers (Kimsufi Proxmox VMs):**
 - `nixos-kimsufi-qbittorrent` - qbittorrent server

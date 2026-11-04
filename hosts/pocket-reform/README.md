@@ -15,11 +15,6 @@ The Pocket Reform U-Boot lives in the eMMC boot partition and only scans
 `mmc0` (microSD), `mmc2` (eMMC) and USB. It does **not** scan the NVMe.
 That is why `/boot` is on the microSD.
 
-There is **no LUKS** and **no impermanence**:
-
-- the initrd mounts the NVMe ext4 root directly, so it never asks for a
-  passphrase (the internal keyboard is not usable in the initrd);
-- `/etc`, `/var` and `/home` persist on the root filesystem.
 
 ## First installation
 
@@ -52,21 +47,6 @@ The script:
 It uses a `path:` flake reference so `disko` and `nixos-install` running as
 root do not hit git's `safe.directory` checks.
 
-## First boot / debugging
-
-The initrd mounts the NVMe ext4 root directly. There is no LUKS passphrase
-prompt and no Plymouth splash. The system is mutable: changes to `/etc`,
-`/var` and `/home` survive reboots.
-
-Useful commands if the screen is black:
-
-```bash
-dmesg | grep -iE 'drm|panel|dsi|lcdif|backlight|mnt_sc|lpc'
-ls /sys/class/backlight
-cat /sys/class/backlight/*/brightness
-lsmod | grep -E 'panel_mnt|samsung|imx_lcdif|reform2_lpc'
-```
-
 ## Rebuilding from NixOS
 
 Clone the repository and use the `pocket-reform` branch:
@@ -83,9 +63,6 @@ The hardware module installs `/boot/boot.scr` itself (safe U-Boot load
 addresses) and removes the unusable `extlinux/` entry, so no manual step is
 needed after `nixos-rebuild`.
 
-No `--impure` is needed: the configuration no longer references a runtime
-host path.
-
 ## Checking the layout
 
 ```bash
@@ -99,11 +76,3 @@ Expected:
 nvme0n1p1  ext4  (no label)  /
 mmcblk0p1  ext4  NIXOS_BOOT /boot
 ```
-
-## Security note
-
-The NVMe is **not encrypted**. Anyone with physical access to the device can
-read the root filesystem. This is the explicit tradeoff that removes the
-initrd passphrase prompt, which could not be answered with the internal
-keyboard. If encryption is needed later, it can be added back together with a
-key that does not require typing in the initrd.

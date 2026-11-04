@@ -61,6 +61,7 @@
 - **cf-qv1**: Panasonic Let's Note CF-QV1 (Intel Core i5-1145G7, 16GB RAM, niri, impermanence)
 - **sg13**: Silverstone SG13 (AMD Ryzen 9 5950X, RTX 3070, 32GB RAM, gnome)
 - **x1yoga**: Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, 8GB RAM, niri, impermanence)
+- **pocket-reform**: MNT Pocket Reform (NXP i.MX 8M Plus, 8GB RAM, niri)
 
 <details>
 
