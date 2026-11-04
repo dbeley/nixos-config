@@ -15,8 +15,8 @@
   };
 
   wayland.windowManager.niri.settings = lib.mkIf (config.wayland.windowManager.niri.enable or false) {
-    spawn-at-startup = [
-      [ "mako" ]
+    _children = [
+      { spawn-at-startup = [ "mako" ]; }
     ];
   };
 }
