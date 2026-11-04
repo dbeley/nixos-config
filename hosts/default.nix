@@ -594,7 +594,7 @@ in
       ../hosts/pocket-reform/games.nix
       ../hosts/pocket-reform/disko.nix
       {
-        my.stylix.wallpaper = "mnt-logo";
+        my.stylix.wallpaper = "purple-waves";
       }
     ];
   };
