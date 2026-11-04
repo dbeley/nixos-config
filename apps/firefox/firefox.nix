@@ -346,17 +346,20 @@
               meta = { };
             }
           ))
-          # hover-zoom-plus dropped out of NUR's generated addon set; pin it.
+          # hover-zoom-plus is not in NUR's generated addon set, and the
+          # original AMO listing (guid {92e6fe1c-…}, version 1.1.15) has been
+          # delisted, so its XPI URL now 404s. Pin the maintained fork that
+          # replaced it (new guid, Mozilla-signed).
           (pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon (
             let
-              version = "1.1.15";
+              version = "1.2";
             in
             {
-              pname = "hover-zoom-plus";
+              pname = "hover-zoom-plus-v2";
               inherit version;
-              addonId = "{92e6fe1c-6e1d-44e1-8bc6-d309e59406af}";
-              url = "https://addons.mozilla.org/firefox/downloads/file/4819056/hover_zoom_plus-${version}.xpi";
-              sha256 = "sha256-AvqkuqGv+nK2Yte7xAV085jX6XRBSgF+97sJ13eLF9o=";
+              addonId = "{3ec48c40-cdde-4156-bb3e-6ea4e4990928}";
+              url = "https://addons.mozilla.org/firefox/downloads/file/4499525/hover_zoom_plus_v2-${version}.xpi";
+              sha256 = "sha256-UcVBRT+eTGCSkFLzlNstndiTCB+xTUqAZ+BlvT3wDHs=";
               meta = { };
             }
           ))
