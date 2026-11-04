@@ -23,12 +23,62 @@ let
     '';
   };
 
+  list = pkgs.writeShellApplication {
+    name = "ytq-list";
+    runtimeInputs = with pkgs; [
+      yt-dlp
+      gawk
+      coreutils
+    ];
+    text = ''
+      if [ "''${1:-}" = "--next" ]; then
+        dir=$2
+        n=$(cat "$dir/n")
+        # shortcut: refait la recherche avec 20 résultats de plus (~2 s par page)
+        n=$((n + 20))
+        printf '%s\n' "$n" > "$dir/n"
+        query=$(cat "$dir/query")
+      else
+        query=$1
+        n=$2
+      fi
+
+      yt-dlp "ytsearch$n:$query" --flat-playlist --no-warnings \
+        --print "%(duration_string)s│%(view_count)s│%(channel)s│%(title)s│%(id)s" |
+        awk -F'│' '
+          function human(v,   n) {
+            n = v + 0
+            if (n >= 1000000000) return sprintf("%.1f Md", n / 1000000000)
+            if (n >= 1000000) return sprintf("%.1f M", n / 1000000)
+            if (n >= 1000) return sprintf("%.0f k", n / 1000)
+            return sprintf("%d", n)
+          }
+          {
+            id = $NF
+            if (length(id) != 11) next
+
+            # Un « │ » dans le texte casserait les champs : on le remplace.
+            title = $4
+            for (i = 5; i < NF; i++) title = title "│" $i
+            gsub(/│/, "¦", title)
+
+            meta = ($1 == "" || $1 == "NA") ? "" : $1
+            if ($2 != "" && $2 != "NA") meta = (meta == "" ? "" : meta " · ") human($2) " vues"
+            if ($3 != "" && $3 != "NA") meta = (meta == "" ? "" : meta " · ") $3
+            gsub(/│/, "¦", meta)
+
+            printf "%s│%s\n   %s%c", id, title, meta, 0
+          }
+        ' || true
+    '';
+  };
+
   ytq = pkgs.writeShellApplication {
     name = "ytq";
     runtimeInputs = with pkgs; [
       fzf
       yt-dlp
-      gawk
+      coreutils
     ];
     text = ''
       usage() {
@@ -41,6 +91,9 @@ let
 
         Tab     coche/décoche un résultat ; Entrée télécharge toute la
                 sélection (une seule vidéo si rien n'est coché).
+        Ctrl-N  charge 20 résultats supplémentaires.
+        Ctrl-R  lance une nouvelle recherche sans quitter ytq.
+
                 Qualité : 720p maximum, en H.264 30 fps.
 
         Seules les vidéos sont proposées : les playlists, chaînes et
@@ -81,56 +134,53 @@ let
         read -r query
       fi
       [ -n "$query" ] || exit 1
+      base_n=$n
 
-      mapfile -d "" -t results < <(
-        yt-dlp "ytsearch$n:$query" --flat-playlist --no-warnings \
-          --print "%(duration_string)s│%(view_count)s│%(channel)s│%(title)s│%(id)s" |
-          awk -F'│' '
-            function human(v,   n) {
-              n = v + 0
-              if (n >= 1000000000) return sprintf("%.1f Md", n / 1000000000)
-              if (n >= 1000000) return sprintf("%.1f M", n / 1000000)
-              if (n >= 1000) return sprintf("%.0f k", n / 1000)
-              return sprintf("%d", n)
-            }
-            {
-              id = $NF
-              if (length(id) != 11) next
+      state=$(mktemp -d)
+      trap 'rm -rf "$state"' EXIT
 
-              # Un « │ » dans le texte casserait les champs : on le remplace.
-              title = $4
-              for (i = 5; i < NF; i++) title = title "│" $i
-              gsub(/│/, "¦", title)
+      while :; do
+        printf '%s' "$query" > "$state/query"
+        printf '%s' "$n" > "$state/n"
 
-              meta = ($1 == "" || $1 == "NA") ? "" : $1
-              if ($2 != "" && $2 != "NA") meta = (meta == "" ? "" : meta " · ") human($2) " vues"
-              if ($3 != "" && $3 != "NA") meta = (meta == "" ? "" : meta " · ") $3
-              gsub(/│/, "¦", meta)
+        printf 'Recherche : %s…\n' "$query" >&2
+        "${list}/bin/ytq-list" "$query" "$n" > "$state/results"
 
-              printf "%s│%s\n   %s%c", id, title, meta, 0
-            }
-          ' || true
-      )
+        if [ ! -s "$state/results" ]; then
+          echo "ytq: aucun résultat pour « $query »" >&2
+          exit 1
+        fi
 
-      if [ "''${#results[@]}" -eq 0 ]; then
-        echo "ytq: aucun résultat pour « $query »" >&2
-        exit 1
-      fi
-
-      urls=()
-      chosen=()
-      mapfile -d "" -t chosen < <(
-        printf '%s\0' "''${results[@]}" |
+        mapfile -d "" -t picked < <(
           fzf --read0 --print0 --reverse --height=100% --prompt='yt> ' \
-            --multi --marker='✔ ' --ellipsis='…' \
-            --delimiter='│' --with-nth=2 --nth=2 \
-            --header='Tab : cocher plusieurs · Entrée : télécharger' \
+            --expect=ctrl-r --multi --marker='✔ ' --ellipsis='…' \
+            --delimiter='│' --with-nth=2 --track --id-nth=1 \
+            --header="Recherche : $query"$'\n'"Tab cocher · Entrée télécharger"$'\n'"Ctrl-N +20 · Ctrl-R nouvelle recherche" \
+            --bind "ctrl-n:reload-sync(${list}/bin/ytq-list --next $state)" \
             --preview="${preview}/bin/ytq-preview {1}" \
-            --preview-window='right,45%,border-left'
-      )
+            --preview-window='right,45%,border-left' \
+            < "$state/results"
+        )
+
+        key="''${picked[0]:-}"
+        if [ "$key" = ctrl-r ]; then
+          printf 'Nouvelle recherche YouTube : '
+          read -r query
+          [ -n "$query" ] || exit 1
+          n=$base_n
+          continue
+        fi
+
+        if [ "''${#picked[@]}" -eq 0 ]; then
+          exit 130
+        fi
+        chosen=("''${picked[@]:1}")
+        break
+      done
 
       [ "''${#chosen[@]}" -gt 0 ] || exit 130
 
+      urls=()
       for item in "''${chosen[@]}"; do
         urls+=("https://youtu.be/''${item%%│*}")
       done
