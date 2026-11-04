@@ -3,7 +3,7 @@
   programs.tofi = {
     enable = true;
     settings = {
-      font-size = lib.mkForce "25";
+      font-size = lib.mkForce "15";
       hint-font = true;
       prompt-background-padding = 0;
       prompt-background-corner-radius = 0;
@@ -51,7 +51,13 @@
   };
   wayland.windowManager.niri.settings = lib.mkIf (config.wayland.windowManager.niri.enable or false) {
     binds = {
+      # Mod+E is the historical bind, Mod+Space replaces noctalia's launcher.
       "Mod+E".spawn = [
+        "bash"
+        "-c"
+        "tofi-run | xargs niri msg action spawn --"
+      ];
+      "Mod+Space".spawn = [
         "bash"
         "-c"
         "tofi-run | xargs niri msg action spawn --"

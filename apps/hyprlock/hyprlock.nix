@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  osConfig,
+  ...
+}:
 {
   programs.hyprlock = {
     enable = true;
@@ -8,7 +13,7 @@
           enabled = true;
         };
         fingerprint = {
-          enabled = true;
+          enabled = osConfig.services.fprintd.enable;
         };
       };
       label = {
