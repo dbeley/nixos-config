@@ -6,7 +6,7 @@
   '';
   hardware.graphics = {
     enable = true;
-    enable32Bit = true;
+    enable32Bit = pkgs.stdenv.hostPlatform.isx86_64;
   };
   services = {
     fwupd.enable = true;
@@ -14,7 +14,7 @@
     pipewire = {
       enable = true;
       alsa.enable = true;
-      alsa.support32Bit = true;
+      alsa.support32Bit = pkgs.stdenv.hostPlatform.isx86_64;
       pulse.enable = true;
       jack.enable = true;
     };
