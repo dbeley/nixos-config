@@ -163,9 +163,9 @@
     memoryPercent = 200;
   };
 
-  # BBR congestion control: lower latency and better throughput than cubic
   boot.kernel.sysctl = {
     "net.ipv4.tcp_congestion_control" = "bbr";
+    "net.core.default_qdisc" = "fq";
 
     # Kernel information-leak and introspection restrictions
     "kernel.kptr_restrict" = 2;
@@ -235,13 +235,9 @@
   ];
 
   boot.kernelParams = [
-    # Exploit mitigations with a modest memory/boot-time cost.
     "slab_nomerge"
-    "init_on_alloc=1"
-    "page_alloc.shuffle=1"
     "randomize_kstack_offset=on"
     "vsyscall=none"
-    "debugfs=off"
   ];
 
   # This value determines the NixOS release from which the default

@@ -24,6 +24,10 @@
       };
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-mnt-pocket-reform = {
+      url = "github:dbeley/nixos-mnt-pocket-reform";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agent-fieldnotes = {
       url = "github:dbeley/agent-fieldnotes";
       flake = false;
@@ -140,10 +144,6 @@
     };
     hyperdroid-skill = {
       url = "github:hyperb1iss/hyperdroid-skill";
-      flake = false;
-    };
-    rea = {
-      url = "github:morluto/rea";
       flake = false;
     };
     symmetri = {

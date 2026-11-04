@@ -27,6 +27,11 @@ let
         ../modules/common/bootloader-systemd-boot.nix
       ];
     };
+    bootloader-extlinux = {
+      system = [
+        ../modules/common/bootloader-extlinux.nix
+      ];
+    };
     secure-boot = {
       system = [
         ../modules/common/secure-boot.nix
@@ -97,6 +102,7 @@ let
         ../apps/tmux/tmux.nix
         ../apps/udiskie/udiskie.nix
         ../apps/workstation/workstation.nix
+        ../apps/ytq/ytq.nix
         ../apps/yazi/yazi.nix
         ../apps/zathura/zathura.nix
         ../apps/zoxide/zoxide.nix
@@ -207,6 +213,9 @@ let
     zen-browser = {
       home = [ ../apps/zen-browser/zen-browser.nix ];
     };
+    luakit = {
+      home = [ ../apps/luakit/luakit.nix ];
+    };
     mpd = {
       home = [
         ../apps/mpd/mpd.nix
@@ -260,7 +269,7 @@ let
     code-agents = {
       home = [
         # ../apps/cursor/cursor.nix
-        ../apps/agent-fieldnotes/agent-fieldnotes.nix
+        # ../apps/agent-fieldnotes/agent-fieldnotes.nix
         ../apps/opencode/opencode.nix
         ../apps/openskills/openskills.nix
         # ../apps/pi/pi.nix
@@ -268,8 +277,8 @@ let
         # ../apps/oh-my-opencode/oh-my-opencode.nix
         # ../apps/hermes/hermes.nix
         ../apps/rtk/rtk.nix
-        ../apps/goose/goose.nix
-        ../apps/herdr/herdr.nix
+        # ../apps/goose/goose.nix
+        # ../apps/herdr/herdr.nix
       ];
     };
     hermes-server = {
@@ -561,6 +570,31 @@ in
       ../hosts/x1yoga/memory.nix
       {
         my.stylix.wallpaper = "purple-waves";
+      }
+    ];
+  };
+  pocket-reform = mkHost {
+    hostName = "pocket-reform";
+    system = "aarch64-linux";
+    stateVersion = "26.05";
+    profiles = [
+      "laptop"
+      "bootloader-extlinux"
+      "workstation"
+      "niri-waybar"
+      # "luakit"
+      "chromium"
+      # "qutebrowser"
+      "code-agents"
+      "python"
+    ];
+    extraModules = [
+      inputs.nixos-mnt-pocket-reform.nixosModules.pocket-reform-imx8mp
+      ../hosts/pocket-reform/default.nix
+      ../hosts/pocket-reform/games.nix
+      ../hosts/pocket-reform/disko.nix
+      {
+        my.stylix.wallpaper = "mnt-logo";
       }
     ];
   };
