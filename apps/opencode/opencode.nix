@@ -1,7 +1,10 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  ...
+}:
 let
   llm = inputs.llm-agents.packages.${pkgs.system};
-  rea-mcp = import ../rea-mcp/package.nix { inherit pkgs; };
 in
 {
   imports = [ inputs.agent-skills.homeManagerModules.default ];
@@ -16,17 +19,6 @@ in
         share = "disabled";
         theme = "system";
         model = "opencode-go/deepseek-v4.1-flash";
-        mcp = {
-          rea = {
-            type = "local";
-            command = [ "${rea-mcp}" ];
-            environment = {
-              GHIDRA_INSTALL_DIR = "${pkgs.ghidra}/lib/ghidra";
-              JAVA_HOME = "${pkgs.jdk21}/lib/openjdk";
-            };
-            enabled = true;
-          };
-        };
         command = {
           last30days = {
             description = "Research any topic across Reddit, X, YouTube, TikTok, HN, Polymarket, GitHub, and the web";
