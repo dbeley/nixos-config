@@ -22,7 +22,7 @@
   - Desktop environments: `gnome/`, `niri/`, `sway/`
   - Terminals: `alacritty/`, `ghostty/`, `kitty/`
   - Editors: `editorconfig/`, `emacs/`, `helix/`, `kakoune/`, `neovim-nvf/`, `nvim/`, `vscode/`
-  - Browsers: `firefox/`, `qutebrowser/`, `ungoogled-chromium/`, `zen-browser/`
+  - Browsers: `firefox/`, `luakit/`, `qutebrowser/`, `ungoogled-chromium/`, `zen-browser/`
   - `floccus` bookmark sync extension installed in firefox, zen-browser (AMO xpi) and chromium (GitHub crx)
   - Code agents: `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `goose/`, `hermes/`, `oh-my-opencode/`, `oh-my-pi/`, `opencode/`, `openskills/`, `pi/`, `rtk/`
   - File managers: `lf/`, `nnn/`, `yazi/`
@@ -85,6 +85,7 @@ mkHost = {
 - `firefox` - Firefox browser with extensive policies and addons
 - `chromium` - Ungoogled chromium
 - `zen-browser` - Zen browser
+- `luakit` - Luakit (WebKitGTK) with pinned EasyList/EasyPrivacy adblock lists
 - `qutebrowser` - Qutebrowser with search engines
 - `mpd` - MPD + mpdscrobble (Last.fm scrobbler)
 - `python` - Python development with direnv
