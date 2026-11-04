@@ -5,8 +5,6 @@
   ...
 }:
 let
-  rea-mcp = import ../rea-mcp/package.nix { inherit pkgs; };
-
   skills = builtins.listToAttrs (
     builtins.concatLists [
       # superpowers (from obra-superpowers)
@@ -82,19 +80,6 @@ let
           "ponytail-help"
         ]
       )
-      # rea skills
-      (map
-        (name: {
-          name = ".hermes/skills/${name}";
-          value = {
-            source = "${inputs.rea}/.agents/skills/${name}";
-            force = true;
-          };
-        })
-        [
-          "reverse-engineer-anything"
-        ]
-      )
     ]
   );
 in
@@ -104,16 +89,6 @@ in
 
     sessionVariables.HERMES_MANAGED_DIR = "${config.home.homeDirectory}/.hermes/managed";
 
-    file = skills // {
-      ".hermes/managed/config.yaml".text = ''
-        mcp_servers:
-          rea:
-            command: "${rea-mcp}"
-            env:
-              GHIDRA_INSTALL_DIR: "${pkgs.ghidra}/lib/ghidra"
-              JAVA_HOME: "${pkgs.jdk21}/lib/openjdk"
-            enabled: true
-      '';
-    };
+    file = skills;
   };
 }
