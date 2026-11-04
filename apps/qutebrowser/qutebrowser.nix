@@ -1,26 +1,31 @@
-{ pkgs, config, ... }:
+{ config, lib, ... }:
 {
   programs.qutebrowser = {
     enable = true;
     settings = {
       auto_save.session = true;
+      session.lazy_restore = true;
       url.default_page = "https://start.duckduckgo.com";
       window.hide_decoration = true;
+      qt.chromium.low_end_device_mode = "always";
       colors.webpage.preferred_color_scheme = "dark";
       colors.webpage.darkmode.enabled = true;
       content = {
-        headers.do_not_track = true;
         default_encoding = "utf-8";
         autoplay = false;
-        javascript.clipboard = "access";
+        javascript.clipboard = "ask";
         cookies.accept = "no-3rdparty";
         pdfjs = true;
-        blocking.method = "both";
+        webrtc_ip_handling_policy = "default-public-interface-only";
+        blocking.method = "adblock";
         blocking.adblock.lists = [
-          "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2024.txt"
           "https://easylist.to/easylist/easylist.txt"
-          "https://secure.fanboy.co.nz/fanboy-annoyance.txt"
           "https://easylist.to/easylist/easyprivacy.txt"
+          "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt"
+          "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2026.txt"
+          "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt"
+          "https://secure.fanboy.co.nz/fanboy-annoyance.txt"
+          "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt"
           "https://easylist-downloads.adblockplus.org/liste_fr.txt"
           "https://easylist-downloads.adblockplus.org/ruadlist.txt"
           "https://easylist-downloads.adblockplus.org/antiadblockfilters.txt"
@@ -99,7 +104,6 @@
       "eba" = "https://www.ebay.fr/sch/i.html?_nkw={}";
       "twi" = "https://twitter.com/search?q={}";
       "yt" = "https://youtube.com/results?search_query={}";
-      "rarbg" = "https://rarbg.to/torrents.php?search={}";
       "aur" = "https://aur.archlinux.org/packages/?K={}";
       "arch" = "https://www.archlinux.org/packages/?q={}";
       "gplay" = "https://play.google.com/store/search?q={}";
@@ -142,15 +146,13 @@
       "backmarket" = "https://www.backmarket.fr/fr-fr/search?q={}";
       "translate" = "https://translate.google.com/?sl=auto&tl=en&text={}&op=translate";
     };
-    greasemonkey = [
-      (pkgs.writeText "override-webpage-bg" ''
-        var sheet = window.document.styleSheets[0];
-        sheet.insertRule('body { background-color: white; }', sheet.cssRules.length);
-      '')
-    ];
   };
   xdg.configFile."qutebrowser/quickmarks".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Nextcloud/10-19_Documents/18_Config/18.16_qutebrowser/quickmarks";
   xdg.configFile."qutebrowser/bookmarks/urls".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Nextcloud/10-19_Documents/18_Config/18.16_qutebrowser/bookmarks/urls";
+
+  wayland.windowManager.niri.settings = lib.mkIf (config.wayland.windowManager.niri.enable or false) {
+    binds."Mod+Z".spawn = lib.mkForce [ "qutebrowser" ];
+  };
 }
