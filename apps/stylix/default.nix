@@ -10,6 +10,14 @@ let
   cfg = config.my.stylix;
   wallpaperCatalog = import ./wallpapers.nix { inherit pkgs; };
   wallpaperNames = lib.attrNames wallpaperCatalog.wallpapers;
+
+  iosevkaNerdMono = pkgs.runCommand "iosevka-nerd-font-mono" { } ''
+    mkdir -p $out/share/fonts/truetype/NerdFonts/Iosevka
+    for style in Regular Bold Italic BoldItalic; do
+      cp "${pkgs.nerd-fonts.iosevka}/share/fonts/truetype/NerdFonts/Iosevka/IosevkaNerdFontMono-$style.ttf" \
+        "$out/share/fonts/truetype/NerdFonts/Iosevka/"
+    done
+  '';
 in
 {
   imports = [ inputs.stylix.nixosModules.stylix ];
@@ -45,7 +53,7 @@ in
         name = "Overpass";
       };
       monospace = {
-        package = pkgs.nerd-fonts.iosevka;
+        package = iosevkaNerdMono;
         name = "Iosevka Nerd Font Mono";
       };
       emoji = {

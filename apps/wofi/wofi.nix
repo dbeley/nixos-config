@@ -15,7 +15,7 @@
     style = ''
       window {
       	background-color: rgba(--wofi-rgb-color0,0.85);
-      	font-family: "Iosevka Nerd Font";
+      	font-family: "Iosevka Nerd Font Mono";
       	transition: 0.1s ease-in-out;
       	font-size: 140%;
       }
