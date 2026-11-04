@@ -1,203 +1,124 @@
+@define-color bg @base00@;
+@define-color bg-hover @base01@;
+@define-color fg @base05@;
+@define-color fg-dim @base03@;
+@define-color accent @base0C@;
+@define-color warning #ffb86c;
+@define-color critical #ff5f5f;
+
 * {
 	border: none;
 	border-radius: 0;
-	font-family: "Iosevka Nerd Font";
-    font-style: normal;
-    font-weight: bold;
-	font-size: 14px;
-	min-height: 28px;
+	font-family: "@font@";
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	min-height: 0;
 }
 
 window#waybar {
 	background: transparent;
+	min-height: 24px;
+}
+
+#window,
+#workspaces,
+#clock,
+#tray,
+#battery,
+#wireplumber,
+#network,
+#mpd,
+#cpu,
+#memory,
+#temperature,
+#language,
+#bluetooth {
+	margin: 8px 0 0 8px;
+	padding: 0 16px;
+	border-radius: 6px;
+	color: @fg;
+	background: @bg;
 }
 
 window#waybar.empty #window {
 	background: transparent;
 }
 
-#window {
-    margin-top: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 6px;
-    transition: none;
-    color: #d6e9e7;
-    background: #0c1e22;
-}
-
-window#waybar.Firefox #window,
-window#waybar.Nextcloud #window,
-window#waybar.keepassxc #window,
-window#waybar.libreoffice #window,
-window#waybar.mpv #window,
-window#waybar.Navigator #window,
-window#waybar.qutebrowser #window {
-    color: #d6e9e7;
-    background: #0c1e22;
-}
-
-#mode {
-    margin-top: 8px;
-    margin-right: 8px;
-    margin-bottom: 0;
-    border-radius: 6px;
-    color: #d6e9e7;
-    background: #0c1e22;
-    transition: none;
-}
-
 #workspaces {
-    margin-top: 8px;
-    margin-left: 12px;
-    margin-right: 8px;
-    margin-bottom: 0;
-    padding-left: 8px;
-    padding-right: 8px;
-    border-radius: 6px;
-    color: #d6e9e7;
-    background: #0c1e22;
-    transition: none;
+	margin-left: 12px;
+	margin-right: 8px;
+	padding: 0 8px;
 }
 
 #workspaces button {
-    transition: none;
-    padding-left: 8px;
-    padding-right: 8px;
-    color: #828282;
-    background: transparent;
-    font-size: 12px;
-}
-
-#workspaces button.focused {
-    color: #d6e9e7;
+	padding: 0 8px;
+	font-size: 12px;
+	color: @fg-dim;
+	background: transparent;
 }
 
 #workspaces button.active {
-    color: #d6e9e7;
+	color: @fg;
+}
+
+#workspaces button.urgent {
+	color: @critical;
 }
 
 #workspaces button:hover {
-    transition: none;
-    box-shadow: inherit;
-    text-shadow: inherit;
-    color: #cccccc;
+	color: @fg;
+	background: @bg-hover;
 }
 
-#mpd {
-    margin-top: 8px;
-    margin-left: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-bottom: 0;
-    border-radius: 6px;
-    color: #d6e9e7;
-    background: #0c1e22;
-    transition: none;
+#mpd.stopped,
+#mpd.disconnected {
+	color: @fg-dim;
 }
 
-#mpd.disconnected,
-#mpd.stopped {
-    color: #d6e9e7;
-    background: #0c1e22;
+#wireplumber.muted {
+	color: @fg-dim;
 }
 
-#network {
-    margin-top: 8px;
-    margin-left: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-bottom: 0;
-    border-radius: 6px;
-    transition: none;
-    color: #d6e9e7;
-    background: #0c1e22;
+#battery.charging,
+#battery.plugged {
+	color: @accent;
 }
 
-#pulseaudio {
-    margin-top: 8px;
-    margin-left: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-bottom: 0;
-    border-radius: 6px;
-    transition: none;
-    color: #d6e9e7;
-    background: #0c1e22;
+#battery.warning {
+	color: @warning;
 }
 
-#temperature {
-    margin-top: 8px;
-    margin-left: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-bottom: 0;
-    border-radius: 6px;
-    transition: none;
-    color: #d6e9e7;
-    background: #0c1e22;
+#battery.critical:not(.charging) {
+	color: @critical;
 }
 
-#cpu {
-    margin-top: 8px;
-    margin-left: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-bottom: 0;
-    border-radius: 6px;
-    transition: none;
-    color: #d6e9e7;
-    background: #0c1e22;
+.modules-right {
+	margin-right: 12px;
 }
 
-#memory {
-    margin-top: 8px;
-    margin-left: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-bottom: 0;
-    border-radius: 6px;
-    transition: none;
-    color: #d6e9e7;
-    background: #0c1e22;
+tooltip {
+	background: @bg;
+	border-radius: 6px;
+	padding: 4px 8px;
 }
 
-#clock {
-    margin-top: 8px;
-    margin-left: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-bottom: 0;
-    border-radius: 6px;
-    transition: none;
-    color: #d6e9e7;
-    background: #0c1e22;
+tooltip label {
+	color: @fg;
 }
 
-#tray {
-    margin-top: 8px;
-    margin-left: -4px;
-    margin-right: 12px;
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-bottom: 0;
-    border-radius: 6px;
-    transition: none;
-    color: #d6e9e7;
-    background: #0c1e22;
+menu {
+	background: @bg;
+	border-radius: 6px;
+	padding: 4px;
 }
 
-#battery {
-    margin-top: 8px;
-    margin-left: 8px;
-    margin-right: 12px;
-    padding-left: 16px;
-    margin-bottom: 0;
-    border-radius: 6px;
-    transition: none;
-    color: #d6e9e7;
-    background: #0c1e22;
+menu menuitem {
+	padding: 4px 8px;
+	border-radius: 4px;
+	color: @fg;
 }
 
-#battery.warning { color: orange; }
-#battery.critical { color: orange; }
+menu menuitem:hover {
+	background: @bg-hover;
+}
