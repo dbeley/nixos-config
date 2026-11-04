@@ -65,13 +65,6 @@
       };
       imageScalingMode = "fill";
     };
-    "purple-waves" = {
-      image = pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/dbeley/nixos-config/refs/heads/main/imgs/wallpapers/9580633.jpg";
-        sha256 = "Ooq+nJpzwS3f3wuio90m/4UEguD7GmGvnlCsEKjYLGE=";
-      };
-      imageScalingMode = "fill";
-    };
     "nix-aero" = {
       image = pkgs.fetchurl {
         url = "https://i.imgur.com/hfm78Sj.png";
@@ -79,8 +72,24 @@
       };
       imageScalingMode = "fill";
     };
+    "purple-waves" = {
+      image = ./../../imgs/wallpapers/9580633.jpg;
+      imageScalingMode = "fill";
+    };
     "cf-qv1" = {
-      image = ./../../imgs/cf-qv1.jpg;
+      image = ./../../imgs/wallpapers/cf-qv1.jpg;
+      imageScalingMode = "fill";
+    };
+    "mnt-magic" = {
+      image = ./../../imgs/wallpapers/mnt-magic-3744x2106.png;
+      imageScalingMode = "fill";
+    };
+    "mnt-mountains" = {
+      image = ./../../imgs/wallpapers/reform-mountains.jpg;
+      imageScalingMode = "fill";
+    };
+    "mnt-logo" = {
+      image = ./../../imgs/wallpapers/mnt-reform-next-y2k.jpg;
       imageScalingMode = "fill";
     };
   };
