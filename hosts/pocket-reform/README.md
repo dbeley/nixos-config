@@ -77,20 +77,3 @@ Expected:
 nvme0n1p1  ext4  (no label)  /
 mmcblk0p1  ext4  NIXOS_BOOT /boot
 ```
-
-## Passwords
-
-KeePassXC is installed but no longer kept running: a resident instance costs
-~220 MB RSS, and its Qt window does not fit the screen. Day to day the vault is
-driven from `tofi` + `keepassxc-cli` (`apps/kp/`), read-only:
-
-- `Mod+N` — masked master-password prompt, then an entry picker; the password
-  lands on the clipboard and is cleared after 45 s.
-- `Mod+Shift+N` — same picker, then a menu: password, username, TOTP code, URL,
-  or "Open KeePassXC" for the GUI (editing, chromium autofill, KeeShare).
-
-The vault is `my.kp.database`, defaulting to
-`~/Nextcloud/10-19_Documents/11_Keepass/11.11_Courant/Mots de passe.kdbx`. The
-script never writes to it, so a Nextcloud sync cannot clash with it. The master
-password is never stored: each run asks for it and pipes it to `keepassxc-cli`
-on stdin.

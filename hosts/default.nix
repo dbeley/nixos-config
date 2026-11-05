@@ -605,7 +605,6 @@ in
         my.stylix.wallpaper = "purple-waves";
       }
     ];
-    extraHomeModules = [ ../apps/kp/default.nix ];
   };
   sg13 = mkHost {
     hostName = "sg13";
