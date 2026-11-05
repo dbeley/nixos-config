@@ -604,6 +604,14 @@ in
       {
         my.stylix.wallpaper = "purple-waves";
       }
+      ({ config, ... }: {
+        hardware.mnt-pocket-reform.keyboardBacklight = {
+          enable = true;
+          color = config.lib.stylix.colors.withHashtag.base0D;
+          # Firmware max is 150; half of it is comfortable in a dim room.
+          brightness = 75;
+        };
+      })
     ];
   };
   sg13 = mkHost {
