@@ -122,11 +122,11 @@ let
     niri-waybar = {
       system = [
         ../apps/niri/default.nix
-        ../apps/hyprlock/default.nix
+        ../apps/swaylock/default.nix
       ];
       home = [
         ../apps/niri/niri.nix
-        ../apps/hyprlock/hyprlock.nix
+        ../apps/swaylock/swaylock.nix
         ../apps/swayidle/swayidle.nix
         ../apps/autoscreen/autoscreen.nix
         ../apps/waybar/waybar.nix

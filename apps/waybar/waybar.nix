@@ -57,7 +57,7 @@ in
           # "network"
           # "cpu"
           # "memory"
-          # "temperature"
+          "temperature"
           "wireplumber"
           "battery"
           "tray"
