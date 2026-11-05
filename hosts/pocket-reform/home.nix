@@ -17,10 +17,13 @@ in
 {
   my.niri.gpu-effects = false;
 
-  # Suspend-to-RAM hangs on this SoC.
-  services.swayidle.enable = lib.mkForce false;
+  services = {
+    # Suspend-to-RAM hangs on this SoC.
+    swayidle.enable = lib.mkForce false;
 
-  services.gammastep.enable = lib.mkForce false;
+    gammastep.enable = lib.mkForce false;
+    mpd.musicDirectory = lib.mkForce "${config.home.homeDirectory}/nfs/WDC14/Musique-Bandcamp";
+  };
 
   programs = {
     ghostty.enable = lib.mkForce false;
