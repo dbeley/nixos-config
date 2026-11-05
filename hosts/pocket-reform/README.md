@@ -40,9 +40,10 @@ The script:
 2. formats the microSD (`NIXOS_BOOT` 1 GiB + `NIXOS_DATA`),
 3. runs disko on the NVMe (single ext4 root, no LUKS),
 4. runs a pure `nixos-install` (no `--impure`),
-5. sets the password for `david` (mutable users),
-6. copies the current NetworkManager profiles into
-   `/etc/NetworkManager/system-connections`.
+5. sets the password for `david` (mutable users).
+
+Network access is not configured by the installer: connect to Wi-Fi manually
+after the first boot (`nmtui` or `nmcli`).
 
 It uses a `path:` flake reference so `disko` and `nixos-install` running as
 root do not hit git's `safe.directory` checks.

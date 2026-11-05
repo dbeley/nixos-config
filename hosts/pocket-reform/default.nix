@@ -6,6 +6,18 @@
 {
   hardware.mnt-pocket-reform = {
     enable = true;
+
+    power = {
+      cmaSize = "128MB";
+      nvmePsMaxLatencyUs = 100000;
+      pcieAspm = null;
+      pcieAspmPolicy = "powersave";
+    };
+
+    initrd = {
+      luks = false;
+      btrfs = false;
+    };
   };
 
   boot = {
@@ -37,6 +49,8 @@
     fprintd.enable = lib.mkForce false;
     blueman.enable = lib.mkForce false;
   };
+
+  systemd.services.fprintd.enable = lib.mkForce false;
 
   nix = {
     daemonCPUSchedPolicy = "batch";

@@ -196,14 +196,6 @@ if ! printf 'david:%s\n' "$HASH" | run_sudo env NIX_CONFIG="$NIX_CONFIG" \
   printf 'david:%s\n' "$HASH" | run_sudo chroot /mnt "$CHPASSWD" -e
 fi
 
-echo "==> Copying existing NetworkManager profiles for first-boot networking"
-run_sudo mkdir -p /mnt/etc/NetworkManager/system-connections
-if compgen -G "/etc/NetworkManager/system-connections/*.nmconnection" >/dev/null; then
-  run_sudo cp /etc/NetworkManager/system-connections/*.nmconnection \
-    /mnt/etc/NetworkManager/system-connections/
-  run_sudo chmod 600 /mnt/etc/NetworkManager/system-connections/*.nmconnection
-fi
-
 echo "==> Unmounting"
 run_sudo umount -R /mnt
 
@@ -221,8 +213,8 @@ Next steps:
      eMMC, so NixOS should boot. Remove the microSD to boot Debian instead.
      There is no LUKS passphrase prompt: the initrd mounts the ext4 root
      directly.
-  2. Log in as david with the password set above. SSH should also work with
-     your GitHub keys once Wi-Fi is up.
+  2. Log in as david with the password set above. Configure Wi-Fi manually
+     (for example with nmtui or nmcli).
   3. The system is mutable: /etc, /var and /home persist across reboots.
      There is no impermanence cleanup.
   4. Clone the repo on the device and install the same generation so the
@@ -234,8 +226,11 @@ Next steps:
        just boot
        sudo reboot
 
-If the screen stays black, SSH in and inspect:
-  dmesg | grep -iE 'drm|panel|dsi|lcdif|backlight'
+If the screen stays black, remove the microSD and boot the eMMC Debian
+installation instead, then inspect the NVMe root from there:
+  sudo mount /dev/nvme0n1p1 /mnt
+  sudo journalctl -D /mnt/var/log/journal -b
+  sudo dmesg | grep -iE 'drm|panel|dsi|lcdif|backlight'
   ls /sys/class/backlight
   cat /sys/class/backlight/*/brightness
 
