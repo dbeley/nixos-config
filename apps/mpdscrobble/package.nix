@@ -1,12 +1,20 @@
-{ lib, python }:
+{
+  lib,
+  python,
+  fetchFromGitHub,
+}:
 with python.pkgs;
 buildPythonApplication rec {
   pname = "mpdscrobble";
-  version = "0.3.5";
+  # PyPI is stuck on 0.3.5, which predates the crash-recovery and
+  # single-currentsong fixes: track upstream main instead.
+  version = "0.3.5-unstable-2026-08-03";
 
-  src = fetchPypi {
-    inherit pname version;
-    sha256 = "sha256-0doBCHXtIrcn50oKV3wThG9wjvRYNKSC9aXGBPIV7bM=";
+  src = fetchFromGitHub {
+    owner = "dbeley";
+    repo = "mpdscrobble";
+    rev = "0b89f869bf28a6a44f872ae59c5ece7023e81b36";
+    hash = "sha256-ijRsXivszlwGE1+23Do6eR1psQ9d+6TdZOLqc0gzHQI=";
   };
 
   propagatedBuildInputs = [
@@ -16,9 +24,6 @@ buildPythonApplication rec {
   ];
 
   nativeCheckInputs = [ pytestCheckHook ];
-  # The sdist ships the tests but not the `mock_pylast_session_key_generator`
-  # fixture they use, so skip the one file that needs it.
-  disabledTestPaths = [ "tests/test_mpdscrobble_lastfm.py" ];
   pythonImportsCheck = [ "mpdscrobble" ];
   pyproject = true;
   build-system = [ setuptools ];
@@ -27,7 +32,7 @@ buildPythonApplication rec {
     homepage = "https://github.com/dbeley/mpdscrobble";
     description = "A simple Last.fm scrobbler for MPD.";
     license = licenses.mit;
-    platforms = [ "x86_64-linux" ];
+    platforms = platforms.all;
     maintainers = [ ];
   };
 }

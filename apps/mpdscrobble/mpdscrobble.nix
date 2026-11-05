@@ -5,51 +5,45 @@ in
 {
   home.packages = [ mpdscrobble ];
 
+  sops.secrets = {
+    lastfm-username.key = "lastfm_username";
+    lastfm-api-key.key = "lastfm_api_key";
+    lastfm-secret.key = "lastfm_secret";
+    lastfm-password.key = "lastfm_password";
+  };
+
+  # api_key/api_secret only identify the application, scrobbling also needs the
+  # user credentials. The rendered file lives in /run (0400), not in $HOME.
+  sops.templates."mpdscrobble.conf" = {
+    path = "${config.home.homeDirectory}/.config/mpdscrobble/mpdscrobble.conf";
+    mode = "0400";
+    content = ''
+      [mpdscrobble]
+      host = localhost
+      port = 6600
+
+      [last.fm]
+      username = ${config.sops.placeholder.lastfm-username}
+      password = ${config.sops.placeholder.lastfm-password}
+      api_key = ${config.sops.placeholder.lastfm-api-key}
+      api_secret = ${config.sops.placeholder.lastfm-secret}
+    '';
+  };
+
   systemd.user.services."mpdscrobble" = {
     Unit = {
       Description = "A simple last.fm scrobbler for MPD";
       After = [ "mpd.service" ];
+      Wants = [ "mpd.service" ];
     };
     Service = {
       Type = "simple";
-      ExecStartPre = pkgs.writeShellScript "mpdscrobble-setup" ''
-        mkdir -p ~/.config/mpdscrobble
-
-        LASTFM_API_KEY=$(cat ~/.config/mpdscrobble/api_key 2>/dev/null || echo "")
-        LASTFM_SECRET=$(cat ~/.config/mpdscrobble/secret 2>/dev/null || echo "")
-        LASTFM_PASSWORD=$(cat ~/.config/mpdscrobble/password 2>/dev/null || echo "")
-
-        cat > ~/.config/mpdscrobble/mpdscrobble.conf << EOF
-        [lastfm]
-        api_key = $LASTFM_API_KEY
-        secret = $LASTFM_SECRET
-        password = $LASTFM_PASSWORD
-
-        [mpd]
-        host = localhost
-        port = 6600
-        EOF
-
-        chmod 600 %h/.config/mpdscrobble/mpdscrobble.conf
-      '';
       ExecStart = "${mpdscrobble}/bin/mpdscrobble -c %h/.config/mpdscrobble/mpdscrobble.conf";
+      Restart = "on-failure";
+      RestartSec = 30;
     };
     Install = {
       WantedBy = [ "default.target" ];
-    };
-  };
-  sops.secrets = {
-    lastfm-api-key = {
-      key = "lastfm_api_key";
-      path = "${config.home.homeDirectory}/.config/mpdscrobble/api_key";
-    };
-    lastfm-secret = {
-      key = "lastfm_secret";
-      path = "${config.home.homeDirectory}/.config/mpdscrobble/secret";
-    };
-    lastfm-password = {
-      key = "lastfm_password";
-      path = "${config.home.homeDirectory}/.config/mpdscrobble/password";
     };
   };
 }
