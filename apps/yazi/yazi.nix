@@ -20,6 +20,10 @@
     settings = {
       preview = {
         cache_dir = "${config.home.homeDirectory}/.cache/yazi";
+        max_width = 320;
+        max_height = 240;
+        image_filter = "nearest";
+        image_quality = 50;
       };
       mgr = {
         linemode = "size";
@@ -30,6 +34,14 @@
             url = "${config.home.homeDirectory}/nfs/**";
             run = "noop";
           }
+          {
+            mime = "video/*";
+            run = "noop";
+          }
+          {
+            mime = "application/pdf";
+            run = "noop";
+          }
         ];
         prepend_fetchers = [
           {
@@ -38,6 +50,25 @@
             prio = "high";
             group = "mime";
           }
+        ];
+        prepend_previewers = [
+          {
+            mime = "video/*";
+            run = "noop";
+          }
+          {
+            mime = "application/pdf";
+            run = "noop";
+          }
+        ];
+      };
+      tasks = {
+        suppress_preload = true;
+        preload_workers = 1;
+        image_alloc = 134217728;
+        image_bound = [
+          4096
+          4096
         ];
       };
     };

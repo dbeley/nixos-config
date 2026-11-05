@@ -22,19 +22,23 @@ in
 
   services.gammastep.enable = lib.mkForce false;
 
-  programs.chromium.commandLineArgs = [
-    "--disable-gpu"
-    "--enable-low-end-device-mode"
-    "--renderer-process-limit=3"
-    "--process-per-site"
-    "--disk-cache-size=134217728"
-  ];
+  programs = {
+    ghostty.enable = lib.mkForce false;
 
-  programs.foot = {
-    enable = true;
-    settings.main = {
-      font = "Iosevka Nerd Font Mono:size=12";
-      pad = "8x8";
+    chromium.commandLineArgs = [
+      "--disable-gpu"
+      "--enable-low-end-device-mode"
+      "--renderer-process-limit=3"
+      "--process-per-site"
+      "--disk-cache-size=134217728"
+    ];
+
+    foot = {
+      enable = true;
+      settings.main = {
+        font = "Iosevka Nerd Font Mono:size=12";
+        pad = "8x8";
+      };
     };
   };
 

@@ -1,6 +1,11 @@
-{ pkgs, ... }:
 {
-  home.packages = [ pkgs.ghostty.terminfo ];
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  home.packages = lib.optional config.programs.ghostty.enable pkgs.ghostty.terminfo;
 
   programs.ghostty = {
     enable = true;

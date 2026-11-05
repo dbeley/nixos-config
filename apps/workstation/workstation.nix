@@ -15,7 +15,6 @@
     nix-tree
     p7zip
     pwvucontrol
-    ripgrep-all
     wireguard-tools
     yt-dlp
   ];
