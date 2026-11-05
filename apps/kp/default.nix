@@ -24,6 +24,12 @@
 
     # The shared niri config spawns the KeePassXC GUI on Mod+N; on hosts that
     # import this module the overlay flow replaces it.
-    wayland.windowManager.niri.settings.binds."Mod+N".spawn = lib.mkForce [ "kp" ];
+    wayland.windowManager.niri.settings.binds = {
+      "Mod+N".spawn = lib.mkForce [ "kp" ];
+      "Mod+Shift+N".spawn = lib.mkForce [
+        "kp"
+        "--actions"
+      ];
+    };
   };
 }

@@ -5,6 +5,8 @@
 # The database path is substituted at build time by package.nix.
 
 db="@database@"
+mode=password
+[ "${1:-}" = "--actions" ] && mode=actions
 
 die() { notify-send -u critical "kp" "$1"; exit 1; }
 
@@ -34,8 +36,32 @@ paths=$(printf '%s\n' "$master" | keepassxc-cli ls -R "$db" 2>/dev/null | awk -f
 entry=$(printf '%s\n' "$paths" | tofi --prompt-text="kp: ") || exit 0
 [ -n "$entry" ] || exit 0
 
-value=$(printf '%s' "$master" | keepassxc-cli show -q -a Password "$db" "$entry") ||
-  die "could not read the entry"
-[ -n "$value" ] || die "empty password for $entry"
+field=Password
+label=Password
+if [ "$mode" = actions ]; then
+  action=$(printf '%s\n' Password Username TOTP URL "Open KeePassXC" | tofi --prompt-text="Action: ") || exit 0
+  case "$action" in
+    Password) field=Password; label=Password ;;
+    Username) field=UserName; label=Username ;;
+    URL) field=URL; label=URL ;;
+    TOTP) field=--totp; label=TOTP ;;
+    "Open KeePassXC")
+      # Escape hatch: the GUI, for editing entries and chromium autofill.
+      keepassxc "$db" >/dev/null 2>&1 &
+      disown
+      exit 0
+      ;;
+    *) exit 0 ;;
+  esac
+fi
 
-copy "$value" "$entry"
+if [ "$field" = --totp ]; then
+  value=$(printf '%s' "$master" | keepassxc-cli show -q --totp "$db" "$entry") ||
+    die "no TOTP configured for $entry"
+else
+  value=$(printf '%s' "$master" | keepassxc-cli show -q -a "$field" "$db" "$entry") ||
+    die "could not read the entry"
+fi
+[ -n "$value" ] || die "no $label for $entry"
+
+copy "$value" "$entry · $label"
