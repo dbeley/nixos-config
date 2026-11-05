@@ -13,8 +13,8 @@ buildPythonApplication rec {
   src = fetchFromGitHub {
     owner = "dbeley";
     repo = "mpdscrobble";
-    rev = "0b89f869bf28a6a44f872ae59c5ece7023e81b36";
-    hash = "sha256-ijRsXivszlwGE1+23Do6eR1psQ9d+6TdZOLqc0gzHQI=";
+    rev = "f59bf1005a77041f3a85a6cd089d02e6545eaea7";
+    hash = "sha256-cl6D03Zf7xeulOKYuQxrPML/cZO4SXzSnWEUxJd5WPs=";
   };
 
   propagatedBuildInputs = [
