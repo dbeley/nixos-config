@@ -318,6 +318,11 @@ let
         ../apps/adguard-home/default.nix
       ];
     };
+    agate = {
+      system = [
+        ../apps/agate/default.nix
+      ];
+    };
     qbittorrent = {
       system = [
         ../apps/qbittorrent/default.nix
@@ -655,6 +660,16 @@ in
       "openssh-server"
       "sops"
       "tor-relay"
+    ];
+  };
+  nixos-kimsufi-gemini = mkHost {
+    hostName = "nixos-kimsufi-gemini";
+    stateVersion = "26.11";
+    profiles = [
+      "bootloader-grub-bios"
+      "vm-guest"
+      "openssh-server"
+      "agate"
     ];
   };
   nixos-kimsufi-warrior = mkHost {

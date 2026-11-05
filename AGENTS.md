@@ -31,7 +31,7 @@
   - Shell/CLI tools: `bat/`, `btop/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `workstation/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
-  - Servers: `adguard-home/`, `audiomuse-ai/`, `cairn/`, `covertone/`, `stave/`, `hermes-server/`, `opencode-server/`, `zeroclaw/`, `immich/`, `jellyfin/`, `maloja/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`, `yamtrack/`
+  - Servers: `adguard-home/`, `agate/`, `audiomuse-ai/`, `cairn/`, `covertone/`, `stave/`, `hermes-server/`, `opencode-server/`, `zeroclaw/`, `immich/`, `jellyfin/`, `maloja/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`, `yamtrack/`
   - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `thunderbird/`, `udiskie/`
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
@@ -110,6 +110,7 @@ mkHost = {
 
 **Servers:**
 - `adguard-home` - AdGuard Home DNS ad-blocker
+- `agate` - Gemini capsule server (self-signed certs, content in `/srv/gemini`, port 1965)
 - `cairn` - Self-hosted AI platform (kiwix, ollama, open-webui)
 - `covertone` - Music player for Navidrome
 - `stave` - Terminal-inspired Subsonic/Navidrome music client (PWA)
@@ -138,6 +139,7 @@ mkHost = {
 - `pocket-reform` - MNT Pocket Reform mini laptop (NXP i.MX 8M Plus, 4x Cortex-A53 @1.8GHz, 8GB RAM, aarch64, niri, extlinux; NVMe ext4 root, `/boot` on microSD, no LUKS/impermanence; hardware module from `nixos-mnt-pocket-reform`, install via `scripts/install-pocket.sh`)
 
 **Servers (Kimsufi Proxmox VMs):**
+- `nixos-kimsufi-gemini` - gemini capsule for dbeley.ovh (agate, port 1965)
 - `nixos-kimsufi-qbittorrent` - qbittorrent server
 - `nixos-kimsufi-tor` - non-exit Tor relay
 
