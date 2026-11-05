@@ -220,6 +220,7 @@ let
       home = [
         ../apps/mpd/mpd.nix
         ../apps/mpdscrobble/mpdscrobble.nix
+        ../apps/rmpc/rmpc.nix
       ];
     };
     python = {
@@ -272,7 +273,7 @@ let
         # ../apps/agent-fieldnotes/agent-fieldnotes.nix
         ../apps/opencode/opencode.nix
         ../apps/openskills/openskills.nix
-        # ../apps/pi/pi.nix
+        ../apps/pi/pi.nix
         # ../apps/oh-my-pi/oh-my-pi.nix
         # ../apps/oh-my-opencode/oh-my-opencode.nix
         # ../apps/hermes/hermes.nix
