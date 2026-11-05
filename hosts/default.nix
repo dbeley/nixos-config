@@ -587,6 +587,8 @@ in
       # "qutebrowser"
       "code-agents"
       "python"
+      "mpd"
+      "sops"
     ];
     extraModules = [
       inputs.nixos-mnt-pocket-reform.nixosModules.pocket-reform-imx8mp
