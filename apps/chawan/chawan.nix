@@ -13,89 +13,75 @@ in
     wl-clipboard-rs
   ];
 
-  # Chawan prefers XDG config when ~/.config/chawan/config.toml exists.
-  # Its data (bookmarks, history, cookies) lives in ~/.local/share/chawan.
   xdg.configFile."chawan/config.toml".text = ''
-    # Chawan configuration for the MNT Pocket Reform.
-    # Defaults are vi-like; only the useful overrides are listed here.
-
-    [start]
-    visual-home = "about:chawan"
-    console-buffer = true
+    # [start]
+    # visual-home = "about:chawan" # default:
+    # console-buffer = true        # default:
 
     [buffer]
-    # Keep the modern CSS layout but make scripting opt-in per site.
-    styling = true
-    scripting = false
-    cookie = false
-    history = true
+    # styling = true        # default:
+    # scripting = false     # default: enable per site instead
+    # cookie = false        # default: enable per site instead
+    # history = true        # default:
+    # meta-refresh = "ask"  # default:
+    # mark-links = false    # default:
     images = true
-    meta-refresh = "ask"
-    mark-links = false
 
-    [search]
-    wrap = true
-    ignore-case = "auto"
+    # [search]
+    # wrap = true           # default:
+    # ignore-case = "auto"  # default:
 
-    [encoding]
-    document-charset = ["utf-8", "sjis", "euc-jp", "latin2"]
-    display-charset = "auto"
+    # [encoding]
+    # document-charset = ["utf-8", "sjis", "euc-jp", "latin2"] # default:
+    # display-charset = "auto" # default:
 
     [external]
-    bookmark = "$CHA_DATA_DIR/bookmark.md"
-    history-file = "$CHA_DATA_DIR/history.uri"
+    # bookmark = "$CHA_DATA_DIR/bookmark.md"     # default:
+    # history-file = "$CHA_DATA_DIR/history.uri" # default:
+    # cookie-file = "$CHA_DATA_DIR/cookies.txt"  # default:
+    # show-download-panel = true                 # default:
+    # auto-mailcap = "$CHA_DIR/mailcap"          # default:
     history-size = 500
-    cookie-file = "$CHA_DATA_DIR/cookies.txt"
     download-dir = "~/Téléchargements/"
-    show-download-panel = true
     editor = "kak"
     copy-cmd = "${wlCopy}"
     paste-cmd = "${wlPaste} --no-newline"
-    auto-mailcap = "$CHA_DIR/mailcap"
 
     [network]
-    max-redirect = 10
-    # A53 + Wi-Fi: fewer parallel connections keep the browser responsive.
+    # max-redirect = 10            # default:
+    # prepend-scheme = "https://"  # default:
+    # allow-http-from-file = false # default:
     max-net-connections = 6
-    prepend-scheme = "https://"
-    allow-http-from-file = false
-    default-headers = {
-      User-Agent = "chawan",
-      Accept = "text/html, text/*;q=0.5, */*;q=0.4",
-      Accept-Encoding = "gzip, deflate, br",
-      Accept-Language = "fr-FR,fr;q=0.9,en;q=0.8",
-      Pragma = "no-cache",
-      Cache-Control = "no-cache"
-    }
+    [network.default-headers]
+    Accept-Language = "fr-FR,fr;q=0.9,en;q=0.8"
 
-    [input]
-    vi-numeric-prefix = true
-    use-mouse = "auto"
-    osc52-copy = "auto"
-    osc52-primary = "auto"
-    bracketed-paste = "auto"
-    wheel-scroll = 5
-    side-wheel-scroll = 5
+    # [input]
+    # vi-numeric-prefix = true   # default:
+    # use-mouse = "auto"         # default:
+    # osc52-copy = "auto"        # default:
+    # osc52-primary = "auto"     # default:
+    # bracketed-paste = "auto"   # default:
+    # wheel-scroll = 5           # default:
+    # side-wheel-scroll = 5      # default:
 
-    [status]
-    show-cursor-position = true
-    show-hover-link = true
+    # [status]
+    # show-cursor-position = true # default:
+    # show-hover-link = true      # default:
 
-    [display]
-    color-mode = "auto"
-    format-mode = "auto"
-    image-mode = "auto"
-    sixel-colors = "auto"
-    alt-screen = "auto"
-    set-title = "auto"
-    highlight-marks = true
-    minimum-contrast = 100
-    default-background-color = "auto"
-    default-foreground-color = "auto"
+    # [display]
+    # color-mode = "auto"                # default:
+    # format-mode = "auto"               # default:
+    # image-mode = "auto"                # default:
+    # sixel-colors = "auto"              # default:
+    # alt-screen = "auto"                # default:
+    # set-title = "auto"                 # default:
+    # highlight-marks = true             # default:
+    # minimum-contrast = 100             # default:
+    # default-background-color = "auto"  # default:
+    # default-foreground-color = "auto"  # default:
 
     [page]
-    # Defaults are vi-like. C-k opens the URL bar with DuckDuckGo Lite
-    # instead of the heavier default search engine.
+    # Default C-k is webSearch (Brave). Use DuckDuckGo Lite instead.
     'C-k' = '() => pager.load("ddg:")'
 
     # Extra search shortcuts for the omni-bar. The built-in ddg:, br:, wk:,
@@ -111,18 +97,6 @@ in
     [omnirule.wfr]
     match = "^wfr:"
     substitute-url = '(x) => "https://fr.wikipedia.org/wiki/Special:Search?search=" + encodeURIComponent(x.substring(x.indexOf(":") + 1))'
-
-    [omnirule.aw]
-    match = "^aw:"
-    substitute-url = '(x) => "https://wiki.archlinux.org/index.php?search=" + encodeURIComponent(x.substring(x.indexOf(":") + 1))'
-
-    [omnirule.so]
-    match = "^so:"
-    substitute-url = '(x) => "https://stackoverflow.com/search?q=" + encodeURIComponent(x.substring(x.indexOf(":") + 1))'
-
-    [omnirule.mdn]
-    match = "^mdn:"
-    substitute-url = '(x) => "https://developer.mozilla.org/en-US/search?q=" + encodeURIComponent(x.substring(x.indexOf(":") + 1))'
 
     # Hacker News login needs cookies; keep them in memory only.
     [siteconf.hn]
@@ -158,8 +132,6 @@ in
     }
   '';
 
-  # Chawan hands non-HTML resources to mailcap. Keep the viewers that are
-  # already part of the workstation profile.
   xdg.configFile."chawan/mailcap".text = ''
     image/*; swayimg %s
     video/*; mpv %s
