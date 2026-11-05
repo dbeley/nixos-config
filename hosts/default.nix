@@ -102,7 +102,8 @@ let
         ../apps/tmux/tmux.nix
         ../apps/udiskie/udiskie.nix
         ../apps/workstation/workstation.nix
-        ../apps/ytq/ytq.nix
+        ../apps/youtube/ytq.nix
+        ../apps/youtube/ytf.nix
         ../apps/yazi/yazi.nix
         ../apps/zathura/zathura.nix
         ../apps/zoxide/zoxide.nix

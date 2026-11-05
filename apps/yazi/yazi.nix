@@ -53,10 +53,6 @@
         ];
         prepend_previewers = [
           {
-            mime = "video/*";
-            run = "noop";
-          }
-          {
             mime = "application/pdf";
             run = "noop";
           }

@@ -33,6 +33,7 @@
   - AI/ML: `ollama/`
   - Servers: `adguard-home/`, `audiomuse-ai/`, `cairn/`, `covertone/`, `stave/`, `hermes-server/`, `opencode-server/`, `zeroclaw/`, `immich/`, `jellyfin/`, `maloja/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`, `yamtrack/`
   - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `thunderbird/`, `udiskie/`
+  - YouTube: `youtube/` — `ytq.nix` (search + download), `ytf.nix` (channel feeds from a text file), and `api.nix`, a shared helper both call for video publish date/duration and `@handle` → channel id (via youtube.com's own web API, no key to register)
 - **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
 - **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
 - **`imgs/`** - Assets, wallpapers, and screenshots

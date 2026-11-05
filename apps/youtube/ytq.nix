@@ -1,5 +1,7 @@
 { pkgs, ... }:
 let
+  youtubeApi = pkgs.callPackage ./api.nix { };
+
   preview = pkgs.writeShellApplication {
     name = "ytq-preview";
     runtimeInputs = with pkgs; [
@@ -29,12 +31,15 @@ let
       yt-dlp
       gawk
       coreutils
+      youtubeApi
     ];
     text = ''
+      tmp=$(mktemp -d)
+      trap 'rm -rf "$tmp"' EXIT
+
       if [ "''${1:-}" = "--next" ]; then
         dir=$2
         n=$(cat "$dir/n")
-        # shortcut: refait la recherche avec 20 résultats de plus (~2 s par page)
         n=$((n + 20))
         printf '%s\n' "$n" > "$dir/n"
         query=$(cat "$dir/query")
@@ -44,32 +49,42 @@ let
       fi
 
       yt-dlp "ytsearch$n:$query" --flat-playlist --no-warnings \
-        --print "%(duration_string)s│%(view_count)s│%(channel)s│%(title)s│%(id)s" |
-        awk -F'│' '
-          function human(v,   n) {
-            n = v + 0
-            if (n >= 1000000000) return sprintf("%.1f Md", n / 1000000000)
-            if (n >= 1000000) return sprintf("%.1f M", n / 1000000)
-            if (n >= 1000) return sprintf("%.0f k", n / 1000)
-            return sprintf("%d", n)
-          }
-          {
-            id = $NF
-            if (length(id) != 11) next
+        --print "%(duration_string)s│%(view_count)s│%(channel)s│%(title)s│%(id)s" > "$tmp/raw" || true
 
-            # Un « │ » dans le texte casserait les champs : on le remplace.
-            title = $4
-            for (i = 5; i < NF; i++) title = title "│" $i
-            gsub(/│/, "¦", title)
+      mapfile -t ids < <(awk -F'│' 'length($NF) == 11 { print $NF }' "$tmp/raw" | sort -u)
+      : > "$tmp/meta"
+      if [ "''${#ids[@]}" -gt 0 ]; then
+        youtube-api meta "''${ids[@]}" > "$tmp/meta" 2>/dev/null || true
+      fi
 
-            meta = ($1 == "" || $1 == "NA") ? "" : $1
-            if ($2 != "" && $2 != "NA") meta = (meta == "" ? "" : meta " · ") human($2) " vues"
-            if ($3 != "" && $3 != "NA") meta = (meta == "" ? "" : meta " · ") $3
-            gsub(/│/, "¦", meta)
+      gawk -F'│' '
+        # fichier des dates : id -> « 2026-10-30 20:30 »
+        FILENAME == ARGV[1] { if (NF >= 2) date[$1] = $2; next }
 
-            printf "%s│%s\n   %s%c", id, title, meta, 0
-          }
-        ' || true
+        function human(v,   n) {
+          n = v + 0
+          if (n >= 1000000000) return sprintf("%.1f Md", n / 1000000000)
+          if (n >= 1000000) return sprintf("%.1f M", n / 1000000)
+          if (n >= 1000) return sprintf("%.0f k", n / 1000)
+          return sprintf("%d", n)
+        }
+        {
+          id = $NF
+          if (length(id) != 11) next
+
+          title = $4
+          for (i = 5; i < NF; i++) title = title "│" $i
+          gsub(/│/, "¦", title)
+
+          meta = ($1 == "" || $1 == "NA") ? "" : $1
+          if ($2 != "" && $2 != "NA") meta = (meta == "" ? "" : meta " · ") human($2) " vues"
+          if ($3 != "" && $3 != "NA") meta = (meta == "" ? "" : meta " · ") $3
+          gsub(/│/, "¦", meta)
+
+          d = (id in date) ? date[id] : ""
+          printf "%s│%-16s  %s\n   %s%c", id, d, title, meta, 0
+        }
+      ' "$tmp/meta" "$tmp/raw" || true
     '';
   };
 

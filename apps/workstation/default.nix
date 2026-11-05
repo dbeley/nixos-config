@@ -16,7 +16,6 @@
       alsa.enable = true;
       alsa.support32Bit = pkgs.stdenv.hostPlatform.isx86_64;
       pulse.enable = true;
-      jack.enable = true;
     };
     gvfs.enable = true;
     gnome = {
