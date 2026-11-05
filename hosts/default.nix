@@ -252,6 +252,9 @@ let
     qutebrowser = {
       home = [ ../apps/qutebrowser/qutebrowser.nix ];
     };
+    chawan = {
+      home = [ ../apps/chawan/chawan.nix ];
+    };
     emacs = {
       home = [ ../apps/emacs/emacs.nix ];
     };
@@ -586,6 +589,7 @@ in
       # "luakit"
       "chromium"
       # "qutebrowser"
+      "chawan"
       "code-agents"
       "python"
       "mpd"
