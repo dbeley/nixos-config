@@ -743,11 +743,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793922586,
-        "narHash": "sha256-s57htW9bor5DbOoHz5F7sOlISiyZo99v/5dOcjYhij0=",
+        "lastModified": 1793923288,
+        "narHash": "sha256-z+9V8pgYLHGdselx0ZPyeoMbfE6IfYHmtjLCLlkmXiY=",
         "owner": "dbeley",
         "repo": "nixos-mnt-pocket-reform",
-        "rev": "7888377eb6e2db49a37493a5c30920a955582cf8",
+        "rev": "3363d90fb698d7f432b4cda03b508615b0b3a0e1",
         "type": "github"
       },
       "original": {
