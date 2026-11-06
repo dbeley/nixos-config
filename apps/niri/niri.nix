@@ -22,9 +22,17 @@
       nirius
     ];
 
+    xdg.portal = {
+      config.niri = {
+        default = [ "gtk" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      };
+    };
+
     wayland.windowManager.niri = {
       enable = true;
       package = pkgs.niri;
+      portalPackage = pkgs.xdg-desktop-portal-gtk;
 
       settings = {
         environment = {
