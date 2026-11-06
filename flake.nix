@@ -23,7 +23,10 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-mnt-pocket-reform = {
       url = "github:dbeley/nixos-mnt-pocket-reform";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,6 +63,7 @@
     base16 = {
       # url = "github:SenchoPens/base16.nix?ref=refs/pull/19/head";
       url = "github:SenchoPens/base16.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     bend = {
       # Bend 2 (bendlang/bend), NOT nixpkgs' `bend` (that is the incompatible
@@ -193,12 +197,14 @@
     covertone = {
       url = "github:dbeley/covertone";
       inputs = {
+        nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
       };
     };
     stave = {
       url = "github:dbeley/stave";
       inputs = {
+        nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
       };
     };
