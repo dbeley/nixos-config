@@ -67,7 +67,6 @@ let
       tmp=$(mktemp -d)
       trap 'rm -rf "$tmp"' EXIT
 
-      # 1. channels file: one per line, '#' starts a comment line
       mapfile -t inputs < <(
         awk '{ sub(/\r$/, "") }
              /^[[:space:]]*#/ { next }
@@ -79,7 +78,6 @@ let
       fi
 
       ids=()
-      # 2. every channel -> channel id (cached, one network round trip the first time)
       while IFS='│' read -r input id; do
         if [ "$id" = '!' ] || [ -z "$id" ]; then
           echo "ytf: canal introuvable : $input" >> "$err"
@@ -94,29 +92,71 @@ let
       fi
       mapfile -t ids < <(printf '%s\n' "''${ids[@]}" | awk '!seen[$0]++')
 
-      # 3. one RSS request per channel, multiplexed over a single curl process:
-      #    ~0.8 s for 60 channels, ~8 s for 500
-      args=()
-      for i in "''${!ids[@]}"; do
-        args+=(-o "$tmp/feed_$i.xml" "https://www.youtube.com/feeds/videos.xml?channel_id=''${ids[$i]}")
+      pending=("''${!ids[@]}")
+      total="''${#pending[@]}"
+      max_parallel=4
+      throttled=0
+      if [ "$total" -gt 0 ]; then
+        for attempt in 1 2; do
+          [ "''${#pending[@]}" -gt 0 ] || break
+          args=()
+          for i in "''${pending[@]}"; do
+            args+=(-o "$tmp/feed_$i.xml" "https://www.youtube.com/feeds/videos.xml?channel_id=''${ids[$i]}")
+          done
+          curl -fsS --parallel --parallel-max "$max_parallel" -m 20 "''${args[@]}" 2>/dev/null || true
+          failed=()
+          for i in "''${pending[@]}"; do
+            [ -s "$tmp/feed_$i.xml" ] || failed+=("$i")
+          done
+          pending=("''${failed[@]}")
+          # a third of the channels failing at once is not a per-channel problem:
+          # YouTube answers 404 to the whole feed endpoint when it throttles us,
+          # so retrying would only make the run long for nothing.
+          if [ "''${#pending[@]}" -eq 0 ]; then
+            break
+          fi
+          if [ "''${#pending[@]}" -ge 8 ] && [ "$(( ''${#pending[@]} * 3 ))" -gt "$total" ]; then
+            echo "ytf: ''${#pending[@]}/$total flux refusés — YouTube limite probablement les requêtes (HTTP 404/429), réessayez plus tard" >> "$err"
+            throttled=1
+            break
+          fi
+          max_parallel=4
+          sleep "$attempt"
+        done
+      fi
+
+      for i in "''${pending[@]}"; do
+        if [ "$throttled" -eq 1 ]; then
+          break
+        fi
+        if [ -s "$tmp/feed_$i.xml" ]; then
+          continue
+        fi
+        code=$(curl -sS -o "$tmp/feed_$i.xml" -w '%{http_code}' -m 20 \
+          "https://www.youtube.com/feeds/videos.xml?channel_id=''${ids[$i]}") || code=000
+        if [ "$code" = 200 ] && [ -s "$tmp/feed_$i.xml" ]; then
+          continue
+        fi
+        rm -f "$tmp/feed_$i.xml"
+        if [ "$code" = 404 ]; then
+          echo "ytf: pas de flux pour ''${ids[$i]} (404 : chaîne sans flux)" >> "$err"
+        else
+          echo "ytf: flux indisponible pour ''${ids[$i]} (HTTP $code)" >> "$err"
+        fi
       done
-      curl -fsS --parallel --parallel-max 32 -m 20 "''${args[@]}" 2>/dev/null || true
 
       feeds=()
       for i in "''${!ids[@]}"; do
         if [ -s "$tmp/feed_$i.xml" ]; then
           feeds+=("$tmp/feed_$i.xml")
-        else
-          echo "ytf: flux indisponible pour ''${ids[$i]}" >> "$err"
         fi
       done
       if [ "''${#feeds[@]}" -eq 0 ]; then
+        [ -s "$err" ] && cat "$err" >&2
         echo "ytf: aucun flux récupéré" >&2
         exit 1
       fi
 
-      # 4. parse the Atom feeds (15 newest videos per channel, no more exists),
-      #    sort by publication date, newest first
       TZ=UTC gawk '
         BEGIN { RS = "<entry>"; now = systime(); cutoff = now - 14 * 86400 }
 
@@ -163,7 +203,6 @@ let
         exit 1
       fi
 
-      # 5. fzf rows: id, local date, title, then an indented metadata line
       gawk -F'\x1f' '
         function human(v,   n) {
           n = v + 0

@@ -128,7 +128,16 @@ writeShellApplication {
         done
         ;;
       resolve)
-        client || exit 1
+        need_api=0
+        for input in "$@"; do
+          case $input in
+            UC[A-Za-z0-9_-]*) ;;
+            *) need_api=1 ;;
+          esac
+        done
+        if [ "$need_api" -eq 1 ]; then
+          client || exit 1
+        fi
         batch resolve_one "$@"
         for input in "$@"; do
           case $input in
