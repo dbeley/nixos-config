@@ -13,8 +13,16 @@ let
       -h int:value:"''${PCT}"
   '';
   volume = "${config.home.homeDirectory}/scripts/volume_pamixer.sh";
+  newsraftFeeds = "${config.home.homeDirectory}/Nextcloud/10-19_Documents/18_Config/18.26_newsraft/feeds";
 in
 {
+  home.packages = with pkgs; [ newsraft ];
+
+  xdg.configFile."newsraft/feeds".source = config.lib.file.mkOutOfStoreSymlink newsraftFeeds;
+  xdg.configFile."newsraft/config".text = ''
+    open-in-browser-command chawan "%l"
+  '';
+
   my.niri.gpu-effects = false;
 
   services = {
