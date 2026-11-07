@@ -3,6 +3,7 @@
   services.mako = {
     enable = true;
     settings = {
+      layer = "overlay";
       width = 300;
       height = 100;
       icons = true;

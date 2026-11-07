@@ -3,7 +3,7 @@
   programs.tofi = {
     enable = true;
     settings = {
-      font-size = lib.mkForce "15";
+      font-size = lib.mkForce "20";
       hint-font = true;
       prompt-background-padding = 0;
       prompt-background-corner-radius = 0;
@@ -18,7 +18,7 @@
       prompt-text = "run: ";
       prompt-padding = 0;
       num-results = 10;
-      result-spacing = 25;
+      result-spacing = 15;
       horizontal = false;
       min-input-width = 0;
       width = "100%";

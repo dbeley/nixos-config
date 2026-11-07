@@ -60,7 +60,7 @@ in
       {
         output = {
           _args = [ "DSI-1" ];
-          scale = 1.75;
+          scale = 2;
           transform = "90";
         };
       }
