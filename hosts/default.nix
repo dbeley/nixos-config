@@ -102,8 +102,8 @@ let
         ../apps/tmux/tmux.nix
         ../apps/udiskie/udiskie.nix
         ../apps/workstation/workstation.nix
-        ../apps/youtube/ytq.nix
-        ../apps/youtube/ytf.nix
+        ../apps/scripts/ytq.nix
+        ../apps/scripts/ytf.nix
         ../apps/yazi/yazi.nix
         ../apps/zathura/zathura.nix
         ../apps/zoxide/zoxide.nix
@@ -371,6 +371,9 @@ let
     };
     stave = {
       system = [ ../apps/stave/default.nix ];
+    };
+    redlib = {
+      system = [ ../apps/redlib/default.nix ];
     };
     archiveteam-warrior = {
       system = [ ../apps/archiveteam-warrior/default.nix ];
@@ -766,6 +769,7 @@ in
       "maloja"
       "covertone"
       "stave"
+      "redlib"
     ];
   };
 }
