@@ -222,7 +222,9 @@ let
         et la date de publication.
 
         Tab     coche/décoche une vidéo ; Entrée télécharge la sélection
-                (une seule vidéo si rien n'est coché), en 720p maximum, H.264.
+                (une seule vidéo si rien n'est coché), en 720p maximum, H.264
+                30 fps. Régler YT_MAX_HEIGHT=480 pour alléger encore
+                le décodage.
         Ctrl-R  recharge les flux.
         Ctrl-O  édite le fichier des chaînes, puis recharge.
 
@@ -312,8 +314,11 @@ let
         urls+=("https://youtu.be/''${item%%│*}")
       done
 
-      exec yt-dlp -f 'bv*[height<=720][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=720][vcodec^=avc1]+ba/b[height<=720][vcodec^=avc1]/bv*[height<=720]+ba/b[height<=720]/b' \
-        -S tbr "''${urls[@]}"
+      maxh="''${YT_MAX_HEIGHT:-720}"
+      exec yt-dlp \
+        -f "bv*[height<=$maxh][fps<=30][vcodec^=avc1][protocol^=http]+ba[ext=m4a]/bv*[height<=$maxh][fps<=30][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=$maxh][fps<=30]+ba/bv*[height<=$maxh][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=$maxh]+ba/b[height<=$maxh]/b" \
+        --concurrent-fragments 4 \
+        "''${urls[@]}"
     '';
   };
 in

@@ -92,6 +92,7 @@ let
         Ctrl-R  lance une nouvelle recherche sans quitter ytq.
 
                 Qualité : 720p maximum, en H.264 30 fps.
+                Régler YT_MAX_HEIGHT=480 pour alléger encore le décodage.
 
         Seules les vidéos sont proposées : les playlists, chaînes et
         mixes renvoyés par la recherche YouTube sont écartés.
@@ -184,8 +185,11 @@ let
 
       [ "''${#urls[@]}" -gt 0 ] || exit 130
 
-      yt-dlp -f 'bv*[height<=720][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=720][vcodec^=avc1]+ba/b[height<=720][vcodec^=avc1]/bv*[height<=720]+ba/b[height<=720]/b' \
-        -S tbr "''${urls[@]}"
+      maxh="''${YT_MAX_HEIGHT:-720}"
+      yt-dlp \
+        -f "bv*[height<=$maxh][fps<=30][vcodec^=avc1][protocol^=http]+ba[ext=m4a]/bv*[height<=$maxh][fps<=30][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=$maxh][fps<=30]+ba/bv*[height<=$maxh][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=$maxh]+ba/b[height<=$maxh]/b" \
+        --concurrent-fragments 4 \
+        "''${urls[@]}"
     '';
   };
 in
