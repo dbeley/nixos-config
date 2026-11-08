@@ -15,7 +15,7 @@
     };
   };
 
-  wayland.windowManager.niri.settings = lib.mkIf (config.wayland.windowManager.niri.enable or false) {
+  wayland.windowManager.niri.settings = lib.mkIf (!(config.programs.noctalia.enable or false)) {
     _children = [
       { spawn-at-startup = [ "mako" ]; }
     ];

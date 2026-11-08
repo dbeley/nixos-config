@@ -22,6 +22,8 @@ window#waybar {
 }
 
 #window,
+#mode,
+#submap,
 #workspaces,
 #clock,
 #tray,
