@@ -275,10 +275,7 @@
           ];
         };
 
-        # Repeated top-level keys use _children for toKDL compatibility
-        # Each entry is a single node in the KDL output
         _children = [
-          # Outputs
           {
             output = {
               _args = [ "AU Optronics 0x116D Unknown" ];
@@ -335,7 +332,6 @@
             };
           }
 
-          # Window rules
           {
             window-rule = {
               _children = [
@@ -436,9 +432,6 @@
             };
           }
         ]
-        # Blur, rounded corners and translucency of unfocused windows are
-        # expensive on weak GPUs; hosts can drop them with
-        # `my.niri.gpu-effects = false`.
         ++ lib.optionals config.my.niri.gpu-effects [
           {
             window-rule = {
@@ -466,7 +459,28 @@
           }
         ]
         ++ [
-          # Layer rules
+          {
+            window-rule = {
+              match._props = {
+                app-id = "one.alynx.showmethekey";
+                title = "Floating Window - Show Me The Key";
+              };
+              open-floating = true;
+              open-focused = false;
+              default-column-width = {
+                proportion = 0.6;
+              };
+              default-window-height = {
+                fixed = 120;
+              };
+              "default-floating-position"._props = {
+                x = 0;
+                y = 72;
+                relative-to = "bottom";
+              };
+              opacity = 0.7;
+            };
+          }
           {
             layer-rule = {
               _children = [
@@ -476,12 +490,10 @@
             };
           }
 
-          # Spawn at startup
           { spawn-at-startup = [ "niriusd" ]; }
         ];
       }
       // lib.optionalAttrs config.my.niri.gpu-effects {
-        # Global blur strength; only used when a window rule enables it.
         blur = {
           passes = 3;
           offset = 4.0;
@@ -490,7 +502,6 @@
         };
       }
       // lib.optionalAttrs (!config.my.niri.gpu-effects) {
-        # No GPU compositing budget for animations.
         animations.off = [ ];
       };
     };
