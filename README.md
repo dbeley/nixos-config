@@ -12,7 +12,7 @@
 |----------------|--------------------------------------------------|
 | **Shell:**     | fish                                             |
 | **DM:**        | tty1                                             |
-| **WM:**        | niri / sway / gnome                              |
+| **WM:**        | niri / sway / gnome / umbriel / hyprland         |
 | **Bar:**       | noctalia / waybar                                |
 | **Editor:**    | kakoune / doom-emacs / neovim / helix            |
 | **Terminal:**  | kitty / ghostty                                  |
@@ -22,7 +22,7 @@
 
 ## Notable Features
 
-- Support for multiple desktop environments ([`niri`](./apps/niri/), [`gnome`](./apps/gnome/), [`sway`](./apps/sway/))
+- Support for multiple desktop environments ([`niri`](./apps/niri/), [`gnome`](./apps/gnome/), [`sway`](./apps/sway/)), [`umbriel`](./apps/umbriel/)), [`hyprland`](./apps/hypland/))
   - Support for multiple bars with [`waybar`](./apps/waybar) and [`noctalia`](./apps/noctalia)
   - [Extensive `niri` configuration](./apps/niri/)
     - Window rules, monitor rules
