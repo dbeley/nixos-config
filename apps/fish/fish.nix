@@ -56,7 +56,7 @@
       end
     '';
     loginShellInit = ''
-      if test (tty) = /dev/tty1
+      if status is-interactive; and test (tty) = /dev/tty1
         if type -q sway
           exec sway
         else if type -q niri-session
