@@ -37,10 +37,12 @@ writeShellApplication {
     }
 
     api() { # $1 = method, $2 = json payload fragment; prints the json body
-      local method=$1 payload=$2 url body raw code
+      local method=$1 payload=$2 url body raw code hl gl
+      hl=''${YT_HL:-en}
+      gl=''${YT_GL:-US}
       client || return 1
       url="https://www.youtube.com/youtubei/v1/$method?key=$KEY&prettyPrint=false"
-      body="{\"context\":{\"client\":{\"clientName\":\"WEB\",\"clientVersion\":\"$VER\",\"hl\":\"en\",\"gl\":\"US\"}},$payload}"
+      body="{\"context\":{\"client\":{\"clientName\":\"WEB\",\"clientVersion\":\"$VER\",\"hl\":\"$hl\",\"gl\":\"$gl\"}},$payload}"
       raw=$(curl -sS -m 10 -w '\n%{http_code}' -X POST "$url" -H 'Content-Type: application/json' \
         -d "$body" 2>/dev/null) || raw=""
       code="''${raw##*$'\n'}"
@@ -49,7 +51,7 @@ writeShellApplication {
         rm -f "$cache/client"
         client || return 1
         url="https://www.youtube.com/youtubei/v1/$method?key=$KEY&prettyPrint=false"
-        body="{\"context\":{\"client\":{\"clientName\":\"WEB\",\"clientVersion\":\"$VER\",\"hl\":\"en\",\"gl\":\"US\"}},$payload}"
+        body="{\"context\":{\"client\":{\"clientName\":\"WEB\",\"clientVersion\":\"$VER\",\"hl\":\"$hl\",\"gl\":\"$gl\"}},$payload}"
         raw=$(curl -sS -m 10 -w '\n%{http_code}' -X POST "$url" -H 'Content-Type: application/json' \
           -d "$body" 2>/dev/null) || raw=""
         code="''${raw##*$'\n'}"
@@ -151,8 +153,18 @@ writeShellApplication {
           fi
         done
         ;;
+      raw) # $1 = youtubei method, $2 = json payload object (outer braces optional)
+        if [ $# -lt 2 ]; then
+          echo "usage: youtube-api raw METHOD JSON" >&2
+          exit 2
+        fi
+        payload=$2
+        payload=''${payload#\{}
+        payload=''${payload%\}}
+        api "$1" "$payload" || exit 1
+        ;;
       *)
-        echo "usage: youtube-api meta ID... | resolve URL|@handle|/channel/ID" >&2
+        echo "usage: youtube-api meta ID... | resolve URL|@handle|/channel/ID | raw METHOD JSON" >&2
         exit 2
         ;;
     esac

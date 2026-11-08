@@ -1,6 +1,7 @@
 { pkgs, config, ... }:
 let
   youtubeApi = pkgs.callPackage ./api.nix { };
+  ytdlp = pkgs.callPackage ./ytdlp.nix { };
 
   defaultFile = "${config.home.homeDirectory}/Nextcloud/10-19_Documents/18_Config/18.25_ytf/channels.txt";
 
@@ -208,7 +209,7 @@ let
     runtimeInputs = with pkgs; [
       coreutils
       fzf
-      yt-dlp
+      ytdlp
     ];
     text = ''
       usage() {
@@ -224,7 +225,10 @@ let
         Tab     coche/décoche une vidéo ; Entrée télécharge la sélection
                 (une seule vidéo si rien n'est coché), en 720p maximum, H.264
                 30 fps. Régler YT_MAX_HEIGHT=480 pour alléger encore
-                le décodage.
+                le décodage. La piste audio originale est toujours choisie
+                (jamais un doublage automatique).
+        Les cookies d'un navigateur connecté à YouTube sont passés à yt-dlp
+        (voir ytdlp) : variables YT_COOKIES ou YT_COOKIES_FROM_BROWSER.
         Ctrl-R  recharge les flux.
         Ctrl-O  édite le fichier des chaînes, puis recharge.
 
@@ -315,7 +319,7 @@ let
       done
 
       maxh="''${YT_MAX_HEIGHT:-720}"
-      exec yt-dlp \
+      exec ytdlp \
         -f "bv*[height<=$maxh][fps<=30][vcodec^=avc1][protocol^=http]+ba[ext=m4a]/bv*[height<=$maxh][fps<=30][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=$maxh][fps<=30]+ba/bv*[height<=$maxh][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=$maxh]+ba/b[height<=$maxh]/b" \
         --concurrent-fragments 4 \
         "''${urls[@]}"

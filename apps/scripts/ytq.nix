@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   youtubeApi = pkgs.callPackage ./api.nix { };
+  ytdlp = pkgs.callPackage ./ytdlp.nix { };
 
   preview = pkgs.callPackage ./yt-preview.nix {
     name = "ytq-preview";
@@ -30,8 +31,21 @@ let
         n=$2
       fi
 
-      yt-dlp "ytsearch$n:$query" --flat-playlist --no-warnings \
-        --print "%(duration_string)s│%(view_count)s│%(channel)s│%(title)s│%(id)s" > "$tmp/raw" || true
+      # 403 passager de l'API YouTube : deux nouvelles tentatives
+      attempt=0
+      while :; do
+        if yt-dlp "ytsearch$n:$query" --flat-playlist --no-warnings \
+          --print "%(duration_string)s│%(view_count)s│%(channel)s│%(title)s│%(id)s" \
+          > "$tmp/raw" 2> "$tmp/err" && [ -s "$tmp/raw" ]; then
+          break
+        fi
+        attempt=$((attempt + 1))
+        if [ "$attempt" -ge 3 ]; then
+          cat "$tmp/err" >&2
+          break
+        fi
+        sleep 2
+      done
 
       mapfile -t ids < <(awk -F'│' 'length($NF) == 11 { print $NF }' "$tmp/raw" | sort -u)
       : > "$tmp/meta"
@@ -74,7 +88,7 @@ let
     name = "ytq";
     runtimeInputs = with pkgs; [
       fzf
-      yt-dlp
+      ytdlp
       coreutils
     ];
     text = ''
@@ -93,6 +107,11 @@ let
 
                 Qualité : 720p maximum, en H.264 30 fps.
                 Régler YT_MAX_HEIGHT=480 pour alléger encore le décodage.
+                Langue : la piste originale est toujours choisie (jamais
+                un doublage automatique).
+                Cookies : un navigateur connecté à YouTube est utilisé
+                automatiquement pour télécharger (variables YT_COOKIES ou
+                YT_COOKIES_FROM_BROWSER pour forcer, voir ytdlp).
 
         Seules les vidéos sont proposées : les playlists, chaînes et
         mixes renvoyés par la recherche YouTube sont écartés.
@@ -186,7 +205,7 @@ let
       [ "''${#urls[@]}" -gt 0 ] || exit 130
 
       maxh="''${YT_MAX_HEIGHT:-720}"
-      yt-dlp \
+      ytdlp \
         -f "bv*[height<=$maxh][fps<=30][vcodec^=avc1][protocol^=http]+ba[ext=m4a]/bv*[height<=$maxh][fps<=30][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=$maxh][fps<=30]+ba/bv*[height<=$maxh][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=$maxh]+ba/b[height<=$maxh]/b" \
         --concurrent-fragments 4 \
         "''${urls[@]}"

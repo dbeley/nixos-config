@@ -94,6 +94,7 @@ let
         ../apps/ledger/ledger.nix
         ../apps/mime/mime.nix
         ../apps/mpv/mpv.nix
+        ../apps/newsraft/newsraft.nix
         ../apps/nextcloud-client/nextcloud-client.nix
         # ../apps/nnn/nnn.nix
         ../apps/stylix/stylix.nix
@@ -104,6 +105,7 @@ let
         ../apps/workstation/workstation.nix
         ../apps/scripts/ytq.nix
         ../apps/scripts/ytf.nix
+        ../apps/scripts/ytc.nix
         ../apps/yazi/yazi.nix
         ../apps/zathura/zathura.nix
         ../apps/zoxide/zoxide.nix
@@ -625,7 +627,7 @@ in
       "workstation"
       "niri-waybar"
       # "luakit"
-      "chromium"
+      # "chromium"
       # "qutebrowser"
       "chawan"
       "code-agents"
