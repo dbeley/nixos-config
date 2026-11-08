@@ -23,14 +23,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-    direnv-instant = {
-      url = "github:Mic92/direnv-instant";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
-        flake-parts.follows = "flake-parts";
-      };
-    };
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs";
