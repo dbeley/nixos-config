@@ -19,7 +19,7 @@
   - `overlays.nix` - System-wide package overlays
   - `hosts/default.nix` - Host definitions and the `domain` specialArg: the public domain used by all era VM services (e.g. `home.example.com`). Passed to every module via `specialArgs`/`extraSpecialArgs`.
 - **`apps/`** - Reusable application and desktop environment modules (102 directories, 116 .nix files total)
-  - Desktop environments: `gnome/`, `niri/`, `sway/`
+  - Desktop environments: `gnome/`, `hyprland/`, `niri/`, `sway/`
   - Terminals: `alacritty/`, `ghostty/`, `kitty/`
   - Editors: `editorconfig/`, `emacs/`, `helix/`, `kakoune/`, `neovim-nvf/`, `nvim/`, `vscode/`
   - Browsers: `firefox/`, `luakit/`, `qutebrowser/`, `ungoogled-chromium/`, `zen-browser/`
@@ -27,7 +27,7 @@
   - Code agents: `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `goose/`, `hermes/`, `oh-my-opencode/`, `oh-my-pi/`, `opencode/`, `openskills/`, `pi/`, `rtk/`
   - File managers: `lf/`, `nnn/`, `yazi/`
   - Media: `feishin/`, `imv/`, `mpd/`, `mpv/`, `obs/`, `swayimg/`, `zathura/`
-  - Wayland utilities: `gammastep/`, `hyprlock/`, `mako/`, `noctalia/`, `swayidle/`, `swaylock/`, `tofi/`, `waybar/`, `wofi/`
+  - Wayland utilities: `gammastep/`, `hypridle/`, `hyprlock/`, `mako/`, `noctalia/`, `swayidle/`, `swaylock/`, `tofi/`, `waybar/`, `wofi/`
   - Shell/CLI tools: `bat/`, `btop/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `workstation/`, `zoxide/`
   - Networking: `mullvad/`
   - AI/ML: `ollama/`
@@ -81,6 +81,7 @@ mkHost = {
 - `niri-waybar` - Niri wayland compositor + waybar + tofi + mako + hyprlock + swayidle + autoscreen + ghostty
 - `gnome` - GNOME desktop with dconf settings
 - `sway` - Sway + waybar + tofi + mako + swaylock + autoscreen + kitty
+- `hyprland` - Hyprland + hyprlock + hypridle + waybar + tofi + mako + autoscreen + ghostty. Hyprland >= 0.53 dropped `hyprland.conf`/hyprlang: the whole config lives in `wayland.windowManager.hyprland.settings` with `configType = "lua"` (rendered as `~/.config/hypr/hyprland.lua`), `hl.dsp.*` dispatchers via `lib.generators.mkLuaInline`. hyprpaper (wallpaper) comes from stylix's hyprland target. Validate a config with `Hyprland --verify-config` after pointing `XDG_CONFIG_HOME` at a dir containing `hypr/hyprland.lua`. waybar 0.15 ships `hyprland/workspaces` (it has no `wlr/workspaces` module)
 
 **Applications:**
 - `workstation` - bat, btop, editorconfig, fish, git, kakoune, lazygit, ledger, mime, mpv, nextcloud-client, stylix, swayimg, tealdeer, tmux, udiskie, workstation, yazi, zathura, zoxide (system modules: stylix, udiskie, symmetri, workstation)
@@ -134,7 +135,7 @@ mkHost = {
 **Workstations:**
 - `p14sg6` - Lenovo ThinkPad P14s Gen 6 (AMD Ryzen AI 7 350, niri, impermanence)
 - `cf-qv1` - Panasonic Let's Note CF-QV1 (Intel Core i5-1145G7, niri, impermanence)
-- `x1yoga` - Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, gnome, impermanence)
+- `x1yoga` - Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, niri, impermanence)
 - `sg13` - Silverstone SG13 desktop (AMD Ryzen 9 5950X + RTX 3070, gnome)
 - `pocket-reform` - MNT Pocket Reform mini laptop (NXP i.MX 8M Plus, 4x Cortex-A53 @1.8GHz, 8GB RAM, aarch64, niri, extlinux; NVMe ext4 root, `/boot` on microSD, no LUKS/impermanence; hardware module from `nixos-mnt-pocket-reform`, install via `scripts/install-pocket.sh`)
 
