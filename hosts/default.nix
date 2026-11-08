@@ -137,6 +137,17 @@ let
         ../apps/ghostty/ghostty.nix
       ];
     };
+    umbriel = {
+      system = [
+        ../apps/umbriel/default.nix
+      ];
+      home = [
+        ../apps/umbriel/umbriel.nix
+        ../apps/noctalia/noctalia.nix
+        ../apps/autoscreen/autoscreen.nix
+        ../apps/ghostty/ghostty.nix
+      ];
+    };
     gnome = {
       system = [
         ../apps/gnome/default.nix
@@ -147,6 +158,7 @@ let
     };
     sway = {
       system = [
+        ../apps/sway/default.nix
         ../apps/swaylock/default.nix
       ];
       home = [
@@ -157,7 +169,24 @@ let
         ../apps/mako/mako.nix
         ../apps/gammastep/gammastep.nix
         ../apps/autoscreen/autoscreen.nix
-        ../apps/kitty/kitty.nix
+        ../apps/ghostty/ghostty.nix
+      ];
+    };
+    hyprland = {
+      system = [
+        ../apps/hyprland/default.nix
+        ../apps/hyprlock/default.nix
+      ];
+      home = [
+        ../apps/hyprland/hyprland.nix
+        ../apps/hyprlock/hyprlock.nix
+        ../apps/hypridle/hypridle.nix
+        ../apps/autoscreen/autoscreen.nix
+        ../apps/waybar/waybar.nix
+        ../apps/tofi/tofi.nix
+        ../apps/mako/mako.nix
+        ../apps/gammastep/gammastep.nix
+        ../apps/ghostty/ghostty.nix
       ];
     };
     desk = {
@@ -489,7 +518,11 @@ in
       "impermanence"
       "secure-boot"
       "workstation"
+      "gnome"
+      "sway"
+      "hyprland"
       "niri"
+      "umbriel"
       # "desk"
       "android-tools"
       "steam"
@@ -506,6 +539,7 @@ in
       # "ollama"
       "restic"
       "sops"
+      "obs"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen6
