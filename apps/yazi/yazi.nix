@@ -34,14 +34,6 @@
             url = "${config.home.homeDirectory}/nfs/**";
             run = "noop";
           }
-          {
-            mime = "video/*";
-            run = "noop";
-          }
-          {
-            mime = "application/pdf";
-            run = "noop";
-          }
         ];
         prepend_fetchers = [
           {
@@ -51,21 +43,10 @@
             group = "mime";
           }
         ];
-        prepend_previewers = [
-          {
-            mime = "application/pdf";
-            run = "noop";
-          }
-        ];
       };
       tasks = {
         suppress_preload = true;
         preload_workers = 1;
-        image_alloc = 134217728;
-        image_bound = [
-          4096
-          4096
-        ];
       };
     };
 

@@ -246,6 +246,11 @@
           "imv-dir.desktop"
           "org.gnome.Loupe.desktop"
         ];
+        "image/jxl" = [
+          "swayimg.desktop"
+          "imv-dir.desktop"
+          "org.gnome.Loupe.desktop"
+        ];
         "image/png" = [
           "swayimg.desktop"
           "imv-dir.desktop"

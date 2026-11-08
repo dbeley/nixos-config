@@ -98,6 +98,17 @@
     ignoreShellProgramCheck = true;
   };
 
+  environment = {
+    shells = [ pkgs.fish ];
+
+    systemPackages = with pkgs; [
+      nfs-utils
+      rsync
+      strace
+    ];
+    defaultPackages = [ ];
+  };
+
   # Allow unfree packages
   nixpkgs = {
     config = {
@@ -105,13 +116,6 @@
       chromium.enableWideVine = true;
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    nfs-utils
-    rsync
-    strace
-  ];
-  environment.defaultPackages = [ ];
 
   programs = {
     nix-ld.enable = true;
