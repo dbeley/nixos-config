@@ -5,14 +5,7 @@
   ...
 }:
 let
-  brightness-script = pkgs.writeShellScript "brightness" ''
-    ${pkgs.brightnessctl}/bin/brightnessctl s "$1"
-    PCT=$(${pkgs.brightnessctl}/bin/brightnessctl -m | cut -d, -f4 | tr -d '%')
-    ${pkgs.libnotify}/bin/notify-send -t 500 "BRI ''${PCT}%" \
-      -h string:x-canonical-private-synchronous:brightness \
-      -h int:value:"''${PCT}"
-  '';
-  scripts = "${config.home.homeDirectory}/scripts";
+  helpers = import ../scripts/scripts.nix { inherit pkgs; };
   colors = config.lib.stylix.colors.withHashtag;
   style = pkgs.replaceVars ./waybar.css {
     inherit (colors)
@@ -31,14 +24,6 @@ in
     pamixer
     libnotify
   ];
-  home.file = {
-    "scripts".source = pkgs.fetchFromGitHub {
-      owner = "dbeley";
-      repo = "scripts";
-      rev = "3ca27d817733c56ac269897835d3088369e99adf";
-      sha256 = "sha256-R2GVSUkyPXiIASDe3o92gE1XzVsTzbXB8hQBSo7FlAc=";
-    };
-  };
   programs.waybar = {
     enable = true;
     systemd = {
@@ -158,43 +143,43 @@ in
     ];
     binds = {
       "XF86AudioRaiseVolume".spawn = [
-        "${scripts}/volume_pamixer.sh"
+        "${helpers.volumePamixer}"
         "up"
       ];
       "XF86AudioLowerVolume".spawn = [
-        "${scripts}/volume_pamixer.sh"
+        "${helpers.volumePamixer}"
         "down"
       ];
       "XF86AudioMute".spawn = [
-        "${scripts}/volume_pamixer.sh"
+        "${helpers.volumePamixer}"
         "mute"
       ];
       "Shift+XF86AudioRaiseVolume".spawn = [
-        "${scripts}/volume_pamixer.sh"
+        "${helpers.volumePamixer}"
         "bigup"
       ];
       "Shift+XF86AudioLowerVolume".spawn = [
-        "${scripts}/volume_pamixer.sh"
+        "${helpers.volumePamixer}"
         "bigdown"
       ];
       "XF86MonBrightnessDown".spawn = [
-        "${brightness-script}"
+        "${helpers.brightness}"
         "1%-"
       ];
       "XF86MonBrightnessUp".spawn = [
-        "${brightness-script}"
+        "${helpers.brightness}"
         "+1%"
       ];
       "Shift+XF86MonBrightnessDown".spawn = [
-        "${brightness-script}"
+        "${helpers.brightness}"
         "10%-"
       ];
       "Shift+XF86MonBrightnessUp".spawn = [
-        "${brightness-script}"
+        "${helpers.brightness}"
         "+10%"
       ];
       "XF86Display".spawn = [
-        "${scripts}/toggle_gammastep.sh"
+        "${helpers.toggleGammastep}"
       ];
     };
   };

@@ -5,14 +5,8 @@
   ...
 }:
 let
-  brightness = pkgs.writeShellScript "brightness" ''
-    ${pkgs.brightnessctl}/bin/brightnessctl s "$1"
-    PCT=$(${pkgs.brightnessctl}/bin/brightnessctl -m | cut -d, -f4 | tr -d '%')
-    ${pkgs.libnotify}/bin/notify-send -t 500 "BRI ''${PCT}%" \
-      -h string:x-canonical-private-synchronous:brightness \
-      -h int:value:"''${PCT}"
-  '';
-  volume = "${config.home.homeDirectory}/scripts/volume_pamixer.sh";
+  helpers = import ../../apps/scripts/scripts.nix { inherit pkgs; };
+  volume = helpers.volumePamixer;
   newsraftFeeds = "${config.home.homeDirectory}/Nextcloud/10-19_Documents/18_Config/18.26_newsraft/feeds";
 in
 {
@@ -20,7 +14,9 @@ in
 
   xdg.configFile."newsraft/feeds".source = config.lib.file.mkOutOfStoreSymlink newsraftFeeds;
   xdg.configFile."newsraft/config".text = ''
-    open-in-browser-command chawan "%l"
+    open-in-browser-command cha "%l"
+
+    bind I exec-quiet sh -c 'curl -sL "$1" | swayimg -' _ "%l" &
   '';
 
   my.niri.gpu-effects = false;
@@ -79,19 +75,19 @@ in
       "Mod+X".spawn = lib.mkForce [ "foot" ];
 
       "Mod+F1".spawn = [
-        "${brightness}"
+        "${helpers.brightness}"
         "1%-"
       ];
       "Mod+Shift+F1".spawn = [
-        "${brightness}"
+        "${helpers.brightness}"
         "10%-"
       ];
       "Mod+F2".spawn = [
-        "${brightness}"
+        "${helpers.brightness}"
         "+1%"
       ];
       "Mod+Shift+F2".spawn = [
-        "${brightness}"
+        "${helpers.brightness}"
         "+10%"
       ];
       "Mod+F3".spawn = [

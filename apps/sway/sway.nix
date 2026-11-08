@@ -4,6 +4,9 @@
   lib,
   ...
 }:
+let
+  helpers = import ../scripts/scripts.nix { inherit pkgs; };
+in
 {
   home.packages = with pkgs; [
     libnotify
@@ -11,14 +14,6 @@
     slurp
     pamixer
   ];
-  home.file = {
-    "scripts".source = pkgs.fetchFromGitHub {
-      owner = "dbeley";
-      repo = "scripts";
-      rev = "3ca27d817733c56ac269897835d3088369e99adf";
-      sha256 = "sha256-R2GVSUkyPXiIASDe3o92gE1XzVsTzbXB8hQBSo7FlAc=";
-    };
-  };
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -92,18 +87,18 @@
           "${mod}+c" = ''[app_id="org.keepassxc.KeePassXC"] scratchpad show'';
           "${mod}+d" = ''[app_id="Supersonic"] scratchpad show'';
 
-          "XF86AudioRaiseVolume" = "exec ~/scripts/volume_pamixer.sh up";
-          "Shift+XF86AudioRaiseVolume" = "exec ~/scripts/volume_pamixer.sh bigup";
-          "XF86AudioLowerVolume" = "exec ~/scripts/volume_pamixer.sh down";
-          "Shift+XF86AudioLowerVolume" = "exec ~/scripts/volume_pamixer.sh bigdown";
-          "XF86AudioMute" = "exec ~/scripts/volume_pamixer.sh mute";
+          "XF86AudioRaiseVolume" = "exec ${helpers.volumePamixer} up";
+          "Shift+XF86AudioRaiseVolume" = "exec ${helpers.volumePamixer} bigup";
+          "XF86AudioLowerVolume" = "exec ${helpers.volumePamixer} down";
+          "Shift+XF86AudioLowerVolume" = "exec ${helpers.volumePamixer} bigdown";
+          "XF86AudioMute" = "exec ${helpers.volumePamixer} mute";
           "XF86MonBrightnessUp" = "exec brightnessctl s +5%";
           "XF86MonBrightnessDown" = "exec brightnessctl -s 5%-";
           "XF86Screensaver" = "exec swaylock -f -c 000000";
           "XF86Suspend" = "exec swaylock -f -c 000000";
           "XF86Back" = "workspace prev";
           "XF86Forward" = "workspace next";
-          "XF86Display" = "exec ~/scripts/toggle_gammastep.sh";
+          "XF86Display" = "exec ${helpers.toggleGammastep}";
           "Pause" = "exec killall -SIGUSR1 waybar";
 
           "${mod}+r" = ''mode "  resize  "'';

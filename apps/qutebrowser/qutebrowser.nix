@@ -75,9 +75,6 @@
     };
     keyBindings = {
       normal = {
-        ",M" = "spawn ~/scripts/umpv.py {url}";
-        ",m" = "hint links spawn ~/scripts/umpv.py {hint-url}";
-        ";m" = "hint --rapid links spawn ~/scripts/umpv.py {hint-url}";
         "d" = "scroll-page 0 0.5";
         "u" = "scroll-page 0 -0.5";
         "x" = "tab-close";
