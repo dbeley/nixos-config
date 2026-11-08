@@ -7,18 +7,8 @@
 let
   helpers = import ../../apps/scripts/scripts.nix { inherit pkgs; };
   volume = helpers.volumePamixer;
-  newsraftFeeds = "${config.home.homeDirectory}/Nextcloud/10-19_Documents/18_Config/18.26_newsraft/feeds";
 in
 {
-  home.packages = with pkgs; [ newsraft ];
-
-  xdg.configFile."newsraft/feeds".source = config.lib.file.mkOutOfStoreSymlink newsraftFeeds;
-  xdg.configFile."newsraft/config".text = ''
-    open-in-browser-command cha "%l"
-
-    bind I exec-quiet sh -c 'curl -sL "$1" | swayimg -' _ "%l" &
-  '';
-
   my.niri.gpu-effects = false;
 
   services = {
