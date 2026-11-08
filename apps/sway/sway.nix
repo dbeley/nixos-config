@@ -19,13 +19,13 @@ in
     wrapperFeatures.gtk = true;
     xwayland = true;
     config = {
-      terminal = "kitty";
+      terminal = "ghostty";
       modifier = "Mod4";
       input = {
         "type:keyboard" = {
           xkb_layout = "us";
           xkb_variant = "intl";
-          xkb_options = "ctrl:nocaps,shift:both_capslock";
+          xkb_options = "ctrl:nocaps,shift:both_capslock,lv3:menu_switch";
           repeat_delay = "200";
           repeat_rate = "60";
         };
@@ -40,6 +40,34 @@ in
       seat = {
         "*" = {
           hide_cursor = "3000";
+        };
+      };
+
+      output = {
+        "AU Optronics 0x116D Unknown" = {
+          position = "0 0";
+          scale = "2";
+        };
+        "LG Display 0x067C Unknown" = {
+          scale = "2";
+        };
+        "Samsung Electric Company Q90A 0x01000E00" = {
+          mode = "3840x2160@60Hz";
+          scale = "2";
+        };
+        "Dell Inc. DELL S2721DGF 6C1TR83" = {
+          mode = "2560x1440@143.912Hz";
+          position = "0 0";
+        };
+        "LG Display 0x05EF Unknown" = {
+          mode = "2560x1440@59.998Hz";
+          scale = "1.6";
+        };
+        "LG Electronics LG IPS FULLHD 0x01010101" = {
+          position = "0 0";
+        };
+        "eDP-1" = {
+          scale = "1.25";
         };
       };
 
@@ -70,11 +98,11 @@ in
         in
         lib.mkOptionDefault {
           "${mod}+e" = "exec ${pkgs.tofi}/bin/tofi-run | xargs swaymsg exec --";
-          "${mod}+Return" = "exec ${pkgs.kitty}/bin/kitty";
+          "${mod}+Return" = "exec ${pkgs.ghostty}/bin/ghostty";
           "${mod}+q" = "kill";
           "${mod}+z" = "exec ${pkgs.firefox}/bin/firefox";
           "${mod}+Shift+z" = "exec ${pkgs.emacs}/bin/emacs";
-          "${mod}+x" = "exec ${pkgs.kitty}/bin/kitty";
+          "${mod}+x" = "exec ${pkgs.ghostty}/bin/ghostty";
           "${mod}+Shift+x" = "exec ${pkgs.steam}/bin/steam";
           "${mod}+t" = "exec ${pkgs.libreoffice}/bin/soffice";
           "${mod}+Shift+t" = "exec ${pkgs.gnome-system-monitor}/bin/gnome-system-monitor";
@@ -105,7 +133,7 @@ in
           "${mod}+Shift+p" = ''mode "  (r)eboot, (p)oweroff, (l)ock, (s)uspend  "'';
           "${mod}+Shift+s" = "sticky toggle";
         };
-      bars = [ { command = "waybar"; } ];
+      bars = [ { command = "waybar-session"; } ];
       gaps = {
         inner = 6;
         outer = 6;
@@ -114,6 +142,7 @@ in
 
       window = {
         border = 3;
+        titlebar = false;
         commands = [
           {
             command = "sticky enable";
@@ -145,6 +174,13 @@ in
               app_id = "scratchpad";
             };
           }
+          {
+            command = "resize set 60ppt 120px, move position 20ppt 79.4ppt, opacity 0.7";
+            criteria = {
+              app_id = "one.alynx.showmethekey";
+              title = "^Floating Window - Show Me The Key$";
+            };
+          }
         ];
       };
       floating = {
@@ -156,6 +192,7 @@ in
           { app_id = "org.keepassxc.KeePassXC"; }
           { app_id = "Supersonic"; }
           { app_id = "com.nextcloud.desktopclient.nextcloud"; }
+          { app_id = "one.alynx.showmethekey"; }
         ];
         titlebar = false;
       };
@@ -166,12 +203,13 @@ in
         { command = "udiskie -a"; }
         { command = "nextcloud --background"; }
         { command = "keepassxc"; }
-        { command = "${pkgs.kitty}/bin/kitty --class=scratchpad -e ${pkgs.lf}"; }
       ];
     };
 
     extraConfigEarly = ''
       set $tx #ffffff
+
+      no_focus [app_id="one.alynx.showmethekey"]
 
       bindsym --release Print exec "grim ~/Nextcloud/30-39_Images/32_Captures-d-écran/32.17_Captures-d-écran_Sway/$(date +%s).png"
       bindsym --release Shift+Print exec 'grim -g "$(slurp -d)" ~/Nextcloud/30-39_Images/32_Captures-d-écran/32.17_Captures-d-écran_Sway/$(date +%s)_cropped.png'
