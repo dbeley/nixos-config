@@ -30,6 +30,15 @@
   };
   systemd.oomd.enable = false;
   security.rtkit.enable = true;
+  environment.systemPackages = [ pkgs.showmethekey ];
+  security.polkit.extraConfig = ''
+    polkit.addRule(function (action, subject) {
+      if (action.id === "one.alynx.showmethekey.cli" &&
+          subject.isInGroup("wheel") && subject.local && subject.active) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
   fonts = {
     packages = with pkgs; [
       noto-fonts
