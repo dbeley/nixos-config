@@ -11,6 +11,8 @@
       -- Viewer mode
       swayimg.viewer.default_scale = "fit"
       swayimg.viewer.preload = 5
+      swayimg.viewer.set_window_background(0x00000000)
+      swayimg.viewer.set_image_background(0x00000000)
 
       -- Gallery mode
       swayimg.gallery.preload = true
