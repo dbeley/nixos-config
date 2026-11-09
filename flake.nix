@@ -31,10 +31,6 @@
       url = "github:dbeley/nixos-mnt-pocket-reform";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    agent-fieldnotes = {
-      url = "github:dbeley/agent-fieldnotes";
-      flake = false;
-    };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs = {

@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "agent-fieldnotes": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1793595883,
-        "narHash": "sha256-ci+Kg+hdeFbO4eH99Q0TxEZe8s3IMOOrdCbxQiwEDN4=",
-        "owner": "dbeley",
-        "repo": "agent-fieldnotes",
-        "rev": "acdfac9810154449492a17ba0dc47ecc754cb38e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dbeley",
-        "repo": "agent-fieldnotes",
-        "type": "github"
-      }
-    },
     "agent-skills": {
       "inputs": {
         "nixpkgs": [
@@ -872,7 +856,6 @@
     },
     "root": {
       "inputs": {
-        "agent-fieldnotes": "agent-fieldnotes",
         "agent-skills": "agent-skills",
         "anthropic-skills": "anthropic-skills",
         "autoscreen": "autoscreen",
