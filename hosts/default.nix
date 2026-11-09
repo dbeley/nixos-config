@@ -520,11 +520,11 @@ in
       "impermanence"
       "secure-boot"
       "workstation"
-      "gnome"
-      "sway"
-      "hyprland"
+      # "gnome"
+      # "sway"
+      # "hyprland"
       "niri"
-      "umbriel"
+      # "umbriel"
       # "desk"
       "android-tools"
       "steam"
@@ -546,7 +546,7 @@ in
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen6
       {
-        my.stylix.wallpaper = "nyc-425-park-avenue";
+        my.stylix.wallpaper = "purple-waves";
         disko.mainDisk = "/dev/nvme0n1";
       }
       # ../apps/boinc/default.nix
