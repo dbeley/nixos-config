@@ -457,6 +457,20 @@
               opacity = 0.90;
             };
           }
+          {
+            window-rule = {
+              _children = [
+                { match._props.app-id = "mpv"; }
+                {
+                  match._props = {
+                    app-id = "firefox";
+                    title = "(?i).*youtube.*";
+                  };
+                }
+              ];
+              opacity = 1.0;
+            };
+          }
         ]
         ++ [
           {
@@ -468,7 +482,7 @@
               open-floating = true;
               open-focused = false;
               default-column-width = {
-                proportion = 0.6;
+                proportion = 0.3;
               };
               default-window-height = {
                 fixed = 120;
