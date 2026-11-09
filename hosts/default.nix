@@ -544,7 +544,7 @@ in
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen6
       {
-        my.stylix.wallpaper = "purple-waves";
+        my.stylix.wallpaper = "nyc-425-park-avenue";
         disko.mainDisk = "/dev/nvme0n1";
       }
       # ../apps/boinc/default.nix
@@ -673,7 +673,7 @@ in
       ../modules/hardware/hid-tmff2.nix
       ../modules/hardware/razer-naga.nix
       {
-        my.stylix.wallpaper = "nyc-425-park-avenue";
+        my.stylix.wallpaper = "taiwan-road";
       }
       (_: {
         hardware.hid-tmff2.enable = true;

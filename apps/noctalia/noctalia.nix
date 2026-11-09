@@ -21,6 +21,7 @@
         };
         bar.default = {
           background_opacity = 0.5;
+          scale = 1.1;
           margin_ends = 80.0;
           end = [
             "tray"
@@ -35,6 +36,66 @@
             "workspaces"
             "active_window"
           ];
+        };
+        desktop_widgets = {
+          enabled = false;
+          schema_version = 2;
+          widget_order = [
+            "clock_main"
+            "sysmon_main"
+            "visualizer_main"
+            "media_main"
+          ];
+          grid = {
+            visible = true;
+            cell_size = 16.0;
+            major_interval = 4.0;
+          };
+          widget = {
+            clock_main = {
+              type = "clock";
+              output = "DP-8";
+              cx = 2336.0;
+              cy = 149.0;
+              box_width = 320.0;
+              box_height = 176.0;
+              rotation = 0.0;
+            };
+            sysmon_main = {
+              type = "sysmon";
+              output = "DP-8";
+              cx = 2336.0;
+              cy = 344.0;
+              box_width = 320.0;
+              box_height = 176.0;
+              rotation = 0.0;
+              settings = {
+                stat = "cpu_usage";
+                stat2 = "cpu_temp";
+              };
+            };
+            visualizer_main = {
+              type = "fancy_audio_visualizer";
+              output = "DP-8";
+              cx = 2320.0;
+              cy = 608.0;
+              box_width = 432.0;
+              box_height = 320.0;
+              rotation = 0.0;
+              settings = {
+                background = false;
+              };
+            };
+            media_main = {
+              type = "media_player";
+              output = "DP-8";
+              cx = 2336.0;
+              cy = 848.0;
+              box_width = 320.0;
+              box_height = 160.0;
+              rotation = 0.0;
+            };
+          };
         };
         nightlight = {
           enabled = true;
