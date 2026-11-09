@@ -47,7 +47,6 @@
       "Musique"
       "Nextcloud"
       "nfs"
-      # "Téléchargements" - handled by the escaped systemd.mounts workaround below
       ".cache/fish/generated_completions"
       ".cache/keepassxc"
       ".cache/nix"
@@ -215,6 +214,19 @@
       before = [ "local-fs.target" ];
       where = "/home/${user}/Téléchargements";
       what = "/persistent/home/${user}/Téléchargements";
+      unitConfig.DefaultDependencies = false;
+      type = "none";
+      options = lib.concatStringsSep "," [
+        "bind"
+        "x-gvfs-hide"
+      ];
+    }
+    {
+      name = lib.mkForce "home-${user}-Vid\\xc3\\xa9os.mount"; # result of `systemd-escape home/${user}/Vidéos`
+      wantedBy = [ "local-fs.target" ];
+      before = [ "local-fs.target" ];
+      where = "/home/${user}/Vidéos";
+      what = "/persistent/home/${user}/Vidéos";
       unitConfig.DefaultDependencies = false;
       type = "none";
       options = lib.concatStringsSep "," [
