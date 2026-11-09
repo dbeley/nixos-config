@@ -211,7 +211,7 @@ let
 
         Parcourt les vidéos d'une chaîne YouTube dans fzf (vignette dans le
         volet de droite), les vidéos les plus récentes ou les plus populaires
-        en premier, puis télécharge la sélection avec yt-dlp.
+        en premier, puis télécharge la sélection avec ytdl (voir ytdlp).
 
         CHAÎNE  nom de la chaîne (premier résultat de la recherche YouTube),
                 @handle, URL de chaîne ou identifiant UC…
@@ -364,12 +364,7 @@ let
         urls+=("https://youtu.be/''${item%%│*}")
       done
 
-      maxh="''${YT_MAX_HEIGHT:-720}"
-      exec ytdlp \
-        -f "bv*[height<=$maxh][fps<=30][vcodec^=avc1][protocol^=http]+ba[ext=m4a]/bv*[height<=$maxh][fps<=30][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=$maxh][fps<=30]+ba/bv*[height<=$maxh][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=$maxh]+ba/b[height<=$maxh]/b" \
-        -S lang \
-        --concurrent-fragments 4 \
-        "''${urls[@]}"
+      exec ytdl "''${urls[@]}"
     '';
   };
 in

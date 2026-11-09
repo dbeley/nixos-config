@@ -318,11 +318,7 @@ let
         urls+=("https://youtu.be/''${item%%│*}")
       done
 
-      maxh="''${YT_MAX_HEIGHT:-720}"
-      exec ytdlp \
-        -f "bv*[height<=$maxh][fps<=30][vcodec^=avc1][protocol^=http]+ba[ext=m4a]/bv*[height<=$maxh][fps<=30][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=$maxh][fps<=30]+ba/bv*[height<=$maxh][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=$maxh]+ba/b[height<=$maxh]/b" \
-        --concurrent-fragments 4 \
-        "''${urls[@]}"
+      exec ytdl "''${urls[@]}"
     '';
   };
 in

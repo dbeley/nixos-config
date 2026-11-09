@@ -98,7 +98,7 @@ let
 
         Cherche sur YouTube avec yt-dlp, choisit un ou plusieurs résultats
         avec fzf (vignette dans le volet de droite), puis les télécharge
-        avec yt-dlp (options par défaut, dans le dossier courant).
+        avec ytdl (voir ytdlp), dans le dossier courant.
 
         Tab     coche/décoche un résultat ; Entrée télécharge toute la
                 sélection (une seule vidéo si rien n'est coché).
@@ -204,11 +204,7 @@ let
 
       [ "''${#urls[@]}" -gt 0 ] || exit 130
 
-      maxh="''${YT_MAX_HEIGHT:-720}"
-      ytdlp \
-        -f "bv*[height<=$maxh][fps<=30][vcodec^=avc1][protocol^=http]+ba[ext=m4a]/bv*[height<=$maxh][fps<=30][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=$maxh][fps<=30]+ba/bv*[height<=$maxh][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=$maxh]+ba/b[height<=$maxh]/b" \
-        --concurrent-fragments 4 \
-        "''${urls[@]}"
+      exec ytdl "''${urls[@]}"
     '';
   };
 in
