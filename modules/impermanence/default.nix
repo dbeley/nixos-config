@@ -84,6 +84,7 @@
       ".config/Nextcloud"
       ".config/nix"
       ".config/nuclearthrone"
+      ".config/obs-studio"
       ".config/opencode"
       ".config/openmw"
       ".config/restic"
