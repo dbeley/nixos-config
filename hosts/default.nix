@@ -625,7 +625,7 @@ in
       "workstation"
       "niri-waybar"
       # "luakit"
-      # "chromium"
+      "chromium"
       # "qutebrowser"
       "chawan"
       "code-agents"
@@ -645,7 +645,6 @@ in
         hardware.mnt-pocket-reform.keyboardBacklight = {
           enable = true;
           color = config.lib.stylix.colors.withHashtag.base01;
-          brightness = 40;
         };
       })
     ];
