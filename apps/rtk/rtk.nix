@@ -1,14 +1,10 @@
 { inputs, pkgs, ... }:
 let
   llm = inputs.llm-agents.packages.${pkgs.system};
-
-  rtk = llm.rtk.overrideAttrs (old: {
-    buildInputs = (old.buildInputs or [ ]) ++ [ pkgs.sqlite ];
-  });
 in
 {
   home.packages = [
-    rtk
+    llm.rtk
   ];
 
   xdg.configFile."rtk/config.toml".text = ''
