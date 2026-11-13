@@ -129,6 +129,7 @@
       ".wine"
       # Personal projects
       ".config/impulse"
+      ".config/undertone"
       ".local/share/impulse"
       ".local/share/symmetri"
     ];
