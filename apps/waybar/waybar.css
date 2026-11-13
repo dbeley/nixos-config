@@ -43,6 +43,12 @@ window#waybar {
 	background: @bg;
 }
 
+#tray {
+	/* icons are 21px and already spaced by 10px: keep the box tight so the
+	   gap to the neighbouring modules stays the same 8px as everywhere else */
+	padding: 0 10px;
+}
+
 window#waybar.empty #window {
 	background: transparent;
 }

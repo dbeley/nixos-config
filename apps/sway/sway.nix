@@ -197,7 +197,6 @@ in
         { command = "systemctl --user import-environment; systemctl --user start sway-session.target"; }
         { command = "mako"; }
         { command = "udiskie -a"; }
-        { command = "nextcloud --background"; }
         { command = "keepassxc"; }
       ];
     };

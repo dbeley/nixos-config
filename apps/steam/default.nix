@@ -25,8 +25,6 @@
   boot = {
     kernelModules = [ "ntsync" ];
     kernel.sysctl = {
-      # Keep more in RAM, reduce swap tendency (default 60 is too aggressive with 24GB+)
-      "vm.swappiness" = 10;
       # Disable proactive memory compaction (eliminates latency spikes during gameplay)
       "vm.compaction_proactiveness" = 0;
       # Disable split lock mitigation (prevents micro-stutters in some games/emulators)

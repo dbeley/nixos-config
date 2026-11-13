@@ -57,6 +57,30 @@
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     graphics.extraPackages = [ pkgs.intel-vaapi-driver ];
+    trackpoint.enable = true;
+    trackpoint.emulateWheel = true;
   };
+  boot.kernel.sysctl = {
+    "vm.swappiness" = lib.mkForce 100;
+    "vm.page-cluster" = 0;
+    "vm.watermark_scale_factor" = 125;
+    "vm.watermark_boost_factor" = 0;
+    "vm.dirty_bytes" = 67108864;
+    "vm.dirty_background_bytes" = 16777216;
+    "kernel.nmi_watchdog" = 0;
+  };
+  zramSwap.algorithm = lib.mkForce "lz4";
+  fileSystems."/".options = [ "noatime" ];
+
   environment.sessionVariables.LIBVA_DRIVER_NAME = "i965";
+  services.fwupd.enable = lib.mkForce false;
+  nixpkgs.overlays = [
+    (_: prev: {
+      fish = prev.fish.overrideAttrs (o: {
+        env = (o.env or { }) // {
+          RUSTFLAGS = "--cfg chacha20_backend=\"soft\"";
+        };
+      });
+    })
+  ];
 }
