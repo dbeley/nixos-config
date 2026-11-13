@@ -615,6 +615,30 @@ in
       }
     ];
   };
+  x61s = mkHost {
+    hostName = "x61s";
+    stateVersion = "22.11";
+    profiles = [
+      "laptop"
+      "bootloader-grub-bios"
+      "workstation"
+      "sway"
+      "python"
+      "steam"
+      "mpd"
+      "firefox"
+      "zen-browser"
+      "chromium"
+      "code-agents"
+    ];
+    extraModules = [
+      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x200s
+      ../hosts/x61s/home.nix
+      {
+        my.stylix.wallpaper = "hk-plant";
+      }
+    ];
+  };
   pocket-reform = mkHost {
     hostName = "pocket-reform";
     system = "aarch64-linux";
