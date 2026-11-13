@@ -9,6 +9,8 @@ let
   volume = helpers.volumePamixer;
 in
 {
+  imports = [ ../../apps/foot/foot.nix ];
+
   my.niri.gpu-effects = false;
 
   services = {
@@ -29,14 +31,6 @@ in
       "--process-per-site"
       "--disk-cache-size=134217728"
     ];
-
-    foot = {
-      enable = true;
-      settings.main = {
-        font = "Iosevka Nerd Font Mono:size=12";
-        pad = "8x8";
-      };
-    };
   };
 
   wayland.windowManager.niri.settings = {
