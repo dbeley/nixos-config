@@ -171,7 +171,7 @@ let
         ../apps/mako/mako.nix
         ../apps/gammastep/gammastep.nix
         ../apps/autoscreen/autoscreen.nix
-        ../apps/ghostty/ghostty.nix
+        ../apps/foot/foot.nix
       ];
     };
     hyprland = {
@@ -625,15 +625,13 @@ in
       "sway"
       "python"
       "steam"
-      "mpd"
       "firefox"
-      "zen-browser"
+      # "zen-browser"
       "chromium"
       "code-agents"
     ];
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x200s
-      ../hosts/x61s/home.nix
       {
         my.stylix.wallpaper = "hk-plant";
       }

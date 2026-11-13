@@ -19,7 +19,7 @@ in
     wrapperFeatures.gtk = true;
     xwayland = true;
     config = {
-      terminal = "ghostty";
+      terminal = "foot";
       modifier = "Mod4";
       input = {
         "type:keyboard" = {
@@ -98,14 +98,10 @@ in
         in
         lib.mkOptionDefault {
           "${mod}+e" = "exec ${pkgs.tofi}/bin/tofi-run | xargs swaymsg exec --";
-          "${mod}+Return" = "exec ${pkgs.ghostty}/bin/ghostty";
+          "${mod}+Return" = "exec ${pkgs.foot}/bin/foot";
           "${mod}+q" = "kill";
           "${mod}+z" = "exec ${pkgs.firefox}/bin/firefox";
-          "${mod}+Shift+z" = "exec ${pkgs.emacs}/bin/emacs";
-          "${mod}+x" = "exec ${pkgs.ghostty}/bin/ghostty";
-          "${mod}+Shift+x" = "exec ${pkgs.steam}/bin/steam";
-          "${mod}+t" = "exec ${pkgs.libreoffice}/bin/soffice";
-          "${mod}+Shift+t" = "exec ${pkgs.gnome-system-monitor}/bin/gnome-system-monitor";
+          "${mod}+x" = "exec ${pkgs.foot}/bin/foot";
           "${mod}+Shift+minus" = "move scratchpad";
           "${mod}+minus" = "scratchpad show";
           "${mod}+F9" = "scratchpad show";
