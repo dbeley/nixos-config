@@ -102,6 +102,7 @@ let
         ../apps/tealdeer/tealdeer.nix
         ../apps/tmux/tmux.nix
         ../apps/udiskie/udiskie.nix
+        ../apps/undertone/undertone.nix
         ../apps/workstation/workstation.nix
         ../apps/scripts/ytq.nix
         ../apps/scripts/ytf.nix
@@ -312,7 +313,7 @@ let
         # ../apps/oh-my-opencode/oh-my-opencode.nix
         # ../apps/hermes/hermes.nix
         ../apps/rtk/rtk.nix
-        # ../apps/goose/goose.nix
+        ../apps/goose/goose.nix
         # ../apps/herdr/herdr.nix
       ];
     };

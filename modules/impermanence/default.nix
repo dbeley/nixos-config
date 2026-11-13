@@ -118,6 +118,7 @@
       ".local/share/zoxide"
       ".local/state/noctalia"
       ".local/state/opencode"
+      ".local/state/undertone"
       ".local/Tendershoot"
       ".mozilla/native-messaging-hosts"
       ".mbwarband"

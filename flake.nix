@@ -204,6 +204,10 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    undertone = {
+      url = "github:dbeley/undertone";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     autoscreen = {
       url = "github:dbeley/autoscreen";
       inputs = {

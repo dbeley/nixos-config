@@ -893,6 +893,7 @@
         "systems": "systems",
         "treefmt-nix": "treefmt-nix",
         "ucodenix": "ucodenix",
+        "undertone": "undertone",
         "zen-browser": "zen-browser",
         "zeroclaw": "zeroclaw"
       }
@@ -1156,6 +1157,26 @@
       "original": {
         "owner": "e-tho",
         "repo": "ucodenix",
+        "type": "github"
+      }
+    },
+    "undertone": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794598792,
+        "narHash": "sha256-DIYcrgRP/o565voP2HSuusafT6SiAG9YilxgLAFkLOQ=",
+        "owner": "dbeley",
+        "repo": "undertone",
+        "rev": "bd7f3832d9adb7287cd6ec5039971ba130647d64",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dbeley",
+        "repo": "undertone",
         "type": "github"
       }
     },
