@@ -43,6 +43,10 @@
     };
 
     shellInit = ''
+      if not functions -q __zoxide_cd_internal
+        functions -c cd __zoxide_cd_internal
+      end
+
       set -g theme_display_vi no
       set -g theme_display_date no
       set -g theme_nerd_fonts yes

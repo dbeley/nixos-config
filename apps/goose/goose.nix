@@ -1,7 +1,4 @@
-{ inputs, pkgs, ... }:
-let
-  llm = inputs.llm-agents.packages.${pkgs.system};
-in
+{ pkgs, ... }:
 {
-  home.packages = [ llm.goose-cli ];
+  home.packages = [ pkgs.goose-cli ];
 }

@@ -77,7 +77,7 @@ let
       system = [
         ../apps/stylix/default.nix
         ../apps/udiskie/default.nix
-        ../apps/symmetri/default.nix
+        # ../apps/symmetri/default.nix
         ../apps/workstation/default.nix
       ];
       home = [
@@ -624,14 +624,13 @@ in
       "workstation"
       "sway"
       "python"
-      "steam"
       "firefox"
-      # "zen-browser"
       "chromium"
-      "code-agents"
+    ];
+    extraHomeModules = [
+      ../apps/goose/goose.nix
     ];
     extraModules = [
-      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x200s
       {
         my.stylix.wallpaper = "hk-plant";
       }
