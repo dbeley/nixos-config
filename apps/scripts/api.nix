@@ -13,7 +13,7 @@ writeShellApplication {
   ];
   text = ''
     cache="''${XDG_CACHE_HOME:-$HOME/.cache}/youtube-api"
-    mkdir -p "$cache/meta" "$cache/resolve"
+    mkdir -p "$cache/epoch" "$cache/resolve"
     max_age=604800
 
     client() {
@@ -62,19 +62,29 @@ writeShellApplication {
       printf '%s' "''${raw%$'\n'*}"
     }
 
-    # upload date + duration of one video, cached (neither ever changes)
+    # date de publication (epoch) + durée d'une vidéo, mises en cache : ni
+    # l'une ni l'autre ne change. Rien n'est mémorisé quand la réponse ne dit
+    # rien (vidéo retirée, ou contrôle anti-robot) : mieux vaut redemander.
+    probe() { # $1 = id ; remplit ISO et DUR
+      local resp
+      resp=$(api player "\"videoId\":\"$1\"") || return 1
+      ISO=$(printf '%s' "$resp" | grep -o '"uploadDate":"[^"]*"' | head -1 | cut -d'"' -f4) || ISO=""
+      DUR=$(printf '%s' "$resp" | grep -o '"lengthSeconds":"[0-9]*"' | head -1 | tr -dc '0-9') || DUR=""
+    }
+
     meta_one() {
-      local id=$1 f="$cache/meta/$1" resp iso dur
+      local id=$1 f="$cache/epoch/$1"
       if [ -s "$f" ]; then
         return 0
       fi
-      resp=$(api player "\"videoId\":\"$id\"") || return 0
-      iso=$(printf '%s' "$resp" | grep -o '"uploadDate":"[^"]*"' | head -1 | cut -d'"' -f4) || iso=""
-      dur=$(printf '%s' "$resp" | grep -o '"lengthSeconds":"[0-9]*"' | head -1 | tr -dc '0-9') || dur=""
-      if [ -z "$iso" ]; then
+      probe "$id" || return 0
+      if [ -z "$ISO" ]; then
+        probe "$id" || return 0 # réponse tronquée de temps à autre : un second essai
+      fi
+      if [ -z "$ISO" ]; then
         return 0
       fi
-      printf '%s│%s\n' "$(date -d "$iso" '+%Y-%m-%d %H:%M')" "$dur" > "$f"
+      printf '%s│%s\n' "$(date -d "$ISO" +%s)" "''${DUR:-0}" > "$f"
     }
 
     slug() { printf '%s' "$1" | tr -c 'A-Za-z0-9._-' '_'; }
@@ -120,12 +130,28 @@ writeShellApplication {
     cmd=$1
     shift
     case $cmd in
-      meta)
-        client || exit 1
-        batch meta_one "$@"
+      meta) # « id│epoch│durée » ; seules les vidéos inconnues sont demandées
+        todo=()
         for id in "$@"; do
-          if [ -s "$cache/meta/$id" ]; then
-            printf '%s│%s\n' "$id" "$(cat "$cache/meta/$id")"
+          f="$cache/epoch/$id"
+          if [ -s "$f" ]; then
+            read -r line < "$f" || line=""
+            if [ "$line" = '!' ]; then
+              rm -f "$f" # entrée « ! » d'une version antérieure : à refaire
+            fi
+          fi
+          if [ ! -s "$f" ]; then
+            todo+=("$id")
+          fi
+        done
+        if [ "''${#todo[@]}" -gt 0 ]; then
+          client || exit 1
+          batch meta_one "''${todo[@]}"
+        fi
+        for id in "$@"; do
+          f="$cache/epoch/$id"
+          if [ -s "$f" ] && read -r line < "$f" && [ "$line" != '!' ]; then
+            printf '%s│%s\n' "$id" "$line"
           fi
         done
         ;;

@@ -8,79 +8,157 @@ let
     cacheDir = "ytq";
   };
 
+  ytRows = pkgs.callPackage ./yt-rows.nix { };
+
   list = pkgs.writeShellApplication {
     name = "ytq-list";
     runtimeInputs = with pkgs; [
-      yt-dlp
-      gawk
       coreutils
+      gawk
+      gnugrep
+      jq
       youtubeApi
+      ytRows
     ];
     text = ''
+      state=$1
+      action=''${2:-first}
+
+      # les étiquettes renvoyées par YouTube (« 686,562 views ») sont
+      # analysées par yt-rows : on fixe la langue du client pour que leur
+      # format ne dépende pas d'un YT_HL hérité de l'environnement
+      export YT_HL=en YT_GL=US
+
+      # « EgIQAQ== » = filtre « vidéos » de YouTube : les playlists, chaînes
+      # et mixes de la recherche sont écartés à la source
+      params='EgIQAQ=='
+
+      query=$(cat "$state/query")
+      want=$(cat "$state/want")
+
+      if [ "$action" = first ]; then
+        : > "$state/ids"
+        : > "$state/raw"
+        : > "$state/meta"
+        : > "$state/token"
+      fi
+
       tmp=$(mktemp -d)
       trap 'rm -rf "$tmp"' EXIT
 
-      if [ "''${1:-}" = "--next" ]; then
-        dir=$2
-        n=$(cat "$dir/n")
-        n=$((n + 20))
-        printf '%s\n' "$n" > "$dir/n"
-        query=$(cat "$dir/query")
-      else
-        query=$1
-        n=$2
-      fi
+      # id, durée, vues, chaîne, titre (champs séparés par \x1f)
+      cat > "$tmp/rows.jq" <<'JQ'
+      [.. | objects | select(has("videoRenderer")) | .videoRenderer]
+      | map(select((.videoId // "") | test("^[A-Za-z0-9_-]{11}$")))
+      | map([ .videoId,
+              (.lengthText.simpleText // ""),
+              (.viewCountText.simpleText // ""),
+              (.ownerText.runs[0].text // .longBylineText.runs[0].text // ""),
+              (.title.runs[0].text // .title.simpleText // "") ]
+            | map(gsub("[\u0000\t\n]"; " ") | gsub("│"; "¦"))
+            | join("\u001f"))
+      | .[]
+      JQ
 
-      # 403 passager de l'API YouTube : deux nouvelles tentatives
-      attempt=0
+      # page suivante : le jeton de la fin de la liste (et non ceux des
+      # filtres, rangés dans chipBar)
+      cat > "$tmp/token.jq" <<'JQ'
+      ([.. | objects | select(has("appendContinuationItemsAction"))][0]
+       | .appendContinuationItemsAction.continuationItems[]?
+       | select(has("continuationItemRenderer"))
+       | .continuationItemRenderer.continuationEndpoint.continuationCommand.token)
+       //
+      ([.. | objects | select(has("sectionListRenderer"))][0]
+       | .sectionListRenderer.contents[]?
+       | select(has("continuationItemRenderer"))
+       | .continuationItemRenderer.continuationEndpoint.continuationCommand.token)
+       // ""
+      JQ
+
+      pages=0
       while :; do
-        if yt-dlp "ytsearch$n:$query" --flat-playlist --no-warnings \
-          --print "%(duration_string)s│%(view_count)s│%(channel)s│%(title)s│%(id)s" \
-          > "$tmp/raw" 2> "$tmp/err" && [ -s "$tmp/raw" ]; then
+        token=$(cat "$state/token" 2>/dev/null || true)
+
+        if [ "$action" = next ]; then
+          if [ -z "$token" ]; then
+            printf 'Fin de la liste : plus rien à charger\n' > "$state/notice"
+            break
+          fi
+        elif [ "$pages" -gt 0 ]; then
+          # premier chargement : au moins une page, puis jusqu'au nombre demandé
+          if [ -z "$token" ] || [ "$(wc -l < "$state/ids")" -ge "$want" ]; then
+            break
+          fi
+        fi
+
+        if [ -n "$token" ]; then
+          payload=$(jq -nc --arg t "$token" '{continuation: $t}')
+        else
+          payload=$(jq -nc --arg q "$query" --arg p "$params" '{query: $q, params: $p}')
+        fi
+        pages=$((pages + 1))
+
+        if ! youtube-api raw search "$payload" > "$tmp/page"; then
+          if [ ! -s "$state/raw" ]; then
+            echo "ytq: YouTube n'a pas répondu" >&2
+            exit 1
+          fi
+          printf "YouTube n'a pas répondu - Ctrl-N pour réessayer\n" > "$state/notice"
           break
         fi
-        attempt=$((attempt + 1))
-        if [ "$attempt" -ge 3 ]; then
-          cat "$tmp/err" >&2
+        rm -f "$state/notice"
+
+        jq -r -f "$tmp/rows.jq" "$tmp/page" > "$tmp/rows" 2>/dev/null || true
+        jq -r -f "$tmp/token.jq" "$tmp/page" > "$state/token" 2>/dev/null || : > "$state/token"
+
+        : > "$tmp/new"
+        while IFS=$'\x1f' read -r id dur views chan title; do
+          [ -n "$id" ] || continue
+          if [ -s "$state/ids" ] && grep -qxF -- "$id" "$state/ids"; then
+            continue
+          fi
+          printf '%s\n' "$id" >> "$state/ids"
+          printf '%s\x1f%s\x1f%s\x1f%s\x1f%s\n' "$id" "$dur" "$views" "$chan" "$title" >> "$state/raw"
+          printf '%s\n' "$id" >> "$tmp/new"
+        done < "$tmp/rows"
+
+        # date de publication : une requête « player » par vidéo, mise en cache
+        if [ -s "$tmp/new" ]; then
+          mapfile -t new_ids < "$tmp/new"
+          youtube-api meta "''${new_ids[@]}" 2>/dev/null \
+            | gawk -F'│' 'NF >= 3 { print $1 "\x1f" $2 "\x1f" $3 }' >> "$state/meta" || true
+        fi
+
+        if [ "$action" = next ]; then
           break
         fi
-        sleep 2
+
+        # jeton inchangé : YouTube répète la page, inutile d'insister
+        if [ -n "$token" ] && [ "$(cat "$state/token")" = "$token" ]; then
+          : > "$state/token"
+        fi
       done
 
-      mapfile -t ids < <(awk -F'│' 'length($NF) == 11 { print $NF }' "$tmp/raw" | sort -u)
-      : > "$tmp/meta"
-      if [ "''${#ids[@]}" -gt 0 ]; then
-        youtube-api meta "''${ids[@]}" > "$tmp/meta" 2>/dev/null || true
+      # id -> date : la durée vient aussi de « meta » (même source que ytf)
+      gawk -F'\x1f' '
+        FILENAME == ARGV[1] { ep[$1] = $2; sec[$1] = $3; next }
+        { printf "%s\x1f%s\x1f%s\x1f%s\x1f%s\x1f%s\n", $1, ep[$1], ($1 in sec ? sec[$1] : $2), $3, $4, $5 }
+      ' "$state/meta" "$state/raw" | yt-rows
+    '';
+  };
+
+  stats = pkgs.writeShellApplication {
+    name = "ytq-stats";
+    runtimeInputs = with pkgs; [ coreutils ];
+    text = ''
+      state=$1
+      if [ -s "$state/notice" ]; then
+        cat "$state/notice"
+        : > "$state/notice"
       fi
-
-      gawk -F'│' '
-        # fichier des dates : id -> « 2026-10-30 20:30 »
-        FILENAME == ARGV[1] { if (NF >= 2) date[$1] = $2; next }
-
-        function human(v,   n) {
-          n = v + 0
-          if (n >= 1000000000) return sprintf("%.1f Md", n / 1000000000)
-          if (n >= 1000000) return sprintf("%.1f M", n / 1000000)
-          if (n >= 1000) return sprintf("%.0f k", n / 1000)
-          return sprintf("%d", n)
-        }
-        {
-          id = $NF
-          if (length(id) != 11) next
-
-          title = $4
-          for (i = 5; i < NF; i++) title = title "│" $i
-          gsub(/│/, "¦", title)
-
-          meta = ($1 == "" || $1 == "NA") ? "" : $1
-          if ($2 != "" && $2 != "NA") meta = (meta == "" ? "" : meta " · ") human($2) " vues"
-          if ($3 != "" && $3 != "NA") meta = (meta == "" ? "" : meta " · ") $3
-          gsub(/│/, "¦", meta)
-
-          d = (id in date) ? date[id] : ""
-          printf "%s│%-16s  %s\n   %s%c", id, d, title, meta, 0
-        }
-      ' "$tmp/meta" "$tmp/raw" || true
+      n=$(wc -l < "$state/ids" 2>/dev/null || echo 0)
+      printf 'Recherche : %s · %s résultats\n' "$(cat "$state/query")" "$n"
+      printf 'Tab cocher · Entrée télécharger · Ctrl-N +20 · Ctrl-R nouvelle recherche\n'
     '';
   };
 
@@ -96,9 +174,9 @@ let
         cat <<'EOF'
       usage: ytq [-n N] [recherche]
 
-        Cherche sur YouTube avec yt-dlp, choisit un ou plusieurs résultats
-        avec fzf (vignette dans le volet de droite), puis les télécharge
-        avec ytdl (voir ytdlp), dans le dossier courant.
+        Cherche sur YouTube, choisit un ou plusieurs résultats avec fzf
+        (vignette dans le volet de droite, date, durée, vues et chaîne),
+        puis les télécharge avec ytdl (voir ytdlp), dans le dossier courant.
 
         Tab     coche/décoche un résultat ; Entrée télécharge toute la
                 sélection (une seule vidéo si rien n'est coché).
@@ -116,9 +194,9 @@ let
         Seules les vidéos sont proposées : les playlists, chaînes et
         mixes renvoyés par la recherche YouTube sont écartés.
 
-        -n N   nombre de résultats proposés (défaut : 20)
-               pas de maximum imposé : YouTube renvoie ~20 résultats
-               par page, compter ~2 s de plus par page (n=200 ≈ 20 s)
+        -n N   nombre de résultats chargés d'emblée (défaut : 20)
+               pas de maximum imposé : les pages de ~20 résultats
+               s'enchaînent, une requête chacune
         -h     affiche cette aide
 
       Sans argument, la recherche est demandée interactivement.
@@ -158,12 +236,12 @@ let
 
       while :; do
         printf '%s' "$query" > "$state/query"
-        printf '%s' "$n" > "$state/n"
+        printf '%s' "$n" > "$state/want"
 
         printf 'Recherche : %s…\n' "$query" >&2
-        "${list}/bin/ytq-list" "$query" "$n" > "$state/results"
+        "${list}/bin/ytq-list" "$state" first > "$state/list"
 
-        if [ ! -s "$state/results" ]; then
+        if [ ! -s "$state/list" ]; then
           echo "ytq: aucun résultat pour « $query »" >&2
           exit 1
         fi
@@ -172,11 +250,11 @@ let
           fzf --read0 --print0 --reverse --height=100% --prompt='yt> ' \
             --expect=ctrl-r --multi --marker='✔ ' --ellipsis='…' \
             --delimiter='│' --with-nth=2 --track --id-nth=1 \
-            --header="Recherche : $query"$'\n'"Tab cocher · Entrée télécharger"$'\n'"Ctrl-N +20 · Ctrl-R nouvelle recherche" \
-            --bind "ctrl-n:reload-sync(${list}/bin/ytq-list --next $state)" \
+            --header="$("${stats}/bin/ytq-stats" "$state")" \
+            --bind "ctrl-n:reload-sync(${list}/bin/ytq-list $state next)+transform-header(${stats}/bin/ytq-stats $state)" \
             --preview="${preview}/bin/ytq-preview {1}" \
             --preview-window='right,45%,border-left' \
-            < "$state/results"
+            < "$state/list"
         )
 
         key="''${picked[0]:-}"
