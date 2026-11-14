@@ -10,20 +10,25 @@ let
     cacheDir = "ytc/thumbs";
   };
 
+  ytRows = pkgs.callPackage ./yt-rows.nix { };
+
   list = pkgs.writeShellApplication {
     name = "ytc-list";
     runtimeInputs = with pkgs; [
       coreutils
       gnugrep
+      gawk
       jq
       youtubeApi
+      ytRows
     ];
     text = ''
       state=$1
       action=''${2:-first}
 
-      # dates et nombres de vues dans la langue de l'interface
-      export YT_HL=''${YT_HL:-fr} YT_GL=''${YT_GL:-FR}
+      # les étiquettes de YouTube (« 2.2M views ») sont analysées par yt-rows :
+      # la langue du client est fixée pour que leur format ne varie pas
+      export YT_HL=en YT_GL=US
 
       [ -s "$state/cid" ] || { echo "ytc-list: chaîne inconnue" >&2; exit 1; }
       cid=$(cat "$state/cid")
@@ -47,10 +52,23 @@ let
       [ "$sort" = popular ] || sort=latest
       params=$(params_of "$sort")
 
+      # les lignes affichées : id, titre et vues viennent de la page de la
+      # chaîne ; la date exacte et la durée, d'une requête « player » par
+      # vidéo, mise en cache (seules les vidéos jamais vues coûtent)
+      emit_items() {
+        : >> "$state/meta"
+        : >> "$state/raw"
+        gawk -F'\x1f' -v chan="$(cat "$state/title" 2>/dev/null || true)" '
+          FILENAME == ARGV[1] { ep[$1] = $2; sec[$1] = $3; next }
+          { printf "%s\x1f%s\x1f%s\x1f%s\x1f%s\x1f%s\n", $1, ep[$1], ($1 in sec ? sec[$1] : $2), $3, chan, $4 }
+        ' "$state/meta" "$state/raw" | yt-rows
+      }
+
       token=""
       case $action in
         first)
-          : > "$state/items"
+          : > "$state/raw"
+          : > "$state/meta"
           : > "$state/ids"
           : > "$state/token"
           ;;
@@ -65,7 +83,7 @@ let
 
       if [ "$action" = next ] && [ -z "$token" ]; then
         printf 'Fin de la liste : plus rien à charger\n' > "$state/notice"
-        cat "$state/items"
+        emit_items
         exit 0
       fi
 
@@ -83,8 +101,8 @@ let
           echo "ytc: YouTube n'a pas répondu" >&2
           exit 1
         fi
-        printf "YouTube n'a pas répondu — Ctrl-N pour réessayer\n" > "$state/notice"
-        cat "$state/items"
+        printf "YouTube n'a pas répondu - Ctrl-N pour réessayer\n" > "$state/notice"
+        emit_items
         exit 0
       fi
       rm -f "$state/notice"
@@ -97,7 +115,7 @@ let
         fi
       fi
 
-      # one line per video, fields separated by \x1f (id, date, durée, vues, titre)
+      # one line per video, fields separated by \x1f (id, durée, vues, titre)
       cat > "$tmp/rows.jq" <<'JQ'
       def items:
         ([.. | objects | select(has("appendContinuationItemsAction"))][0]
@@ -112,7 +130,6 @@ let
           [.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[]?
             | .metadataParts[]?.text.content] as $parts
           | [ .contentId,
-              ($parts[1] // ""),
               ([.contentImage.thumbnailViewModel.overlays[]?
                  | .thumbnailBottomOverlayViewModel.badges[0].thumbnailBadgeViewModel.text]
                | map(select(. != null)) | .[0] // ""),
@@ -136,20 +153,24 @@ let
       jq -r -f "$tmp/rows.jq" "$tmp/page" > "$tmp/rows" 2>/dev/null || true
       jq -r -f "$tmp/token.jq" "$tmp/page" > "$state/token" 2>/dev/null || : > "$state/token"
 
-      while IFS=$'\x1f' read -r id when dur views title; do
+      : > "$tmp/new"
+      while IFS=$'\x1f' read -r id dur views title; do
         [ -n "$id" ] || continue
-        if grep -qxF "$id" "$state/ids" 2>/dev/null; then
+        if [ -s "$state/ids" ] && grep -qxF -- "$id" "$state/ids"; then
           continue
         fi
         printf '%s\n' "$id" >> "$state/ids"
-        meta=$views
-        if [ -n "$dur" ]; then
-          if [ -n "$meta" ]; then meta="$dur · $meta"; else meta=$dur; fi
-        fi
-        printf '%s│%-16s  %s\n   %s\0' "$id" "$when" "$title" "$meta" >> "$state/items"
+        printf '%s\x1f%s\x1f%s\x1f%s\n' "$id" "$dur" "$views" "$title" >> "$state/raw"
+        printf '%s\n' "$id" >> "$tmp/new"
       done < "$tmp/rows"
 
-      cat "$state/items"
+      if [ -s "$tmp/new" ]; then
+        mapfile -t new_ids < "$tmp/new"
+        youtube-api meta "''${new_ids[@]}" 2>/dev/null \
+          | gawk -F'│' 'NF >= 3 { print $1 "\x1f" $2 "\x1f" $3 }' >> "$state/meta" || true
+      fi
+
+      emit_items
     '';
   };
 
@@ -210,8 +231,9 @@ let
       usage: ytc [-f FICHIER] [CHAÎNE]
 
         Parcourt les vidéos d'une chaîne YouTube dans fzf (vignette dans le
-        volet de droite), les vidéos les plus récentes ou les plus populaires
-        en premier, puis télécharge la sélection avec ytdl (voir ytdlp).
+        volet de droite, date, durée, vues et chaîne), les vidéos les plus
+        récentes ou les plus populaires en premier, puis télécharge la
+        sélection avec ytdl (voir ytdlp).
 
         CHAÎNE  nom de la chaîne (premier résultat de la recherche YouTube),
                 @handle, URL de chaîne ou identifiant UC…
