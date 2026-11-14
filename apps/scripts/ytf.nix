@@ -10,6 +10,8 @@ let
     cacheDir = "ytf/thumbs";
   };
 
+  ytRows = pkgs.callPackage ./yt-rows.nix { };
+
   edit = pkgs.writeShellApplication {
     name = "ytf-edit";
     runtimeInputs = with pkgs; [ vim ];
@@ -39,6 +41,7 @@ let
       curl
       gawk
       youtubeApi
+      ytRows
     ];
     text = ''
       file="''${YTF_FILE:-${defaultFile}}"
@@ -99,7 +102,7 @@ let
             break
           fi
           if [ "''${#pending[@]}" -ge 8 ] && [ "$(( ''${#pending[@]} * 3 ))" -gt "$total" ]; then
-            echo "ytf: ''${#pending[@]}/$total flux refusés — YouTube limite probablement les requêtes (HTTP 404/429), réessayez plus tard" >> "$err"
+            echo "ytf: ''${#pending[@]}/$total flux refusés - YouTube limite probablement les requêtes (HTTP 404/429), réessayez plus tard" >> "$err"
             throttled=1
             break
           fi
@@ -186,19 +189,21 @@ let
         exit 1
       fi
 
+      # durée des vidéos : les flux n'en donnent pas, une requête « player »
+      # par vidéo (mise en cache, seules les nouvelles vidéos coûtent)
+      : > "$tmp/meta"
+      mapfile -t vids < <(gawk -F'\x1f' '!seen[$2]++ { print $2 }' "$tmp/sorted")
+      if [ "''${#vids[@]}" -gt 0 ]; then
+        youtube-api meta "''${vids[@]}" > "$tmp/meta" 2>/dev/null || true
+      fi
+      gawk -F'│' 'NF >= 3 { print $1 "\x1f" $3 }' "$tmp/meta" > "$tmp/secs"
+
+      # date du flux + durée du lecteur + vues et chaîne du flux, mises en
+      # forme par yt-rows comme dans ytq et ytc
       gawk -F'\x1f' '
-        function human(v,   n) {
-          n = v + 0
-          if (n >= 1000000000) return sprintf("%.1f Md", n / 1000000000)
-          if (n >= 1000000) return sprintf("%.1f M", n / 1000000)
-          if (n >= 1000) return sprintf("%.0f k", n / 1000)
-          return sprintf("%d", n)
-        }
-        {
-          meta = ($4 == "") ? $3 : human($4) " vues · " $3
-          printf "%s│%s  %s\n   %s%c", $2, strftime("%Y-%m-%d %H:%M", $1 + 0), $5, meta, 0
-        }
-      ' "$tmp/sorted"
+        FILENAME == ARGV[1] { sec[$1] = $2; next }
+        { printf "%s\x1f%s\x1f%s\x1f%s\x1f%s\x1f%s\n", $2, $1, sec[$2], $4, $3, $5 }
+      ' "$tmp/secs" "$tmp/sorted" | yt-rows
 
       printf '%s chaînes · %s vidéos' "''${#ids[@]}" "$n_videos" > "$cache/last-stats"
     '';
@@ -219,8 +224,8 @@ let
         Affiche les dernières vidéos des chaînes YouTube listées dans un fichier,
         une par ligne (URL de chaîne, @handle ou identifiant UC…), les lignes
         commençant par # étant ignorées. Les flux sont fusionnés et triés de la
-        plus récente à la plus ancienne, puis présentés dans fzf avec la vignette
-        et la date de publication.
+        plus récente à la plus ancienne, puis présentés dans fzf avec la vignette,
+        la date de publication, la durée, les vues et la chaîne.
 
         Tab     coche/décoche une vidéo ; Entrée télécharge la sélection
                 (une seule vidéo si rien n'est coché), en 720p maximum, H.264
@@ -234,7 +239,9 @@ let
 
         Chaque flux YouTube ne contient que les 15 dernières vidéos : si une
         chaîne publie davantage, seules les 15 plus récentes apparaissent (un
-        avertissement le signale).
+        avertissement le signale). La durée ne figure pas dans les flux : elle
+        demande une requête par vidéo, mémorisée à jamais, si bien que seul le
+        premier affichage d'une vidéo coûte quelque chose.
 
         -f FICHIER  fichier des chaînes
                     (défaut : $YTF_FILE, sinon ${defaultFile})
