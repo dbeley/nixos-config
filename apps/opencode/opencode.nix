@@ -7,7 +7,6 @@ let
   llm = inputs.llm-agents.packages.${pkgs.system};
 in
 {
-  imports = [ inputs.agent-skills.homeManagerModules.default ];
   home.packages = [
     llm.opencode2
   ];

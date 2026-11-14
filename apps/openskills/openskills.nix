@@ -1,4 +1,5 @@
-_: {
+{ inputs, ... }: {
+  imports = [ inputs.agent-skills.homeManagerModules.default ];
   programs.agent-skills = {
     enable = true;
     sources = {
@@ -57,16 +58,6 @@ _: {
         "hyperdroid/lineageos"
       ];
     };
-    targets = {
-      opencode = {
-        enable = true;
-        dest = "$HOME/.config/opencode/skills";
-        structure = "symlink-tree";
-      };
-      claude.enable = true;
-      codex.enable = true;
-      cursor.enable = true;
-      agents.enable = true;
-    };
+    targets.agents.enable = true;
   };
 }

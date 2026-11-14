@@ -306,7 +306,7 @@ let
     code-agents = {
       home = [
         # ../apps/cursor/cursor.nix
-        ../apps/opencode/opencode.nix
+        # ../apps/opencode/opencode.nix
         ../apps/openskills/openskills.nix
         ../apps/pi/pi.nix
         # ../apps/oh-my-pi/oh-my-pi.nix
