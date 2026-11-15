@@ -1,317 +1,96 @@
-# Repository Guidelines
+# nixos-config
 
-## Project Structure and Modules
+NixOS flake for multiple machines. Base system config in `modules/configuration.nix`, package
+overlays in `modules/overlays.nix`, per-machine configs in `hosts/`, reusable
+app/desktop/server modules in `apps/` (one directory per app).
 
-### Directory Layout
-- **`flake.nix`** - Main flake configuration defining inputs, outputs (`nixosConfigurations`, `checks`, `devShells`), and system configurations
-- **`hosts/`** - Per-machine configurations
-  - Define hosts in `hosts/default.nix` via `mkHost` function
-  - Each host has `hardware-configuration.nix` and `home.nix`
-- **`modules/`** - Shared NixOS system modules organized by category:
-  - `modules/common/` - Base system configurations (bootloaders, laptop settings, laptop-thermald, openssh, screen-rotation, xbox, etc.)
-  - `modules/disko/` - Declarative disk partitioning (LUKS + btrfs + impermanence)
-  - `modules/impermanence/` - Ephemeral root filesystem configuration
-  - `modules/hardware/` - Hardware-specific modules (hid-tmff2, throttled)
-  - `modules/sops/` - Secrets management (system and home-manager)
-  - `modules/acme/` - Shared ACME (Let's Encrypt) module for era hosts: per-host DNS-01 cert via OVH (SANs derived from each host's nginx vhosts), OVH credentials from `secrets/acme.yaml`
-  - `modules/cachix/` - Binary cache configurations (niri, nix-community)
-  - `configuration.nix` - Base system configuration (networking, locale, nix settings)
-  - `overlays.nix` - System-wide package overlays
-  - `hosts/default.nix` - Host definitions and the `domain` specialArg: the public domain used by all era VM services (e.g. `home.example.com`). Passed to every module via `specialArgs`/`extraSpecialArgs`.
-- **`apps/`** - Reusable application and desktop environment modules (102 directories, 116 .nix files total)
-  - Desktop environments: `gnome/`, `hyprland/`, `niri/`, `sway/`
-  - Terminals: `alacritty/`, `ghostty/`, `kitty/`
-  - Editors: `editorconfig/`, `emacs/`, `helix/`, `kakoune/`, `neovim-nvf/`, `nvim/`, `vscode/`
-  - Browsers: `firefox/`, `luakit/`, `qutebrowser/`, `ungoogled-chromium/`, `zen-browser/`
-  - `floccus` bookmark sync extension installed in firefox, zen-browser (AMO xpi) and chromium (GitHub crx)
-  - Code agents: `claude/`, `codex/`, `copilot/`, `cursor/`, `gemini/`, `goose/`, `hermes/`, `oh-my-opencode/`, `oh-my-pi/`, `opencode/`, `openskills/`, `pi/`, `rtk/`
-  - File managers: `lf/`, `nnn/`, `yazi/`
-  - Media: `feishin/`, `imv/`, `mpd/`, `mpv/`, `obs/`, `swayimg/`, `undertone/`, `zathura/`
-  - Wayland utilities: `gammastep/`, `hypridle/`, `hyprlock/`, `mako/`, `noctalia/`, `swayidle/`, `swaylock/`, `tofi/`, `waybar/`, `wofi/`
-  - Shell/CLI tools: `bat/`, `btop/`, `direnv/`, `fish/`, `git/`, `jj/`, `lazygit/`, `mime/`, `tealdeer/`, `tmux/`, `workstation/`, `zoxide/`
-  - Networking: `mullvad/`
-  - AI/ML: `ollama/`
-  - Servers: `adguard-home/`, `audiomuse-ai/`, `cairn/`, `covertone/`, `stave/`, `hermes-server/`, `opencode-server/`, `zeroclaw/`, `immich/`, `jellyfin/`, `maloja/`, `nextcloud-server/`, `nixflix/`, `paperless-ngx/`, `slskd/`, `trek/`, `yamtrack/`
-  - Other apps: `android/`, `autoscreen/`, `boinc/`, `docker/`, `flatpak/`, `impulse/`, `ledger/`, `moonlight/`, `mpdscrobble/`, `newsraft/`, `nextcloud-client/`, `podman/`, `pycharm/`, `python/`, `qbittorrent/`, `restic/`, `scripts/`, `steam/`, `stylix/`, `sunshine/`, `symmetri/`, `thunderbird/`, `udiskie/`
-  - `scripts/` — local shell helpers: `scripts.nix` (function returning the `brightness`, `volume-pamixer` and `toggle-gammastep` derivations used by the sway/waybar/niri keybindings), plus `ytq.nix` (YouTube search + download), `ytf.nix` (channel feeds from a text file), `ytc.nix` (browse one channel: newest or most popular first, channel chosen from the ytf file, by name, @handle, URL or UC id), `yt-rows.nix` (the single fzf row formatter all three pipe their results through, so date/duration/views/channel look the same everywhere), `api.nix` (publish date/duration, `@handle` → channel id and raw youtubei calls via youtube.com's own web API) and `yt-preview.nix`, the shared fzf thumbnail preview the pickers use, and `ytdlp.nix`, the yt-dlp wrapper that adds browser cookies (YouTube's "sign in to confirm you're not a bot" check) which the three pickers use for downloads
-- **`scripts/`** - Installation and utility scripts (e.g., `install-nixos.sh` for Proxmox VMs)
-- **`secrets/`** - sops-nix encrypted secrets storage (`secrets.yaml`)
-- **`imgs/`** - Assets, wallpapers, and screenshots
-- **`justfile`** - Build and maintenance recipes
-- **`.env`** - Environment variables for justfile (e.g., `HOST=x13`) - not committed to git
+There is NO `pkgs/` directory — custom packages are defined inline in their app module
+(e.g. `apps/mpdscrobble/package.nix`, `apps/autoscreen/autoscreen.nix`).
 
-**Note:** There is NO `pkgs/` directory. Custom packages are defined inline within app modules (e.g., `apps/mpdscrobble/package.nix`, `apps/autoscreen/autoscreen.nix`).
+Hosts, profiles and apps change constantly, so no inventory is listed here. The
+authoritative sources are `rg 'hostName =' hosts/default.nix`, the `moduleProfiles`
+attrset in `hosts/default.nix`, `ls apps/` and `just --list`.
 
-### Host Definition with mkHost
+## Verify (do this, not `nix flake check`)
 
-Hosts are defined in `hosts/default.nix` using the `mkHost` function:
+```bash
+nix build .#checks.x86_64-linux.pre-commit-check --max-jobs 2
+```
+
+Runs nixfmt, statix, deadnix, shellcheck, ruff and end-of-file-fixer. `nix flake check`
+evaluates every host at once (12 GB+ RAM) and is not expected to run on a dev machine.
+
+- **Host change:** `nixos-rebuild dry-activate --flake .#<host>` or `just build`
+- **Remote host:** `nix build .#nixosConfigurations.<host>.config.system.build.toplevel`
+  first, then `just switch-proxmox-vm <host> <ip>` (or `boot-proxmox-vm`)
+- **Package change:** `nix build .#<pkg>`
+
+## Hosts
+
+`hosts/default.nix` builds each host with:
 
 ```nix
 mkHost = {
-  hostName,              # Required: hostname
-  stateVersion,          # Required: NixOS state version (e.g., "24.05")
-  system ? "x86_64-linux",  # Optional: system architecture
-  profiles ? [],         # Optional: list of profile names to enable
-  extraModules ? [],     # Optional: additional system modules
-  extraHomeModules ? [], # Optional: additional home-manager modules
-  homeConfig ? ../hosts/${hostName}/home.nix, # Optional: per-host home config
+  hostName,                                   # required
+  stateVersion,                               # required
+  system ? "x86_64-linux",
+  profiles ? [],                              # names from moduleProfiles
+  extraModules ? [],
+  extraHomeModules ? [],
+  homeConfig ? ../hosts/${hostName}/home.nix,
 }
 ```
 
-### Available Profiles (moduleProfiles)
+The file also exports the `domain` specialArg used by every era VM service. Per-host
+layout: `hosts/<host>/{hardware-configuration.nix,home.nix}`.
 
-**System profiles:**
-- `laptop` - Power management, bluetooth, tuned, fingerprint scanner
-- `impermanence` - Disko + impermanence setup with automatic root cleanup
-- `bootloader-systemd-boot` - Systemd-boot UEFI bootloader
-- `bootloader-grub-uefi` - GRUB UEFI bootloader
-- `bootloader-grub-bios` - GRUB BIOS bootloader
-- `bootloader-extlinux` - generic-extlinux-compatible bootloader (ARM boards, used by pocket-reform)
-- `sops` - Secrets management (system + home-manager)
-- `openssh-server` - SSH server with GitHub key authentication
-- `docker` - Docker virtualization
-- `podman` - Podman virtualization
-- `android-tools` - ADB and fastboot
-- `steam` - Gaming with proton-ge
-- `sunshine` - Game streaming server
-- `qbittorrent` - Torrent client service
+## Non-obvious details
 
-**Desktop environments:**
-- `niri` - Niri wayland compositor + noctalia + autoscreen + ghostty
-- `niri-waybar` - Niri wayland compositor + waybar + tofi + mako + hyprlock + swayidle + autoscreen + ghostty
-- `gnome` - GNOME desktop with dconf settings
-- `sway` - Sway + waybar + tofi + mako + swaylock + autoscreen + kitty
-- `hyprland` - Hyprland + hyprlock + hypridle + waybar + tofi + mako + autoscreen + ghostty. Hyprland >= 0.53 dropped `hyprland.conf`/hyprlang: the whole config lives in `wayland.windowManager.hyprland.settings` with `configType = "lua"` (rendered as `~/.config/hypr/hyprland.lua`), `hl.dsp.*` dispatchers via `lib.generators.mkLuaInline`. hyprpaper (wallpaper) comes from stylix's hyprland target. Validate a config with `Hyprland --verify-config` after pointing `XDG_CONFIG_HOME` at a dir containing `hypr/hyprland.lua`. waybar 0.15 ships `hyprland/workspaces` (it has no `wlr/workspaces` module)
+- **Hyprland** (>= 0.53): hyprlang is gone. Config lives in
+  `wayland.windowManager.hyprland.settings` with `configType = "lua"` (rendered as
+  `~/.config/hypr/hyprland.lua`); dispatchers via `lib.generators.mkLuaInline`. Validate
+  with `Hyprland --verify-config` after pointing `XDG_CONFIG_HOME` at a dir containing
+  `hypr/hyprland.lua`. waybar 0.15 uses `hyprland/workspaces`, it has no `wlr/workspaces`.
+- **Impermanence/disko:** `hosts/<host>/hardware-configuration.nix` must exist (generate
+  with `nixos-generate-config --no-filesystems`); an immutable user needs a password file
+  at `/mnt/root/persistent/passwd_$USER` before install; persisted paths live in
+  `modules/impermanence/default.nix`; full install steps are in README.md.
+- **ACME/HTTPS on era hosts:** `modules/acme/default.nix` does OVH DNS-01 and derives each
+  host's cert SANs from its own nginx vhosts (per-host certs, avoiding LE's
+  5-identical-certs/week duplicate limit). Enable by adding `acme` and `sops` to a host's
+  profiles. `forceSSL = true` requires port 80 open (redirect only; issuance is DNS-01).
+- **Overlays:** edit `modules/overlays.nix` and test with `nix build .#<pkg>`; do not patch
+  packages per host.
+- **`apps/scripts/`** holds the shell helpers: the yt pickers (`ytq`, `ytf`, `ytc`) pipe
+  through `yt-rows.nix` for identical fzf formatting, use `api.nix` for youtubei calls and
+  `ytdlp.nix` (browser cookies) for downloads; `yt-preview.nix` is the shared fzf preview.
 
-**Applications:**
-- `workstation` - bat, btop, editorconfig, fish, git, kakoune, lazygit, ledger, mime, mpv, nextcloud-client, stylix, swayimg, tealdeer, tmux, udiskie, workstation, yazi, zathura, zoxide (system modules: stylix, udiskie, symmetri, workstation)
-- `firefox` - Firefox browser with extensive policies and addons
-- `chromium` - Ungoogled chromium
-- `zen-browser` - Zen browser
-- `luakit` - Luakit (WebKitGTK) with pinned EasyList/EasyPrivacy adblock lists
-- `qutebrowser` - Qutebrowser with search engines
-- `mpd` - MPD + mpdscrobble (Last.fm scrobbler)
-- `python` - Python development with direnv
-- `neovim-nvf` - Neovim with nvf configuration framework
-- `vscode` - VS Code: editor
-- `emacs` - Emacs editor
-- `kakoune` - Kakoune editor
-- `obs` - OBS Studio
-- `pycharm` - PyCharm IDE
-- `moonlight` - Game streaming client
-- `code-agents` - opencode, openskills, rtk, hermes, goose
-- `jj` - Jujutsu version control system
-- `mullvad` - Mullvad VPN (system + home-manager)
-- `ollama` - Ollama local LLM server
-- `hermes-server` - Hermes Web UI
-- `opencode-server` - OpenCode web UI (systemd service + shared opencode config)
-- `zeroclaw` - ZeroClaw web dashboard
-- `nextcloud-server` - Nextcloud server
-- `restic` - Restic backup tool
-- `thunderbird` - Thunderbird email client
+## Secrets (sops-nix)
 
-**Servers:**
-- `adguard-home` - AdGuard Home DNS ad-blocker
-- `cairn` - Self-hosted AI platform (kiwix, ollama, open-webui)
-- `covertone` - Music player for Navidrome
-- `stave` - Terminal-inspired Subsonic/Navidrome music client (PWA)
-- `hermes-server` - Hermes Web UI
-- `opencode-server` - OpenCode web UI (systemd service + shared opencode config)
-- `zeroclaw` - ZeroClaw web dashboard
-- `immich` - Immich photo server
-- `jellyfin` - Jellyfin media server
-- `maloja` - Music scrobbling server
-- `audiomuse-ai` - AudioMuse AI sonic analysis and playlist generation (OCI containers)
-- `nextcloud-server` - Nextcloud server
-- `nixflix` - Nixflix media server (arr stack, jellyfin, navidrome)
-- `paperless-ngx` - Paperless-ngx document management
-- `trek` - TREK travel planner
-- `slskd` - Soulseek file sharing client
-- `youtarr` - Self-hosted Youtube archive
-- `yamtrack` - Media tracker (podman containers, Jellyfin integration)
+Never commit plaintext secrets. `.sops.yaml` holds the age key and creation rules,
+ciphertext lives in `secrets/*.yaml`, the age key at `~/.config/sops/age/keys.txt`.
+Edit with `just secrets-edit`, inspect with `just secrets-view`. Enabling sops on a host
+means the age key exists and `sops` is in its `profiles`.
 
-### Current Hosts
+Secrets consumed by `environmentFile` / OCI `--env-file` **must** be stored as `KEY=VALUE`
+lines, not raw values — systemd and podman's `--env-file` both expect that format:
 
-**Workstations:**
-- `p14sg6` - Lenovo ThinkPad P14s Gen 6 (AMD Ryzen AI 7 350, niri, impermanence)
-- `cf-qv1` - Panasonic Let's Note CF-QV1 (Intel Core i5-1145G7, niri, impermanence)
-- `x1yoga` - Lenovo ThinkPad X1 Yoga Gen 5 (Intel Core i5-10210U, niri, impermanence)
-- `sg13` - Silverstone SG13 desktop (AMD Ryzen 9 5950X + RTX 3070, gnome)
-- `pocket-reform` - MNT Pocket Reform mini laptop (NXP i.MX 8M Plus, 4x Cortex-A53 @1.8GHz, 8GB RAM, aarch64, niri, extlinux; NVMe ext4 root, `/boot` on microSD, no LUKS/impermanence; hardware module from `nixos-mnt-pocket-reform`, install via `scripts/install-pocket.sh`)
-
-**Servers (Kimsufi Proxmox VMs):**
-- `nixos-kimsufi-qbittorrent` - qbittorrent server
-- `nixos-kimsufi-tor` - non-exit Tor relay
-
-**Servers (ERA VPS):**
-- `nixos-era-adguard` - AdGuard Home DNS server
-- `nixos-era-agents` - LLM agent web UIs (hermes-webui, opencode, zeroclaw)
-- `nixos-era-homelab` - slskd + mlaoja + covertone + stave + Jellyfin + paperless-ngx + TREK 
-- `nixos-era-immich` - Immich photo server
-- `nixos-era-nextcloud` - Nextcloud server
-- `nixos-era-nixflix` - Nixflix media server (arr stack, jellyfin, navidrome, yamtrack)
-
-## Testing Guidelines
-- **For verification, run formatting checks only**: Use `nix build .#checks.x86_64-linux.pre-commit-check --max-jobs 2` to verify code formatting/linting without evaluating all NixOS configurations. This is the recommended approach for LLM agents to avoid memory exhaustion.
-- **Why avoid full `nix flake check`**: Running `nix flake check` evaluates all 14 active host configurations simultaneously, which can consume 12GB+ of RAM and cause memory exhaustion on typical LLM agent environments. The pre-commit check covers formatting/linting requirements without this overhead.
-- **For host-specific changes**: Run `nixos-rebuild dry-activate --flake .#<host>` or `just build` to validate specific host configurations without evaluating all hosts.
-- **For package changes**: Build packages explicitly with `nix build .#<pkg>` to ensure derivations succeed.
-- **For systems with ample RAM** (>16GB): You can optionally run full `nix flake check`, but this is not required for LLM agents.
-
-### Host Configuration Testing
-**Before deploying to a host:**
-```bash
-nixos-rebuild dry-activate --flake .#<host>  # Catch evaluation errors without applying
-```
-
-**For remote targets:**
-- Test locally with `nix build .#nixosConfigurations.<host>.config.system.build.toplevel` first
-- Then use dry-run before `switch-proxmox-vm-local` or `switch-proxmox-vm-kimsufi`
-
-### Package Testing
-**When altering custom packages in `apps/`:**
-```bash
-nix build .#<pkg>  # Ensure derivation succeeds before committing
-```
-
-## Security and Configuration Tips
-
-### Secrets Management
-**DO NOT commit unencrypted secrets.** All secrets must be managed via `sops-nix`:
-
-- **Configuration:** `.sops.yaml` defines age key and creation rules
-- **Secrets file:** `secrets/secrets.yaml` (encrypted)
-- **Age key location:** `~/.config/sops/age/keys.txt` (or `/home/${user}/.config/sops/age/keys.txt` for system)
-
-**To enable sops on a host:**
-1. Ensure age key exists at specified location
-2. Add `sops` to host's `profiles` list in `hosts/default.nix`
-3. Define secrets in `secrets/secrets.yaml` using `sops secrets/secrets.yaml`
-
-### Secrets requiring KEY=VALUE format
-
-Secrets consumed via `environmentFile` / `environmentFiles` (NixOS services or OCI
-containers) **must** be stored as `KEY=VALUE` lines, not raw values. Systemd and
-podman's `--env-file` both expect this format.
-
-| Secret | File | Required format |
-|--------|------|-----------------|
-| `bookorbit_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
-| `youtarr_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
-| `yamtrack_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
-| `navidrome_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
-| `trek_env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
+| Secret | File | Format |
+|--------|------|--------|
+| `bookorbit_env`, `youtarr_env`, `yamtrack_env`, `navidrome_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
+| `trek_env`, `slskd_env`, `maloja_env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
 | `audiomuse_pg_password` | `secrets/homelab.yaml` | `POSTGRES_PASSWORD=<value>` |
-| `slskd_env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
-| `maloja_env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
-| `opencode_env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
-| `zeroclaw_env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
-| `hermes_webui_env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
+| `opencode_env`, `zeroclaw_env`, `hermes_webui_env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
 | `acme_ovh` | `secrets/acme.yaml` | multi-line `KEY=VALUE` |
 
-To update: `sops set <file> '["<key>"]' '"KEY=VALUE"'`
+Update with: `sops set <file> '["<key>"]' '"KEY=VALUE"'`
 
-### ACME / HTTPS on era hosts
+## Build
 
-Era VM services (trek, paperless, navidrome, etc.) are served over HTTPS using
-Let's Encrypt via DNS-01, so no public IP or inbound ports are needed:
+Builds go through `nh` (`programs.nh.enable`); `just --list` is the authoritative list of
+recipes (switch, boot, test, build, update, rollback, proxmox deploy, secrets, …).
+`HOST=<host>` in the environment or in `.env` selects the target host. GC is handled by
+`nh clean` (keeps 7 days + 5 generations); `nix.gc.automatic` is intentionally disabled.
 
-- **Domain:** the `domain` specialArg in `hosts/default.nix` (plain value; sops cannot feed
-  eval-time values).
-- **Shared ACME module:** `modules/acme/default.nix` — configures `security.acme` with
-  OVH DNS-01, derives each host's certificate SANs from its own nginx vhosts
-  (per-host certs, avoiding LE's 5-identical-certs/week duplicate limit)
-- **OVH credentials:** `secrets/acme.yaml` (encrypted), key `acme_ovh` containing
-  `OVH_ENDPOINT`, `OVH_APPLICATION_KEY`, `OVH_APPLICATION_SECRET`, `OVH_CONSUMER_KEY`.
-  Recipients: user key + homelab, nextcloud, nixflix, hermes and immich keys.
-- **Internal DNS:** AdGuard Home (`apps/adguard-home/default.nix`) rewrites each
-  `<service>.<domain>` to the era VM's LAN IP
-- To enable on a host: add `acme` (and `sops`) to its `profiles` in `hosts/default.nix`
-- `forceSSL = true` requires port 80 open (for the http→https redirect); cert issuance
-  itself is DNS-01 and needs no inbound ports
-
-### Impermanence/Disko Setup
-
-**Critical requirements for impermanence hosts:**
-
-1. **Hardware configuration:** `hosts/<host>/hardware-configuration.nix` must exist
-   - Generate with: `nixos-generate-config --no-filesystems`
-
-2. **Password file:** MANDATORY for immutable users
-   ```bash
-   mkpasswd > temp_passwd_file
-   sudo mv temp_passwd_file /mnt/root/persistent/passwd_$USER
-   sudo chown root:root /mnt/root/persistent/passwd_$USER
-   ```
-
-3. **Persistent directories:** See `modules/impermanence/default.nix` for 109+ persisted paths
-   - System: `/etc/nixos`, `/var/log`, `/var/lib/nixos`, etc.
-   - Home: `.config`, `.local`, `.ssh`, `.gnupg`, etc.
-
-4. **Installation process:** See README.md for detailed disko installation steps
-
-### Overlays and Package Fixes
-
-**Centralize overlays in `modules/overlays.nix`** to avoid per-host drift.
-
-**Current active overlays:**
-- `niri` overlay (from niri input)
-
-**Commented examples for fixing broken packages:**
-- zoom, beets, audacity, jack1, claude-code, nvidia, xpadneo
-
-**To add a new overlay:**
-1. Edit `modules/overlays.nix`
-2. Add overlay to `nixpkgs.overlays` list
-3. Test with `nix build .#<pkg>` before committing
-
-### Build System and Deployment
-
-**Build tool:** This repository uses `nh` (Yet Another Nix Helper) as the primary build tool, configured via `programs.nh.enable` in `modules/configuration.nix`.
-
-**Justfile commands:**
-- `just switch` - Build and activate configuration (uses `nh os switch`)
-- `just boot` - Build and set as boot default (uses `nh os boot`)
-- `just test` - Build and activate without bootloader update (uses `nh os test`)
-- `just build` - Just build the configuration (uses `nh os build`)
-- `just clean` - Manual garbage collection (uses `nh clean all --keep-since 7d --keep 5`)
-- `just update` - Update flake inputs
-- `just optimize` - Optimize nix store
-- `just rollback` - Roll back to previous generation (uses `nh os rollback`)
-- `just install-proxmox-vm <hostname> <ip>` - Upload install script to Proxmox VM
-- `just switch-proxmox-vm <hostname> <ip>` - Deploy config to remote Proxmox VM
-- `just boot-proxmox-vm <hostname> <ip>` - Deploy config to remote Proxmox VM (boot only)
-- `just search <query>` - Search for packages (uses `nh search`)
-- `just info` - List available generations (uses `nh os info`)
-- `just first-install-disko <host> <target>` - Run disko-install for a host on target disk
-- `just flake-linter` - Run flake linter (uses `flake-linter`)
-- `just nix-olde` - Check for outdated packages (uses `nix-olde`)
-- `just secrets-edit` - Edit encrypted secrets with sops
-- `just secrets-view` - View decrypted secrets
-- `just secrets-gen-key` - Generate new age key for sops
-- `just secrets-test` - Test sops configuration for current host
-- `just all` - Update, switch, clean, and optimize in sequence
-
-**Environment variables:**
-- Set `HOST` environment variable (e.g., `export HOST=x13`) or create a `.env` file with `HOST=<hostname>`
-- The `nh` module can optionally use `programs.nh.flake` to set the default flake path
-
-**Garbage collection:**
-- Automatic GC is handled by `programs.nh.clean.enable = true`
-- Systemd service runs periodically with `--keep-since 7d --keep 5` (keeping generations from last 7 days AND 5 most recent)
-- Manual cleanup available via `just clean` (keeps 7 days + 5 generations) or `just optimize` (also optimizes store)
-- Traditional `nix.gc.automatic` is disabled to avoid conflicts
-
-### Common Configuration Patterns
-
-**System defaults (from `configuration.nix`):**
-- Kernel: `linuxPackages_latest`
-- Network: NetworkManager with iwd backend, BBR congestion control
-- Audio: PipeWire with wireplumber (camera disabled)
-- sudo: `sudo-rs` instead of traditional sudo
-- Locale: French (`fr_FR.UTF-8`) with US international keyboard
-- Build tool: `nh` (Yet Another Nix Helper) configured via `programs.nh.enable`
-- Garbage collection: Managed by `nh clean` service (keeps last 7 days + 5 generations)
-- Swap: Zram with zstd compression
-- Services: systemd-resolved, gvfs, fstrim, gnome-keyring with gcr-ssh-agent, earlyoom
-- Nix settings: `auto-optimise-store`, `keep-outputs`, `keep-derivations`, `nixVersions.latest`, `trusted-users` includes user
+System defaults (kernel, locale, NetworkManager/iwd, PipeWire, sudo-rs, zram, nh) live in
+`modules/configuration.nix` — read it instead of assuming.
