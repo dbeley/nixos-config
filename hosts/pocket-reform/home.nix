@@ -21,6 +21,11 @@ in
     mpd.musicDirectory = lib.mkForce "${config.home.homeDirectory}/nfs/WDC14/Musique-Bandcamp";
   };
 
+  home.packages = [
+    pkgs.weechat
+    pkgs.profanity
+  ];
+
   programs = {
     ghostty.enable = lib.mkForce false;
 

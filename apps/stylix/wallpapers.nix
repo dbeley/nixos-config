@@ -92,6 +92,10 @@
       image = ./../../imgs/wallpapers/mnt-reform-next-y2k.jpg;
       imageScalingMode = "fill";
     };
+    "mnt-monogram" = {
+      image = ./../../imgs/wallpapers/mnt-monogram-neon-glitch.png;
+      imageScalingMode = "fill";
+    };
   };
   defaultWallpaper = "abstract-light-rays";
 }

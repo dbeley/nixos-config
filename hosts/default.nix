@@ -652,8 +652,6 @@ in
       "chawan"
       "code-agents"
       "python"
-      "mpd"
-      "sops"
     ];
     extraModules = [
       inputs.nixos-mnt-pocket-reform.nixosModules.pocket-reform-imx8mp
@@ -661,7 +659,7 @@ in
       ../hosts/pocket-reform/games.nix
       ../hosts/pocket-reform/disko.nix
       {
-        my.stylix.wallpaper = "purple-waves";
+        my.stylix.wallpaper = "mnt-monogram";
       }
       ({ config, ... }: {
         hardware.mnt-pocket-reform.keyboardBacklight = {
