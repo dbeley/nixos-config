@@ -202,6 +202,8 @@ in
     };
 
     extraConfigEarly = ''
+      bindsym --no-warn Mod4+1 workspace number 1
+
       set $tx #ffffff
 
       no_focus [app_id="one.alynx.showmethekey"]
