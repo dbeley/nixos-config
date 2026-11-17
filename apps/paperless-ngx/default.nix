@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   user,
   domain,
   ...
@@ -9,6 +10,21 @@ let
   nfsMount = "/mnt/nfs";
   paperlessHost = "paperless.${domain}";
   paperlessUrl = "https://${paperlessHost}";
+
+  # paperless-ngx 3.4.2 pins `torch<2.15` while nixpkgs ships 2.15.0, so the
+  # wheel's runtime-dependency check fails at build time. The nixpkgs module
+  # wraps `package` with `.override { tesseract5 = …; }`, which the result of
+  # `overridePythonAttrs` does not provide, hence the shimmed `override`.
+  paperlessPackage =
+    let
+      base = pkgs.paperless-ngx;
+      patch =
+        drv:
+        drv.overridePythonAttrs (_: {
+          dontCheckRuntimeDeps = true;
+        });
+    in
+    patch base // { override = args: patch (base.override args); };
 in
 {
   fileSystems.${nfsMount} = {
@@ -41,6 +57,8 @@ in
   services.paperless = {
     enable = true;
     inherit user;
+    group = config.users.users.${user}.group;
+    package = paperlessPackage;
     consumptionDir = "${nfsMount}/WDC14_2/Transferts/paperless-ngx";
     passwordFile = config.sops.secrets."paperless_admin_password".path;
     settings = {
