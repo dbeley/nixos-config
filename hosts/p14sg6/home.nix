@@ -13,7 +13,7 @@
     jellyfin-media-player
     # musescore
     nautilus
-    python3Packages.subliminal
+    # python3Packages.subliminal
     shotcut
   ];
 
