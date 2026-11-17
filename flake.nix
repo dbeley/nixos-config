@@ -208,6 +208,15 @@
       url = "github:dbeley/undertone";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    keytle = {
+      url = "github:dbeley/keytle";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    kite-browser = {
+      url = "github:dbeley/kite-browser";
+      # Upstream tracks its own registry nixpkgs; follow ours instead.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     autoscreen = {
       url = "github:dbeley/autoscreen";
       inputs = {

@@ -89,6 +89,7 @@ let
         ../apps/glow/glow.nix
         # ../apps/helix/helix.nix
         ../apps/kakoune/kakoune.nix
+        ../apps/keytle/keytle.nix
         # ../apps/impulse/impulse.nix
         ../apps/lazygit/lazygit.nix
         ../apps/ledger/ledger.nix
@@ -248,6 +249,9 @@ let
     };
     luakit = {
       home = [ ../apps/luakit/luakit.nix ];
+    };
+    kite = {
+      system = [ ../apps/kite/default.nix ];
     };
     mpd = {
       home = [
@@ -530,6 +534,7 @@ in
       # "firefox"
       "zen-browser"
       "chromium"
+      "kite"
       # "qutebrowser"
       # "mpd"
       "docker"
