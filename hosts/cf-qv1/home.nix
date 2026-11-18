@@ -12,7 +12,7 @@
     nautilus
     shotcut
     papers
-    python3Packages.subliminal
+    # python3Packages.subliminal
   ];
 
   # Increase trackpad sensitivity for the smaller trackpad

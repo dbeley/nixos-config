@@ -586,6 +586,7 @@ in
         disko.mainDisk = "/dev/nvme0n1";
       }
       ../modules/common/screen-rotation.nix
+      ../hosts/cf-qv1/performance.nix
     ];
   };
   x1yoga = mkHost {
