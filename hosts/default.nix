@@ -663,7 +663,6 @@ in
     extraModules = [
       inputs.nixos-mnt-pocket-reform.nixosModules.pocket-reform-imx8mp
       ../hosts/pocket-reform/default.nix
-      ../hosts/pocket-reform/games.nix
       ../hosts/pocket-reform/disko.nix
       {
         my.stylix.wallpaper = "mnt-monogram";
