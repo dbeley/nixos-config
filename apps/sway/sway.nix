@@ -205,7 +205,7 @@ in
     };
 
     extraConfigEarly = ''
-      bindsym --no-warn Mod4+1 workspace number 1
+      workspace number 1
 
       set $tx #ffffff
 
