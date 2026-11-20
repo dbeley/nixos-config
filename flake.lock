@@ -929,7 +929,6 @@
         "obra-superpowers": "obra-superpowers",
         "ponytail": "ponytail",
         "sops-nix": "sops-nix",
-        "stave": "stave",
         "stylix": "stylix",
         "symmetri": "symmetri",
         "systems": "systems",
@@ -995,29 +994,6 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
-        "type": "github"
-      }
-    },
-    "stave": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1793042554,
-        "narHash": "sha256-xEse4t3D/A8/+yHGlX9M58oT6dtmfxDm309MD2Hop0E=",
-        "owner": "dbeley",
-        "repo": "stave",
-        "rev": "272e4ca3f8bb59aa809461849982d63799a550f8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dbeley",
-        "repo": "stave",
         "type": "github"
       }
     },

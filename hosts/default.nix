@@ -403,9 +403,6 @@ let
     covertone = {
       system = [ ../apps/covertone/default.nix ];
     };
-    stave = {
-      system = [ ../apps/stave/default.nix ];
-    };
     redlib = {
       system = [ ../apps/redlib/default.nix ];
     };
@@ -831,7 +828,6 @@ in
       # "slskd"
       "maloja"
       "covertone"
-      "stave"
       "redlib"
     ];
   };

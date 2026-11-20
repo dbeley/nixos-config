@@ -197,13 +197,6 @@
         flake-utils.follows = "flake-utils";
       };
     };
-    stave = {
-      url = "github:dbeley/stave";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-    };
     undertone = {
       url = "github:dbeley/undertone";
       inputs.nixpkgs.follows = "nixpkgs";

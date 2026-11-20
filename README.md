@@ -87,7 +87,7 @@
 - **nixos-era-adguard**: adguard-home
 - **nixos-era-nextcloud**: nextcloud
 - **nixos-era-immich**: immich
-- **nixos-era-homelab**: generic host for other self-hosted tools (jellyfin, paperless-ngx, trek, maloja, covertone, stave)
+- **nixos-era-homelab**: generic host for other self-hosted tools (jellyfin, paperless-ngx, trek, maloja, covertone)
 
 ## Common Usage
 
