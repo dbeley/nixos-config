@@ -631,11 +631,12 @@ in
       "workstation"
       "sway"
       "python"
-      "firefox"
+      # "firefox"
       "chromium"
     ];
     extraHomeModules = [
       ../apps/goose/goose.nix
+      ../hosts/x61s/games.nix
     ];
     extraModules = [
       {
@@ -658,6 +659,9 @@ in
       "chawan"
       "code-agents"
       "python"
+    ];
+    extraHomeModules = [
+      ../hosts/pocket-reform/games.nix
     ];
     extraModules = [
       inputs.nixos-mnt-pocket-reform.nixosModules.pocket-reform-imx8mp
