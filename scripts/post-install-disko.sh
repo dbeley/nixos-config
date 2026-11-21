@@ -30,6 +30,15 @@ sudo mount -o subvol=persistent,compress=zstd,noatime "/dev/mapper/${LUKS_NAME}"
 sudo mount -o subvol=nix,compress=zstd,noatime "/dev/mapper/${LUKS_NAME}" "$MNT/nix"
 sudo mount "${PART}1" "$MNT/boot"
 
+# boot.loader.limine.secureBoot.autoGenerateKeys has limine-install create the
+# sbctl keys on the target's (ephemeral) root subvolume while signing. Move
+# them onto /persistent so the keys and signatures survive the first boot.
+if [ -d "$MNT/var/lib/sbctl/keys" ] && [ ! -e "$MNT/persistent/var/lib/sbctl/keys" ]; then
+  echo "Persisting sbctl secure boot keys"
+  sudo mkdir -p "$MNT/persistent/var/lib/sbctl"
+  sudo cp -a "$MNT/var/lib/sbctl/." "$MNT/persistent/var/lib/sbctl/"
+fi
+
 echo "Creating password file for ${USER_NAME} (MANDATORY for impermanence)"
 mkpasswd > "/tmp/passwd_${USER_NAME}"
 sudo mv "/tmp/passwd_${USER_NAME}" "$MNT/persistent/passwd_${USER_NAME}"

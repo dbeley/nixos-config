@@ -216,24 +216,26 @@ profiles = [
 
 **Post-install manual steps (required for every new machine):**
 
-Setup is a two-phase process because `sbctl` is only available after the first rebuild.
+Setup is a two-phase process because the keys are generated at the first
+install, but firmware only trusts them after you enroll them.
 
-1. First rebuild (installs Limine + sbctl, signing not active yet):
+1. First rebuild/install (installs Limine + sbctl and generates the keys; the
+   ESP is signed, but with keys firmware does not trust yet):
    ```bash
-   just switch
+   just switch   # or: just first-install-disko <host> <disk>
    ```
 
 2. Reboot into firmware (F12 → "Reboot into Firmware") and enter Setup Mode:
    - Security → Secure Boot → Enable → "Reset to Setup Mode"
    - F10 to save and exit
 
-3. Boot back into NixOS and create + enroll keys:
+3. Boot back into NixOS and enroll the keys (on disko/impermanence hosts they
+   are copied to `/persistent/var/lib/sbctl` by `post-install-disko.sh`):
    ```bash
-   sudo sbctl create-keys
    sudo sbctl enroll-keys --microsoft
    ```
 
-4. Rebuild so Limine is signed with the enrolled keys:
+4. Rebuild so any newly installed Limine files are signed with the enrolled keys:
    ```bash
    just switch
    ```
