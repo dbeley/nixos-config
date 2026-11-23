@@ -1,6 +1,7 @@
 { user, ... }:
 {
   stylix.targets = {
+    wayprompt.enable = false;
     rofi.enable = false;
     waybar.enable = false;
     tmux.enable = true;
