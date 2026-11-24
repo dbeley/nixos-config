@@ -60,6 +60,7 @@
       ".hermes"
       ".omp"
       ".pi"
+      ".q3a"
       ".config/.copilot"
       ".config/audacity"
       ".config/backrest"
