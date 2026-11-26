@@ -13,13 +13,22 @@ let
     "ut4_algiers"
     # "ut4_bohemia"
     "ut4_kingdom"
-    "ut4_austria"
+    {
+      map = "ut4_austria";
+      settings.g_gametype = 0;
+    }
     "ut4_sanc"
     "ut4_abbey"
-    "ut4_prague"
+    {
+      map = "ut4_prague";
+      settings.g_gametype = 0;
+    }
     # "ut4_cascade"
     # "ut4_mandolin"
-    "ut4_uptown"
+    {
+      map = "ut4_uptown";
+      settings.g_gametype = 0;
+    }
     # "ut4_kingpin"
     # "ut4_elgin"
     # "ut4_oildepot"
@@ -41,7 +50,23 @@ let
     # "ut4_killroom"
     "ut4_casa"
   ];
-  startMap = lib.head mapCycle;
+  defaultGametype = 3; # TDM
+  mapName = e: if builtins.isString e then e else e.map;
+  mapEntry =
+    e:
+    let
+      settings = {
+        g_gametype = defaultGametype;
+      }
+      // (if builtins.isString e then { } else e.settings or { });
+    in
+    ''
+      ${mapName e}
+      {
+      ${lib.concatStringsSep "\n" (lib.mapAttrsToList (n: v: "  ${n} ${sanitise v}") settings)}
+      }'';
+  mapcycleText = lib.concatStringsSep "\n" (map mapEntry mapCycle) + "\n";
+  startMap = mapName (lib.head mapCycle);
 
   # Config values are read by the Quake 3 console parser: a bare quote would
   # truncate the directive and a semicolon would start a new command.
@@ -106,7 +131,10 @@ let
     timelimit = 20;
     fraglimit = 0;
 
-    g_friendlyfire = 1;
+    # 1 = friendly fire on + kick after g_maxteamkills TK's, 2 = on without
+    # kicks, 0 = off. Bots do not account for friendly fire and shoot their
+    # own team, so 0 (the UrT default) is the only sane value with bots.
+    g_friendlyfire = 0;
     g_maxteamkills = 3;
     g_teamkillsforgettime = 200;
     g_teamautojoin = 1;
@@ -155,7 +183,7 @@ let
 
   envFile = config.sops.secrets."urbanterror_env".path;
 
-  mapcycle = pkgs.writeText "urbanterror-mapcycle.txt" (lib.concatStringsSep "\n" mapCycle);
+  mapcycle = pkgs.writeText "urbanterror-mapcycle.txt" mapcycleText;
 
   # The engine reads configs from fs_homepath, which has to be writable; the
   # store copy is the source of truth and is re-rendered on every start.
@@ -262,6 +290,7 @@ in
       RestrictAddressFamilies = [
         "AF_INET"
         "AF_INET6"
+        "AF_NETLINK"
         "AF_UNIX"
       ];
     };
