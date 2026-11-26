@@ -8,7 +8,7 @@
     backend = "docker";
     containers.archiveteam-warrior = {
       image = "atdr.meo.ws/archiveteam/warrior-dockerfile";
-      ports = [ "8001:8001" ];
+      ports = [ "127.0.0.1:8001:8001" ];
       volumes = [ "/var/lib/archiveteam-warrior:/downloader:Z" ];
       environment = {
         DOWNLOADER = "dbeley";
