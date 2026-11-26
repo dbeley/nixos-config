@@ -9,36 +9,36 @@ let
   package = pkgs.urbanterror;
   mapCycle = [
     "ut4_turnpike"
-    "ut4_paris"
+    # "ut4_paris"
     "ut4_algiers"
-    "ut4_bohemia"
+    # "ut4_bohemia"
     "ut4_kingdom"
     "ut4_austria"
     "ut4_sanc"
     "ut4_abbey"
     "ut4_prague"
-    "ut4_cascade"
-    "ut4_mandolin"
+    # "ut4_cascade"
+    # "ut4_mandolin"
     "ut4_uptown"
-    "ut4_kingpin"
-    "ut4_elgin"
-    "ut4_oildepot"
-    "ut4_ghosttown"
-    "ut4_swim"
-    "ut4_prominence"
+    # "ut4_kingpin"
+    # "ut4_elgin"
+    # "ut4_oildepot"
+    # "ut4_ghosttown"
+    # "ut4_swim"
+    # "ut4_prominence"
     "ut4_ramelle"
-    "ut4_raiders"
+    # "ut4_raiders"
     "ut4_riyadh"
-    "ut4_mykonos_a17"
+    # "ut4_mykonos_a17"
     "ut4_eagle"
-    "ut4_suburbs"
-    "ut4_subway"
-    "ut4_thingley"
-    "ut4_tombs"
-    "ut4_docks"
-    "ut4_ricochet"
-    "ut4_herring"
-    "ut4_killroom"
+    # "ut4_suburbs"
+    # "ut4_subway"
+    # "ut4_thingley"
+    # "ut4_tombs"
+    # "ut4_docks"
+    # "ut4_ricochet"
+    # "ut4_herring"
+    # "ut4_killroom"
     "ut4_casa"
   ];
   startMap = lib.head mapCycle;
@@ -52,7 +52,7 @@ let
   # overridden at start-up without touching this module.
   base = {
     sv_hostname = "Urban Terror server";
-    sv_maxclients = 16;
+    sv_maxclients = 24;
     sv_joinmessage = "Welcome to Urban Terror";
     g_motd = "";
     sv_dlURL = "urbanterror.info";
@@ -85,7 +85,7 @@ let
     g_skins = 1;
     g_armbands = 1;
     g_funstuff = 1;
-    g_gear = "KLM"; # no HE/flash/smoke on spawn
+    g_gear = "K"; # no HK
     g_allowvote = 603981055;
     g_failedvotetime = 300;
     g_maxGameClients = 0;
@@ -119,7 +119,7 @@ let
     g_respawnprotection = 2;
     g_respawndelay = 5;
     g_forcerespawn = 20;
-    g_waverespawns = 1;
+    g_waverespawns = 0;
     g_bluewave = 15;
     g_redwave = 15;
 
@@ -142,7 +142,7 @@ let
     g_meltdownTime = 60;
 
     bot_enable = 1;
-    bot_minplayers = 4;
+    bot_minplayers = 20;
 
     g_mapcycle = "mapcycle.txt";
   };
