@@ -338,11 +338,6 @@ let
         ../apps/opencode/opencode.nix
       ];
     };
-    pi-web = {
-      system = [
-        ../apps/pi-web/default.nix
-      ];
-    };
     zeroclaw = {
       system = [
         ../apps/zeroclaw/default.nix
@@ -390,9 +385,6 @@ let
       system = [
         ../apps/nextcloud-server/default.nix
       ];
-    };
-    audiomuse-ai = {
-      system = [ ../apps/audiomuse-ai/default.nix ];
     };
     slskd = {
       system = [ ../apps/slskd/default.nix ];
@@ -761,7 +753,6 @@ in
       "openssh-server"
       "hermes-server"
       "opencode-server"
-      "pi-web"
       "zeroclaw"
       "sops"
       "acme"
@@ -837,7 +828,6 @@ in
       "paperless-ngx"
       "trek"
       "podman"
-      # "audiomuse-ai"
       # "slskd"
       "maloja"
       "covertone"

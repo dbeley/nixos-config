@@ -83,7 +83,7 @@
 - **nixos-kimsufi-urbanterror**: public Urban Terror server
 
 ### Proxmox Era VMs (Home Server)
-- **nixos-era-agents**: LLM agent web UIs (hermes-webui + mnemosyne, opencode web, pi-web, zeroclaw, bend)
+- **nixos-era-agents**: LLM agent web UIs (hermes-webui + mnemosyne, opencode web, zeroclaw, bend)
 - **nixos-era-nixflix**: nixflix (arr stack, jellyfin, navidrome) + youtarr, bookorbit, shelfmark, yamtrack
 - **nixos-era-adguard**: adguard-home
 - **nixos-era-nextcloud**: nextcloud

@@ -79,7 +79,6 @@ lines, not raw values — systemd and podman's `--env-file` both expect that for
 |--------|------|--------|
 | `bookorbit_env`, `youtarr_env`, `yamtrack_env`, `navidrome_env` | `secrets/nixflix.yaml` | multi-line `KEY=VALUE` |
 | `trek_env`, `slskd_env`, `maloja_env` | `secrets/homelab.yaml` | multi-line `KEY=VALUE` |
-| `audiomuse_pg_password` | `secrets/homelab.yaml` | `POSTGRES_PASSWORD=<value>` |
 | `opencode_env`, `zeroclaw_env`, `hermes_webui_env` | `secrets/agents.yaml` | multi-line `KEY=VALUE` |
 | `acme_ovh` | `secrets/acme.yaml` | multi-line `KEY=VALUE` |
 | `urbanterror_env` | `secrets/urbanterror.yaml` | multi-line `KEY=VALUE`; keys are Quake cvars (`rconpassword`, `sv_hostname`, …), `SETS_Admin`/`SETS_Location` set browser tags |
