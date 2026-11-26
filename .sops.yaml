@@ -33,3 +33,7 @@ creation_rules:
       age19a42zcg3w93rpge59nrg8u9kdd0cnvrsl3v5fklnt2x229ax6ajqmphwre,
       age1592raxpwx6uux3cgnp2npexy2uy5vlpacv0sczvpwtks9fus530sm0u6q2,
       age1sk2yufac5t4wc4f2a54whcjcrxnk48y64958pakvjkevw08mespqm97rn5
+  - path_regex: 'secrets/urbanterror\.yaml$'
+    age: >-
+      age1cr6te4rkskr9p9793ucxu3kw4f976ajwlc833540vhk252fpre2qxx9pq3,
+      age1xhg3xrtuwuewkythsq29t45twn6tlnsac65j6qt8vhpjgwtazd8sctkafu
