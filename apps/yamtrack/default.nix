@@ -26,7 +26,6 @@ in
         yamtrack = {
           image = "ghcr.io/fuzzygrim/yamtrack";
           autoStart = true;
-          ports = [ "127.0.0.1:8000:8000" ];
           volumes = [ "${dataDir}/db:/yamtrack/db" ];
           environment = { inherit TZ; };
           environmentFiles = [ config.sops.secrets."yamtrack_env".path ];

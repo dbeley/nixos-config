@@ -51,7 +51,6 @@ in
         bookorbit-app = {
           image = "ghcr.io/bookorbit/bookorbit:latest";
           autoStart = true;
-          ports = [ "127.0.0.1:${toString appPort}:3000" ];
           volumes = [
             "${booksDir}:/books"
             "${dataDir}/app:/data"

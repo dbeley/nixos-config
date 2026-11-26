@@ -50,7 +50,6 @@ in
         audiomuse-flask = {
           image = "ghcr.io/neptunehub/audiomuse-ai:latest";
           autoStart = true;
-          ports = [ "127.0.0.1:${toString audiomusePort}:8000" ];
           volumes = [
             "${tempDir}:/app/temp_audio"
             "${pluginsDir}:/app/plugin/installed"
