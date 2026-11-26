@@ -84,11 +84,12 @@ in
         apiKey._secret = secrets."prowlarr_api_key".path;
         hostConfig.password._secret = secrets."prowlarr_password".path;
         indexers = [
-          # {
-          #   name = "RuTracker.org";
-          #   username._secret = secrets."rutracker_username".path;
-          #   password._secret = secrets."rutracker_password".path;
-          # }
+          {
+            name = "RuTracker.org";
+            tags = [ "flaresolverr" ];
+            username._secret = secrets."rutracker_username".path;
+            password._secret = secrets."rutracker_password".path;
+          }
           {
             name = "The Pirate Bay";
           }
@@ -223,25 +224,38 @@ in
       apiKey._secret = secrets."seerr_api_key".path;
     };
 
-    recyclarr.enable = true;
+    recyclarr = {
+      enable = true;
+    };
     flaresolverr.enable = true;
 
     vpn = {
       enable = true;
       wgConfFile = config.sops.secrets."mullvad_wg".path;
     };
+
+    pinchflat = {
+      enable = true;
+      secretsFile = config.sops.secrets."pinchflat_env".path;
+    };
+
   };
 
-  # qbittorrent/sonarr/radarr/lidarr deliberately share uid 274, so the
-  # duplicate-uid check has to be relaxed.
-  users.enforceIdUniqueness = false;
-  # nixflix's qbittorrent module tries to set this uid from
-  # nixflix.globals.uids, but writes `mkForce { ... } // optionalAttrs ...`
-  # (the uid ends up outside the mkForce and is dropped), so set it here too.
-  users.users.qbittorrent = lib.mkForce {
-    group = "media";
-    isSystemUser = true;
-    uid = 274;
+  users = {
+    # qbittorrent/sonarr/radarr/lidarr deliberately share uid 274, so the
+    # duplicate-uid check has to be relaxed.
+    enforceIdUniqueness = false;
+    # nixflix's qbittorrent module tries to set this uid from
+    # nixflix.globals.uids, but writes `mkForce { ... } // optionalAttrs ...`
+    # (the uid ends up outside the mkForce and is dropped), so set it here too.
+    users.qbittorrent = lib.mkForce {
+      group = "media";
+      isSystemUser = true;
+      uid = 274;
+    };
+    groups.media = lib.mkForce {
+      members = [ user ];
+    };
   };
 
   security.acme.certs."${domain}" = {
@@ -294,6 +308,7 @@ in
         "slskd_api_key"
         "slskd_soulseek_username"
         "slskd_soulseek_password"
+        "pinchflat_env"
       ]
       (_: {
         sopsFile = ../../secrets/nixflix.yaml;
