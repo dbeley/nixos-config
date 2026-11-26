@@ -258,13 +258,6 @@ in
     };
   };
 
-  security.acme.certs."${domain}" = {
-    domain = "${domain}";
-    dnsProvider = "ovh";
-    environmentFile = config.sops.secrets."acme_ovh".path;
-    group = "nginx";
-  };
-
   systemd = {
     services = {
       nixflix-setup-dirs.script = lib.mkForce ''
