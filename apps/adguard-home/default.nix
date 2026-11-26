@@ -12,6 +12,20 @@ in
       enable = true;
       settings = {
         http.address = "0.0.0.0:3000";
+
+        # Never rely on AdGuard Home's built-in defaults: they upstream to Quad9 which is blocked in France
+        dns = {
+          upstream_dns = [
+            "https://cloudflare-dns.com/dns-query"
+            "https://dns.google/dns-query"
+          ];
+          bootstrap_dns = [
+            "1.1.1.1"
+            "1.0.0.1"
+            "8.8.8.8"
+          ];
+          upstream_mode = "parallel";
+        };
       };
     };
 
