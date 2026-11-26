@@ -25,7 +25,10 @@
     virtualHosts."jellyfin.${domain}" = {
       useACMEHost = domain;
       forceSSL = true;
-      locations."/".proxyPass = "http://localhost:8096";
+      locations."/" = {
+        proxyPass = "http://localhost:8096";
+        proxyWebsockets = true;
+      };
     };
   };
 
