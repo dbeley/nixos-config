@@ -162,7 +162,8 @@ Dedicated just recipes exist in order to facilitate installation and deployment 
 just install-proxmox-vm HOSTNAME IP
 # You might need to delete entries in ~/.ssh/known_hosts to connect via SSH
 just boot-proxmox-vm HOSTNAME IP
-# After first boot, log in as david (initial password: nixos) and change it:
+# After first boot, log in as david (password printed at the end of the install
+# script) and change it:
 #   passwd
 ```
 

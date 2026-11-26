@@ -9,6 +9,7 @@ set -euo pipefail
 HOSTNAME=${1:-}
 DISK=${2:-/dev/sda}
 STATE_VERSION=${3:-26.05}
+BOOTSTRAP_PASSWORD=$(head -c 16 /dev/urandom | od -An -tx1 | tr -d ' \n')
 
 if [ -z "$HOSTNAME" ]; then
     echo "Usage: bash install-nixos.sh <hostname> [disk] [state-version]"
@@ -107,7 +108,7 @@ sudo tee /mnt/etc/nixos/configuration.nix > /dev/null << EOF
 
   users.users.david = {
     isNormalUser = true;
-    initialPassword = "nixos";
+    initialPassword = "$BOOTSTRAP_PASSWORD";
     extraGroups = [ "wheel" "networkmanager"];
   };
   nix = {
@@ -141,6 +142,9 @@ echo "=========================================="
 echo "Hostname: $HOSTNAME (temporary, will change on final deployment)"
 echo "UUID: $UUID"
 echo ""
+echo "Temporary password for david: $BOOTSTRAP_PASSWORD"
+echo "  (write it down now, it is not stored anywhere else)"
+echo ""
 echo "NEXT STEPS:"
 echo "1. If you haven't done so already on step 5:"
 echo "   On your LOCAL machine, edit:"
@@ -150,7 +154,7 @@ echo ""
 echo "2. Reboot this VM"
 echo ""
 echo "3. After reboot, deploy final config from your local machine"
-echo "   (initial password for david: nixos):"
+echo "   (david's password is the temporary one printed above):"
 echo "     just boot-proxmox-vm $HOSTNAME <IP>"
 echo ""
 echo "4. After first login as david, CHANGE the password:"
