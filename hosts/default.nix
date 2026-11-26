@@ -409,6 +409,9 @@ let
     archiveteam-warrior = {
       system = [ ../apps/archiveteam-warrior/default.nix ];
     };
+    urbanterror = {
+      system = [ ../apps/urbanterror/default.nix ];
+    };
     immich = {
       system = [
         ../apps/immich/default.nix
@@ -735,6 +738,17 @@ in
       "openssh-server"
       "docker"
       "archiveteam-warrior"
+    ];
+  };
+  nixos-kimsufi-urbanterror = mkHost {
+    hostName = "nixos-kimsufi-urbanterror";
+    stateVersion = "26.11";
+    profiles = [
+      "bootloader-grub-bios"
+      "vm-guest"
+      "openssh-server"
+      "sops"
+      "urbanterror"
     ];
   };
   nixos-era-agents = mkHost {

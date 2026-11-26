@@ -98,6 +98,10 @@ secrets-view file="secrets/secrets.yaml":
   @echo "Viewing decrypted secrets"
   SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops -d {{file}}
 
+secrets-updatekeys file="secrets/secrets.yaml":
+  @echo "Re-encrypting {{file}} to the recipients in .sops.yaml"
+  SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops updatekeys {{file}}
+
 secrets-gen-key:
   @echo "Generating new age key"
   @echo "This will overwrite existing key at ~/.config/sops/age/keys.txt"

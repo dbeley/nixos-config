@@ -80,6 +80,7 @@
 - **nixos-kimsufi-qbittorrent**: qbittorrent
 - **nixos-kimsufi-tor**: non-exit Tor relay
 - **nixos-kimsufi-warrior**: ArchiveTeam Warrior
+- **nixos-kimsufi-urbanterror**: public Urban Terror server
 
 ### Proxmox Era VMs (Home Server)
 - **nixos-era-agents**: LLM agent web UIs (hermes-webui + mnemosyne, opencode web, pi-web, zeroclaw, bend)
