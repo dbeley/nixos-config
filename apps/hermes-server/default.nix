@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   user,
   inputs,
   domain,
@@ -12,6 +14,14 @@
     inherit user;
   };
 
+  networking.firewall.allowedTCPPorts = lib.mkForce (
+    [
+      80
+      443
+    ]
+    ++ config.services.openssh.ports
+  );
+
   services.nginx = {
     enable = true;
     virtualHosts."hermes.${domain}" = {
@@ -24,9 +34,4 @@
       };
     };
   };
-
-  networking.firewall.allowedTCPPorts = [
-    80
-    443
-  ];
 }
