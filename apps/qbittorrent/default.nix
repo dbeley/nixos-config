@@ -4,6 +4,6 @@
     enable = true;
     inherit user;
     group = "users";
-    openFirewall = true;
+    openFirewall = false;
   };
 }
