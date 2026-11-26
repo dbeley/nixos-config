@@ -11,7 +11,7 @@ in
     adguardhome = {
       enable = true;
       settings = {
-        http.address = "0.0.0.0:3000";
+        http.address = "127.0.0.1:3000";
 
         # Never rely on AdGuard Home's built-in defaults: they upstream to Quad9 which is blocked in France
         dns = {
