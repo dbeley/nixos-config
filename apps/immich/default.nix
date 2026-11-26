@@ -42,7 +42,7 @@ in
         ensureDBOwnership = true;
         ensureClauses = {
           login = true;
-          superuser = true;
+          superuser = false;
         };
       }
     ];
