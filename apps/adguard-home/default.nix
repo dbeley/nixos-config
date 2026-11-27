@@ -34,7 +34,7 @@ in
       virtualHosts.${adguardHost} = {
         useACMEHost = domain;
         forceSSL = true;
-        locations."/".proxyPass = "http://localhost:3000";
+        locations."/".proxyPass = "http://127.0.0.1:3000";
       };
     };
 

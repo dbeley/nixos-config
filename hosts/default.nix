@@ -395,9 +395,6 @@ let
     covertone = {
       system = [ ../apps/covertone/default.nix ];
     };
-    redlib = {
-      system = [ ../apps/redlib/default.nix ];
-    };
     archiveteam-warrior = {
       system = [ ../apps/archiveteam-warrior/default.nix ];
     };
@@ -831,7 +828,6 @@ in
       # "slskd"
       "maloja"
       "covertone"
-      "redlib"
     ];
   };
 }
