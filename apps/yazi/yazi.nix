@@ -20,10 +20,10 @@
     settings = {
       preview = {
         cache_dir = "${config.home.homeDirectory}/.cache/yazi";
-        max_width = 320;
-        max_height = 240;
-        image_filter = "nearest";
-        image_quality = 50;
+        max_width = 1920;
+        max_height = 1080;
+        image_filter = "triangle";
+        image_quality = 75;
       };
       mgr = {
         linemode = "size";
