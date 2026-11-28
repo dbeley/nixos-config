@@ -35,7 +35,10 @@ let
     # "ut4_ghosttown"
     # "ut4_swim"
     # "ut4_prominence"
-    "ut4_ramelle"
+    {
+      map = "ut4_ramelle";
+      settings.g_gametype = 0;
+    }
     # "ut4_raiders"
     "ut4_riyadh"
     # "ut4_mykonos_a17"
@@ -111,7 +114,7 @@ let
     g_armbands = 1;
     g_funstuff = 1;
     g_gear = "K"; # no HK
-    g_allowvote = 603981055;
+    g_allowvote = 606084863;
     g_failedvotetime = 300;
     g_maxGameClients = 0;
     g_allowchat = 2;
