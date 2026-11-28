@@ -122,10 +122,10 @@ in
         subbuzz = {
           enable = true;
           config = {
-            EnableOpenSubtitles = true;
-            EnableAddic7ed = true;
+            EnableOpenSubtitles = false;
+            EnableAddic7ed = false;
             EnablePodnapisiNet = true;
-            EnableSubscene = true;
+            EnableSubscene = false;
             EnableSubf2m = true;
             EnableYifySubtitles = true;
             OpenSubUserName = "dbeley";
@@ -153,12 +153,24 @@ in
             "eng"
             "fra"
           ];
+          enableTrickplayImageExtraction = false;
+          extractTrickplayImagesDuringLibraryScan = false;
         };
         Shows = {
           subtitleDownloadLanguages = [
             "eng"
             "fra"
           ];
+          enableTrickplayImageExtraction = false;
+          extractTrickplayImagesDuringLibraryScan = false;
+        };
+        Music = {
+          enableTrickplayImageExtraction = false;
+          extractTrickplayImagesDuringLibraryScan = false;
+        };
+        YouTube = {
+          enableTrickplayImageExtraction = false;
+          extractTrickplayImagesDuringLibraryScan = false;
         };
       };
     };
