@@ -13,11 +13,10 @@ in
       settings = {
         http.address = "127.0.0.1:3000";
 
-        # Never rely on AdGuard Home's built-in defaults: they upstream to Quad9 which is blocked in France
         dns = {
           upstream_dns = [
-            "https://cloudflare-dns.com/dns-query"
-            "https://dns.google/dns-query"
+            "tls://ns0.fdn.fr"
+            "tls://ns1.fdn.fr"
           ];
           bootstrap_dns = [
             "1.1.1.1"
